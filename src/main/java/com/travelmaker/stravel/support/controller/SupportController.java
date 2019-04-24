@@ -55,51 +55,14 @@ public class SupportController {
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/files/qnaImages");
 		String originalFileName = qnaimage.getOriginalFilename(); 
 		try {
-/*			SimpleDateFormat sdf = 
-					new SimpleDateFormat("yyyyMMddHHmmss");
-				String renameFileName = sdf.format("QnaImage"+new java.sql.Date(System.currentTimeMillis()))
-						+ "." + qnaimage.getOriginalFilename().substring(qnaimage.getOriginalFilename().lastIndexOf(".") + 1);
-				File renameFile = new File(savePath + "\\" + renameFileName);
-				if(!qnaimage.getOriginalFilename().renameTo(renameFile)) {
-					//파일명 직접 바꾸기함
-					//원본 파일의 내용 읽어서, 리네임 파일에 복사 기록하기
-					//원본 파일 삭제함
-					int read = -1;
-					byte[] buf = new byte[1024];
-					
-					FileInputStream fin = 
-							new FileInputStream(qnaimage.getOriginalFilename());
-					FileOutputStream fout = 
-							new FileOutputStream(renameFile);
-					
-					while((read = fin.read(buf, 0, buf.length)) != -1) {
-						fout.write(buf, 0, read);
-					}
-					
-					fin.close();
-					fout.close();
-				}
-			System.out.println("바뀐이름 "+renameFileName);
-			qnaimage.transferTo(new File(savePath+"\\"+renameFileName));
-			qnavo.setRename_qfilename(renameFileName);
-
-			qnaimage.transferTo(new File(savePath+"\\"+qnaimage.getOriginalFilename()));
-			qnavo.setRename_qfilename(qnaimage.getOriginalFilename());*/
-			
-			
-			
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 			String renameFileName = sdf.format(new java.sql.Date(System.currentTimeMillis()))
 						+ "." + originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
 				
-				//java.io.File 객체의 renameTo() 메소드 사용
 				File originFile = new File(savePath + "\\" + originalFileName);
 				File renameFile = new File(savePath + "\\" + renameFileName);
 				
 				if(!originFile.renameTo(renameFile)) {
-					//파일명 직접 바꾸기함
-					//원본 파일의 내용 읽어서, 리네임 파일에 복사 기록하기
-					//원본 파일 삭제함
 					int read = -1;
 					byte[] buf = new byte[1024];
 					
@@ -121,9 +84,7 @@ public class SupportController {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		}/*else {
-			qnavo.setRename_qfilename(null);
-		}*/
+		}
 		System.out.println(qnavo);
 		int result = supportService.qnaInsert(qnavo);
 		if(result>0) {
