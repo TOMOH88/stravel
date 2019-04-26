@@ -1,19 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
-<link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
-<link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-<link rel="stylesheet" href="vendors/linericon/style.css">
-<link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
-<link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-<link rel="stylesheet" href="vendors/flat-icon/font/flaticon.css">
-<link rel="stylesheet" href="vendors/nice-select/nice-select.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/themify-icons/themify-icons.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/linericon/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.theme.default.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/flat-icon/font/flaticon.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/nice-select/nice-select.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/slick.css"/>
 <style type="text/css">
 @media (min-width: 1128px)
 .maindiv {
@@ -59,19 +62,7 @@
  #map {
     height: 100%;
 } 
- #selectroom,
- #selectperson{
-  width: 240px;
-  padding: .8em .5em;
-  font-family: inherit;
-  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-/*   border: 1px solid #999;
-  border-radius: 0px; */
- 
- }
+
  .rsvbt {
 	-moz-box-shadow:inset 0px 39px 0px -24px #99b4ff;
 	-webkit-box-shadow:inset 0px 39px 0px -24px #99b4ff;
@@ -87,7 +78,7 @@
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
-	padding:2px 90px;
+	padding:2px 80px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #99b4ff;
 }
@@ -97,23 +88,56 @@
 .rsvbt:active {
 	position:relative;
 	top:1px;
-}
+} 
 
-        
- 
-
-      /* Optional: Makes the sample page fill the window. */
-      /* html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      } */
+/* swiper */
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+    width:300px;
+    height:300px;
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    .swiper-slide img{
+    	width:100%;
+    	height:69.99%;
+    }
+    .swiper-slide-text{
+    	display:block;
+    	width:100%;
+    	height:29.99%;
+    }
+ 	.selectroom,
+ 	.selectcount {
+ 		width:230px;
+ 		height:30px;
+ 		margin:5px;
+ 		
+ 	}
+	
 </style>
 </head>
 <body class="roomBody">
 
 <div  style="border: 1px solid black; width:100%; height:100px;">
-header
+	
 </div>
 
 <div onclick="check();" style="width:100%;height:592px;" class="timgdiv"><!-- 나중에 클릭시 모달창 함수 실행시킬 div 영역 -->
@@ -141,31 +165,39 @@ header
 <hr>
 <div style="margin-top:20px;"></div>
 <div class="maindiv"><!-- 메인정보영역 -->
-	<!-- <div style="margin-bottom:20px; height:auto;">메인/사이드바/즐길거리포함영역 -->
-		<div style="background:gray; width:70%; float:left;"><!-- 메인정보영역 -->
+	<div style="margin-bottom:20px; height:auto;"><!-- 메인/사이드바/즐길거리포함영역 -->
+		<div style=" width:68%; display:inline-block;"><!-- 메인정보영역 -->
 			<div style="padding:20px;"><!-- 업체정보  -->
-				<div><h1>제주월정리펜션</h></div><!-- 사업자이름 -->
-				<div><h5>서울특별시 관악구 봉천동 <br> 010-3086-3045</h5></div>
+				<div style="font-size:1.5em; font-weight:bold;">제주월정리펜션</div><!-- 사업자이름 -->
+				<div style="font-size:medium;">서울특별시 관악구 봉천동 <br> 010-3086-3045</div>
 			</div>
 			<br>
 			<hr>
 			<div><!-- 객실 정보/포문 -->
 			<div id="titlediv">객실정보</div><br>
 				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
-					<div style="background:blue; width:150px; height:150px; float:left; margin-right:20px;"></div><!-- 객실사진슬라이더공간 -->
-					<div style="background:red;float:left; height:150px; width:500px; border-radius:10px"><h5>객실정보<br>최대인원/최소인원</h5></div><!-- 각객실당정보 -->
+					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
+					
+					</div>
+					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">객실정보<br>최대인원/최소인원</div><!-- 각객실당정보 -->
 				</div>
 				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
-					<div style="background:blue; width:150px; height:150px; float:left; margin-right:20px;"></div><!-- 객실사진슬라이더공간 -->
-					<div style="background:red;float:left; height:150px; width:500px; border-radius:10px"><h5>객실정보<br>최대인원/최소인원</h5></div><!-- 각객실당정보 -->
+					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
+					<!-- 객실사진슬라이더공간 -->
+					</div>
+					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">객실정보<br>최대인원/최소인원</div><!-- 각객실당정보 -->
 				</div>
 				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
-					<div style="background:blue; width:150px; height:150px; float:left; margin-right:20px;"></div><!-- 객실사진슬라이더공간 -->
-					<div style="background:red;float:left; height:150px; width:500px; border-radius:10px"><h5>객실정보<br>최대인원/최소인원</h5></div><!-- 각객실당정보 -->
+					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
+					<!-- 객실사진슬라이더공간 -->
+					</div>
+					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">객실정보<br>최대인원/최소인원</div><!-- 각객실당정보 -->
 				</div>
 				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
-					<div style="background:blue; width:150px; height:150px; float:left; margin-right:20px;"></div><!-- 객실사진슬라이더공간 -->
-					<div style="background:red;float:left; height:150px; width:500px; border-radius:10px"><h5>객실정보<br>최대인원/최소인원</h5></div><!-- 각객실당정보 -->
+					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
+					<!-- 객실사진슬라이더공간 -->
+					</div>
+					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">객실정보<br>최대인원/최소인원</div><!-- 각객실당정보 -->
 				</div>
 			</div><!-- 객실정보끝 -->
 			<br>
@@ -177,43 +209,43 @@ header
 					<span id="titlediv">후기</span><span style="font-size:medium;">400개</span><!-- 별점 -->
 				</div>
 				<br>
-				<div style="width:1032px;height:150px;margin:5px;"><!-- 후기하나 -->
+				<div style="height:150px;margin:5px; border-bottom:1px solid #e4e4e4;"><!-- 후기하나 -->
 					<div style="width:1032px;height:50px;"><!-- 사진/이름/별점 -->
-						<div style="float:left;"><img id="mainimg1" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"></div><!-- 사진 -->
+						<div style="float:left; margin-right:20opx;"><img id="mainimg1" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"></div><!-- 사진 -->
 						<div style="float:left;">
 							<div>이름</div><!-- 이름 -->
 							<div>별점</div><!-- 별점 -->
 						</div>
 					</div>
-					<div style="width:1032px;height:150px;margin:5px;">
+					<div style="margin:5px;">
 						통유리로 보는 바다풍경이 넘 멋지고 좋았어요 애월특성상 밤에 <br>
 						편의 시설이 조금 불편하긴 했지만 일찍 도착했는데 잘 도와주셔 <Br>
 						편히 지내다 왔어요 또 머무르고 싶어요
 					</div>
 				</div>
-				<div style="width:1032px;height:150px;margin:5px;"><!-- 후기하나 -->
-					<div style="width:1032px;height:50px;"><!-- 사진/이름/별점 -->
-						<div style="float:left;"><img id="mainimg1" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"></div><!-- 사진 -->
+				<div style="height:150px;margin:5px; border-bottom:1px solid #e4e4e4;"><!-- 후기하나 -->
+					<div style="height:50px;"><!-- 사진/이름/별점 -->
+						<div style="float:left; margin-right:20opx;"><img id="mainimg1" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"></div><!-- 사진 -->
 						<div style="float:left;">
 							<div>이름</div><!-- 이름 -->
 							<div>별점</div><!-- 별점 -->
 						</div>
 					</div>
-					<div style="width:1032px;height:150px;margin:5px;">
+					<div style="margin:5px;">
 						통유리로 보는 바다풍경이 넘 멋지고 좋았어요 애월특성상 밤에 <br>
 						편의 시설이 조금 불편하긴 했지만 일찍 도착했는데 잘 도와주셔 <Br>
 						편히 지내다 왔어요 또 머무르고 싶어요
 					</div>
 				</div>
-				<div style="width:1032px;height:150px;margin:5px;"><!-- 후기하나 -->
-					<div style="width:1032px;height:50px;"><!-- 사진/이름/별점 -->
-						<div style="float:left;"><img id="mainimg1" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"></div><!-- 사진 -->
+				<div style="height:150px;margin:5px; border-bottom:1px solid #e4e4e4;"><!-- 후기하나 -->
+					<div style="height:50px;"><!-- 사진/이름/별점 -->
+						<div style="float:left; margin-right:20opx;"><img id="mainimg1" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"></div><!-- 사진 -->
 						<div style="float:left;">
 							<div>이름</div><!-- 이름 -->
 							<div>별점</div><!-- 별점 -->
 						</div>
 					</div>
-					<div style="width:1032px;height:150px;margin:5px;">
+					<div style="width:1032px;margin:5px;">
 						통유리로 보는 바다풍경이 넘 멋지고 좋았어요 애월특성상 밤에 <br>
 						편의 시설이 조금 불편하긴 했지만 일찍 도착했는데 잘 도와주셔 <Br>
 						편히 지내다 왔어요 또 머무르고 싶어요
@@ -233,57 +265,52 @@ header
 				<div id="plain" style="display : none;padding:10px;"><!-- 펼쳐질공간 -->
 				교통편
 				</div> 
-				<div style="width:682px; height:350px; margin:20px; background:yellow;"><!-- 구글맵영역 -->
+				<div style="width:682px; height:350px; margin:20px;"><!-- 구글맵영역 -->
 					<div id="map"></div>
 				</div>
 			</div><!-- 지역정보 -->
 			<br>
-			<hr>
 		</div><!-- 메인정보 -->
-<!-- 		<div style="background:yellow; width:30%; float:left; ">사이드바 공간 -->
-			<div id="roomsidebar" style="width:260px; border:1px solid gray; float:left; position:sticky; top:100px; margin:10px; padding:10px;"><!-- 오른쪽 사이드바 -->
-				<div style="width:260px;height:40px;"><!-- 사이드바 헤드 -->
-					<!-- <div style="width:100px; padding:10px; "id="sideprice">₩85,000<div style="font-size:small;float:right;">/박</div></div> -->
-					<span  id="sideprice">₩85,000</span><span style="font-size:x-small;">/박</span>
-				</div>
-				<div style="margin-left:10px;margin-right:10px;"><hr></div>
+		<div id="roomsidebar" style="width:260px; border:1px solid #e4e4e4; float:right; position:sticky; top:100px; margin:10px; padding:10px; display:inline-block;"><!-- 오른쪽 사이드바 -->
+			<div style="width:260px;height:40px;"><!-- 사이드바 헤드 -->
+				<span  id="sideprice">₩85,000</span><span style="font-size:x-small;">/박</span>
+			</div>
+			<div style="margin-left:10px;margin-right:10px;"><hr></div>
 				<div ><!-- 사이드바 바디 -->
 					<form action="" method="post">
 						<div><!-- 객실선택드롭다운 -->
 						<div style="font-size:xx-small">옵션</div>
-							<div id="selectroom">
-								<select id="selectroom" name="roomno" required>
-									<option>101호</option>
-									<option>102호</option>
-									<option>103호</option>
-									<option>201호</option>
-									<option>102호</option>
+							<div style="height:30px;">
+								<select class="selectroom" name="roomno" required>
+									<option>101</option>
+									<option>102</option>
+									<option>201</option>
+									<option>202</option>
 								</select>
 							</div>
 						</div>
 						<div style="font-size:xx-small">날짜</div>
 						<!-- <div style="float:center;"><span><div>체크인</div></span><span>→</span><div>체크아웃</div><span></span></div> -->
-						<div style="height:50px;"><!-- 체크인,체크아웃 /달력 -->
+						<!-- <div style="height:50px;">체크인,체크아웃 /달력
 							<div>
 								<div style="float:left; width:130px;">&nbsp;체크인</div>
 								<div style="float:left; width:130px;">&nbsp;&nbsp;체크아웃</div>
 							</div>
 							<div >
-								<div ><input type="date" name="checkin" style="float:left; width:117px;"></div>
+								<div ><input type="date" name="checkin" style="float:left; "></div>
 								<div style="float:left; width:24; height:24;">→</div>
-								<div ><input type="date" name="checkout" style="float:left; width:117px;"></div>
+								<div ><input type="date" name="checkout" style="float:left; "></div>
 							</div>
-						</div>
+						</div> -->
 						<div><!-- 인원선택 -->		
 						<div style="font-size:xx-small">옵션</div>
-							<div id="selectperson">
-								<select id="selectperson" required>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-									<option>6</option>
-								</select>			
+							<div style="height:30px;">
+								<select class="selectcount" name="personconut" required>
+									<option>2 명</option>
+									<option>3 명</option>
+									<option>4 명</option>
+									<option>5 명</option>
+								</select>
 							</div>
 						</div>
 						<Br>
@@ -294,26 +321,46 @@ header
 					</form>
 				</div>
 			</div><!-- 오른쪽 사이드바 -->
-		<!-- </div>사이드바 공간 -->
-	<!-- <hr style="margin-top:30px;"> -->
-
-	<!-- </div>즐길거리 슬라이드 공간
+			<hr style="margin-top:30px;">
+		</div>
 		<div>	
 		<div id="titlediv">주변 즐길거리</div>
-		<div style="background:red; height:200px;">
-	</div> -->
+		<div style="height:300px;">
+		  <!-- Swiper -->
+ 			 <div class="swiper-container">
+ 			    <div class="swiper-wrapper">
+  			  	  <div class="swiper-slide">
+  			   			<div>
+  			   				<img src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG">
+   			   				<div class="swiper-slide-text" style="text-align:left;">
+   			   					<div style="font-size:x-small;">카테고리</div>
+   		    					<div style="font-size:small; font-weight:bold;">관광지명</div>
+   		    					<div style="font-size:x-small;">가격</div>
+   		    					<div style="font-size:x-small;">평점</div>
+ 			   				</div>
+   		    			</div>
+   		   		 	</div>
+  			   </div>
+   			  <!-- Add Pagination -->
+   			  <div class="swiper-pagination"></div>
+   			  <!-- Add Arrows -->
+   			  <div class="swiper-button-next"></div>
+   			  <div class="swiper-button-prev"></div>
+  			 </div>
+		</div>
 	</div>
 </div>
 
 
-<script src="vendors/jquery/jquery-3.2.1.min.js"></script>
-<script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-<script src="vendors/nice-select/jquery.nice-select.min.js"></script>
-<script src="js/jquery.ajaxchimp.min.js"></script>
-<script src="js/mail-script.js"></script>
-<script src="js/skrollr.min.js"></script>
-<script src="js/main.js"></script>
+<script src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/vendors/nice-select/jquery.nice-select.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.ajaxchimp.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/skrollr.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
 
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJoPfOWTR_yPSub9u9VPKGGVauCN0RoAg&callback=initMap"
     async defer></script><!-- 구글맵 -->
@@ -331,4 +378,20 @@ header
         zoom: 8
       });
     }
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        slidesPerGroup: 3,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+ 
 </script>
