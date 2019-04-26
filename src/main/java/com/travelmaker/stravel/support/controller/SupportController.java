@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -57,6 +58,11 @@ public class SupportController {
 		try {
 			qnaimage.transferTo(new File(savePath+"\\"+qnaimage.getOriginalFilename()));
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			
+			//String fileExt = FileUtil.getExtension(originFileName);
+			//String refilename = UUIDUtil.GetUUID()+"." fileExt;
+			
+			
 			String renameFileName = sdf.format(new java.sql.Date(System.currentTimeMillis()))
 						+ "." + originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
 			qnavo.setRename_qfilename(renameFileName);	

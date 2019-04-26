@@ -15,5 +15,8 @@
 <body>
 <h1>1:1 문의 게시판 사용자</h1>
 <center><button onclick="moveWritePage(); return false;">글쓰기</button></center>
+<table>
+<tr><th>번호</th><th>제목</th><th>날짜</th><th>답변유무</th></tr>
+</table>
 </body>
 </html>
