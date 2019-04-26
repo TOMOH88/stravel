@@ -19,6 +19,21 @@
 			 	<label for = "date">날짜</label>
 			 	<input type = "date"> ~ <input type = "date">
 			 </li>
+			 <li>
+			 	<label for = "date">일정</label>
+			 	박 일
+			 </li>
+			 <div class = "myinfo">
+				<a href = "#">나의 정보 불러오기</a>
+			</div>
+			<li>
+				<label for = "schedule">스케줄</label>
+				
+			</li>
+			<li>
+				<label for = "latter">후기</label>
+				<textarea class = "latter" rows = "6" cols = "200">
+			</li>
 		</ul>
 	</div>
 </fieldset>

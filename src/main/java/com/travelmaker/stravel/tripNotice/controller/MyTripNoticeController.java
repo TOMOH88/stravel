@@ -30,5 +30,8 @@ public class MyTripNoticeController {
 			return "MyTripNotice/writeTripNotice";
 		}
 		
-		
+		@RequestMapping("tripnoticedetail.do")
+		public String movetripnoticedetail() {
+			return "MyTripNotice/tripNoticeDetail";
+		}
 }
