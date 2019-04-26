@@ -14,17 +14,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/nice-select/nice-select.css">
  
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+
 	<title>stravel</title>
 </head>
-
-<style>
-  table {
-    border: 1px solid #444444;
-  }
-  th, td {
-    border: 1px solid #444444;
-  }
-</style>
 <body>
 <c:import url="common/header.jsp" />
 <section class="section-margin">
@@ -92,19 +84,7 @@
       </div>
     </div>
   </section>
-<h1>
-	TEAM TM 작업
-</h1>
 
-<table>
-<tr><th>작업자</th><td><a>작업물 링크</a></td></tr>
-<tr><th>하종은</th><td><a>작업물 링크</a></td></tr>
-<tr><th>김지훈</th><td><a href="support.do">작업물 링크</a></td></tr>
-<tr><th>김인규</th><td><a>작업물 링크</a></td></tr>
-<tr><th>고상훈</th><td><a>작업물 링크</a></td></tr>
-<tr><th>구한모</th><td><a>작업물 링크</a></td></tr>
-<tr><th>오청</th><td><a>작업물 링크</a></td></tr>
-</table>
 <script src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>

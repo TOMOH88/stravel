@@ -34,7 +34,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">고객센터</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="qnalist.do">1:1문의</a>  
+                  <li class="nav-item"><a class="nav-link" href="#">1:1문의</a>  
                   <li class="nav-item"><a class="nav-link" href="#">FAQ</a>
                   <li class="nav-item"><a class="nav-link" href="#">공지사항</a>            
                 </ul>
@@ -44,7 +44,7 @@
                   aria-expanded="false">커뮤니티</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="#">동행찾기</a>  
-                  <li class="nav-item"><a class="nav-link" href="#">일정자랑</a>         
+                  <li class="nav-item"><a class="nav-link" href="tripnotice.do">일정자랑</a>         
                 </ul>
 							</li>
               <li class="nav-item submenu dropdown">
