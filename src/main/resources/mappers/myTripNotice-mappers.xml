@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myTripNoticeMapper">
+
+	<resultMap id="resultTripNotice" type="MyTripNotice">
+		<result property = "notice_no" column = "notice_no"/>
+		<result property = "notice_title" column = "notice_title"/>
+		<result property = "notice_writer" column = "notice_writer"/>
+		<result property = "notice_content" column = "notice_content"/>
+		<result property = "notice_original_filename" column = "notice_original_filename"/>
+		<result property = "notice_rename_filename" column = "notice_rename_filename"/>
+		<result property = "notice_read_count" column = "notice_read_count"/>
+		<result property = "notice_write_date" column = "notice_write_date"/>
+		<result property = "notice_good_count" column = "notice_good_count"/>
+	</resultMap>
+	
+	<select id="selectNoticeList" resultMap = "resultTripNotice">
+		select * from show_schedule
+	</select>
+	
+</mapper>
