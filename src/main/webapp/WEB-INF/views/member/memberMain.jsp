@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>stravel</title>
+<title>Insert title here</title>
 </head>
 <body>
-<jsp:forward page="main.do"/>
+<h1>멤버 메인</h1>
 </body>
 </html>
