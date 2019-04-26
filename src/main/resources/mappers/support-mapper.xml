@@ -12,6 +12,9 @@
 		<id property="rename_qfilename" column="RENAME_QFILENAME" />
 		<id property="qna_date" column="QNA_DATE" />
 		<id property="qna_status" column="QNA_STATUS" />
+		<id property="qna_answer" column="QNA_ANSWER" />
+		<id property="qna_answerdate" column="QNA_ANSWERDATE" />
+		<id property="rename_afilename" column="RENAME_AFILENAME" />
 
 	</resultMap>
 	

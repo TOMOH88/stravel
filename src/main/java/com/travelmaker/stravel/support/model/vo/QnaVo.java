@@ -16,11 +16,14 @@ public class QnaVo implements Serializable{
 	private String rename_qfilename;
 	private Date qna_date;
 	private String qna_status;
+	private String qna_answer;
+	private Date qna_answerdate;
+	private String rename_afilename;
 	public QnaVo() {
 		super();
 	}
 	public QnaVo(int qna_no, String qna_title, String qna_content, String qna_writer, String rename_qfilename,
-			Date qna_date, String qna_status) {
+			Date qna_date, String qna_status, String qna_answer, Date qna_answerdate, String rename_afilename) {
 		super();
 		this.qna_no = qna_no;
 		this.qna_title = qna_title;
@@ -29,6 +32,9 @@ public class QnaVo implements Serializable{
 		this.rename_qfilename = rename_qfilename;
 		this.qna_date = qna_date;
 		this.qna_status = qna_status;
+		this.qna_answer = qna_answer;
+		this.qna_answerdate = qna_answerdate;
+		this.rename_afilename = rename_afilename;
 	}
 	public int getQna_no() {
 		return qna_no;
@@ -72,6 +78,24 @@ public class QnaVo implements Serializable{
 	public void setQna_status(String qna_status) {
 		this.qna_status = qna_status;
 	}
+	public String getQna_answer() {
+		return qna_answer;
+	}
+	public void setQna_answer(String qna_answer) {
+		this.qna_answer = qna_answer;
+	}
+	public Date getQna_answerdate() {
+		return qna_answerdate;
+	}
+	public void setQna_answerdate(Date qna_answerdate) {
+		this.qna_answerdate = qna_answerdate;
+	}
+	public String getRename_afilename() {
+		return rename_afilename;
+	}
+	public void setRename_afilename(String rename_afilename) {
+		this.rename_afilename = rename_afilename;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -79,7 +103,8 @@ public class QnaVo implements Serializable{
 	public String toString() {
 		return "QnaVo [qna_no=" + qna_no + ", qna_title=" + qna_title + ", qna_content=" + qna_content + ", qna_writer="
 				+ qna_writer + ", rename_qfilename=" + rename_qfilename + ", qna_date=" + qna_date + ", qna_status="
-				+ qna_status + "]";
+				+ qna_status + ", qna_answer=" + qna_answer + ", qna_answerdate=" + qna_answerdate
+				+ ", rename_afilename=" + rename_afilename + "]";
 	}
 	
 	

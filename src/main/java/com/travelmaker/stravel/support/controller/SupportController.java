@@ -50,18 +50,19 @@ public class SupportController {
 		String path = "support/qnaerror";
 		System.out.println("1:1 입력정보 :"+qnavo);
 		System.out.println("이미지 정보 :"+qnaimage.getOriginalFilename());
-		
+		qnavo.setQna_content(qnavo.getQna_content().replace("\r\n", "<br>"));
 		if(qnaimage.getOriginalFilename()!="") {
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/files/qnaImages");
 		String originalFileName = qnaimage.getOriginalFilename(); 
 		try {
+			qnaimage.transferTo(new File(savePath+"\\"+qnaimage.getOriginalFilename()));
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 			String renameFileName = sdf.format(new java.sql.Date(System.currentTimeMillis()))
 						+ "." + originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
+			qnavo.setRename_qfilename(renameFileName);	
 				
 				File originFile = new File(savePath + "\\" + originalFileName);
 				File renameFile = new File(savePath + "\\" + renameFileName);
-				
 				if(!originFile.renameTo(renameFile)) {
 					int read = -1;
 					byte[] buf = new byte[1024];
@@ -79,7 +80,6 @@ public class SupportController {
 					fout.close();
 					originFile.delete();
 				}
-				qnavo.setRename_qfilename(renameFileName);
 				
 		}catch(Exception e) {
 			e.printStackTrace();
