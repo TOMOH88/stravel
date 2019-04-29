@@ -8,6 +8,12 @@
 <meta charset="UTF-8">
 <title>stravel</title>
 <style>
+#cover{
+	width: 100%;
+    height: 350px;
+    position: relative;
+}
+
 #day{
 	float: left;
     background: #203341;
@@ -72,15 +78,11 @@ html, body {
 				style="width: 100%; height: 500px;">
 		</div>
 		<br>
-		<div class="container" style="border:1px solid black;">
-		<div class="row">
-		<div class="col-xs-4 col-sm-6" style="border:1px solid black; width:500px; height:100%;">
-				<div id="day" style="border:1px solid black;">1day</div>
-				<div id="date" style="border:1px solid black;">2019-04-27</div>
-				<div id="total" style="border:1px solid black;">KRW 20,000</div>
+		<div class="container">
+			<div class="row">
+			
+			</div>
 		</div>
-		</div>
-		<div class="col-xs-4 col-sm-6" style="border: 1px solid black;">
 			<div id="map"></div>
 			<script>
 				var map;
@@ -97,8 +99,6 @@ html, body {
 			<script
 				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=initMap"
 				async defer></script>
-		</div>
-	</div>
 	</section>
 	<!--================Tour section End =================-->
 	<c:import url="../common/footer.jsp" />
