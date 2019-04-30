@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="touristspotMapper">
+
+	<resultMap id="resultTouristspotVo" type="TouristspotVo">
+		<id property="touristsopt_no" column="TOURISTSOPT_NO" />
+		<id property="touristsoptcategorycode" column="TOURISTSOPTCATEGORYCODE" />
+		<id property="touristsopt_name" column="TOURISTSOPT_NAME" />
+		<id property="touristsopt_content" column="TOURISTSOPT_CONTENT" />
+		<id property="touristsopt_writer" column="TOURISTSOPT_WRITER" />
+		<id property="touristsopt_date" column="TOURISTSOPT_DATE" />
+		<id property="rename_thumnail" column="RENAME_THUMBNAIL" />
+		<id property="touristsopt_openinghours" column="TOURISTSOPT_OPENINGHOURS" />
+		<id property="touristsopt_homepage" column="TOURISTSOPT_HOMEPAGE" />
+		<id property="touristsopt_tel" column="TOURISTSOPT_TEL" />
+		<id property="touristsopt_lastmodified" column="TOURISTSOPT_LASTMODIFIED" />
+		<id property="touristsopt_gridx" column="TOURISTSOPT_GRIDX" />
+		<id property="touristsopt_gridy" column="TOURISTSOPT_GRIDY" />
+		<id property="touristsopt_deletestatus" column="TOURISTSOPT_DELETESTATUS" />
+		<id property="touristsopt_address" column="TOURISTSOPT_ADDRESS" />
+
+
+	</resultMap>
+	
+	<select id="selectTouristspotNO" resultType="_int">
+		select count(TOURISTSOPT_NO)+1 from tb_touristsopt
+	</select>
+	<insert id="insertTouristspot" parameterType="TouristspotVo">
+	</insert>
+
+
+<!-- 	
+	<insert id="qnaInsert" parameterType="QnaVo">
+		insert into tb_qna(QNA_NO,QNA_TITLE,QNA_CONTENT,QNA_WRITER,
+		<if test="rename_qfilename != null">
+		RENAME_QFILENAME,
+		</if>
+		QNA_DATE,QNA_STATUS)
+		values (SQ_QNANO.NEXTVAL,#{qna_title},#{qna_content},#{qna_writer},
+		<if test="rename_qfilename != null">
+		#{rename_qfilename},
+		</if>
+		default,default)
+	</insert>
+	<select id="selectMyQnaList" resultMap="resultQna" parameterType="string">
+	select * from tb_qna where qna_writer = #{userid} ORDER by qna_no DESC
+	</select>
+	<select id="selectMyQnaListOne" resultType="QnaVo" parameterType="QnaVo">
+	select * from tb_qna where qna_no = #{qna_no} and qna_writer = #{qna_writer}
+	</select> -->
+	
+	<!-- 
+	
+	<select id="getListCount" resultType="_int" >
+		select count(*) from board
+	</select>
+	<select id="selectList" resultMap="resultboard" parameterType="Board" useCache="true">
+		<![CDATA[
+		SELECT * FROM 
+		(SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER, 
+				BOARD_TITLE, BOARD_CONTENT, 
+				BOARD_ORIGINAL_FILENAME, 
+				BOARD_RENAME_FILENAME, BOARD_REF, 
+				BOARD_REPLY_REF, BOARD_REPLY_LEV, 
+				BOARD_REPLY_SEQ, BOARD_READCOUNT, 
+				BOARD_DATE 
+				FROM (SELECT * FROM BOARD 
+				ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, 
+				BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC))
+				WHERE RNUM >= #{startRow} AND RNUM  <=  #{endRow}
+				]]>
+	</select>
+	<update id="addReadCount" parameterType="_int" >
+		update board 
+				set BOARD_READCOUNT = BOARD_READCOUNT + 1 
+				where BOARD_NUM = #{keyword}
+	</update>
+	<select id="selectBoard"  resultMap="resultboard"  parameterType="_int">
+		select * from board 
+				where board_num = #{keyword}
+	</select>
+	
+	<insert id="insertBoard" parameterType="Board">
+		insert into board (BOARD_NUM, BOARD_WRITER , BOARD_TITLE,BOARD_CONTENT
+		<if test="boardOriginalFileName != null">
+		,BOARD_ORIGINAL_FILENAME, BOARD_RENAME_FILENAME
+		</if>
+		,BOARD_REF,BOARD_REPLY_REF,BOARD_REPLY_LEV,BOARD_REPLY_SEQ,BOARD_READCOUNT,BOARD_DATE
+		)values((select max(board_num) + 1 from board), 
+				#{boardWriter}, #{boardTitle}, #{boardContent}, 
+				<if test="boardOriginalFileName != null">
+				#{boardOriginalFileName}, #{boardRenameFileName},
+				</if>
+				(select max(board_num) + 1 from board), 
+				0, 0, 0, default, default)
+	</insert>
+	
+	<insert id="insertReply1" parameterType="Board">
+		insert into board values 
+				((select max(board_num) + 1 from board), 
+				#{boardWriter}, #{boardTitle}, #{boardContent}, NULL, NULL, #{boardRef}, 
+				(select max(board_num) + 1 from board), 
+				1, #{boardReplySeq}, default, default)
+
+	</insert>
+	<insert id="insertReply2" parameterType="Board">
+		insert into board values 
+				((select max(board_num) + 1 from board), 
+				#{boardWriter}, #{boardTitle}, #{boardContent}, NULL, NULL, 
+				#{boardRef}, #{boardReplyRef}, 2, #{boardReplySeq}, default, default)
+	</insert>
+	
+	<insert id="insertReply">
+		<if test="boardReplyLev==1">
+		insert into board values 
+				((select max(board_num) + 1 from board), 
+				#{boardWriter}, #{boardTitle}, #{boardContent}, NULL, NULL, #{boardRef}, 
+				(select max(board_num) + 1 from board), 
+				1, #{boardReplySeq}, default, default)
+		</if>
+		<if test="boardReplyLev==2">
+		insert into board values 
+				((select max(board_num) + 1 from board), 
+				#{boardWriter}, #{boardTitle}, #{boardContent}, NULL, NULL, 
+				#{boardRef}, #{boardReplyRef}, 2, #{boardReplySeq}, default, default)
+		</if>
+	
+	</insert>
+	
+	
+	<update id="updateReplySeq" parameterType="Board">
+		update board 
+					set board_reply_seq = board_reply_seq + 1 
+					where board_ref = #{boardRef} 
+					and board_reply_lev = #{boardReplyLev} 
+					and board_reply_ref = #{boardReplyRef} 
+	</update>
+	<update id="updateReply" parameterType="_int">
+		update board 
+				set board_title = #{boardTitle} , board_content = #{boardContent} 
+				where board_num = #{boardNum} 
+	</update>
+	
+	<update id="updateBoard" parameterType="Board">
+		update board 
+				set board_title = #{boardTitle} , 
+				board_content = #{boardContent} 
+				<include refid="filepath"/>
+				where board_num = #{boardNum} 
+	</update>
+	<sql id="filepath">
+	<if test="boardOriginalFileName != null">
+	, board_original_filename = #{boardOriginalFileName} , 
+	board_rename_filename = #{boardRenameFileName}  
+	</if>
+	</sql>
+	
+	<delete id="deleteBoard" parameterType="_int">
+	delete from board where board_num = #{boardNum} 
+	</delete>
+	<select id="selectDateList" resultMap="resultboard"  parameterType="Board">
+		<![CDATA[
+		SELECT * 
+				FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER,  
+				BOARD_TITLE, BOARD_CONTENT, 
+				BOARD_ORIGINAL_FILENAME, 
+				BOARD_RENAME_FILENAME, BOARD_REF, 
+				BOARD_REPLY_REF, BOARD_REPLY_LEV, 
+				BOARD_REPLY_SEQ, BOARD_READCOUNT, 
+				BOARD_DATE 
+				FROM (SELECT * FROM BOARD where board_date between #{begin}  and #{end}  
+				ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, 
+				BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) 
+				WHERE RNUM >= #{startRow}  AND RNUM <= #{endRow} 
+				]]>
+	</select>
+	<select id="selectWriterList" resultMap="resultboard"  parameterType="Board">
+	<![CDATA[
+	SELECT * 
+				FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER,
+				BOARD_TITLE, BOARD_CONTENT, 
+				BOARD_ORIGINAL_FILENAME, 
+				BOARD_RENAME_FILENAME, BOARD_REF, 
+				BOARD_REPLY_REF, BOARD_REPLY_LEV, 
+				BOARD_REPLY_SEQ, BOARD_READCOUNT, 
+				BOARD_DATE 
+				FROM (SELECT * FROM BOARD where board_writer like '%'||#{boardWriter}||'%' 
+				ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC, 
+				BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) 
+				WHERE RNUM >= #{startRow}  AND RNUM <= #{endRow} 
+	]]>
+	</select>
+	<select id="selectTitleList" resultMap="resultboard"  parameterType="Board">
+	<![CDATA[
+	SELECT * 
+				FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_WRITER, 
+				BOARD_TITLE, BOARD_CONTENT, 
+				BOARD_ORIGINAL_FILENAME, 
+				BOARD_RENAME_FILENAME, BOARD_REF, 
+				BOARD_REPLY_REF, BOARD_REPLY_LEV, 
+				BOARD_REPLY_SEQ, BOARD_READCOUNT, 
+				BOARD_DATE 
+				FROM (SELECT * FROM BOARD where board_title like '%'||#{boardTitle}||'%'
+				ORDER BY BOARD_REF DESC, BOARD_REPLY_REF ASC,  
+				BOARD_REPLY_LEV ASC, BOARD_REPLY_SEQ ASC)) 
+				WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}
+	]]>
+	</select>
+	
+	<select id="selectReadCountTop5"  resultMap="resultboard" >
+		<![CDATA[
+		SELECT *  
+				FROM (SELECT ROWNUM RNUM, BOARD_NUM, BOARD_TITLE, 
+				BOARD_READCOUNT 
+				FROM (SELECT * 
+				FROM BOARD 
+				WHERE BOARD_REPLY_LEV = 0 
+				ORDER BY BOARD_READCOUNT DESC))
+				WHERE RNUM >= 1 AND RNUM <= 5
+				]]>
+	</select>
+ -->
+
+</mapper>
