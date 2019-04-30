@@ -11,12 +11,17 @@ public class CalendarController {
 	private CalendarService calendarService;*/
 	
 	@RequestMapping("mycalendar.do")
-	public String moveCalendarPage() {
+	public String movemyCalendarPage() {
 		return "calendar/mycalendar";
 	}
 	
+	@RequestMapping("scalendar.do")
+	public String movesCalendarPage() {
+		return "calendar/scalendar";
+	}
+	
 	@RequestMapping("calendar.do")
-	public String movecPage() {
+	public String moveCalendarPage() {
 		return "calendar/calendar";
 	}
 }
