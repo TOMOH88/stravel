@@ -7,6 +7,7 @@
 		<typeAlias type="com.travelmaker.stravel.support.model.vo.QnaVo" alias="QnaVo" />
 		<typeAlias type="com.travelmaker.stravel.touristsopt.model.vo.TouristspotImagesVo" alias="TouristspotImagesVo" />
 		<typeAlias type="com.travelmaker.stravel.touristsopt.model.vo.TouristspotVo" alias="TouristspotVo" />
+		<typeAlias type="com.travelmaker.stravel.touristsopt.model.vo.TouristspotCategoryVo" alias="TouristspotCategoryVo" />
 		
 	</typeAliases>
 	<mappers>
