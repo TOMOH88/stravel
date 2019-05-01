@@ -14,6 +14,9 @@
     border: 1px solid #444444;
   }
 </style>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js" type="text/javascript" ></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.MultiFile.js" type="text/javascript" ></script>
+<script type="text/javascript"></script>
 </head>
 <body>
 <h1>관광지 글쓰기 페이지</h1>
@@ -21,7 +24,7 @@
 <input type="hidden" name="touristsopt_writer" value="김지훈">
 <table>
 <tr>
-	<th>관광지 명</th><td><input type="text" name="touristsopt_name"/></td>
+	<th>관광지 명</th><td><input type="text" name="touristsopt_name" required="required"/></td>
 </tr>
 <tr>
 	<th>관광지 카테고리</th>
@@ -34,25 +37,28 @@
 	</td>
 </tr>
 <tr>
-	<th>관광지 설명</th><td><textarea name="touristsopt_content"></textarea></td>
+	<th>관광지 설명</th><td><textarea name="touristsopt_content" required="required"></textarea></td>
 </tr>
 <tr>
-	<th>관광지 주소</th><td><input type="text" name="touristsopt_address"/></td>
+	<th>관광지 주소</th><td><input type="text" name="touristsopt_address" required="required"/></td>
 </tr>
 <tr>
-	<th>관광지 영업시작 시간</th><td><input type="time" name="touristsopt_open"/></td>
+	<th>관광지 영업시작 시간</th><td><input type="time" name="touristsopt_open" required="required"/></td>
 </tr>
 <tr>
-	<th>관광지 영업마감 시간</th><td><input type="time" name="touristsopt_closed"/></td>
+	<th>관광지 영업마감 시간</th><td><input type="time" name="touristsopt_closed" required="required"/></td>
 </tr>
 <tr>
-	<th>관광지 전화번호</th><td><input type="tel" name="touristsopt_tel"/></td>
+	<th>관광지 전화번호</th><td><input type="tel" name="touristsopt_tel" required="required"/></td>
 </tr>
 <tr>
-	<th>관광지 홈페이지</th><td><input type="text" name="touristsopt_homepage"/></td>
+	<th>관광지 홈페이지</th><td><input type="text" name="touristsopt_homepage" required="required"/></td>
 </tr>
 <tr>
-	<th>사진 업로드</th><td><input  multiple="multiple" type="file" name="tsimages"/></td>
+	<th>사진 업로드</th><td><input  multiple="multiple" type="file" name="tsimages2"/></td>
+</tr>
+<tr>
+	<th>사진 업로드2</th><td><input multiple="multiple" type="file" name="tsimages" class="multi with-preview" required="required" /></td>
 </tr>
 <tr>
 	<td><input type="submit"/></td><td><input type="reset"></td>
