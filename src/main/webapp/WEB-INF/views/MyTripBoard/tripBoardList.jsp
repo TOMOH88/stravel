@@ -48,11 +48,11 @@
 		<c:forEach items = "${ list }" var = "b">
 		<tr>
 			<td class = "title">
-			<a href = "tripnoticedetail.do?no=${b.notice_no }">${b.notice_title }</a></td>
-			<td class = "name">${b.notice_writer }</td>
-			<td class = "date">${b.notice_write_date }</td>
-			<td class = "read">${b.notice_read_count }</td>
-			<td class = "hit">${b.notice_good_count }</td>
+			<a href = "tripboarddetail.do?board_no=${b.board_no }">${b.board_title }</a></td>
+			<td class = "name">${b.board_writer }</td>
+			<td class = "date">${b.board_write_date }</td>
+			<td class = "read">${b.board_read_count }</td>
+			<td class = "hit">${b.board_good_count }</td>
 		</tr>
 		</c:forEach>
 	</tbody>

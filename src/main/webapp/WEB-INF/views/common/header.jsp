@@ -44,7 +44,7 @@
                   aria-expanded="false">커뮤니티</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="#">동행찾기</a>  
-                  <li class="nav-item"><a class="nav-link" href="tripnotice.do">일정자랑</a>         
+                  <li class="nav-item"><a class="nav-link" href="tripboard.do">일정자랑</a>         
                 </ul>
 							</li>
               <li class="nav-item submenu dropdown">
@@ -53,7 +53,7 @@
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="#">숙박</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">관광지</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">식당</a></li>
+                  <li class="nav-item"><a class="nav-link" href="restaurantlist.do">식당</a></li>
                 </ul>
 							</li>
 				<li class="nav-item submenu dropdown">
