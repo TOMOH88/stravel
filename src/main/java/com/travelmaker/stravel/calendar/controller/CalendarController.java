@@ -20,8 +20,26 @@ public class CalendarController {
 		return "calendar/scalendar";
 	}
 	
-	@RequestMapping("calendar.do")
-	public String moveCalendarPage() {
-		return "calendar/calendar";
+	@RequestMapping("searchcalendar.do")
+	public String moveSearchCalendarPage() {
+		return "calendar/searchcalendar";
+	}
+	
+	@RequestMapping("upcalendar.do")
+	public String moveUpCalendarPage() {
+		return "calendar/upcalendar";
+	}
+	
+	@RequestMapping("searchlodgment.do")
+	public String moveSearchLodgmentPage() {
+		return "calendar/searchlodgment";
 	}
 }
+
+
+
+
+
+
+
+

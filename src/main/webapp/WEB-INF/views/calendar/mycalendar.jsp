@@ -134,26 +134,26 @@
 <section class="section-margin pb-xl-5">
 <div class="container">
 <font>나의일정보기</font>
-<input type="button" value="일정 만들기" class="btn btn-info" onclick="location.href='calendar.do'">
+<input type="button" value="일정 만들기" class="btn btn-info" onclick="location.href='searchcalendar.do'">
 </div>
 <br>
 <div class="container">
 <div class="row">
   <div class="content">
-<a href="calendar.do">
+<a href="scalendar.do">
 <div class="content-overlay"></div>
 <img src="${pageContext.request.contextPath }/resources/img/maldives-1993704_1920.jpg" style="height:300px;">
   <div class="content-details fadeIn-top">
         <h3>일정1</h3>
         <p>클릭시 일정상세보기</p>
         <p>2019-04-03 (화)</p>
-        <a href="#">수정</a>
+        <a href="upcalendar.do">수정</a>
         <a href="#">삭제</a>
       </div>
     </a>
   </div>
   <div class="content">
-<a href="calendar.do">
+<a href="scalendar.do">
 <div class="content-overlay"></div>
 <img src="${pageContext.request.contextPath }/resources/img/maldives-1993704_1920.jpg" style="height:300px;">
   <div class="content-details fadeIn-top">

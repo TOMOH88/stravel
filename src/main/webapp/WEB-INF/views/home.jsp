@@ -4,6 +4,11 @@
 <html>
 <head>
 <meta charset="utf-8">
+<style>
+p{
+	text-align:left;
+}
+</style>
 <title>stravel</title>
 <style>
 	#drow{
@@ -26,51 +31,66 @@
         <div class="col-lg-6 col-xl-6 offset-xl-1">
           <div class="search-wrapper">
             <h3>STRAVEL</h3>
-
             <form class="search-form" action="#">
               <div class="form-group">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Recipient's username">
+                  <input type="text" class="form-control" placeholder="목적지/위치">
                   <div class="input-group-append">
                     <span class="input-group-text"><i class="ti-search"></i></span>
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <select name="category" id="category">
-                  <option value="disabled" disabled selected>Category</option>
-                  <option value="8 AM">8 AM</option>
-                  <option value="12 PM">12 PM</option>
-                </select>
+              <div class="row">
+              <div class="col-md-6"><p>체크인</p></div>
+              <div class="col-md-6"><p>체크아웃</p></div>
               </div>
               <div class="form-group">
-                <select name="tourDucation" id="tourDuration">
-                  <option value="disabled" disabled selected>Tour duration</option>
-                  <option value="8 AM">8 AM</option>
-                  <option value="12 PM">12 PM</option>
-                </select>
-              </div>
-              <div class="form-group">
+              <div class="row">
+              <div class="col-md-6">
                 <div class="input-group">
                   <input type="date" class="form-control">
                   <div class="input-group-append">
                     <span class="input-group-text"><i class="ti-notepad"></i></span>
                   </div>
                 </div>
+                </div>
+                <div class="col-md-6">
+                <div class="input-group">
+                  <input type="date" class="form-control">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="ti-notepad"></i></span>
+                  </div>
+                </div>
+                </div>
+                </div>
+              </div>
+              <div class="row">
+              <div class="col-md-6"><p>성인</p></div>
+              <div class="col-md-6"><p>어린이</p></div>
               </div>
               <div class="form-group">
-                <select name="priceRange" id="priceRange">
-                  <option value="disabled" disabled selected>Price range</option>
-                  <option value="8 AM">8 AM</option>
-                  <option value="12 PM">12 PM</option>
+              <div class="row">
+              <div class="col-md-6">
+                <select name="tourDucation" id="tourDuration">
+                  <option value="disabled" disabled selected>성인</option>
+                  <option value="1">1명</option>
+                  <option value="2">2명</option>
                 </select>
+                </div>
+                <div class="col-md-6">
+                <select name="tourDucation" id="tourDuration">
+                  <option value="disabled" disabled selected>어린이</option>
+                  <option value="1">1명</option>
+                  <option value="2">2명</option>
+                </select>
+                </div>
+                </div>
               </div>
               <div class="form-group">
                 <button class="button border-0 mt-3" type="submit">Search</button>
               </div>
             </form>
           </div>
-
         </div>
       </div>
     </div>

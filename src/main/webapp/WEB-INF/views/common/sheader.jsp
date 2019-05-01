@@ -17,7 +17,7 @@
 </head>
 <body>
 <header class="header_area">
-    <div class="main_menu">
+<div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container box_1620">
           <a class="navbar-brand logo_h" href="main.do"><img src="${pageContext.request.contextPath }/resources/img/logo.png" alt=""></a>
@@ -26,6 +26,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav justify-content-end">
+              <li class="nav-item active"><a class="nav-link" href="searchlodgment.do">숙소검색</a></li> 
+              <li class="nav-item"><a class="nav-link" href="searchcalendar.do">일정검색</a></li> 
+              <li class="nav-item"><a class="nav-link" href="mycalendar.do">닫기</a>
+            </ul>
+          </div> 
         </div>
       </nav>
     </div>
