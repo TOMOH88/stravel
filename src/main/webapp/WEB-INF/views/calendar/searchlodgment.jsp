@@ -29,6 +29,8 @@ div{
 <div class="col-md-4" style="overflow:scroll; height:530px;">
 <div class="col-md-12">
 <div class="row">
+<!-- 필터시작 -->
+<div class="col-md-3" style="text-align:center;">
 <button class="btn btn-info btn-sm" data-target="#layerpop" data-toggle="modal">숙박기간</button><br/>
 <div class="modal fade" id="layerpop" >
   <div class="modal-dialog">
@@ -50,9 +52,79 @@ div{
   </div>
 </div>
 </div>
+<div class="col-md-3" style="text-align:center;">
+<button class="btn btn-info btn-sm" data-target="#layerpop" data-toggle="modal">인원수</button><br/>
+<div class="modal fade" id="layerpop" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- header -->
+      <div class="modal-header">
+        <!-- 닫기(x) 버튼 -->
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <!-- header title -->
+        <h4 class="modal-title"></h4>
+      </div>
+      <!-- body -->
+      <div class="modal-body">
+      <div>
+      <input type="date" id="startDate">~<input type="date" id="endDate">
+      </div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
+<div class="col-md-3" style="text-align:center;">
+<button class="btn btn-info btn-sm" data-target="#layerpop" data-toggle="modal">가격</button><br/>
+<div class="modal fade" id="layerpop" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- header -->
+      <div class="modal-header">
+        <!-- 닫기(x) 버튼 -->
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <!-- header title -->
+        <h4 class="modal-title"></h4>
+      </div>
+      <!-- body -->
+      <div class="modal-body">
+      <div>
+      <input type="date" id="startDate">~<input type="date" id="endDate">
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-md-3" style="text-align:center;">
+<button class="btn btn-info btn-sm" data-target="#layerpop" data-toggle="modal">필터추가</button><br/>
+<div class="modal fade" id="layerpop" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- header -->
+      <div class="modal-header">
+        <!-- 닫기(x) 버튼 -->
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <!-- header title -->
+        <h4 class="modal-title"></h4>
+      </div>
+      <!-- body -->
+      <div class="modal-body">
+      <div>
+      <input type="date" id="startDate">~<input type="date" id="endDate">
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- 필터끝-->
+</div>
+</div>
+</div>
+<!-- map 시작 -->
 <div class="col-md-8" id="map" style="height:530px;"></div>
+<!-- map 끝 -->
 </div>
 </div>
 <script>
