@@ -19,12 +19,14 @@
 <script type="text/javascript"></script>
 </head>
 <body>
-<h1>관광지 글쓰기 페이지</h1>
+<c:import url="../common/header.jsp" />
+<section class="section-margin">
+<h1 align="center">관광지 글쓰기 페이지</h1>
 <form action="TSWriterUpload.do" method="post" enctype="multipart/form-data">
 <input type="hidden" name="touristsopt_writer" value="김지훈">
-<table>
+<table class="table">
 <tr>
-	<th>관광지 명</th><td><input type="text" name="touristsopt_name" required="required"/></td>
+	<th>관광지 명</th><td><input type="text" name="touristsopt_name" required="required" class="form-control"/></td>
 </tr>
 <tr>
 	<th>관광지 카테고리</th>
@@ -37,22 +39,22 @@
 	</td>
 </tr>
 <tr>
-	<th>관광지 설명</th><td><textarea name="touristsopt_content" required="required"></textarea></td>
+	<th>관광지 설명</th><td><textarea name="touristsopt_content" required="required"class="form-control"></textarea></td>
 </tr>
 <tr>
-	<th>관광지 주소</th><td><input type="text" name="touristsopt_address" required="required"/></td>
+	<th>관광지 주소</th><td><input type="text" name="touristsopt_address" required="required" class="form-control"/></td>
 </tr>
 <tr>
-	<th>관광지 영업시작 시간</th><td><input type="time" name="touristsopt_open" required="required"/></td>
+	<th>관광지 영업시작 시간</th><td><input type="time" name="touristsopt_open" required="required" class="form-control"/></td>
 </tr>
 <tr>
-	<th>관광지 영업마감 시간</th><td><input type="time" name="touristsopt_closed" required="required"/></td>
+	<th>관광지 영업마감 시간</th><td><input type="time" name="touristsopt_closed" required="required" class="form-control"/></td>
 </tr>
 <tr>
-	<th>관광지 전화번호</th><td><input type="tel" name="touristsopt_tel" required="required"/></td>
+	<th>관광지 전화번호</th><td><input type="tel" name="touristsopt_tel" required="required" class="form-control"/></td>
 </tr>
 <tr>
-	<th>관광지 홈페이지</th><td><input type="text" name="touristsopt_homepage" required="required"/></td>
+	<th>관광지 홈페이지</th><td><input type="text" name="touristsopt_homepage" required="required" class="form-control"/></td>
 </tr>
 <tr>
 	<th>사진 업로드</th><td><input  multiple="multiple" type="file" name="tsimages2"/></td>
@@ -65,5 +67,6 @@
 </tr>
 </table>
 </form>
+</section>
 </body>
 </html>
