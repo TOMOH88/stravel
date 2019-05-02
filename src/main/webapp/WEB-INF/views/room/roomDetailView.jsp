@@ -23,7 +23,7 @@
 
 <style type="text/css">
 
-@media (max-width:820px){
+@media (max-width:1405px){
 	#roomsidebar{
 	display:none;
 	}
@@ -39,7 +39,7 @@
 	}
 	
 }
-@media (min-width:820px){
+@media (min-width:1405px){
 	.timgdiv1{
 	width:50%;
 	}
@@ -49,9 +49,10 @@
 	.bottombar{
 	display:none;
 	}
+	.maindiv{
+	width:1032px;}
 }
 .maindiv {
-	width: 1032px;
 	margin-left: auto !important;
 	margin-right: auto !important;
 
@@ -189,12 +190,15 @@
 	width: 230px;
 	height: 30px;
 	margin: 5px;
+	border:1px solid #cfcfcf;
 }
 .roomnext,
 .roomprev{
 	width:33px;
 	height:22px;
+		
 }
+
 .timgdiv div{
 	overflow:hidden;
 }
@@ -331,7 +335,7 @@
 							<div>별점</div><!-- 별점 -->
 						</div>
 					</div>
-					<div style="width:1032px;margin:5px;">
+					<div style="margin:5px;">
 						통유리로 보는 바다풍경이 넘 멋지고 좋았어요 애월특성상 밤에 <br>
 						편의 시설이 조금 불편하긴 했지만 일찍 도착했는데 잘 도와주셔 <Br>
 						편히 지내다 왔어요 또 머무르고 싶어요
@@ -540,14 +544,14 @@
 			</div>
 		</div> -->
 	</div>
-<script src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/vendors/nice-select/jquery.nice-select.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery.ajaxchimp.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.ajaxchimp.min.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/skrollr.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/main.js"></script> --%>
 <script src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
 <!-- 달력 -->
 <script src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.js"></script>

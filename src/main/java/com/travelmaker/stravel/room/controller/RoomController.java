@@ -21,7 +21,7 @@ public class RoomController {
 		return "room/test";
 	}
 	
-	@RequestMapping("ownermain.do")
+	@RequestMapping("ownerMain.do")
 	public String ownerMain() {
 		return "room/ownerMain";
 	}
@@ -29,5 +29,20 @@ public class RoomController {
 	@RequestMapping("orderList.do")
 	public String orderList() {
 		return "room/roomOrderList";
+	}
+	
+	@RequestMapping("insertRoom.do")
+	public String inserRoom() {
+		return "room/insertRoom";
+	}
+	
+	@RequestMapping("updateRoom.do")
+	public String updateRoom() {
+		return "room/updateRoom";
+	}
+	
+	@RequestMapping("updateOwner.do")
+	public String updateOwner() {
+		return "room/updateOwner";
 	}
 }

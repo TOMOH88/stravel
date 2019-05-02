@@ -137,17 +137,19 @@ ul li a:hover {
 		<div style="float: left; border: 1px solid #cfcfcf; width: 260px; bottom: 150; margin: 20px;">
 			<div style="margin: 30px;">
 				<ul>
-					<li><a href="ownermain.do">예약현황</a></li>
-					<li><a>상품등록</a></li>
-					<li><a>상품수정</a></li>
-					<li><a>정보수정</a></li>
+					<li><a href="ownerMain.do">마이페이지</a></li>
+					<li><a href="orderList.do">예약현황</a></li>
+					<li><a href="insertRoom.do">상품등록</a></li>
+					<li><a href="updateRoom.do">상품수정</a></li>
+					<li><a href="updateOwner.do">정보수정</a></li>
 				</ul>
 			</div>
 		</div>
 	</div><!-- ownerside -->
 		
 	<div class="ownerbody"  style="width:69%; display:table-cell;"><!-- ownerbody -->
-		<div style="margin: 0 auto;">
+	<br><br><br>
+		<div style="margin: 0 auto; width:900px;">
 				<div id="titlediv">예약 현황</div>
 				<div style="width: 100%; ">
 					<!--  -->
@@ -158,94 +160,53 @@ ul li a:hover {
 							<tr>
 								<td style="width: 100px;">객실</td>
 								<td style="width: 100px;">예약자</td>
-								<td style="width: 100px;">예약일시</td>
-								<td style="width: 100px;">예약현황</td>
-								<td style="width: 100px;">체크인</td>
-								<td style="width: 100px;">체크아웃</td>
-								<td style="width: 80px;">인원</td>
-								<td style="width: 80px;">입실여부</td>
+								<td style="width: 100px;">인원</td>
+								<td style="width: 130px;">예약일시</td>
+								<td style="width: 130px;">체크인</td>
+								<td style="width: 130px;">체크아웃</td>
+								<td style="width: 110px;">예약현황</td>
+								<td style="width: 100px;">입실여부</td>
 							</tr>
 							<tr>
 								<td>201호</td>
 								<td>오청</td>
+								<td>2명</td>
 								<td>2019-04-22</td>
-								<td>결제완료</td>
 								<td>2019-05-05</td>
 								<td>2019-05-06</td>
+								<td>결제완료</td>
+								<td><a class="rsvck" value="1">입실확인</a></td>
+							</tr>	
+							<tr>
+								<td>201호</td>
+								<td>오청</td>
 								<td>2명</td>
+								<td>2019-04-22</td>
+								<td>2019-05-05</td>
+								<td>2019-05-06</td>
+								<td>결제완료</td>
 								<td><a class="rsvck" value="1">입실확인</a></td>
 							</tr>
 							<tr>
-								<td>203호</td>
-								<td>박요한</td>
-								<td>2019-04-21</td>
-								<td>결제대기</td>
-								<td>2019-05-08</td>
-								<td>2019-05-10</td>
+								<td>201호</td>
+								<td>오청</td>
 								<td>2명</td>
-								<td><a class="rsvck" value="2">입실확인</a></td>
+								<td>2019-04-22</td>
+								<td>2019-05-05</td>
+								<td>2019-05-06</td>
+								<td>결제완료</td>
+								<td><a class="rsvck" value="1">입실확인</a></td>
 							</tr>
 							<tr>
-								<td>203호</td>
-								<td>박요한</td>
-								<td>2019-04-21</td>
-								<td>결제대기</td>
-								<td>2019-05-08</td>
-								<td>2019-05-10</td>
+								<td>201호</td>
+								<td>오청</td>
 								<td>2명</td>
-								<td><a class="rsvck" value="2">입실확인</a></td>
+								<td>2019-04-22</td>
+								<td>2019-05-05</td>
+								<td>2019-05-06</td>
+								<td>결제완료</td>
+								<td><a class="rsvck" value="1">입실확인</a></td>
 							</tr>
-							<tr>
-								<td>203호</td>
-								<td>박요한</td>
-								<td>2019-04-21</td>
-								<td>결제대기</td>
-								<td>2019-05-08</td>
-								<td>2019-05-10</td>
-								<td>2명</td>
-								<td><a class="rsvck" value="2">입실확인</a></td>
-							</tr>
-							<tr>
-								<td>203호</td>
-								<td>박요한</td>
-								<td>2019-04-21</td>
-								<td>결제대기</td>
-								<td>2019-05-08</td>
-								<td>2019-05-10</td>
-								<td>2명</td>
-								<td><a class="rsvck" value="2">입실확인</a></td>
-							</tr>
-							<tr>
-								<td>203호</td>
-								<td>박요한</td>
-								<td>2019-04-21</td>
-								<td>결제대기</td>
-								<td>2019-05-08</td>
-								<td>2019-05-10</td>
-								<td>2명</td>
-								<td><a class="rsvck" value="2">입실확인</a></td>
-							</tr>
-							<tr>
-								<td>203호</td>
-								<td>박요한</td>
-								<td>2019-04-21</td>
-								<td>결제대기</td>
-								<td>2019-05-08</td>
-								<td>2019-05-10</td>
-								<td>2명</td>
-								<td><a class="rsvck" value="2">입실확인</a></td>
-							</tr>
-							<tr>
-								<td>203호</td>
-								<td>박요한</td>
-								<td>2019-04-21</td>
-								<td>결제대기</td>
-								<td>2019-05-08</td>
-								<td>2019-05-10</td>
-								<td>2명</td>
-								<td><a class="rsvck" value="2">입실확인</a></td>
-							</tr>
-							
 						</table>
 					</div>
 				</div>

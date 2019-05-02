@@ -64,7 +64,7 @@
 	top: 1px;
 }
 
-table tr td {
+/* table tr td {
 	border-bottom: 1px solid rgba(67, 67, 67, 0.8);
 	"
 }
@@ -80,7 +80,7 @@ table tr:nth-child(2n+1) {
 table tr:nth-child(1) {
 	background-color: rgba(67, 67, 67);
 }
-
+ */
 ul li {
 	font-size: 1.5em;
 	font-weight: bold;
@@ -130,7 +130,7 @@ ul li a:hover {
 </head>
 <body>
 <div id="headerdiv" style="border: 1px solid black; width:100%; height:100px;">
-	header
+	header 객실등록
 </div>
 <div style="width:100%; display:inline-block;">
 	<div class="ownerside" style=" width:20%; height:100%;  position: sticky; top: 150px;"><!-- ownerside -->
@@ -147,52 +147,57 @@ ul li a:hover {
 		</div>
 	</div><!-- ownerside -->
 		
-	<div class="ownerbody"  style="width:69%; height:700px; display:table-cell;"><!-- ownerbody -->
+	<div class="ownerbody"  style="width:69%; display:table-cell;"><!-- ownerbody -->
 		<bR><BR><BR>
-		
-		<div style="width:900px;  margin:0 auto">
-		<div id="titlediv">MY STRAVEL</div>
-		<hr>
-			<div style="border:1px solid #cfcfcf">
-				<div style="background: #edf7f8;; width:100%; height:50px">
-					
-				</div >
-				<div style="padding:20px" ><!-- 오늘 예약건/후기보기/매출보기 -->
-					<div class="ompm1"onclick="check();">
-						<div id="ompmimg">
-							<img src="${pageContext.request.contextPath }/resources/files/ownerrsv.png">
-						</div>
-						<div class="ompmtext">
-							<div>오늘 예약건 </div>
-							<div>22개</div>
-						</div>
-					</div>
-					<div class="ompm">
-						<div id="ompmimg" >
-							<img src="${pageContext.request.contextPath }/resources/files/ownerreview.png">
-						</div>
-						<div class="ompmtext">
-							<div>후기</div>
-							<div>별점</div>
-						</div>
-					</div>
-					<div class="ompm" >
-						<div id="ompmimg">
-							<img src="${pageContext.request.contextPath }/resources/files/ownersales.png">
-						</div>
-						<div class="ompmtext">
-							<div>매출 보기</div>
-							<div></div>
-						</div>
-					</div>
-				</div><!-- 오늘 예약건/후기보기/매출보기 -->
+		<div style="width:900px;border:1px solid black; margin:0 auto; background:#edf7f8; padding:50px;">
+			<div style="text-align:center; font-size:2em; margin-bottom:20px; color:black; font-weight:bold; ">객실등록</div>
+			<div style="margin:20px; border:1px solid #cfcfcf; background:white;padding:30px;">
+				<div>가격정보</div>
+				<hr>
+				<div>비수기 :<input type="text" name="offprice"></div>
+				<div>성수기 :<input type="text" name="onprice"></div>
+				<div>주말추가 :<input type="text" name="weekprice"></div>
+				<div>인원추가 :<input type="text" name="mprice"></div>
+				<br>
+				<div>객실정보 : </div>
+				<hr>
+				<div>최소인원 : <input type="number" min="2" max="10" name="minmember"></div>
+				<div>최소인원 : <input type="number" min="2" max="10" name="maxmember"></div>
+				<div>객실정보 :</div>
+				<textarea rows="7" cols="50"></textarea>
+				<br>
+				<div>편의시설</div>
+				<hr>
+				<div>
+					<table>
+					<tr>
+					<td><label for=""><input type="checkbox" name="option" value="wifi" >WI-FI</label></td>
+					<td><label for=""><input type="checkbox" name="option" value="parking" >주차장</label></td>
+					<td><label for=""><input type="checkbox" name="option" value="tv" >TV</label></td>
+					<td><label for=""><input type="checkbox" name="option" value="fire" >소화기</label></td>
+					</tr>
+					<tr>
+					<td><label for=""><input type="checkbox" name="option" value="bed" >침구/세면도구</label></td>
+					<td><label for=""><input type="checkbox" name="option" value="cook" >취사도구(식기구/접시/가스레인지or인덕션)</label></td>
+					<td><label for=""><input type="checkbox" name="option" value="aircon" >에어컨</label></td>
+					<td><label for=""><input type="checkbox" name="option" value="heater" >난방</label></td>
+					</tr>
+					<tr>
+					<td><label for=""><input type="checkbox" name="option" value="gril" >그릴서비스</label></td>
+					<td><label for=""><input type="checkbox" name="option" value="spa" >스파</label></td>
+					<td><label for=""><input type="checkbox" name="option" value="breakfast" >조식</label></td>
+					<td><label for=""><input type="checkbox" name="option" value="roomservice" >룸서비스</label></td>
+					</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div><!-- ownerbody -->
 </div>
 
-<div  class="bottombar" style="position:fixed; bottom:0px; width:100%; height:71px; border-top:1px solid black; z-index:10;background:white; opacity:0.8; ">
-</div>
+
+<!-- <div  class="bottombar" style="position:fixed; bottom:0px; width:100%; height:71px; border-top:1px solid black; z-index:10;background:white; opacity:0.8; ">
+</div> -->
 <div class="footer" style="border:1px solid black; width: 100%; height:200px; position:absolute;">
 	
 </div>

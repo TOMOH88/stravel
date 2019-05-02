@@ -130,7 +130,7 @@ ul li a:hover {
 </head>
 <body>
 <div id="headerdiv" style="border: 1px solid black; width:100%; height:100px;">
-	header
+	header 사업자정보수정
 </div>
 <div style="width:100%; display:inline-block;">
 	<div class="ownerside" style=" width:20%; height:100%;  position: sticky; top: 150px;"><!-- ownerside -->
@@ -149,45 +149,7 @@ ul li a:hover {
 		
 	<div class="ownerbody"  style="width:69%; height:700px; display:table-cell;"><!-- ownerbody -->
 		<bR><BR><BR>
-		
-		<div style="width:900px;  margin:0 auto">
-		<div id="titlediv">MY STRAVEL</div>
-		<hr>
-			<div style="border:1px solid #cfcfcf">
-				<div style="background: #edf7f8;; width:100%; height:50px">
-					
-				</div >
-				<div style="padding:20px" ><!-- 오늘 예약건/후기보기/매출보기 -->
-					<div class="ompm1"onclick="check();">
-						<div id="ompmimg">
-							<img src="${pageContext.request.contextPath }/resources/files/ownerrsv.png">
-						</div>
-						<div class="ompmtext">
-							<div>오늘 예약건 </div>
-							<div>22개</div>
-						</div>
-					</div>
-					<div class="ompm">
-						<div id="ompmimg" >
-							<img src="${pageContext.request.contextPath }/resources/files/ownerreview.png">
-						</div>
-						<div class="ompmtext">
-							<div>후기</div>
-							<div>별점</div>
-						</div>
-					</div>
-					<div class="ompm" >
-						<div id="ompmimg">
-							<img src="${pageContext.request.contextPath }/resources/files/ownersales.png">
-						</div>
-						<div class="ompmtext">
-							<div>매출 보기</div>
-							<div></div>
-						</div>
-					</div>
-				</div><!-- 오늘 예약건/후기보기/매출보기 -->
-			</div>
-		</div>
+
 	</div><!-- ownerbody -->
 </div>
 
