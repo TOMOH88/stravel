@@ -43,7 +43,7 @@
                   aria-expanded="false">커뮤니티</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="#">동행찾기</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">일정자랑</a></li>
+                  <li class="nav-item"><a class="nav-link" href="tripboard.do">일정자랑</a>         
                 </ul>
 							</li>			
               <li class="nav-item submenu dropdown">
@@ -52,7 +52,7 @@
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="#">숙박</a></li>
                   <li class="nav-item"><a class="nav-link" href="touristspot.do">관광지</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">식당</a></li>
+                  <li class="nav-item"><a class="nav-link" href="restaurantlist.do">식당</a></li>
                 </ul>
                 <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -69,14 +69,13 @@
       </nav>
     </div>
   </header>
-  <!--================Header Menu Area =================-->
 <script src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/vendors/nice-select/jquery.nice-select.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery.ajaxchimp.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/skrollr.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/vendors/nice-select/jquery.nice-select.min.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/js/jquery.ajaxchimp.min.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/js/skrollr.min.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
 </body>
 </html>

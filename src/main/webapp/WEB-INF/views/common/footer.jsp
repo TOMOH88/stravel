@@ -12,12 +12,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/flat-icon/font/flaticon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/nice-select/nice-select.css">
+ 
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 <title>footer</title>
 </head>
 <body>
-  <!-- ================ start footer Area ================= -->
-  <footer class="footer-area">
+<footer class="footer-area">
     <div class="container">
       <div class="row">
         <div class="col-lg-3  col-md-6 col-sm-6">
@@ -100,14 +100,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       </div>
     </div>
   </footer>
-  <!-- ================ End footer Area ================= -->
 <script src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/vendors/nice-select/jquery.nice-select.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery.ajaxchimp.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/skrollr.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/vendors/nice-select/jquery.nice-select.min.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/js/jquery.ajaxchimp.min.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/js/skrollr.min.js"></script>
+  <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
 </body>
 </html>

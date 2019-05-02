@@ -30,13 +30,6 @@
 		</if>
 		default,default)
 	</insert>
-	<select id="selectMyQnaList" resultMap="resultQna" parameterType="string">
-	select * from tb_qna where qna_writer = #{userid} ORDER by qna_no DESC
-	</select>
-	<select id="selectMyQnaListOne" resultType="QnaVo" parameterType="QnaVo">
-	select * from tb_qna where qna_no = #{qna_no} and qna_writer = #{qna_writer}
-	</select>
-	
 	<!-- 
 	
 	<select id="getListCount" resultType="_int" >
