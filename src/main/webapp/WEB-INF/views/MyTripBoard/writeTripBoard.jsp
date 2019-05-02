@@ -32,7 +32,7 @@
 			</li>
 			<li>
 				<label for = "latter">후기</label>
-				<textarea class = "latter" rows = "6" cols = "200">
+				<textarea name = "latter" rows = "6" cols = "200"></textarea>
 			</li>
 		</ul>
 	</div>

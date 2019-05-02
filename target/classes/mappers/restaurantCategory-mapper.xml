@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "RestaurantCategoryMapper">
+	<resultMap id = "resultRestaurantCategory" type = "RestaurantCategory">
+		<result property = "restaurant_category_code" column = "restaurant_category_code"/>
+		<result property = "restaurant_category_name" column = "restaurant_category_name"/>
+	</resultMap>
+	
+	<select id="restaurantCategoryList" resultMap = "resultRestaurantCategory">
+		select * from restaurant_category
+	</select>
+</mapper>
