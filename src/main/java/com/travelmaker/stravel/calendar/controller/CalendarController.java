@@ -34,6 +34,11 @@ public class CalendarController {
 	public String moveSearchLodgmentPage() {
 		return "calendar/searchlodgment";
 	}
+	
+	@RequestMapping("test.do")
+	public String moveTest() {
+		return "calendar/test";
+	}
 }
 
 

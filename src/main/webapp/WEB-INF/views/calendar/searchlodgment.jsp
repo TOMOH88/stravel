@@ -28,6 +28,7 @@ div{
 <div class="row">
 <div class="col-md-4" style="overflow:scroll; height:530px;">
 <div class="col-md-12">
+<div class="row">
 <button class="btn btn-info btn-sm" data-target="#layerpop" data-toggle="modal">숙박기간</button><br/>
 <div class="modal fade" id="layerpop" >
   <div class="modal-dialog">
@@ -47,6 +48,7 @@ div{
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>
 </div>

@@ -59,7 +59,7 @@
                   aria-expanded="false">마이페이지</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="mycalendar.do">나의일정</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">예약내역</a></li>
+                  <li class="nav-item"><a class="nav-link" href="test.do">예약내역</a></li>
                 </ul>
 							</li>
               <li class="nav-item"><a class="nav-link" href="#">login</a></li>
