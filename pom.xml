@@ -176,13 +176,6 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/com.googlecode.libphonenumber/geocoder -->
-		<dependency>
-    		<groupId>com.googlecode.libphonenumber</groupId>
-    		<artifactId>geocoder</artifactId>
-    		<version>2.116</version>
-		</dependency>
 
 		<!-- 스프링 시큐리티 -->
 		<dependency>

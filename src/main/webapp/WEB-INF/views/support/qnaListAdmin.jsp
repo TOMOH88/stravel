@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-=======
->>>>>>> origin/hje
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +7,6 @@
 <title>stravel</title>
 </head>
 <body>
-<jsp:forward page="main.do"/>
+<h1>1:1 문의 관리자.</h1>
 </body>
 </html>
