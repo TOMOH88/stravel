@@ -13,12 +13,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/flat-icon/font/flaticon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/nice-select/nice-select.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
-<title>header</title>
+<title>stravel</title>
 </head>
 <body>
-<!--================ Header Menu Area start =================-->
 <header class="header_area">
-    <div class="main_menu">
+<div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container box_1620">
           <a class="navbar-brand logo_h" href="main.do"><img src="${pageContext.request.contextPath }/resources/img/logo.png" alt=""></a>
@@ -27,49 +26,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-end">
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">고객센터</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="qnalist.do">1:1문의</a>  
-                  <li class="nav-item"><a class="nav-link" href="#">FAQ</a>
-                  <li class="nav-item"><a class="nav-link" href="#">공지사항</a>            
-                </ul>
-							</li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">커뮤니티</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="#">동행찾기</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">일정자랑</a></li>
-                </ul>
-							</li>			
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">정보</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="#">숙박</a></li>
-                  <li class="nav-item"><a class="nav-link" href="touristspot.do">관광지</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">식당</a></li>
-                </ul>
-                <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">마이페이지</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="mycalendar.do">나의일정</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">예약내역</a></li>
-                </ul>
-							</li>
-              <li class="nav-item"><a class="nav-link" href="#">login</a></li>
+              <li class="nav-item active"><a class="nav-link" href="searchlodgment.do">숙소검색</a></li> 
+              <li class="nav-item"><a class="nav-link" href="searchcalendar.do">일정검색</a></li> 
+              <li class="nav-item"><a class="nav-link" href="mycalendar.do">닫기</a>
             </ul>
           </div> 
         </div>
       </nav>
     </div>
   </header>
-  <!--================Header Menu Area =================-->
+ <!--================Header Menu Area =================-->
 <script src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
