@@ -8,7 +8,7 @@
 		<typeAlias type="com.travelmaker.stravel.touristsopt.model.vo.TouristspotImagesVo" alias="TouristspotImagesVo" />
 		<typeAlias type="com.travelmaker.stravel.touristsopt.model.vo.TouristspotVo" alias="TouristspotVo" />
 		<typeAlias type="com.travelmaker.stravel.touristsopt.model.vo.TouristspotCategoryVo" alias="TouristspotCategoryVo" />
-
+		
 	</typeAliases>
 	<mappers>
 	<!-- 쿼리문 저장용 매퍼 xml 파일 등록 : 필수  -->
