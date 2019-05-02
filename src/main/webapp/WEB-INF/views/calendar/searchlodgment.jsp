@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+</script>
 <title>stravel</title>
 <style type="text/css">
 div{
@@ -15,6 +18,7 @@ div{
 	position:fixed;
 	height:100%;
 }
+
 </style>
 </head>
 <body>
@@ -24,9 +28,26 @@ div{
 <div class="row">
 <div class="col-md-4" style="overflow:scroll; height:530px;">
 <div class="col-md-12">
-<form>
-
-</form>
+<button class="btn btn-info btn-sm" data-target="#layerpop" data-toggle="modal">숙박기간</button><br/>
+<div class="modal fade" id="layerpop" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- header -->
+      <div class="modal-header">
+        <!-- 닫기(x) 버튼 -->
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <!-- header title -->
+        <h4 class="modal-title"></h4>
+      </div>
+      <!-- body -->
+      <div class="modal-body">
+      <div>
+      <input type="date" id="startDate">~<input type="date" id="endDate">
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 </div>
 <div class="col-md-8" id="map" style="height:530px;"></div>
