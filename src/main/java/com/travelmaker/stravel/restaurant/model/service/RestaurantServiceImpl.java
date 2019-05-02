@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.travelmaker.stravel.restaurant.model.dao.RestaurantDao;
 import com.travelmaker.stravel.restaurant.model.vo.Restaurant;
+import com.travelmaker.stravel.restaurant.model.vo.RestaurantImage;
 
 @Service("RestaurantService")
 public class RestaurantServiceImpl implements RestaurantService{
@@ -24,8 +25,19 @@ public class RestaurantServiceImpl implements RestaurantService{
 
 	@Override
 	public int selectRestaurantNo() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return restDao.selectRestaurantNo(mybatisSession);
+	}
+	
+	@Override
+	public int insertRestaurantImages(RestaurantImage restaurantImage) {
+		int result = restDao.insertRestaurantImage(mybatisSession, restaurantImage);
+		return result;
+	}
+
+	@Override
+	public int updateRestaurantThumnail(Restaurant rest) {
+		return restDao.updateRestaurantThumnail(mybatisSession, rest);
 	}
 
 }

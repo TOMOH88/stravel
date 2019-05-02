@@ -13,7 +13,7 @@ public class Restaurant implements java.io.Serializable{
 	private String restaurant_content;
 	private String restaurant_writer;
 	private Date restaurant_date;
-	private String rename_rhumbnail;
+	private String rename_thumnail;
 	private String restaurant_openinghours;
 	private String restaurant_homepage;
 	private String restaurant_tel;
@@ -25,7 +25,7 @@ public class Restaurant implements java.io.Serializable{
 	public Restaurant() {}
 
 	public Restaurant(int restaurant_no, String restaurant_category_code, String restaurant_name,
-			String restaurant_content, String restaurant_writer, Date restaurant_date, String rename_rhumbnail,
+			String restaurant_content, String restaurant_writer, Date restaurant_date, String rename_thumnail,
 			String restaurant_openinghours, String restaurant_homepage, String restaurant_tel,
 			String restaurant_lastmodified, String restaurant_gridx, String restaurant_gridy,
 			String restaurant_deletestatus) {
@@ -36,7 +36,7 @@ public class Restaurant implements java.io.Serializable{
 		this.restaurant_content = restaurant_content;
 		this.restaurant_writer = restaurant_writer;
 		this.restaurant_date = restaurant_date;
-		this.rename_rhumbnail = rename_rhumbnail;
+		this.rename_thumnail = rename_thumnail;
 		this.restaurant_openinghours = restaurant_openinghours;
 		this.restaurant_homepage = restaurant_homepage;
 		this.restaurant_tel = restaurant_tel;
@@ -94,12 +94,12 @@ public class Restaurant implements java.io.Serializable{
 		this.restaurant_date = restaurant_date;
 	}
 
-	public String getRename_rhumbnail() {
-		return rename_rhumbnail;
+	public String getRename_thumnail() {
+		return rename_thumnail;
 	}
 
-	public void setRename_rhumbnail(String rename_rhumbnail) {
-		this.rename_rhumbnail = rename_rhumbnail;
+	public void setRename_thumnail(String rename_thumnail) {
+		this.rename_thumnail = rename_thumnail;
 	}
 
 	public String getRestaurant_openinghours() {
@@ -167,7 +167,7 @@ public class Restaurant implements java.io.Serializable{
 		return "Restaurant [restaurant_no=" + restaurant_no + ", restaurant_category_code=" + restaurant_category_code
 				+ ", restaurant_name=" + restaurant_name + ", restaurant_content=" + restaurant_content
 				+ ", restaurant_writer=" + restaurant_writer + ", restaurant_date=" + restaurant_date
-				+ ", rename_rhumbnail=" + rename_rhumbnail + ", restaurant_openinghours=" + restaurant_openinghours
+				+ ", rename_thumnail=" + rename_thumnail + ", restaurant_openinghours=" + restaurant_openinghours
 				+ ", restaurant_homepage=" + restaurant_homepage + ", restaurant_tel=" + restaurant_tel
 				+ ", restaurant_lastmodified=" + restaurant_lastmodified + ", restaurant_gridx=" + restaurant_gridx
 				+ ", restaurant_gridy=" + restaurant_gridy + ", restaurant_deletestatus=" + restaurant_deletestatus

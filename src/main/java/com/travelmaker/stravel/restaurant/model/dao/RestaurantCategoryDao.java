@@ -12,7 +12,7 @@ public class RestaurantCategoryDao {
 
 	public ArrayList<RestaurantCategory> categoryList(SqlSessionTemplate session) {
 		
-		List<RestaurantCategory> list = session.selectList("RestaurantCategoryMapper.restaurantCategoryList");
+		List<RestaurantCategory> list = session.selectList("restaurantMapper.restaurantCategoryList");
 		
 		return (ArrayList<RestaurantCategory>)list;
 	}

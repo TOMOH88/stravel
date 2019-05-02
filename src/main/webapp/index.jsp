@@ -9,6 +9,5 @@
 </head>
 <body>
 <jsp:forward page="main.do"/>
-<!-- test -->
 </body>
 </html>

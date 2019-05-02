@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>stravel</title>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.MultiFile.js" type="text/javascript" ></script>
 <script type="text/javascript">
 	$(function(){
 		var phone1 = $("#phone1").val();
@@ -20,7 +21,7 @@
 
 <body>
 
-<form action="insertrestaurant.do">
+<form action="insertrestaurant.do" method = "post" enctype = "multipart/form-data">
 <fieldset>
 	<legend>레스토랑 등록</legend>
 		<div class = "insertrestaurant">
@@ -38,24 +39,36 @@
 					</select>
 				 </li>
 				 <li>
-				 	<label for = "time">식당 영업시간</label>
-				 	<input type = "time" name = "start"> ~ <input type = "time" name = finish>
+				 	<label for = "starttime">식당 영업시간</label>
+				 	<input type = "time" name = "start" required>
+				 </li>
+				 <li>
+				 	<label for = "endtime">식당 마감시간</label>
+				 	<input type = "time" name = "finish" required>
+				 </li>
+				 <li>
+				  	<label for = "address">식당 주소</label>
+				  	<input type = "text" name = "restaurantaddress" required>
 				 </li>
 				 <li>
 				 	<label for = "homepage">홈페이지</label>
-				 	<input type = "email" name = "homepage">
+				 	<input type = "email" name = "homepage"required>
 				 </li>
 				 <li>
 				 	<label for ="phone">전화번호</label>
-				 	<input type = "number" id = "phone1" name = "phone1"> - <input type = "number" id = "phone2" name = "phone2"> - <input type = "number" id = "phone3" name = "phone3">
+				 	<input type = "number" id = "phone1" name = "phone1" required> - <input type = "number" id = "phone2" name = "phone2" required> - <input type = "number" id = "phone3" name = "phone3" required>
 				 </li>
 				 <li>
-				 	<label for = "mainpicture">식당 사진</label>
+				 	<label for = "restaurantpicture">식당 사진</label>
 				 	<input multiple="multiple" type = "file" name = "mainpic">
 				 </li>
 				 <li>
+				 	<label for = "restaurantpicture2">식당 사진2</label>
+				 	<input type = "file" multiple = "multiple" name = "mainpic2" class = "multi with-preview" required>
+				 </li>
+				 <li>
 				 	<label for = "restaurantinfo">식당 정보</label>
-				 	<textarea name = "infomation" rows="5" cols="100"></textarea>
+				 	<textarea name = "infomation" rows="5" cols="100" required></textarea>
 				 </li>
 			</ul>
 			<div>
