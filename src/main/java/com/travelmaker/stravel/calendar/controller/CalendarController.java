@@ -34,6 +34,16 @@ public class CalendarController {
 	public String moveSearchLodgmentPage() {
 		return "calendar/searchlodgment";
 	}
+	
+	@RequestMapping("adminMain.do")
+	public String moveTest() {
+		return "calendar/test";
+	}
+	
+	@RequestMapping("test2.do")
+	public String moveTest2() {
+		return "calendar/test2";
+	}
 }
 
 

@@ -50,7 +50,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">정보</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="#">숙박</a></li>
+                  <li class="nav-item"><a class="nav-link" href="test2.do">숙박</a></li>
                   <li class="nav-item"><a class="nav-link" href="touristspot.do">관광지</a></li>
                   <li class="nav-item"><a class="nav-link" href="restaurantlist.do">식당</a></li>
                 </ul>
@@ -59,7 +59,7 @@
                   aria-expanded="false">마이페이지</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="mycalendar.do">나의일정</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">예약내역</a></li>
+                  <li class="nav-item"><a class="nav-link" href="adminMain.do">예약내역</a></li>
                 </ul>
 							</li>
               <li class="nav-item"><a class="nav-link" href="#">login</a></li>
