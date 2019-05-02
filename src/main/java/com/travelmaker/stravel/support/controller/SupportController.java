@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.support.model.service.SupportService;
 import com.travelmaker.stravel.support.model.vo.QnaVo;
@@ -36,15 +38,37 @@ public class SupportController {
 		return "support/qnaListAdmin";
 	}
 	@RequestMapping("qnalist.do")
-	public String moveQnaList() {
+	public ModelAndView moveQnaList(ModelAndView mv) {
 		logger.info("1대1 문의 게시판 사용자 접속");
-		return "support/qnaList";
+		String userid = "김지훈";
+		ArrayList<QnaVo> qnaList = supportService.selectMyQnaList(userid);
+		
+		mv.addObject("qnalist", qnaList);
+		mv.setViewName("support/qnaList");
+		return mv;
 	}
 	@RequestMapping("qnawrite.do")
 	public String moveQnaWrite() {
 		logger.info("1대1 문의 게시판 사용자 글쓰기 접속");
 		return "support/qnaWrite";
 	}
+	
+	@RequestMapping("qnadetail.do")
+	public ModelAndView moveQnaDetail(ModelAndView mv,QnaVo qnaVo) {
+		logger.info("1대1 문의 게시글 상세 접속");
+		QnaVo list = supportService.selectMyQnaListOne(qnaVo);
+		list.setQna_content(list.getQna_content().replace("<br>", "\r\n"));
+		if(list.getQna_answer() != null) {
+		list.setQna_answer(list.getQna_answer().replace("<br>", "\r\n"));
+		}
+		mv.addObject("list", list);
+		mv.setViewName("support/qnaDetail");
+		return mv;
+		
+	}
+	
+	
+	
 	@RequestMapping(value="qnainsert.do",method=RequestMethod.POST)
 	public String qnaInsert(QnaVo qnavo,@RequestParam(name="qnaimage", required=false) MultipartFile qnaimage,HttpServletRequest request) {
 		String path = "support/qnaerror";
@@ -57,6 +81,11 @@ public class SupportController {
 		try {
 			qnaimage.transferTo(new File(savePath+"\\"+qnaimage.getOriginalFilename()));
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			
+			//String fileExt = FileUtil.getExtension(originFileName);
+			//String refilename = UUIDUtil.GetUUID()+"." fileExt;
+			
+			
 			String renameFileName = sdf.format(new java.sql.Date(System.currentTimeMillis()))
 						+ "." + originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
 			qnavo.setRename_qfilename(renameFileName);	

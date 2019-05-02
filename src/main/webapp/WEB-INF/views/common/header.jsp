@@ -52,7 +52,7 @@
                   aria-expanded="false">상품</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="#">숙박</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">관광지</a></li>
+                  <li class="nav-item"><a class="nav-link" href="touristspot.do">관광지</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">식당</a></li>
                 </ul>
 							</li>

@@ -2,22 +2,67 @@
 <!DOCTYPE mapper PUBLIC
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="supportMapper">
+<mapper namespace="touristspotMapper">
 
-	<resultMap id="resultQna" type="QnaVo">
-		<id property="qna_no" column="QNA_NO" />
-		<id property="qna_title" column="QNA_TITLE" />
-		<id property="qna_content" column="QNA_CONTENT" />
-		<id property="qna_writer" column="QNA_WRITER" />
-		<id property="rename_qfilename" column="RENAME_QFILENAME" />
-		<id property="qna_date" column="QNA_DATE" />
-		<id property="qna_status" column="QNA_STATUS" />
-		<id property="qna_answer" column="QNA_ANSWER" />
-		<id property="qna_answerdate" column="QNA_ANSWERDATE" />
-		<id property="rename_afilename" column="RENAME_AFILENAME" />
-
+	<resultMap id="resultTouristspotVo" type="TouristspotVo">
+		<id property="touristsopt_no" column="TOURISTSOPT_NO" />
+		<id property="touristsoptcategorycode" column="TOURISTSOPTCATEGORYCODE" />
+		<id property="touristsopt_name" column="TOURISTSOPT_NAME" />
+		<id property="touristsopt_content" column="TOURISTSOPT_CONTENT" />
+		<id property="touristsopt_writer" column="TOURISTSOPT_WRITER" />
+		<id property="rename_thumnail" column="RENAME_THUMBNAIL" />
+		<id property="touristsopt_open" column="TOURISTSOPT_OPEN" />
+		<id property="touristsopt_closed" column="TOURISTSOPT_CLOSED" />
+		<id property="touristsopt_address" column="TOURISTSOPT_ADDRESS" />
+		<id property="touristsopt_homepage" column="TOURISTSOPT_HOMEPAGE" />
+		<id property="touristsopt_tel" column="TOURISTSOPT_TEL" />
+		<id property="touristsopt_gridx" column="TOURISTSOPT_GRIDX" />
+		<id property="touristsopt_gridy" column="TOURISTSOPT_GRIDY" />
+		<id property="touristsopt_date" column="TOURISTSOPT_DATE" />
+		<id property="touristsopt_lastmodified" column="TOURISTSOPT_LASTMODIFIED" />
+		<id property="touristsopt_deletestatus" column="TOURISTSOPT_DELETESTATUS" />
+	</resultMap>
+	<resultMap id="resultTouristspotCategoryVo" type="TouristspotCategoryVo">
+		<id property="touristspotCategoryCode" column="TOURISTSOPTCATEGORYCODE" />
+		<id property="touristspotCategoryName" column="TOURISTSOPTCATEGORYNAME" />
+	</resultMap>
+		<resultMap id="resultTouristspotImagesVo" type="TouristspotImagesVo">
+		<id property="touristspot_no" column="TOURISTSOPT_NO" />
+		<id property="touristspot_sq" column="TOURISTSOPT_SQ" />
+		<id property="touristspot_imagename" column="TOURISTSOPT_IMAGENAME" />
 	</resultMap>
 	
+	
+	<select id="selectTouristspotCategory" resultMap="resultTouristspotCategoryVo">
+		select * from tb_touristsoptcategory
+	</select>
+	<select id="selectTouristspotNO" resultType="_int">
+		select count(TOURISTSOPT_NO)+1 from tb_touristsopt
+	</select>
+	<insert id="insertTouristspot" parameterType="TouristspotVo">
+		insert into tb_touristsopt(TOURISTSOPT_NO,TOURISTSOPTCATEGORYCODE,TOURISTSOPT_NAME,
+		TOURISTSOPT_CONTENT,TOURISTSOPT_WRITER,TOURISTSOPT_OPEN,
+		TOURISTSOPT_CLOSED,TOURISTSOPT_HOMEPAGE,TOURISTSOPT_ADDRESS,TOURISTSOPT_TEL,
+		<if test="touristsopt_gridx != null">
+		TOURISTSOPT_GRIDX,TOURISTSOPT_GRIDY,
+		</if>
+		TOURISTSOPT_DATE,TOURISTSOPT_LASTMODIFIED,TOURISTSOPT_DELETESTATUS)
+		VALUES(#{touristsopt_no},#{touristsoptcategorycode},#{touristsopt_name},
+		#{touristsopt_content},#{touristsopt_writer},#{touristsopt_open},
+		#{touristsopt_closed},#{touristsopt_homepage},#{touristsopt_address},#{touristsopt_tel},
+		<if test="touristsopt_gridx != null">
+		#{touristsopt_gridx},#{touristsopt_gridy},
+		</if>
+		DEFAULT,DEFAULT,DEFAULT)
+	</insert>
+	<insert id="insertTouristspotImages" parameterType="TouristspotImagesVo">
+		insert into TB_TOURISTSOPTIMAGES(TOURISTSOPT_NO,TOURISTSOPT_SQ,TOURISTSOPT_IMAGENAME)
+		values(#{touristspot_no},#{touristspot_sq},#{touristspot_imagename})
+	</insert>
+	<update id="updateTouristspotThumnail" parameterType="TouristspotVo">
+	update tb_touristsopt set RENAME_THUMBNAIL = #{rename_thumnail} where TOURISTSOPT_NO = #{touristsopt_no}
+	</update>
+<!-- 	
 	<insert id="qnaInsert" parameterType="QnaVo">
 		insert into tb_qna(QNA_NO,QNA_TITLE,QNA_CONTENT,QNA_WRITER,
 		<if test="rename_qfilename != null">
@@ -35,7 +80,7 @@
 	</select>
 	<select id="selectMyQnaListOne" resultType="QnaVo" parameterType="QnaVo">
 	select * from tb_qna where qna_no = #{qna_no} and qna_writer = #{qna_writer}
-	</select>
+	</select> -->
 	
 	<!-- 
 	

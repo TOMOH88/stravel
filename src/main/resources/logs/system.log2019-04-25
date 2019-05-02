@@ -1,0 +1,180 @@
+[17:16:00][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[17:16:00][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu Apr 25 17:16:00 KST 2019]; root of context hierarchy
+[17:16:00][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[17:16:01][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[17:16:02][INFO ][ContextLoader.java:310]: - Root WebApplicationContext: initialization completed in 1261 ms
+[17:16:02][INFO ][FrameworkServlet.java:494]: - FrameworkServlet 'appServlet': initialization started
+[17:16:02][INFO ][AbstractApplicationContext.java:589]: - Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 17:16:02 KST 2019]; parent: Root WebApplicationContext
+[17:16:02][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[17:16:02][INFO ][AutowiredAnnotationBeanPostProcessor.java:154]: - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[17:16:02][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/main.do],methods=[GET]}" onto public java.lang.String com.travelmaker.stravel.HomeController.home()
+[17:16:02][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnawrite.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaWrite()
+[17:16:02][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnainsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.qnaInsert(com.travelmaker.stravel.support.model.vo.QnaVo,org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+[17:16:02][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/support.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveSupportMain()
+[17:16:02][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalistadmin.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaListAdmin()
+[17:16:02][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalist.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaList()
+[17:16:03][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 17:16:02 KST 2019]; parent: Root WebApplicationContext
+[17:16:03][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 17:16:02 KST 2019]; parent: Root WebApplicationContext
+[17:16:03][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[17:16:03][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1544 ms
+[17:39:58][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 17:16:02 KST 2019]; parent: Root WebApplicationContext
+[17:39:58][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Thu Apr 25 17:16:00 KST 2019]; root of context hierarchy
+[17:57:24][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[17:57:24][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu Apr 25 17:57:24 KST 2019]; root of context hierarchy
+[17:57:24][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[17:57:25][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[17:57:25][INFO ][ContextLoader.java:310]: - Root WebApplicationContext: initialization completed in 1142 ms
+[17:57:25][INFO ][FrameworkServlet.java:494]: - FrameworkServlet 'appServlet': initialization started
+[17:57:25][INFO ][AbstractApplicationContext.java:589]: - Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 17:57:25 KST 2019]; parent: Root WebApplicationContext
+[17:57:25][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[17:57:26][INFO ][AutowiredAnnotationBeanPostProcessor.java:154]: - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[17:57:26][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/main.do],methods=[GET]}" onto public java.lang.String com.travelmaker.stravel.HomeController.home()
+[17:57:26][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalistadmin.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaListAdmin()
+[17:57:26][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnawrite.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaWrite()
+[17:57:26][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/support.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveSupportMain()
+[17:57:26][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnainsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.qnaInsert(com.travelmaker.stravel.support.model.vo.QnaVo,org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+[17:57:26][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalist.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaList()
+[17:57:26][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 17:57:25 KST 2019]; parent: Root WebApplicationContext
+[17:57:26][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 17:57:25 KST 2019]; parent: Root WebApplicationContext
+[17:57:27][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[17:57:27][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1574 ms
+[18:16:07][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 17:57:25 KST 2019]; parent: Root WebApplicationContext
+[18:16:07][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Thu Apr 25 17:57:24 KST 2019]; root of context hierarchy
+[19:08:37][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[19:08:38][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu Apr 25 19:08:38 KST 2019]; root of context hierarchy
+[19:08:38][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[19:08:38][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[19:08:39][INFO ][ContextLoader.java:310]: - Root WebApplicationContext: initialization completed in 1129 ms
+[19:08:39][INFO ][FrameworkServlet.java:494]: - FrameworkServlet 'appServlet': initialization started
+[19:08:39][INFO ][AbstractApplicationContext.java:589]: - Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 19:08:39 KST 2019]; parent: Root WebApplicationContext
+[19:08:39][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[19:08:39][INFO ][AutowiredAnnotationBeanPostProcessor.java:154]: - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[19:08:39][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/main.do],methods=[GET]}" onto public java.lang.String com.travelmaker.stravel.HomeController.home()
+[19:08:39][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnawrite.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaWrite()
+[19:08:39][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalist.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaList()
+[19:08:39][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalistadmin.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaListAdmin()
+[19:08:39][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnainsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.qnaInsert(com.travelmaker.stravel.support.model.vo.QnaVo,org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+[19:08:39][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/support.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveSupportMain()
+[19:08:40][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 19:08:39 KST 2019]; parent: Root WebApplicationContext
+[19:08:40][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 19:08:39 KST 2019]; parent: Root WebApplicationContext
+[19:08:40][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[19:08:40][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1473 ms
+[19:08:45][INFO ][HomeController.java:22]: - Welcome home!
+[19:08:49][INFO ][SupportController.java:30]: - 고객센터 접속
+[19:08:52][INFO ][SupportController.java:40]: - 1대1 문의 게시판 사용자 접속
+[19:08:53][INFO ][SupportController.java:45]: - 1대1 문의 게시판 사용자 글쓰기 접속
+[19:09:17][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+[19:10:48][INFO ][SupportController.java:45]: - 1대1 문의 게시판 사용자 글쓰기 접속
+[19:12:04][INFO ][SupportController.java:45]: - 1대1 문의 게시판 사용자 글쓰기 접속
+[19:14:59][INFO ][SupportController.java:45]: - 1대1 문의 게시판 사용자 글쓰기 접속
+[19:19:42][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 19:08:39 KST 2019]; parent: Root WebApplicationContext
+[19:19:42][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Thu Apr 25 19:08:38 KST 2019]; root of context hierarchy
+[19:19:48][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[19:19:48][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu Apr 25 19:19:48 KST 2019]; root of context hierarchy
+[19:19:48][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[19:19:48][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[19:19:49][INFO ][ContextLoader.java:310]: - Root WebApplicationContext: initialization completed in 1152 ms
+[19:19:49][INFO ][FrameworkServlet.java:494]: - FrameworkServlet 'appServlet': initialization started
+[19:19:49][INFO ][AbstractApplicationContext.java:589]: - Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 19:19:49 KST 2019]; parent: Root WebApplicationContext
+[19:19:49][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[19:19:49][INFO ][AutowiredAnnotationBeanPostProcessor.java:154]: - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[19:19:50][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/main.do],methods=[GET]}" onto public java.lang.String com.travelmaker.stravel.HomeController.home()
+[19:19:50][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalistadmin.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaListAdmin()
+[19:19:50][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/support.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveSupportMain()
+[19:19:50][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalist.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaList()
+[19:19:50][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnainsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.qnaInsert(com.travelmaker.stravel.support.model.vo.QnaVo,org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+[19:19:50][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnawrite.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaWrite()
+[19:19:50][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 19:19:49 KST 2019]; parent: Root WebApplicationContext
+[19:19:50][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 19:19:49 KST 2019]; parent: Root WebApplicationContext
+[19:19:50][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[19:19:50][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1460 ms
+[19:22:11][INFO ][SupportController.java:45]: - 1대1 문의 게시판 사용자 글쓰기 접속
+[20:07:22][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 19:19:49 KST 2019]; parent: Root WebApplicationContext
+[20:07:22][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Thu Apr 25 19:19:48 KST 2019]; root of context hierarchy
+[20:07:28][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[20:07:28][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu Apr 25 20:07:28 KST 2019]; root of context hierarchy
+[20:07:28][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[20:07:29][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[20:07:29][INFO ][ContextLoader.java:310]: - Root WebApplicationContext: initialization completed in 1188 ms
+[20:07:29][INFO ][FrameworkServlet.java:494]: - FrameworkServlet 'appServlet': initialization started
+[20:07:29][INFO ][AbstractApplicationContext.java:589]: - Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:07:29 KST 2019]; parent: Root WebApplicationContext
+[20:07:29][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[20:07:29][INFO ][AutowiredAnnotationBeanPostProcessor.java:154]: - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[20:07:30][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/main.do],methods=[GET]}" onto public java.lang.String com.travelmaker.stravel.HomeController.home()
+[20:07:30][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalist.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaList()
+[20:07:30][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnawrite.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaWrite()
+[20:07:30][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalistadmin.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaListAdmin()
+[20:07:30][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnainsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.qnaInsert(com.travelmaker.stravel.support.model.vo.QnaVo,org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+[20:07:30][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/support.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveSupportMain()
+[20:07:30][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:07:29 KST 2019]; parent: Root WebApplicationContext
+[20:07:30][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:07:29 KST 2019]; parent: Root WebApplicationContext
+[20:07:30][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[20:07:31][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1484 ms
+[20:07:43][INFO ][SupportController.java:45]: - 1대1 문의 게시판 사용자 글쓰기 접속
+[20:08:28][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:07:29 KST 2019]; parent: Root WebApplicationContext
+[20:08:28][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Thu Apr 25 20:07:28 KST 2019]; root of context hierarchy
+[20:08:40][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[20:08:40][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu Apr 25 20:08:40 KST 2019]; root of context hierarchy
+[20:08:40][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[20:08:40][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[20:08:41][INFO ][ContextLoader.java:310]: - Root WebApplicationContext: initialization completed in 1137 ms
+[20:08:41][INFO ][FrameworkServlet.java:494]: - FrameworkServlet 'appServlet': initialization started
+[20:08:41][INFO ][AbstractApplicationContext.java:589]: - Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:08:41 KST 2019]; parent: Root WebApplicationContext
+[20:08:41][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[20:08:41][INFO ][AutowiredAnnotationBeanPostProcessor.java:154]: - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[20:08:42][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/main.do],methods=[GET]}" onto public java.lang.String com.travelmaker.stravel.HomeController.home()
+[20:08:42][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnainsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.qnaInsert(com.travelmaker.stravel.support.model.vo.QnaVo,org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+[20:08:42][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalistadmin.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaListAdmin()
+[20:08:42][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalist.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaList()
+[20:08:42][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/support.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveSupportMain()
+[20:08:42][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnawrite.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaWrite()
+[20:08:42][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:08:41 KST 2019]; parent: Root WebApplicationContext
+[20:08:42][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:08:41 KST 2019]; parent: Root WebApplicationContext
+[20:08:42][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[20:08:42][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1489 ms
+[20:08:53][INFO ][SupportController.java:45]: - 1대1 문의 게시판 사용자 글쓰기 접속
+[20:12:07][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:08:41 KST 2019]; parent: Root WebApplicationContext
+[20:12:07][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Thu Apr 25 20:08:40 KST 2019]; root of context hierarchy
+[20:12:13][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[20:12:13][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu Apr 25 20:12:13 KST 2019]; root of context hierarchy
+[20:12:13][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[20:12:14][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[20:12:15][INFO ][ContextLoader.java:310]: - Root WebApplicationContext: initialization completed in 1566 ms
+[20:12:15][INFO ][FrameworkServlet.java:494]: - FrameworkServlet 'appServlet': initialization started
+[20:12:15][INFO ][AbstractApplicationContext.java:589]: - Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:12:15 KST 2019]; parent: Root WebApplicationContext
+[20:12:15][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[20:12:15][INFO ][AutowiredAnnotationBeanPostProcessor.java:154]: - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[20:12:15][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/main.do],methods=[GET]}" onto public java.lang.String com.travelmaker.stravel.HomeController.home()
+[20:12:15][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalist.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaList()
+[20:12:15][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnawrite.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaWrite()
+[20:12:15][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/support.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveSupportMain()
+[20:12:15][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnainsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.qnaInsert(com.travelmaker.stravel.support.model.vo.QnaVo,org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+[20:12:15][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalistadmin.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaListAdmin()
+[20:12:16][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:12:15 KST 2019]; parent: Root WebApplicationContext
+[20:12:16][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:12:15 KST 2019]; parent: Root WebApplicationContext
+[20:12:16][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[20:12:16][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1446 ms
+[20:12:25][INFO ][SupportController.java:45]: - 1대1 문의 게시판 사용자 글쓰기 접속
+[20:18:47][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:12:15 KST 2019]; parent: Root WebApplicationContext
+[20:18:47][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Thu Apr 25 20:12:13 KST 2019]; root of context hierarchy
+[20:18:56][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[20:18:56][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu Apr 25 20:18:56 KST 2019]; root of context hierarchy
+[20:18:56][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[20:18:57][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[20:18:57][INFO ][ContextLoader.java:310]: - Root WebApplicationContext: initialization completed in 1154 ms
+[20:18:57][INFO ][FrameworkServlet.java:494]: - FrameworkServlet 'appServlet': initialization started
+[20:18:57][INFO ][AbstractApplicationContext.java:589]: - Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:18:57 KST 2019]; parent: Root WebApplicationContext
+[20:18:57][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[20:18:58][INFO ][AutowiredAnnotationBeanPostProcessor.java:154]: - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[20:18:58][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/main.do],methods=[GET]}" onto public java.lang.String com.travelmaker.stravel.HomeController.home()
+[20:18:58][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/support.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveSupportMain()
+[20:18:58][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalist.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaList()
+[20:18:58][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalistadmin.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaListAdmin()
+[20:18:58][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnawrite.do]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.moveQnaWrite()
+[20:18:58][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnainsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.support.controller.SupportController.qnaInsert(com.travelmaker.stravel.support.model.vo.QnaVo,org.springframework.web.multipart.MultipartFile,javax.servlet.http.HttpServletRequest)
+[20:18:58][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:18:57 KST 2019]; parent: Root WebApplicationContext
+[20:18:58][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu Apr 25 20:18:57 KST 2019]; parent: Root WebApplicationContext
+[20:18:59][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[20:18:59][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1539 ms
+[20:19:06][INFO ][SupportController.java:45]: - 1대1 문의 게시판 사용자 글쓰기 접속
+[20:27:10][INFO ][HomeController.java:22]: - Welcome home!
