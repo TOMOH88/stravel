@@ -50,7 +50,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">정보</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="test2.do">숙박</a></li>
+                  <li class="nav-item"><a class="nav-link" href="oh.do">숙박</a></li>
                   <li class="nav-item"><a class="nav-link" href="touristspot.do">관광지</a></li>
                   <li class="nav-item"><a class="nav-link" href="restaurantlist.do">식당</a></li>
                 </ul>
