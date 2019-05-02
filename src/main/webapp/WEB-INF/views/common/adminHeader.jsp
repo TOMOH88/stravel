@@ -75,6 +75,9 @@
                 </ul>
             </nav>
         </aside>
+        <div class="nav-right text-center text-lg-right py-4 py-lg-0">
+              <input type="button" class="btn btn-info" value="login">
+            </div>
 <script src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
