@@ -9,7 +9,9 @@
 </head>
 <body>
 <c:import url="../common/bHeader.jsp" />
+<section class="section-margin">
 
-
+</section>
+<c:import url="../common/footer.jsp" />
 </body>
 </html>
