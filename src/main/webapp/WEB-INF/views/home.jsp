@@ -26,7 +26,7 @@
 <tr><th>김인규</th><td><a>작업물 링크</a></td></tr>
 <tr><th>고상훈</th><td><a>작업물 링크</a></td></tr>
 <tr><th>구한모</th><td><a>작업물 링크</a></td></tr>
-<tr><th>오청</th><td><a href="roomDetail.do">작업물 링크</a></td></tr>
+<tr><th>오청</th><td><a href="oh.do">작업물 링크</a></td></tr>
 </table>
 </body>
 </html>
