@@ -27,7 +27,7 @@ public class CalendarController {
 	
 	@RequestMapping("upcalendar.do")
 	public String moveUpCalendarPage() {
-		return "calendar/upcalendar";
+		return "calendar/updatecalendar";
 	}
 	
 	@RequestMapping("searchlodgment.do")

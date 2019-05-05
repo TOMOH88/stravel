@@ -30,95 +30,161 @@ div{
 <div class="col-md-12">
 <div class="row">
 <!-- 필터시작 -->
-<div class="col-md-3" style="text-align:center;">
-<button class="btn btn-info btn-sm" data-target="#layerpop" data-toggle="modal">숙박기간</button><br/>
-<div class="modal fade" id="layerpop" >
-  <div class="modal-dialog">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal1">
+  숙박기간
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <!-- header -->
       <div class="modal-header">
-        <!-- 닫기(x) 버튼 -->
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <!-- header title -->
-        <h4 class="modal-title"></h4>
+        <h5 class="modal-title" id="exampleModalLabel">숙박기간</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <!-- body -->
       <div class="modal-body">
-      <div>
-      <input type="date" id="startDate">~<input type="date" id="endDate">
+      <label for="startDate"> 체크인
+        <input type="date" id="startDate">
+        </label>
+        <label for="endDate"> 체크아웃
+         <input type="date" id="endDate">
+         </label>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">저장</button>
       </div>
     </div>
   </div>
 </div>
-</div>
-<div class="col-md-3" style="text-align:center;">
-<button class="btn btn-info btn-sm" data-target="#layerpop" data-toggle="modal">인원수</button><br/>
-<div class="modal fade" id="layerpop" >
-  <div class="modal-dialog">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal2">
+  인원수
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <!-- header -->
       <div class="modal-header">
-        <!-- 닫기(x) 버튼 -->
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <!-- header title -->
-        <h4 class="modal-title"></h4>
+        <h5 class="modal-title" id="exampleModalLabel">인원수</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <!-- body -->
       <div class="modal-body">
-      <div>
-      <input type="date" id="startDate">~<input type="date" id="endDate">
+      <label for="num1">성인
+      	<input type="number" class="form-control" id="num1">
+      	</label>
+      	<label for="num2">어린이
+      	<input type="number" class="form-control" id="num2">
+      	</label>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">저장</button>
       </div>
     </div>
   </div>
 </div>
-</div>
-<div class="col-md-3" style="text-align:center;">
-<button class="btn btn-info btn-sm" data-target="#layerpop" data-toggle="modal">가격</button><br/>
-<div class="modal fade" id="layerpop" >
-  <div class="modal-dialog">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal3">
+  가격
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <!-- header -->
       <div class="modal-header">
-        <!-- 닫기(x) 버튼 -->
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <!-- header title -->
-        <h4 class="modal-title"></h4>
+        <h5 class="modal-title" id="exampleModalLabel">가격</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <!-- body -->
       <div class="modal-body">
-      <div>
-      <input type="date" id="startDate">~<input type="date" id="endDate">
+       <input type="number">
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">저장</button>
       </div>
     </div>
   </div>
 </div>
-</div>
-<div class="col-md-3" style="text-align:center;">
-<button class="btn btn-info btn-sm" data-target="#layerpop" data-toggle="modal">필터추가</button><br/>
-<div class="modal fade" id="layerpop" >
-  <div class="modal-dialog">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal4">
+  필터추가
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <!-- header -->
       <div class="modal-header">
-        <!-- 닫기(x) 버튼 -->
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <!-- header title -->
-        <h4 class="modal-title"></h4>
+        <h5 class="modal-title" id="exampleModalLabel">편의시설</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <!-- body -->
       <div class="modal-body">
-      <div>
-      <input type="date" id="startDate">~<input type="date" id="endDate">
+      <label><input type="checkbox" >WI-FI</label><br>
+      <label><input type="checkbox" >주차장</label><br>
+      <label><input type="checkbox" >야외 그릴장</label><br>
+      <label><input type="checkbox" >소화기</label><br>
+      <label><input type="checkbox" >TV</label><br>
+      <label><input type="checkbox" >침구/세면도구</label><br>
+      <label><input type="checkbox" >취사기구</label><br>
+      <label><input type="checkbox" >에어컨</label><br>
+      <label><input type="checkbox" >난방</label>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">저장</button>
       </div>
     </div>
   </div>
-</div>
 </div>
 <!-- 필터끝-->
+</div>
+<br>
+<div class="row">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"style="height:100%; width:200px;">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg" alt="첫번째 슬라이드"></a>
+    </div>
+    <div class="carousel-item">
+      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg" alt="두번째 슬라이드"></a>
+    </div>
+    <div class="carousel-item">
+      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg" alt="세번째 슬라이드"></a>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">이전</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">다음</span>
+  </a>
+</div>
+<div class="col-xl-6">
+<a href="#">호텔1</a> <br>
+<font style="font-size:8pt;">주택의 개인실
+인원 1명
+침실 1개
+침대 1개
+공동 사용 욕실 1개</font>
+<br>
+<br>
+★★★★★
+</div>
 </div>
 </div>
 </div>
