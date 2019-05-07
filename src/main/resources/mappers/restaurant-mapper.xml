@@ -13,7 +13,9 @@
 	<result property = "restaurant_date" column = "restaurant_date"/>
 	<result property = "rename_thumnail" column = "rename_thumnail"/>
 	<result property = "restaurant_openinghours" column = "restaurant_openinghours"/>
+	<result property = "restaurant_closehours" column = "restaurant_closehours"/>
 	<result property = "restaurant_homepage" column = "restaurant_homepage"/>
+	<result property = "restaurant_address" column = "restaurant_address"/>
 	<result property = "restaurant_tel" column = "restaurant_tel"/>
 	<result property = "restaurant_lastmodified" column = "restaurant_lastmodified"/>
 	<result property = "restaurant_gridx" column = "restaurant_gridx"/>
@@ -37,19 +39,44 @@
 	</select>
 
 	<insert id="insertRestaurant" parameterType = "Restaurant">
-		insert into restaurant values (seq_restaurant_no.nextval, #{restaurant_category_code}, #{restaurant_name}, #{restaurant_content}, #{restaurant_writer}, 
-		sysdate, #{rename_thumnail}, #{restaurant_openinghours}, #{restaurant_homepage}, #{restaurant_tel}, #{restaurant_lastmodified}, #{restaurant_gridx}, #{restaurant_gridy}, #{restaurant_deletestatus})
+		insert into restaurant(restaurant_no, restaurant_category_code, restaurant_name, restaurant_content, 
+		restaurant_writer, restaurant_date, restaurant_openinghours, restaurant_closehours, 
+		restaurant_homepage, restaurant_address, restaurant_tel, restaurant_lastmodified,
+		<if test="restaurant_gridx != null">
+		 restaurant_gridx, restaurant_gridy, 
+		</if>
+		 restaurant_deletestatus) values(#{restaurant_no}, #{restaurant_category_code}, #{restaurant_name}, #{restaurant_content}, 
+		 #{restaurant_writer}, default, #{restaurant_openinghours}, #{restaurant_closehours}, #{restaurant_homepage}, 
+		 #{restaurant_address}, #{restaurant_tel}, default, 
+		 <if test="restaurant_gridx != null">
+		 #{restaurant_gridx}, #{restaurant_gridy}, 
+		 </if>
+		 default)
 	</insert>
 	<select id="selectRestaurantNo" resultType = "_int">
 		select count(restaurant_no)+1 from restaurant
 	</select>
 	
 	<insert id="insertRestaurantImage" parameterType = "RestaurantImage">
-		insert into restaurant_image(restaurant_no, restaurant_sq, restaurant_imagename) values (#{restaurant_no}, #{restaurant_sq}, #{restaurant_imagename})
+		insert into restaurant_images(restaurant_no, restaurant_sq, restaurant_imagename) values (#{restaurant_no}, #{restaurant_sq}, #{restaurant_imagename})
 	</insert>
 	
 	<update id="updateRestaurantThumnail" parameterType = "restaurant">
 		update restaurant set rename_thumnail = #{rename_thumnail} where restaurant_no = #{restaurant_no}
 	</update>
+	
+	<select id = "seafoodList" resultMap = "resultRestaurantImage">
+		
+	</select>
+	<select id = "barbecueList" resultMap = "resultRestaurantImage">
+		
+	</select>
+	<select id = "koreanfoodList" resultMap = "resultRestaurantImage">
+		
+	</select>
+	<select id = "cafeList" resultMap = "resultRestaurantImage">
+		
+	</select>
+	
 
 </mapper>

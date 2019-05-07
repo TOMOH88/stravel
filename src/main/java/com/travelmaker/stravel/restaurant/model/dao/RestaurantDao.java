@@ -20,7 +20,7 @@ public class RestaurantDao {
 
 	public int insertRestaurantImage(SqlSessionTemplate session, RestaurantImage restaurantImage) {
 		
-		return session.insert("restaurantMapper.insertRestaurantImage");
+		return session.insert("restaurantMapper.insertRestaurantImage", restaurantImage);
 	}
 
 	public int updateRestaurantThumnail(SqlSessionTemplate session, Restaurant rest) {

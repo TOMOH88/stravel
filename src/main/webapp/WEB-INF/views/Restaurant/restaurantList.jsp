@@ -15,5 +15,6 @@
 <!-- 관리자 -->
 <a href = "insertres.do">레스토랑 등록</a>
 
+
 </body>
 </html>

@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.common.UUIDUtil;
 import com.travelmaker.stravel.restaurant.model.service.RestaurantCategoryService;
+import com.travelmaker.stravel.restaurant.model.service.RestaurantImageService;
 import com.travelmaker.stravel.restaurant.model.service.RestaurantService;
 import com.travelmaker.stravel.restaurant.model.vo.Restaurant;
 import com.travelmaker.stravel.restaurant.model.vo.RestaurantCategory;
@@ -34,23 +35,45 @@ public class RestaurantController {
 	private RestaurantService resService;
 	@Autowired
 	private RestaurantCategoryService rescateService;
+	@Autowired
+	private RestaurantImageService imageService;
 	
+	/*@RequestMapping("restaurantlist.do")
+	public ModelAndView moveRestaurantList(ModelAndView mv) {
+		ArrayList<RestaurantImage> SeafoodList = imageService.SeafoodList();
+		mv.addObject("seaList", SeafoodList);
+		
+		ArrayList<RestaurantImage> barbecueList = imageService.barbecueList();
+		mv.addObject("barbecueList", barbecueList);
+		
+		ArrayList<RestaurantImage> koreanfoodList = imageService.koreanfoodList();
+		mv.addObject("koreanfoodList", koreanfoodList);
+		
+		ArrayList<RestaurantImage> cafeList = imageService.cafeList();
+		mv.addObject("cafeList", cafeList);
+		
+		
+		mv.setViewName("Restaurant/restaurantList");
+		
+		return mv;
+	}*/
 	@RequestMapping("restaurantlist.do")
 	public String moveRestaurantList() {
 		return "Restaurant/restaurantList";
 	}
-	@RequestMapping(value = "insertres.do", method = RequestMethod.POST)
+	@RequestMapping(value = "insertrestaurant.do", method = RequestMethod.POST)
 	public String insertRestaurant(Restaurant rest, MultipartHttpServletRequest resimRequest, HttpServletRequest request) {
 		String path = "Restaurant/insertRestaurant";
 		String savePath = request.getSession().getServletContext().getRealPath("resources/img/restaurant");
 		ArrayList<RestaurantImage> imageList = new ArrayList<RestaurantImage>();
 		rest.setRestaurant_no(resService.selectRestaurantNo());
-		
+		System.out.println(rest);
 		int result = resService.insertRestaurant(rest);
+		System.out.println(result);
 		if(result <= 0) {
-			return "Restaurant/insertRestaurant";
+			return path;
 		}
-		List<MultipartFile> fileList = resimRequest.getFiles("imageList");
+		List<MultipartFile> fileList = resimRequest.getFiles("mainpic");
 		for(int i = 0; i < fileList.size(); i++) {
 			String originalFileName = fileList.get(i).getOriginalFilename();
 			try {
@@ -75,6 +98,7 @@ public class RestaurantController {
 				}
 				imageList.add(new RestaurantImage(rest.getRestaurant_no(),i+1, renameFileName));
 				int result2 = resService.insertRestaurantImages(imageList.get(i));
+				System.out.println(result2);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
