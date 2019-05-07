@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.travelmaker.stravel.restaurant.model.dao.RestaurantCategoryDao;
 import com.travelmaker.stravel.restaurant.model.vo.RestaurantCategory;
+import com.travelmaker.stravel.restaurant.model.vo.RestaurantImage;
 
 @Service("RestaurantCategoryService")
 public class RestaurantCategoryServiceImpl implements RestaurantCategoryService{

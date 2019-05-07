@@ -7,16 +7,16 @@ public class RestaurantImage implements java.io.Serializable{
 
 	private static final long serialVersionUID = 84838L;
 	private int restaurant_no;
+	private int restaurant_sq;
 	private String restaurant_imagename;
-	private String restaurant_imagepath;
 	
 	public RestaurantImage() {}
 
-	public RestaurantImage(int restaurant_no, String restaurant_imagename, String restaurant_imagepath) {
+	public RestaurantImage(int restaurant_no, int restaurant_sq, String restaurant_imagename) {
 		super();
 		this.restaurant_no = restaurant_no;
+		this.restaurant_sq = restaurant_sq;
 		this.restaurant_imagename = restaurant_imagename;
-		this.restaurant_imagepath = restaurant_imagepath;
 	}
 
 	public int getRestaurant_no() {
@@ -27,6 +27,14 @@ public class RestaurantImage implements java.io.Serializable{
 		this.restaurant_no = restaurant_no;
 	}
 
+	public int getRestaurant_sq() {
+		return restaurant_sq;
+	}
+
+	public void setRestaurant_sq(int restaurant_sq) {
+		this.restaurant_sq = restaurant_sq;
+	}
+
 	public String getRestaurant_imagename() {
 		return restaurant_imagename;
 	}
@@ -35,24 +43,14 @@ public class RestaurantImage implements java.io.Serializable{
 		this.restaurant_imagename = restaurant_imagename;
 	}
 
-	public String getRestaurant_imagepath() {
-		return restaurant_imagepath;
-	}
-
-	public void setRestaurant_imagepath(String restaurant_imagepath) {
-		this.restaurant_imagepath = restaurant_imagepath;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
 	@Override
 	public String toString() {
-		return "RestaurantImage [restaurant_no=" + restaurant_no + ", restaurant_imagename=" + restaurant_imagename
-				+ ", restaurant_imagepath=" + restaurant_imagepath + "]";
+		return "RestaurantImage [restaurant_no=" + restaurant_no + ", restaurant_sq=" + restaurant_sq
+				+ ", restaurant_imagename=" + restaurant_imagename + "]";
 	}
 	
-	
-	
-}
+	}
