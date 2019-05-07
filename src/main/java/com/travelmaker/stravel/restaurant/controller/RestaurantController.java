@@ -21,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.common.UUIDUtil;
 import com.travelmaker.stravel.restaurant.model.service.RestaurantCategoryService;
-import com.travelmaker.stravel.restaurant.model.service.RestaurantImageService;
 import com.travelmaker.stravel.restaurant.model.service.RestaurantService;
 import com.travelmaker.stravel.restaurant.model.vo.Restaurant;
 import com.travelmaker.stravel.restaurant.model.vo.RestaurantCategory;
@@ -36,8 +35,6 @@ public class RestaurantController {
 	private RestaurantService resService;
 	@Autowired
 	private RestaurantCategoryService rescateService;
-	@Autowired
-	private RestaurantImageService imageService;
 	
 	@RequestMapping("restaurantdetail.do")
 	public ModelAndView restaurantDetail(ModelAndView mv, @RequestParam(name = "restaurant_no") int restaurant_no) {

@@ -7,7 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.travelmaker.stravel.restaurant.model.vo.RestaurantCategory;
-import com.travelmaker.stravel.restaurant.model.vo.RestaurantImage;
+
 @Repository("RestaurantCategoryDao")
 public class RestaurantCategoryDao {
 

@@ -41,16 +41,12 @@
 	<insert id="insertRestaurant" parameterType = "Restaurant">
 		insert into restaurant(restaurant_no, restaurant_category_code, restaurant_name, restaurant_content, 
 		restaurant_writer, restaurant_date, restaurant_openinghours, restaurant_closehours, 
-		restaurant_homepage, restaurant_address, restaurant_tel, restaurant_lastmodified,
-		<if test="restaurant_gridx != null">
-		 restaurant_gridx, restaurant_gridy, 
-		</if>
-		 restaurant_deletestatus) values(#{restaurant_no}, #{restaurant_category_code}, #{restaurant_name}, #{restaurant_content}, 
+		restaurant_homepage, restaurant_address, restaurant_tel, restaurant_lastmodified,restaurant_gridx, restaurant_gridy,
+		restaurant_deletestatus) 
+		values(#{restaurant_no}, #{restaurant_category_code}, #{restaurant_name}, #{restaurant_content}, 
 		 #{restaurant_writer}, default, #{restaurant_openinghours}, #{restaurant_closehours}, #{restaurant_homepage}, 
 		 #{restaurant_address}, #{restaurant_tel}, default, 
-		 <if test="restaurant_gridx != null">
 		 #{restaurant_gridx}, #{restaurant_gridy}, 
-		 </if>
 		 default)
 	</insert>
 	<select id="selectRestaurantNo" resultType = "_int">
