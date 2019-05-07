@@ -65,17 +65,21 @@
 		update restaurant set rename_thumnail = #{rename_thumnail} where restaurant_no = #{restaurant_no}
 	</update>
 	
-	<select id = "seafoodList" resultMap = "resultRestaurantImage">
-		
+	<select id = "seafoodList" resultMap = "resultRestaurant">
+		select * from restaurant where restaurant_category_code like 'B003'
 	</select>
-	<select id = "barbecueList" resultMap = "resultRestaurantImage">
-		
+	<select id = "barbecueList" resultMap = "resultRestaurant">
+		select * from restaurant where restaurant_category_code like 'B002'
 	</select>
-	<select id = "koreanfoodList" resultMap = "resultRestaurantImage">
-		
+	<select id = "koreanfoodList" resultMap = "resultRestaurant">
+		select * from restaurant where restaurant_category_code like 'B001'
 	</select>
-	<select id = "cafeList" resultMap = "resultRestaurantImage">
-		
+	<select id = "cafeList" resultMap = "resultRestaurant">
+		select * from restaurant where restaurant_category_code like 'B004'
+	</select>
+	
+	<select id = "restaurantDetail" parameterType = "_int" resultMap = "resultRestaurant">
+		select * from restaurant where restaurant_no = #{restaurant_no}
 	</select>
 	
 

@@ -17,29 +17,7 @@ public class RestaurantImageServiceImpl implements RestaurantImageService{
 	@Autowired
 	private RestaurantImageDao imageDao;
 	
-	@Override
-	public ArrayList<RestaurantImage> SeafoodList() {
-		
-		return imageDao.SeafoodList(mybatisSession);
-	}
-
-	@Override
-	public ArrayList<RestaurantImage> barbecueList() {
-		
-		return imageDao.barbecueList(mybatisSession);
-	}
-
-	@Override
-	public ArrayList<RestaurantImage> koreanfoodList() {
-		
-		return imageDao.koreanfoodList(mybatisSession);
-	}
-
-	@Override
-	public ArrayList<RestaurantImage> cafeList() {
-		
-		return imageDao.cafeList(mybatisSession);
-	}
+	
 	
 
 }

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,29 +39,39 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantImageService imageService;
 	
-	/*@RequestMapping("restaurantlist.do")
+	@RequestMapping("restaurantdetail.do")
+	public ModelAndView restaurantDetail(ModelAndView mv, @RequestParam(name = "restaurant_no") int restaurant_no) {
+		Restaurant restaurant = resService.restaurantDetail(restaurant_no);
+		
+		mv.addObject("list", restaurant);
+		mv.setViewName("Restaurant/restaurantDetail");
+		
+		return mv;
+	}
+	
+	@RequestMapping("restaurantlist.do")
 	public ModelAndView moveRestaurantList(ModelAndView mv) {
-		ArrayList<RestaurantImage> SeafoodList = imageService.SeafoodList();
+		ArrayList<Restaurant> SeafoodList = resService.SeafoodList();
 		mv.addObject("seaList", SeafoodList);
 		
-		ArrayList<RestaurantImage> barbecueList = imageService.barbecueList();
+		ArrayList<Restaurant> barbecueList = resService.barbecueList();
 		mv.addObject("barbecueList", barbecueList);
 		
-		ArrayList<RestaurantImage> koreanfoodList = imageService.koreanfoodList();
+		ArrayList<Restaurant> koreanfoodList = resService.koreanfoodList();
 		mv.addObject("koreanfoodList", koreanfoodList);
 		
-		ArrayList<RestaurantImage> cafeList = imageService.cafeList();
+		ArrayList<Restaurant> cafeList = resService.cafeList();
 		mv.addObject("cafeList", cafeList);
 		
 		
 		mv.setViewName("Restaurant/restaurantList");
 		
 		return mv;
-	}*/
-	@RequestMapping("restaurantlist.do")
+	}
+	/*@RequestMapping("restaurantlist.do")
 	public String moveRestaurantList() {
 		return "Restaurant/restaurantList";
-	}
+	}*/
 	@RequestMapping(value = "insertrestaurant.do", method = RequestMethod.POST)
 	public String insertRestaurant(Restaurant rest, MultipartHttpServletRequest resimRequest, HttpServletRequest request) {
 		String path = "Restaurant/insertRestaurant";
