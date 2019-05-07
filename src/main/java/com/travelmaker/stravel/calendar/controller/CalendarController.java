@@ -49,6 +49,27 @@ public class CalendarController {
 	public String moveViewCalendarPage() {
 		return "calendar/calendarViewList";
 	}
+	
+	@RequestMapping("qnalist.do")
+	public String moveFaqListPage() {
+		return "qna/qnaList";
+	}
+	
+	@RequestMapping("faqlist1.do")
+	public String moveQnaList1Page() {
+		return "faq/faqList1";
+	}
+	
+	@RequestMapping("faqlist2.do")
+	public String moveQnaList2Page() {
+		return "faq/faqList2";
+	}
+	
+	@RequestMapping("faqlist3.do")
+	public String moveQnaList3Page() {
+		return "faq/faqList3";
+	}
+	
 }
 
 
