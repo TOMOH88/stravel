@@ -34,6 +34,16 @@ public class TouristspotController {
 	@Autowired
 	private TouristspotService touristspotService;
 	
+	@RequestMapping("sampMap.do")
+	public String moveSampMap() {
+		logger.info("샘플");
+		return "touristspot/sampMap";
+	}
+	@RequestMapping("sampMap2.do")
+	public String moveSampMap2() {
+		logger.info("샘플");
+		return "touristspot/sampMap2";
+	}
 	@RequestMapping("touristspot.do")
 	public String moveTouristspotMain() {
 		logger.info("관광지 리스트");
@@ -52,42 +62,6 @@ public class TouristspotController {
 			mv.setViewName("touristspot/touristspotWriterAdmin");
 			return mv;
 		}
-	/*@RequestMapping(value="TSWriterUpload.do",method=RequestMethod.POST)
-	public String insertTouristspot(TouristspotVo ts,MultipartHttpServletRequest mtfRequest,HttpServletRequest request) {
-		String path = "touristspot/touristspotMain";
-		String savePath = request.getSession().getServletContext().getRealPath("/resources/files/touristspotImages");
-		ArrayList<TouristspotImagesVo> tsImages = new ArrayList<TouristspotImagesVo>();
-		ts.setTouristsopt_no(touristspotService.selectTouristspotNO());
-		System.out.println(ts.toString());
-		//지오코딩
-		Float[] grid = GeoCoder.geoCoding(ts.getTouristsopt_address());
-		//이미지 여러개 처리
-		//int result = touristspotService.insertTouristspot(ts);
-		List<MultipartFile> fileList = mtfRequest.getFiles("tsimages");
-		for(MultipartFile f:fileList) {
-			String originalFileName = f.getOriginalFilename();
-			try {
-			f.transferTo(new File(savePath+"\\"+f.getOriginalFilename()));
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-			
-			String renameFileName = ts.getTouristsopt_name()+"-"+sdf.format(new java.sql.Date(System.currentTimeMillis()))
-					+ "." + originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
-			
-			tsImages.add(new TouristspotImagesVo(ts.getTouristsopt_no(), renameFileName));
-			for(TouristspotImagesVo tsi:tsImages) {
-				System.out.println(tsi);
-			}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		//int result2 = touristspotService.insertTouristspotImages(tsImages);
-		
-		if(result >0) {
-			path="touristspot/touristspotMain";
-		}
-		return path;
-	}*/
 	@RequestMapping(value="TSWriterUpload.do",method=RequestMethod.POST)
 	public String insertTouristspot(TouristspotVo ts,MultipartHttpServletRequest mtfRequest,HttpServletRequest request) {
 		String path = "touristspot/touristspotMain";
@@ -95,9 +69,6 @@ public class TouristspotController {
 		ArrayList<TouristspotImagesVo> tsImages = new ArrayList<TouristspotImagesVo>();
 		ts.setTouristsopt_no(touristspotService.selectTouristspotNO());
 		System.out.println(ts.toString());
-		//지오코딩
-		//Float[] grid = GeoCoder.geoCoding(ts.getTouristsopt_address());
-		//이미지 여러개 처리
 		int result = touristspotService.insertTouristspot(ts);
 		if(result <=0) {
 			return "touristspot/touristspotMain";
@@ -135,6 +106,7 @@ public class TouristspotController {
 				e.printStackTrace();
 			}
 		}
+		System.out.println(tsImages.get(0).getTouristspot_imagename());
 		ts.setRename_thumnail(tsImages.get(0).getTouristspot_imagename());
 		touristspotService.updateTouristspotThumnail(ts);
 		/*if(result >0) {

@@ -16,8 +16,8 @@
 		<id property="touristsopt_address" column="TOURISTSOPT_ADDRESS" />
 		<id property="touristsopt_homepage" column="TOURISTSOPT_HOMEPAGE" />
 		<id property="touristsopt_tel" column="TOURISTSOPT_TEL" />
-		<id property="touristsopt_gridx" column="TOURISTSOPT_GRIDX" />
-		<id property="touristsopt_gridy" column="TOURISTSOPT_GRIDY" />
+		<id property="touristsopt_latitude" column="TOURISTSOPT_LATITUDE" />
+		<id property="touristsopt_longitude" column="TOURISTSOPT_LONGITUDE" />
 		<id property="touristsopt_date" column="TOURISTSOPT_DATE" />
 		<id property="touristsopt_lastmodified" column="TOURISTSOPT_LASTMODIFIED" />
 		<id property="touristsopt_deletestatus" column="TOURISTSOPT_DELETESTATUS" />
@@ -43,16 +43,12 @@
 		insert into tb_touristsopt(TOURISTSOPT_NO,TOURISTSOPTCATEGORYCODE,TOURISTSOPT_NAME,
 		TOURISTSOPT_CONTENT,TOURISTSOPT_WRITER,TOURISTSOPT_OPEN,
 		TOURISTSOPT_CLOSED,TOURISTSOPT_HOMEPAGE,TOURISTSOPT_ADDRESS,TOURISTSOPT_TEL,
-		<if test="touristsopt_gridx != null">
-		TOURISTSOPT_GRIDX,TOURISTSOPT_GRIDY,
-		</if>
+		TOURISTSOPT_LATITUDE,TOURISTSOPT_LONGITUDE,		
 		TOURISTSOPT_DATE,TOURISTSOPT_LASTMODIFIED,TOURISTSOPT_DELETESTATUS)
 		VALUES(#{touristsopt_no},#{touristsoptcategorycode},#{touristsopt_name},
 		#{touristsopt_content},#{touristsopt_writer},#{touristsopt_open},
 		#{touristsopt_closed},#{touristsopt_homepage},#{touristsopt_address},#{touristsopt_tel},
-		<if test="touristsopt_gridx != null">
-		#{touristsopt_gridx},#{touristsopt_gridy},
-		</if>
+		#{touristsopt_latitude},#{touristsopt_longitude},		
 		DEFAULT,DEFAULT,DEFAULT)
 	</insert>
 	<insert id="insertTouristspotImages" parameterType="TouristspotImagesVo">
