@@ -34,8 +34,8 @@
                   aria-expanded="false">고객센터</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="faqlist1.do">FAQ</a></li>
                   <li class="nav-item"><a class="nav-link" href="qnalist.do">1:1문의</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
                	</ul>
 							</li>
               <li class="nav-item submenu dropdown">
@@ -78,5 +78,6 @@
 <script src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/skrollr.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-1.11.0.min.js"></script>
 </body>
 </html>
