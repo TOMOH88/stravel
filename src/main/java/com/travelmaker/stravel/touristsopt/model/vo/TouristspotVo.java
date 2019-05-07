@@ -20,8 +20,8 @@ public class TouristspotVo implements Serializable{
 	private String touristsopt_homepage;
 	private String touristsopt_address;
 	private String touristsopt_tel;
-	private Float touristsopt_gridx;
-	private Float touristsopt_gridy;
+	private double touristsopt_latitude;
+	private double touristsopt_longitude;
 	private Date touristsopt_date;
 	private Date touristsopt_lastmodified;
 	private String touristsopt_deletestatus;
@@ -31,7 +31,7 @@ public class TouristspotVo implements Serializable{
 	public TouristspotVo(int touristsopt_no, String touristsoptcategorycode, String touristsopt_name,
 			String touristsopt_content, String touristsopt_writer, String rename_thumnail, String touristsopt_open,
 			String touristsopt_closed, String touristsopt_homepage, String touristsopt_address, String touristsopt_tel,
-			Float touristsopt_gridx, Float touristsopt_gridy, Date touristsopt_date, Date touristsopt_lastmodified,
+			double touristsopt_latitude, double touristsopt_longitude, Date touristsopt_date, Date touristsopt_lastmodified,
 			String touristsopt_deletestatus) {
 		super();
 		this.touristsopt_no = touristsopt_no;
@@ -45,8 +45,8 @@ public class TouristspotVo implements Serializable{
 		this.touristsopt_homepage = touristsopt_homepage;
 		this.touristsopt_address = touristsopt_address;
 		this.touristsopt_tel = touristsopt_tel;
-		this.touristsopt_gridx = touristsopt_gridx;
-		this.touristsopt_gridy = touristsopt_gridy;
+		this.touristsopt_latitude = touristsopt_latitude;
+		this.touristsopt_longitude = touristsopt_longitude;
 		this.touristsopt_date = touristsopt_date;
 		this.touristsopt_lastmodified = touristsopt_lastmodified;
 		this.touristsopt_deletestatus = touristsopt_deletestatus;
@@ -117,17 +117,17 @@ public class TouristspotVo implements Serializable{
 	public void setTouristsopt_tel(String touristsopt_tel) {
 		this.touristsopt_tel = touristsopt_tel;
 	}
-	public Float getTouristsopt_gridx() {
-		return touristsopt_gridx;
+	public double gettouristsopt_latitude() {
+		return touristsopt_latitude;
 	}
-	public void setTouristsopt_gridx(Float touristsopt_gridx) {
-		this.touristsopt_gridx = touristsopt_gridx;
+	public void settouristsopt_latitude(double touristsopt_latitude) {
+		this.touristsopt_latitude = touristsopt_latitude;
 	}
-	public Float getTouristsopt_gridy() {
-		return touristsopt_gridy;
+	public double gettouristsopt_longitude() {
+		return touristsopt_longitude;
 	}
-	public void setTouristsopt_gridy(Float touristsopt_gridy) {
-		this.touristsopt_gridy = touristsopt_gridy;
+	public void settouristsopt_longitude(double touristsopt_longitude) {
+		this.touristsopt_longitude = touristsopt_longitude;
 	}
 	public Date getTouristsopt_date() {
 		return touristsopt_date;
@@ -157,8 +157,8 @@ public class TouristspotVo implements Serializable{
 				+ touristsopt_content + ", touristsopt_writer=" + touristsopt_writer + ", rename_thumnail="
 				+ rename_thumnail + ", touristsopt_open=" + touristsopt_open + ", touristsopt_closed="
 				+ touristsopt_closed + ", touristsopt_homepage=" + touristsopt_homepage + ", touristsopt_address="
-				+ touristsopt_address + ", touristsopt_tel=" + touristsopt_tel + ", touristsopt_gridx="
-				+ touristsopt_gridx + ", touristsopt_gridy=" + touristsopt_gridy + ", touristsopt_date="
+				+ touristsopt_address + ", touristsopt_tel=" + touristsopt_tel + ", touristsopt_latitude="
+				+ touristsopt_latitude + ", touristsopt_longitude=" + touristsopt_longitude + ", touristsopt_date="
 				+ touristsopt_date + ", touristsopt_lastmodified=" + touristsopt_lastmodified
 				+ ", touristsopt_deletestatus=" + touristsopt_deletestatus + "]";
 	}
