@@ -44,6 +44,11 @@ public class CalendarController {
 	public String moveTest2() {
 		return "calendar/test2";
 	}
+	
+	@RequestMapping("vcalendar.do")
+	public String moveViewCalendarPage() {
+		return "calendar/calendarViewList";
+	}
 }
 
 

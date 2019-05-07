@@ -126,6 +126,12 @@
 .fadeIn-right{
   left: 80%;
 }
+
+div{
+	border:1px solid black;
+}
+
+
 </style>
 </head>
 <body>
@@ -134,11 +140,14 @@
 <section class="section-margin pb-xl-5">
 <div class="container">
 <font>나의일정보기</font>
-<input type="button" value="일정 만들기" class="btn btn-info" onclick="location.href='searchcalendar.do'">
+<div style="float:right;">
+<input type="button" value="일정 만들기" class="btn btn-info btn-sm" onclick="location.href='searchcalendar.do'">
+</div>
 </div>
 <br>
 <div class="container">
 <div class="row">
+<div class="col-xl-4">
   <div class="content">
 <a href="scalendar.do">
 <div class="content-overlay"></div>
@@ -152,6 +161,8 @@
       </div>
     </a>
   </div>
+  </div>
+  <div class="col-xl-4">
   <div class="content">
 <a href="scalendar.do">
 <div class="content-overlay"></div>
@@ -165,6 +176,22 @@
     </a>
   </div>
   </div>
+    <div class="col-xl-4">
+  <div class="content">
+<a href="scalendar.do">
+<div class="content-overlay"></div>
+<img src="${pageContext.request.contextPath }/resources/img/maldives-1993704_1920.jpg" style="height:300px;">
+  <div class="content-details fadeIn-top">
+        <h3>일정2</h3>
+        <p>클릭시 일정상세보기</p>
+        <a href="#">수정</a>
+        <a href="#">삭제</a>
+      </div>
+    </a>
+  </div>
+  </div>
+  <div class="row" style="width:100%; height:20px;"></div>
+</div>
 </div>
 </section>
 <!--================Tour section End =================-->

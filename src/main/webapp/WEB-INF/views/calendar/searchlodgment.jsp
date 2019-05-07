@@ -40,7 +40,7 @@ div{
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">숙박기간</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="닫기" data-dismiss="modal" aria-label="닫기">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -53,7 +53,7 @@ div{
          </label>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
         <button type="button" class="btn btn-primary">저장</button>
       </div>
     </div>
@@ -69,7 +69,7 @@ div{
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">인원수</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="닫기" data-dismiss="modal" aria-label="닫기">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -82,7 +82,7 @@ div{
       	</label>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
         <button type="button" class="btn btn-primary">저장</button>
       </div>
     </div>
@@ -98,7 +98,7 @@ div{
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">가격</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="닫기" data-dismiss="modal" aria-label="닫기">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -106,7 +106,7 @@ div{
        <input type="number">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
         <button type="button" class="btn btn-primary">저장</button>
       </div>
     </div>
@@ -122,7 +122,7 @@ div{
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">편의시설</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="닫기" data-dismiss="modal" aria-label="닫기">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -138,7 +138,7 @@ div{
       <label><input type="checkbox" >난방</label>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
         <button type="button" class="btn btn-primary">저장</button>
       </div>
     </div>
