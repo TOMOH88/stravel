@@ -218,7 +218,7 @@
 <body class="roomBody">
 <section class="section-margin">
 	<c:import url="../common/header.jsp" />
-
+    </section>
 
 <div onclick="mainmodal()" style="width:100%;height:592px;" class="timgdiv" ><!-- 나중에 클릭시 모달창 함수 실행시킬 div 영역 -->
 	<div class="timgdiv1" style="height:592px; float:left; ">
@@ -437,6 +437,9 @@
 		</div>
 	</div>
 </div>
+<div>
+	<c:import url="../common/footer.jsp" />
+</div>
 
 
 <!-- 사이즈 축소시 사이드바 하단으로 -->
@@ -536,7 +539,9 @@
 					<div class="swiper-slide modalslide1"
 						style="background-image: url(http://lorempixel.com/1200/1200/nature/2/)"></div>
 					<div class="swiper-slide modalslide1"
-						style="background-image: url(http://lorempixel.com/1200/1200/nature/3/)"></div>
+						style="backgrou
+						
+						nd-image: url(http://lorempixel.com/1200/1200/nature/3/)"></div>
 					<div class="swiper-slide modalslide1"
 						style="background-image: url(http://lorempixel.com/1200/1200/nature/4/)"></div>
 					<div class="swiper-slide modalslide1"
@@ -561,7 +566,7 @@
 
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJoPfOWTR_yPSub9u9VPKGGVauCN0RoAg&callback=initMap"
     async defer></script><!-- 구글맵 -->
-    </section>
+
 </body>
 </html>
 <script type="text/javascript">

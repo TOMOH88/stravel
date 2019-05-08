@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="roomMapper">
+
+<resultMap id= "resultRoom" type = "roomVo">
+	<id property = "roomNo" column = "ROOM_NO"/>
+	<result property = "licenseNo" column = "OWNER_NO"/>
+	<result property = "roomName" column = "ROOM_NAME"/>
+	<result property = "option" column = "ROOM_OPTION"/>
+	<result property = "roomContent" column = "ROOM_CONTENT"/>
+	<result property = "minNo" column = "min_No"/>
+	<result property = "maxNo" column = "max_No"/>
+	<result property = "off_season_price" column = "OFF_SEASON_PRICE"/>
+	<result property = "on_season_price" column = "ON_SEASON_PRICE"/>
+	<result property = "week_extra_price" column = "WEEK_EXTRA_PRICE"/>
+	<result property = "add_person_price" column = "ADD_PERSON_PRICE"/>
+	<result property = "discountRate" column = "DISCOUNTRATE"/>
+</resultMap>
+
+<insert id="insertRoom" parameterType = "roomVo">
+	insert 
+</insert>
+
+</mapper>

@@ -35,7 +35,7 @@
 	}
 }
 
-.rsvck {
+.irbt {
 	-moz-box-shadow: inset 0px 39px 0px -24px #99b4ff;
 	-webkit-box-shadow: inset 0px 39px 0px -24px #99b4ff;
 	box-shadow: inset 0px 39px 0px -24px #99b4ff;
@@ -55,14 +55,17 @@
 	text-shadow: 0px 1px 0px #99b4ff;
 }
 
-.rsvck:hover {
+.irbt:hover {
 	background-color: #99b4ff;
 }
 
-.rsvck:active {
+.irbt:active {
 	position: relative;
 	top: 1px;
 }
+ input{
+  width:100px;
+ }
 
 /* table tr td {
 	border-bottom: 1px solid rgba(67, 67, 67, 0.8);
@@ -174,59 +177,60 @@ ul li a:hover {
 		</div>
 	</div><!-- ownerside -->
 		
-	<div class="ownerbody"  style="width:69%; display:table-cell;"><!-- ownerbody -->
+		<div class="ownerbody"  style="width:69%; display:table-cell;"><!-- ownerbody -->
 		<bR><BR><BR>
 		<div style="width:900px;border:1px solid black; margin:0 auto; background:#edf7f8; padding:50px;">
 			<div style="text-align:center; font-size:2em; margin-bottom:20px; color:black; font-weight:bold; ">객실등록</div>
-			<div id="isroom"style="margin:20px; border:1px solid #cfcfcf; background:white;padding:30px;">
+			<div id="isroom" style="margin:20px; border:1px solid #cfcfcf; background:white;padding:30px;">
+			<form action="insertroom.do" method="post">
+				
+				<div>객실정보</div>
+				<hr>
+				<div>객실명 : <input type="text" name="roomname" required></div>
+				<div>최소인원 : <input type="number" min="2" max="10" name="minmember" required></div>
+				<div>최소인원 : <input type="number" min="2" max="10" name="maxmember" required></div>
+				<div>객실정보 :</div>
+				<textarea rows="7" cols="50" name="roominfo" required></textarea>
+				<br>
+				<br>
+				<br>
+				<br>
 				<div>가격정보</div>
 				<hr>
-				<div>&nbsp;비수기 &nbsp;&nbsp;&nbsp;:<input type="text" name="offprice"></div>
-				<div>&nbsp;성수기 &nbsp;&nbsp;&nbsp;:<input type="text" name="onprice"></div>
-				<div>주말추가 :<input type="text" name="weekprice"></div>
-				<div>인원추가 :<input type="text" name="mprice"></div>
-				<br>
-				<div>객실정보 : </div>
-				<hr>
-				<div>최소인원 : <input type="number" min="2" max="10" name="minmember"></div>
-				<div>최소인원 : <input type="number" min="2" max="10" name="maxmember"></div>
-				<div>객실정보 </div>
-				<textarea rows="7" cols="50"></textarea>
+				<div>비수기 :<input type="text" name="offprice" required></div>
+				<div>성수기 :<input type="text" name="onprice" required></div>
+				<div>주말추가 :<input type="text" name="weekprice" required></div>
+				<div>인원추가 :<input type="text" name="mprice" required></div>
+				<div>할인율 : <input type="number" min="10" max="100" step="5" name="discount">%</div>
 				<br>
 				<div>편의시설</div>
 				<hr>
 				<div>
 					<table>
 					<tr>
-					<td><label for=""><input type="checkbox" name="option" value="wifi" >WI-FI</label></td>
-					<td><label for=""><input type="checkbox" name="option" value="parking" >주차장</label></td>
-					<td><label for=""><input type="checkbox" name="option" value="tv" >TV</label></td>
-					<td><label for=""><input type="checkbox" name="option" value="fire" >소화기</label></td>
+					<td><label for="wifi"><input type="checkbox" name="option" value="wifi" id="wifi">WI-FI</label></td>
+					<td><label for="parking"><input type="checkbox" name="option" value="parking" id="parking">주차장</label></td>
+					<td><label for="tv"><input type="checkbox" name="option" value="tv" id="tv">TV</label></td>
+					<td><label for="fire"><input type="checkbox" name="option" value="fire"  id="fire">소화기</label></td>
 					</tr>
 					<tr>
-					<td><label for=""><input type="checkbox" name="option" value="bed" >침구/세면도구</label></td>
-					<td><label for=""><input type="checkbox" name="option" value="aircon" >에어컨</label></td>
-					<td><label for=""><input type="checkbox" name="option" value="heater" >난방</label></td>
-					<td><label for=""><input type="checkbox" name="option" value="cook" >취사도구(식기구/접시/가스레인지or인덕션)</label></td>
+					<td><label for="bed"><input type="checkbox" name="option" value="bed"   id="bed">침구/세면도구</label></td>
+					<td><label for="cook"><input type="checkbox" name="option" value="cook"  id="cook">취사도구(식기구/접시/가스레인지or인덕션)</label></td>
+					<td><label for="aircon"><input type="checkbox" name="option" value="aircon" id="aircon" >에어컨</label></td>
+					<td><label for="heater"><input type="checkbox" name="option" value="heater" id="heater" >난방</label></td>
 					</tr>
 					<tr>
-					<td><label for=""><input type="checkbox" name="option" value="gril" >그릴서비스</label></td>
-					<td><label for=""><input type="checkbox" name="option" value="spa" >스파</label></td>
-					<td><label for=""><input type="checkbox" name="option" value="breakfast" >조식</label></td>
-					<td><label for=""><input type="checkbox" name="option" value="roomservice" >룸서비스</label></td>
+					<td><label for="gril"><input type="checkbox" name="option" value="gril" id="gril">그릴서비스</label></td>
+					<td><label for="spa"><input type="checkbox" name="option" value="spa" id="spa">스파</label></td>
+					<td><label for="breakfast"><input type="checkbox" name="option" value="breakfast" id="breakfast">조식</label></td>
+					<td><label for="roomservice"><input type="checkbox" name="option" value="roomservice"  id="roomservice">룸서비스</label></td>
 					</tr>
 					</table>
 				</div>
-				<div class="imgdiv">
-					
-				</div>
-				<div>
-				<input type="file" id="upfile" name="roomimg">
-				</div>
-				<div style="text-align:center;">
-				<input type="submit" value="등록하기" id="insertroombt">
-				</div>
+				<br>
+				<div style="text-align:center;"><input type="submit" value="등록하기" class="irbt" style="margin-right:20px;"><input type="reset" value="취소하기" class="irbt"></div>
 			</div>
+			</form>
 		</div>
 	</div><!-- ownerbody -->
 </div>

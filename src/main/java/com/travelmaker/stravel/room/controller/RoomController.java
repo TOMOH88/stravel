@@ -1,11 +1,19 @@
 package com.travelmaker.stravel.room.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.travelmaker.stravel.room.service.RoomService;
+import com.travelmaker.stravel.room.vo.Room;
 
 @Controller
 public class RoomController {
 
+	@Autowired
+	private RoomService rs;
+	
 	@RequestMapping("oh.do")
 	public String ohWorkList() {
 		return "room/ohWorkList";
@@ -31,9 +39,15 @@ public class RoomController {
 		return "room/roomOrderList";
 	}
 	
-	@RequestMapping("insertRoom.do")
-	public String inserRoom() {
-		return "room/insertRoom";
+	@RequestMapping(value="insertRoom.do", method=RequestMethod.POST)
+	public String inserRoom(Room room) {
+		int result = rs.insertRoom(room);
+		
+		if(result > 0) {
+			return "room/insertRoom";
+		}else {
+			return "";
+		}
 	}
 	
 	@RequestMapping("updateRoom.do")
@@ -44,5 +58,9 @@ public class RoomController {
 	@RequestMapping("updateOwner.do")
 	public String updateOwner() {
 		return "room/updateOwner";
+	}
+	@RequestMapping("roomList.do")
+	public String roomList() {
+		return "room/roomList";
 	}
 }
