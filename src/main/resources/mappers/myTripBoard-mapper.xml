@@ -3,7 +3,14 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="myTripBoardMapper">
-
+	<resultMap id="resultTripBoardReview" type="MyTripBoardReview">
+		<result property = "board_no" column = "board_no"/>
+		<result property = "answer_no" column = "answer_no"/>
+		<result property = "answer_content" column = "answer_content"/>
+		<result property = "answer_writer" column = "answer_writer"/>
+		<result property = "answer_date" column = "answer_date"/>
+	</resultMap>
+	
 	<resultMap id="resultTripBoard" type="MyTripBoard">
 		<result property = "board_no" column = "board_no"/>
 		<result property = "board_title" column = "board_title"/>
@@ -15,14 +22,31 @@
 		<result property = "board_write_date" column = "board_write_date"/>
 		<result property = "board_good_count" column = "board_good_count"/>
 	</resultMap>
+	<resultMap id="resultTripBoardImage" type="MyTripBoardImage">
+		<result property = "board_no" column = "board_no"/>
+		<result property = "board_sq" column = "board_sq"/>
+		<result property = "board_imagename" column = "board_imagename"/>
+	</resultMap>
 	
 	<select id="selectBoardList" resultMap = "resultTripBoard">
 		select * from show_schedule
 	</select>
 	
-	<select id = "selectBoard" parameterType = "_int" resultType = "MyTripBoard" resultMap = "resultTripBoard">
+	<select id = "selectBoard" parameterType = "_int" resultMap = "resultTripBoard">
 		select * from show_schedule
 		where board_no = #{board_no}
 	</select>
+	<insert id="insertBoardImage" parameterType = "MyTripBoardImage">
+		insert into show_schedule_image(board_no, board_sq, board_imagename) values(#{board_no}, #{board_sq}, #{board_imagename})
+	</insert>
 	
+	<insert id="insertBoard" parameterType = "MyTripBoard">
+		insert into show_schedule(board_no, board_title, board_writer, board_content, board_original_filename, 
+		board_rename_filename, board_read_count, board_write_date, board_good_count) values (
+		seq_board_no.nextval, #{board_title}, #{board_writer}, #{board_content}, #{board_original_filename}, #{board_rename_filename}, default, default, default)
+	</insert>
+	
+	<select id="reviewListAll" resultMap = "resultTripBoardReview">
+		select * from show_schedule_answer
+	</select>
 </mapper>
