@@ -10,7 +10,7 @@
 <body>
 <c:import url="../common/header.jsp" />
 <section class="section-margin">
-
+사용자 qna
 </section>
 <c:import url="../common/footer.jsp" />
 </body>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myTripBoardMapper">
+
+	<resultMap id="resultTripBoard" type="MyTripBoard">
+		<result property = "board_no" column = "board_no"/>
+		<result property = "board_title" column = "board_title"/>
+		<result property = "board_writer" column = "board_writer"/>
+		<result property = "board_content" column = "board_content"/>
+		<result property = "board_original_filename" column = "board_original_filename"/>
+		<result property = "board_rename_filename" column = "board_rename_filename"/>
+		<result property = "board_read_count" column = "board_read_count"/>
+		<result property = "board_write_date" column = "board_write_date"/>
+		<result property = "board_good_count" column = "board_good_count"/>
+	</resultMap>
+	
+	<select id="selectBoardList" resultMap = "resultTripBoard">
+		select * from show_schedule
+	</select>
+	
+	<select id = "selectBoard" parameterType = "_int" resultType = "MyTripBoard" resultMap = "resultTripBoard">
+		select * from show_schedule
+		where board_no = #{board_no}
+	</select>
+	
+</mapper>
