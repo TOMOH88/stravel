@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,19 +168,10 @@ ul li a:hover {
 								<td style="width: 110px;">예약현황</td>
 								<td style="width: 100px;">입실여부</td>
 							</tr>
+						<%-- 	<c:forEach items="${list }" var="reservation">
 							<tr>
-								<td>201호</td>
-								<td>오청</td>
-								<td>2명</td>
-								<td>2019-04-22</td>
-								<td>2019-05-05</td>
-								<td>2019-05-06</td>
-								<td>결제완료</td>
-								<td><a class="rsvck" value="1">입실확인</a></td>
-							</tr>	
-							<tr>
-								<td>201호</td>
-								<td>오청</td>
+								<td>${reservation.roomName }</td>
+								<td>${reservation. }</td>
 								<td>2명</td>
 								<td>2019-04-22</td>
 								<td>2019-05-05</td>
@@ -187,7 +179,9 @@ ul li a:hover {
 								<td>결제완료</td>
 								<td><a class="rsvck" value="1">입실확인</a></td>
 							</tr>
-							<tr>
+							</c:forEach> --%>
+							
+							<!-- <tr>
 								<td>201호</td>
 								<td>오청</td>
 								<td>2명</td>
@@ -196,17 +190,7 @@ ul li a:hover {
 								<td>2019-05-06</td>
 								<td>결제완료</td>
 								<td><a class="rsvck" value="1">입실확인</a></td>
-							</tr>
-							<tr>
-								<td>201호</td>
-								<td>오청</td>
-								<td>2명</td>
-								<td>2019-04-22</td>
-								<td>2019-05-05</td>
-								<td>2019-05-06</td>
-								<td>결제완료</td>
-								<td><a class="rsvck" value="1">입실확인</a></td>
-							</tr>
+							</tr> -->
 						</table>
 					</div>
 				</div>

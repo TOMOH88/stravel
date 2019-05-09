@@ -24,7 +24,7 @@ import com.travelmaker.stravel.support.model.vo.QnaVo;
 @Controller
 public class SupportController {
 	
-	private static final Logger logger= LoggerFactory.getLogger(SupportController.class);
+	/*private static final Logger logger= LoggerFactory.getLogger(SupportController.class);
 	@Autowired
 	private SupportService supportService;
 	@RequestMapping("support.do")
@@ -121,6 +121,6 @@ public class SupportController {
 		}
 		
 		return path;
-	}
+	}*/
 		
 }

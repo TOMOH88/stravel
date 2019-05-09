@@ -1,9 +1,11 @@
-package com.travelmaker.stravel.room.service;
+package com.travelmaker.stravel.room.model.service;
 
-import com.travelmaker.stravel.room.vo.Room;
+import com.travelmaker.stravel.room.model.vo.Room;
 
 public interface RoomService {
 
-	 int insertRoom(Room room);
-
+	int inserRoomSub(Room room);
+	
 }
+
+

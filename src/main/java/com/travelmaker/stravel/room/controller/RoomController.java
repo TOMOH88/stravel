@@ -2,18 +2,18 @@ package com.travelmaker.stravel.room.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.travelmaker.stravel.room.service.RoomService;
-import com.travelmaker.stravel.room.vo.Room;
+import com.travelmaker.stravel.room.model.service.RoomService;
+import com.travelmaker.stravel.room.model.vo.Room;
 
 @Controller
 public class RoomController {
-
+	
 	@Autowired
 	private RoomService rs;
-	
+
 	@RequestMapping("oh.do")
 	public String ohWorkList() {
 		return "room/ohWorkList";
@@ -39,14 +39,18 @@ public class RoomController {
 		return "room/roomOrderList";
 	}
 	
-	@RequestMapping(value="insertRoom.do", method=RequestMethod.POST)
-	public String inserRoom(Room room) {
-		int result = rs.insertRoom(room);
-		
-		if(result > 0) {
-			return "room/insertRoom";
+	@RequestMapping("insertRoom.do")
+	public String inserRoom() {
+		return "room/insertRoom";
+	}
+	@RequestMapping("insertRoomSub.do")
+	public String inserRoomSub(Room room, Model model) {
+		int result = rs.inserRoomSub(room);
+		System.out.println(result);
+		if(result > 0 ) {
+			return "room/ownerMain";
 		}else {
-			return "";
+			return "room/ownerMain";
 		}
 	}
 	
@@ -58,9 +62,5 @@ public class RoomController {
 	@RequestMapping("updateOwner.do")
 	public String updateOwner() {
 		return "room/updateOwner";
-	}
-	@RequestMapping("roomList.do")
-	public String roomList() {
-		return "room/roomList";
 	}
 }

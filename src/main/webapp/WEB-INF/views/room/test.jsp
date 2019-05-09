@@ -1,300 +1,139 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/vendors/fontawesome/css/all.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/vendors/themify-icons/themify-icons.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/vendors/linericon/style.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.theme.default.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/vendors/flat-icon/font/flaticon.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/vendors/nice-select/nice-select.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/style.css">
-<style type="text/css">
-h5 {
-	display: inline;
-}
-
-table, th, td {
-	border: 1px solid #bcbcbc;
-}
-
-#ptypetable input[type=button] {
-	background-color: #4ddbff;
-	color: white;
-	border: 0;
-	width: 120px;
-	height: 30px;
-	border-radius: 5px;
-	"
-}
-</style>
-
-<script type="text/javascript"src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js">
-	
-</script>
-<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-
-
-
 <title>stravel</title>
+
+<style type="text/css">
+   .sub_news, .sub_news th, .sub_news td{border:0}
+   .sub_news a{color:#383838; text-decoration:none}
+   .sub_news{width:100%; border-bottom:1px solid #000; color:#666; font-size:12px; table-layout:fixed}
+   .sub_news caption{display:none}
+   .sub_news th{padding:5px 0 6px;border-top:solid 1px #999; border-bottom:solid 1px #b2b2b2; background-color:#f1f1f4; color:#333; font-weight:bold; line-height:20px; vertical-align:top}
+   .sub_news td{padding:8px 0 9px; border-bottom:solid 1px #d2d2d2; text-align:center; line-heignt:18px}
+   .sub_news .date, .sub_news .hit, .sub_news .read{padding:0; font-family:Tahoma; font-size:11px; line-height:normal}
+   .sub_news .title{text=align:left; padding-left:15px; font-size:13px;}
+   .sub_news .title .pic, .sub_news .title .new{margin:0 0 2px; vertical-align :middle}
+   .sub_news .title a .comment{padding:0;background:none; color : #f00; font-size:12px; font-weight:bold}
+   .sub_news tr.reply .title a{padding-left:16px; background:url(첨부파일/ic_reply.png) 0 1px no-repeat}
+   .trip_board .like .hart {border : none; background-color : white;}
+</style>
+<script type="text/javascript">
+   
+	
+	/* 	$("#emptyhart").click(function(){
+         var emptyhart = document.getElementById("emptyhart");
+         var redhart = document.getElementById("redhart");
+         alert("!23");
+         emptyhart.style.display = 'none';
+         redhart.style.display = 'block' ; 
+         }); 
+         */
+         
+         function show1(){
+        	    var emptyhart = document.getElementById("emptyhart");
+                var redhart = document.getElementById("redhart");
+                
+                emptyhart.style.display = 'none';
+                redhart.style.display = 'block' ; 
+         }
+   
+         function show2(){
+     	    var emptyhart = document.getElementById("emptyhart");
+             var redhart = document.getElementById("redhart");
+             
+             emptyhart.style.display = 'block';
+             redhart.style.display = 'none' ; 
+      }
+</script>
 </head>
 <body>
-
-	<br>
-	<br>
-	<br>
-	<div align="center">
-		<h5 style="color: black;">1. 이용 규칙 및 상세 내용</h5>
-		<h5>></h5>
-		<h5 style="color: black;">2. 사용자 정보 입력</h5>
-		<h5>></h5>
-		<h5>3. 확인 및 결제</h5>
-	</div>
-
-	<br>
-	<hr style="border: 1px solid yellow;">
-	<br>
-	<br>
-
-	<div style="width: 1650px; height: 1000px; float: left;">
-		<div style="width: 16%; height: 100%; float: left;">
-			<!-- 공백 -->
-		</div>
-
-		<div style="width: 43%; height: 100%; float: left;">
-			<!-- 메인 -->
-			<br>
-			<br>
-			<h2>확인 및 결제</h2>
-			<br>
-			<br>
-			<hr style="border: 1px solid yellow;">
-			<br>
-			<br> <br>
-			<br>
-
-
-			<div style="width: 100%; height: 50%; float: left;">
-				<div style="width: 100%; height: 50%; float: left;">인원 텍스트창</div>
-
-				<table class="table" >
-					<tr>
-						<th align="left" height="50">결제 방법</th>
-					</tr>
-					<tr>
-						<th id="ptypetable" align="left">
-						<input type="button" id="card"	value="카드">&nbsp; 
-						<input type="button" id="trans"	value="실시간계좌이체">&nbsp; 
-						<input type="button" id="vbank"	value="가상계좌">&nbsp; 
-						<input type="hidden" id="ptype"	name="ptype"></th>
-					</tr>
-				</table>
-				<br>
-				<br>
-				<hr style="border: 1px solid yellow;">
-				<br>
-				<br>
-				<br> <input type="button" id="order" value="확인 및 결제"
-					onclick="pay()">
-
-			</div>
-		</div>
-
-		<!-- 사이드박스 div -->
-
-		<div style="width: 25%; height: 100%; float: left;">
-			<!-- 사이드 -->
-			<div style="width: 5%; height: 100%; float: left;">
-				<!-- 공백 -->
-			</div>
-
-			<div style="width: 90%; height: 100%; float: left;">
-				<!-- 사이드라인 -->
-				<div
-					style="width: 370px; height: 500px; float: left; border: 2px solid yellow;">
-					<!-- 사이드박스 -->
-					<div style="width: 100%; height: 5%; float: top;">
-						<!-- 공백 -->
-						<%-- <img
-							src="${pageContext.request.contextPath }/resources/files/1.jpg"
-							style="width: 100px; height: 70px;" align="right"> --%>
-					</div>
-					<div style="width: 100%; height: 90%; float: top;">
-						<!-- 사이드값 -->
-						<div style="text-align: center;">
-							<h6>서귀포 최고의 오션뷰 호텔연</h6>
-						</div>
-						<br>
-						<hr style="border: 1px solid yellow;">
-						<br>
-						<div style="width: 50%; height: 100; float: left;">
-							인원 : 게스트 1명<br>
-							<br> 2019년 5월 5일<br>
-							<br> ₩59,000 X 1박<br>
-							<br> 서비스 수수료 <br>
-							<br>
-							<hr style="border: 1px solid yellow;">
-							<br>
-							<div>
-								<h6>총 합계 (KRW)</h6>
-							</div>
-							<br>
-							<hr style="border: 1px solid yellow;">
-							<br>
-						</div>
-						<div style="width: 50%; height: 100; float: left;">
-							<br>
-							<br> ~ 2019년 5월6일<br>
-							<br>
-							<div style="text-align: right;">₩59,000</div>
-							<br>
-							<div style="text-align: right;">₩7,611</div>
-							<br>
-							<hr style="border: 1px solid yellow;">
-							<br>
-							<div style="text-align: right;">
-								<h6>₩66,611</h6>
-							</div>
-							<br>
-							<hr style="border: 1px solid yellow;">
-						</div>
-
-
-
-						<div style="width: 100%; height: 5%; float: top;">
-							<!-- 공백 -->
-						</div>
-
-
-
-
-
-
-
-
-
-					</div>
-
-				</div>
-				<!-- 사이드박스 -->
-
-
-			</div>
-			<!-- 사이드라인 -->
-
-		</div>
-		<!-- 사이드 -->
-	</div>
-	<!-- 전체 -->
-
-
-
-<script type="text/javascript">
-	
-	function pay() {
-
-		IMP.init('imp99225181');
-
-		IMP.request_pay({
-			pg : 'html5_inicis',
-			pay_method : $("#ptype").val(),
-			merchant_uid : 'merchant_' + new Date().getTime(),
-			name : '주문명:결제테스트',
-			amount : 14000,
-			buyer_email : 'iamport@siot.do',
-			buyer_name : '구매자이름',
-			buyer_tel : '010-1234-5678',
-			buyer_addr : '서울특별시 강남구 삼성동',
-			buyer_postcode : '123-456'
-		}, function(rsp) {
-			if (rsp.success) {
-				var msg = '결제가 완료되었습니다.';
-				msg += '고유ID : ' + rsp.imp_uid;
-				msg += '상점 거래ID : ' + rsp.merchant_uid;
-				msg += '결제 금액 : ' + rsp.paid_amount;
-				msg += '카드 승인번호 : ' + rsp.apply_num;
-			} else {
-				var msg = '결제에 실패하였습니다.';
-				msg += '에러내용 : ' + rsp.error_msg;
-			}
-
-			alert(msg);
-		});
-	}
-	//결제방법 선택
-
- 	$("#ptype").val($("#card").attr("id"));
-	function click() {
-		$("#ptype").val($("#card").attr("id"));
-		alert("123");
-	}
-	$("#card").click(function() {
-		
-		$("#ptype").val($("#card").attr("id"));
-		
-
-		$("#card").css("background", "#ffca18");
-		$("#trans").css("background", "#4ddbff");
-		$("#vbank").css("background", "#4ddbff");
-	});
-
-	$("#trans").click(function() {
-		$("#ptype").val($("#trans").attr("id"));
-
-		$("#card").css("background", "#4ddbff");
-		$("#trans").css("background", "#ffca18");
-		$("#vbank").css("background", "#4ddbff");
-	});
-
-	$("#vbank").click(function() {
-		$("#ptype").val($("#vbank").attr("id"));
-
-		$("#card").css("background", "#4ddbff");
-		$("#trans").css("background", "#4ddbff");
-		$("#vbank").css("background", "#ffca18");
-	}); 
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<script
-		src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/vendors/nice-select/jquery.nice-select.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/js/jquery.ajaxchimp.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/resources/js/skrollr.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+<fieldset>
+   <legend>${ myboard.board_writer }님의 글 </legend>
+   <div class = "trip_board">
+      <ul>
+         <li>
+             <label for = "title">제목</label>
+             ${myboard.board_title }
+         </li>
+         <li>
+            <label for = "date">날짜</label>
+             
+         </li>
+         <li>
+            <label for = "date">일정</label>
+             박 일
+         </li>
+         <div class = "myinfo">
+            <a href = "#">나의 정보 불러오기</a>
+         </div>
+         <li>
+            <label for = "schedule">스케줄</label>
+            
+         </li>
+         <li>
+            <label for = "latter">후기</label><br><br>
+            ${myboard.board_content }
+         </li>
+         <div class = "like" >
+            <img src="${ pageContext.request.contextPath }/resources/img/hart/emptyhart.png" style="width:50px; height:50px;" id="emptyhart" onclick="show1()"  >
+            <img src="${ pageContext.request.contextPath }/resources/img/hart/redhart.png" style="display:none; width:50px; height:50px;"  id="redhart"  onclick="show2()">
+         </div>
+         <%-- <div class = "like" >
+            <img src="${ pageContext.request.contextPath }/resources/img/hart/redhart.png" alt = "emptyhart.png" class = "emptyhart" width = "50" heigth = "50" onclick = "changehart();">
+         </div> --%>
+            
+         
+      </ul>
+   </div>
+</fieldset>
+<fieldset>
+   <legend>리뷰달기</legend>
+   <form action = "insertreview.do" method = "post">
+      <input type = "hidden" name = "board_no" value = "${myboard.board_no }">
+      <input type = "hidden" name = "answer_writer" value = "고상훈">
+      <div class = "reviewcategory">
+         <div>
+            <textarea name = "answer_content" rows = "3" cols = "50"></textarea>
+         </div>
+         <div>
+            <input type = "submit">
+         </div>
+      </div>
+   </form>
+</fieldset>
+<fieldset>
+   <legend>리뷰 작성</legend>
+      <table class = "sub_news" border = "1" cellspacing = "0" summary = "게시판의 글제목 리스트">
+      <caption>게시판 리스트</caption>
+         <colgroup>
+            <col width = "25">
+            <col width = "110">
+            <col width = "100">
+         </colgroup>
+         <thead>
+         <tr>
+            <th scope = "col">번호</th>
+            <th scope = "col">리뷰</th>
+            <th scope = "col">아이디</th>
+         </tr>
+         </thead>
+         <tbody>
+            <c:forEach items = "${review }" var = "review">
+            <tr>
+               <td class = "number">${review.answer_no }</td>
+               <td class = "content">${review.answer_content }</td>
+               <td class = "writer">${review.answer_writer }</td>
+            </tr>
+            </c:forEach>
+         </tbody>
+         
+      </table>
+</fieldset>
 
 </body>
 </html>

@@ -11,9 +11,11 @@
 	<result property = "restaurant_content" column = "restaurant_content"/>
 	<result property = "restaurant_writer" column = "restaurant_writer"/>
 	<result property = "restaurant_date" column = "restaurant_date"/>
-	<result property = "rename_rhumbnail" column = "rename_rhumbnail"/>
+	<result property = "rename_thumnail" column = "rename_thumnail"/>
 	<result property = "restaurant_openinghours" column = "restaurant_openinghours"/>
+	<result property = "restaurant_closehours" column = "restaurant_closehours"/>
 	<result property = "restaurant_homepage" column = "restaurant_homepage"/>
+	<result property = "restaurant_address" column = "restaurant_address"/>
 	<result property = "restaurant_tel" column = "restaurant_tel"/>
 	<result property = "restaurant_lastmodified" column = "restaurant_lastmodified"/>
 	<result property = "restaurant_gridx" column = "restaurant_gridx"/>
@@ -21,9 +23,60 @@
 	<result property = "restaurant_deletestatus" column = "restaurant_deletestatus"/>
 </resultMap>
 
-<insert id="insertRestaurant" parameterType = "Restaurant">
-	insert into restaurant values (seq_restaurant_no.nextval, #{restaurant_category_code}, #{restaurant_name}, #{restaurant_content}, #{restaurant_writer}, 
-	sysdate, #{rename_rhumbnail}, #{restaurant_openinghours}, #{restaurant_homepage}, #{restaurant_tel}, #{restaurant_lastmodified}, #{restaurant_gridx}, #{restaurant_gridy}, #{restaurant_deletestatus})
-</insert>
+	<resultMap id = "resultRestaurantCategory" type = "RestaurantCategory">
+		<result property = "restaurant_category_code" column = "restaurant_category_code"/>
+		<result property = "restaurant_category_name" column = "restaurant_category_name"/>
+	</resultMap>
+	
+	<resultMap id = "resultRestaurantImage" type = "RestaurantImage">
+		<result property = "restaurant_no" column = "restaurant_no"/>
+		<result property = "restaurant_sq" column = "restaurant_sq"/>
+		<result property = "restaurant_imagename" column = "restaurant_imagename"/>
+	</resultMap>
+	
+	<select id="restaurantCategoryList" resultMap = "resultRestaurantCategory">
+		select * from restaurant_category
+	</select>
+
+	<insert id="insertRestaurant" parameterType = "Restaurant">
+		insert into restaurant(restaurant_no, restaurant_category_code, restaurant_name, restaurant_content, 
+		restaurant_writer, restaurant_date, restaurant_openinghours, restaurant_closehours, 
+		restaurant_homepage, restaurant_address, restaurant_tel, restaurant_lastmodified,restaurant_gridx, restaurant_gridy,
+		restaurant_deletestatus) 
+		values(#{restaurant_no}, #{restaurant_category_code}, #{restaurant_name}, #{restaurant_content}, 
+		 #{restaurant_writer}, default, #{restaurant_openinghours}, #{restaurant_closehours}, #{restaurant_homepage}, 
+		 #{restaurant_address}, #{restaurant_tel}, default, 
+		 #{restaurant_gridx}, #{restaurant_gridy}, 
+		 default)
+	</insert>
+	<select id="selectRestaurantNo" resultType = "_int">
+		select count(restaurant_no)+1 from restaurant
+	</select>
+	
+	<insert id="insertRestaurantImage" parameterType = "RestaurantImage">
+		insert into restaurant_images(restaurant_no, restaurant_sq, restaurant_imagename) values (#{restaurant_no}, #{restaurant_sq}, #{restaurant_imagename})
+	</insert>
+	
+	<update id="updateRestaurantThumnail" parameterType = "restaurant">
+		update restaurant set rename_thumnail = #{rename_thumnail} where restaurant_no = #{restaurant_no}
+	</update>
+	
+	<select id = "seafoodList" resultMap = "resultRestaurant">
+		select * from restaurant where restaurant_category_code like 'B003'
+	</select>
+	<select id = "barbecueList" resultMap = "resultRestaurant">
+		select * from restaurant where restaurant_category_code like 'B002'
+	</select>
+	<select id = "koreanfoodList" resultMap = "resultRestaurant">
+		select * from restaurant where restaurant_category_code like 'B001'
+	</select>
+	<select id = "cafeList" resultMap = "resultRestaurant">
+		select * from restaurant where restaurant_category_code like 'B004'
+	</select>
+	
+	<select id = "restaurantDetail" parameterType = "_int" resultMap = "resultRestaurant">
+		select * from restaurant where restaurant_no = #{restaurant_no}
+	</select>
+	
 
 </mapper>

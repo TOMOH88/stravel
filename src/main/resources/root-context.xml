@@ -48,12 +48,12 @@
 	<tx:annotation-driven 
 		transaction-manager="transactionManager" />
 	
- 	<aop:config proxy-target-class="true">
+<!-- 	<aop:config proxy-target-class="true">
 		<aop:pointcut
 			expression="execution(* com.kh.second..*ServiceImpl.*(..))"
 			id="serviceMethod" />
 		<aop:advisor advice-ref="txAdvice" id="transactionAdvisor"
 			pointcut-ref="serviceMethod" />
-	</aop:config> 
+	</aop:config> -->
 	
 </beans>

@@ -63,7 +63,8 @@
 	position: relative;
 	top: 1px;
 }
- input{
+ input[type=text],
+ input[type=number]{
   width:100px;
  }
 
@@ -182,26 +183,26 @@ ul li a:hover {
 		<div style="width:900px;border:1px solid black; margin:0 auto; background:#edf7f8; padding:50px;">
 			<div style="text-align:center; font-size:2em; margin-bottom:20px; color:black; font-weight:bold; ">객실등록</div>
 			<div id="isroom" style="margin:20px; border:1px solid #cfcfcf; background:white;padding:30px;">
-			<form action="insertroom.do" method="post">
+			<form action="insertRoomSub.do" method="post">
 				
 				<div>객실정보</div>
 				<hr>
-				<div>객실명 : <input type="text" name="roomname" required></div>
-				<div>최소인원 : <input type="number" min="2" max="10" name="minmember" required></div>
-				<div>최소인원 : <input type="number" min="2" max="10" name="maxmember" required></div>
+				<div>객실명 : <input type="text" name="roomName" required></div>
+				<div>최소인원 : <input type="number" min="2" max="10" name="minNo" required></div>
+				<div>최소인원 : <input type="number" min="2" max="10" name="maxNo" required></div>
 				<div>객실정보 :</div>
-				<textarea rows="7" cols="50" name="roominfo" required></textarea>
+				<textarea rows="7" cols="50" name="roomContent" required></textarea>
 				<br>
 				<br>
 				<br>
 				<br>
 				<div>가격정보</div>
 				<hr>
-				<div>비수기 :<input type="text" name="offprice" required></div>
-				<div>성수기 :<input type="text" name="onprice" required></div>
-				<div>주말추가 :<input type="text" name="weekprice" required></div>
-				<div>인원추가 :<input type="text" name="mprice" required></div>
-				<div>할인율 : <input type="number" min="10" max="100" step="5" name="discount">%</div>
+				<div>비수기 :<input type="text" name="off_season_price" required></div>
+				<div>성수기 :<input type="text" name="on_season_price" required></div>
+				<div>주말추가 :<input type="text" name="week_extra_price" required></div>
+				<div>인원추가 :<input type="text" name="add_person_price" required></div>
+				<div>할인율 : <input type="number" min="10" max="100" step="5" name="discountRate">%</div>
 				<br>
 				<div>편의시설</div>
 				<hr>
@@ -226,11 +227,14 @@ ul li a:hover {
 					<td><label for="roomservice"><input type="checkbox" name="option" value="roomservice"  id="roomservice">룸서비스</label></td>
 					</tr>
 					</table>
-				</div>
+				</div><br><Br>
+				<div>사진</div>
+				<hr>
 				<br>
 				<div style="text-align:center;"><input type="submit" value="등록하기" class="irbt" style="margin-right:20px;"><input type="reset" value="취소하기" class="irbt"></div>
+				<input type="file" name=""
+				</form>
 			</div>
-			</form>
 		</div>
 	</div><!-- ownerbody -->
 </div>
