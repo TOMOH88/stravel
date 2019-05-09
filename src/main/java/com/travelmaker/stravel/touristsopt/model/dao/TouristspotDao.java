@@ -35,4 +35,18 @@ public class TouristspotDao {
 		return mybatisSession.update("touristspotMapper.updateTouristspotThumnail", ts);
 	}
 
+	public ArrayList<TouristspotVo> selectTouristspotList(SqlSessionTemplate mybatisSession) {
+		List<TouristspotVo> list = mybatisSession.selectList("touristspotMapper.selectTouristspotList");
+		return (ArrayList<TouristspotVo>)list;
+	}
+
+	public TouristspotVo selectTouristspotDetail(SqlSessionTemplate mybatisSession, int tno) {
+		return mybatisSession.selectOne("touristspotMapper.selectTouristspotDetail", tno);
+	}
+
+	public ArrayList<TouristspotImagesVo> selectTouristspotImages(SqlSessionTemplate mybatisSession, int tno) {
+		List<TouristspotImagesVo> list = mybatisSession.selectList("touristspotMapper.selectTouristspotImages" ,tno);
+		return (ArrayList<TouristspotImagesVo>)list;
+	}
+
 }

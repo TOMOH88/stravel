@@ -10,7 +10,7 @@
 		<id property="touristsopt_name" column="TOURISTSOPT_NAME" />
 		<id property="touristsopt_content" column="TOURISTSOPT_CONTENT" />
 		<id property="touristsopt_writer" column="TOURISTSOPT_WRITER" />
-		<id property="rename_thumnail" column="RENAME_THUMBNAIL" />
+		<id property="rename_thumnail" column="RENAME_THUMNAIL" />
 		<id property="touristsopt_open" column="TOURISTSOPT_OPEN" />
 		<id property="touristsopt_closed" column="TOURISTSOPT_CLOSED" />
 		<id property="touristsopt_address" column="TOURISTSOPT_ADDRESS" />
@@ -56,8 +56,17 @@
 		values(#{touristspot_no},#{touristspot_sq},#{touristspot_imagename})
 	</insert>
 	<update id="updateTouristspotThumnail" parameterType="TouristspotVo">
-	update tb_touristsopt set RENAME_THUMBNAIL = #{rename_thumnail} where TOURISTSOPT_NO = #{touristsopt_no}
+		update tb_touristsopt set RENAME_THUMBNAIL = #{rename_thumnail} where TOURISTSOPT_NO = #{touristsopt_no}
 	</update>
+	<select id="selectTouristspotList" resultType="TouristspotVo">
+		select * from TB_TOURISTSOPT
+	</select>
+	<select id="selectTouristspotDetail" parameterType="_int" resultType="TouristspotVo">
+		select * from TB_TOURISTSOPT where TOURISTSOPT_NO = #{touristsopt_no}
+	</select>
+	<select id="selectTouristspotImages" parameterType="_int" resultMap="resultTouristspotImagesVo">
+		select * from TB_TOURISTSOPTIMAGES where TOURISTSOPT_NO = #{touristsopt_no}
+	</select>
 <!-- 	
 	<insert id="qnaInsert" parameterType="QnaVo">
 		insert into tb_qna(QNA_NO,QNA_TITLE,QNA_CONTENT,QNA_WRITER,

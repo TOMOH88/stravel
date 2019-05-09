@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -50,9 +51,12 @@ public class TouristspotController {
 		return "touristspot/touristspotMain";
 	}
 	@RequestMapping("moveTSAdmin.do")
-	public String moveTouristspotAdminMain() {
+	public ModelAndView moveTouristspotAdminMain(ModelAndView mv) {
 		logger.info("관광지 리스트 관리자 ");
-		return "touristspot/touristspotMainAdmin";
+		ArrayList<TouristspotVo> touristspot = touristspotService.selectTouristspotList();
+		mv.addObject("touristspot", touristspot);
+		mv.setViewName("touristspot/touristspotMainAdmin");
+		return mv;
 	}
 	@RequestMapping("TSWriter.do")
 	public ModelAndView moveTouristspotAdminWriter(ModelAndView mv) {
@@ -113,5 +117,17 @@ public class TouristspotController {
 			path="touristspot/touristspotMain";
 		}*/
 		return path;
+	}
+	@RequestMapping("touristspotDetail.do")
+	public ModelAndView touristspotDetail(ModelAndView mv,@RequestParam(name = "tno") int tno) {
+		TouristspotVo ts = touristspotService.selectTouristspotDetail(tno);
+		ArrayList<TouristspotImagesVo> tsiList =  touristspotService.selectTouristspotImages(tno);
+		System.out.println(ts);
+		System.out.println(tsiList.size());
+		mv.addObject("touristspot", ts);
+		mv.addObject("touristspotImages", tsiList);
+		mv.setViewName("touristspot/touristspotDetail");
+		return mv;
+		
 	}
 }
