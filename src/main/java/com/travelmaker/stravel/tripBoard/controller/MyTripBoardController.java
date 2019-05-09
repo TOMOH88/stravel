@@ -42,8 +42,7 @@ public class MyTripBoardController {
 			
 			ArrayList<MyTripBoard> boardList = myService.tripBoardListAll();
 			mv.addObject("list", boardList);
-			ArrayList<MyTripBoardReview> reviewList = myService.reviewListAll();
-			mv.addObject("review", reviewList);
+			
 			
 			mv.setViewName("MyTripBoard/tripBoardList");
 			
@@ -100,13 +99,28 @@ public class MyTripBoardController {
 		
 		@RequestMapping("tripboarddetail.do")
 		public ModelAndView moveTripBoardDetail(ModelAndView mv, @RequestParam(name = "board_no") int board_no) {
-			MyTripBoard myboard = myService.tripBoardDetail(board_no);
 			
+			MyTripBoard myboard = myService.tripBoardDetail(board_no);
 			mv.addObject("myboard", myboard);
+			
+			myService.addReadCount(board_no);
+			
+			ArrayList<MyTripBoardReview> reviewList = myService.reviewListAll(board_no);
+			mv.addObject("review", reviewList);
 			
 			mv.setViewName("MyTripBoard/tripBoardDetail");
 			
 			return mv;
+		}
+		
+		@RequestMapping(value = "insertreview.do", method = RequestMethod.POST)
+		public String insertReview(MyTripBoardReview review) {
+			
+			if(myService.insertReview(review) > 0)
+		
+				return "redirect:tripboarddetail.do?board_no="+review.getBoard_no();
+			else
+				return "common/error";
 		}
 		
 }

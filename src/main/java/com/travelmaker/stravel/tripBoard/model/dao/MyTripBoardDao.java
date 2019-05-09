@@ -36,9 +36,19 @@ public int insertBoardImage(SqlSessionTemplate session, MyTripBoardImage myTripB
 	return session.insert("myTripBoardMapper.insertBoardImage",myTripBoardImage);
 }
 
-public ArrayList<MyTripBoardReview> reviewListAll(SqlSessionTemplate session) {
-	List<MyTripBoardReview> list = session.selectList("myTripBoardMapper.reviewListAll");
+public ArrayList<MyTripBoardReview> reviewListAll(SqlSessionTemplate session, int board_no) {
+	List<MyTripBoardReview> list = session.selectList("myTripBoardMapper.reviewListAll", board_no);
 	return (ArrayList<MyTripBoardReview>)list;
+}
+
+public int insertReview(SqlSessionTemplate session, MyTripBoardReview review) {
+
+	return session.insert("myTripBoardMapper.insertReview", review);
+}
+
+public int addRedaount(int board_no, SqlSessionTemplate session) {
+	
+	return session.update("myTripBoardMapper.updateReadCount", board_no);
 }
 
 

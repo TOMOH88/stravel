@@ -16,7 +16,15 @@ public interface MyTripBoardService {
 
 	int insertBoardImage(MyTripBoardImage myTripBoardImage);
 
-	ArrayList<MyTripBoardReview> reviewListAll();
+	ArrayList<MyTripBoardReview> reviewListAll(int board_no);
+
+	int insertReview(MyTripBoardReview review);
+
+	void addReadCount(int board_no);
+
+	
+
+	
 
 	
 

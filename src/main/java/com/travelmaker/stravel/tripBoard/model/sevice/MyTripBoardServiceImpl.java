@@ -44,11 +44,28 @@ public class MyTripBoardServiceImpl implements MyTripBoardService{
 		return boardDao.insertBoardImage(mybatisSession, myTripBoardImage);
 	}
 
+	
 	@Override
-	public ArrayList<MyTripBoardReview> reviewListAll() {
+	public int insertReview(MyTripBoardReview review) {
 		
-		return boardDao.reviewListAll(mybatisSession);
+		return boardDao.insertReview(mybatisSession, review);
 	}
+
+	@Override
+	public ArrayList<MyTripBoardReview> reviewListAll(int board_no) {
+		
+		return boardDao.reviewListAll(mybatisSession, board_no);
+	}
+
+	@Override
+	public void addReadCount(int board_no) {
+		int result = boardDao.addRedaount(board_no, mybatisSession);
+		
+	}
+
+	
+
+	
 
 	
 }

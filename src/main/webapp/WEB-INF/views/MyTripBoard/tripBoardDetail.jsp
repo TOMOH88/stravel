@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -50,12 +50,18 @@
 				<label for = "latter">후기</label><br><br>
 				${myboard.board_content }
 			</li>
+			<div>
+			<a>♡</a>
+			</div>
+				
+			
 		</ul>
 	</div>
 </fieldset>
 <fieldset>
 	<legend>리뷰달기</legend>
 	<form action = "insertreview.do" method = "post">
+		<input type = "hidden" name = "board_no" value = "${myboard.board_no }">
 		<input type = "hidden" name = "answer_writer" value = "고상훈">
 		<div class = "reviewcategory">
 			<div>

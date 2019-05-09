@@ -3,13 +3,7 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="myTripBoardMapper">
-	<resultMap id="resultTripBoardReview" type="MyTripBoardReview">
-		<result property = "board_no" column = "board_no"/>
-		<result property = "answer_no" column = "answer_no"/>
-		<result property = "answer_content" column = "answer_content"/>
-		<result property = "answer_writer" column = "answer_writer"/>
-		<result property = "answer_date" column = "answer_date"/>
-	</resultMap>
+	
 	
 	<resultMap id="resultTripBoard" type="MyTripBoard">
 		<result property = "board_no" column = "board_no"/>
@@ -26,6 +20,14 @@
 		<result property = "board_no" column = "board_no"/>
 		<result property = "board_sq" column = "board_sq"/>
 		<result property = "board_imagename" column = "board_imagename"/>
+	</resultMap>
+	
+	<resultMap id="resultTripBoardReview" type="MyTripBoardReview">
+		<result property = "board_no" column = "board_no"/>
+		<result property = "answer_no" column = "answer_no"/>
+		<result property = "answer_content" column = "answer_content"/>
+		<result property = "answer_writer" column = "answer_writer"/>
+		<result property = "answer_date" column = "answer_date"/>
 	</resultMap>
 	
 	<select id="selectBoardList" resultMap = "resultTripBoard">
@@ -47,6 +49,14 @@
 	</insert>
 	
 	<select id="reviewListAll" resultMap = "resultTripBoardReview">
-		select * from show_schedule_answer
+		select * from show_schedule_answer where board_no like #{board_no}
 	</select>
+	<insert id="insertReview" parameterType = "MyTripBoardReview">
+		insert into show_schedule_answer (board_no, answer_no, answer_content, answer_writer, answer_date) values
+		(#{board_no}, seq_answer_no.nextval, #{answer_content}, #{answer_writer}, default)
+	</insert>
+	
+	<update id="updateReadCount" parameterType = "MyTripBoard">
+		update show_schedule set board_read_count = (board_read_count)+1 where board_no = #{board_no}
+	</update>
 </mapper>
