@@ -12,10 +12,6 @@
 		<!-- <typeAlias type="org.kh.first.member.model.vo.Member" alias="Member" /> -->
 		<!-- 김지훈 -->
 		<typeAlias type="com.travelmaker.stravel.support.model.vo.QnaVo" alias="QnaVo" />
-<<<<<<< HEAD
-=======
-		<!-- <typeAlias type="com.travelmaker.stravel.support.model.vo.Faq" alias="Faq" /> -->
->>>>>>> origin/hje2
 		<typeAlias type="com.travelmaker.stravel.touristsopt.model.vo.TouristspotImagesVo" alias="TouristspotImagesVo" />
 		<typeAlias type="com.travelmaker.stravel.touristsopt.model.vo.TouristspotVo" alias="TouristspotVo" />
 		<typeAlias type="com.travelmaker.stravel.touristsopt.model.vo.TouristspotCategoryVo" alias="TouristspotCategoryVo" />
@@ -29,7 +25,9 @@
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview" alias = "MyTripBoardReview"/>
 		
 =======
->>>>>>> origin/hje2
+		<typeAlias type="com.travelmaker.stravel.room.model.vo.Room" alias="roomVo"/>
+		<typeAlias type="com.travelmaker.stravel.reservation.model.vo.Reservation" alias="rsvVo"/>
+>>>>>>> origin/oc_v2
 	</typeAliases>
 	<mappers>
 	<!-- 쿼리문 저장용 매퍼 xml 파일 등록 : 필수  -->
@@ -40,8 +38,10 @@
 		<mapper resource="mappers/myTripBoard-mapper.xml"/>
 		<mapper resource="mappers/restaurant-mapper.xml"/>
 <<<<<<< HEAD
-=======
 		<!-- <mapper resource="mappers/faq-mapper.xml"/> -->
->>>>>>> origin/hje2
+=======
+		<mapper resource="mappers/room-mapper.xml"/>
+		<mapper resource="mappers/reservation-mapper.xml"/>
+>>>>>>> origin/oc_v2
 	</mappers>
 </configuration>

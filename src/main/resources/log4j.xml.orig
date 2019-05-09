@@ -47,7 +47,7 @@
 		<appender-ref ref="console" />
 =======
 		<appender-ref ref="fileLogger" />
->>>>>>> origin/hje2
+>>>>>>> origin/oc_v2
 	</root>
 	
 </log4j:configuration>

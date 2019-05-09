@@ -160,7 +160,7 @@ ul li a:hover {
 				<div style="padding:20px" ><!-- 오늘 예약건/후기보기/매출보기 -->
 					<div class="ompm1"onclick="check();">
 						<div id="ompmimg">
-							<img src="${pageContext.request.contextPath }/resources/files/ownerrsv.png">
+							<img src="${pageContext.request.contextPath }/resources/files/ompimg/ownerrsv.png">
 						</div>
 						<div class="ompmtext">
 							<div>오늘 예약건 </div>
@@ -169,7 +169,7 @@ ul li a:hover {
 					</div>
 					<div class="ompm">
 						<div id="ompmimg" >
-							<img src="${pageContext.request.contextPath }/resources/files/ownerreview.png">
+							<img src="${pageContext.request.contextPath }/resources/files/ompimg/ownerreview.png">
 						</div>
 						<div class="ompmtext">
 							<div>후기</div>
@@ -178,7 +178,7 @@ ul li a:hover {
 					</div>
 					<div class="ompm" >
 						<div id="ompmimg">
-							<img src="${pageContext.request.contextPath }/resources/files/ownersales.png">
+							<img src="${pageContext.request.contextPath }/resources/files/ompimg/ownersales.png">
 						</div>
 						<div class="ompmtext">
 							<div>매출 보기</div>

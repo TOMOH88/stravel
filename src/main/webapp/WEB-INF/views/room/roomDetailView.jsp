@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -210,14 +210,15 @@
 	border:1px solid rgb(169, 169, 169);
 	border-radius:0px;
 }
-
+#headerdiv{
+	height:100px;
+}
 </style>
 </head>
 <body class="roomBody">
-
-<div id="headerdiv" style="border: 1px solid black; width:100%; height:100px;">
-	
-</div>
+<section class="section-margin">
+	<c:import url="../common/header.jsp" />
+    </section>
 
 <div onclick="mainmodal()" style="width:100%;height:592px;" class="timgdiv" ><!-- 나중에 클릭시 모달창 함수 실행시킬 div 영역 -->
 	<div class="timgdiv1" style="height:592px; float:left; ">
@@ -436,6 +437,9 @@
 		</div>
 	</div>
 </div>
+<div>
+	<c:import url="../common/footer.jsp" />
+</div>
 
 
 <!-- 사이즈 축소시 사이드바 하단으로 -->
@@ -505,7 +509,7 @@
 </div>
 
 <!-- 메인 모달창 -->
-	<div id="mainmodal"style="width: 100%; height: 100%; background: rgba(67, 67, 67, 0.9); position: fixed; top: 0; z-index:11; display:none;">
+	<div id="mainmodal"style="width: 100%; height: 100%; background: rgba(67, 67, 67, 0.9); position: fixed; top: 0; z-index:100; display:none;">
 		<div>
 			<div style="font-size: 2.5em; margin: 10px; float: right; cursor: pointer;"onclick="cmainmodal()">X</div>
 		</div>
@@ -535,7 +539,9 @@
 					<div class="swiper-slide modalslide1"
 						style="background-image: url(http://lorempixel.com/1200/1200/nature/2/)"></div>
 					<div class="swiper-slide modalslide1"
-						style="background-image: url(http://lorempixel.com/1200/1200/nature/3/)"></div>
+						style="backgrou
+						
+						nd-image: url(http://lorempixel.com/1200/1200/nature/3/)"></div>
 					<div class="swiper-slide modalslide1"
 						style="background-image: url(http://lorempixel.com/1200/1200/nature/4/)"></div>
 					<div class="swiper-slide modalslide1"
@@ -544,14 +550,13 @@
 			</div>
 		</div> -->
 	</div>
-<%-- <script src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script> --%>
-<%-- <script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script> --%>
-<%-- <script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
+ <script src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
+ <script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+ <script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/vendors/nice-select/jquery.nice-select.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery.ajaxchimp.min.js"></script> --%>
-<%-- <script src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/skrollr.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/main.js"></script> --%>
+<script src="${pageContext.request.contextPath }/resources/js/main.js"></script> 
 <script src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
 <!-- 달력 -->
 <script src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.js"></script>
@@ -561,6 +566,7 @@
 
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJoPfOWTR_yPSub9u9VPKGGVauCN0RoAg&callback=initMap"
     async defer></script><!-- 구글맵 -->
+
 </body>
 </html>
 <script type="text/javascript">

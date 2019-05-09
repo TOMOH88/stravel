@@ -37,12 +37,20 @@ public class TouristspotController {
 	
 	@RequestMapping("sampMap.do")
 	public String moveSampMap() {
+<<<<<<< HEAD
 		logger.info("�플");
+=======
+		logger.info("샘플");
+>>>>>>> origin/oc_v2
 		return "touristspot/sampMap";
 	}
 	@RequestMapping("sampMap2.do")
 	public String moveSampMap2() {
+<<<<<<< HEAD
 		logger.info("�플");
+=======
+		logger.info("샘플");
+>>>>>>> origin/oc_v2
 		return "touristspot/sampMap2";
 	}
 	@RequestMapping("touristspot.do")

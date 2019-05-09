@@ -11,7 +11,7 @@
 <c:import url="../common/header.jsp" />
 <section class="section-margin">
 <div class="container">
-<!-- table 영역 시작 -->
+<!-- table �역 �작 -->
 <div class="col-md-12">
                         <div class="card">
                             <div class="header">
@@ -31,7 +31,7 @@
                                         <tr>
                                         	<td>1</td>
                                         	<td><a href="qnalistView.do">1:1문의</a></td>
-                                        	<td>하종은</td>
+                                        	<td>�종�</td>
                                         	<td>2019-05-09</td>
                                         	<td>N</td>
                                         </tr>
@@ -52,7 +52,7 @@
 					</div>
                         </div>
                     </div>
-                    <!-- table 끝 -->
+                    <!-- table -->
 </div> 
 </section>
 <c:import url="../common/footer.jsp" />

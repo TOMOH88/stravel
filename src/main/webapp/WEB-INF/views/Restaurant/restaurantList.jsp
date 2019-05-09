@@ -24,6 +24,22 @@
 
 <!-- ê´€ë¦¬ì -->
 <a href = "insertres.do">ˆìŠ¤ ë‘ ±ë¡</a> 
+<div>
+	<h3>œí‘¸/h3>
+	<c:forEach items = "${seaList }" var = "s">
+		<a href = "restaurantdetail.do?restaurant_no=${s.restaurant_no }"><img src="${ pageContext.request.contextPath }/resources/img/restaurant/${s.rename_thumnail}" width = "150" height = "150"></a>
+		${s.retaurant_name }
+	</c:forEach>
+</div>
+<div>
+	<h3>œì‹</h3>
+	<c:forEach items = "${koreanfoodList }" var = "k">
+		<a href = "restaurantdetail.do?restaurant_no=${k.restaurant_no }"><img src="${pageContext.request.contextPath }/resources/img/restaurant/${k.rename_thumnail}" width = "150" height = "150"></a>
+		<%-- <div class = "koreanfoodtitle">
+			${k.restaurant_name }
+		</div> --%>
+	</c:forEach>
+</div>
 
 
 <!-- ¬ìš©-->
