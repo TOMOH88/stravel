@@ -14,6 +14,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/nice-select/nice-select.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 <title>header</title>
+<style>
+div{ 
+	border:1px solid black;
+}
+</style>
 </head>
 <body>
 <!--================ Header Menu Area start =================-->
@@ -33,8 +38,8 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">고객센터</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="faqlist1.do">FAQ</a></li>
+                  <li class="nav-item"><a class="nav-link" href="notice.do">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="faqlist.do">FAQ</a></li>
                   <li class="nav-item"><a class="nav-link" href="qnalist.do">1:1문의</a></li>
                	</ul>
 							</li>

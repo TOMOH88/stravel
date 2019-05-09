@@ -14,4 +14,14 @@ public class QnaController {
 	public String moveadminQnaListPage() {
 		return "qna/adminQna";
 	}
+	
+	@RequestMapping("adminqnaView.do")
+	public String moveadminQnaListViewPage() {
+		return "qna/qnaListView";
+	}
+	
+	@RequestMapping("qnalistView.do")
+	public String moveQnaListViewPage() {
+		return "qna/uqnaListView";
+	}
 }

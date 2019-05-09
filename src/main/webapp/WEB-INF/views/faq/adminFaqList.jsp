@@ -40,7 +40,7 @@
                                     <tbody>
                                         <tr>
                                         	<td>1</td>
-                                        	<td>Dakota Rice</td>
+                                        	<td><a href="adminfaqView.do">Dakota Rice</a></td>
                                         	<td>$36,738</td>
                                         	<td>Niger</td>
                                         </tr>
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div style="text-align:center;">
-                        <button class="btn btn-default" onclick="location.href='faqinsert.do'">글쓰기</button>
+                        <button class="btn btn-default btn-sm" onclick="location.href='faqinsert.do'">글쓰기</button>
                         </div>
                     </div>
 </div>

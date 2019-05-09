@@ -7,19 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class FaqContorller {
 	
-	@RequestMapping("faqlist1.do")
+	@RequestMapping("faqlist.do")
 	public String moveFaqList1Page() {
-		return "faq/faqList1";
-	}
-	
-	@RequestMapping("faqlist2.do")
-	public String moveFaqList2Page() {
-		return "faq/faqList2";
-	}
-	
-	@RequestMapping("faqlist3.do")
-	public String moveFaqList3Page() {
-		return "faq/faqList3";
+		return "faq/faqList";
 	}
 	
 	@RequestMapping("adminfaq.do")
@@ -30,6 +20,11 @@ public class FaqContorller {
 	@RequestMapping(value="faqinsert.do")
 	public String moveFaqWritePage() {
 		return "faq/adminFaqWrite";
+	}
+	
+	@RequestMapping("adminfaqView.do")
+	public String moveFaqListViewPage() {
+		return "faq/adminFaqListView";
 	}
 }
 

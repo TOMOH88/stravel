@@ -79,7 +79,7 @@ div{
                         <p>고객센터관리</p>
                         <ul>
                         <li><a href="adminqna.do">-1:1문의</a></li>
-                    	<li><a href="#">-공지사항</a></li>
+                    	<li><a href="adminnotice.do">-공지사항</a></li>
                     	<li><a href="adminfaq.do">-FAQ</a></li>
                         </ul>
                     </a>

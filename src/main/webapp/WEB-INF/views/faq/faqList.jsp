@@ -60,9 +60,6 @@
     border: 0;
 }
 
-div{
- border:1px solid black;
-}
 </style>
 <body>
 <c:import url="../common/header.jsp" />
@@ -74,20 +71,20 @@ div{
     <div class="col-md-2">
 	<div class="blog_right_sidebar">
 	<aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title">계정</h4>
+                        <h4 class="widget_title">결제</h4>
                         <ul class="list cat-list">
                             <li>
-                                <a href="faqlist1.do" class="d-flex">
+                                <a href="#" class="d-flex">
                                     <p>결제</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="faqlist2.do" class="d-flex">
+                                <a href="#" class="d-flex">
                                     <p>상품</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="faqlist3.do" class="d-flex">
+                                <a href="#" class="d-flex">
                                     <p>계정</p>
                                 </a>
                             </li>
