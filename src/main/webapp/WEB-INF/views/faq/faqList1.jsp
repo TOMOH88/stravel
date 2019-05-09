@@ -211,11 +211,7 @@ div{
               </div>
             </div>
           </div>
-          <!-- Accordion card -->
         </div>
-
-        <!--/.Accordion wrapper-->
-
       </div>
     </div>
   </div>

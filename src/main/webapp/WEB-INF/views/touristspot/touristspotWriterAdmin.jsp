@@ -19,7 +19,7 @@
        * element that contains the map. */
       #map {
         height: 300px;
-        width: 600px;
+        width: 100%;
       }
       /* Optional: Makes the sample page fill the window. */
 /*       html, body {
@@ -97,6 +97,7 @@
 <body>
 <c:import url="../common/header.jsp" />
 <section class="section-margin">
+<div class="container">
 <h1 align="center">관광지 글쓰기 페이지</h1>
 <form action="TSWriterUpload.do" method="post" enctype="multipart/form-data">
 <input type="hidden" name="touristsopt_writer" value="김지훈">
@@ -152,6 +153,7 @@
 </tr>
 </table>
 </form>
+</div>
 </section>
 </body>
 </html>
