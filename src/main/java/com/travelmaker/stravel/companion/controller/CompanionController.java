@@ -75,14 +75,14 @@ public class CompanionController {
 		return mv;
 	}
 	
-	@RequestMapping("compinsert.do")
+/*	@RequestMapping("compinsert.do")
 	public String insertCompanion(Companion companion) {
 
 		logger.info("동행찾기 글쓰기");
 		
 		
-		return mv;
+		return
 		
-	}
+	}*/
 
 }
