@@ -7,6 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>stravel</title>
+<script type="text/javascript">
+	
+	/* 	$("#emptyhart").click(function(){
+			var emptyhart = document.getElementById("emptyhart");
+			var redhart = document.getElementById("redhart");
+			alert("!23");
+			emptyhart.style.display = 'none';
+			redhart.style.display = 'block' ; 
+			}); */
+			
+	
+</script>
 <style type="text/css">
 	.sub_news, .sub_news th, .sub_news td{border:0}
 	.sub_news a{color:#383838; text-decoration:none}
@@ -19,7 +31,7 @@
 	.sub_news .title .pic, .sub_news .title .new{margin:0 0 2px; vertical-align :middle}
 	.sub_news .title a .comment{padding:0;background:none; color : #f00; font-size:12px; font-weight:bold}
 	.sub_news tr.reply .title a{padding-left:16px; background:url(첨부파일/ic_reply.png) 0 1px no-repeat}
-	
+	.trip_board .like .hart {border : none; background-color : white;}
 </style>
 </head>
 <body>
@@ -30,16 +42,16 @@
 			<li>
 			 	<label for = "title">제목</label>
 			 	${myboard.board_title }
-			 </li>
-			 <li>
-			 	<label for = "date">날짜</label>
+			</li>
+			<li>
+				<label for = "date">날짜</label>
 			 	
-			 </li>
-			 <li>
-			 	<label for = "date">일정</label>
+			</li>
+			<li>
+				<label for = "date">일정</label>
 			 	박 일
-			 </li>
-			 <div class = "myinfo">
+			</li>
+			<div class = "myinfo">
 				<a href = "#">나의 정보 불러오기</a>
 			</div>
 			<li>
@@ -50,9 +62,10 @@
 				<label for = "latter">후기</label><br><br>
 				${myboard.board_content }
 			</li>
-			<div>
-			<a>♡</a>
+			<div class = "like" >
+				<img src="${ pageContext.request.contextPath }/resources/img/hart/emptyhart.png" alt = "emptyhart.png" id = "emptyhart" width = "50" heigth = "50" >
 			</div>
+			
 				
 			
 		</ul>

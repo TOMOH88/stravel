@@ -24,6 +24,12 @@
 
 <!-- 관리자 -->
 <a href = "insertres.do">레스토랑 등록</a> 
+
+
+<!-- 사용자 -->
+<a href = "seafoodAll.do">시푸드레스토랑</a>
+
+
 <h3>시푸드</h3>
 	<div class = "seafoodcategory">
 		<c:forEach items = "${seaList }" var = "s">
