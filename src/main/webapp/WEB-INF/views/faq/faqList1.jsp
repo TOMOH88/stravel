@@ -83,7 +83,7 @@ div{
                             </li>
                             <li>
                                 <a href="faqlist2.do" class="d-flex">
-                                    <p>상품</p>
+                                    <p>�품</p>
                                 </a>
                             </li>
                             <li>
@@ -211,7 +211,11 @@ div{
               </div>
             </div>
           </div>
+          <!-- Accordion card -->
         </div>
+
+        <!--/.Accordion wrapper-->
+
       </div>
     </div>
   </div>

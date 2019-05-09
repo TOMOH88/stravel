@@ -44,25 +44,25 @@
 [15:43:47][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [15:43:47][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1848 ms
 [15:44:45][INFO ][HomeController.java:22]: - Welcome home!
-[15:44:49][INFO ][TouristspotController.java:39]: - 관광지 리스트
-[15:44:51][INFO ][TouristspotController.java:44]: - 관광지 리스트 관리자 
-[15:44:52][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:19][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:21][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:21][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:21][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:21][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:21][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:22][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:22][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:24][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:25][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:25][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:25][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:52:25][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:53:29][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:53:29][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:53:30][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
+[15:44:49][INFO ][TouristspotController.java:39]: - 관광� 리스
+[15:44:51][INFO ][TouristspotController.java:44]: - 관광� 리스관리자 
+[15:44:52][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:19][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:21][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:21][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:21][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:21][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:21][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:22][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:22][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:24][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:25][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:25][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:25][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:52:25][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:53:29][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:53:29][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:53:30][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
 [15:53:35][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 15:43:45 KST 2019]; parent: Root WebApplicationContext
 [15:53:35][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 15:43:44 KST 2019]; root of context hierarchy
 [15:53:42][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -110,7 +110,7 @@
 [15:53:44][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 15:53:43 KST 2019]; parent: Root WebApplicationContext
 [15:53:45][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [15:53:45][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1770 ms
-[15:54:06][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
+[15:54:06][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
 [15:55:51][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 15:53:43 KST 2019]; parent: Root WebApplicationContext
 [15:55:51][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 15:53:42 KST 2019]; root of context hierarchy
 [15:55:57][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -158,71 +158,71 @@
 [15:56:00][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 15:55:59 KST 2019]; parent: Root WebApplicationContext
 [15:56:00][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [15:56:01][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1752 ms
-[15:56:05][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:06][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:06][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:06][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:07][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:07][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:08][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:10][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:10][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:10][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:10][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:11][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:11][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:56:11][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:07][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:09][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:10][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:10][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:10][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:11][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:11][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:22][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:22][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:22][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:23][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:23][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:57:23][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:58:32][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:58:32][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:58:32][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:58:33][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:58:33][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[15:58:33][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:51][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:51][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:51][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:52][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:52][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:52][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:52][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:52][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:52][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:53][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:53][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:53][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:57][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:57][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:00:57][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:40][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:40][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:41][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:41][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:41][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:41][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:41][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:41][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:42][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:42][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:42][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:42][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:42][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:42][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:43][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:43][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
-[16:01:43][INFO ][TouristspotController.java:49]: - 관광지 관리자 글작성
+[15:56:05][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:06][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:06][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:06][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:07][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:07][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:08][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:10][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:10][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:10][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:10][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:11][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:11][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:56:11][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:07][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:09][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:10][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:10][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:10][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:11][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:11][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:22][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:22][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:22][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:23][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:23][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:57:23][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:58:32][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:58:32][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:58:32][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:58:33][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:58:33][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[15:58:33][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:51][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:51][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:51][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:52][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:52][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:52][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:52][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:52][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:52][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:53][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:53][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:53][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:57][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:57][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:00:57][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:40][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:40][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:41][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:41][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:41][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:41][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:41][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:41][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:42][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:42][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:42][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:42][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:42][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:42][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:43][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:43][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
+[16:01:43][INFO ][TouristspotController.java:49]: - 관광� 관리자 글�성
 [16:06:01][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 15:55:59 KST 2019]; parent: Root WebApplicationContext
 [16:06:01][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 15:55:58 KST 2019]; root of context hierarchy
 [16:06:07][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -271,43 +271,43 @@
 [16:06:09][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 16:06:08 KST 2019]; parent: Root WebApplicationContext
 [16:06:10][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [16:06:10][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1755 ms
-[16:06:21][INFO ][TouristspotController.java:49]: - 관광지 리스트 관리자 
-[16:06:21][INFO ][TouristspotController.java:49]: - 관광지 리스트 관리자 
-[16:06:22][INFO ][TouristspotController.java:44]: - 관광지 리스트
-[16:06:23][INFO ][TouristspotController.java:44]: - 관광지 리스트
-[16:06:24][INFO ][TouristspotController.java:39]: - 샘플
-[16:08:20][INFO ][TouristspotController.java:39]: - 샘플
-[16:14:05][INFO ][TouristspotController.java:39]: - 샘플
-[16:14:07][INFO ][TouristspotController.java:39]: - 샘플
-[16:14:08][INFO ][TouristspotController.java:39]: - 샘플
-[16:14:22][INFO ][TouristspotController.java:39]: - 샘플
-[16:14:24][INFO ][TouristspotController.java:39]: - 샘플
-[16:14:32][INFO ][TouristspotController.java:39]: - 샘플
-[16:16:25][INFO ][TouristspotController.java:39]: - 샘플
-[16:16:48][INFO ][TouristspotController.java:49]: - 관광지 리스트 관리자 
-[16:16:49][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:16:51][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:16:52][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:16:52][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:16:52][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:16:52][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:16:52][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:16:52][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:16:53][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:16:53][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:16:54][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:17:01][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:17:02][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:17:03][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:17:03][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:17:03][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:17:03][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:17:03][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:17:08][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:17:08][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:17:09][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:17:09][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:17:09][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
+[16:06:21][INFO ][TouristspotController.java:49]: - 관광� 리스관리자 
+[16:06:21][INFO ][TouristspotController.java:49]: - 관광� 리스관리자 
+[16:06:22][INFO ][TouristspotController.java:44]: - 관광� 리스
+[16:06:23][INFO ][TouristspotController.java:44]: - 관광� 리스
+[16:06:24][INFO ][TouristspotController.java:39]: - �플
+[16:08:20][INFO ][TouristspotController.java:39]: - �플
+[16:14:05][INFO ][TouristspotController.java:39]: - �플
+[16:14:07][INFO ][TouristspotController.java:39]: - �플
+[16:14:08][INFO ][TouristspotController.java:39]: - �플
+[16:14:22][INFO ][TouristspotController.java:39]: - �플
+[16:14:24][INFO ][TouristspotController.java:39]: - �플
+[16:14:32][INFO ][TouristspotController.java:39]: - �플
+[16:16:25][INFO ][TouristspotController.java:39]: - �플
+[16:16:48][INFO ][TouristspotController.java:49]: - 관광� 리스관리자 
+[16:16:49][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:16:51][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:16:52][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:16:52][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:16:52][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:16:52][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:16:52][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:16:52][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:16:53][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:16:53][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:16:54][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:17:01][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:17:02][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:17:03][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:17:03][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:17:03][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:17:03][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:17:03][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:17:08][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:17:08][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:17:09][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:17:09][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:17:09][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
 [16:17:37][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 16:06:08 KST 2019]; parent: Root WebApplicationContext
 [16:17:37][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 16:06:07 KST 2019]; root of context hierarchy
 [16:17:45][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -356,35 +356,35 @@
 [16:17:49][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 16:17:47 KST 2019]; parent: Root WebApplicationContext
 [16:17:49][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [16:17:49][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 2283 ms
-[16:18:12][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:18:16][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:18:17][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:18:17][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:18:17][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:18:17][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:18:17][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:18:17][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:18:18][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:18:18][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
+[16:18:12][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:18:16][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:18:17][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:18:17][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:18:17][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:18:17][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:18:17][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:18:17][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:18:18][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:18:18][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
 [16:18:25][INFO ][HomeController.java:22]: - Welcome home!
-[16:18:29][INFO ][TouristspotController.java:44]: - 관광지 리스트
-[16:18:30][INFO ][TouristspotController.java:49]: - 관광지 리스트 관리자 
-[16:18:31][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:18:37][INFO ][TouristspotController.java:39]: - 샘플
-[16:18:41][INFO ][TouristspotController.java:49]: - 관광지 리스트 관리자 
-[16:18:42][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:19:29][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:19:30][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:19:30][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:19:30][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:19:31][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:19:44][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:19:45][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:19:45][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:19:45][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:19:45][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:20:24][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
-[16:21:07][INFO ][TouristspotController.java:54]: - 관광지 관리자 글작성
+[16:18:29][INFO ][TouristspotController.java:44]: - 관광� 리스
+[16:18:30][INFO ][TouristspotController.java:49]: - 관광� 리스관리자 
+[16:18:31][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:18:37][INFO ][TouristspotController.java:39]: - �플
+[16:18:41][INFO ][TouristspotController.java:49]: - 관광� 리스관리자 
+[16:18:42][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:19:29][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:19:30][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:19:30][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:19:30][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:19:31][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:19:44][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:19:45][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:19:45][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:19:45][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:19:45][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:20:24][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
+[16:21:07][INFO ][TouristspotController.java:54]: - 관광� 관리자 글�성
 [16:26:27][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 16:17:47 KST 2019]; parent: Root WebApplicationContext
 [16:26:27][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 16:17:46 KST 2019]; root of context hierarchy
 [16:26:36][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -483,12 +483,12 @@
 [16:27:01][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 16:26:59 KST 2019]; parent: Root WebApplicationContext
 [16:27:01][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [16:27:01][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1852 ms
-[16:27:08][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[16:27:09][INFO ][TouristspotController.java:49]: - 관광지 리스트
-[16:27:11][INFO ][TouristspotController.java:44]: - 샘플
-[16:27:54][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[16:27:55][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[16:33:56][INFO ][TouristspotController.java:44]: - 샘플
+[16:27:08][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[16:27:09][INFO ][TouristspotController.java:49]: - 관광� 리스
+[16:27:11][INFO ][TouristspotController.java:44]: - �플
+[16:27:54][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[16:27:55][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[16:33:56][INFO ][TouristspotController.java:44]: - �플
 [16:39:16][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 16:26:59 KST 2019]; parent: Root WebApplicationContext
 [16:39:16][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 16:26:58 KST 2019]; root of context hierarchy
 [16:39:22][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -538,129 +538,129 @@
 [16:39:25][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 16:39:24 KST 2019]; parent: Root WebApplicationContext
 [16:39:25][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [16:39:26][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1806 ms
-[16:39:28][INFO ][TouristspotController.java:44]: - 샘플
-[17:10:55][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[17:10:56][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:24:32][INFO ][SupportController.java:42]: - 1대1 문의 게시판 사용자 접속
-[17:38:12][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:13][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:13][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:14][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:15][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:16][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:16][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:16][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:16][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:19][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:19][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:19][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:20][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:35][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:36][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:36][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:37][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:37][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:49][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:50][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:50][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:50][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:50][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:38:51][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:39:09][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:39:20][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:39:21][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:42:37][INFO ][TouristspotController.java:44]: - 샘플
-[17:43:53][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[17:43:54][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:44:12][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:46:02][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:46:10][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:46:36][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:49:18][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:49:46][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:49:46][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:49:46][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:49:46][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:50:05][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:50:05][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:50:05][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:50:06][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:51:29][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:51:29][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:51:29][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:52:17][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:53:12][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:53:13][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:53:13][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:54:31][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:55:55][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:57:44][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:59:29][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:59:31][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[17:59:32][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[18:01:16][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[18:01:17][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[18:01:17][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[18:01:18][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[18:01:18][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[18:01:18][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[18:01:26][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[18:01:53][INFO ][TouristspotController.java:44]: - 샘플
-[18:04:00][INFO ][TouristspotController.java:44]: - 샘플
-[18:04:02][INFO ][TouristspotController.java:44]: - 샘플
-[18:04:10][INFO ][TouristspotController.java:44]: - 샘플
-[18:04:16][INFO ][TouristspotController.java:44]: - 샘플
-[18:05:22][INFO ][TouristspotController.java:44]: - 샘플
-[18:05:23][INFO ][TouristspotController.java:44]: - 샘플
-[18:05:42][INFO ][TouristspotController.java:44]: - 샘플
-[18:06:04][INFO ][TouristspotController.java:44]: - 샘플
-[18:06:05][INFO ][TouristspotController.java:44]: - 샘플
-[18:06:07][INFO ][TouristspotController.java:44]: - 샘플
-[18:06:07][INFO ][TouristspotController.java:44]: - 샘플
-[18:07:49][INFO ][TouristspotController.java:44]: - 샘플
-[18:08:07][INFO ][TouristspotController.java:44]: - 샘플
-[18:08:07][INFO ][TouristspotController.java:44]: - 샘플
-[18:08:14][INFO ][TouristspotController.java:44]: - 샘플
-[18:08:19][INFO ][TouristspotController.java:44]: - 샘플
-[18:08:26][INFO ][TouristspotController.java:44]: - 샘플
-[18:34:20][INFO ][TouristspotController.java:39]: - 샘플
-[18:34:43][INFO ][TouristspotController.java:39]: - 샘플
-[18:34:43][INFO ][TouristspotController.java:39]: - 샘플
-[18:36:01][INFO ][TouristspotController.java:39]: - 샘플
-[18:37:42][INFO ][TouristspotController.java:39]: - 샘플
-[18:38:36][INFO ][TouristspotController.java:39]: - 샘플
-[18:38:57][INFO ][TouristspotController.java:39]: - 샘플
-[18:40:41][INFO ][TouristspotController.java:39]: - 샘플
-[18:43:16][INFO ][TouristspotController.java:39]: - 샘플
-[18:43:50][INFO ][TouristspotController.java:39]: - 샘플
-[18:44:59][INFO ][TouristspotController.java:39]: - 샘플
-[18:45:56][INFO ][TouristspotController.java:39]: - 샘플
-[18:46:15][INFO ][TouristspotController.java:39]: - 샘플
-[18:47:07][INFO ][TouristspotController.java:39]: - 샘플
-[18:47:08][INFO ][TouristspotController.java:39]: - 샘플
-[18:47:08][INFO ][TouristspotController.java:39]: - 샘플
-[18:47:08][INFO ][TouristspotController.java:39]: - 샘플
-[18:47:08][INFO ][TouristspotController.java:39]: - 샘플
-[18:47:08][INFO ][TouristspotController.java:39]: - 샘플
-[18:47:08][INFO ][TouristspotController.java:39]: - 샘플
-[18:47:27][INFO ][TouristspotController.java:39]: - 샘플
-[18:47:50][INFO ][TouristspotController.java:39]: - 샘플
-[18:47:53][INFO ][TouristspotController.java:39]: - 샘플
-[18:48:05][INFO ][TouristspotController.java:39]: - 샘플
-[18:48:38][INFO ][TouristspotController.java:39]: - 샘플
-[18:48:52][INFO ][TouristspotController.java:39]: - 샘플
-[18:49:21][INFO ][TouristspotController.java:39]: - 샘플
-[18:49:23][INFO ][TouristspotController.java:39]: - 샘플
-[18:49:23][INFO ][TouristspotController.java:39]: - 샘플
-[18:49:34][INFO ][TouristspotController.java:39]: - 샘플
-[18:50:19][INFO ][TouristspotController.java:39]: - 샘플
-[18:53:21][INFO ][TouristspotController.java:39]: - 샘플
-[18:53:49][INFO ][TouristspotController.java:39]: - 샘플
-[18:53:49][INFO ][TouristspotController.java:39]: - 샘플
-[18:55:12][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[18:55:13][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[18:55:32][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[18:56:32][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
+[16:39:28][INFO ][TouristspotController.java:44]: - �플
+[17:10:55][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[17:10:56][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:24:32][INFO ][SupportController.java:42]: - 1�1 문의 게시�용�속
+[17:38:12][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:13][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:13][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:14][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:15][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:16][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:16][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:16][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:16][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:19][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:19][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:19][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:20][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:35][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:36][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:36][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:37][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:37][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:49][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:50][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:50][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:50][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:50][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:38:51][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:39:09][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:39:20][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:39:21][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:42:37][INFO ][TouristspotController.java:44]: - �플
+[17:43:53][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[17:43:54][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:44:12][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:46:02][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:46:10][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:46:36][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:49:18][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:49:46][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:49:46][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:49:46][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:49:46][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:50:05][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:50:05][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:50:05][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:50:06][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:51:29][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:51:29][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:51:29][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:52:17][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:53:12][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:53:13][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:53:13][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:54:31][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:55:55][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:57:44][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:59:29][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:59:31][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[17:59:32][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[18:01:16][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[18:01:17][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[18:01:17][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[18:01:18][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[18:01:18][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[18:01:18][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[18:01:26][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[18:01:53][INFO ][TouristspotController.java:44]: - �플
+[18:04:00][INFO ][TouristspotController.java:44]: - �플
+[18:04:02][INFO ][TouristspotController.java:44]: - �플
+[18:04:10][INFO ][TouristspotController.java:44]: - �플
+[18:04:16][INFO ][TouristspotController.java:44]: - �플
+[18:05:22][INFO ][TouristspotController.java:44]: - �플
+[18:05:23][INFO ][TouristspotController.java:44]: - �플
+[18:05:42][INFO ][TouristspotController.java:44]: - �플
+[18:06:04][INFO ][TouristspotController.java:44]: - �플
+[18:06:05][INFO ][TouristspotController.java:44]: - �플
+[18:06:07][INFO ][TouristspotController.java:44]: - �플
+[18:06:07][INFO ][TouristspotController.java:44]: - �플
+[18:07:49][INFO ][TouristspotController.java:44]: - �플
+[18:08:07][INFO ][TouristspotController.java:44]: - �플
+[18:08:07][INFO ][TouristspotController.java:44]: - �플
+[18:08:14][INFO ][TouristspotController.java:44]: - �플
+[18:08:19][INFO ][TouristspotController.java:44]: - �플
+[18:08:26][INFO ][TouristspotController.java:44]: - �플
+[18:34:20][INFO ][TouristspotController.java:39]: - �플
+[18:34:43][INFO ][TouristspotController.java:39]: - �플
+[18:34:43][INFO ][TouristspotController.java:39]: - �플
+[18:36:01][INFO ][TouristspotController.java:39]: - �플
+[18:37:42][INFO ][TouristspotController.java:39]: - �플
+[18:38:36][INFO ][TouristspotController.java:39]: - �플
+[18:38:57][INFO ][TouristspotController.java:39]: - �플
+[18:40:41][INFO ][TouristspotController.java:39]: - �플
+[18:43:16][INFO ][TouristspotController.java:39]: - �플
+[18:43:50][INFO ][TouristspotController.java:39]: - �플
+[18:44:59][INFO ][TouristspotController.java:39]: - �플
+[18:45:56][INFO ][TouristspotController.java:39]: - �플
+[18:46:15][INFO ][TouristspotController.java:39]: - �플
+[18:47:07][INFO ][TouristspotController.java:39]: - �플
+[18:47:08][INFO ][TouristspotController.java:39]: - �플
+[18:47:08][INFO ][TouristspotController.java:39]: - �플
+[18:47:08][INFO ][TouristspotController.java:39]: - �플
+[18:47:08][INFO ][TouristspotController.java:39]: - �플
+[18:47:08][INFO ][TouristspotController.java:39]: - �플
+[18:47:08][INFO ][TouristspotController.java:39]: - �플
+[18:47:27][INFO ][TouristspotController.java:39]: - �플
+[18:47:50][INFO ][TouristspotController.java:39]: - �플
+[18:47:53][INFO ][TouristspotController.java:39]: - �플
+[18:48:05][INFO ][TouristspotController.java:39]: - �플
+[18:48:38][INFO ][TouristspotController.java:39]: - �플
+[18:48:52][INFO ][TouristspotController.java:39]: - �플
+[18:49:21][INFO ][TouristspotController.java:39]: - �플
+[18:49:23][INFO ][TouristspotController.java:39]: - �플
+[18:49:23][INFO ][TouristspotController.java:39]: - �플
+[18:49:34][INFO ][TouristspotController.java:39]: - �플
+[18:50:19][INFO ][TouristspotController.java:39]: - �플
+[18:53:21][INFO ][TouristspotController.java:39]: - �플
+[18:53:49][INFO ][TouristspotController.java:39]: - �플
+[18:53:49][INFO ][TouristspotController.java:39]: - �플
+[18:55:12][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[18:55:13][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[18:55:32][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[18:56:32][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
 [19:04:15][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 16:39:24 KST 2019]; parent: Root WebApplicationContext
 [19:04:15][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 16:39:23 KST 2019]; root of context hierarchy
 [19:07:24][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -710,10 +710,10 @@
 [19:07:27][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:07:25 KST 2019]; parent: Root WebApplicationContext
 [19:07:27][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [19:07:27][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1796 ms
-[19:10:48][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:10:51][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:11:54][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:15:24][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
+[19:10:48][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:10:51][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:11:54][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:15:24][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
 [19:16:06][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:07:25 KST 2019]; parent: Root WebApplicationContext
 [19:16:06][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 19:07:24 KST 2019]; root of context hierarchy
 [19:16:12][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -763,16 +763,16 @@
 [19:16:15][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:16:14 KST 2019]; parent: Root WebApplicationContext
 [19:16:15][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [19:16:16][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1777 ms
-[19:22:05][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:22:48][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:22:48][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:23:07][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:23:07][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:23:08][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:23:08][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:23:19][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:23:57][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[19:23:59][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
+[19:22:05][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:22:48][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:22:48][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:23:07][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:23:07][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:23:08][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:23:08][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:23:19][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:23:57][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[19:23:59][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
 [19:24:39][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:16:14 KST 2019]; parent: Root WebApplicationContext
 [19:24:39][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 19:16:12 KST 2019]; root of context hierarchy
 [19:25:01][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -822,9 +822,9 @@
 [19:25:04][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:25:02 KST 2019]; parent: Root WebApplicationContext
 [19:25:04][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [19:25:04][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1762 ms
-[19:25:51][INFO ][TouristspotController.java:49]: - 관광지 리스트
-[19:25:52][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[19:25:53][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
+[19:25:51][INFO ][TouristspotController.java:49]: - 관광� 리스
+[19:25:52][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[19:25:53][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
 [19:28:11][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:25:02 KST 2019]; parent: Root WebApplicationContext
 [19:28:11][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 19:25:01 KST 2019]; root of context hierarchy
 [19:28:23][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -923,11 +923,11 @@
 [19:29:39][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:29:38 KST 2019]; parent: Root WebApplicationContext
 [19:29:39][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [19:29:39][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1751 ms
-[19:30:05][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:32:24][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[19:32:24][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:33:21][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[19:33:22][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
+[19:30:05][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:32:24][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[19:32:24][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:33:21][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[19:33:22][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
 [19:35:47][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:29:38 KST 2019]; parent: Root WebApplicationContext
 [19:35:47][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 19:29:36 KST 2019]; root of context hierarchy
 [19:36:00][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -977,11 +977,11 @@
 [19:36:02][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:36:01 KST 2019]; parent: Root WebApplicationContext
 [19:36:03][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [19:36:03][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1777 ms
-[19:36:47][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:36:48][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:36:48][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:38:25][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[19:38:27][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
+[19:36:47][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:36:48][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:36:48][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:38:25][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[19:38:27][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
 [19:40:57][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:36:01 KST 2019]; parent: Root WebApplicationContext
 [19:40:57][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 19:36:00 KST 2019]; root of context hierarchy
 [19:41:06][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -1031,8 +1031,8 @@
 [19:41:09][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:41:08 KST 2019]; parent: Root WebApplicationContext
 [19:41:09][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [19:41:09][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1742 ms
-[19:41:24][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[19:41:25][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
+[19:41:24][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[19:41:25][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
 [19:42:30][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:41:08 KST 2019]; parent: Root WebApplicationContext
 [19:42:30][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 19:41:06 KST 2019]; root of context hierarchy
 [19:43:38][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -1082,10 +1082,10 @@
 [19:43:41][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 19:43:39 KST 2019]; parent: Root WebApplicationContext
 [19:43:41][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [19:43:41][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1741 ms
-[19:43:47][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[19:43:48][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
-[19:46:31][INFO ][TouristspotController.java:54]: - 관광지 리스트 관리자 
-[19:46:32][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
+[19:43:47][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[19:43:48][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
+[19:46:31][INFO ][TouristspotController.java:54]: - 관광� 리스관리자 
+[19:46:32][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
 [20:56:54][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
 [20:56:54][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Tue May 07 20:56:54 KST 2019]; root of context hierarchy
 [20:56:54][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
@@ -1135,7 +1135,7 @@
 [20:56:57][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1835 ms
 [20:57:19][INFO ][HomeController.java:22]: - Welcome home!
 [20:57:23][WARN ][DispatcherServlet.java:1205]: - No mapping found for HTTP request with URI [/stravel/faqlist1.do] in DispatcherServlet with name 'appServlet'
-[20:57:31][INFO ][SupportController.java:42]: - 1대1 문의 게시판 사용자 접속
+[20:57:31][INFO ][SupportController.java:42]: - 1�1 문의 게시�용�속
 [20:57:54][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 20:56:55 KST 2019]; parent: Root WebApplicationContext
 [20:57:54][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 20:56:54 KST 2019]; root of context hierarchy
 [20:59:57][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -1270,9 +1270,9 @@ public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarCont
 [21:00:35][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 21:00:33 KST 2019]; parent: Root WebApplicationContext
 [21:00:35][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [21:00:35][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1832 ms
-[21:00:39][INFO ][TouristspotController.java:59]: - 관광지 관리자 글작성
+[21:00:39][INFO ][TouristspotController.java:59]: - 관광� 관리자 글�성
 [21:00:40][INFO ][HomeController.java:22]: - Welcome home!
-[21:00:43][INFO ][TouristspotController.java:49]: - 관광지 리스트
+[21:00:43][INFO ][TouristspotController.java:49]: - 관광� 리스
 [21:01:00][INFO ][HomeController.java:22]: - Welcome home!
 [21:14:44][INFO ][HomeController.java:22]: - Welcome home!
 [21:14:52][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 21:00:33 KST 2019]; parent: Root WebApplicationContext
@@ -1527,8 +1527,8 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 [21:19:44][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 1754 ms
 [21:20:01][INFO ][HomeController.java:22]: - Welcome home!
 [21:22:18][INFO ][HomeController.java:22]: - Welcome home!
-[21:22:26][INFO ][MyTripBoardController.java:30]: - 일정자랑 접속
-[21:22:30][INFO ][MyTripBoardController.java:30]: - 일정자랑 접속
+[21:22:26][INFO ][MyTripBoardController.java:30]: - �정�랑 �속
+[21:22:30][INFO ][MyTripBoardController.java:30]: - �정�랑 �속
 [21:23:08][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Tue May 07 21:19:42 KST 2019]; parent: Root WebApplicationContext
 [21:23:08][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Tue May 07 21:19:41 KST 2019]; root of context hierarchy
 [21:23:14][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started

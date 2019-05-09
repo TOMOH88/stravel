@@ -20,6 +20,9 @@
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.Restaurant" alias="Restaurant"/>
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantCategory" alias="RestaurantCategory"/>
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantImage" alias="RestaurantImage"/>
+		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage" alias = "MyTripBoardImage"/>
+		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview" alias = "MyTripBoardReview"/>
+		
 	</typeAliases>
 	<mappers>
 	<!-- 쿼리문 저장용 매퍼 xml 파일 등록 : 필수  -->

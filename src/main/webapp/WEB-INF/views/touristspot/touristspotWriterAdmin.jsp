@@ -70,7 +70,7 @@
     	  	geocoder = new google.maps.Geocoder();
     	  	geocoder.geocode( { 'address': faddr}, function(results, status) {
     	  		if (status == google.maps.GeocoderStatus.OK) {
-    	  			var faddr_lat = results[0].geometry.location.lat();	//위도
+    	  			var faddr_lat = results[0].geometry.location.lat();	//�도
     	  			var faddr_lng = results[0].geometry.location.lng();	//경도
     	  		} else {
     	  			var faddr_lat = 37.5007939;
@@ -98,15 +98,15 @@
 <c:import url="../common/header.jsp" />
 <section class="section-margin">
 <div class="container">
-<h1 align="center">관광지 글쓰기 페이지</h1>
+<h1 align="center">관광� 글�기 �이지</h1>
 <form action="TSWriterUpload.do" method="post" enctype="multipart/form-data">
-<input type="hidden" name="touristsopt_writer" value="김지훈">
+<input type="hidden" name="touristsopt_writer" value="김지>
 <table class="table">
 <tr>
-	<th>관광지 명</th><td><input type="text" name="touristsopt_name" required="required" class="form-control"/></td>
+	<th>관광� �/th><td><input type="text" name="touristsopt_name" required="required" class="form-control"/></td>
 </tr>
 <tr>
-	<th>관광지 카테고리</th>
+	<th>관광� 카테고리</th>
 	<td>
 		<select name="touristsoptcategorycode">
 			<c:forEach items="${ TSCategory}" var="TSC">
@@ -116,14 +116,14 @@
 	</td>
 </tr>
 <tr>
-	<th>관광지 설명</th><td><textarea name="touristsopt_content" required="required"class="form-control"></textarea></td>
+	<th>관광� �명</th><td><textarea name="touristsopt_content" required="required"class="form-control"></textarea></td>
 </tr>
 <tr>
-	<th>관광지 주소</th><td><input type="text" name="touristsopt_address" id="touristsopt_address" required="required" class="form-control"/><input type="button" onclick="geoCode();" value="검색"></td>
+	<th>관광� 주소</th><td><input type="text" name="touristsopt_address" id="touristsopt_address" required="required" class="form-control"/><input type="button" onclick="geoCode();" value="검></td>
 
 </tr>
 <tr>
-	<th>관광지 주소2</th>
+	<th>관광� 주소2</th>
 	<td>  
 	<div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
@@ -134,19 +134,19 @@
 	
 </tr>
 <tr>
-	<th>관광지 영업시작 시간</th><td><input type="time" name="touristsopt_open" class="form-control"/></td>
+	<th>관광� �업�작 �간</th><td><input type="time" name="touristsopt_open" class="form-control"/></td>
 </tr>
 <tr>
-	<th>관광지 영업마감 시간</th><td><input type="time" name="touristsopt_closed" class="form-control"/></td>
+	<th>관광� �업마감 �간</th><td><input type="time" name="touristsopt_closed" class="form-control"/></td>
 </tr>
 <tr>
-	<th>관광지 전화번호</th><td><input type="tel" name="touristsopt_tel" required="required" class="form-control"/></td>
+	<th>관광� �화번호</th><td><input type="tel" name="touristsopt_tel" required="required" class="form-control"/></td>
 </tr>
 <tr>
-	<th>관광지 홈페이지</th><td><input type="text" name="touristsopt_homepage" required="required" class="form-control"/></td>
+	<th>관광� �페��</th><td><input type="text" name="touristsopt_homepage" required="required" class="form-control"/></td>
 </tr>
 <tr>
-	<th>사진 업로드</th><td><input multiple="multiple" type="file" name="tsimages" class="multi with-preview"/></td>
+	<th>�진 �로/th><td><input multiple="multiple" type="file" name="tsimages" class="multi with-preview"/></td>
 </tr>
 <tr>
 	<td><input type="submit"/></td><td><input type="reset"></td>
