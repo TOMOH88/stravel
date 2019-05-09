@@ -43,8 +43,11 @@
 	<!-- Root Logger -->
 	<root>
 		<priority value="warn" />
-		<appender-ref ref="fileLogger" />
+<<<<<<< HEAD
 		<appender-ref ref="console" />
+=======
+		<appender-ref ref="fileLogger" />
+>>>>>>> origin/hje2
 	</root>
 	
 </log4j:configuration>

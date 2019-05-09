@@ -4,12 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>stravel</title>
-<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-</script>
-</head>
 <style>
 /* div{
 	border:1px solid black;
@@ -59,43 +55,19 @@
 .accordion.md-accordion.accordion-1 .card .card-header, .accordion.md-accordion.accordion-2 .card .card-header, .accordion.md-accordion.accordion-4 .card .card-header, .accordion.md-accordion.accordion-5 .card .card-header {
     border: 0;
 }
-
-div{
- border:1px solid black;
-}
 </style>
+</head>
 <body>
-<c:import url="../common/header.jsp" />
+<c:import url="../common/header.jsp"/>
 <section class="section-margin">
 <div class="card card-image" id="cardimg">
   <!-- Content -->
   <div class="rgba-black-strong py-5 px-4">
-    <div class="row d-flex justify-content-center">
-    <div class="col-md-2">
-	<div class="blog_right_sidebar">
-	<aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title">계정</h4>
-                        <ul class="list cat-list">
-                            <li>
-                                <a href="faqlist1.do" class="d-flex">
-                                    <p>결제</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="faqlist2.do" class="d-flex">
-                                    <p>상품</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="faqlist3.do" class="d-flex">
-                                    <p>계정</p>
-                                </a>
-                            </li>
-                        </ul>
-                      </aside>
-	</div>
+  <div class="col-md-12">
+<font style="font-size:15pt; color:white;">공지사항</font>
 </div>
-      <div class="col-md-10 col-xl-8">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-xl-12">
 
         <!--Accordion wrapper-->
         <div class="accordion md-accordion accordion-5" id="accordionEx5" role="tablist"
@@ -108,7 +80,7 @@ div{
             <div class="card-header p-0 z-depth-1" role="tab" id="heading30">
               <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse30" aria-expanded="true"
                 aria-controls="collapse30">
-                <i class="fas fa-cloud fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
+                <i class="fas fa-cogs fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
                 <h4 class="text-uppercase white-text mb-0 py-3 mt-1">
                   Item #1
                 </h4>
@@ -136,7 +108,7 @@ div{
             <div class="card-header p-0 z-depth-1" role="tab" id="heading31">
               <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse31" aria-expanded="true"
                 aria-controls="collapse31">
-                <i class="fas fa-comment-alt fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
+                <i class="fas fa-cogs fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
                 <h4 class="text-uppercase white-text mb-0 py-3 mt-1">
                   Item #2
                 </h4>
@@ -223,6 +195,6 @@ div{
 </div>
 <!-- Card -->
 </section>
-<c:import url="../common/footer.jsp" />
+<c:import url="../common/footer.jsp"/>
 </body>
 </html>

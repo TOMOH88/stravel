@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="faqMapper">
+
+<!-- 	<resultMap id="resultFaq" type="Faq">
+		<id property="faq_no" column="FAQ_NO" />
+		<id property="faq_categorycode" column="FAQ_CATEGORYCODE" />
+		<id property="faq_title" column="FAQ_TITLE" />
+		<id property="faq_content" column="FAQ_CONTENT" />
+		<id property="faq_writer" column="FAQ_WRITER" />
+		<id property="rename_ffilename" column="RENAME_FFILENAME" />
+		<id property="faq_date" column="FAQ_DATE" />
+		<id property="faq_deletestatus" column="FAQ_DELETESTATUS" />
+	</resultMap>
+	
+	<select id="selectListFaq" resultMap="resultFaq">
+		select * from tb_faq
+	</select>
+	<select id="selectFaq" parameterType="string" 
+	resultType="_int">
+		select * from tb_faq wherer faq_no = #{faq_no}
+	</select>
+	<insert id="insertFaq" parameterType="Faq">
+		insert into tb_faq values (#{faq_no}, #{faq_categorycode}, #{faq_title}, 
+		#{faq_content}, #{faq_writer}, #{rename_ffilename}, sysdate, defalut)
+	</insert> -->
+<!-- 	<update id="updateFaq" parameterType="Faq">
+		
+	</update>
+	<update id="hideFaq" parameterType="Faq">
+		
+	</update> -->
+</mapper>
+
+
+
+

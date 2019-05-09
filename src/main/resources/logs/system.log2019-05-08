@@ -243,8 +243,8 @@
 [16:24:48][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Wed May 08 16:24:45 KST 2019]; parent: Root WebApplicationContext
 [16:24:48][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [16:24:49][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 3516 ms
-[17:03:24][INFO ][MyTripBoardController.java:30]: - 일정자랑 접속
-[17:35:24][INFO ][MyTripBoardController.java:30]: - 일정자랑 접속
+[17:03:24][INFO ][MyTripBoardController.java:30]: - �정�랑 �속
+[17:35:24][INFO ][MyTripBoardController.java:30]: - �정�랑 �속
 [18:14:08][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Wed May 08 16:24:45 KST 2019]; parent: Root WebApplicationContext
 [18:14:08][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Wed May 08 16:24:43 KST 2019]; root of context hierarchy
 [19:49:36][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
@@ -716,7 +716,7 @@ Caused by: java.lang.ClassNotFoundException: Cannot find class: resultTripBoardI
 [20:28:28][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [20:28:29][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 5704 ms
 [20:29:09][INFO ][HomeController.java:22]: - Welcome home!
-[20:29:12][INFO ][MyTripBoardController.java:40]: - 일정자랑 접속
+[20:29:12][INFO ][MyTripBoardController.java:40]: - �정�랑 �속
 [20:39:07][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Wed May 08 20:28:23 KST 2019]; parent: Root WebApplicationContext
 [20:39:07][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Wed May 08 20:28:19 KST 2019]; root of context hierarchy
 [20:43:57][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started

@@ -29,7 +29,7 @@ import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview;
 @Controller
 public class MyTripBoardController {
 
-		//해당 클래스와 관련된 로그를 출력 또는 저장 하기 위한 로그 객체 생성
+		//�당 �래�� 관�된 로그�출력 �는 ��기 �한 로그 객체 �성
 		private static final Logger logger = LoggerFactory.getLogger(MyTripBoardController.class);
 		
 		//MemberService DI
@@ -38,7 +38,7 @@ public class MyTripBoardController {
 		
 		@RequestMapping("tripboard.do")
 		public ModelAndView moveTripList(ModelAndView mv) {
-			logger.info("일정자랑 접속");
+			logger.info("�정�랑 �속");
 			
 			ArrayList<MyTripBoard> boardList = myService.tripBoardListAll();
 			mv.addObject("list", boardList);

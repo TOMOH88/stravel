@@ -9,8 +9,13 @@
     </settings>
 
 	<typeAliases>
+		<!-- <typeAlias type="org.kh.first.member.model.vo.Member" alias="Member" /> -->
 		<!-- 김지훈 -->
 		<typeAlias type="com.travelmaker.stravel.support.model.vo.QnaVo" alias="QnaVo" />
+<<<<<<< HEAD
+=======
+		<!-- <typeAlias type="com.travelmaker.stravel.support.model.vo.Faq" alias="Faq" /> -->
+>>>>>>> origin/hje2
 		<typeAlias type="com.travelmaker.stravel.touristsopt.model.vo.TouristspotImagesVo" alias="TouristspotImagesVo" />
 		<typeAlias type="com.travelmaker.stravel.touristsopt.model.vo.TouristspotVo" alias="TouristspotVo" />
 		<typeAlias type="com.travelmaker.stravel.touristsopt.model.vo.TouristspotCategoryVo" alias="TouristspotCategoryVo" />
@@ -19,9 +24,12 @@
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.Restaurant" alias="Restaurant"/>
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantCategory" alias="RestaurantCategory"/>
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantImage" alias="RestaurantImage"/>
+<<<<<<< HEAD
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage" alias = "MyTripBoardImage"/>
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview" alias = "MyTripBoardReview"/>
 		
+=======
+>>>>>>> origin/hje2
 	</typeAliases>
 	<mappers>
 	<!-- 쿼리문 저장용 매퍼 xml 파일 등록 : 필수  -->
@@ -31,5 +39,9 @@
 		<mapper resource="mappers/touristspot-mapper.xml" />
 		<mapper resource="mappers/myTripBoard-mapper.xml"/>
 		<mapper resource="mappers/restaurant-mapper.xml"/>
+<<<<<<< HEAD
+=======
+		<!-- <mapper resource="mappers/faq-mapper.xml"/> -->
+>>>>>>> origin/hje2
 	</mappers>
 </configuration>

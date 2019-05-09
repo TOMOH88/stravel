@@ -20,17 +20,17 @@
 </head>
 <body>
 
-<h1>레스토랑 리스트</h1>
+<h1>�스�랑 리스/h1>
 
 <!-- 관리자 -->
-<a href = "insertres.do">레스토랑 등록</a> 
+<a href = "insertres.do">�스�랑 �록</a> 
 
 
-<!-- 사용자 -->
-<a href = "seafoodAll.do">시푸드레스토랑</a>
+<!-- �용-->
+<a href = "seafoodAll.do">�푸�레�토/a>
 
 
-<h3>시푸드</h3>
+<h3>�푸/h3>
 	<div class = "seafoodcategory">
 		<c:forEach items = "${seaList }" var = "s">
 			<div class = "seafoodlist">
@@ -43,7 +43,8 @@
 			
 		</c:forEach>
 	</div>
-<h3>한식</h3>
+<div>
+<h3>�식</h3>
 	<div class = "koreancategory">
 		<c:forEach items = "${koreanfoodList }" var = "k">
 			<div class = "koreanlist">
@@ -55,7 +56,9 @@
 			</div>
 		</c:forEach>
 	</div>
-<h3>바베큐</h3>
+
+<div>
+<h3>바베/h3>
 	<div class = "barbecuecategory">
 		<c:forEach items = "${barbecueList }" var = "b">
 			<div class = "barbecuelist">
@@ -67,7 +70,7 @@
 			</div>
 		</c:forEach>
 	</div>
-<h3>카페 /디저트</h3>
+<h3>카페 /��/h3>
 	<div class = "cafecategory">
 		<c:forEach items = "${cafeList }" var = "c">
 			<div class = "cafelist">

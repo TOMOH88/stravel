@@ -42,26 +42,26 @@ div{
     <div class="col-md-2">
    <div class="blog_right_sidebar">
    <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title"><a href="moveTSAdmin.do" class="d-flex">관광지</a></h4>
+                        <h4 class="widget_title"><a href="moveTSAdmin.do" class="d-flex">愿愿묒</a></h4>
                         <ul class="list cat-list">
                             <li>
                                 <a href="#" class="d-flex">
-                                    <p>랜드마크</p>
+                                    <p>쒕뱶留덊겕</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="d-flex">
-                                    <p>유적지</p>
+                                    <p>좎쟻吏</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="d-flex">
-                                    <p>박물관</p>
+                                    <p>諛뺣Ъ愿</p>
                                 </a>
                             </li>
                               <li>
                                 <a href="#" class="d-flex">
-                                    <p>쇼핑</p>
+                                    <p>쇳븨</p>
                                 </a>
                             </li>
                         </ul>
@@ -69,10 +69,10 @@ div{
    </div>
 </div>
       <div class="col-md-10">
-      <!-- 작업 작성시작 -->
-      <h1>관광지 리스트 관리자</h1>
-<center><button onclick="moveWritePage(); return false;">글쓰기</button></center>
-      <h3>랜드마크</h3>
+      <!-- 묒뾽 묒꽦쒖옉 -->
+      <h1>愿愿묒 由ъ뒪愿由ъ옄</h1>
+<center><button onclick="moveWritePage(); return false;">湲곌린</button></center>
+      <h3>쒕뱶留덊겕</h3>
 	<div class="landmarkcategory">
 		<c:forEach items = "${touristspot }" var = "ts">
 			<div class="landmarklist">
@@ -84,8 +84,8 @@ div{
 			</div>
 			
 		</c:forEach>
-	</div>
-      <!-- 작성끝 -->
+	</div>https://github.com/TOMOH88/stravel/invitations
+      <!-- 묒꽦-->
       </div>
       </div>
       </div>

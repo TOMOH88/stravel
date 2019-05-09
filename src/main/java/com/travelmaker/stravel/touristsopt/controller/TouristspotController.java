@@ -37,22 +37,22 @@ public class TouristspotController {
 	
 	@RequestMapping("sampMap.do")
 	public String moveSampMap() {
-		logger.info("샘플");
+		logger.info("�플");
 		return "touristspot/sampMap";
 	}
 	@RequestMapping("sampMap2.do")
 	public String moveSampMap2() {
-		logger.info("샘플");
+		logger.info("�플");
 		return "touristspot/sampMap2";
 	}
 	@RequestMapping("touristspot.do")
 	public String moveTouristspotMain() {
-		logger.info("관광지 리스트");
+		logger.info("관광� 리스);
 		return "touristspot/touristspotMain";
 	}
 	@RequestMapping("moveTSAdmin.do")
 	public ModelAndView moveTouristspotAdminMain(ModelAndView mv) {
-		logger.info("관광지 리스트 관리자 ");
+		logger.info("관광� 리스관리자 ");
 		ArrayList<TouristspotVo> touristspot = touristspotService.selectTouristspotList();
 		mv.addObject("touristspot", touristspot);
 		mv.setViewName("touristspot/touristspotMainAdmin");
@@ -60,7 +60,7 @@ public class TouristspotController {
 	}
 	@RequestMapping("TSWriter.do")
 	public ModelAndView moveTouristspotAdminWriter(ModelAndView mv) {
-			logger.info("관광지 관리자 글작성");
+			logger.info("관광� 관리자 글�성");
 			ArrayList<TouristspotCategoryVo> list = touristspotService.selectTouristspotCategory();
 			mv.addObject("TSCategory", list);
 			mv.setViewName("touristspot/touristspotWriterAdmin");

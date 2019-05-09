@@ -32,5 +32,6 @@
 		<mapper resource="mappers/touristspot-mapper.xml" />
 		<mapper resource="mappers/myTripBoard-mapper.xml"/>
 		<mapper resource="mappers/restaurant-mapper.xml"/>
+		<!-- <mapper resource="mappers/faq-mapper.xml"/> -->
 	</mappers>
 </configuration>

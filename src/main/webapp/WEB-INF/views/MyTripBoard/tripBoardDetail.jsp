@@ -30,36 +30,36 @@
 	.sub_news .title{text=align:left; padding-left:15px; font-size:13px;}
 	.sub_news .title .pic, .sub_news .title .new{margin:0 0 2px; vertical-align :middle}
 	.sub_news .title a .comment{padding:0;background:none; color : #f00; font-size:12px; font-weight:bold}
-	.sub_news tr.reply .title a{padding-left:16px; background:url(첨부파일/ic_reply.png) 0 1px no-repeat}
+	.sub_news tr.reply .title a{padding-left:16px; background:url(첨�일/ic_reply.png) 0 1px no-repeat}
 	.trip_board .like .hart {border : none; background-color : white;}
 </style>
 </head>
 <body>
 <fieldset>
-	<legend>${ myboard.board_writer }님의 글 </legend>
+	<legend>${ myboard.board_writer }�의 글 </legend>
 	<div class = "trip_board">
 		<ul>
 			<li>
-			 	<label for = "title">제목</label>
+			 	<label for = "title">�목</label>
 			 	${myboard.board_title }
 			</li>
 			<li>
-				<label for = "date">날짜</label>
+				<label for = "date">�짜</label>
 			 	
 			</li>
 			<li>
-				<label for = "date">일정</label>
-			 	박 일
+				<label for = "date">�정</label>
+			 	�
 			</li>
 			<div class = "myinfo">
-				<a href = "#">나의 정보 불러오기</a>
+				<a href = "#">�의 �보 불러�기</a>
 			</div>
 			<li>
-				<label for = "schedule">스케줄</label>
+				<label for = "schedule">���/label>
 				
 			</li>
 			<li>
-				<label for = "latter">후기</label><br><br>
+				<label for = "latter">�기</label><br><br>
 				${myboard.board_content }
 			</li>
 			<div class = "like" >
@@ -72,10 +72,10 @@
 	</div>
 </fieldset>
 <fieldset>
-	<legend>리뷰달기</legend>
+	<legend>리뷰�기</legend>
 	<form action = "insertreview.do" method = "post">
 		<input type = "hidden" name = "board_no" value = "${myboard.board_no }">
-		<input type = "hidden" name = "answer_writer" value = "고상훈">
+		<input type = "hidden" name = "answer_writer" value = "고상>
 		<div class = "reviewcategory">
 			<div>
 				<textarea name = "answer_content" rows = "3" cols = "50"></textarea>
@@ -87,9 +87,9 @@
 	</form>
 </fieldset>
 <fieldset>
-	<legend>리뷰 작성</legend>
-		<table class = "sub_news" border = "1" cellspacing = "0" summary = "게시판의 글제목 리스트">
-		<caption>게시판 리스트</caption>
+	<legend>리뷰 �성</legend>
+		<table class = "sub_news" border = "1" cellspacing = "0" summary = "게시�의 글�목 리스>
+		<caption>게시리스/caption>
 			<colgroup>
 				<col width = "25">
 				<col width = "110">
@@ -99,7 +99,7 @@
 			<tr>
 				<th scope = "col">번호</th>
 				<th scope = "col">리뷰</th>
-				<th scope = "col">아이디</th>
+				<th scope = "col">�이/th>
 			</tr>
 			</thead>
 			<tbody>

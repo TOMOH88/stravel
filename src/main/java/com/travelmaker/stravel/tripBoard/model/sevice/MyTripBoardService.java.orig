@@ -1,0 +1,38 @@
+package com.travelmaker.stravel.tripBoard.model.sevice;
+
+import java.util.ArrayList;
+
+import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoard;
+<<<<<<< HEAD
+import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage;
+import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview;
+=======
+>>>>>>> origin/hje2
+
+public interface MyTripBoardService {
+
+	ArrayList<MyTripBoard> tripBoardListAll();
+
+	MyTripBoard tripBoardDetail(int board_no);
+
+<<<<<<< HEAD
+	int insertBoard(MyTripBoard board);
+
+	int insertBoardImage(MyTripBoardImage myTripBoardImage);
+
+	ArrayList<MyTripBoardReview> reviewListAll(int board_no);
+
+	int insertReview(MyTripBoardReview review);
+
+	void addReadCount(int board_no);
+
+	
+
+	
+
+	
+
+=======
+>>>>>>> origin/hje2
+	
+}
