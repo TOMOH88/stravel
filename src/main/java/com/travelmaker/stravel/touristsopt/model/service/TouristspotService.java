@@ -13,7 +13,4 @@ public interface TouristspotService {
 	int insertTouristspotImages(TouristspotImagesVo touristspotImagesVo);
 	ArrayList<TouristspotCategoryVo> selectTouristspotCategory();
 	int updateTouristspotThumnail(TouristspotVo ts);
-	ArrayList<TouristspotVo> selectTouristspotList();
-	TouristspotVo selectTouristspotDetail(int tno);
-	ArrayList<TouristspotImagesVo> selectTouristspotImages(int tno);
 }

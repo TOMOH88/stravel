@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="companionMapper">
+
+	<resultMap id="resultCompanion" type="Companion">
+		<id property="companion_no" column="companion_no" />
+		<result property="companion_title" column="companion_title" />
+		<result property="user_email" column="user_email" />
+		<result property="companion_content" column="companion_content" />
+		<result property="companion_date" column="companion_date" />
+		<result property="companion_schedule" column="companion_schedule" />
+		<result property="companion_progress" column="companion_progress" />
+	</resultMap>
+	
+
+	<select id="selectOne" parameterType="_int"
+	 resultMap="resultCompanion">
+		select * from companion 
+		where companion_no = #{companion_no} 
+	</select>
+	
+	<select id="selectCompanionList" parameterType="Companion"
+	resultMap="resultCompanion">
+	<![CDATA[
+		select * from (select rownum rnum, companion_no,
+							companion_title, user_email, companion_content,
+							companion_date, companion_schedule, companion_progress
+							from (select * from companion 
+								order by companion_no desc))
+								where rnum >= #{offset } and rnum <=
+								#{limit }
+							]]>
+							
+						
+	</select>
+	
+	<select id="selectListCount" resultType="_int">
+		select count(*) from companion
+	</select>
+	
+	<insert id="insertCompanion" parameterType="Companion" useGeneratedKeys="true">
+		insert into companion 
+		values (#{companion_no}, #{companion_title}, #{user_email}, 
+		#{companion_content}, sysdate, #{companion_schedule}, #{companion_progress})
+	</insert>
+	
+
+
+
+</mapper>

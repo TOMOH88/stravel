@@ -26,6 +26,8 @@
 <h1>일정자랑</h1>
 <table class = "sub_news" border = "1" cellspacing = "0" summary = "게시판의 글제목 리스트">
 <caption>게시판 리스트</caption>
+
+	
 	<colgroup>
 		<col>
 		<col width = "110">

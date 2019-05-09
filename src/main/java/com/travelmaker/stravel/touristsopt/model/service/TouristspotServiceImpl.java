@@ -44,19 +44,4 @@ public class TouristspotServiceImpl implements TouristspotService{
 		
 	}
 
-	@Override
-	public ArrayList<TouristspotVo> selectTouristspotList() {
-		return touristspotDao.selectTouristspotList(mybatisSession);
-	}
-
-	@Override
-	public TouristspotVo selectTouristspotDetail(int tno) {
-		return touristspotDao.selectTouristspotDetail(mybatisSession,tno);
-	}
-
-	@Override
-	public ArrayList<TouristspotImagesVo> selectTouristspotImages(int tno) {
-		return touristspotDao.selectTouristspotImages(mybatisSession,tno);
-	}
-
 }

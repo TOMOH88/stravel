@@ -70,6 +70,7 @@
                     	<ol>
                     		<li><a href="#">-일정공유</a></li>
                     		<li><a href="#">-동행찾기</a></li>
+                    		<li><a href="pay1.do">-결제창</a></li>
                     	</ol>
                     </li>
                 </ul>

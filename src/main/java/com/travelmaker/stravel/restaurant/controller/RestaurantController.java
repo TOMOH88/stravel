@@ -71,7 +71,7 @@ public class RestaurantController {
 	}*/
 	@RequestMapping(value = "insertrestaurant.do", method = RequestMethod.POST)
 	public String insertRestaurant(Restaurant rest, MultipartHttpServletRequest resimRequest, HttpServletRequest request) {
-		String path = "redirect:restaurantlist.do";
+		String path = "Restaurant/insertRestaurant";
 		String savePath = request.getSession().getServletContext().getRealPath("resources/img/restaurant");
 		ArrayList<RestaurantImage> imageList = new ArrayList<RestaurantImage>();
 		rest.setRestaurant_no(resService.selectRestaurantNo());

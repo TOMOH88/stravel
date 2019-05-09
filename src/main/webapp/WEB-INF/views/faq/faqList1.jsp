@@ -83,7 +83,7 @@ div{
                             </li>
                             <li>
                                 <a href="faqlist2.do" class="d-flex">
-                                    <p>�품</p>
+                                    <p>상품</p>
                                 </a>
                             </li>
                             <li>

@@ -20,9 +20,10 @@
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.Restaurant" alias="Restaurant"/>
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantCategory" alias="RestaurantCategory"/>
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantImage" alias="RestaurantImage"/>
-		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage" alias = "MyTripBoardImage"/>
-		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview" alias = "MyTripBoardReview"/>
-		
+		<!-- 김인규 -->
+		<typeAlias type="com.travelmaker.stravel.companion.model.vo.Companion" alias="Companion"/>
+		<typeAlias type="com.travelmaker.stravel.companion.model.vo.CompanionReply" alias="CompanionReply"/>
+		<typeAlias type="com.travelmaker.stravel.companion.model.vo.CompanionPage" alias="CompanionPage"/>
 	</typeAliases>
 	<mappers>
 	<!-- 쿼리문 저장용 매퍼 xml 파일 등록 : 필수  -->
@@ -32,5 +33,6 @@
 		<mapper resource="mappers/touristspot-mapper.xml" />
 		<mapper resource="mappers/myTripBoard-mapper.xml"/>
 		<mapper resource="mappers/restaurant-mapper.xml"/>
+		<mapper resource="mappers/companion-mapper.xml"/>
 	</mappers>
 </configuration>

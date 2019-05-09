@@ -16,11 +16,6 @@ public class RoomController {
 		return "room/roomDetailView";
 	}
 	
-	@RequestMapping("test.do")
-	public String test() {
-		return "room/test";
-	}
-	
 	@RequestMapping("ownerMain.do")
 	public String ownerMain() {
 		return "room/ownerMain";
