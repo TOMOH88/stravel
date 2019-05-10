@@ -35,7 +35,7 @@ public class CalendarController {
 		return "calendar/searchlodgment";
 	}
 	
-	@RequestMapping("adminMain.do")
+/*	@RequestMapping("adminMain.do")
 	public String moveTest() {
 		return "calendar/test";
 	}
@@ -63,7 +63,7 @@ public class CalendarController {
 	@RequestMapping("vcalendar.do")
 	public String moveViewCalendarPage() {
 		return "calendar/calendarViewList";
-	}
+	}*/
 	
 	@RequestMapping("qnalist.do")
 	public String moveFaqListPage() {
