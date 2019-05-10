@@ -22,40 +22,18 @@ import com.travelmaker.stravel.support.model.service.SupportService;
 import com.travelmaker.stravel.support.model.vo.QnaVo;
 
 @Controller
-public class SupportController {
+public class QnaController {
 	
-	private static final Logger logger= LoggerFactory.getLogger(SupportController.class);
+	private static final Logger logger= LoggerFactory.getLogger(QnaController.class);
 	@Autowired
 	private SupportService supportService;
-	@RequestMapping("notice.do")
-	public String movenoticePage() {
-		return "notice/noticeList";
-	}
 	
-	@RequestMapping("adminnotice.do")
-	public String moveAdminNoticePage() {
-		return "notice/anoticeList";
-	}
+
+
 	
-	@RequestMapping("noticewrite.do")
-	public String moveAdminNoticeWritePage() {
-		return "notice/noticeWrite";
-	}
-	@RequestMapping("faqlist.do")
-	public String moveFaqList1Page() {
-		return "faq/faqList";
-	}
 	
-	@RequestMapping("adminfaq.do")
-	public String moveaFaqListPage() {
-		return "faq/adminFaqList";
-	}
 	
-	@RequestMapping(value="faqinsert.do")
-	public String moveFaqWritePage() {
-		return "faq/adminFaqWrite";
-	}
-	
+	//qna작업공간
 	@RequestMapping("adminfaqView.do")
 	public String moveFaqListViewPage() {
 		return "faq/adminFaqListView";

@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.common.UUIDUtil;
-import com.travelmaker.stravel.support.controller.SupportController;
+import com.travelmaker.stravel.support.controller.QnaController;
 import com.travelmaker.stravel.touristspot.model.service.TouristspotService;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
@@ -29,7 +29,7 @@ import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 @Controller
 public class TouristspotController {
 	
-	private static final Logger logger= LoggerFactory.getLogger(SupportController.class);
+	private static final Logger logger= LoggerFactory.getLogger(QnaController.class);
 	/*@Autowired
 	GeoCoder geocoder;*/
 	@Autowired
