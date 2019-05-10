@@ -52,13 +52,16 @@ public class TouristspotController {
 		return "touristspot/sampMap2";
 	}
 	@RequestMapping("touristspot.do")
-	public String moveTouristspotMain() {
+	public ModelAndView moveTouristspotMain(ModelAndView mv) {
 		logger.info("관광지 리스트");
-		return "touristspot/touristspotMain";
+		ArrayList<TouristspotVo> touristspot = touristspotService.selectTouristspotList();
+		mv.addObject("touristspot", touristspot);
+		mv.setViewName("touristspot/touristspotMain");
+		return mv;
 	}
 	@RequestMapping("moveTSAdmin.do")
 	public ModelAndView moveTouristspotAdminMain(ModelAndView mv) {
-		logger.info("관광지 리스관리자 ");
+		logger.info("관광지 리스트 관리자 ");
 		ArrayList<TouristspotVo> touristspot = touristspotService.selectTouristspotList();
 		mv.addObject("touristspot", touristspot);
 		mv.setViewName("touristspot/touristspotMainAdmin");
@@ -128,11 +131,19 @@ public class TouristspotController {
 	public ModelAndView touristspotDetail(ModelAndView mv,@RequestParam(name = "tno") int tno) {
 		TouristspotVo ts = touristspotService.selectTouristspotDetail(tno);
 		ArrayList<TouristspotImagesVo> tsiList =  touristspotService.selectTouristspotImages(tno);
-		System.out.println(ts);
-		System.out.println(tsiList.size());
 		mv.addObject("touristspot", ts);
 		mv.addObject("touristspotImages", tsiList);
 		mv.setViewName("touristspot/touristspotDetail");
+		return mv;
+		
+	}
+	@RequestMapping("touristspotDetailAdmin.do")
+	public ModelAndView touristspotDetailAdmin(ModelAndView mv,@RequestParam(name = "tno") int tno) {
+		TouristspotVo ts = touristspotService.selectTouristspotDetail(tno);
+		ArrayList<TouristspotImagesVo> tsiList =  touristspotService.selectTouristspotImages(tno);
+		mv.addObject("touristspot", ts);
+		mv.addObject("touristspotImages", tsiList);
+		mv.setViewName("touristspot/touristspotDetailAdmin");
 		return mv;
 		
 	}

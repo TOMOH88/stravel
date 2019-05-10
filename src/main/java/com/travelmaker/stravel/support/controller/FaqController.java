@@ -8,16 +8,20 @@ public class FaqController {
 	//faq 작업공간
 		@RequestMapping("faqlist.do")
 		public String moveFaqList1Page() {
-			return "faq/faqList";
+			return "support/faq/faqList";
 		}
 		
 		@RequestMapping("adminfaq.do")
 		public String moveaFaqListPage() {
-			return "faq/adminFaqList";
+			return "support/faq/adminFaqList";
 		}
 		
 		@RequestMapping(value="faqinsert.do")
 		public String moveFaqWritePage() {
-			return "faq/adminFaqWrite";
+			return "support/faq/adminFaqWrite";
+		}
+		@RequestMapping("adminfaqView.do")
+		public String moveFaqListViewPage() {
+			return "support/faq/adminFaqListView";
 		}
 }

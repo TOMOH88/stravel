@@ -18,16 +18,14 @@
 	.sub_news .title{text=align:left; padding-left:15px; font-size:13px;}
 	.sub_news .title .pic, .sub_news .title .new{margin:0 0 2px; vertical-align :middle}
 	.sub_news .title a .comment{padding:0;background:none; color : #f00; font-size:12px; font-weight:bold}
-	.sub_news tr.reply .title a{padding-left:16px; background:url(첨�일/ic_reply.png) 0 1px no-repeat}
+	.sub_news tr.reply .title a{padding-left:16px; background:url(첨부파일/ic_reply.png) 0 1px no-repeat}
 	
 </style>
 </head>
 <body>
-<h1>�정�랑</h1>
-<table class = "sub_news" border = "1" cellspacing = "0" summary = "게시�의 글�목 리스>
-<caption>게시리스/caption>
-
-	
+<h1>일정자랑</h1>
+<table class = "sub_news" border = "1" cellspacing = "0" summary = "게시판의 글제목 리스트">
+<caption>게시판 리스트</caption>
 	<colgroup>
 		<col>
 		<col width = "110">
@@ -37,11 +35,11 @@
 	</colgroup>
 	<thead>
 	<tr>
-		<th scope = "col">�목</th>
-		<th scope = "col">글�이</th>
-		<th scope = "col">�짜</th>
-		<th scope = "col">조회/th>
-		<th scope = "col">좋아/th>
+		<th scope = "col">제목</th>
+		<th scope = "col">글쓴이</th>
+		<th scope = "col">날짜</th>
+		<th scope = "col">조회수</th>
+		<th scope = "col">좋아요</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -59,7 +57,7 @@
 	
 </table>
 <div class = "button">
-	<a href = "writetrip.do">�정 �랑 �기</a>
+	<a href = "writetrip.do">일정 자랑 쓰기</a>
 </div>
 </body>
 </html>

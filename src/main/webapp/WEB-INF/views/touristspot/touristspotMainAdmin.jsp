@@ -35,7 +35,7 @@ div{
 </script>
 </head>
 <body>
-<c:import url="../common/header.jsp" />
+<c:import url="../common/adminHeader.jsp" />
 <section class="section-margin">
 <div class="rgba-black-strong py-5 px-4">
     <div class="row d-flex justify-content-center">
@@ -76,7 +76,7 @@ div{
 	<div class="landmarkcategory">
 		<c:forEach items = "${touristspot }" var = "ts">
 			<div class="landmarklist">
-				<a href = "touristspotDetail.do?tno=${ts.touristspot_no }">
+				<a href = "touristspotDetailAdmin.do?tno=${ts.touristspot_no }">
 				<img src="${ pageContext.request.contextPath }/resources/files/touristspotImages/${ts.rename_thumnail}" alt = "${ts.rename_thumnail}" width = "150" height = "150"></a>
 					<div>
 						<span>${ts.touristspot_name }</span>
@@ -90,6 +90,6 @@ div{
       </div>
       </div>
 </section>
-<c:import url="../common/footer.jsp" />
+<c:import url="../common/afooter.jsp" />
 </body>
 </html>

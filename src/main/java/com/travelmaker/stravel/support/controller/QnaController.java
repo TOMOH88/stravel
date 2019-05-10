@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.travelmaker.stravel.support.model.service.SupportService;
+import com.travelmaker.stravel.support.model.service.QnaService;
 import com.travelmaker.stravel.support.model.vo.QnaVo;
 
 @Controller
@@ -26,7 +26,7 @@ public class QnaController {
 	
 	private static final Logger logger= LoggerFactory.getLogger(QnaController.class);
 	@Autowired
-	private SupportService supportService;
+	private QnaService supportService;
 	
 
 
@@ -34,28 +34,28 @@ public class QnaController {
 	
 	
 	//qna작업공간
-	@RequestMapping("adminfaqView.do")
-	public String moveFaqListViewPage() {
-		return "faq/adminFaqListView";
-	}
 	@RequestMapping("qnalist.do")
-	public String moveQnaListPage() {
-		return "qna/qnaList";
+	public ModelAndView moveQnaListPage(ModelAndView mv) {
+		String userid ="김지훈";
+		//ArrayList<QnaVo> list = supportService.selectMyQnaList(userid);
+		
+		mv.setViewName("support/qna/qnaList");
+		return mv;
 	}
 	
 	@RequestMapping("adminqna.do")
 	public String moveadminQnaListPage() {
-		return "qna/adminQna";
+		return "support/qna/adminQna";
 	}
 	
 	@RequestMapping("adminqnaView.do")
 	public String moveadminQnaListViewPage() {
-		return "qna/qnaListView";
+		return "support/qna/qnaListView";
 	}
 	
 	@RequestMapping("qnalistView.do")
 	public String moveQnaListViewPage() {
-		return "qna/uqnaListView";
+		return "support/qna/uqnaListView";
 	}
 	
 	

@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="initial-scale=1.0">
 <title>stravel</title>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js" type="text/javascript" ></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.MultiFile.js" type="text/javascript" ></script>
 <style>
   table {
     border: 1px solid #444444;
@@ -27,8 +29,6 @@
         padding: 0;
       }  */
 </style>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js" type="text/javascript" ></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery.MultiFile.js" type="text/javascript" ></script>
 <script>
     var map;
 	var marker;
@@ -62,10 +62,10 @@
 				
     	  }
 </script>   
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&libraries=places&callback=initAutocomplete" async defer></script> -->
 </head>
 <body>
 <c:import url="../common/header.jsp" />
+<%-- <c:import url="../common/adminHeader.jsp" /> --%>
 <section class="section-margin">
 <div class="container">
 <h1 align="center">관광지 글쓰기 페이지</h1>
@@ -125,5 +125,6 @@
 </form>
 </div>
 </section>
+<c:import url="../common/afooter.jsp" />
 </body>
 </html>

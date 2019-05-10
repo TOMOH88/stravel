@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.travelmaker.stravel.support.model.vo.QnaVo;
 
-public interface SupportService {
+public interface QnaService {
 	int qnaInsert(QnaVo qnavo);
 	ArrayList<QnaVo> selectMyQnaList(String userid);
 	QnaVo selectMyQnaListOne(QnaVo qnaVo);

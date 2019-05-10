@@ -123,7 +123,7 @@ $(document).on('ready', function () {
     </script>    
 </head>
 <body>
-<c:import url="../common/header.jsp" />
+<c:import url="../common/adminHeader.jsp" />
  <section class="section-margin">
  <div class="container">
 <h1>${touristspot.touristspot_name }</h1>
@@ -206,6 +206,6 @@ ${touristspot.touristspot_content }
 </div>
 </div>
 </section>
-<c:import url="../common/footer.jsp" />
+<c:import url="../common/afooter.jsp" />
 </body>
 </html>

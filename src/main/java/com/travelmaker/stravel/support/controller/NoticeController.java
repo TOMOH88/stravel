@@ -8,17 +8,17 @@ public class NoticeController {
 	//공지사항 작업공간
 	@RequestMapping("notice.do")
 	public String movenoticePage() {
-		return "notice/noticeList";
+		return "support/notice/noticeList";
 	}
 	
 	@RequestMapping("adminnotice.do")
 	public String moveAdminNoticePage() {
-		return "notice/anoticeList";
+		return "support/notice/anoticeList";
 	}
 	
 	@RequestMapping("noticewrite.do")
 	public String moveAdminNoticeWritePage() {
-		return "notice/noticeWrite";
+		return "support/notice/noticeWrite";
 	}
 	
 }

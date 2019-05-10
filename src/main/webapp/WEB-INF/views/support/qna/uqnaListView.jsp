@@ -8,7 +8,7 @@
 <title>stravel</title>
 </head>
 <body>
-<c:import url="../common/header.jsp"/>
+<c:import url="../../common/header.jsp"/>
 <section class="section-margin">
 <div class="container">
 <!-- table 영역 시작 -->
@@ -50,6 +50,6 @@
                        <!-- table 끝 -->       
 </div>
 </section>
-<c:import url="../common/footer.jsp"/>
+<c:import url="../../common/footer.jsp"/>
 </body>
 </html>

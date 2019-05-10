@@ -13,30 +13,64 @@
   th, td {
     border: 1px solid #444444;
   }
+  
+    .landmarkcategory:after {display:block; content:''; clear:both}
+	.landmarkcategory .landmarklist{float:left; width : 180; margin-right : 25px;}	
 </style>
 </head>
 <body>
 <c:import url="../common/header.jsp" />
 <section class="section-margin">
-
-<h1>관광지</h1>
-<nav>
-1.<br>
-2.<br>
-3.<br>
-4.<br>
-</nav>	
-
-<table>
-<tr><th>페이지 명</th><td>링크</td><td>작업 상태</td></tr>
-<tr><th>관광지 관리자 페이지</th><td><a href="moveTSAdmin.do">이동</a></td><td>작업중</td></tr>
-<tr><th>샘플</th><td><a href="sampMap.do">이동</a></td><td>작업중</td></tr>
-<tr><th>샘플2</th><td><a href="sampMap2.do">이동</a></td><td>작업중</td></tr>
-<tr><th>샘플3 별점</th><td><a href="sampStar.do">이동</a></td><td>작업중</td></tr>
-</table>
-
-
-
+<div class="rgba-black-strong py-5 px-4">
+    <div class="row d-flex justify-content-center">
+    <div class="col-md-2">
+   <div class="blog_right_sidebar">
+   <aside class="single_sidebar_widget post_category_widget">
+                        <h4 class="widget_title"><a href="touristspot.do" class="d-flex">관광지</a></h4>
+                        <ul class="list cat-list">
+                            <li>
+                                <a href="#" class="d-flex">
+                                    <p>랜드마크</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex">
+                                    <p>유적지</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex">
+                                    <p>박물관</p>
+                                </a>
+                            </li>
+                              <li>
+                                <a href="#" class="d-flex">
+                                    <p>쇼핑</p>
+                                </a>
+                            </li>
+                        </ul>
+                      </aside>
+   </div>
+</div>
+      <div class="col-md-10">
+      <!-- 작업 작성시작 -->
+      <h3>랜드마크</h3>
+	<div class="landmarkcategory">
+		<c:forEach items = "${touristspot }" var = "ts">
+			<div class="landmarklist">
+				<a href = "touristspotDetail.do?tno=${ts.touristspot_no }">
+				<img src="${ pageContext.request.contextPath }/resources/files/touristspotImages/${ts.rename_thumnail}" alt = "${ts.rename_thumnail}" width = "150" height = "150"></a>
+					<div>
+						<span>${ts.touristspot_name }</span>
+					</div>
+			</div>
+			
+		</c:forEach>
+	</div>
+      <!-- 작성끝 -->
+      </div>
+      </div>
+      </div>
 </section>
 <c:import url="../common/footer.jsp"/>
 </body>
