@@ -5,67 +5,67 @@
 <mapper namespace="touristspotMapper">
 
 	<resultMap id="resultTouristspotVo" type="TouristspotVo">
-		<id property="touristsopt_no" column="TOURISTSOPT_NO" />
-		<id property="touristsoptcategorycode" column="TOURISTSOPTCATEGORYCODE" />
-		<id property="touristsopt_name" column="TOURISTSOPT_NAME" />
-		<id property="touristsopt_content" column="TOURISTSOPT_CONTENT" />
-		<id property="touristsopt_writer" column="TOURISTSOPT_WRITER" />
+		<id property="touristspot_no" column="TOURISTSPOT_NO" />
+		<id property="touristspotcategorycode" column="TOURISTSPOTCATEGORYCODE" />
+		<id property="touristspot_name" column="TOURISTSPOT_NAME" />
+		<id property="touristspot_content" column="TOURISTSPOT_CONTENT" />
+		<id property="touristspot_writer" column="TOURISTSPOT_WRITER" />
 		<id property="rename_thumnail" column="RENAME_THUMNAIL" />
-		<id property="touristsopt_open" column="TOURISTSOPT_OPEN" />
-		<id property="touristsopt_closed" column="TOURISTSOPT_CLOSED" />
-		<id property="touristsopt_address" column="TOURISTSOPT_ADDRESS" />
-		<id property="touristsopt_homepage" column="TOURISTSOPT_HOMEPAGE" />
-		<id property="touristsopt_tel" column="TOURISTSOPT_TEL" />
-		<id property="touristsopt_latitude" column="TOURISTSOPT_LATITUDE" />
-		<id property="touristsopt_longitude" column="TOURISTSOPT_LONGITUDE" />
-		<id property="touristsopt_date" column="TOURISTSOPT_DATE" />
-		<id property="touristsopt_lastmodified" column="TOURISTSOPT_LASTMODIFIED" />
-		<id property="touristsopt_deletestatus" column="TOURISTSOPT_DELETESTATUS" />
+		<id property="touristspot_open" column="TOURISTSPOT_OPEN" />
+		<id property="touristspot_closed" column="TOURISTSPOT_CLOSED" />
+		<id property="touristspot_address" column="TOURISTSPOT_ADDRESS" />
+		<id property="touristspot_homepage" column="TOURISTSPOT_HOMEPAGE" />
+		<id property="touristspot_tel" column="TOURISTSPOT_TEL" />
+		<id property="touristspot_latitude" column="TOURISTSPOT_LATITUDE" />
+		<id property="touristspot_longitude" column="TOURISTSPOT_LONGITUDE" />
+		<id property="touristspot_date" column="TOURISTSPOT_DATE" />
+		<id property="touristspot_lastmodified" column="TOURISTSPOT_LASTMODIFIED" />
+		<id property="touristspot_deletestatus" column="TOURISTSPOT_DELETESTATUS" />
 	</resultMap>
 	<resultMap id="resultTouristspotCategoryVo" type="TouristspotCategoryVo">
-		<id property="touristspotCategoryCode" column="TOURISTSOPTCATEGORYCODE" />
-		<id property="touristspotCategoryName" column="TOURISTSOPTCATEGORYNAME" />
+		<id property="touristspotCategoryCode" column="TOURISTSPOTCATEGORYCODE" />
+		<id property="touristspotCategoryName" column="TOURISTSPOTCATEGORYNAME" />
 	</resultMap>
 		<resultMap id="resultTouristspotImagesVo" type="TouristspotImagesVo">
-		<id property="touristspot_no" column="TOURISTSOPT_NO" />
-		<id property="touristspot_sq" column="TOURISTSOPT_SQ" />
-		<id property="touristspot_imagename" column="TOURISTSOPT_IMAGENAME" />
+		<id property="touristspot_no" column="TOURISTSPOT_NO" />
+		<id property="touristspot_sq" column="TOURISTSPOT_SQ" />
+		<id property="touristspot_imagename" column="TOURISTSPOT_IMAGENAME" />
 	</resultMap>
 	
 	
 	<select id="selectTouristspotCategory" resultMap="resultTouristspotCategoryVo">
-		select * from tb_touristsoptcategory
+		select * from tb_touristspotcategory
 	</select>
 	<select id="selectTouristspotNO" resultType="_int">
-		select count(TOURISTSOPT_NO)+1 from tb_touristsopt
+		select count(TOURISTspot_NO)+1 from tb_touristspot
 	</select>
 	<insert id="insertTouristspot" parameterType="TouristspotVo">
-		insert into tb_touristsopt(TOURISTSOPT_NO,TOURISTSOPTCATEGORYCODE,TOURISTSOPT_NAME,
-		TOURISTSOPT_CONTENT,TOURISTSOPT_WRITER,TOURISTSOPT_OPEN,
-		TOURISTSOPT_CLOSED,TOURISTSOPT_HOMEPAGE,TOURISTSOPT_ADDRESS,TOURISTSOPT_TEL,
-		TOURISTSOPT_LATITUDE,TOURISTSOPT_LONGITUDE,		
-		TOURISTSOPT_DATE,TOURISTSOPT_LASTMODIFIED,TOURISTSOPT_DELETESTATUS)
-		VALUES(#{touristsopt_no},#{touristsoptcategorycode},#{touristsopt_name},
-		#{touristsopt_content},#{touristsopt_writer},#{touristsopt_open},
-		#{touristsopt_closed},#{touristsopt_homepage},#{touristsopt_address},#{touristsopt_tel},
-		#{touristsopt_latitude},#{touristsopt_longitude},		
+		insert into tb_touristspot(TOURISTspot_NO,TOURISTSPOTCATEGORYCODE,TOURISTSPOT_NAME,
+		TOURISTSPOT_CONTENT,TOURISTSPOT_WRITER,TOURISTSPOT_OPEN,
+		TOURISTSPOT_CLOSED,TOURISTSPOT_HOMEPAGE,TOURISTspot_ADDRESS,TOURISTSPOT_TEL,
+		TOURISTSPOT_LATITUDE,TOURISTSPOT_LONGITUDE,		
+		TOURISTSPOT_DATE,TOURISTSPOT_LASTMODIFIED,TOURISTSPOT_DELETESTATUS)
+		VALUES(#{touristspot_no},#{touristspotcategorycode},#{touristspot_name},
+		#{touristspot_content},#{touristspot_writer},#{touristspot_open},
+		#{touristspot_closed},#{touristspot_homepage},#{touristspot_address},#{touristspot_tel},
+		#{touristspot_latitude},#{touristspot_longitude},		
 		DEFAULT,DEFAULT,DEFAULT)
 	</insert>
 	<insert id="insertTouristspotImages" parameterType="TouristspotImagesVo">
-		insert into TB_TOURISTSOPTIMAGES(TOURISTSOPT_NO,TOURISTSOPT_SQ,TOURISTSOPT_IMAGENAME)
+		insert into TB_TOURISTSPOTIMAGES(TOURISTSPOT_NO,TOURISTSPOT_SQ,TOURISTSPOT_IMAGENAME)
 		values(#{touristspot_no},#{touristspot_sq},#{touristspot_imagename})
 	</insert>
 	<update id="updateTouristspotThumnail" parameterType="TouristspotVo">
-		update tb_touristsopt set RENAME_THUMBNAIL = #{rename_thumnail} where TOURISTSOPT_NO = #{touristsopt_no}
+		update tb_touristspot set RENAME_THUMBNAIL = #{rename_thumnail} where TOURISTSPOT_NO = #{touristspot_no}
 	</update>
 	<select id="selectTouristspotList" resultType="TouristspotVo">
-		select * from TB_TOURISTSOPT
+		select * from TB_TOURISTSPOT
 	</select>
 	<select id="selectTouristspotDetail" parameterType="_int" resultType="TouristspotVo">
-		select * from TB_TOURISTSOPT where TOURISTSOPT_NO = #{touristsopt_no}
+		select * from TB_TOURISTSPOT where TOURISTSPOT_NO = #{touristspot_no}
 	</select>
 	<select id="selectTouristspotImages" parameterType="_int" resultMap="resultTouristspotImagesVo">
-		select * from TB_TOURISTSOPTIMAGES where TOURISTSOPT_NO = #{touristsopt_no}
+		select * from TB_TOURISTSPOTIMAGES where TOURISTSPOT_NO = #{touristspot_no}
 	</select>
 <!-- 	
 	<insert id="qnaInsert" parameterType="QnaVo">

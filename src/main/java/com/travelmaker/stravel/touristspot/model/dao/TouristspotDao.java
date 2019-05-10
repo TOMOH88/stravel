@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.touristsopt.model.dao;
+package com.travelmaker.stravel.touristspot.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.travelmaker.stravel.touristsopt.model.vo.TouristspotCategoryVo;
-import com.travelmaker.stravel.touristsopt.model.vo.TouristspotImagesVo;
-import com.travelmaker.stravel.touristsopt.model.vo.TouristspotVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Repository("TouristspotDao")
 public class TouristspotDao {

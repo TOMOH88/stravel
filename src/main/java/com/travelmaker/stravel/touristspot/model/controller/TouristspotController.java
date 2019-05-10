@@ -1,4 +1,4 @@
- package com.travelmaker.stravel.touristsopt.controller;
+ package com.travelmaker.stravel.touristspot.model.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,10 +21,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.common.UUIDUtil;
 import com.travelmaker.stravel.support.controller.SupportController;
-import com.travelmaker.stravel.touristsopt.model.service.TouristspotService;
-import com.travelmaker.stravel.touristsopt.model.vo.TouristspotVo;
-import com.travelmaker.stravel.touristsopt.model.vo.TouristspotCategoryVo;
-import com.travelmaker.stravel.touristsopt.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.service.TouristspotService;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Controller
 public class TouristspotController {
@@ -34,6 +34,12 @@ public class TouristspotController {
 	GeoCoder geocoder;*/
 	@Autowired
 	private TouristspotService touristspotService;
+	
+	@RequestMapping("sampStar.do")
+	public String moveSampStar() {
+		logger.info("샘플");
+		return "touristspot/sampStar";
+	}
 	
 	@RequestMapping("sampMap.do")
 	public String moveSampMap() {
@@ -71,7 +77,7 @@ public class TouristspotController {
 		String path = "touristspot/touristspotMain";
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/files/touristspotImages");
 		ArrayList<TouristspotImagesVo> tsImages = new ArrayList<TouristspotImagesVo>();
-		ts.setTouristsopt_no(touristspotService.selectTouristspotNO());
+		ts.setTouristspot_no(touristspotService.selectTouristspotNO());
 		System.out.println(ts.toString());
 		int result = touristspotService.insertTouristspot(ts);
 		if(result <=0) {
@@ -82,7 +88,7 @@ public class TouristspotController {
 			String originalFileName = fileList.get(i).getOriginalFilename();
 			try {
 			fileList.get(i).transferTo(new File(savePath+"\\"+fileList.get(i).getOriginalFilename()));
-			String renameFileName = ts.getTouristsopt_name()+"-"+UUIDUtil.GetUUID()
+			String renameFileName = ts.getTouristspot_name()+"-"+UUIDUtil.GetUUID()
 					+ "." + originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
 			
 			File originFile = new File(savePath + "\\" + originalFileName);
@@ -104,7 +110,7 @@ public class TouristspotController {
 				fout.close();
 				originFile.delete();
 			}
-			tsImages.add(new TouristspotImagesVo(ts.getTouristsopt_no(), i+1, renameFileName));
+			tsImages.add(new TouristspotImagesVo(ts.getTouristspot_no(), i+1, renameFileName));
 			int result2 = touristspotService.insertTouristspotImages(tsImages.get(i));
 			} catch (Exception e) {
 				e.printStackTrace();

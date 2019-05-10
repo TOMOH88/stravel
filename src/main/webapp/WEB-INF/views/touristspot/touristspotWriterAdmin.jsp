@@ -30,41 +30,12 @@
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js" type="text/javascript" ></script>
 <script src="${pageContext.request.contextPath }/resources/js/jquery.MultiFile.js" type="text/javascript" ></script>
 <script>
-/* 	var lat = 37.5007939
-	var lng = 127.03696560000003
-	var placeSearch, autocomplete;
-	
-	function initAutocomplete() {
-	  autocomplete = new google.maps.places.Autocomplete(
-	                                      (document.getElementById('touristsopt_address')),{types: ['geocode']});
-	  autocomplete.addListener('place_changed', fillInAddress);
-	} 	
- 	function fillInAddress() {
- 	var place = autocomplete.getPlace();
- 	lat = place.geometry.location.lat();
-	lng = place.geometry.location.lng();
-    document.getElementById("lat").value=place.geometry.location.lat();
-    document.getElementById("lng").value=place.geometry.location.lng();
-    console.log(lat+", "+ lng)
-    
- 	}
-    var map;
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: lat, lng: lng},
-          zoom: 15
-        });
-      } */
-    
-    
-    
-    
     var map;
 	var marker;
       function geoCode() {
     	  	var faddr_lat = 37.5007939;
     		var faddr_lng = 127.03696560000003;
-    	  	var faddr = document.getElementById('touristsopt_address').value;
+    	  	var faddr = document.getElementById('touristspot_address').value;
     	  	var geocoder;
     	  	geocoder = new google.maps.Geocoder();
     	  	geocoder.geocode( { 'address': faddr}, function(results, status) {
@@ -84,8 +55,8 @@
     	                map: map/* ,
     	                title: 'Hello World!' */
     	            });
-    	  		$("#touristsopt_latitude").val(faddr_lat);
-    	  		$("#touristsopt_longitude").val(faddr_lng);
+    	  		$("#touristspot_latitude").val(faddr_lat);
+    	  		$("#touristspot_longitude").val(faddr_lng);
     	  		return;
     	  	});
 				
@@ -99,15 +70,15 @@
 <div class="container">
 <h1 align="center">관광지 글쓰기 페이지</h1>
 <form action="TSWriterUpload.do" method="post" enctype="multipart/form-data">
-<input type="hidden" name="touristsopt_writer" value="김지훈">
+<input type="hidden" name="touristspot_writer" value="김지훈">
 <table class="table">
 <tr>
-	<th>관광지 명</th><td><input type="text" name="touristsopt_name" required="required" class="form-control"/></td>
+	<th>관광지 명</th><td><input type="text" name="touristspot_name" required="required" class="form-control"/></td>
 </tr>
 <tr>
 	<th>관광지 카테고리</th>
 	<td>
-		<select name="touristsoptcategorycode">
+		<select name="touristspotcategorycode">
 			<c:forEach items="${ TSCategory}" var="TSC">
 			<option value="${TSC.touristspotCategoryCode }">${TSC.touristspotCategoryName }</option>
 			</c:forEach>
@@ -115,10 +86,10 @@
 	</td>
 </tr>
 <tr>
-	<th>관광지 설명</th><td><textarea name="touristsopt_content" required="required"class="form-control"></textarea></td>
+	<th>관광지 설명</th><td><textarea name="touristspot_content" required="required"class="form-control"></textarea></td>
 </tr>
 <tr>
-	<th>관광지 주소</th><td><input type="text" name="touristsopt_address" id="touristsopt_address" required="required" class="form-control"/><input type="button" onclick="geoCode();" value="검색"></td>
+	<th>관광지 주소</th><td><input type="text" name="touristspot_address" id="touristspot_address" required="required" class="form-control"/><input type="button" onclick="geoCode();" value="검색"></td>
 
 </tr>
 <tr>
@@ -127,22 +98,22 @@
 	<div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
     async defer></script> 
-	<input type="hidden" name="touristsopt_latitude" id="touristsopt_latitude"/>
-	<input type="hidden" name="touristsopt_longitude" id="touristsopt_longitude"/>
+	<input type="hidden" name="touristspot_latitude" id="touristspot_latitude"/>
+	<input type="hidden" name="touristspot_longitude" id="touristspot_longitude"/>
 	</td>
 	
 </tr>
 <tr>
-	<th>관광지 영업시작 시간</th><td><input type="time" name="touristsopt_open" class="form-control"/></td>
+	<th>관광지 영업시작 시간</th><td><input type="time" name="touristspot_open" class="form-control"/></td>
 </tr>
 <tr>
-	<th>관광지 영업마감 시간</th><td><input type="time" name="touristsopt_closed" class="form-control"/></td>
+	<th>관광지 영업마감 시간</th><td><input type="time" name="touristspot_closed" class="form-control"/></td>
 </tr>
 <tr>
-	<th>관광지 전화번호</th><td><input type="tel" name="touristsopt_tel" required="required" class="form-control"/></td>
+	<th>관광지 전화번호</th><td><input type="tel" name="touristspot_tel" required="required" class="form-control"/></td>
 </tr>
 <tr>
-	<th>관광지 홈페이지</th><td><input type="text" name="touristsopt_homepage" required="required" class="form-control"/></td>
+	<th>관광지 홈페이지</th><td><input type="text" name="touristspot_homepage" required="required" class="form-control"/></td>
 </tr>
 <tr>
 	<th>사진 업로드</th><td><input multiple="multiple" type="file" name="tsimages" class="multi with-preview"/></td>

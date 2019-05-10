@@ -32,6 +32,7 @@
 <tr><th>관광지 관리자 페이지</th><td><a href="moveTSAdmin.do">이동</a></td><td>작업중</td></tr>
 <tr><th>샘플</th><td><a href="sampMap.do">이동</a></td><td>작업중</td></tr>
 <tr><th>샘플2</th><td><a href="sampMap2.do">이동</a></td><td>작업중</td></tr>
+<tr><th>샘플3 별점</th><td><a href="sampStar.do">이동</a></td><td>작업중</td></tr>
 </table>
 
 

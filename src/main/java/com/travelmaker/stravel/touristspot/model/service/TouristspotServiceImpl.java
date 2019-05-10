@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.touristsopt.model.service;
+package com.travelmaker.stravel.touristspot.model.service;
 
 import java.util.ArrayList;
 
@@ -6,10 +6,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.travelmaker.stravel.touristsopt.model.dao.TouristspotDao;
-import com.travelmaker.stravel.touristsopt.model.vo.TouristspotVo;
-import com.travelmaker.stravel.touristsopt.model.vo.TouristspotCategoryVo;
-import com.travelmaker.stravel.touristsopt.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.dao.TouristspotDao;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Service("TouristspotService")
 public class TouristspotServiceImpl implements TouristspotService{

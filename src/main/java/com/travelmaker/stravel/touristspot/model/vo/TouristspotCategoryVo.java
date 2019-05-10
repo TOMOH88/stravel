@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.touristsopt.model.vo;
+package com.travelmaker.stravel.touristspot.model.vo;
 
 import java.io.Serializable;
 

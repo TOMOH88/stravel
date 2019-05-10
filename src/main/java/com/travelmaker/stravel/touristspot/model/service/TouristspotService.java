@@ -1,11 +1,10 @@
-package com.travelmaker.stravel.touristsopt.model.service;
-
-import com.travelmaker.stravel.touristsopt.model.vo.TouristspotVo;
+package com.travelmaker.stravel.touristspot.model.service;
 
 import java.util.ArrayList;
 
-import com.travelmaker.stravel.touristsopt.model.vo.TouristspotCategoryVo;
-import com.travelmaker.stravel.touristsopt.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 public interface TouristspotService {
 	int selectTouristspotNO();
