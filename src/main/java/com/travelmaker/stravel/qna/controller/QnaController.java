@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class QnaController {
-	@RequestMapping("qnalist.do")
+/*	@RequestMapping("qnalist.do")
 	public String moveQnaListPage() {
 		return "qna/qnaList";
 	}
@@ -23,5 +23,5 @@ public class QnaController {
 	@RequestMapping("qnalistView.do")
 	public String moveQnaListViewPage() {
 		return "qna/uqnaListView";
-	}
+	}*/
 }

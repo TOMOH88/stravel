@@ -56,7 +56,7 @@
 		values(#{touristspot_no},#{touristspot_sq},#{touristspot_imagename})
 	</insert>
 	<update id="updateTouristspotThumnail" parameterType="TouristspotVo">
-		update tb_touristspot set RENAME_THUMBNAIL = #{rename_thumnail} where TOURISTSPOT_NO = #{touristspot_no}
+		update tb_touristspot set RENAME_THUMNAIL = #{rename_thumnail} where TOURISTSPOT_NO = #{touristspot_no}
 	</update>
 	<select id="selectTouristspotList" resultType="TouristspotVo">
 		select * from TB_TOURISTSPOT

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class FaqContorller {
 	
-	@RequestMapping("faqlist.do")
+/*	@RequestMapping("faqlist.do")
 	public String moveFaqList1Page() {
 		return "faq/faqList";
 	}
@@ -25,7 +25,7 @@ public class FaqContorller {
 	@RequestMapping("adminfaqView.do")
 	public String moveFaqListViewPage() {
 		return "faq/adminFaqListView";
-	}
+	}*/
 }
 
 

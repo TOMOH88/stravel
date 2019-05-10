@@ -24,9 +24,82 @@ import com.travelmaker.stravel.support.model.vo.QnaVo;
 @Controller
 public class SupportController {
 	
-	/*private static final Logger logger= LoggerFactory.getLogger(SupportController.class);
+	private static final Logger logger= LoggerFactory.getLogger(SupportController.class);
 	@Autowired
 	private SupportService supportService;
+	@RequestMapping("notice.do")
+	public String movenoticePage() {
+		return "notice/noticeList";
+	}
+	
+	@RequestMapping("adminnotice.do")
+	public String moveAdminNoticePage() {
+		return "notice/anoticeList";
+	}
+	
+	@RequestMapping("noticewrite.do")
+	public String moveAdminNoticeWritePage() {
+		return "notice/noticeWrite";
+	}
+	@RequestMapping("faqlist.do")
+	public String moveFaqList1Page() {
+		return "faq/faqList";
+	}
+	
+	@RequestMapping("adminfaq.do")
+	public String moveaFaqListPage() {
+		return "faq/adminFaqList";
+	}
+	
+	@RequestMapping(value="faqinsert.do")
+	public String moveFaqWritePage() {
+		return "faq/adminFaqWrite";
+	}
+	
+	@RequestMapping("adminfaqView.do")
+	public String moveFaqListViewPage() {
+		return "faq/adminFaqListView";
+	}
+	@RequestMapping("qnalist.do")
+	public String moveQnaListPage() {
+		return "qna/qnaList";
+	}
+	
+	@RequestMapping("adminqna.do")
+	public String moveadminQnaListPage() {
+		return "qna/adminQna";
+	}
+	
+	@RequestMapping("adminqnaView.do")
+	public String moveadminQnaListViewPage() {
+		return "qna/qnaListView";
+	}
+	
+	@RequestMapping("qnalistView.do")
+	public String moveQnaListViewPage() {
+		return "qna/uqnaListView";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
 	@RequestMapping("support.do")
 	public String moveSupportMain() {
 		logger.info("고객센터 접속");

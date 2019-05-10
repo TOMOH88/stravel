@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class NoticeController {
 	
-	@RequestMapping("notice.do")
+/*	@RequestMapping("notice.do")
 	public String movenoticePage() {
 		return "notice/noticeList";
 	}
@@ -19,5 +19,5 @@ public class NoticeController {
 	@RequestMapping("noticewrite.do")
 	public String moveAdminNoticeWritePage() {
 		return "notice/noticeWrite";
-	}
+	}*/
 }
