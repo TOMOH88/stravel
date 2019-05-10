@@ -232,7 +232,7 @@ ul li a:hover {
 				<hr>
 				<br>
 				<div style="text-align:center;"><input type="submit" value="등록하기" class="irbt" style="margin-right:20px;"><input type="reset" value="취소하기" class="irbt"></div>
-				<input type="file" name=""
+				<input type="file" name="">
 				</form>
 			</div>
 		</div>

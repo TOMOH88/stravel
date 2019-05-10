@@ -36,6 +36,36 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantCategoryService rescateService;
 	
+	@RequestMapping("seafoodall.do")
+	public ModelAndView seafoodAllList(ModelAndView mv) {
+		ArrayList<Restaurant> SeafoodList = resService.SeafoodList();
+		mv.addObject("seaList", SeafoodList);
+		mv.setViewName("Restaurant/seafoodRestaurantAll");
+		return mv;
+	}
+	@RequestMapping("koreanfoodall.do")
+	public ModelAndView koreanAllList(ModelAndView mv) {
+		ArrayList<Restaurant> koreanfoodList = resService.koreanfoodList();
+		mv.addObject("koreanfoodList", koreanfoodList);
+		mv.setViewName("Restaurant/koreanRestaurantAll");
+		return mv;
+	}
+	@RequestMapping("barbecuefoodall.do")
+	public ModelAndView barbecueAllList(ModelAndView mv) {
+		ArrayList<Restaurant> barbecueList = resService.barbecueList();
+		mv.addObject("barbecueList", barbecueList);
+		mv.setViewName("Restaurant/barbecueRestaurantAll");
+		return mv;
+	}
+	@RequestMapping("caferestaurantall.do")
+	public ModelAndView cafeAllList(ModelAndView mv) {
+		ArrayList<Restaurant> cafeList = resService.cafeList();
+		mv.addObject("cafeList", cafeList);
+		mv.setViewName("Restaurant/cafeRestaurantAll");
+		return mv;
+	}
+	
+	
 	@RequestMapping("restaurantdetail.do")
 	public ModelAndView restaurantDetail(ModelAndView mv, @RequestParam(name = "restaurant_no") int restaurant_no) {
 		Restaurant restaurant = resService.restaurantDetail(restaurant_no);
