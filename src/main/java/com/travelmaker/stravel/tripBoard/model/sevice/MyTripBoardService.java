@@ -22,6 +22,14 @@ public interface MyTripBoardService {
 
 	void addReadCount(int board_no);
 
+	int deleteReview(int answer_no);
+
+	int deleteSchedule(int board_no);
+
+	
+
+	
+
 	
 
 	

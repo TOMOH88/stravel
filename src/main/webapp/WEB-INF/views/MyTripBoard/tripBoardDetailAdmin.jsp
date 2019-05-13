@@ -21,10 +21,19 @@
 	.sub_news tr.reply .title a{padding-left:16px; background:url(첨부파일/ic_reply.png) 0 1px no-repeat}
 	.trip_board .like .hart {border : none; background-color : white;}
 </style>
+<script type="text/javascript">
+	function deleteSchedule(board_no){
+		location.href = "deleteschedule.do?board_no=" + board_no;
+	}
+	function deleteReview(answer_no, board_no){
+		console.log(answer_no + board_no);
+		location.href = "deletereview.do?answer_no=" + answer_no+"&board_no=" + board_no;
+	}
+</script>
 </head>
 <body>
 <fieldset>
-	<legend>${ myboard.board_writer }님의 글 </legend>
+	<legend>${ myboard.board_writer }세끼의 글 </legend>
 	<div class = "trip_board">
 		<ul>
 			<li>
@@ -50,16 +59,6 @@
 				<label for = "latter">후기</label><br><br>
 				${myboard.board_content }
 			</li>
-			<%-- <li>
-				<c:choose>
-					<c:when test=""${mno ne null }">
-						<a href = 'javascript: like_func();'><img src = "${ pageContext.request.contextPath }/resources/img/hart/emptyhart.png" id = "like_img"></a>
-					</c:when>
-					<c:otherwise>
-						<a href = "javascript: login_need();"><img src = "${ pageContext.request.contextPath }/resources/img/hart/emptyhart.png"></a>
-					</c:otherwise>
-				</c:choose>
-			</li> --%>
 		</ul>
 	</div>
 </fieldset>
@@ -86,12 +85,14 @@
 				<col width = "25">
 				<col width = "110">
 				<col width = "100">
+				<col width = "25">
 			</colgroup>
 			<thead>
 			<tr>
 				<th scope = "col">번호</th>
 				<th scope = "col">리뷰</th>
 				<th scope = "col">아이디</th>
+				<th scope = "col">botton</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -100,12 +101,14 @@
 					<td class = "number">${review.answer_no }</td>
 					<td class = "content">${review.answer_content }</td>
 					<td class = "writer">${review.answer_writer }</td>
+					<td class = "button"><button onclick = "deleteReview(${review.answer_no}, ${review.board_no });">삭제</button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
-			
 		</table>
 </fieldset>
-
+<div class = "deleteSchedule">
+	<button onclick = "deleteSchedule(${myboard.board_no});">일정 자랑 삭제</button>
+</div>
 </body>
 </html>

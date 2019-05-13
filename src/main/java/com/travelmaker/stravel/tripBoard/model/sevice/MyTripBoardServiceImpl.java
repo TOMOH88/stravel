@@ -63,6 +63,22 @@ public class MyTripBoardServiceImpl implements MyTripBoardService{
 		
 	}
 
+	@Override
+	public int deleteReview(int answer_no) {
+
+		return boardDao.deleteReview(mybatisSession, answer_no);
+	}
+
+	@Override
+	public int deleteSchedule(int board_no) {
+		
+		return boardDao.deleteSchedule(mybatisSession, board_no);
+	}
+
+	
+
+	
+
 	
 
 	
