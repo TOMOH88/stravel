@@ -11,7 +11,7 @@ public class NoticeController {
 		return "support/notice/noticeList";
 	}
 	
-	@RequestMapping("adminnotice.do")
+	@RequestMapping("adminNoticeList.do")
 	public String moveAdminNoticePage() {
 		return "support/notice/anoticeList";
 	}

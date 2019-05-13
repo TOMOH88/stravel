@@ -20,7 +20,7 @@ nhn.husky.EZCreator.createInIFrame({
 <title>stravel</title>
 </head>
 <body>
-<c:import url="../common/adminHeader.jsp"/>
+<c:import url="../../common/adminHeader.jsp"/>
 <div class="content">
 <div class="container-fluid">
 <div class="row">
@@ -60,6 +60,6 @@ nhn.husky.EZCreator.createInIFrame({
                     </div>
 </div>
 </div>
-<c:import url="../common/afooter.jsp"/>
+<c:import url="../../common/afooter.jsp"/>
 </body>
 </html>

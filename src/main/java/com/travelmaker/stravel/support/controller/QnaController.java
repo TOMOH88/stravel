@@ -43,7 +43,7 @@ public class QnaController {
 		return mv;
 	}
 	
-	@RequestMapping("adminqna.do")
+	@RequestMapping("adminQnaList.do")
 	public String moveadminQnaListPage() {
 		return "support/qna/adminQna";
 	}

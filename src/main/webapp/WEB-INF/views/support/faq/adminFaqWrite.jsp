@@ -14,7 +14,7 @@ function move(){
 <title>stravel</title>
 </head>
 <body>
-<c:import url="../common/adminHeader.jsp"/>
+<c:import url="../../common/adminHeader.jsp"/>
 <div class="content">
 <div class="container-fluid">
 <div class="row">
@@ -65,6 +65,6 @@ function move(){
 </div>
 </div>
 </div>
-<c:import url="../common/afooter.jsp"/>
+<c:import url="../../common/afooter.jsp"/>
 </body>
 </html>
