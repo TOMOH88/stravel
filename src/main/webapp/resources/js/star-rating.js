@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * @copyright &copy; Kartik Visweswaran, Krajee.com, 2013 - 2016
  * @version 4.0.1
  *
