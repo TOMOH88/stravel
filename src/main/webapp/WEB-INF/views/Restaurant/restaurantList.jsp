@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0">
 <title>stravel</title>
 <style type="text/css">
 	.seafoodcategory:after {display:block; content:''; clear:both}
@@ -20,81 +21,70 @@
 </head>
 <body>
 
-<h1>�스�랑 리스/h1>
+<h1>레스토랑 리스트</h1>
 
 <!-- 관리자 -->
-<a href = "insertres.do">�스�랑 �록</a> 
-<div>
-	<h3>�푸/h3>
-	<c:forEach items = "${seaList }" var = "s">
-		<a href = "restaurantdetail.do?restaurant_no=${s.restaurant_no }"><img src="${ pageContext.request.contextPath }/resources/img/restaurant/${s.rename_thumnail}" width = "150" height = "150"></a>
-		${s.retaurant_name }
-	</c:forEach>
-</div>
-<div>
-	<h3>�식</h3>
-	<c:forEach items = "${koreanfoodList }" var = "k">
-		<a href = "restaurantdetail.do?restaurant_no=${k.restaurant_no }"><img src="${pageContext.request.contextPath }/resources/img/restaurant/${k.rename_thumnail}" width = "150" height = "150"></a>
-		<%-- <div class = "koreanfoodtitle">
-			${k.restaurant_name }
-		</div> --%>
-	</c:forEach>
-</div>
+<a href = "insertres.do">레스토랑 등록</a> 
 
 
-<!-- �용-->
-<a href = "seafoodAll.do">�푸�레�토/a>
+<!-- 사용자 -->
+<a href = "seafoodall.do">시푸드레스토랑</a>
+<a href = "koreanfoodall.do">한식레스토랑</a>
+<a href = "barbecuefoodall.do">바베큐 레스토랑</a>
+<a href = "caferestaurantall.do">카페/디저트 레스토랑</a>
 
 
-<h3>�푸/h3>
+<h3>시푸드</h3>
 	<div class = "seafoodcategory">
 		<c:forEach items = "${seaList }" var = "s">
 			<div class = "seafoodlist">
 				<a href = "restaurantdetail.do?restaurant_no=${s.restaurant_no }">
-				<img src="${ pageContext.request.contextPath }/resources/img/restaurant/${s.rename_thumnail}" alt = "${s.restaurant_name }" width = "150" height = "150"></a>
+				<img src="${ pageContext.request.contextPath }/resources/img/restaurant/${s.rename_thumnail}" alt = "${s.restaurant_name }" width = "150" height = "150">
 					<div class = "seafoodname">
 						<span class = "restaurntname">${s.restaurant_name }</span>
 					</div>
+				</a>
 			</div>
 			
 		</c:forEach>
 	</div>
-<div>
-<h3>�식</h3>
+	
+<h3>한식</h3>
 	<div class = "koreancategory">
 		<c:forEach items = "${koreanfoodList }" var = "k">
 			<div class = "koreanlist">
 				<a href = "restaurantdetail.do?restaurant_no=${k.restaurant_no }">
-				<img src="${pageContext.request.contextPath }/resources/img/restaurant/${k.rename_thumnail}" width = "150" height = "150"></a>
+				<img src="${pageContext.request.contextPath }/resources/img/restaurant/${k.rename_thumnail}" width = "150" height = "150">
 					<div class = "koreanname">
 						<span class = "koreanname">${k.restaurant_name }</span>
 					</div>
+				</a>
 			</div>
 		</c:forEach>
 	</div>
-
-<div>
-<h3>바베/h3>
+<h3>바베큐</h3>
 	<div class = "barbecuecategory">
 		<c:forEach items = "${barbecueList }" var = "b">
 			<div class = "barbecuelist">
 				<a href = "restaurantdetail.do?restaurant_no=${b.restaurant_no }">
-				<img src = "${pageContext.request.contextPath }/resources/img/restaurant/${b.rename_thumnail}" width = "150" height = "150"></a>
+				<img src = "${pageContext.request.contextPath }/resources/img/restaurant/${b.rename_thumnail}" width = "150" height = "150">
 					<div class = "barbecuename">
 						<span class = "barbecuename">${b.restaurant_name }</span>
 					</div>
+				</a>
 			</div>
 		</c:forEach>
 	</div>
-<h3>카페 /��/h3>
+<h3>카페 /디저트</h3>
 	<div class = "cafecategory">
 		<c:forEach items = "${cafeList }" var = "c">
 			<div class = "cafelist">
 				<a href = "restaurantdetail.do?restaurant_no=${c.restaurant_no }">
-				<img src = "${pageContext.request.contextPath }/resources/img/restaurant/${c.rename_thumnail}" width = "150" height = "150"></a>
+				<img src = "${pageContext.request.contextPath }/resources/img/restaurant/${c.rename_thumnail}" width = "150" height = "150">
 					<div class = "cafename">
 						<span class = "cafename">${c.restaurant_name }</span>
 					</div>
+				</a>
 			</div>
 		</c:forEach>
 	</div>
