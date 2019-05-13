@@ -3,11 +3,11 @@ package com.travelmaker.stravel.support.model.vo;
 import java.io.Serializable;
 import java.sql.Date;
 
+import lombok.Data;
+@Data
 public class QnaVo implements Serializable{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -7961378957952681895L;
 	private int qna_no;
 	private String qna_title;

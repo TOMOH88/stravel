@@ -57,13 +57,13 @@
                     		<li><a href="#">-사업자</a></li>
                     	</ol>
                     </li>
-                    <li class="current"><a href="#">관광지관리</a></li>
+                    <li class="current"><a href="moveTSAdmin.do">관광지관리</a></li>
                     <li class="current"><a href="#">식당관리</a></li>
                     <li class="current"><a href="#">고객센터관리</a>
                     	<ol>
-                    		<li><a href="#">-1:1문의</a></li>
-                    		<li><a href="#">-공지사항</a></li>
-                    		<li><a href="#">-FAQ</a></li>
+                    		<li><a href="adminQnaList.do">-1:1문의</a></li>
+                    		<li><a href="adminNoticeList.do">-공지사항</a></li>
+                    		<li><a href="adminFaqList.do">-FAQ</a></li>
                     	</ol>
                     </li>
                     <li class="current"><a href="#">커뮤니티관리</a>
@@ -92,6 +92,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/syntax-highlighter/scripts/shBrushCss.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/syntax-highlighter/scripts/shBrushJScript.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/syntax-highlighter/scripts/shBrushPhp.js"></script> 
+
 <script type="text/javascript">
 	SyntaxHighlighter.all()
 </script>

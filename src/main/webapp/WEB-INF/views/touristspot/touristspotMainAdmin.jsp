@@ -35,33 +35,33 @@ div{
 </script>
 </head>
 <body>
-<c:import url="../common/header.jsp" />
+<c:import url="../common/adminHeader.jsp" />
 <section class="section-margin">
 <div class="rgba-black-strong py-5 px-4">
     <div class="row d-flex justify-content-center">
     <div class="col-md-2">
    <div class="blog_right_sidebar">
    <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title"><a href="moveTSAdmin.do" class="d-flex">愿愿묒</a></h4>
+                        <h4 class="widget_title"><a href="moveTSAdmin.do" class="d-flex">관광지</a></h4>
                         <ul class="list cat-list">
                             <li>
                                 <a href="#" class="d-flex">
-                                    <p>쒕뱶留덊겕</p>
+                                    <p>랜드마크</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="d-flex">
-                                    <p>좎쟻吏</p>
+                                    <p>유적지</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="d-flex">
-                                    <p>諛뺣Ъ愿</p>
+                                    <p>박물관</p>
                                 </a>
                             </li>
                               <li>
                                 <a href="#" class="d-flex">
-                                    <p>쇳븨</p>
+                                    <p>쇼핑</p>
                                 </a>
                             </li>
                         </ul>
@@ -69,27 +69,27 @@ div{
    </div>
 </div>
       <div class="col-md-10">
-      <!-- 묒뾽 묒꽦쒖옉 -->
-      <h1>愿愿묒 由ъ뒪愿由ъ옄</h1>
-<center><button onclick="moveWritePage(); return false;">湲곌린</button></center>
-      <h3>쒕뱶留덊겕</h3>
+      <!-- 작업 작성시작 -->
+      <h1>관광지 리스트 관리자</h1>
+<center><button onclick="moveWritePage(); return false;">글쓰기</button></center>
+      <h3>랜드마크</h3>
 	<div class="landmarkcategory">
 		<c:forEach items = "${touristspot }" var = "ts">
 			<div class="landmarklist">
-				<a href = "touristspotDetail.do?tno=${ts.touristsopt_no }">
+				<a href = "touristspotDetailAdmin.do?tno=${ts.touristspot_no }">
 				<img src="${ pageContext.request.contextPath }/resources/files/touristspotImages/${ts.rename_thumnail}" alt = "${ts.rename_thumnail}" width = "150" height = "150"></a>
 					<div>
-						<span>${ts.touristsopt_name }</span>
+						<span>${ts.touristspot_name }</span>
 					</div>
 			</div>
 			
 		</c:forEach>
-	</div>https://github.com/TOMOH88/stravel/invitations
-      <!-- 묒꽦-->
+	</div>
+      <!-- 작성끝 -->
       </div>
       </div>
       </div>
 </section>
-<c:import url="../common/footer.jsp" />
+<c:import url="../common/afooter.jsp" />
 </body>
 </html>
