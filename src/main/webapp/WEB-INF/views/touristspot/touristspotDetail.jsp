@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>stravel</title>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
-	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
+
 	<script src="${pageContext.request.contextPath }/resources/js/star-rating.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).on('ready', function () {
@@ -124,7 +124,9 @@ $(document).on('ready', function () {
 </head>
 <body>
 <c:import url="../common/header.jsp" />
- <section class="section-margin">
+<section class="section-margin">
+<div class="content">
+<div class="container-fluid">
  <div class="container">
 <h1>${touristspot.touristspot_name }</h1>
 <div>
@@ -169,6 +171,7 @@ $(document).on('ready', function () {
 ${touristspot.touristspot_content }
 
 </div>
+
 <div class="col-md-6">
     <div id="map"></div><input type="hidden" id="address"/>
  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode" async defer></script>
@@ -185,6 +188,7 @@ ${touristspot.touristspot_content }
 닫는시간 : ${touristspot.touristspot_closed }<br>
 </c:if>
 </div>
+
 <div>
 <input type="text" class="kv-gly-heart rating-loading" value="2" data-size="xs" title="">
 </div>
@@ -203,6 +207,8 @@ ${touristspot.touristspot_content }
 <tr><td><textarea rows="4" cols="50"></textarea></td><td><input type="button" value="작성"/></td></tr>
 </table>
 </form>
+</div>
+</div>
 </div>
 </div>
 </section>

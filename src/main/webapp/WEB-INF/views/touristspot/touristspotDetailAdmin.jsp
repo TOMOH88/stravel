@@ -5,16 +5,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-param" content="_csrf">
+<meta name="csrf-token" content="u4dKSoTTRsvuWVVF5KH8xD1MrbcjjPIN6ufRnZlWmoT_3gg59us8jLE0Bg2J84Wqegb1xGzKkVK8qfzq6xH08w==">
 <title>stravel</title>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
-	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
-	<script src="${pageContext.request.contextPath }/resources/js/star-rating.js" type="text/javascript"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/star-rating.css" media="all" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-fa.css" media="all" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-svg.css" media="all" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-uni.css" media="all" type="text/css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/star-rating.js" type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-$(document).on('ready', function () {
-    $('.kv-gly-star').rating({
+
+
+/* $(document).on('ready', function () {
+	$('.kv-gly-star').rating({
         containerClass: 'is-star'
     });
-    $('.kv-gly-heart').rating({
+	$('.kv-gly-heart').rating({
         containerClass: 'is-heart',
         defaultCaption: '{rating} hearts',
         starCaptions: function (rating) {
@@ -23,12 +34,12 @@ $(document).on('ready', function () {
         filledStar: '<i class="glyphicon glyphicon-heart"></i>',
         emptyStar: '<i class="glyphicon glyphicon-heart-empty"></i>'
     });
-    $('.kv-fa').rating({
+	$('.kv-fa').rating({
         theme: 'krajee-fa',
         filledStar: '<i class="fa fa-star"></i>',
         emptyStar: '<i class="fa fa-star-o"></i>'
     });
-    $('.kv-fa-heart').rating({
+	$('.kv-fa-heart').rating({
         defaultCaption: '{rating} hearts',
         starCaptions: function (rating) {
             return rating == 1 ? 'One heart' : rating + ' hearts';
@@ -37,12 +48,12 @@ $(document).on('ready', function () {
         filledStar: '<i class="fa fa-heart"></i>',
         emptyStar: '<i class="fa fa-heart-o"></i>'
     });
-    $('.kv-uni-star').rating({
+	$('.kv-uni-star').rating({
         theme: 'krajee-uni',
         filledStar: '&#x2605;',
         emptyStar: '&#x2606;'
     });
-    $('.kv-uni-rook').rating({
+	$('.kv-uni-rook').rating({
         theme: 'krajee-uni',
         defaultCaption: '{rating} rooks',
         starCaptions: function (rating) {
@@ -51,12 +62,12 @@ $(document).on('ready', function () {
         filledStar: '&#9820;',
         emptyStar: '&#9814;'
     });
-    $('.kv-svg').rating({
+	$('.kv-svg').rating({
         theme: 'krajee-svg',
         filledStar: '<span class="krajee-icon krajee-icon-star"></span>',
         emptyStar: '<span class="krajee-icon krajee-icon-star"></span>'
     });
-    $('.kv-svg-heart').rating({
+	$('.kv-svg-heart').rating({
         theme: 'krajee-svg',
         filledStar: '<span class="krajee-icon krajee-icon-heart"></span>',
         emptyStar: '<span class="krajee-icon krajee-icon-heart"></span>',
@@ -67,16 +78,79 @@ $(document).on('ready', function () {
         containerClass: 'is-heart'
     });
 
-    $('.rating,.kv-gly-star,.kv-gly-heart,.kv-uni-star,.kv-uni-rook,.kv-fa,.kv-fa-heart,.kv-svg,.kv-svg-heart').on(
+	$('.rating,.kv-gly-star,.kv-gly-heart,.kv-uni-star,.kv-uni-rook,.kv-fa,.kv-fa-heart,.kv-svg,.kv-svg-heart').on(
             'change', function () {
                 console.log('Rating selected: ' + $(this).val());
             });
 });
+ */
+ $(document).on('ready', function () {
+     $('.kv-gly-star').rating({
+         containerClass: 'is-star'
+     });
+     $('.kv-gly-heart').rating({
+         containerClass: 'is-heart',
+         defaultCaption: '{rating} hearts',
+         starCaptions: function (rating) {
+             return rating == 1 ? 'One heart' : rating + ' hearts';
+         },
+         filledStar: '<i class="glyphicon glyphicon-heart"></i>',
+         emptyStar: '<i class="glyphicon glyphicon-heart-empty"></i>'
+     });
+     $('.kv-fa').rating({
+         theme: 'krajee-fa',
+         filledStar: '<i class="fa fa-star"></i>',
+         emptyStar: '<i class="fa fa-star-o"></i>'
+     });
+     $('.kv-fa-heart').rating({
+         defaultCaption: '{rating} hearts',
+         starCaptions: function (rating) {
+             return rating == 1 ? 'One heart' : rating + ' hearts';
+         },
+         theme: 'krajee-fa',
+         filledStar: '<i class="fa fa-heart"></i>',
+         emptyStar: '<i class="fa fa-heart-o"></i>'
+     });
+     $('.kv-uni-star').rating({
+         theme: 'krajee-uni',
+         filledStar: '&#x2605;',
+         emptyStar: '&#x2606;'
+     });
+     $('.kv-uni-rook').rating({
+         theme: 'krajee-uni',
+         defaultCaption: '{rating} rooks',
+         starCaptions: function (rating) {
+             return rating == 1 ? 'One rook' : rating + ' rooks';
+         },
+         filledStar: '&#9820;',
+         emptyStar: '&#9814;'
+     });
+     $('.kv-svg').rating({
+         theme: 'krajee-svg',
+         filledStar: '<span class="krajee-icon krajee-icon-star"></span>',
+         emptyStar: '<span class="krajee-icon krajee-icon-star"></span>'
+     });
+     $('.kv-svg-heart').rating({
+         theme: 'krajee-svg',
+         filledStar: '<span class="krajee-icon krajee-icon-heart"></span>',
+         emptyStar: '<span class="krajee-icon krajee-icon-heart"></span>',
+         defaultCaption: '{rating} hearts',
+         starCaptions: function (rating) {
+             return rating == 1 ? 'One heart' : rating + ' hearts';
+         },
+         containerClass: 'is-heart'
+     });
 
+ 
+     $('.rating,.kv-gly-star).on(
+             'change', function () {
+                 console.log('Rating selected: ' + $(this).val());
+             });
+	});
 </script>
 </head>
 <style>
-	div{
+	/* div{
 		border:1px solid black;
 	}
  	table {
@@ -84,11 +158,14 @@ $(document).on('ready', function () {
   	}
  	th, td {
    		border: 1px solid #444444;
-  	}
+  	} */
   	#map {
 	    height: 400px;
 	    width: 100%;
     }   
+    
+    .landmarkcategory:after {display:block; content:''; clear:both}
+	.landmarkcategory .landmarklist{float:left; width : 180; margin-right : 25px; margin-bottom: 25px;}	
 </style>
     <script type="text/javascript">    
 	var map;
@@ -124,11 +201,12 @@ $(document).on('ready', function () {
 </head>
 <body>
 <c:import url="../common/adminHeader.jsp" />
- <section class="section-margin">
+<div class="content">
+<div class="container-fluid">
+<div class="row">
  <div class="container">
 <h1>${touristspot.touristspot_name }</h1>
-<div>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%; height: 600px;">
+<%-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%; height: 600px;">
   <ol class="carousel-indicators">
     <c:forEach items="${touristspotImages }" var="tsi">
     <li data-target="#carouselExampleIndicators" data-slide-to="${tsi.touristspot_sq }" <c:if test="${tsi.touristspot_sq eq 1 }"> class="active" </c:if>></li>
@@ -163,12 +241,21 @@ $(document).on('ready', function () {
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
-</div>
+</div> --%>
+						<div class="landmarkcategory" style="width: 900px">
+							<c:forEach items="${touristspotImages }" var="tsi">
+								<div class="landmarklist">
+									<img alt="${tsi.touristspot_sq }"
+										src="${ pageContext.request.contextPath }/resources/files/touristspotImages/${tsi.touristspot_imagename }" width = "200" height = "200">
+								</div>
+							</c:forEach>
+						</div>
+
 <div>
 ${touristspot.touristspot_content }
 
 </div>
+	
 <div class="col-md-6">
     <div id="map"></div><input type="hidden" id="address"/>
  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode" async defer></script>
@@ -180,32 +267,36 @@ ${touristspot.touristspot_content }
 전화번호 : ${touristspot.touristspot_tel }<br>
 
 <c:if test="${touristspot.touristspot_open eq null }">24시간 오픈</c:if>
-<c:if test="${!touristspot.touristspot_open eq null }">
+<c:if test="${touristspot.touristspot_open != null }">
 오픈시간 : ${touristspot.touristspot_open }<br>
 닫는시간 : ${touristspot.touristspot_closed }<br>
 </c:if>
-</div>
-<div>
-<input type="text" class="kv-gly-heart rating-loading" value="2" data-size="xs" title="">
 </div>
 
 <div>
 <form action="">
 <input type="hidden" value=""/> 
-
+<div class="container">
+<div>
+<input type="text" class="kv-gly-heart rating-loading" value="2" data-size="xs" title="">
+</div>
 
 <table>
 <tr>
 <td colspan="2">
 <input type="text" class="kv-gly-heart rating-loading" value="2" data-size="xs" title="">
+
 </td>
 </tr>
 <tr><td><textarea rows="4" cols="50"></textarea></td><td><input type="button" value="작성"/></td></tr>
 </table>
+</div>
 </form>
 </div>
 </div>
-</section>
+</div>
+</div>
+</div>
 <c:import url="../common/afooter.jsp" />
 </body>
 </html>
