@@ -42,6 +42,7 @@
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-end">
             <li class="nav-item"><a class="nav-link" href="test1.do">테스트용</a></li>
+            <li class="nav-item"><a class="nav-link" href="test3.do">테스트용2</a></li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">고객센터</a>

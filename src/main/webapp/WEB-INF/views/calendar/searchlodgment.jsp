@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 </script>
@@ -26,11 +27,13 @@ div{
 <div style="height:90px;"></div>
 <div class="container-fluid">
 <div class="row">
-<div class="col-md-4" style="overflow:scroll; height:530px;">
+<div class="col-md-5" style="overflow:scroll; height:530px;">
+<br>
 <div class="col-md-12">
 <div class="row">
-<!-- 필터시작 -->
+<!-- 필터시작 -->	
 <!-- Button trigger modal -->
+<div class="col-xl-2">
 <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal1">
   숙박기간
 </button>
@@ -59,7 +62,10 @@ div{
     </div>
   </div>
 </div>
+</div>
+<div class="col-xl-1"></div>
 <!-- Button trigger modal -->
+<div class="col-xl-2">
 <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal2">
   인원수
 </button>
@@ -88,7 +94,10 @@ div{
     </div>
   </div>
 </div>
+</div>
+<div class="col-xl-1"></div>
 <!-- Button trigger modal -->
+<div class="col-xl-2">
 <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal3">
   가격
 </button>
@@ -112,7 +121,10 @@ div{
     </div>
   </div>
 </div>
+</div>
+<div class="col-xl-1"></div>
 <!-- Button trigger modal -->
+<div class="col-xl-2">
 <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal4">
   필터추가
 </button>
@@ -144,11 +156,13 @@ div{
     </div>
   </div>
 </div>
+</div>
+<div class="col-xl-1"></div>
 <!-- 필터끝-->
 </div>
 <br>
-<div class="row">
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"style="height:100%; width:200px;">
+<div>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height:100%; width:200px;">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -189,24 +203,76 @@ div{
 </div>
 </div>
 <!-- map 시작 -->
-<div class="col-md-8" id="map" style="height:530px;"></div>
+<div class="col-md-7" id="map-canvas" style="height:530px;"></div>
 <!-- map 끝 -->
 </div>
 </div>
-<script>
-				var map;
-				function initMap() {
-					map = new google.maps.Map(document.getElementById('map'), {
-						center : {
-							lat : -34.397,
-							lng : 150.644
-						},
-						zoom : 8 
-					});
-				}
-			</script>
-			<script
-				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=initMap"
-				async defer></script>
+<script type="text/javascript">
+function initialize() {
+    var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도
+    var markLocation = new google.maps.LatLng('33.321349', '126.684723'); // 마커가 위치할 위도와 경도
+
+
+    var mapOptions = {
+      center: mapLocation, // 지도에서 가운데로 위치할 위도와 경도(변수)
+      zoom: 10.7, // 지도 zoom단계
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"), // id: map-canvas, body에 있는 div태그의 id와 같아야 함
+        mapOptions);
+    
+    var size_x = 30; // 마커로 사용할 이미지의 가로 크기
+    var size_y = 30; // 마커로 사용할 이미지의 세로 크기
+     
+    // 마커로 사용할 이미지 주소
+     
+    var marker;
+    marker = new google.maps.Marker({
+           position: markLocation, // 마커가 위치할 위도와 경도(변수)
+           map: map,
+//         info: '말풍선 안에 들어갈 내용',
+           title: '제주펜션~' // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
+    });
+     
+    var content = "<div style='width: 100%; height: 100%;'><div id='carouselExampleIndicators1' class='carousel slide' data-ride='carousel'style='height:100%; width:200px;''>"
+    	 + "<ol class='carousel-indicators'>"
+    	 + "<li data-target='#carouselExampleIndicators1' data-slide-to='4' class='active'></li>"
+    	 + "<li data-target='#carouselExampleIndicators1' data-slide-to='5'></li>"
+    	 + "<li data-target='#carouselExampleIndicators1' data-slide-to='6'></li>"
+    	 + "</ol>"
+    	 + "<div class='carousel-inner'>"
+    	 + "<div class='carousel-item active'>"
+    	 + "<a href='main.do'><img class='d-block w-100' src='${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg' alt='네번째 슬라이드'></a>"
+    	 + "</div>"
+    	 + "<div class='carousel-item'>"
+    	 + "<a href='main.do'><img class='d-block w-100' src='${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg' alt='다섯째 슬라이드'></a>"
+    	 + "</div>"
+    	 + "<div class='carousel-item'>"
+    	 + "<a href='main.do'><img class='d-block w-100' src='${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg' alt='여섯째 슬라이드'></a>"
+    	 + "</div>"
+    	 + "</div>"
+    	 + "<a class='carousel-control-prev' href='#carouselExampleIndicators1' role='button' data-slide='prev'>"
+    	 + "<span class='carousel-control-prev-icon' aria-hidden='true'></span>"
+    	 + "<span class='sr-only'>이전</span>"
+    	 + "</a>"
+    	 + "<a class='carousel-control-next' href='#carouselExampleIndicators1' role='button' data-slide='next'>"
+    	 + "<span class='carousel-control-next-icon' aria-hidden='true'></span>"
+    	 + "<span class='sr-only'>다음</span>"
+    	 + "</a>"
+    	 + "</div>"
+    	+ "<hr><div style='width: 200px; height: 70px;'><font>침대1개</font><br>올레펜션<br>₩28,500 x 1박 &nbsp;&nbsp; ★★★★★</div>"; // 말풍선 안에 들어갈 내용
+     
+    // 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
+    var infowindow = new google.maps.InfoWindow({ content: content});
+
+    google.maps.event.addListener(marker, "click", function() {
+        infowindow.open(map,marker);
+    });
+     
+
+     
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 </body>
 </html>

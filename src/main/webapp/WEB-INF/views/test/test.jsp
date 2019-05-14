@@ -7,8 +7,62 @@
 <meta charset="UTF-8">
 <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources//css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources//js/star-rating.js" type="text/javascript"></script>
+<script>
+var newJquery = $.noConflict();
+
+	jQuery(document).ready(function($) {
+		newJquery("#input-21f").rating({
+            starCaptions: function(val) {
+                if (val < 3) {
+                    return val;
+                } else {
+                    return 'high';
+                }
+            },
+            starCaptionClasses: function(val) {
+                if (val < 3) {
+                    return 'label label-danger';
+                } else {
+                    return 'label label-success';
+                }
+            },
+            hoverOnClear: false
+        });
+        
+		newJquery('#rating-input').rating({
+              min: 0,
+              max: 5,
+              step: 1,
+              size: 'lg',
+              showClear: false
+           });
+           
+		newJquery('#btn-rating-input').on('click', function() {
+			newJquery('#rating-input').rating('refresh', {
+                showClear:true, 
+                disabled: !newJquery('#rating-input').attr('disabled')
+            });
+        });
+        
+        
+		newJquery('.btn-danger').on('click', function() {
+			newJquery("#kartik").rating('destroy');
+        });
+        
+		newJquery('.btn-success').on('click', function() {
+			newJquery("#kartik").rating('create');
+        });
+        
+		newJquery('#rating-input').on('rating.change', function() {
+            alert(newJquery('#rating-input').val());
+        });
+        
+        
+		newJquery('.rb-rating').rating({'showCaption':true, 'stars':'3', 'min':'0', 'max':'3', 'step':'1', 'size':'xs', 'starCaptions': {0:'status:nix', 1:'status:wackelt', 2:'status:geht', 3:'status:laeuft'}});
+    });
+</script>
 <title>test</title>
 </head>
 <body>
@@ -50,62 +104,6 @@
     </div>
 </form>
 <hr>
-<script>
-    $(document).ready(function () {
-    	
-    	$.noConflict();
-    	  var J=jQuery;
-    	  
-        J("#input-21f").rating({
-            starCaptions: function(val) {
-                if (val < 3) {
-                    return val;
-                } else {
-                    return 'high';
-                }
-            },
-            starCaptionClasses: function(val) {
-                if (val < 3) {
-                    return 'label label-danger';
-                } else {
-                    return 'label label-success';
-                }
-            },
-            hoverOnClear: false
-        });
-        
-        J('#rating-input').rating({
-              min: 0,
-              max: 5,
-              step: 1,
-              size: 'lg',
-              showClear: false
-           });
-           
-        J('#btn-rating-input').on('click', function() {
-            $('#rating-input').rating('refresh', {
-                showClear:true, 
-                disabled: !$('#rating-input').attr('disabled')
-            });
-        });
-        
-        
-        J('.btn-danger').on('click', function() {
-            $("#kartik").rating('destroy');
-        });
-        
-        J('.btn-success').on('click', function() {
-            $("#kartik").rating('create');
-        });
-        
-        J('#rating-input').on('rating.change', function() {
-            alert($('#rating-input').val());
-        });
-        
-        
-        J('.rb-rating').rating({'showCaption':true, 'stars':'3', 'min':'0', 'max':'3', 'step':'1', 'size':'xs', 'starCaptions': {0:'status:nix', 1:'status:wackelt', 2:'status:geht', 3:'status:laeuft'}});
-    });
-</script>
 </div>
 </section>
 <c:import url="../common/footer.jsp"/>
