@@ -5,7 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<script type="text/javascript">
+function writeform(){
+	location.href="compwrite.do";
+}
+</script>
 <meta charset="UTF-8">
 
 <title>stravel</title>
@@ -47,7 +51,13 @@
 	</c:if>
 </tr>
 </c:forEach>
+<tr>
+	<th>
+		<button style="background-color:#bcbcbc; color:blue; border:0; width:140px; height:30px; border-radius:5px;" onclick="writeform()">글쓰기</button>
+	</th>
+</tr>
 </table>
+
 <br><br><br>
 <%-- 페이징 처리 --%>
 <div style="text-align:center;">

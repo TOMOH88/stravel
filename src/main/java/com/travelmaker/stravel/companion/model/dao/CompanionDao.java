@@ -37,6 +37,15 @@ public class CompanionDao {
 	public int insertCompanion(SqlSessionTemplate session, Companion companion) {
 		return session.insert("companionMapper.insertCompanion", companion);
 	}
+	
+	public int updateCompanion(SqlSessionTemplate session, Companion companion) {
+		return session.update("companionMappner.updateCompanion", companion);
+	}
+
+	public int deleteCompanion(SqlSessionTemplate session, int companion_no) {
+		return session.delete("companionMapper.deleteCompanion", companion_no);
+	}
+
 
 
 }

@@ -39,5 +39,16 @@ public class CompanionServiceImpl implements CompanionService{
 	public int insertCompanion(Companion companion) {
 		return compDao.insertCompanion(mybatisSession, companion);
 	}
+
+	@Override
+	public int updateCompanion(Companion companion) {
+		return compDao.updateCompanion(mybatisSession, companion);
+	}
+	
+	@Override
+	public int deleteCompanion(int companion_no) {
+		return compDao.deleteCompanion(mybatisSession, companion_no);
+	}
+	
 	
 }

@@ -8,10 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.travelmaker.stravel.companion.model.service.CompanionReplyService;
 import com.travelmaker.stravel.companion.model.service.CompanionService;
 import com.travelmaker.stravel.companion.model.vo.Companion;
 
@@ -23,6 +26,9 @@ public class CompanionController {
 	//MemberService DI
 		@Autowired
 		private CompanionService companionService;
+		@Autowired
+		private CompanionReplyService companionReplyService;
+		
 	
 	@RequestMapping("comp.do")
 	public ModelAndView selectCompanionList(ModelAndView mv,
@@ -70,19 +76,42 @@ public class CompanionController {
 			@RequestParam(name="companion_no", required=false) int companion_no) {
 		logger.info("동행찾기 글 상세보기");
 		Companion companion = companionService.selectCompanion(companion_no);
-		mv.addObject("companion", companion);
+	
 		mv.setViewName("companion/companionDetailView");
+		mv.addObject("companion", companionService.selectCompanion(companion_no));
+		mv.addObject("companionReply", companionReplyService.selectCompanionReplyList(companion_no));
+		
 		return mv;
 	}
 	
-/*	@RequestMapping("compinsert.do")
-	public String insertCompanion(Companion companion) {
+	@RequestMapping("compwrite.do")
+	public String writeCompanion() {
 
 		logger.info("동행찾기 글쓰기");
 		
+		return "companion/companionWriteForm";
 		
-		return
-		
-	}*/
+	}
+	
+	@RequestMapping(value="compinsert.do", method=RequestMethod.POST)
+	public String insertCompanion(Companion companion) {
+		companionService.insertCompanion(companion);
+		return "redirect:comp.do";
+	}
+	
+	@RequestMapping(value="compupdate.do", method=RequestMethod.POST)
+	public String updateCompanion(Companion companion) {
+		companionService.updateCompanion(companion);
+		return "redirect:comp.do";
+	}
+	
+	@RequestMapping(value="compdelete.do", method=RequestMethod.POST)
+	public String deleteCompanion(@RequestParam int companion_no) {
+		companionService.deleteCompanion(companion_no);
+		return "redirect:comp.do";
+	}
+	
+	
+	
 
 }
