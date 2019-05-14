@@ -88,7 +88,7 @@
 		(#{touristspot_no},#{review_no},#{review_writer},#{review_content},#{review_point},default,default,default,default,#{review_tourdate})
 	</insert>
 	<select id="selectTouristspotReviews" parameterType="_int" resultMap="resultTouristspotReviewsVo">
-		select * from tb_touristspotreviews where TOURISTSPOT_NO = #{touristspot_no}
+		select * from tb_touristspotreviews where TOURISTSPOT_NO = #{touristspot_no} <!-- order by review_no desc -->
 	</select>
 <!-- 	
 	<insert id="qnaInsert" parameterType="QnaVo">
