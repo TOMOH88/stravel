@@ -51,5 +51,19 @@ public int addRedaount(int board_no, SqlSessionTemplate session) {
 	return session.update("myTripBoardMapper.updateReadCount", board_no);
 }
 
+public int deleteReview(SqlSessionTemplate session, int answer_no) {
+
+	return session.delete("myTripBoardMapper.deleteReview", answer_no);
+}
+
+public int deleteSchedule(SqlSessionTemplate session, int board_no) {
+
+	return session.update("myTripBoardMapper.deleteSchedule", board_no);
+}
+
+
+
+
+
 
 }

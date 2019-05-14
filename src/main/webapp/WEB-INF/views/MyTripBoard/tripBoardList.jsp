@@ -44,14 +44,14 @@
 	</thead>
 	<tbody>
 		<c:forEach items = "${ list }" var = "b">
-		<tr>
-			<td class = "title">
-			<a href = "tripboarddetail.do?board_no=${b.board_no }">${b.board_title }</a></td>
-			<td class = "name">${b.board_writer }</td>
-			<td class = "date">${b.board_write_date }</td>
-			<td class = "read">${b.board_read_count }</td>
-			<td class = "hit">${b.board_good_count }</td>
-		</tr>
+			<tr>
+				<td class = "title">
+				<a href = "tripboarddetailadmin.do?board_no=${b.board_no }">${b.board_title }</a></td>
+				<td class = "name">${b.board_writer }</td>
+				<td class = "date">${b.board_write_date }</td>
+				<td class = "read">${b.board_read_count }</td>
+				<td class = "hit">${b.board_good_count }</td>
+			</tr>
 		</c:forEach>
 	</tbody>
 	
