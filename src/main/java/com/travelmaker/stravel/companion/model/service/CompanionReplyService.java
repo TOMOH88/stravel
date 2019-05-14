@@ -9,7 +9,7 @@ public interface CompanionReplyService {
 	ArrayList<CompanionReply> selectCompanionReplyList(int companion_no);
 	int insertCompanionReply(CompanionReply companionreply);
 	int updateCompanionReply(CompanionReply companionreply);
-	int deleteCompanionReply(int companionreply_no);
-	CompanionReply selectCompanionReply(int companionreply_no);
+	int deleteCompanionReply(int companion_reply_no);
+	CompanionReply selectCompanionReply(int companion_reply_no);
 	
 }

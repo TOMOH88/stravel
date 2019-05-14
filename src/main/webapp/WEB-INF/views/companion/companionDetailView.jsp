@@ -36,7 +36,18 @@
 		<br>
 		<hr style="border: 1px solid #bcbcbc;">
 		
+		<c:forEach items="${compReplyList}" var="cr">
 		
+			<table>
+				<tr>
+					<td>${cr.user_email }</td>
+					<td>${cr.companion_reply_content }</td>
+					<td>${cr.companion_reply_date }</td>
+				</tr>
+			</table>
+		
+		
+		</c:forEach>
 		
 		
 		</div>

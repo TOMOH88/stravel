@@ -19,18 +19,7 @@
 		<result property="companion_no" column="companion_no" />
 		<result property="user_email" column="user_email" />
 		<result property="companion_reply_content" column="companion_reply_content" />
-	</resultMap>
-	
-	<resultMap type="CompCompanionReply" id="resultCompCompanionReply">
-		<id property="companion_no" column="companion_no" />
-		<result property="companion_title" column="companion_title" />
-		<result property="user_email" column="user_email" />
-		<result property="companion_content" column="companion_content" />
-		<result property="companion_date" column="companion_date" />
-		<result property="companion_schedule" column="companion_schedule" />
-		<result property="companion_progress" column="companion_progress" />
-		<result property="companion_reply_no" column="companion_reply_no" />
-		<result property="companion_reply_content" column="companion_reply_content" />
+		<result property="companion_reply_date" column="companion_reply_date" />
 	</resultMap>
 	
 
@@ -39,6 +28,12 @@
 		select * from companion 
 		where companion_no = #{companion_no}
 		
+	</select>
+	
+	<select id="selectCompanionReplyList" parameterType="CompanionReply" resultMap="resultCompanionReply" >
+	select * from companion_reply
+	where companion_no = #{companion_no}
+	order by companion_reply_no desc
 	</select>
 	
 	<select id="selectCompanionList" parameterType="Companion"
@@ -65,7 +60,7 @@
 		insert into companion 
 		values ((select max(companion_no) + 1 from companion),  
 		#{companion_title}, #{user_email},
-		#{companion_content}, #{companion_date}, null, 1)
+		#{companion_content}, SYSDATE, null, 1)
 	</insert>
 	
 

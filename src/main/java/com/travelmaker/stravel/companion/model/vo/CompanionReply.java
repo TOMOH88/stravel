@@ -10,15 +10,18 @@ public class CompanionReply implements java.io.Serializable {
 	private int companion_no;
 	private String user_email;
 	private String companion_reply_content;
+	private Date companion_reply_date;
 	
 	public CompanionReply() {}
 
-	public CompanionReply(int companion_reply_no, int companion_no, String user_email, String companion_reply_content) {
+	public CompanionReply(int companion_reply_no, int companion_no, String user_email, String companion_reply_content,
+			Date companion_reply_date) {
 		super();
 		this.companion_reply_no = companion_reply_no;
 		this.companion_no = companion_no;
 		this.user_email = user_email;
 		this.companion_reply_content = companion_reply_content;
+		this.companion_reply_date = companion_reply_date;
 	}
 
 	public int getCompanion_reply_no() {
@@ -53,6 +56,14 @@ public class CompanionReply implements java.io.Serializable {
 		this.companion_reply_content = companion_reply_content;
 	}
 
+	public Date getCompanion_reply_date() {
+		return companion_reply_date;
+	}
+
+	public void setCompanion_reply_date(Date companion_reply_date) {
+		this.companion_reply_date = companion_reply_date;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -60,9 +71,11 @@ public class CompanionReply implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "CompanionReply [companion_reply_no=" + companion_reply_no + ", companion_no=" + companion_no
-				+ ", user_email=" + user_email + ", companion_reply_content=" + companion_reply_content + "]";
+				+ ", user_email=" + user_email + ", companion_reply_content=" + companion_reply_content
+				+ ", companion_reply_date=" + companion_reply_date + "]";
 	}
 
+	
 	
 
 }

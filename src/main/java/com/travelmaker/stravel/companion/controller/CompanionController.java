@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.travelmaker.stravel.companion.model.service.CompanionReplyService;
 import com.travelmaker.stravel.companion.model.service.CompanionService;
 import com.travelmaker.stravel.companion.model.vo.Companion;
+import com.travelmaker.stravel.companion.model.vo.CompanionReply;
 
 @Controller
 public class CompanionController {
@@ -76,10 +77,10 @@ public class CompanionController {
 			@RequestParam(name="companion_no", required=false) int companion_no) {
 		logger.info("동행찾기 글 상세보기");
 		Companion companion = companionService.selectCompanion(companion_no);
-	
+		ArrayList<CompanionReply> compReplyList = companionReplyService.selectCompanionReplyList(companion_no);
 		mv.setViewName("companion/companionDetailView");
 		mv.addObject("companion", companionService.selectCompanion(companion_no));
-		mv.addObject("companionReply", companionReplyService.selectCompanionReplyList(companion_no));
+		mv.addObject("compReplyList", compReplyList);
 		
 		return mv;
 	}
@@ -99,6 +100,8 @@ public class CompanionController {
 		return "redirect:comp.do";
 	}
 	
+
+	
 	@RequestMapping(value="compupdate.do", method=RequestMethod.POST)
 	public String updateCompanion(Companion companion) {
 		companionService.updateCompanion(companion);
@@ -111,6 +114,23 @@ public class CompanionController {
 		return "redirect:comp.do";
 	}
 	
+	@RequestMapping(value="compreplyupdate.do", method=RequestMethod.POST)
+	public String updateCompanionReply(CompanionReply companionreply) {
+		companionReplyService.updateCompanionReply(companionreply);
+		return "redirect:compdetail.do";
+	}
+	
+	@RequestMapping(value="compreplydelete.do", method=RequestMethod.POST)
+	public String deleteCompanionReply(@RequestParam int companion_reply_no) {
+		companionReplyService.deleteCompanionReply(companion_reply_no);
+		return "redirect:compdetail.do";
+	}
+	
+	@RequestMapping(value="compreplyinsert.do", method=RequestMethod.POST)
+	public String insertCompanionReply(CompanionReply companionreply) {
+		companionReplyService.insertCompanionReply(companionreply);
+		return "redirect:compdetail.do";
+	}
 	
 	
 

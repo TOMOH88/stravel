@@ -19,4 +19,6 @@ public interface CompanionService {
 	int deleteCompanion(int companion_no);
 	
 	
+	
+	
 }
