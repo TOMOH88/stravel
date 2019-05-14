@@ -10,4 +10,9 @@ public class TestController {
 	public String moveTestPage() {
 		return "test/test";
 	}
+	
+	@RequestMapping("test3.do")
+	public String moveTest1Page() {
+		return "test/test1";	
+	}
 }
