@@ -45,6 +45,13 @@
 		</ul>
 	</div>
 </fieldset>
+<fieldset>
+	<legend>버튼</legend>
+	<div>
+		<input type = "submit" value = "저장하기">
+		<input type = "reset">
+	</div>
+</fieldset>
 </form>
 </body>
 </html>
