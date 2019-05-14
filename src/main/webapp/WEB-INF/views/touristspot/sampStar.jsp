@@ -8,13 +8,6 @@
 <title>별점</title>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
-	<script src="${pageContext.request.contextPath }/resources/js/star-rating.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/star-rating.css" media="all" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-fa.css" media="all" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-svg.css" media="all" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-uni.css" media="all" type="text/css"/>
 <script type="text/javascript">
 $(document).on('ready', function () {
     $('.kv-gly-star').rating({

@@ -26,12 +26,23 @@
 		<id property="touristspotCategoryCode" column="TOURISTSPOTCATEGORYCODE" />
 		<id property="touristspotCategoryName" column="TOURISTSPOTCATEGORYNAME" />
 	</resultMap>
-		<resultMap id="resultTouristspotImagesVo" type="TouristspotImagesVo">
+	<resultMap id="resultTouristspotImagesVo" type="TouristspotImagesVo">
 		<id property="touristspot_no" column="TOURISTSPOT_NO" />
 		<id property="touristspot_sq" column="TOURISTSPOT_SQ" />
 		<id property="touristspot_imagename" column="TOURISTSPOT_IMAGENAME" />
 	</resultMap>
-	
+	<resultMap id="resultTouristspotReviewsVo" type="TouristspotReviewsVo">
+		<id property="touristspot_no" column="TOURISTSPOT_NO" />
+		<id property="review_no" column="REVIEW_NO" />
+		<id property="review_writer" column="REVIEW_WRITER" />
+		<id property="review_content" column="REVIEW_CONTENT" />
+		<id property="review_point" column="REVIEW_POINT" />
+		<id property="review_blind" column="REVIEW_BLIND" />
+		<id property="review_deletestatus" column="REVIEW_DELETESTATUS" />
+		<id property="review_date" column="REVIEW_DATE" />
+		<id property="review_lastmodified" column="REVIEW_LASTMODIFIED" />
+		<id property="review_tourdate" column="REVIEW_TOURDATE" />
+	</resultMap>
 	
 	<select id="selectTouristspotCategory" resultMap="resultTouristspotCategoryVo">
 		select * from tb_touristspotcategory
@@ -66,6 +77,18 @@
 	</select>
 	<select id="selectTouristspotImages" parameterType="_int" resultMap="resultTouristspotImagesVo">
 		select * from TB_TOURISTSPOTIMAGES where TOURISTSPOT_NO = #{touristspot_no}
+	</select>
+	<select id="selectTourReviewNo" resultType="_int">
+		select count(1)+1 from tb_touristspotreviews
+	</select>
+	<insert id="insertTourReview" parameterType="TouristspotReviewsVo">
+		insert into tb_touristspotreviews
+		(TOURISTSPOT_NO,REVIEW_NO,REVIEW_WRITER,REVIEW_CONTENT,REVIEW_POINT,REVIEW_BLIND,REVIEW_DELETESTATUS,REVIEW_DATE,REVIEW_LASTMODIFIED,REVIEW_TOURDATE)
+		values
+		(#{touristspot_no},#{review_no},#{review_writer},#{review_content},#{review_point},default,default,default,default,#{review_tourdate})
+	</insert>
+	<select id="selectTouristspotReviews" parameterType="_int" resultMap="resultTouristspotReviewsVo">
+		select * from tb_touristspotreviews where TOURISTSPOT_NO = #{touristspot_no}
 	</select>
 <!-- 	
 	<insert id="qnaInsert" parameterType="QnaVo">

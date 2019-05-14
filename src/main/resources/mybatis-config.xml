@@ -14,6 +14,7 @@
 		<typeAlias type="com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo" alias="TouristspotImagesVo" />
 		<typeAlias type="com.travelmaker.stravel.touristspot.model.vo.TouristspotVo" alias="TouristspotVo" />
 		<typeAlias type="com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo" alias="TouristspotCategoryVo" />
+		<typeAlias type="com.travelmaker.stravel.touristspot.model.vo.TouristspotReviewsVo" alias="TouristspotReviewsVo" />
 		<!-- 고상훈 -->
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoard" alias="MyTripBoard"/>
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.Restaurant" alias="Restaurant"/>

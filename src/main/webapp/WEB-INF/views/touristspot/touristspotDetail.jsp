@@ -1,90 +1,109 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>stravel</title>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
-	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  -->
-	<script src="${pageContext.request.contextPath }/resources/js/star-rating.js" type="text/javascript"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath }/resources/js/star-rating.js"
+	type="text/javascript"></script>
+<!-- 구글폰트 -->
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans"
+	rel="stylesheet">
 <script type="text/javascript">
-$(document).on('ready', function () {
-    $('.kv-gly-star').rating({
-        containerClass: 'is-star'
-    });
-    $('.kv-gly-heart').rating({
-        containerClass: 'is-heart',
-        defaultCaption: '{rating} hearts',
-        starCaptions: function (rating) {
-            return rating == 1 ? 'One heart' : rating + ' hearts';
-        },
-        filledStar: '<i class="glyphicon glyphicon-heart"></i>',
-        emptyStar: '<i class="glyphicon glyphicon-heart-empty"></i>'
-    });
-    $('.kv-fa').rating({
-        theme: 'krajee-fa',
-        filledStar: '<i class="fa fa-star"></i>',
-        emptyStar: '<i class="fa fa-star-o"></i>'
-    });
-    $('.kv-fa-heart').rating({
-        defaultCaption: '{rating} hearts',
-        starCaptions: function (rating) {
-            return rating == 1 ? 'One heart' : rating + ' hearts';
-        },
-        theme: 'krajee-fa',
-        filledStar: '<i class="fa fa-heart"></i>',
-        emptyStar: '<i class="fa fa-heart-o"></i>'
-    });
-    $('.kv-uni-star').rating({
-        theme: 'krajee-uni',
-        filledStar: '&#x2605;',
-        emptyStar: '&#x2606;'
-    });
-    $('.kv-uni-rook').rating({
-        theme: 'krajee-uni',
-        defaultCaption: '{rating} rooks',
-        starCaptions: function (rating) {
-            return rating == 1 ? 'One rook' : rating + ' rooks';
-        },
-        filledStar: '&#9820;',
-        emptyStar: '&#9814;'
-    });
-    $('.kv-svg').rating({
-        theme: 'krajee-svg',
-        filledStar: '<span class="krajee-icon krajee-icon-star"></span>',
-        emptyStar: '<span class="krajee-icon krajee-icon-star"></span>'
-    });
-    $('.kv-svg-heart').rating({
-        theme: 'krajee-svg',
-        filledStar: '<span class="krajee-icon krajee-icon-heart"></span>',
-        emptyStar: '<span class="krajee-icon krajee-icon-heart"></span>',
-        defaultCaption: '{rating} hearts',
-        starCaptions: function (rating) {
-            return rating == 1 ? 'One heart' : rating + ' hearts';
-        },
-        containerClass: 'is-heart'
-    });
 
-    $('.rating,.kv-gly-star,.kv-gly-heart,.kv-uni-star,.kv-uni-rook,.kv-fa,.kv-fa-heart,.kv-svg,.kv-svg-heart').on(
-            'change', function () {
-                console.log('Rating selected: ' + $(this).val());
-            });
+$(document).ready(function(){
+$(':radio[name="stars"]').change(function() {
+	  console.log('New star rating: ' + this.value);
+	  $('#review_point').val(this.value);
+	});
 });
 
+$(document).ready(function(){
+$("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
+
+});
 </script>
 </head>
 <style>
-	div{
-		border:1px solid black;
+	#c1, #c2{
+		border:1px dotted black;
 	}
- 	table {
-   		border: 1px solid #444444;
-  	}
- 	th, td {
-   		border: 1px solid #444444;
-  	}
+	#f1{
+    font-family: 'Black Han Sans', sans-serif;
+    }
+    
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  font-size: 30px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon {
+  float: left;
+  color: transparent;
+}
+
+.rating label:last-child .icon {
+  color: #000;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: #09f;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: #000;
+  text-shadow: 0 0 5px #09f;
+}
+
   	#map {
 	    height: 400px;
 	    width: 100%;
@@ -124,9 +143,11 @@ $(document).on('ready', function () {
 </head>
 <body>
 <c:import url="../common/header.jsp" />
- <section class="section-margin">
- <div class="container">
-<h1>${touristspot.touristspot_name }</h1>
+<section class="section-margin">
+<div class="content" >
+<div class="container-fluid">
+<div class="container" id="c1">
+<h1 id="f1">${touristspot.touristspot_name }</h1>
 <div>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%; height: 600px;">
   <ol class="carousel-indicators">
@@ -165,15 +186,16 @@ $(document).on('ready', function () {
   </a>
 </div>
 </div>
+<hr>
 <div>
 ${touristspot.touristspot_content }
 
 </div>
+<div class="row">
 <div class="col-md-6">
     <div id="map"></div><input type="hidden" id="address"/>
  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode" async defer></script>
 </div>
-
 <div class="col-md-6">
 주소 :${touristspot.touristspot_address }<br>
 홈페이지 : <a href="${touristspot.touristspot_homepage }">홈페이지 접속하기</a><br>
@@ -184,26 +206,105 @@ ${touristspot.touristspot_content }
 오픈시간 : ${touristspot.touristspot_open }<br>
 닫는시간 : ${touristspot.touristspot_closed }<br>
 </c:if>
-</div>
-<div>
-<input type="text" class="kv-gly-heart rating-loading" value="2" data-size="xs" title="">
-</div>
-
-<div>
-<form action="">
-<input type="hidden" value=""/> 
-
-
-<table>
-<tr>
-<td colspan="2">
-<input type="text" class="kv-gly-heart rating-loading" value="2" data-size="xs" title="">
-</td>
-</tr>
-<tr><td><textarea rows="4" cols="50"></textarea></td><td><input type="button" value="작성"/></td></tr>
-</table>
+<br>
+<form class="rating">
+  <label>
+    <input type="radio" id="stars2" name="stars2" value="1" />
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" id="stars2" name="stars2" value="2" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" id="stars2" name="stars2" value="3" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>   
+  </label>
+  <label>
+    <input type="radio" id="stars2" name="stars2" value="4" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" id="stars2" name="stars2" value="5" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
 </form>
 </div>
+</div>
+</div>
+</div>
+</div>
+<br>
+<div class="container" id="c2">
+댓글 : ${fn:length(touristspotReviews)}
+<table>
+<c:forEach items="${touristspotReviews }" var="tsr">
+	<tr><th>${tsr.review_writer }</th><td width="80%">${tsr.review_content }</td><th>${tsr.review_date }</th></tr>
+</c:forEach>
+</table>
+</div>
+<br>
+<div class="container" id="c2">
+<font>리뷰 작성</font>
+<br>
+<div>
+<font>평점</font>&nbsp;&nbsp;&nbsp;
+<form class="rating">
+  <label>
+    <input type="radio" name="stars" value="1" />
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="2" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="3" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>   
+  </label>
+  <label>
+    <input type="radio" name="stars" value="4" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="5" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+</form>
+</div>
+<form action="insertTourReview.do" method="post">
+<table>
+<tr>
+<td>
+방문일 : <input type="date" name="review_tourdate"/>
+<input type="text" id="review_point" name="review_point" value="0"/>
+<input type="text" name="touristspot_no" value="${touristspot.touristspot_no }"> 
+<input type="text" name="review_writer" value="김지훈"/>
+</td>
+</tr>
+<tr><td><textarea rows="4" cols="100%" name="review_content"></textarea></td><td><input type="submit" value="작성" /></td></tr>
+</table>
+</form>
 </div>
 </section>
 <c:import url="../common/footer.jsp" />

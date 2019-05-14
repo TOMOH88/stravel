@@ -11,7 +11,7 @@ public class FaqController {
 			return "support/faq/faqList";
 		}
 		
-		@RequestMapping("adminFaqList.do")
+		@RequestMapping("adminfaq.do")
 		public String moveaFaqListPage() {
 			return "support/faq/adminFaqList";
 		}

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.travelmaker.stravel.touristspot.model.dao.TouristspotDao;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotReviewsVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Service("TouristspotService")
@@ -57,6 +58,21 @@ public class TouristspotServiceImpl implements TouristspotService{
 	@Override
 	public ArrayList<TouristspotImagesVo> selectTouristspotImages(int tno) {
 		return touristspotDao.selectTouristspotImages(mybatisSession,tno);
+	}
+
+	@Override
+	public int insertTourReview(TouristspotReviewsVo tsrVo) {
+		return touristspotDao.insertTourReview(mybatisSession,tsrVo);
+	}
+
+	@Override
+	public int selectTourReviewNo() {
+		return touristspotDao.selectTourReviewNo(mybatisSession);
+	}
+
+	@Override
+	public ArrayList<TouristspotReviewsVo> selectTouristspotReviews(int tno) {
+		return touristspotDao.selectTouristspotReviews(mybatisSession,tno);
 	}
 
 }
