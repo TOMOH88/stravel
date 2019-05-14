@@ -24,6 +24,7 @@ import com.travelmaker.stravel.support.controller.QnaController;
 import com.travelmaker.stravel.touristspot.model.service.TouristspotService;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotReviewsVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Controller
@@ -131,8 +132,10 @@ public class TouristspotController {
 	public ModelAndView touristspotDetail(ModelAndView mv,@RequestParam(name = "tno") int tno) {
 		TouristspotVo ts = touristspotService.selectTouristspotDetail(tno);
 		ArrayList<TouristspotImagesVo> tsiList =  touristspotService.selectTouristspotImages(tno);
+		ArrayList<TouristspotReviewsVo> tsrList = touristspotService.selectTouristspotReviews(tno);
 		mv.addObject("touristspot", ts);
 		mv.addObject("touristspotImages", tsiList);
+		mv.addObject("touristspotReviews", tsrList);
 		mv.setViewName("touristspot/touristspotDetail");
 		return mv;
 		
@@ -141,10 +144,20 @@ public class TouristspotController {
 	public ModelAndView touristspotDetailAdmin(ModelAndView mv,@RequestParam(name = "tno") int tno) {
 		TouristspotVo ts = touristspotService.selectTouristspotDetail(tno);
 		ArrayList<TouristspotImagesVo> tsiList =  touristspotService.selectTouristspotImages(tno);
+		ArrayList<TouristspotReviewsVo> tsrList = touristspotService.selectTouristspotReviews(tno);
 		mv.addObject("touristspot", ts);
 		mv.addObject("touristspotImages", tsiList);
+		mv.addObject("touristspotReviews", tsrList);
 		mv.setViewName("touristspot/touristspotDetailAdmin");
 		return mv;
+		
+	}
+	@RequestMapping(value="insertTourReview.do", method=RequestMethod.POST)
+	public String insertTourReview(TouristspotReviewsVo tsrVo) {
+		tsrVo.setReview_no(touristspotService.selectTourReviewNo());
+		int result = touristspotService.insertTourReview(tsrVo);
+		System.out.println(result);
+		return "redirect: touristspotDetail.do?tno="+tsrVo.getTouristspot_no();
 		
 	}
 }

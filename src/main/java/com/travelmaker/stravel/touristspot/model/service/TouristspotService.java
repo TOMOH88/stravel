@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotReviewsVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 public interface TouristspotService {
@@ -15,4 +16,7 @@ public interface TouristspotService {
 	ArrayList<TouristspotVo> selectTouristspotList();
 	TouristspotVo selectTouristspotDetail(int tno);
 	ArrayList<TouristspotImagesVo> selectTouristspotImages(int tno);
+	int insertTourReview(TouristspotReviewsVo tsrVo);
+	int selectTourReviewNo();
+	ArrayList<TouristspotReviewsVo> selectTouristspotReviews(int tno);
 }

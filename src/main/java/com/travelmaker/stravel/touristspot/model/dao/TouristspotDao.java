@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotReviewsVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Repository("TouristspotDao")
@@ -47,6 +48,19 @@ public class TouristspotDao {
 	public ArrayList<TouristspotImagesVo> selectTouristspotImages(SqlSessionTemplate mybatisSession, int tno) {
 		List<TouristspotImagesVo> list = mybatisSession.selectList("touristspotMapper.selectTouristspotImages" ,tno);
 		return (ArrayList<TouristspotImagesVo>)list;
+	}
+
+	public int insertTourReview(SqlSessionTemplate mybatisSession, TouristspotReviewsVo tsrVo) {
+		return mybatisSession.insert("touristspotMapper.insertTourReview", tsrVo);
+	}
+
+	public int selectTourReviewNo(SqlSessionTemplate mybatisSession) {
+		return mybatisSession.selectOne("touristspotMapper.selectTourReviewNo");
+	}
+
+	public ArrayList<TouristspotReviewsVo> selectTouristspotReviews(SqlSessionTemplate mybatisSession, int tno) {
+		List<TouristspotReviewsVo> list = mybatisSession.selectList("touristspotMapper.selectTouristspotReviews",tno);
+		return (ArrayList<TouristspotReviewsVo>)list;
 	}
 
 }

@@ -22,9 +22,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-uni.css" media="all" type="text/css"/>
 <title>header</title>
 <style>
-div{ 
+/* div{ 
 	border:1px solid black;
-}
+} */
 </style>
 </head>
 <body>
