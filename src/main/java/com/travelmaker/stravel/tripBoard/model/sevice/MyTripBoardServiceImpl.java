@@ -75,6 +75,18 @@ public class MyTripBoardServiceImpl implements MyTripBoardService{
 		return boardDao.deleteSchedule(mybatisSession, board_no);
 	}
 
+	@Override
+	public ArrayList<MyTripBoardImage> imageListAll(int board_no) {
+		
+		return boardDao.imageListAll(mybatisSession,board_no);
+	}
+
+	@Override
+	public int selectBoardNo() {
+		
+		return boardDao.selectBoardNo(mybatisSession);
+	}
+
 	
 
 	

@@ -32,8 +32,10 @@ public int insertBoard(SqlSessionTemplate session, MyTripBoard board) {
 }
 
 public int insertBoardImage(SqlSessionTemplate session, MyTripBoardImage myTripBoardImage) {
-
-	return session.insert("myTripBoardMapper.insertBoardImage",myTripBoardImage);
+	System.out.println("이미지 : " + myTripBoardImage);
+	int result = session.insert("myTripBoardMapper.insertBoardImage",myTripBoardImage);
+	System.out.println(result);
+	return result;
 }
 
 public ArrayList<MyTripBoardReview> reviewListAll(SqlSessionTemplate session, int board_no) {
@@ -59,6 +61,16 @@ public int deleteReview(SqlSessionTemplate session, int answer_no) {
 public int deleteSchedule(SqlSessionTemplate session, int board_no) {
 
 	return session.update("myTripBoardMapper.deleteSchedule", board_no);
+}
+
+public ArrayList<MyTripBoardImage> imageListAll(SqlSessionTemplate session, int board_no) {
+	List<MyTripBoardImage> list = session.selectList("myTripBoardMapper.selectImageAll",board_no);
+	return (ArrayList<MyTripBoardImage>) list;
+}
+
+public int selectBoardNo(SqlSessionTemplate session) {
+	
+	return session.selectOne("myTripBoardMapper.selectBoardNo");
 }
 
 

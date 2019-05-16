@@ -45,6 +45,8 @@
 		</ul>
 	</div>
 </fieldset>
+<input type = "submit">
+<input type = "reset">
 </form>
 </body>
 </html>

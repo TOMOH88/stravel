@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import com.travelmaker.stravel.restaurant.model.vo.Restaurant;
 import com.travelmaker.stravel.restaurant.model.vo.RestaurantImage;
+import com.travelmaker.stravel.restaurant.model.vo.RestaurantReview;
 
 public interface RestaurantService {
 
@@ -26,6 +27,14 @@ public interface RestaurantService {
 	ArrayList<Restaurant> cafeList();
 
 	Restaurant restaurantDetail(int restaurant_no);
+
+	ArrayList<RestaurantImage> selectRestaurantImage(int restaurant_no);
+
+	ArrayList<RestaurantReview> selectRestaurantReview(int restaurant_no);
+
+	int selectRestaurantReviewNO();
+
+	int insertRestaurantReview(RestaurantReview review);
 	
 
 	

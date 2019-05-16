@@ -51,18 +51,20 @@ public class MyTripBoardController {
 		}
 		@RequestMapping(value = "insertnotice.do", method = RequestMethod.POST)
 		public String insertNotice(MyTripBoard board, MultipartHttpServletRequest imagerequest, HttpServletRequest request) {
-			String savePath = request.getSession().getServletContext().getRealPath("resources/img/myTripBoard");
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/img/myTripBoard");
 			ArrayList<MyTripBoardImage> imageList = new ArrayList<MyTripBoardImage>();
-			
-			System.out.println(board);
+			board.setBoard_no(myService.selectBoardNo());
+			System.out.println("board : " + board);
 			int result = myService.insertBoard(board);
 			System.out.println(result);
 			if(result <= 0)
-				return "MyTripBoard/tripBoardList";
+				return "redirect:tripboard.do";
+			
 			List<MultipartFile> fileList = imagerequest.getFiles("picture");
+			System.out.println("fileListsize : " + fileList.size());
 			for(int i = 0; i<fileList.size(); i++) {
 				String originalFileName = fileList.get(i).getOriginalFilename();
-				
+				System.out.println("originalFileName : " + originalFileName);
 				try {
 					fileList.get(i).transferTo(new File(savePath + "\\" + fileList.get(i).getOriginalFilename()));
 					String renameFileName = board.getBoard_writer() + "-" + UUIDUtil.GetUUID() + "." + originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
@@ -85,11 +87,12 @@ public class MyTripBoardController {
 					}
 					imageList.add(new MyTripBoardImage(board.getBoard_no(), i+1, renameFileName));
 					int result2 = myService.insertBoardImage(imageList.get(i));
+					System.out.println("result2 : " + result2);
 				} catch (Exception e) {
-					
+					e.printStackTrace();
 				}
 			}
-			return "MyTripBoard/tripBoardList";
+			return "redirect:tripboard.do";
 		}
 		
 		
@@ -108,6 +111,8 @@ public class MyTripBoardController {
 			
 			ArrayList<MyTripBoardReview> reviewList = myService.reviewListAll(board_no);
 			mv.addObject("review", reviewList);
+			ArrayList<MyTripBoardImage> imageList = myService.imageListAll(board_no);
+			mv.addObject("image", imageList);
 			
 			mv.setViewName("MyTripBoard/tripBoardDetail");
 			
@@ -119,12 +124,11 @@ public class MyTripBoardController {
 			
 			MyTripBoard myboard = myService.tripBoardDetail(board_no);
 			mv.addObject("myboard", myboard);
-			
 			myService.addReadCount(board_no);
-			
 			ArrayList<MyTripBoardReview> reviewList = myService.reviewListAll(board_no);
 			mv.addObject("review", reviewList);
-			
+			ArrayList<MyTripBoardImage> imageList = myService.imageListAll(board_no);
+			mv.addObject("image", imageList);
 			mv.setViewName("MyTripBoard/tripBoardDetailAdmin");
 			
 			return mv;

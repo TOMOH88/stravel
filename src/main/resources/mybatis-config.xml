@@ -19,9 +19,12 @@
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoard" alias="MyTripBoard"/>
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.Restaurant" alias="Restaurant"/>
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantCategory" alias="RestaurantCategory"/>
+		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantReview" alias = "RestaurantReview"/>
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantImage" alias="RestaurantImage"/>
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage" alias = "MyTripBoardImage"/>
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview" alias = "MyTripBoardReview"/>
+		
+		
 		<!-- 오청 -->
 		<!-- 하종은 -->
 		<!-- 김인규 -->

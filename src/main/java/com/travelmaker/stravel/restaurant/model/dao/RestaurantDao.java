@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.travelmaker.stravel.restaurant.model.vo.Restaurant;
 import com.travelmaker.stravel.restaurant.model.vo.RestaurantImage;
+import com.travelmaker.stravel.restaurant.model.vo.RestaurantReview;
 @Repository("RestaurantDao")
 public class RestaurantDao {
 
@@ -54,6 +55,26 @@ public class RestaurantDao {
 	public Restaurant restaurantDetail(SqlSessionTemplate session, int restaurant_no) {
 		
 		return session.selectOne("restaurantMapper.restaurantDetail", restaurant_no);
+	}
+
+	public ArrayList<RestaurantImage> selectRestaurantImage(SqlSessionTemplate session, int restaurant_no) {
+		List<RestaurantImage> list = session.selectList("restaurantMapper.selectRestaurantImage", restaurant_no); 
+		return (ArrayList<RestaurantImage>) list;
+	}
+
+	public ArrayList<RestaurantReview> selectRestaurantReview(SqlSessionTemplate session, int restaurant_no) {
+		List<RestaurantReview> list = session.selectList("restaurantMapper.selectRestaurantReview", restaurant_no);
+		return (ArrayList<RestaurantReview>) list;
+	}
+
+	public int selectRestaurantReviewNo(SqlSessionTemplate session) {
+		
+		return session.selectOne("restaurantMapper.selectRestaurantNO");
+	}
+
+	public int insertRestaurantReview(SqlSessionTemplate session, RestaurantReview review) {
+		
+		return session.insert("restaurantMapper.insertRestaurantReview", review);
 	}
 
 }

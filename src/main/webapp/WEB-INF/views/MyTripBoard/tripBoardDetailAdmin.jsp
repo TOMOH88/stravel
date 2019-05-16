@@ -59,9 +59,48 @@
 				<label for = "latter">후기</label><br><br>
 				${myboard.board_content }
 			</li>
+			<div>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%; height: 600px;">
+  <ol class="carousel-indicators">
+    <c:forEach items="${imageList }" var="image">
+    <li data-target="#carouselExampleIndicators" data-slide-to="${image.board_sq }" <c:if test="${image.board_sq eq 1 }"> class="active" </c:if>></li>
+    </c:forEach>
+  		</ol>
+				<div class="carousel-inner" style="height:100%;">
+				<c:forEach items="${image }" var="image">
+					<c:if test="${image.baord_sq eq 1 }">
+				
+							<div class="carousel-item active" style="height:100%;">
+								<img class="d-block w-100"
+									src="${ pageContext.request.contextPath }/resources/img/myTripBoard/${image.baord_imagename}"
+									alt="${image.board_imagename}" style="height: 100%;">
+							</div>
+					
+					</c:if>
+					<c:if test="${image.board_sq > 1 }">
+						<div class="carousel-item" style="height:100%;">
+							<img class="d-block w-100"
+								src="${ pageContext.request.contextPath }/resources/img/myTripBoard/${image.board_imagename}"
+								alt="${image.board_imagename}" style="height: 100%;">
+						</div>
+						
+					</c:if>
+				</c:forEach>
+			</div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
 		</ul>
 	</div>
 </fieldset>
+
 <fieldset>
 	<legend>리뷰달기</legend>
 	<form action = "insertreview.do" method = "post">

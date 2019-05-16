@@ -25,6 +25,7 @@ import com.travelmaker.stravel.restaurant.model.service.RestaurantService;
 import com.travelmaker.stravel.restaurant.model.vo.Restaurant;
 import com.travelmaker.stravel.restaurant.model.vo.RestaurantCategory;
 import com.travelmaker.stravel.restaurant.model.vo.RestaurantImage;
+import com.travelmaker.stravel.restaurant.model.vo.RestaurantReview;
 
 @Controller
 public class RestaurantController {
@@ -69,10 +70,14 @@ public class RestaurantController {
 	@RequestMapping("restaurantdetail.do")
 	public ModelAndView restaurantDetail(ModelAndView mv, @RequestParam(name = "restaurant_no") int restaurant_no) {
 		Restaurant restaurant = resService.restaurantDetail(restaurant_no);
+		ArrayList<RestaurantImage> imageList = resService.selectRestaurantImage(restaurant_no);
+		ArrayList<RestaurantReview> reviewList = resService.selectRestaurantReview(restaurant_no);
 		
 		mv.addObject("list", restaurant);
-		mv.setViewName("Restaurant/restaurantDetail");
+		mv.addObject("image", imageList);
+		mv.addObject("review", reviewList);
 		
+		mv.setViewName("Restaurant/restaurantDetail");
 		return mv;
 	}
 	
@@ -154,6 +159,14 @@ public class RestaurantController {
 		
 		mv.setViewName("Restaurant/insertRestaurant");
 		return mv;
+	}
+	@RequestMapping(value="insertRestaurantReview.do", method=RequestMethod.POST)
+	public String insertRestaurantReview(RestaurantReview review) {
+		System.out.println("review"+review);
+		review.setRestaurant_answer_no(resService.selectRestaurantReviewNO());
+		int result = resService.insertRestaurantReview(review);
+		System.out.println("result" + result);
+		return "redirect:restaurantdetail.do?restaurant_no=" + review.getRestaurant_no();
 	}
 	
 }
