@@ -62,7 +62,7 @@
 
 </style>
 <body>
-<c:import url="../common/header.jsp" />
+<c:import url="../../common/header.jsp" />
 <section class="section-margin">
 <div class="card card-image" id="cardimg">
   <!-- Content -->
@@ -80,7 +80,7 @@
                             </li>
                             <li>
                                 <a href="#" class="d-flex">
-                                    <p>�품</p>
+                                    <p>상품</p>
                                 </a>
                             </li>
                             <li>
@@ -220,6 +220,6 @@
 </div>
 <!-- Card -->
 </section>
-<c:import url="../common/footer.jsp" />
+<c:import url="../../common/footer.jsp" />
 </body>
 </html>

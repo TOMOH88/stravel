@@ -1,4 +1,4 @@
- package com.travelmaker.stravel.touristspot.model.controller;
+  package com.travelmaker.stravel.touristspot.model.controller;
 
 import java.io.File;
 import java.io.FileInputStream;

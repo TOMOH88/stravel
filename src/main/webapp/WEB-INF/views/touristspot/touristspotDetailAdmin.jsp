@@ -9,12 +9,9 @@
 <title>stravel</title>
 <link rel="icon" type="image/png" href="http://example.com/myicon.png">
 <!-- 구글폰트 -->
-<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans"	rel="stylesheet">
 <!-- 제이쿼리 -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(':radio').change(function() {
@@ -144,8 +141,8 @@
     	  		
     	  		marker = new google.maps.Marker({
     	                position: {lat: faddr_lat, lng: faddr_lng},
-    	                map: map/* ,
-    	                title: 'Hello World!' */
+    	                map: map ,
+    	                title: '${touristspot.touristspot_name}'
     	            });
     	  		return;
     	  	});	
@@ -159,6 +156,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="container" id="c1">
+				<c:import url="../common/adminHeader.jsp" />
 					<h1 id="f1">${touristspot.touristspot_name }</h1>
 					<div class="landmarkcategory" style="width: 100%;">
 						<c:forEach items="${touristspotImages }" var="tsi">
@@ -176,8 +174,7 @@
 							<div id="map"></div>
 							<input type="hidden" id="address" />
 							<script
-								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
-								async defer></script>
+								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode" async defer></script>
 						</div>
 						<div class="col-md-6">
 							주소 :${touristspot.touristspot_address }<br> 홈페이지 : <a
@@ -185,28 +182,42 @@
 							전화번호 : ${touristspot.touristspot_tel }<br>
 							<c:if test="${touristspot.touristspot_open eq null }">24시간 오픈</c:if>
 							<c:if test="${touristspot.touristspot_open != null }">
-오픈시간 : ${touristspot.touristspot_open }<br>
-닫는시간 : ${touristspot.touristspot_closed }<br>
+							오픈시간 : ${touristspot.touristspot_open }<br>
+							닫는시간 : ${touristspot.touristspot_closed }<br>
 							</c:if>
 							<br>
 							<form class="rating">
-								<label> <input type="radio" id="stars2" name="stars2"
-									value="1" /> <span class="icon">★</span>
-								</label> <label> <input type="radio" id="stars2" name="stars2"
-									value="2" /> <span class="icon">★</span> <span class="icon">★</span>
-								</label> <label> <input type="radio" id="stars2" name="stars2"
-									value="3" /> <span class="icon">★</span> <span class="icon">★</span>
+								<label> 
+									<input type="radio" name="stars2" value="1" /> 
 									<span class="icon">★</span>
-								</label> <label> <input type="radio" id="stars2" name="stars2"
-									value="4" /> <span class="icon">★</span> <span class="icon">★</span>
-									<span class="icon">★</span> <span class="icon">★</span>
-								</label> <label> <input type="radio" id="stars2" name="stars2"
-									value="5" /> <span class="icon">★</span> <span class="icon">★</span>
-									<span class="icon">★</span> <span class="icon">★</span> <span
-									class="icon">★</span>
-								</label>
+									</label> 
+									<label> 
+										<input type="radio" name="stars2" value="2" /> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span>
+									</label> 
+									<label> 
+										<input type="radio" name="stars2" value="3" /> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span>
+									</label> 
+									<label> 
+										<input type="radio" name="stars2" value="4" /> 
+										<span class="icon">★</span>
+										<span class="icon">★</span>
+										<span class="icon">★</span>
+										<span class="icon">★</span>
+									</label> 
+									<label> 
+										<input type="radio" name="stars2" value="5" /> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span>
+									</label>
 							</form>
-
 						</div>
 					</div>
 				</div>
@@ -219,9 +230,9 @@
 		<table>
 			<c:forEach items="${touristspotReviews }" var="tsr">
 				<tr>
-					<th>${tsr.review_writer }</th>
+					<th width="10%">${tsr.review_writer }</th>
 					<td width="75%">${tsr.review_content }</td>
-					<th>${tsr.review_date }</th>
+					<th width="10%">${tsr.review_date }</th>
 					<th><input type="button" value="블라인드" /></th>
 					<th><input type="button" value="삭제" /></th>
 				</tr>

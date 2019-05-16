@@ -7,14 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>stravel</title>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath }/resources/js/star-rating.js"
-	type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/star-rating.js" type="text/javascript"></script>
 <!-- 구글폰트 -->
-<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans"	rel="stylesheet">
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -42,9 +38,9 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 .rating {
 	display: inline-block;
 	position: relative;
-	height: 20px;
-	line-height: 20px;
-	font-size: 20px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 30px;
 }
 
 .rating label {
@@ -180,14 +176,13 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 									</c:if>
 								</c:forEach>
 							</div>
-							<a class="carousel-control-prev"
-								href="#carouselExampleIndicators" role="button"
-								data-slide="prev"> <span class="carousel-control-prev-icon"
-								aria-hidden="true"></span> <span class="sr-only">Previous</span>
-							</a> <a class="carousel-control-next"
-								href="#carouselExampleIndicators" role="button"
-								data-slide="next"> <span class="carousel-control-next-icon"
-								aria-hidden="true"></span> <span class="sr-only">Next</span>
+							<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"> 
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a> 
+							<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"> 
+								<span class="carousel-control-next-icon"aria-hidden="true"></span> 
+								<span class="sr-only">Next</span>
 							</a>
 						</div>
 					</div>
@@ -211,21 +206,36 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 							</c:if>
 							<br>
 							<form class="rating">
-								<label> <input type="radio" id="stars2" name="stars2"
-									value="1" /> <span class="icon">★</span>
-								</label> <label> <input type="radio" id="stars2" name="stars2"
-									value="2" /> <span class="icon">★</span> <span class="icon">★</span>
-								</label> <label> <input type="radio" id="stars2" name="stars2"
-									value="3" /> <span class="icon">★</span> <span class="icon">★</span>
+								<label> 
+									<input type="radio" name="stars2" value="1" /> 
 									<span class="icon">★</span>
-								</label> <label> <input type="radio" id="stars2" name="stars2"
-									value="4" /> <span class="icon">★</span> <span class="icon">★</span>
-									<span class="icon">★</span> <span class="icon">★</span>
-								</label> <label> <input type="radio" id="stars2" name="stars2"
-									value="5" /> <span class="icon">★</span> <span class="icon">★</span>
-									<span class="icon">★</span> <span class="icon">★</span> <span
-									class="icon">★</span>
-								</label>
+									</label> 
+									<label> 
+										<input type="radio" name="stars2" value="2" /> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span>
+									</label> 
+									<label> 
+										<input type="radio" name="stars2" value="3" /> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span>
+									</label> 
+									<label> 
+										<input type="radio" name="stars2" value="4" /> 
+										<span class="icon">★</span>
+										<span class="icon">★</span>
+										<span class="icon">★</span>
+										<span class="icon">★</span>
+									</label> 
+									<label> 
+										<input type="radio" name="stars2" value="5" /> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span> 
+										<span class="icon">★</span>
+									</label>
 							</form>
 						</div>
 					</div>
@@ -238,9 +248,9 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 			<table>
 				<c:forEach items="${touristspotReviews }" var="tsr">
 					<tr>
-						<th>${tsr.review_writer }</th>
+						<th width="10%" >${tsr.review_writer }</th>
 						<td width="80%">${tsr.review_content }</td>
-						<th>${tsr.review_date }</th>
+						<th width="10%">${tsr.review_date }</th>
 					</tr>
 				</c:forEach>
 			</table>
@@ -251,36 +261,55 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 			<div>
 				<font>평점</font>&nbsp;&nbsp;&nbsp;
 				<form class="rating">
-					<label> <input type="radio" name="stars" value="1" /> <span
-						class="icon">★</span>
-					</label> <label> <input type="radio" name="stars" value="2" /> <span
-						class="icon">★</span> <span class="icon">★</span>
-					</label> <label> <input type="radio" name="stars" value="3" /> <span
-						class="icon">★</span> <span class="icon">★</span> <span
-						class="icon">★</span>
-					</label> <label> <input type="radio" name="stars" value="4" /> <span
-						class="icon">★</span> <span class="icon">★</span> <span
-						class="icon">★</span> <span class="icon">★</span>
-					</label> <label> <input type="radio" name="stars" value="5" /> <span
-						class="icon">★</span> <span class="icon">★</span> <span
-						class="icon">★</span> <span class="icon">★</span> <span
-						class="icon">★</span>
+					<label> 
+						<input type="radio" name="stars" value="1" /> 
+						<span class="icon">★</span>
+					</label> 
+					<label> 
+						<input type="radio" name="stars" value="2" /> 
+						<span class="icon">★</span> 
+						<span class="icon">★</span>
+					</label> 
+					<label> 
+						<input type="radio" name="stars" value="3" /> 
+						<span class="icon">★</span> 
+						<span class="icon">★</span> 
+						<span class="icon">★</span>
+					</label> 
+					<label> 
+						<input type="radio" name="stars" value="4" /> 
+						<span class="icon">★</span>
+						<span class="icon">★</span>
+						<span class="icon">★</span>
+						<span class="icon">★</span>
+					</label> 
+					<label> 
+						<input type="radio" name="stars" value="5" /> 
+						<span class="icon">★</span> 
+						<span class="icon">★</span> 
+						<span class="icon">★</span> 
+						<span class="icon">★</span> 
+						<span class="icon">★</span>
 					</label>
 				</form>
 			</div>
 			<form action="insertTourReview.do" method="post">
 				<table>
 					<tr>
-						<td>방문일 : <input type="date" name="review_tourdate" /> <input
-							type="text" id="review_point" name="review_point" value="0" /> <input
-							type="text" name="touristspot_no"
-							value="${touristspot.touristspot_no }"> <input
-							type="text" name="review_writer" value="김지훈" />
+						<td>
+							방문일 : <input type="date" name="review_tourdate" /> 
+							<input type="hidden" id="review_point" name="review_point" value="0" /> 
+							<input type="hidden" name="touristspot_no" value="${touristspot.touristspot_no }">
+							<input type="hidden" name="review_writer" value="김지훈" />
 						</td>
 					</tr>
 					<tr>
-						<td><textarea rows="4" cols="100%" name="review_content"></textarea></td>
-						<td><input type="submit" value="작성" /></td>
+						<td>
+							<textarea rows="4" cols="100%" name="review_content"></textarea>
+						</td>
+						<td>
+							<input type="submit" value="작성" />
+						</td>
 					</tr>
 				</table>
 			</form>
