@@ -24,6 +24,7 @@
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantImage" alias="RestaurantImage"/>
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage" alias = "MyTripBoardImage"/>
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview" alias = "MyTripBoardReview"/>
+		<!-- 오청 -->
 		<typeAlias type="com.travelmaker.stravel.room.model.vo.Room" alias="roomVo"/>
 		<typeAlias type="com.travelmaker.stravel.reservation.model.vo.Reservation" alias="rsvVo"/>
 		<typeAlias type="com.travelmaker.stravel.owner.model.vo.Owner" alias="ownerVo"/>
