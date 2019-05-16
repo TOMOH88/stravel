@@ -34,6 +34,19 @@
 		<result property = "restaurant_imagename" column = "restaurant_imagename"/>
 	</resultMap>
 	
+	<resultMap type="RestaurantReview" id="resultRestaurantReview">
+		<result property = "restaurant_no" column = "restaurant_no"/>
+		<result property = "restaurant_answer_no" column = "restaurant_answer_no"/>
+		<result property = "restaurant_answer_content" column = "restaurant_answer_content"/>
+		<result property = "restaurant_answer_writer" column = "restaurant_answer_writer"/>
+		<result property = "restaurant_answer_date" column = "restaurant_answer_date"/>
+		<result property = "restaurant_answer_point" column = "restaurant_answer_point"/>
+		<result property = "restaurant_answer_blind" column = "restaurant_answer_blind"/>
+		<result property = "restaurant_answer_lastmodified" column = "restaurant_answer_lastmodified"/>
+		<result property = "restaurant_answer_enjoydate" column = "restaurant_answer_enjoydate"/>
+	</resultMap>
+	
+	
 	<select id="restaurantCategoryList" resultMap = "resultRestaurantCategory">
 		select * from restaurant_category
 	</select>
@@ -77,6 +90,24 @@
 	<select id = "restaurantDetail" parameterType = "_int" resultMap = "resultRestaurant">
 		select * from restaurant where restaurant_no = #{restaurant_no}
 	</select>
-	
+	<select id="selectRestaurantImage" parameterType = "_int" resultMap = "resultRestaurantImage">
+		select * from restaurant_images where restaurant_no = #{restaurant_no}
+	</select>
+	<select id="selectRestaurantReview" parameterType = "_int" resultMap = "resultRestaurantReview">
+		select * from restaurant_review where restaurant_no = #{restaurant_no}
+	</select>
+	<select id="selectRestaurantNO" resultType = "_int">
+		select count(1)+1 from restaurant_review
+	</select>
+	<insert id="insertRestaurantReview" parameterType = "RestaurantReview">
+		insert into restaurant_review (restaurant_no, restaurant_answer_no, 
+		restaurant_answer_content, restaurant_answer_writer, 
+		restaurant_answer_date, restaurant_answer_point, 
+		restaurant_answer_blind, restaurant_answer_lastmodified, 
+		restaurant_answer_enjoydate) values (#{restaurant_no}, #{restaurant_answer_no}, 
+		#{restaurant_answer_content}, #{restaurant_answer_writer}, 
+		default, #{restaurant_answer_point}, 
+		default, default, #{restaurant_answer_enjoydate} )
+	</insert>
 
 </mapper>

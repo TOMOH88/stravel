@@ -39,23 +39,26 @@
 		select * from show_schedule where board_no = #{board_no}
 	</select>
 	<insert id="insertBoardImage" parameterType = "MyTripBoardImage">
-		insert into show_schedule_image(board_no, board_sq, board_imagename) values(#{board_no}, #{board_sq}, #{board_imagename})
+		insert into show_schedule_image(board_no, board_sq, board_imagename) 
+		values(#{board_no}, #{board_sq}, #{board_imagename})
 	</insert>
 	
 	<insert id="insertBoard" parameterType = "MyTripBoard">
 		insert into show_schedule(board_no, board_title, board_writer, board_content, board_original_filename, 
 		board_rename_filename, board_read_count, board_write_date, board_good_count) values (
-		seq_board_no.nextval, #{board_title}, #{board_writer}, #{board_content}, #{board_original_filename}, #{board_rename_filename}, default, default, default)
+		#{board_no}, #{board_title}, #{board_writer}, #{board_content}, #{board_original_filename}, #{board_rename_filename}, default, default, default)
 	</insert>
 	
 	<select id="reviewListAll" resultMap = "resultTripBoardReview">
-		select * from show_schedule_answer where board_no like #{board_no}
+		select * from show_schedule_answer where board_no = #{board_no}
 	</select>
 	<insert id="insertReview" parameterType = "MyTripBoardReview">
 		insert into show_schedule_answer (board_no, answer_no, answer_content, answer_writer, answer_date) values
 		(#{board_no}, seq_answer_no.nextval, #{answer_content}, #{answer_writer}, default)
 	</insert>
-	
+	<select id="selectBoardNo" resultType = "_int">
+		select count(board_no)+1 from show_schedule
+	</select>
 	<update id="updateReadCount" parameterType = "MyTripBoard">
 		update show_schedule set board_read_count = (board_read_count)+1 where board_no = #{board_no}
 	</update>
@@ -66,4 +69,7 @@
 	<update id="deleteSchedule" parameterType = "MyTripBoard">
 		update show_schedule set board_deletestatus = 'Y' where board_no = #{board_no}
 	</update>
+	<select id="selectImageAll" resultMap="resultTripBoardImage">
+		select * from show_schedule_image where board_no = #{board_no}
+	</select>
 </mapper>

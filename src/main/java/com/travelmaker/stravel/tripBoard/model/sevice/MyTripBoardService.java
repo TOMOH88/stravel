@@ -26,6 +26,10 @@ public interface MyTripBoardService {
 
 	int deleteSchedule(int board_no);
 
+	ArrayList<MyTripBoardImage> imageListAll(int board_no);
+
+	int selectBoardNo();
+
 	
 
 	

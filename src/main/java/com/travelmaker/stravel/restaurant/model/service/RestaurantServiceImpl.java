@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.travelmaker.stravel.restaurant.model.dao.RestaurantDao;
 import com.travelmaker.stravel.restaurant.model.vo.Restaurant;
 import com.travelmaker.stravel.restaurant.model.vo.RestaurantImage;
+import com.travelmaker.stravel.restaurant.model.vo.RestaurantReview;
 
 @Service("RestaurantService")
 public class RestaurantServiceImpl implements RestaurantService{
@@ -70,6 +71,30 @@ public class RestaurantServiceImpl implements RestaurantService{
 	public Restaurant restaurantDetail(int restaurant_no) {
 
 		return restDao.restaurantDetail(mybatisSession, restaurant_no);
+	}
+
+	@Override
+	public ArrayList<RestaurantImage> selectRestaurantImage(int restaurant_no) {
+		
+		return restDao.selectRestaurantImage(mybatisSession, restaurant_no);
+	}
+
+	@Override
+	public ArrayList<RestaurantReview> selectRestaurantReview(int restaurant_no) {
+		
+		return restDao.selectRestaurantReview(mybatisSession, restaurant_no);
+	}
+
+	@Override
+	public int selectRestaurantReviewNO() {
+		
+		return restDao.selectRestaurantReviewNo(mybatisSession);
+	}
+
+	@Override
+	public int insertRestaurantReview(RestaurantReview review) {
+		
+		return restDao.insertRestaurantReview(mybatisSession, review);
 	}
 
 }

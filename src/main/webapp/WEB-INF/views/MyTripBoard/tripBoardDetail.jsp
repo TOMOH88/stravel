@@ -1,7 +1,7 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +23,7 @@
 </style>
 </head>
 <body>
+<c:import url="../common/header.jsp"></c:import>
 <fieldset>
 	<legend>${ myboard.board_writer }님의 글 </legend>
 	<div class = "trip_board">
@@ -50,16 +51,7 @@
 				<label for = "latter">후기</label><br><br>
 				${myboard.board_content }
 			</li>
-			<%-- <li>
-				<c:choose>
-					<c:when test=""${mno ne null }">
-						<a href = 'javascript: like_func();'><img src = "${ pageContext.request.contextPath }/resources/img/hart/emptyhart.png" id = "like_img"></a>
-					</c:when>
-					<c:otherwise>
-						<a href = "javascript: login_need();"><img src = "${ pageContext.request.contextPath }/resources/img/hart/emptyhart.png"></a>
-					</c:otherwise>
-				</c:choose>
-			</li> --%>
+			
 		</ul>
 	</div>
 </fieldset>
@@ -78,6 +70,44 @@
 		</div>
 	</form>
 </fieldset>
+	<div>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%; height: 600px;">
+  <ol class="carousel-indicators">
+    <c:forEach items="${imageList }" var="image">
+    <li data-target="#carouselExampleIndicators" data-slide-to="${image.board_sq }" <c:if test="${image.board_sq eq 1 }"> class="active" </c:if>></li>
+    </c:forEach>
+  		</ol>
+				<div class="carousel-inner" style="height:100%;">
+				<c:forEach items="${image }" var="image">
+					<c:if test="${image.board_sq eq 1 }">
+				
+							<div class="carousel-item active" style="height:100%;">
+								<img class="d-block w-100"
+									src="${ pageContext.request.contextPath }/resources/img/myTripBoard/${image.board_imagename}"
+									alt="${image.board_imagename}" style="height: 100%;">
+							</div>
+					
+					</c:if>
+					<c:if test="${image.board_sq > 1 }">
+						<div class="carousel-item" style="height:100%;">
+							<img class="d-block w-100"
+								src="${ pageContext.request.contextPath }/resources/img/myTripBoard/${image.board_imagename}"
+								alt="${image.board_imagename}" style="height: 100%;">
+						</div>
+						
+					</c:if>
+				</c:forEach>
+			</div>
+			  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+</div>
+</div>
 <fieldset>
 	<legend>리뷰 작성</legend>
 		<table class = "sub_news" border = "1" cellspacing = "0" summary = "게시판의 글제목 리스트">
