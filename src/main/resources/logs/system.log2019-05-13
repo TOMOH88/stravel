@@ -1,0 +1,302 @@
+[15:36:20][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[15:36:20][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Mon May 13 15:36:20 KST 2019]; root of context hierarchy
+[15:36:20][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[15:36:20][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[15:36:21][INFO ][ContextLoader.java:310]: - Root WebApplicationContext: initialization completed in 1717 ms
+[15:36:21][INFO ][FrameworkServlet.java:494]: - FrameworkServlet 'appServlet': initialization started
+[15:36:21][INFO ][AbstractApplicationContext.java:589]: - Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon May 13 15:36:21 KST 2019]; parent: Root WebApplicationContext
+[15:36:21][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[15:36:22][INFO ][AutowiredAnnotationBeanPostProcessor.java:154]: - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalist.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveFaqListPage()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/faqlist1.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveQnaList1Page()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/adminMain.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveTest()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/test2.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveTest2()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/faqlist2.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveQnaList2Page()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/faqlist3.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveQnaList3Page()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/mycalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.movemyCalendarPage()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/scalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.movesCalendarPage()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/searchcalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveSearchCalendarPage()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/upcalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveUpCalendarPage()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/searchlodgment.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveSearchLodgmentPage()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/vcalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveViewCalendarPage()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/main.do],methods=[GET]}" onto public java.lang.String com.travelmaker.stravel.HomeController.home()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/restaurantdetail.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.restaurant.controller.RestaurantController.restaurantDetail(org.springframework.web.servlet.ModelAndView,int)
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertrestaurant.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.restaurant.controller.RestaurantController.insertRestaurant(com.travelmaker.stravel.restaurant.model.vo.Restaurant,org.springframework.web.multipart.MultipartHttpServletRequest,javax.servlet.http.HttpServletRequest)
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/restaurantlist.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.restaurant.controller.RestaurantController.moveRestaurantList(org.springframework.web.servlet.ModelAndView)
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertres.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.restaurant.controller.RestaurantController.moveInsertRestaurant(org.springframework.web.servlet.ModelAndView)
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/test.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.test()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/orderList.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.orderList()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/oh.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.ohWorkList()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/roomDetail.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.roomDetailView()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertRoom.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.inserRoom()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/ownerMain.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.ownerMain()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertRoomSub.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.inserRoomSub(com.travelmaker.stravel.room.model.vo.Room,org.springframework.ui.Model)
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/updateRoom.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.updateRoom()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/updateOwner.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.updateOwner()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/sampMap.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveSampMap()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/sampMap2.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveSampMap2()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/touristspot.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveTouristspotMain()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/moveTSAdmin.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveTouristspotAdminMain()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/TSWriter.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveTouristspotAdminWriter(org.springframework.web.servlet.ModelAndView)
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/TSWriterUpload.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.insertTouristspot(com.travelmaker.stravel.touristsopt.model.vo.TouristspotVo,org.springframework.web.multipart.MultipartHttpServletRequest,javax.servlet.http.HttpServletRequest)
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/tripboard.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.tripBoard.controller.MyTripBoardController.moveTripList(org.springframework.web.servlet.ModelAndView)
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/writetrip.do]}" onto public java.lang.String com.travelmaker.stravel.tripBoard.controller.MyTripBoardController.moveWriteTrip()
+[15:36:22][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/tripboarddetail.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.tripBoard.controller.MyTripBoardController.moveTripBoardDetail(org.springframework.web.servlet.ModelAndView,int)
+[15:36:23][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon May 13 15:36:21 KST 2019]; parent: Root WebApplicationContext
+[15:36:23][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon May 13 15:36:21 KST 2019]; parent: Root WebApplicationContext
+[15:36:23][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[15:36:24][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 2689 ms
+[15:36:25][INFO ][HomeController.java:22]: - Welcome home!
+[20:47:36][WARN ][DispatcherServlet.java:1205]: - No mapping found for HTTP request with URI [/stravel/roomList.do] in DispatcherServlet with name 'appServlet'
+[21:01:42][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon May 13 15:36:21 KST 2019]; parent: Root WebApplicationContext
+[21:01:42][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Mon May 13 15:36:20 KST 2019]; root of context hierarchy
+[21:20:22][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[21:20:23][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Mon May 13 21:20:23 KST 2019]; root of context hierarchy
+[21:20:23][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[21:20:23][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[21:20:24][WARN ][AbstractApplicationContext.java:557]: - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.reservation.model.vo.Owner
+[21:20:24][ERROR][ContextLoader.java:316]: - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.reservation.model.vo.Owner
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1710)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:741)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:409)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:291)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4812)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5278)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1423)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1413)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.reservation.model.vo.Owner
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:500)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	... 21 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.reservation.model.vo.Owner
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:121)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parse(XMLConfigBuilder.java:99)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:494)
+	... 24 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.reservation.model.vo.Owner
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.typeAliasesElement(XMLConfigBuilder.java:171)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:109)
+	... 26 more
+Caused by: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.reservation.model.vo.Owner
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:200)
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:89)
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:261)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.typeAliasesElement(XMLConfigBuilder.java:164)
+	... 27 more
+[21:22:40][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[21:22:40][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Mon May 13 21:22:40 KST 2019]; root of context hierarchy
+[21:22:40][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[21:22:41][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[21:22:41][WARN ][AbstractApplicationContext.java:557]: - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+[21:22:41][ERROR][ContextLoader.java:316]: - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1710)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:741)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:409)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:291)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4812)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5278)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1423)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1413)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:500)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	... 21 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:121)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parse(XMLConfigBuilder.java:99)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:494)
+	... 24 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.typeAliasesElement(XMLConfigBuilder.java:171)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:109)
+	... 26 more
+Caused by: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:200)
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:89)
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:261)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.typeAliasesElement(XMLConfigBuilder.java:164)
+	... 27 more
+[21:23:41][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[21:23:41][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Mon May 13 21:23:41 KST 2019]; root of context hierarchy
+[21:23:41][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[21:23:41][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[21:23:42][WARN ][AbstractApplicationContext.java:557]: - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+[21:23:42][ERROR][ContextLoader.java:316]: - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1710)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:741)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:409)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:291)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4812)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5278)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1423)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1413)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:500)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	... 21 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:121)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parse(XMLConfigBuilder.java:99)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:494)
+	... 24 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.typeAliasesElement(XMLConfigBuilder.java:171)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:109)
+	... 26 more
+Caused by: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:200)
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:89)
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:261)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.typeAliasesElement(XMLConfigBuilder.java:164)
+	... 27 more
+[21:24:03][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[21:24:03][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Mon May 13 21:24:03 KST 2019]; root of context hierarchy
+[21:24:03][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[21:24:04][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[21:24:04][WARN ][AbstractApplicationContext.java:557]: - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+[21:24:04][ERROR][ContextLoader.java:316]: - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1710)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:741)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:409)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:291)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4812)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5278)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1423)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1413)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:500)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	... 21 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:121)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parse(XMLConfigBuilder.java:99)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:494)
+	... 24 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.typeAliasesElement(XMLConfigBuilder.java:171)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:109)
+	... 26 more
+Caused by: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:200)
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:89)
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:261)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.typeAliasesElement(XMLConfigBuilder.java:164)
+	... 27 more
+[21:24:53][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[21:24:53][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Mon May 13 21:24:53 KST 2019]; root of context hierarchy
+[21:24:53][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[21:24:54][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[21:24:54][WARN ][AbstractApplicationContext.java:557]: - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+[21:24:54][ERROR][ContextLoader.java:316]: - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSession' defined in class path resource [root-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1710)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:583)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:502)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:741)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:409)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:291)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4812)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5278)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1423)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1413)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:500)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1706)
+	... 21 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:121)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parse(XMLConfigBuilder.java:99)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:494)
+	... 24 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'ownerVo'. Cause: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.typeAliasesElement(XMLConfigBuilder.java:171)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.parseConfiguration(XMLConfigBuilder.java:109)
+	... 26 more
+Caused by: java.lang.ClassNotFoundException: Cannot find class: com.travelmaker.stravel.owner.model.vo.Owner.java
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:200)
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:89)
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:261)
+	at org.apache.ibatis.builder.xml.XMLConfigBuilder.typeAliasesElement(XMLConfigBuilder.java:164)
+	... 27 more

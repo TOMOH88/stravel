@@ -22,6 +22,9 @@
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantImage" alias="RestaurantImage"/>
 		<typeAlias type="com.travelmaker.stravel.room.model.vo.Room" alias="roomVo"/>
 		<typeAlias type="com.travelmaker.stravel.reservation.model.vo.Reservation" alias="rsvVo"/>
+		<typeAlias type="com.travelmaker.stravel.owner.model.vo.Owner" alias="ownerVo"/>
+		<typeAlias type="com.travelmaker.stravel.owner.model.vo.OwnerImg" alias="ownerImgVo"/>
+		<typeAlias type="com.travelmaker.stravel.owner.model.vo.OwnerList" alias="ownerListVo"/>
 	</typeAliases>
 	<mappers>
 	<!-- 쿼리문 저장용 매퍼 xml 파일 등록 : 필수  -->
@@ -33,5 +36,6 @@
 		<mapper resource="mappers/restaurant-mapper.xml"/>
 		<mapper resource="mappers/room-mapper.xml"/>
 		<mapper resource="mappers/reservation-mapper.xml"/>
+		<mapper resource="mappers/owner-mapper.xml"/>
 	</mappers>
 </configuration>
