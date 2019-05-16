@@ -27,14 +27,16 @@
                                     	<th>WRITER</th>
                                     	<th>DATE</th>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td><a href="">공지사항</a></td>
-                                        	<td>admin1</td>
-                                        	<td>2019-05-09</td>
-                                        </tr>
+                                    <c:forEach items="${ noticeList }" var="notice">
+                                    <tbody>	
+                                    	<tr>
+                                        	<td>${notice.notice_no }</td>
+                                        	<td><a href="">${notice.notice_title }</a></td>
+                                        	<td>${notice.notice_writer }</td>
+                                        	<td>${notice.notice_date }</td>
+                                        </tr>                                   
                                     </tbody>
+                                    </c:forEach>
                                 </table>
                                 <!-- Pagination 시작 ( 페이징 )-->
 							<div style="text-align:center;">

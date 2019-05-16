@@ -15,20 +15,35 @@
 		<id property="qna_answer" column="QNA_ANSWER" />
 		<id property="qna_answerdate" column="QNA_ANSWERDATE" />
 		<id property="rename_afilename" column="RENAME_AFILENAME" />
-
+		<id property="qna_answerwriter" column="QNA_ANSWERWRITER" />
+		<id property="qna_deletestatus" column="QNA_DELETESTATUS" />
 	</resultMap>
-	
+
+	<resultMap id="resultNoticeVo" type="NoticeVo">
+		<id property="notice_no" column="NOTICE_NO" />
+		<id property="notice_title" column="NOTICE_TITLE" />
+		<id property="notice_content" column="NOTICE_CONTENT" />
+		<id property="notice_writer" column="NOTICE_WRITER" />
+		<id property="originalname_nfilename" column="ORIGINALNAME_NFILENAME" />
+		<id property="rename_nfilename" column="RENAME_NFILENAME" />
+		<id property="notice_date" column="NOTICE_DATE" />
+		<id property="notice_deletestatus" column="NOTICE_DELETESTATUS" />
+	</resultMap>
+
+
 	<insert id="qnaInsert" parameterType="QnaVo">
-		insert into tb_qna(QNA_NO,QNA_TITLE,QNA_CONTENT,QNA_WRITER,
-		<if test="rename_qfilename != null">
-		RENAME_QFILENAME,
-		</if>
-		QNA_DATE,QNA_STATUS)
-		values (SQ_QNANO.NEXTVAL,#{qna_title},#{qna_content},#{qna_writer},
-		<if test="rename_qfilename != null">
-		#{rename_qfilename},
-		</if>
-		default,default)
+	
+	</insert>
+	<select id="selectNoticeList" resultMap="resultNoticeVo">
+	select * from tb_notice where NOTICE_DELETESTATUS = 'N' order by notice_no desc
+	</select>
+	<insert id="insertNotice" parameterType="NoticeVo">
+		<selectKey keyProperty="notice_no" resultType="int" order="BEFORE">
+			select count(1)+1 from tb_notice
+		</selectKey>
+		insert into tb_notice (NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_WRITER, ORIGINALNAME_NFILENAME, RENAME_NFILENAME, NOTICE_DATE, NOTICE_DELETESTATUS)
+		values
+		(#{notice_no},#{notice_title},#{notice_content},#{notice_writer},#{originalname_nfilename},#{rename_nfilename},default,default)
 	</insert>
 	<!-- 
 	

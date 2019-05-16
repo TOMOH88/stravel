@@ -1,8 +1,5 @@
- package com.travelmaker.stravel.touristspot.model.controller;
+package com.travelmaker.stravel.touristspot.model.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.travelmaker.stravel.common.FileUtil;
 import com.travelmaker.stravel.common.UUIDUtil;
 import com.travelmaker.stravel.support.controller.QnaController;
 import com.travelmaker.stravel.touristspot.model.service.TouristspotService;
@@ -31,8 +29,6 @@ import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 public class TouristspotController {
 	
 	private static final Logger logger= LoggerFactory.getLogger(QnaController.class);
-	/*@Autowired
-	GeoCoder geocoder;*/
 	@Autowired
 	private TouristspotService touristspotService;
 	
@@ -78,49 +74,25 @@ public class TouristspotController {
 		}
 	@RequestMapping(value="TSWriterUpload.do",method=RequestMethod.POST)
 	public String insertTouristspot(TouristspotVo ts,MultipartHttpServletRequest mtfRequest,HttpServletRequest request) {
-		String path = "touristspot/touristspotMain";
-		String savePath = request.getSession().getServletContext().getRealPath("/resources/files/touristspotImages");
-		ArrayList<TouristspotImagesVo> tsImages = new ArrayList<TouristspotImagesVo>();
-		ts.setTouristspot_no(touristspotService.selectTouristspotNO());
-		System.out.println(ts.toString());
+		String path = "redirect:moveTSAdmin.do";
 		int result = touristspotService.insertTouristspot(ts);
 		if(result <=0) {
 			return "touristspot/touristspotMain";
-		}
+		}		
+		//사진 연속업로드
+		ArrayList<TouristspotImagesVo> tsImages = new ArrayList<TouristspotImagesVo>();
 		List<MultipartFile> fileList = mtfRequest.getFiles("tsimages");
 		for(int i=0;i<fileList.size();i++) {
 			String originalFileName = fileList.get(i).getOriginalFilename();
-			try {
-			fileList.get(i).transferTo(new File(savePath+"\\"+fileList.get(i).getOriginalFilename()));
 			String renameFileName = ts.getTouristspot_name()+"-"+UUIDUtil.GetUUID()
-					+ "." + originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
+			+ "." + FileUtil.getExtension(originalFileName);
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/files/touristspotImages");
 			
-			File originFile = new File(savePath + "\\" + originalFileName);
-			File renameFile = new File(savePath + "\\" + renameFileName);
+			FileUtil.upLoadFile(fileList.get(i), originalFileName, savePath, renameFileName);
 			
-			if(!originFile.renameTo(renameFile)) {
-				int read = -1;
-				byte[] buf = new byte[1024];
-				
-				FileInputStream fin = 
-						new FileInputStream(originalFileName);
-				FileOutputStream fout = 
-						new FileOutputStream(renameFile);
-				
-				while((read = fin.read(buf, 0, buf.length)) != -1) {
-					fout.write(buf, 0, read);
-				}
-				fin.close();
-				fout.close();
-				originFile.delete();
-			}
 			tsImages.add(new TouristspotImagesVo(ts.getTouristspot_no(), i+1, renameFileName));
 			int result2 = touristspotService.insertTouristspotImages(tsImages.get(i));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}
-		System.out.println(tsImages.get(0).getTouristspot_imagename());
 		ts.setRename_thumnail(tsImages.get(0).getTouristspot_imagename());
 		touristspotService.updateTouristspotThumnail(ts);
 		/*if(result >0) {

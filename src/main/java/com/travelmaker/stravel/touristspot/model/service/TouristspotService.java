@@ -8,7 +8,6 @@ import com.travelmaker.stravel.touristspot.model.vo.TouristspotReviewsVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 public interface TouristspotService {
-	int selectTouristspotNO();
 	int insertTouristspot(TouristspotVo ts);
 	int insertTouristspotImages(TouristspotImagesVo touristspotImagesVo);
 	ArrayList<TouristspotCategoryVo> selectTouristspotCategory();

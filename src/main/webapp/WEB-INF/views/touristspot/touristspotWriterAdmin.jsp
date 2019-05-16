@@ -64,8 +64,7 @@
 </script>   
 </head>
 <body>
-<c:import url="../common/header.jsp" />
-<%-- <c:import url="../common/adminHeader.jsp" /> --%>
+<c:import url="../common/adminHeader.jsp" />
 <section class="section-margin">
 <div class="container">
 <h1 align="center">관광지 글쓰기 페이지</h1>
@@ -93,7 +92,7 @@
 
 </tr>
 <tr>
-	<th>관광지 주소2</th>
+	<th>관광지 지도</th>
 	<td>  
 	<div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"

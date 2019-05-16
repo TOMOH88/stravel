@@ -19,10 +19,6 @@ public class TouristspotServiceImpl implements TouristspotService{
 	private SqlSessionTemplate mybatisSession;
 	@Autowired
 	private TouristspotDao touristspotDao;
-	@Override
-	public int selectTouristspotNO() {
-		return touristspotDao.selectTouristspotNO(mybatisSession);
-	}
 
 	@Override
 	public int insertTouristspot(TouristspotVo ts) {

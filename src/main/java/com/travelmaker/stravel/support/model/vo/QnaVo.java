@@ -19,11 +19,16 @@ public class QnaVo implements Serializable{
 	private String qna_answer;
 	private Date qna_answerdate;
 	private String rename_afilename;
+	private String qna_answerwriter;
+	private String qna_deletestatus;
+	
 	public QnaVo() {
 		super();
 	}
+
 	public QnaVo(int qna_no, String qna_title, String qna_content, String qna_writer, String rename_qfilename,
-			Date qna_date, String qna_status, String qna_answer, Date qna_answerdate, String rename_afilename) {
+			Date qna_date, String qna_status, String qna_answer, Date qna_answerdate, String rename_afilename,
+			String qna_answerwriter, String qna_deletestatus) {
 		super();
 		this.qna_no = qna_no;
 		this.qna_title = qna_title;
@@ -35,76 +40,117 @@ public class QnaVo implements Serializable{
 		this.qna_answer = qna_answer;
 		this.qna_answerdate = qna_answerdate;
 		this.rename_afilename = rename_afilename;
+		this.qna_answerwriter = qna_answerwriter;
+		this.qna_deletestatus = qna_deletestatus;
 	}
+
 	public int getQna_no() {
 		return qna_no;
 	}
+
 	public void setQna_no(int qna_no) {
 		this.qna_no = qna_no;
 	}
+
 	public String getQna_title() {
 		return qna_title;
 	}
+
 	public void setQna_title(String qna_title) {
 		this.qna_title = qna_title;
 	}
+
 	public String getQna_content() {
 		return qna_content;
 	}
+
 	public void setQna_content(String qna_content) {
 		this.qna_content = qna_content;
 	}
+
 	public String getQna_writer() {
 		return qna_writer;
 	}
+
 	public void setQna_writer(String qna_writer) {
 		this.qna_writer = qna_writer;
 	}
+
 	public String getRename_qfilename() {
 		return rename_qfilename;
 	}
+
 	public void setRename_qfilename(String rename_qfilename) {
 		this.rename_qfilename = rename_qfilename;
 	}
+
 	public Date getQna_date() {
 		return qna_date;
 	}
+
 	public void setQna_date(Date qna_date) {
 		this.qna_date = qna_date;
 	}
+
 	public String getQna_status() {
 		return qna_status;
 	}
+
 	public void setQna_status(String qna_status) {
 		this.qna_status = qna_status;
 	}
+
 	public String getQna_answer() {
 		return qna_answer;
 	}
+
 	public void setQna_answer(String qna_answer) {
 		this.qna_answer = qna_answer;
 	}
+
 	public Date getQna_answerdate() {
 		return qna_answerdate;
 	}
+
 	public void setQna_answerdate(Date qna_answerdate) {
 		this.qna_answerdate = qna_answerdate;
 	}
+
 	public String getRename_afilename() {
 		return rename_afilename;
 	}
+
 	public void setRename_afilename(String rename_afilename) {
 		this.rename_afilename = rename_afilename;
 	}
+
+	public String getQna_answerwriter() {
+		return qna_answerwriter;
+	}
+
+	public void setQna_answerwriter(String qna_answerwriter) {
+		this.qna_answerwriter = qna_answerwriter;
+	}
+
+	public String getQna_deletestatus() {
+		return qna_deletestatus;
+	}
+
+	public void setQna_deletestatus(String qna_deletestatus) {
+		this.qna_deletestatus = qna_deletestatus;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 	@Override
 	public String toString() {
 		return "QnaVo [qna_no=" + qna_no + ", qna_title=" + qna_title + ", qna_content=" + qna_content + ", qna_writer="
 				+ qna_writer + ", rename_qfilename=" + rename_qfilename + ", qna_date=" + qna_date + ", qna_status="
 				+ qna_status + ", qna_answer=" + qna_answer + ", qna_answerdate=" + qna_answerdate
-				+ ", rename_afilename=" + rename_afilename + "]";
+				+ ", rename_afilename=" + rename_afilename + ", qna_answerwriter=" + qna_answerwriter
+				+ ", qna_deletestatus=" + qna_deletestatus + "]";
 	}
 	
 	
