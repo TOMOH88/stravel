@@ -228,11 +228,14 @@ ul li a:hover {
 					</tr>
 					</table>
 				</div><br><Br>
-				<div>사진</div>
+				<div>사진 </div>
+				<div>
+				<input multiple="multiple" type="file" name="roomImg" class="multi with-preview"/>
+				</div>
 				<hr>
 				<br>
 				<div style="text-align:center;"><input type="submit" value="등록하기" class="irbt" style="margin-right:20px;"><input type="reset" value="취소하기" class="irbt"></div>
-				<input type="file" name="">
+				
 				</form>
 			</div>
 		</div>
@@ -271,6 +274,7 @@ ul li a:hover {
 	<script
 		src="${pageContext.request.contextPath }/resources/js/jquery-ui.min.js"></script>
 		
+	<script src="${pageContext.request.contextPath }/resources/js/jquery.MultiFile.js" type="text/javascript" ></script>
 		
 	<script type="text/javascript">
 		function check(){

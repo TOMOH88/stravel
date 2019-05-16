@@ -36,6 +36,7 @@ public class RoomController {
 	
 	@RequestMapping("orderList.do")
 	public String orderList() {
+		
 		return "room/roomOrderList";
 	}
 	
@@ -63,4 +64,6 @@ public class RoomController {
 	public String updateOwner() {
 		return "room/updateOwner";
 	}
+	
+
 }

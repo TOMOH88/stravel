@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ownerMapper">
+
+	
+	<resultMap id = "resultOwner" type="ownerVo">
+		<result property="owner_no" column="owner_no"/>
+		<result property="owner_license_no" column="owner_license_no"/>
+		<result property="owner_password" column="owner_password"/>
+		<result property="owner_name" column="owner_name"/>
+		<result property="owner_companyName" column="owner_companyname"/>
+		<result property="owner_telephone" column="owner_telephone"/>
+		<result property="owner_phone" column="owner_phone"/>
+		<result property="owner_account" column="owner_account"/>
+		<result property="owner_address" column="owner_address"/>
+		<result property="owner_category" column="owner_category"/>
+		<result property="owner_approve" column="owner_approve"/>
+		<result property="off_season_price" column="off_season_price"/>
+		<result property="property_review_like" column="property_review_like"/>
+	</resultMap>
+	
+	<resultMap id="resultOwnerList" type="ownerListVo" >
+		<result property="owner_no" column="owner_no"/>
+		<result property="owner_companyName" column="owner_companyname"/>
+		<result property="owner_address" column="owner_address"/>
+		<result property="owner_category" column="owner_category"/>
+		<result property="off_season_price" column="off_season_price"/>
+		<result property="property_review_like" column="property_review_like"/>
+	</resultMap>
+
+	<resultMap id = "resultOwnerImg" type="ownerImgVo">
+		<result property="owner_img_no" column="owner_img_no"/>
+		<result property="owner_img" column="owner_img"/>
+		<result property="owner_no" column="owner_no"/>
+	</resultMap>
+
+	<select id="selectRoomList" resultMap="resultOwnerList">
+    select owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
+    from owner
+    join room using (owner_no)
+    group by owner_no,owner_companyname, owner_address, owner_category
+    
+
+	</select>
+	<select id="selectOwnerImgList" resultMap="resultOwnerImg" >
+	    select * from owner_img
+	</select>
+</mapper>
