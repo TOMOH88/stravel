@@ -47,3 +47,4 @@
 [19:03:59][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 19:03:55 KST 2019]; parent: Root WebApplicationContext
 [19:03:59][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [19:04:00][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 5315 ms
+[19:15:02][INFO ][HomeController.java:22]: - Welcome home!
