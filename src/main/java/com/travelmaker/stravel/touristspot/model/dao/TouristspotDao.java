@@ -14,10 +14,6 @@ import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 @Repository("TouristspotDao")
 public class TouristspotDao {
 
-	public int selectTouristspotNO(SqlSessionTemplate mybatisSession) {
-		return mybatisSession.selectOne("touristspotMapper.selectTouristspotNO");
-	}
-
 	public int insertTouristspot(SqlSessionTemplate mybatisSession, TouristspotVo ts) {
 		
 		return mybatisSession.insert("touristspotMapper.insertTouristspot", ts);
