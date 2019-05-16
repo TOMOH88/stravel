@@ -161,7 +161,7 @@ div{
 <!-- 필터끝-->
 </div>
 <br>
-<div>
+<div class="row">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height:100%; width:200px;">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -188,7 +188,7 @@ div{
     <span class="sr-only">다음</span>
   </a>
 </div>
-<div class="col-xl-6">
+<div class="col-xl-7">
 <a href="#">호텔1</a> <br>
 <font style="font-size:8pt;">주택의 개인실
 인원 1명

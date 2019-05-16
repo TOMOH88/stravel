@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v3=&sensor=true&key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <meta charset="UTF-8">
 <title>stravel</title>
@@ -23,6 +23,7 @@
 <c:import url="../common/sheader.jsp" />
 <div style="height:90px;"></div>
 <div class="container-fluid">
+<div></div>
 <div class="row" style="background:gray;">
 <div class="col-md-2" style="margin:auto; text-align:center;">
 <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal3">
@@ -39,13 +40,10 @@
         </button>
       </div>
       <div class="modal-body">
-      <div class="row">
-      <label>제목
-       <input type="text" class="form-control"></label></div>
-       <div class="row">
-       <label for="startDate"> 출발일
-        <input type="date" id="startDate" class="form-control">
-        </label>
+      <div>
+      <font>제목</font><input type="text" class="form-control"></div>
+       <div>
+       <font>출발일</font><input type="date" id="startDate" class="form-control">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>

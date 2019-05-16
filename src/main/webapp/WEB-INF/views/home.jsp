@@ -31,7 +31,7 @@ p{
         <div class="col-lg-6 col-xl-6 offset-xl-1">
           <div class="search-wrapper">
             <h3>STRAVEL</h3>
-            <form class="search-form" action="#">
+            <form class="search-form" action="searchlodgment.do">
               <div class="form-group">
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="목적지/위치">
