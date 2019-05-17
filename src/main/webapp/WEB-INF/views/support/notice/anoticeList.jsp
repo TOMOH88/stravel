@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>stravel</title>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/paging.js"></script>
+<%-- <link href="${pageContext.request.contextPath }/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath }/resources/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath }/resources/assets/css/animate.min.css" rel="stylesheet"/> --%>
 </head>
 <body>
 <c:import url="../../common/adminHeader.jsp"/>
@@ -20,10 +25,21 @@
                                 <p class="category"></p>
                             </div>
                             <div class="content table-responsive table-full-width">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <select class='btn btn-primary' id='listCount' name='listCount' onchange='listCnt();'>
+					            <option value='5' >5</option>
+					            <option value='10'>10</option>
+					            <option value='15'>15</option>
+					            <option value='20'>20</option>
+					        </select>
+					       	&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-primary" onclick="location.href='noticewrite.do'">글등록</button>
+                            </div>
                                 <table class="table table-hover table-striped">
+                                
                                     <thead>
                                         <th>No</th>
-                                    	<th>TITLE</th>
+                                    	<th width="70%">TITLE</th>
                                     	<th>WRITER</th>
                                     	<th>DATE</th>
                                     </thead>
@@ -38,29 +54,55 @@
                                     </tbody>
                                     </c:forEach>
                                 </table>
+                                <div align="center">
                                 <!-- Pagination 시작 ( 페이징 )-->
-							<div style="text-align:center;">
-							<ul class="pagination">
-							<li><a href="#">맨처음</a></li>
-  							<li><a href="#">1</a></li>
-  							<li class="active"><a href="#">2</a></li>
-  							<li><a href="#">3</a></li>
-  							<li><a href="#">4</a></li>
-  							<li><a href="#">5</a></li>
-  							<li><a href="#">맨끝</a></li>
-							</ul>
-							</div>
-							<!-- Pagination 끝 -->
-							<div style="text-align:center;">
+								<ul class="pagination">
+					            <c:if test="${p.pageStartNum ne 1}">
+					                <!--맨 첫페이지 이동 -->
+					                <li><a onclick='pagePre(${p.pageCnt+1},${p.pageCnt});'>«</a></li>
+					                <!--이전 페이지 이동 -->
+					                <li><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'>‹</a></li>
+					            </c:if>
+					            <!--페이지번호 -->
+					            <c:forEach var='i' begin="${p.pageStartNum}" end="${p.pageLastNum}" step="1">
+					                <li class='pageIndex${i}'><a onclick='pageIndex(${i});'>${i}</a></li>
+					            </c:forEach>
+					            
+					            <c:if test="${p.lastChk}">
+					                <!--다음 페이지 이동 -->
+					                <li><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li>
+					                <!--마지막 페이지 이동 -->
+					                <li><a onclick='pageLast(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>»</a></li>
+					            </c:if>
+					        </ul>
+					        <form action="adminnotice.do" method="post" id='frmPaging'>
+					            <!--출력할 페이지번호, 출력할 페이지 시작 번호, 출력할 리스트 갯수 -->
+					            <input type='hidden' name='index' id='index' value='${p.index}'>
+					            <input type='hidden' name='pageStartNum' id='pageStartNum' value='${p.pageStartNum}'>
+					            <input type='hidden' name='listCnt' id='listCnt' value='${p.listCnt}'>
+					            
+					            <select name="SearchCategory" class="btn btn-primary btn-sm">
+									<option value="">선택하세요</option>
+									<option name="SearchCategory" value="userid">아이디</option>
+									<option name="SearchCategory" value="title">제목</option>
+									<option name="SearchCategory" value="content">내용</option>
+								</select>
+								<input type="text" name="items" class="btn btn-primary btn-sm" placeholder="Search" value="${p.items }" class="form-control" >
+								<input type="button" class="btn btn-primary btn-sm" value="검색" onclick="frmPaging(); return false;">
+					        </form>
+
+							<!--<div style="text-align:center;">
                                 	<button class="btn btn-default btn-sm" onclick="location.href='noticewrite.do'">글등록</button>
                                 	</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- table 끝 -->
+                            </div> -->
+    	</div>
+
 </div>
 </div>
 </div>
+</div>
+</div>
+
 <c:import url="../../common/afooter.jsp"/>
 </body>
 </html>

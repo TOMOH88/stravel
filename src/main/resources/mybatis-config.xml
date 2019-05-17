@@ -12,6 +12,7 @@
 		<!-- 김지훈 -->
 		<typeAlias type="com.travelmaker.stravel.support.model.vo.QnaVo" alias="QnaVo" />
 		<typeAlias type="com.travelmaker.stravel.support.model.vo.NoticeVo" alias="NoticeVo" />
+		<typeAlias type="com.travelmaker.stravel.common.PagingVo" alias="PagingVo"/>
 		<typeAlias type="com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo" alias="TouristspotImagesVo" />
 		<typeAlias type="com.travelmaker.stravel.touristspot.model.vo.TouristspotVo" alias="TouristspotVo" />
 		<typeAlias type="com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo" alias="TouristspotCategoryVo" />

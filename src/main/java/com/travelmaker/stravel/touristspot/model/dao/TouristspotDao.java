@@ -59,4 +59,28 @@ public class TouristspotDao {
 		return (ArrayList<TouristspotReviewsVo>)list;
 	}
 
+	public ArrayList<TouristspotVo> selectLandmarkTop(SqlSessionTemplate mybatisSession) {
+		List<TouristspotVo> list = mybatisSession.selectList("touristspotMapper.selectLandmarkTop");
+		return (ArrayList<TouristspotVo>)list;
+	}
+
+	public ArrayList<TouristspotVo> selectHistoricTop(SqlSessionTemplate mybatisSession) {
+		List<TouristspotVo> list = mybatisSession.selectList("touristspotMapper.selectHistoricTop");
+		return (ArrayList<TouristspotVo>)list;
+	}
+
+	public ArrayList<TouristspotVo> selectMuseumTop(SqlSessionTemplate mybatisSession) {
+		List<TouristspotVo> list = mybatisSession.selectList("touristspotMapper.selectMuseumTop");
+		return (ArrayList<TouristspotVo>)list;
+	}
+
+	public ArrayList<TouristspotVo> selectShoppingTop(SqlSessionTemplate mybatisSession) {
+		List<TouristspotVo> list = mybatisSession.selectList("touristspotMapper.selectShoppingTop");
+		return (ArrayList<TouristspotVo>)list;
+	}
+
+	public ArrayList<TouristspotVo> selectTouristspotCategoryList(SqlSessionTemplate mybatisSession, String cate) {
+		List<TouristspotVo> list = mybatisSession.selectList("touristspotMapper.selectTouristspotCategoryList",cate);
+		return (ArrayList<TouristspotVo>)list;
+	}
 }

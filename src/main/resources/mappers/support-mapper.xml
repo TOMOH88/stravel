@@ -29,7 +29,7 @@
 		<id property="notice_date" column="NOTICE_DATE" />
 		<id property="notice_deletestatus" column="NOTICE_DELETESTATUS" />
 	</resultMap>
-
+	
 
 	<insert id="qnaInsert" parameterType="QnaVo">
 	
@@ -45,6 +45,39 @@
 		values
 		(#{notice_no},#{notice_title},#{notice_content},#{notice_writer},#{originalname_nfilename},#{rename_nfilename},default,default)
 	</insert>
+	
+	<!-- 2. ROWNUM Query -->
+    <select id="selectPaging" parameterType="pagingVo" resultType="NoticeVo">
+       SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM 
+       (SELECT * FROM TB_NOTICE 
+		<if test="items != null and items != '' ">
+   		where notice_title like '%' ||  #{items} || '%'
+		</if>
+       	ORDER BY NOTICE_NO DESC ) P )
+       WHERE RNUM BETWEEN ${start} AND ${last}
+    </select>
+    <!-- 2. Total Query -->
+    <select id="selectTotalPaging" resultType="_int">
+        SELECT COUNT(1) FROM TB_NOTICE  
+    </select>
+	<select id="selectTotalPagingSearch" parameterType="pagingVo" resultType="_int">
+        SELECT COUNT(1) FROM TB_NOTICE 
+        where notice_title like '%' || #{items} || '%'
+    </select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<!-- 
 	
 	<select id="getListCount" resultType="_int" >
