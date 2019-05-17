@@ -71,4 +71,30 @@ public class TouristspotServiceImpl implements TouristspotService{
 		return touristspotDao.selectTouristspotReviews(mybatisSession,tno);
 	}
 
+	@Override
+	public ArrayList<TouristspotVo> selectLandmarkTop() {
+		
+		return touristspotDao.selectLandmarkTop(mybatisSession);
+	}
+
+	@Override
+	public ArrayList<TouristspotVo> selectHistoricTop() {
+		return touristspotDao.selectHistoricTop(mybatisSession);
+	}
+
+	@Override
+	public ArrayList<TouristspotVo> selectMuseumTop() {		
+		return touristspotDao.selectMuseumTop(mybatisSession);
+	}
+
+	@Override
+	public ArrayList<TouristspotVo> selectShoppingTop() {
+		return touristspotDao.selectShoppingTop(mybatisSession);
+	}
+
+	@Override
+	public ArrayList<TouristspotVo> selectTouristspotCategoryList(String cate) {
+		return touristspotDao.selectTouristspotCategoryList(mybatisSession,cate);
+	}
+
 }

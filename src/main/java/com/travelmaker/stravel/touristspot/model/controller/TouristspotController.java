@@ -51,8 +51,15 @@ public class TouristspotController {
 	@RequestMapping("touristspot.do")
 	public ModelAndView moveTouristspotMain(ModelAndView mv) {
 		logger.info("관광지 리스트");
-		ArrayList<TouristspotVo> touristspot = touristspotService.selectTouristspotList();
-		mv.addObject("touristspot", touristspot);
+		ArrayList<TouristspotVo> landmark = touristspotService.selectLandmarkTop();
+		ArrayList<TouristspotVo> historic = touristspotService.selectHistoricTop();
+		ArrayList<TouristspotVo> museum = touristspotService.selectMuseumTop();
+		ArrayList<TouristspotVo> shopping = touristspotService.selectShoppingTop();
+		
+		mv.addObject("landmark", landmark);
+		mv.addObject("historic", historic);
+		mv.addObject("museum", museum);
+		mv.addObject("shopping", shopping);
 		mv.setViewName("touristspot/touristspotMain");
 		return mv;
 	}
@@ -130,6 +137,28 @@ public class TouristspotController {
 		int result = touristspotService.insertTourReview(tsrVo);
 		System.out.println(result);
 		return "redirect: touristspotDetail.do?tno="+tsrVo.getTouristspot_no();
+		
+	}
+	@RequestMapping("touristspotCategory.do")
+	public ModelAndView touristspotCategory(ModelAndView mv,@RequestParam(name = "cate") String cate) {
+		if(cate.equals("A001")) {
+			ArrayList<TouristspotVo> landmark = touristspotService.selectTouristspotCategoryList(cate);
+			mv.addObject("touristspot", landmark);
+		}
+		if(cate.equals("A002")) {
+			ArrayList<TouristspotVo> historic = touristspotService.selectTouristspotCategoryList(cate);
+			mv.addObject("touristspot", historic);
+				}
+		if(cate.equals("A003")) {
+			ArrayList<TouristspotVo> museum = touristspotService.selectTouristspotCategoryList(cate);
+			mv.addObject("touristspot", museum);
+		}
+		if(cate.equals("A004")) {
+			ArrayList<TouristspotVo> shopping = touristspotService.selectTouristspotCategoryList(cate);
+			mv.addObject("touristspot", shopping);
+		}
+		mv.setViewName("touristspot/touristspotCategory");
+		return mv;
 		
 	}
 }
