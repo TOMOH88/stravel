@@ -40,7 +40,7 @@ public class CompanionController {
 		int currentPage = 1;
 		if(page != null) {
 		currentPage = page;
-		};
+		}
 		int limit = 10;
 		int listCount = companionService.getListCount();
 		
@@ -79,7 +79,7 @@ public class CompanionController {
 		Companion companion = companionService.selectCompanion(companion_no);
 		ArrayList<CompanionReply> compReplyList = companionReplyService.selectCompanionReplyList(companion_no);
 		mv.setViewName("companion/companionDetailView");
-		mv.addObject("companion", companionService.selectCompanion(companion_no));
+		mv.addObject("companion", companion);
 		mv.addObject("compReplyList", compReplyList);
 		
 		return mv;

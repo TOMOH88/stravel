@@ -14,51 +14,35 @@
  <hr>
  <br><br><br>
 <h2 align="center">동행 찾기 ${companion.companion_no } 번 글 상세보기</h2>
-<br><hr><br>
-<div style="width:1650px; height:1000px; float:left; border:1px solid #bcbcbc;">
-	<div style="width:20%; height:100%; float:left; border:1px solid #bcbcbc;"></div>
-	
-	<div style="width:60%; height:100%; float:left; border:1px solid #bcbcbc;">
-		<div style="width:100%; height:10%; float:top; border:1px solid #bcbcbc;"></div>
-		<div style="width:100%; height:80%; float:top; border:1px solid #bcbcbc;">
-			<h7>${companion.companion_title }</h7>
-		<br>
-			${companion.user_email }
-		<c:if test="${companion.companion_progress eq '1'}">
-		<button style="background-color:#bcbcbc; color:blue; border:0; width:80px; height:25px; border-radius:5px;">진행중</button>
-		</c:if>
-		<c:if test="${companion.companion_progress eq '2'}">
-		<button style="background-color:#bcbcbc; color:red; border:0; width:80px; height:25px; border-radius:5px;">진행완료</button>
-		</c:if>
-			
-		<br><hr><br>
-		<div>${companion.companion_content }</div>
-		<br>
-		<hr style="border: 1px solid #bcbcbc;">
-		
-		<c:forEach items="${compReplyList}" var="cr">
-		
-			<table>
-				<tr>
-					<td>${cr.user_email }</td>
-					<td>${cr.companion_reply_content }</td>
-					<td>${cr.companion_reply_date }</td>
-				</tr>
-			</table>
-		
-		
-		</c:forEach>
-		
-		
-		</div>
+<br><br>
 
-		
-		
-		
-		<div style="width:100%; height:10%; float:top; border:1px solid #bcbcbc;"></div>
-	</div>
+<div style="width:1032px;   border:1px solid #bcbcbc;margin:0px auto; padding:50px;"><!-- 전체 -->
 	
-	<div style="width:20%; height:100%; float:left; border:1px solid #bcbcbc;"></div>
+		<div style="width:100%; height:90px; background:yellow;" ><!-- 헤더 -->
+			<div>
+				<div style="padding:10px; display:table-cell; width:125px;">제 목</div>
+				<div style="padding:10px; display:table-cell; width:800px;">${companion.companion_title }</div>
+				<div style="padding:10px; display:table-cell; width:100px;">작성일</div>
+				<div style="padding:10px; display:table-cell; width:200px;">${companion.companion_date }</div>
+			</div>
+			<div style="padding:10px; display:table-cell; width:100px;">작성자</div>
+			<div style="padding:10px; display:table-cell; width:200px;">${companion.user_email }</div>
+		</div><!-- 헤더 -->
+		<div style="width:100%; height:400px; background:red"><!-- 바디 -->
+			<div>내용만</div>
+			<div>댓글달기</div>
+		</div><!-- 바디 -->
+		<div style="width:100%; "><!-- 풋터-->
+		<c:forEach items="${compReplyList }" var="c">
+		 	<div  style="width:100%; height:50px; ">${c.companion_reply_content }</div>
+		 	<div  style="width:100%; height:50px; ">${c.user_email }</div>
+		 	<div  style="width:100%; height:50px; ">${c.companion_reply_date }</div>
+		 </c:forEach>
+		</div><!-- 풋터 -->
+	
+		
+	
+	
 	
 </div> <!-- 전체 -->
 
@@ -73,6 +57,7 @@
 
 <br><hr><br>
 
-<c:import url="../common/footer.jsp" />
+<div><c:import url="../common/footer.jsp" /></div>
+
 </body>
 </html>

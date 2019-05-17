@@ -17,6 +17,8 @@
 	<resultMap type="CompanionReply" id="resultCompanionReply">
 		<id property="companion_reply_no" column="companion_reply_no" />
 		<result property="companion_no" column="companion_no" />
+		<result property="companion_reply_ref" column="companion_reply_ref" />
+		<result property="companion_reply_lev" column="companion_reply_lev"/>
 		<result property="user_email" column="user_email" />
 		<result property="companion_reply_content" column="companion_reply_content" />
 		<result property="companion_reply_date" column="companion_reply_date" />
@@ -31,9 +33,8 @@
 	</select>
 	
 	<select id="selectCompanionReplyList" parameterType="CompanionReply" resultMap="resultCompanionReply" >
-	select * from companion_reply
-	where companion_no = #{companion_no}
-	order by companion_reply_no desc
+		select * from companion_reply where companion_no = #{companion_no}
+		order by companion_reply_ref asc , companion_reply_no desc
 	</select>
 	
 	<select id="selectCompanionList" parameterType="Companion"

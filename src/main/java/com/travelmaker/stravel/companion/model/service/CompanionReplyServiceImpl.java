@@ -42,4 +42,6 @@ public class CompanionReplyServiceImpl implements CompanionReplyService{
 	public int deleteCompanionReply(int companion_reply_no) {
 		return compreplyDao.deleteCompanionReply(mybatisSession, companion_reply_no);
 	}
+	
+	
 }

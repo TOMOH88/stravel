@@ -28,7 +28,7 @@
 <title>stravel</title>
 </head>
 <body>
-<c:import url="common/header.jsp" />
+<c:import url="../common/header.jsp" />
 
 <br><br><br>
 <div align="center">
@@ -77,28 +77,27 @@
 <img src="${pageContext.request.contextPath }/resources/files/paymentImges/1.jpg" style="width:100px; height:70px;" align="right">
 </div>
 <div style="width:100%; height:90%; float:top;"><!-- 사이드값 -->
-<div style="text-align:center;"><h6>서귀포 최고의 오션뷰 호텔연</h6></div>
+<div style="padding:10px; text-align:center;"><h6>서귀포 최고의 오션뷰 호텔연</h6></div>
 <br>
 <hr>
 <br>
 <div style="width:50%; height:100; float:left;">
-인원 : 게스트 1명<br><br>
-2019년 5월 5일<br><br>
-₩59,000 X 1박<br><br>
-서비스 수수료 <br><br>
+<div style="padding:10px;">인원 : 게스트 1명</div>
+<div style="padding:10px;">2019년 5월 5일</div>
+<div style="padding:10px;">₩59,000 X 1박</div>
+<div style="padding:10px;">서비스 수수료 </div>
 <hr><br>
-<div><h6>총 합계 (KRW)</h6></div>
-<br><hr><br>
+<div style="padding:10px;"><h5>총 합계 (KRW)</h5></div>
 </div>
 <div style="width:50%; height:100; float:left;">
-<br><br>
- ~ 2019년 5월6일<br><br>
- <div style="text-align:right;">	₩59,000</div>
- <br>
- <div style="text-align:right;">	₩7,611</div>
- <br><hr><br>
- <div style="text-align:right;"><h6>₩66,611</h6></div>
- <br><hr>
+<div style="padding:10px; text-align:right;">-</div>
+<div style="padding:10px; text-align:right;"> ~ 2019년 5월6일</div>
+ <div style="padding:10px; text-align:right;">	₩59,000</div>
+
+ <div style="padding:10px; text-align:right;">	₩7,611</div>
+ <hr><br>
+ <div style="padding:10px; text-align:right;"><h5>₩66,611</h5></div>
+
 </div>
 
 
@@ -148,6 +147,6 @@
   <script src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/skrollr.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
-<c:import url="common/footer.jsp" />
+<c:import url="../common/footer.jsp" />
 </body>
 </html>
