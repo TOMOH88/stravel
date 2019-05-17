@@ -11,93 +11,93 @@ public class Room implements Serializable {
 
 	private static final long serialVersionUID = 1111L;
 	
-	private int roomNo;//객실번호
-	private int licenseNo;//사업자번호
-	private String roomName;//객실명
-	private String option;//편의시설
-	private String roomContent;//객실정보
-	private int minNo;//기본인원
-	private int maxNo;//총인원
+	private int room_no;//객실번호
+	private int owner_no;//사업자번호
+	private String room_name;//객실명
+	private String room_option;//편의시설
+	private String room_content;//객실정보
+	private int min_no;//기본인원
+	private int max_no;//총인원
 	private int off_season_price;//비수기가격
 	private int on_season_price;//성수기가격
 	private int week_extra_price;//주말추가가격
 	private int add_person_price;//인원추가가격
-	private double discountRate;//할인율
+	private double discountrate;//할인율
 	
 	public Room() {}
 
-	public Room(int roomNo, int licenseNo, String roomName, String option, String roomContent, int minNo, int maxNo,
-			int off_season_price, int on_season_price, int week_extra_price, int add_person_price,
-			double discountRate) {
+	public Room(int room_no, int owner_no, String room_name, String room_option, String room_content, int min_no,
+			int max_no, int off_season_price, int on_season_price, int week_extra_price, int add_person_price,
+			double discountrate) {
 		super();
-		this.roomNo = roomNo;
-		this.licenseNo = licenseNo;
-		this.roomName = roomName;
-		this.option = option;
-		this.roomContent = roomContent;
-		this.minNo = minNo;
-		this.maxNo = maxNo;
+		this.room_no = room_no;
+		this.owner_no = owner_no;
+		this.room_name = room_name;
+		this.room_option = room_option;
+		this.room_content = room_content;
+		this.min_no = min_no;
+		this.max_no = max_no;
 		this.off_season_price = off_season_price;
 		this.on_season_price = on_season_price;
 		this.week_extra_price = week_extra_price;
 		this.add_person_price = add_person_price;
-		this.discountRate = discountRate;
+		this.discountrate = discountrate;
 	}
 
-	public int getRoomNo() {
-		return roomNo;
+	public int getRoom_no() {
+		return room_no;
 	}
 
-	public void setRoomNo(int roomNo) {
-		this.roomNo = roomNo;
+	public void setRoom_no(int room_no) {
+		this.room_no = room_no;
 	}
 
-	public int getLicenseNo() {
-		return licenseNo;
+	public int getOwner_no() {
+		return owner_no;
 	}
 
-	public void setLicenseNo(int licenseNo) {
-		this.licenseNo = licenseNo;
+	public void setOwner_no(int owner_no) {
+		this.owner_no = owner_no;
 	}
 
-	public String getroomName() {
-		return roomName;
+	public String getRoom_name() {
+		return room_name;
 	}
 
-	public void setroomName(String roomName) {
-		this.roomName = roomName;
+	public void setRoom_name(String room_name) {
+		this.room_name = room_name;
 	}
 
-	public String getOption() {
-		return option;
+	public String getRoom_option() {
+		return room_option;
 	}
 
-	public void setOption(String option) {
-		this.option = option;
+	public void setRoom_option(String room_option) {
+		this.room_option = room_option;
 	}
 
-	public String getRoomContent() {
-		return roomContent;
+	public String getRoom_content() {
+		return room_content;
 	}
 
-	public void setRoomContent(String roomContent) {
-		this.roomContent = roomContent;
+	public void setRoom_content(String room_content) {
+		this.room_content = room_content;
 	}
 
-	public int getMinNo() {
-		return minNo;
+	public int getMin_no() {
+		return min_no;
 	}
 
-	public void setMinNo(int minNo) {
-		this.minNo = minNo;
+	public void setMin_no(int min_no) {
+		this.min_no = min_no;
 	}
 
-	public int getMaxNo() {
-		return maxNo;
+	public int getMax_no() {
+		return max_no;
 	}
 
-	public void setMaxNo(int maxNo) {
-		this.maxNo = maxNo;
+	public void setMax_no(int max_no) {
+		this.max_no = max_no;
 	}
 
 	public int getOff_season_price() {
@@ -132,22 +132,16 @@ public class Room implements Serializable {
 		this.add_person_price = add_person_price;
 	}
 
-	public double getDiscountRate() {
-		return discountRate;
+	public double getDiscountrate() {
+		return discountrate;
 	}
 
-	public void setDiscountRate(double discountRate) {
-		this.discountRate = discountRate;
+	public void setDiscountrate(double discountrate) {
+		this.discountrate = discountrate;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 	
-	@Override
-	public String toString() {
-		return roomNo + ", " + licenseNo + ", " + roomName + ", " + option + ", " + roomContent + ", " + minNo + ", " + maxNo + ", " + 
-				 off_season_price + ", " + on_season_price + ", " + week_extra_price + ", " + add_person_price + ", " + 
-				 discountRate;
-	}
 }

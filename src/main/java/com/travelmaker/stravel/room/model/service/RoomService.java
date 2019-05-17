@@ -1,10 +1,40 @@
 package com.travelmaker.stravel.room.model.service;
 
+import java.util.ArrayList;
+
+import com.travelmaker.stravel.owner.model.vo.Owner;
+import com.travelmaker.stravel.owner.model.vo.OwnerImg;
+import com.travelmaker.stravel.owner.model.vo.OwnerReview;
 import com.travelmaker.stravel.room.model.vo.Room;
+import com.travelmaker.stravel.room.model.vo.RoomImg;
 
 public interface RoomService {
 
-	int inserRoomSub(Room room);
+	int insertRoomSub(Room room);
+
+
+
+	int insertRoomImg(RoomImg roomImg);
+
+
+
+	Owner selectOwner(int owner_no);
+
+
+
+	ArrayList<OwnerImg> selectOwnerImg(int owner_no);
+
+
+
+	ArrayList<Room> selectRoom(int owner_no);
+
+
+
+	ArrayList<RoomImg> selectRoomImg(int room_no);
+
+
+
+	ArrayList<OwnerReview> selectOwnerReview(int owner_no);
 	
 }
 

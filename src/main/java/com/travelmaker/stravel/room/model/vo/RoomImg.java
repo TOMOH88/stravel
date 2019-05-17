@@ -7,32 +7,46 @@ public class RoomImg implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 11122L;
-	private int imgNo;
-	private String roomImg;
+	private int room_img_no;
+	private String room_img;
+	private int room_no;
 	
-	public RoomImg() {};
-	
-	public RoomImg(int imgNo, String roomImg) {
+	public RoomImg() {}
+
+	public RoomImg(int room_img_no, String room_img, int room_no) {
 		super();
-		this.imgNo = imgNo;
-		this.roomImg = roomImg;
+		this.room_img_no = room_img_no;
+		this.room_img = room_img;
+		this.room_no = room_no;
 	}
 
-	public int getImgNo() {
-		return imgNo;
+	public int getRoom_img_no() {
+		return room_img_no;
 	}
 
-	public void setImgNo(int imgNo) {
-		this.imgNo = imgNo;
+	public void setRoom_img_no(int room_img_no) {
+		this.room_img_no = room_img_no;
 	}
 
-	public String getRoomImg() {
-		return roomImg;
+	public String getRoom_img() {
+		return room_img;
 	}
 
-	public void setRoomImg(String roomImg) {
-		this.roomImg = roomImg;
+	public void setRoom_img(String room_img) {
+		this.room_img = room_img;
 	}
+
+	public int getRoom_no() {
+		return room_no;
+	}
+
+	public void setRoom_no(int room_no) {
+		this.room_no = room_no;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	
-	
-}
+	}

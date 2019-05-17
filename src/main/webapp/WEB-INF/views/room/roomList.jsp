@@ -100,8 +100,8 @@
 		</div>
 		</form>
 		<c:forEach items="${roomList }" var="r" >
-				<div id="rlist" style="margin-top: 20px;">
-					<div style="border: 1px solid black;" id="rlistimg">
+				<a href="roomDetail.do?owner_no=${r.owner_no} "><div id="rlist" style="margin-top: 20px;" >
+					<div style="border: 1px solid black;" id="rlistimg" >
 						<div class="swiper-container">
 							<div class="swiper-wrapper">
 								
@@ -124,7 +124,7 @@
 						<div style="font-size: x-small;">${r.off_season_price }</div>
 
 					</div>
-				</div>
+				</div></a>
 			</c:forEach>
 	</div>
 	<div><!-- 페이징처리공간 -->
@@ -142,5 +142,9 @@ var swiper = new Swiper('.swiper-container', {
       prevEl: '.swiper-button-prev',
     },
   });
+  
+  function moveDetail(el){
+	  location.href= "roomDetail.do?owner_no='"+el +"'"; 
+  }
 </script>
 </html>

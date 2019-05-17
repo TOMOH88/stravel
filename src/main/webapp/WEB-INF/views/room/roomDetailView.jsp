@@ -223,22 +223,22 @@
 
 <div onclick="mainmodal()" style="width:100%;height:592px;" class="timgdiv" ><!-- 나중에 클릭시 모달창 함수 실행시킬 div 영역 -->
 	<div class="timgdiv1" style="height:592px; float:left; ">
-	<img id="mainimg" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"><!-- 1번그림 -->
+	<img id="mainimg" src="${pageContext.request.contextPath }/resources/files/ownerImg/${ownerImg.get(0).owner_img}"><!-- 1번그림 -->
 	</div>
 	<div class="timgdiv2" style="height:592px; float:left;">
 		<div style="width:100%; height:50%">
-		<img id="mainimg" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG" ><!-- 2번그림 -->
+		<img id="mainimg" src="${pageContext.request.contextPath }/resources/files/ownerImg/${ownerImg.get(1).owner_img}" ><!-- 2번그림 -->
 		</div>
 		<div style="width:100%; height:50%">
-		<img id="mainimg" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"><!-- 3번그림 -->
+		<img id="mainimg" src="${pageContext.request.contextPath }/resources/files/ownerImg/${ownerImg.get(2).owner_img}"><!-- 3번그림 -->
 		</div>
 	</div>
 	<div class="timgdiv2" style="height:592px; float:left;">
 		<div style="width:100%; height:50%">
-		<img id="mainimg" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"><!-- 4번그림 -->
+		<img id="mainimg" src="${pageContext.request.contextPath }/resources/files/ownerImg/${ownerImg.get(3).owner_img}"><!-- 4번그림 -->
 		</div>
 		<div style="width:100%; height:50%">
-		<img id="mainimg" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"><!-- 5번그림 -->
+		<img id="mainimg" src="${pageContext.request.contextPath }/resources/files/ownerImg/${ownerImg.get(4).owner_img}"><!-- 5번그림 -->
 		</div>
 	</div>
 </div>
@@ -249,19 +249,23 @@
 	<div style="margin-bottom:20px; height:auto;"><!-- 메인/사이드바/즐길거리포함영역 -->
 		<div style=" width:68%; display:inline-block;"><!-- 메인정보영역 -->
 			<div style="padding:20px;"><!-- 업체정보  -->
-				<div style="font-size:1.5em; font-weight:bold;">제주월정리펜션</div><!-- 사업자이름 -->
-				<div style="font-size:medium;">서울특별시 관악구 봉천동 <br> 010-3086-3045</div>
+				<div style="font-size:1.5em; font-weight:bold;">${owner.owner_companyName }</div><!-- 사업자이름 -->
+				<div style="font-size:medium;">${owner.owner_address} <br> ${owner.owner_phone }</div>
 			</div>
 			<br>
 			<hr>
 			<div><!-- 객실 정보/포문 -->
 			<div id="titlediv">객실정보</div><br>
+			<c:forEach items="${roomList }" var="roomList">
 				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
 					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
 							<div class="swiper-container roomcon">
 								<div class="swiper-wrapper">
-									<div class="swiper-slide room"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"></div>
-									<div class="swiper-slide room"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"></div>
+								<c:forEach items="${roomImgList }" var="roomImgList">
+									<c:if test="${roomList.room_no eq roomImgList.room_no }"> 
+									<div class="swiper-slide room"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/1-1.PNG"></div>
+									</c:if>
+								</c:forEach> 
 									
 								</div>
 								<!-- Add Pagination -->
@@ -271,26 +275,10 @@
 								<div class="swiper-button-prev roomprev"></div>
 							</div>
 						</div>
-					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">객실정보<br>최대인원/최소인원</div><!-- 각객실당정보 -->
+					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">${roomList.room_content }<br>최소인원 : ${roomList.min_no }<br>최대인원 : ${roomList.max_no }</div><!-- 각객실당정보 -->
 				</div>
-				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
-					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
-					<!-- 객실사진슬라이더공간 -->
-					</div>
-					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">객실정보<br>최대인원/최소인원</div><!-- 각객실당정보 -->
-				</div>
-				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
-					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
-					<!-- 객실사진슬라이더공간 -->
-					</div>
-					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">객실정보<br>최대인원/최소인원</div><!-- 각객실당정보 -->
-				</div>
-				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
-					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
-					<!-- 객실사진슬라이더공간 -->
-					</div>
-					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">객실정보<br>최대인원/최소인원</div><!-- 각객실당정보 -->
-				</div>
+				</c:forEach> 
+				
 			</div><!-- 객실정보끝 -->
 			<br>
 			<hr>
