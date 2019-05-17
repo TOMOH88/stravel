@@ -24,8 +24,8 @@ public class CompanionReplyServiceImpl implements CompanionReplyService{
 	}
 	
 	@Override
-	public ArrayList<CompanionReply> selectCompanionReplyList(int companion_no){
-		return compreplyDao.companionReplyList(mybatisSession, companion_no);
+	public ArrayList<CompanionReply> selectCompanionReplyList(Companion companion){
+		return compreplyDao.companionReplyList(mybatisSession, companion);
 	}
 	
 	@Override

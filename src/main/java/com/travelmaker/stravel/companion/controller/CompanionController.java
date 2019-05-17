@@ -2,16 +2,23 @@ package com.travelmaker.stravel.companion.controller;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.json.simple.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.companion.model.service.CompanionReplyService;
@@ -77,12 +84,40 @@ public class CompanionController {
 			@RequestParam(name="companion_no", required=false) int companion_no) {
 		logger.info("동행찾기 글 상세보기");
 		Companion companion = companionService.selectCompanion(companion_no);
-		ArrayList<CompanionReply> compReplyList = companionReplyService.selectCompanionReplyList(companion_no);
+		
 		mv.setViewName("companion/companionDetailView");
 		mv.addObject("companion", companion);
-		mv.addObject("compReplyList", compReplyList);
 		
 		return mv;
+	}
+	
+	@RequestMapping(value="compReplyList.do", produces="application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity companionList(@ModelAttribute("companionReply") 
+	Companion companion, HttpServletRequest request) {
+		HttpHeaders responseHeaders = new HttpHeaders();
+		ArrayList<HashMap> hmlist = new ArrayList<HashMap>();
+		
+		//해당 게시물 댓글
+		List<CompanionReply> companionReply = companionReplyService.selectCompanionReplyList(companion);
+		
+		if(companionReply.size() > 0) {
+			for(int i = 0; i<companionReply.size(); i++) {
+				HashMap hm = new HashMap();
+				hm.put("companion_reply_no", companionReply.get(i).getCompanion_no());
+				hm.put("companion_reply_ref", companionReply.get(i).getCompanion_reply_ref());
+				hm.put("companion_reply_date", companionReply.get(i).getCompanion_reply_date());
+				hm.put("user_email", companionReply.get(i).getUser_email());
+				hm.put("conpanion_reply_content", companionReply.get(i).getCompanion_reply_content());
+			
+				hmlist.add(hm);
+			}
+			
+			
+		}
+		
+		JSONArray json = new JSONArray();
+		return new ResponseEntity(json.toString(), responseHeaders, HttpStatus.CREATED);
 	}
 	
 	@RequestMapping("compwrite.do")

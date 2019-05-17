@@ -1,0 +1,240 @@
+[15:35:15][INFO ][HomeController.java:22]: - Welcome home!
+[15:35:21][INFO ][CompanionController.java:38]: - 동행찾기 리스트
+[19:06:29][INFO ][CompanionController.java:38]: - 동행찾기 리스트
+[19:06:32][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:07:19][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:07:43][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:09:23][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:11:49][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:12:59][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:13:26][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:13:59][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:14:54][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:15:54][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:16:47][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:17:06][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:18:19][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:18:50][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:19:07][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:19:17][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:19:26][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:32:59][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Wed May 15 19:38:38 KST 2019]; parent: Root WebApplicationContext
+[19:32:59][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Wed May 15 19:38:33 KST 2019]; root of context hierarchy
+[19:33:44][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[19:33:45][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu May 16 19:33:45 KST 2019]; root of context hierarchy
+[19:33:45][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[19:33:47][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[19:33:50][INFO ][ContextLoader.java:310]: - Root WebApplicationContext: initialization completed in 5977 ms
+[19:33:50][INFO ][FrameworkServlet.java:494]: - FrameworkServlet 'appServlet': initialization started
+[19:33:50][INFO ][AbstractApplicationContext.java:589]: - Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 19:33:50 KST 2019]; parent: Root WebApplicationContext
+[19:33:50][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[19:33:52][INFO ][AutowiredAnnotationBeanPostProcessor.java:154]: - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/mycalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.movemyCalendarPage()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/scalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.movesCalendarPage()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/searchcalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveSearchCalendarPage()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/upcalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveUpCalendarPage()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/searchlodgment.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveSearchLodgmentPage()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/vcalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveViewCalendarPage()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalist.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveFaqListPage()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/faqlist1.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveQnaList1Page()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/adminMain.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveTest()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/test2.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveTest2()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/faqlist2.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveQnaList2Page()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/faqlist3.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveQnaList3Page()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/comp.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.companion.controller.CompanionController.selectCompanionList(org.springframework.web.servlet.ModelAndView,java.lang.Integer)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compreplyupdate.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.updateCompanionReply(com.travelmaker.stravel.companion.model.vo.CompanionReply)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compreplydelete.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.deleteCompanionReply(int)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compreplyinsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.insertCompanionReply(com.travelmaker.stravel.companion.model.vo.CompanionReply)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compdetail.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.companion.controller.CompanionController.selectCompanion(org.springframework.web.servlet.ModelAndView,int)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compwrite.do]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.writeCompanion()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compinsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.insertCompanion(com.travelmaker.stravel.companion.model.vo.Companion)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compupdate.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.updateCompanion(com.travelmaker.stravel.companion.model.vo.Companion)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compdelete.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.deleteCompanion(int)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/main.do],methods=[GET]}" onto public java.lang.String com.travelmaker.stravel.HomeController.home()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/pay2.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.PaymentView2()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/pay1.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.PaymentView1()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/pay3.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.PaymentView3()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/test.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.testPay()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/paylist.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.payList()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/restaurantlist.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.restaurant.controller.RestaurantController.moveRestaurantList(org.springframework.web.servlet.ModelAndView)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertres.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.restaurant.controller.RestaurantController.moveInsertRestaurant(org.springframework.web.servlet.ModelAndView)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/restaurantdetail.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.restaurant.controller.RestaurantController.restaurantDetail(org.springframework.web.servlet.ModelAndView,int)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertrestaurant.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.restaurant.controller.RestaurantController.insertRestaurant(com.travelmaker.stravel.restaurant.model.vo.Restaurant,org.springframework.web.multipart.MultipartHttpServletRequest,javax.servlet.http.HttpServletRequest)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/roomDetail.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.roomDetailView()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertRoom.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.inserRoom()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/updateRoom.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.updateRoom()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/oh.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.ohWorkList()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/ownerMain.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.ownerMain()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/orderList.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.orderList()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/updateOwner.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.updateOwner()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/touristspot.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveTouristspotMain()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/moveTSAdmin.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveTouristspotAdminMain()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/TSWriter.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveTouristspotAdminWriter(org.springframework.web.servlet.ModelAndView)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/TSWriterUpload.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.insertTouristspot(com.travelmaker.stravel.touristsopt.model.vo.TouristspotVo,org.springframework.web.multipart.MultipartHttpServletRequest,javax.servlet.http.HttpServletRequest)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/sampMap.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveSampMap()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/sampMap2.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveSampMap2()
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/tripboarddetail.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.tripBoard.controller.MyTripBoardController.moveTripBoardDetail(org.springframework.web.servlet.ModelAndView,int)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/tripboard.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.tripBoard.controller.MyTripBoardController.moveTripList(org.springframework.web.servlet.ModelAndView)
+[19:33:54][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/writetrip.do]}" onto public java.lang.String com.travelmaker.stravel.tripBoard.controller.MyTripBoardController.moveWriteTrip()
+[19:33:56][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 19:33:50 KST 2019]; parent: Root WebApplicationContext
+[19:33:57][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 19:33:50 KST 2019]; parent: Root WebApplicationContext
+[19:33:57][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[19:33:59][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 8172 ms
+[19:34:00][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:35:24][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:36:05][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:36:36][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:36:59][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[19:59:56][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[19:59:56][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu May 16 19:59:56 KST 2019]; root of context hierarchy
+[19:59:57][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[19:59:59][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[20:00:02][INFO ][ContextLoader.java:310]: - Root WebApplicationContext: initialization completed in 6104 ms
+[20:00:02][INFO ][FrameworkServlet.java:494]: - FrameworkServlet 'appServlet': initialization started
+[20:00:02][INFO ][AbstractApplicationContext.java:589]: - Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 20:00:02 KST 2019]; parent: Root WebApplicationContext
+[20:00:02][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[20:00:04][INFO ][AutowiredAnnotationBeanPostProcessor.java:154]: - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalist.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveFaqListPage()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/faqlist1.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveQnaList1Page()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/adminMain.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveTest()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/test2.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveTest2()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/faqlist2.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveQnaList2Page()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/faqlist3.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveQnaList3Page()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/mycalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.movemyCalendarPage()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/scalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.movesCalendarPage()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/searchcalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveSearchCalendarPage()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/upcalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveUpCalendarPage()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/searchlodgment.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveSearchLodgmentPage()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/vcalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveViewCalendarPage()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compdetail.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.companion.controller.CompanionController.selectCompanion(org.springframework.web.servlet.ModelAndView,int)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compwrite.do]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.writeCompanion()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compinsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.insertCompanion(com.travelmaker.stravel.companion.model.vo.Companion)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compupdate.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.updateCompanion(com.travelmaker.stravel.companion.model.vo.Companion)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compdelete.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.deleteCompanion(int)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/comp.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.companion.controller.CompanionController.selectCompanionList(org.springframework.web.servlet.ModelAndView,java.lang.Integer)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compreplyupdate.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.updateCompanionReply(com.travelmaker.stravel.companion.model.vo.CompanionReply)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compreplydelete.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.deleteCompanionReply(int)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compreplyinsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.insertCompanionReply(com.travelmaker.stravel.companion.model.vo.CompanionReply)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/main.do],methods=[GET]}" onto public java.lang.String com.travelmaker.stravel.HomeController.home()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/pay2.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.PaymentView2()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/pay1.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.PaymentView1()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/pay3.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.PaymentView3()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/test.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.testPay()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/paylist.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.payList()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/restaurantdetail.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.restaurant.controller.RestaurantController.restaurantDetail(org.springframework.web.servlet.ModelAndView,int)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertrestaurant.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.restaurant.controller.RestaurantController.insertRestaurant(com.travelmaker.stravel.restaurant.model.vo.Restaurant,org.springframework.web.multipart.MultipartHttpServletRequest,javax.servlet.http.HttpServletRequest)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/restaurantlist.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.restaurant.controller.RestaurantController.moveRestaurantList(org.springframework.web.servlet.ModelAndView)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertres.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.restaurant.controller.RestaurantController.moveInsertRestaurant(org.springframework.web.servlet.ModelAndView)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/roomDetail.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.roomDetailView()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertRoom.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.inserRoom()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/updateRoom.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.updateRoom()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/oh.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.ohWorkList()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/ownerMain.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.ownerMain()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/orderList.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.orderList()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/updateOwner.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.updateOwner()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/sampMap.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveSampMap()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/sampMap2.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveSampMap2()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/touristspot.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveTouristspotMain()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/moveTSAdmin.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveTouristspotAdminMain()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/TSWriter.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveTouristspotAdminWriter(org.springframework.web.servlet.ModelAndView)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/TSWriterUpload.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.insertTouristspot(com.travelmaker.stravel.touristsopt.model.vo.TouristspotVo,org.springframework.web.multipart.MultipartHttpServletRequest,javax.servlet.http.HttpServletRequest)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/tripboard.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.tripBoard.controller.MyTripBoardController.moveTripList(org.springframework.web.servlet.ModelAndView)
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/writetrip.do]}" onto public java.lang.String com.travelmaker.stravel.tripBoard.controller.MyTripBoardController.moveWriteTrip()
+[20:00:06][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/tripboarddetail.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.tripBoard.controller.MyTripBoardController.moveTripBoardDetail(org.springframework.web.servlet.ModelAndView,int)
+[20:00:08][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 20:00:02 KST 2019]; parent: Root WebApplicationContext
+[20:00:09][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 20:00:02 KST 2019]; parent: Root WebApplicationContext
+[20:00:09][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[20:00:11][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 8698 ms
+[20:00:12][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:05:51][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:06:27][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:08:10][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:09:11][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:10:09][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:24:00][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:24:32][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:25:23][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:33:39][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:34:18][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:34:34][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:35:06][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:35:20][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:35:35][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:35:51][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:36:02][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:36:13][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:36:54][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:37:53][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:38:20][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:38:55][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:39:16][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:40:04][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:40:57][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:41:13][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:41:26][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:41:35][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:41:56][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:42:10][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[20:42:30][INFO ][CompanionController.java:78]: - 동행찾기 글 상세보기
+[21:08:18][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 20:00:02 KST 2019]; parent: Root WebApplicationContext
+[21:08:18][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Thu May 16 19:59:56 KST 2019]; root of context hierarchy
+[21:25:02][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[21:25:02][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu May 16 21:25:02 KST 2019]; root of context hierarchy
+[21:25:02][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
+[21:25:05][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
+[21:25:08][INFO ][ContextLoader.java:310]: - Root WebApplicationContext: initialization completed in 6346 ms
+[21:25:08][INFO ][FrameworkServlet.java:494]: - FrameworkServlet 'appServlet': initialization started
+[21:25:08][INFO ][AbstractApplicationContext.java:589]: - Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 21:25:08 KST 2019]; parent: Root WebApplicationContext
+[21:25:08][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[21:25:10][INFO ][AutowiredAnnotationBeanPostProcessor.java:154]: - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/qnalist.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveFaqListPage()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/faqlist1.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveQnaList1Page()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/adminMain.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveTest()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/test2.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveTest2()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/faqlist2.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveQnaList2Page()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/faqlist3.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveQnaList3Page()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/mycalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.movemyCalendarPage()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/scalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.movesCalendarPage()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/searchcalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveSearchCalendarPage()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/upcalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveUpCalendarPage()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/searchlodgment.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveSearchLodgmentPage()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/vcalendar.do]}" onto public java.lang.String com.travelmaker.stravel.calendar.controller.CalendarController.moveViewCalendarPage()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compdetail.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.companion.controller.CompanionController.selectCompanion(org.springframework.web.servlet.ModelAndView,int)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compwrite.do]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.writeCompanion()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compinsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.insertCompanion(com.travelmaker.stravel.companion.model.vo.Companion)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compupdate.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.updateCompanion(com.travelmaker.stravel.companion.model.vo.Companion)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compdelete.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.deleteCompanion(int)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/comp.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.companion.controller.CompanionController.selectCompanionList(org.springframework.web.servlet.ModelAndView,java.lang.Integer)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compreplyupdate.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.updateCompanionReply(com.travelmaker.stravel.companion.model.vo.CompanionReply)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compreplydelete.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.deleteCompanionReply(int)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/compreplyinsert.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.companion.controller.CompanionController.insertCompanionReply(com.travelmaker.stravel.companion.model.vo.CompanionReply)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/main.do],methods=[GET]}" onto public java.lang.String com.travelmaker.stravel.HomeController.home()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/pay2.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.PaymentView2()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/pay1.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.PaymentView1()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/pay3.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.PaymentView3()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/test.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.testPay()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/paylist.do]}" onto public java.lang.String com.travelmaker.stravel.payment.controller.PaymentController.payList()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/restaurantdetail.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.restaurant.controller.RestaurantController.restaurantDetail(org.springframework.web.servlet.ModelAndView,int)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertrestaurant.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.restaurant.controller.RestaurantController.insertRestaurant(com.travelmaker.stravel.restaurant.model.vo.Restaurant,org.springframework.web.multipart.MultipartHttpServletRequest,javax.servlet.http.HttpServletRequest)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/restaurantlist.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.restaurant.controller.RestaurantController.moveRestaurantList(org.springframework.web.servlet.ModelAndView)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertres.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.restaurant.controller.RestaurantController.moveInsertRestaurant(org.springframework.web.servlet.ModelAndView)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/roomDetail.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.roomDetailView()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/insertRoom.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.inserRoom()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/updateRoom.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.updateRoom()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/oh.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.ohWorkList()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/ownerMain.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.ownerMain()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/orderList.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.orderList()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/updateOwner.do]}" onto public java.lang.String com.travelmaker.stravel.room.controller.RoomController.updateOwner()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/sampMap.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveSampMap()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/sampMap2.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveSampMap2()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/touristspot.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveTouristspotMain()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/moveTSAdmin.do]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveTouristspotAdminMain()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/TSWriter.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.touristsopt.controller.TouristspotController.moveTouristspotAdminWriter(org.springframework.web.servlet.ModelAndView)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/TSWriterUpload.do],methods=[POST]}" onto public java.lang.String com.travelmaker.stravel.touristsopt.controller.TouristspotController.insertTouristspot(com.travelmaker.stravel.touristsopt.model.vo.TouristspotVo,org.springframework.web.multipart.MultipartHttpServletRequest,javax.servlet.http.HttpServletRequest)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/tripboard.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.tripBoard.controller.MyTripBoardController.moveTripList(org.springframework.web.servlet.ModelAndView)
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/writetrip.do]}" onto public java.lang.String com.travelmaker.stravel.tripBoard.controller.MyTripBoardController.moveWriteTrip()
+[21:25:12][INFO ][AbstractHandlerMethodMapping.java:548]: - Mapped "{[/tripboarddetail.do]}" onto public org.springframework.web.servlet.ModelAndView com.travelmaker.stravel.tripBoard.controller.MyTripBoardController.moveTripBoardDetail(org.springframework.web.servlet.ModelAndView,int)
+[21:25:14][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 21:25:08 KST 2019]; parent: Root WebApplicationContext
+[21:25:14][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 21:25:08 KST 2019]; parent: Root WebApplicationContext
+[21:25:15][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[21:25:16][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 7980 ms

@@ -6,7 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-
+import com.travelmaker.stravel.companion.model.vo.Companion;
 import com.travelmaker.stravel.companion.model.vo.CompanionReply;
 
 @Repository("companionReplyDao")
@@ -16,8 +16,8 @@ public class CompanionReplyDao {
 		return session.selectOne("companionMapper.selectOne", companionreply_no);
 	}
 
-	public ArrayList<CompanionReply> companionReplyList(SqlSessionTemplate session, int companion_no) {
-		List<CompanionReply> list = session.selectList("companionMapper.selectCompanionReplyList", companion_no);
+	public ArrayList<CompanionReply> companionReplyList(SqlSessionTemplate session, Companion companion) {
+		List<CompanionReply> list = session.selectList("companionMapper.selectCompanionReplyList", companion);
 		
 		return (ArrayList<CompanionReply>)list; 
 	}

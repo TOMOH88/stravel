@@ -5,7 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
 
+
+</script>
 <meta charset="UTF-8"> 
 <title>stravel</title>
 </head>
@@ -28,17 +31,21 @@
 			<div style="padding:10px; display:table-cell; width:100px;">작성자</div>
 			<div style="padding:10px; display:table-cell; width:200px;">${companion.user_email }</div>
 		</div><!-- 헤더 -->
-		<div style="width:100%; height:400px; background:red"><!-- 바디 -->
+		<div style="width:100%; height:400px; background:green;"><!-- 바디 -->
 			<div>내용만</div>
-			<div>댓글달기</div>
+			<div>댓글달기
+			
+
+			
+			
+			
+			
+			
+			
+			
+			</div>
 		</div><!-- 바디 -->
-		<div style="width:100%; "><!-- 풋터-->
-		<c:forEach items="${compReplyList }" var="c">
-		 	<div  style="width:100%; height:50px; ">${c.companion_reply_content }</div>
-		 	<div  style="width:100%; height:50px; ">${c.user_email }</div>
-		 	<div  style="width:100%; height:50px; ">${c.companion_reply_date }</div>
-		 </c:forEach>
-		</div><!-- 풋터 -->
+		
 	
 		
 	
