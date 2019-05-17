@@ -36,10 +36,4 @@ public interface RestaurantService {
 
 	int insertRestaurantReview(RestaurantReview review);
 	
-
-	
-
-	
-
-	
 }
