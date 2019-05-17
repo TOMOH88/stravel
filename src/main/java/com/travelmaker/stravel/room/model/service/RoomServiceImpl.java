@@ -1,11 +1,17 @@
 package com.travelmaker.stravel.room.model.service;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.travelmaker.stravel.owner.model.vo.Owner;
+import com.travelmaker.stravel.owner.model.vo.OwnerImg;
+import com.travelmaker.stravel.owner.model.vo.OwnerReview;
 import com.travelmaker.stravel.room.model.dao.RoomDao;
 import com.travelmaker.stravel.room.model.vo.Room;
+import com.travelmaker.stravel.room.model.vo.RoomImg;
 
 
 
@@ -18,11 +24,49 @@ public  class RoomServiceImpl implements RoomService {
 	@Autowired
 	private RoomDao rd;
 	
-	
+
 
 	@Override
-	public int inserRoomSub(Room room) {
-		System.out.println(rd.insertRoomSub(mybatisSession, room));
+	public int insertRoomSub(Room room) {
+		// TODO Auto-generated method stub
 		return rd.insertRoomSub(mybatisSession, room);
+	}
+
+	@Override
+	public int insertRoomImg(RoomImg roomImg) {
+		// TODO Auto-generated method stub
+		return rd.insertRoomImg(mybatisSession,roomImg);
+		
+	}
+
+	@Override
+	public Owner selectOwner(int owner_no) {
+		// TODO Auto-generated method stub
+		return rd.selectOwner(mybatisSession,owner_no);
+	}
+
+	@Override
+	public ArrayList<OwnerImg> selectOwnerImg(int owner_no) {
+		// TODO Auto-generated method stub
+		return rd.selectOwnerImg(mybatisSession,owner_no);
+	}
+
+	@Override
+	public ArrayList<Room> selectRoom(int owner_no) {
+		// TODO Auto-generated method stub
+		return rd.selectRoom(mybatisSession,owner_no);
+	}
+
+	@Override
+	public ArrayList<RoomImg> selectRoomImg(int room_no) {
+		// TODO Auto-generated method stub
+		return rd.selectRoomImg(mybatisSession,room_no);
+		
+	}
+
+	@Override
+	public ArrayList<OwnerReview> selectOwnerReview(int owner_no) {
+		// TODO Auto-generated method stub
+		return rd.selectOwnerReview(mybatisSession, owner_no);
 	}
 }

@@ -35,6 +35,14 @@
 		<result property="owner_img" column="owner_img"/>
 		<result property="owner_no" column="owner_no"/>
 	</resultMap>
+	
+	<resultMap id="resultOwnerReview" type="ownerReviewVo">
+		<result property="user_name" column="user_name"/>
+		<result property="property_review_content" column="property_review_content"/>
+		<result property="property_review_like" column="property_review_like"/>
+		<result property="user_picture" column="user_picturn"/>
+		<result property="owner_no" column="owner_no"/>
+	</resultMap>
 
 	<select id="selectRoomList" resultMap="resultOwnerList">
     select owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
@@ -46,5 +54,22 @@
 	</select>
 	<select id="selectOwnerImgList" resultMap="resultOwnerImg" >
 	    select * from owner_img
+	</select>
+	
+	<select id="selectOwner" resultMap="resultOwner" parameterType="_int">
+		select * from owner where owner_no = #{owner_no}
+	</select>
+	
+	<select id="selectOwnerImg" resultMap="resultOwnerImg" >
+		select * from owner_img where owner_no = #{owner_no}
+	</select>
+	
+	<select id="selectOwnerReview" resultMap="resultOwnerReview">
+		SELECT USER_NAME, PROPERTY_REVIEW_CONTENT, PROPERTY_REVIEW_LIKE,USER_PICTURE
+FROM ROOM_REVIEW 
+JOIN STRAVEL_USER USING (USER_NO)
+JOIN RESERVATION USING(RSV_NO)
+JOIN ROOM USING (ROOM_NO)
+where owner_no = #{owner_no}
 	</select>
 </mapper>

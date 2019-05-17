@@ -1,0 +1,194 @@
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-1.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-2.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-3.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-4.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-5.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-6.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-7.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-8.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-9.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-10.PNG',1);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-1.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-2.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-3.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-4.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-5.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-6.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-7.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-8.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-9.PNG',2);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-1.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-2.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-3.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-4.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-5.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-6.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-7.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-8.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-9.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-10.PNG',3);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-1.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-2.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-3.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-4.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-5.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-6.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-7.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-8.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-9.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-10.PNG',4);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-1.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-2.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-3.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-4.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-5.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-6.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-7.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-8.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-9.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-10.PNG',5);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-1.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-2.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-3.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-4.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-5.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-6.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-7.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-8.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-9.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-10.PNG',6);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-1.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-2.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-3.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-4.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-5.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-6.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-7.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-8.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-9.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-10.PNG',7);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-1.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-2.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-3.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-4.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-5.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-6.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-7.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-8.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-9.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-10.PNG',8);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'9-1.PNG',9);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'9-2.PNG',9);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'9-3.PNG',9);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'9-4.PNG',9);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'9-5.PNG',9);
+
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-1.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-2.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-3.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-4.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-5.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-6.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-7.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-8.PNG',10);

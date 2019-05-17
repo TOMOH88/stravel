@@ -1,4 +1,4 @@
-﻿[19:03:50][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+[19:03:50][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
 [19:03:51][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu May 16 19:03:51 KST 2019]; root of context hierarchy
 [19:03:51][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
 [19:03:52][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
@@ -47,21 +47,6 @@
 [19:03:59][INFO ][RequestMappingHandlerAdapter.java:567]: - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 19:03:55 KST 2019]; parent: Root WebApplicationContext
 [19:03:59][INFO ][AbstractUrlHandlerMapping.java:373]: - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [19:04:00][INFO ][FrameworkServlet.java:513]: - FrameworkServlet 'appServlet': initialization completed in 5315 ms
-Caused by: org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'roomVo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: roomVo
-Caused by: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'roomVo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: roomVo
-Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'roomVo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: roomVo
-Caused by: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'resultTouristspotImagesVo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: resultTouristspotImagesVo
-	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:265)
-	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:252)
-	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:244)
-	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:116)
-Caused by: java.lang.ClassNotFoundException: Cannot find class: roomVo
-Caused by: org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'roomVo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: roomVo
-Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'roomVo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: roomVo
-Caused by: java.lang.ClassNotFoundException: Cannot find class: roomVo
-Caused by: org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'roomVo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: roomVo
-Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'roomVo'.  Cause: java.lang.ClassNotFoundException: Cannot find class: roomVo
-	at org.apache.ibatis.builder.xml.XMLStatementBuilder.parseStatementNode(XMLStatementBuilder.java:74)
-	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildStatementFromContext(XMLMapperBuilder.java:135)
-	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildStatementFromContext(XMLMapperBuilder.java:128)
-	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:118)
+[19:15:02][INFO ][HomeController.java:22]: - Welcome home!
+[20:58:22][INFO ][AbstractApplicationContext.java:989]: - Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Thu May 16 19:03:55 KST 2019]; parent: Root WebApplicationContext
+[20:58:22][INFO ][AbstractApplicationContext.java:989]: - Closing Root WebApplicationContext: startup date [Thu May 16 19:03:51 KST 2019]; root of context hierarchy
