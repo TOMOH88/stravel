@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mycalendarMapper">
+
+ 	<resultMap id="resultMyCalendar" type="MyCalendar">
+		<id property="mycalendar_no" column="MYCALENDAR_NO" />
+		<id property="mycalendar_title" column="MYCALENDAR_TITLE" />
+		<id property="mycalendar_content" column="MYCALENDAR_CONTENT" />
+		<id property="mycalendar_writer" column="MYCALENDAR_WRITER" />
+		<id property="mycalendar_start_date" column="MYCALENDAR_START_DATE"></id>
+		<id property="mycalendar_end_date" column="MYCALENDAR_END_DATE"></id>
+		<id property="category" column="CATEGORY" />
+		<id property="notepad" column="NOTEPAD" />
+		<id property="budget" column="BUDGET" />
+	</resultMap>
+	
+	<!-- <select id="selectAllMyCalendar" resultMap="MyCalendar">
+		select * from tb_mycalendar
+	</select>
+	<select id="selectOneMyCalendar" parameterType="string" 
+	resultType="_int">
+		select * from tb_mycalendar wherer mycalendar_no = #{mycalendar_no}
+	</select> -->
+	<insert id="insertTitleDate" parameterType="MyCalendar">
+		insert into tb_mycalendar(mycalendar_no, mycalendar_title, mycalendar_start_date, mycalendar_end_date) 
+		values(sq_mycalendar_no.nextval, #{mycalendar_title}, #{mycalendar_start_date}, #{mycalendar_end_date})
+	</insert>
+<!-- 	<update id="updateFaq" parameterType="Faq">
+		
+	</update>
+	<update id="hideFaq" parameterType="Faq">
+		
+	</update> -->
+</mapper>
+
+
+
+

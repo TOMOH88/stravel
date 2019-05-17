@@ -21,6 +21,8 @@
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.Restaurant" alias="Restaurant"/>
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantCategory" alias="RestaurantCategory"/>
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantImage" alias="RestaurantImage"/>
+		<!-- 하종은 -->
+		<typeAlias type="com.travelmaker.stravel.calendar.model.vo.MyCalendar" alias="MyCalendar"/>
 	</typeAliases>
 	<mappers>
 	<!-- 쿼리문 저장용 매퍼 xml 파일 등록 : 필수  -->
@@ -30,6 +32,7 @@
 		<mapper resource="mappers/touristspot-mapper.xml" />
 		<mapper resource="mappers/myTripBoard-mapper.xml"/>
 		<mapper resource="mappers/restaurant-mapper.xml"/>
+		<mapper resource="mappers/calendar-mapper.xml"/>
 		<!-- <mapper resource="mappers/faq-mapper.xml"/> -->
 	</mappers>
 </configuration>

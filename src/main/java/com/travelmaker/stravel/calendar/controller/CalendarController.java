@@ -1,14 +1,19 @@
 package com.travelmaker.stravel.calendar.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.travelmaker.stravel.calendar.model.service.CalendarService;
+import com.travelmaker.stravel.calendar.model.vo.MyCalendar;
 
 
 @Controller
 public class CalendarController {
 	
-	/*@Autowired
-	private CalendarService calendarService;*/
+	@Autowired
+	private CalendarService calendarService;
 	
 	@RequestMapping("mycalendar.do")
 	public String movemyCalendarPage() {
@@ -45,9 +50,13 @@ public class CalendarController {
 		return "calendar/test2";
 	}
 	
-	@RequestMapping("vcalendar.do")
-	public String moveViewCalendarPage() {
+	@RequestMapping(value="vcalendar.do", method=RequestMethod.POST)
+	public String insertCalendar(MyCalendar mc) {
+		System.out.println(mc);
+		if(calendarService.insertMyCalendar(mc) > 0)
 		return "calendar/calendarViewList";
+		else
+		return "main.do";
 	}
 }
 
