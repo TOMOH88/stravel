@@ -30,8 +30,7 @@
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-end">
               <li class="nav-item"><a class="nav-link" href="searchlodgment.do">숙소검색</a></li> 
-              <li class="nav-item"><a class="nav-link" href="searchcalendar.do">일정검색</a></li> 
-              <li class="nav-item"><a class="nav-link" href="mycalendar.do">닫기</a>
+              <li class="nav-item"><a class="nav-link" href="searchcalendar.do">일정검색</a></li>
             </ul>
           </div> 
         </div>

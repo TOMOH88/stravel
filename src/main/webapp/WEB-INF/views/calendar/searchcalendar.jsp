@@ -4,8 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v3=&sensor=true&key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+</script>
 <meta charset="UTF-8">
 <title>stravel</title>
 <style type="text/css">
@@ -23,12 +25,14 @@
 <c:import url="../common/sheader.jsp" />
 <div style="height:90px;"></div>
 <div class="container-fluid">
+<div></div>
 <div class="row" style="background:gray;">
 <div class="col-md-2" style="margin:auto; text-align:center;">
 <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal3">
  상세일정만들기
 </button>
 <!-- Modal -->
+<form action="vcalendar.do" method="post">
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -39,26 +43,31 @@
         </button>
       </div>
       <div class="modal-body">
+      <div>
+      <font>제목</font><input type="text" name="mycalendar_title" class="form-control"></div>
       <div class="row">
-      <label>제목
-       <input type="text" class="form-control"></label></div>
-       <div class="row">
-       <label for="startDate"> 출발일
-        <input type="date" id="startDate" class="form-control">
-        </label>
+       <div class="col-xl-6">
+       <font>출발일</font><input type="date" name="mycalendar_start_date" class="form-control">
+      </div>
+      <div class="col-xl-6">
+       <font>종료일</font><input type="date" name="mycalendar_end_date" class="form-control">
+      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='vcalendar.do'">저장</button>
+        <input type="submit" class="btn btn-secondary" value="저장">
       </div>
     </div>
   </div>
   </div>
 </div>
+</form>
 </div>
-<div class="col-md-10" id="map" style="height:530px;"></div>
+<div class="col-md-10" id="map" style="height:530px; position:static"></div>
 </div>
 </div>
+<div style="position:absolute; left: 1190px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm">저장</button></div>
+<div style="position:absolute; left: 1240px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='mycalendar.do'">닫기</button></div>
 <script>
 function initialize() {
     var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도
