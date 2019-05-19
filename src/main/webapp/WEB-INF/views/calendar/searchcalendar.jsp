@@ -66,7 +66,6 @@
 <div class="col-md-10" id="map" style="height:530px; position:static"></div>
 </div>
 </div>
-<div style="position:absolute; left: 1190px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm">저장</button></div>
 <div style="position:absolute; left: 1240px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='mycalendar.do'">닫기</button></div>
 <script>
 function initialize() {

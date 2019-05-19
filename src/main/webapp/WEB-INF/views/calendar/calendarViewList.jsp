@@ -50,8 +50,63 @@ div{
 </div>
 </div>
 </div>
-<div style="position:absolute; left: 1190px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm">저장</button></div>
+<div style="position:absolute; left: 1190px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div>
 <div style="position:absolute; left: 1240px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='mycalendar.do'">닫기</button></div>
+<form action="updatecalendar.do" method="post">
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">제목</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div>
+      <font>제목</font><input type="text" name="mycalendar_title" class="form-control" value="${mycalendar.mycalendar_title }"></div>
+      <div class="row">
+       <div class="col-xl-6">
+       <font>출발일</font><input type="date" name="mycalendar_start_date" class="form-control">
+      </div>
+      <div class="col-xl-6">
+       <font>종료일</font><input type="date" name="mycalendar_end_date" class="form-control">
+      </div>
+      </div>
+      <div>
+      <label>내용
+      <textarea rows="auto" cols="100" style="width:100%;"></textarea></label></div>
+      <div>
+      <label>여행테마</label>
+      <div class="row">
+      <div class="col-xl-4">
+      <input type="radio" value="나홀로">나홀로
+      </div>
+      <div class="col-xl-4">
+      <input type="radio" value="단체">단체
+      </div>
+      <div class="col-xl-4">
+      <input type="radio" value="가족">가족
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-xl-6">
+      <input type="radio" value="커플">커플
+      </div>
+      <div class="col-xl-6">
+      <input type="radio" value="친구">친구
+      </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <input type="submit" class="btn btn-secondary" value="저장">
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</form>
 <script>
 function initialize() {
     var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도

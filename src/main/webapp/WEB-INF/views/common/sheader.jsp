@@ -14,6 +14,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/nice-select/nice-select.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
 <title>stravel</title>
+<style type="text/css">
+ div{
+ 	border:1px solid black;
+ }
+</style>
 </head>
 <body>
 <header class="header_area">

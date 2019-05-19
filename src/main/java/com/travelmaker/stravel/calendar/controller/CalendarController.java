@@ -2,6 +2,7 @@
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -44,7 +45,11 @@ public class CalendarController {
 	public String moveTest() {
 		return "calendar/test";
 	}
-	/*
+	
+/*	@RequestMapping("adminMain.do")
+	public String moveTest() {
+		return "calendar/test";
+	}
 	@RequestMapping("test2.do")
 	public String moveTest2() {
 		return "calendar/test2";
@@ -63,21 +68,28 @@ public class CalendarController {
 	@RequestMapping("test2.do")
 	public String moveTest2() {
 		return "calendar/test2";
-	}
+	}*/
+	
+	/*	@RequestMapping("faqlist3.do")
+	public String moveQnaList3Page() {
+		return "faq/faqList3";
+	}*/
 	
 	@RequestMapping(value="vcalendar.do", method=RequestMethod.POST)
 	public String insertCalendar(MyCalendar mc) {
 		System.out.println(mc);
-		if(calendarService.insertMyCalendar(mc) > 0)
+		if(calendarService.createMyCalendar(mc) > 0)
 		return "calendar/calendarViewList";
 		else
 		return "main.do";
 	}
 	
-	@RequestMapping("faqlist3.do")
-	public String moveQnaList3Page() {
-		return "faq/faqList3";
-	}*/
+	@RequestMapping(value="updatecalendar.do", method=RequestMethod.POST)
+	public String updateinsertCaledar(@ModelAttribute MyCalendar mc) {
+		calendarService.updateMyCalendar(mc);
+		return "mycalendar.do";
+	}
+	
 	
 }
 
