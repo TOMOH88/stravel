@@ -18,6 +18,7 @@ function remove_item(obj){
     // obj.parentNode 를 이용하여 삭제
     document.getElementById('field').removeChild(obj.parentNode);
 }
+
 </script>
 <title>stravel</title>
 <style type="text/css">
@@ -52,7 +53,7 @@ div{
 </div>
 <div style="position:absolute; left: 1190px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div>
 <div style="position:absolute; left: 1240px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='mycalendar.do'">닫기</button></div>
-<form action="updatecalendar.do" method="post">
+<form action="vcalendar.do" method="post">
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -64,37 +65,37 @@ div{
       </div>
       <div class="modal-body">
       <div>
-      <font>제목</font><input type="text" name="mycalendar_title" class="form-control" value="${mycalendar.mycalendar_title }"></div>
+      <font>제목</font><input type="text" name="mycalendar_title" class="form-control" required></div>
       <div class="row">
        <div class="col-xl-6">
-       <font>출발일</font><input type="date" name="mycalendar_start_date" class="form-control">
+       <font>출발일</font><input type="date" name="mycalendar_start_date" class="form-control" required>
       </div>
       <div class="col-xl-6">
-       <font>종료일</font><input type="date" name="mycalendar_end_date" class="form-control">
+       <font>종료일</font><input type="date" name="mycalendar_end_date" class="form-control" required>
       </div>
       </div>
       <div>
       <label>내용
-      <textarea rows="auto" cols="100" style="width:100%;"></textarea></label></div>
+      <textarea rows="auto" cols="100" style="width:100%;" name="mycalendar_content" required></textarea></label></div>
       <div>
       <label>여행테마</label>
       <div class="row">
       <div class="col-xl-4">
-      <input type="radio" value="나홀로">나홀로
+      <input type="radio" value="나홀로" name="category" required>나홀로
       </div>
       <div class="col-xl-4">
-      <input type="radio" value="단체">단체
+      <input type="radio" value="단체" name="category" required>단체
       </div>
       <div class="col-xl-4">
-      <input type="radio" value="가족">가족
+      <input type="radio" value="가족" name="category" required>가족
       </div>
       </div>
       <div class="row">
       <div class="col-xl-6">
-      <input type="radio" value="커플">커플
+      <input type="radio" value="커플" name="category" required>커플
       </div>
       <div class="col-xl-6">
-      <input type="radio" value="친구">친구
+      <input type="radio" value="친구" name="category" required>친구
       </div>
       </div>
       </div>
@@ -146,7 +147,6 @@ function initialize() {
     google.maps.event.addListener(marker, "click", function() {
         infowindow.open(map,marker);
     });
-     
 
      
   }

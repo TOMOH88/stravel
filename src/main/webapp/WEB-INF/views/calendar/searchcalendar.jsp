@@ -7,6 +7,9 @@
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
+function movecView(){
+	location.href="cview.do";
+}
 </script>
 <meta charset="UTF-8">
 <title>stravel</title>
@@ -28,40 +31,9 @@
 <div></div>
 <div class="row" style="background:gray;">
 <div class="col-md-2" style="margin:auto; text-align:center;">
-<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal3">
+<button type="button" class="btn btn-info btn-sm" onclick="movecView();">
  상세일정만들기
 </button>
-<!-- Modal -->
-<form action="vcalendar.do" method="post">
-<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">제목</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div>
-      <font>제목</font><input type="text" name="mycalendar_title" class="form-control"></div>
-      <div class="row">
-       <div class="col-xl-6">
-       <font>출발일</font><input type="date" name="mycalendar_start_date" class="form-control">
-      </div>
-      <div class="col-xl-6">
-       <font>종료일</font><input type="date" name="mycalendar_end_date" class="form-control">
-      </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-        <input type="submit" class="btn btn-secondary" value="저장">
-      </div>
-    </div>
-  </div>
-  </div>
-</div>
-</form>
 </div>
 <div class="col-md-10" id="map" style="height:530px; position:static"></div>
 </div>

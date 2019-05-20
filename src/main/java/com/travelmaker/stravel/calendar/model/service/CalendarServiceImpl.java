@@ -28,13 +28,13 @@ public class CalendarServiceImpl implements CalendarService{
 	}
 
 	@Override
-	public List<MyCalendar> MyCalendarAll() {
-		return calendarDao.selectAllMyCalendar(mybatisSession);
+	public MyCalendar selectreadMyCalendar(int mcnum) {
+		return calendarDao.selectOneMyCalendar(mybatisSession, mcnum);
 	}
 
 	@Override
-	public MyCalendar selectreadMyCalendar(int mcnum) {
-		return calendarDao.selectOneMyCalendar(mybatisSession, mcnum);
+	public List<MyCalendar> MyCalendarAll() {
+		return calendarDao.selectAllMyCalendar(mybatisSession);
 	}
 }
 

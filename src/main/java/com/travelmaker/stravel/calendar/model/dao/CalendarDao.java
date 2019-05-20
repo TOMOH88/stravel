@@ -1,6 +1,5 @@
 package com.travelmaker.stravel.calendar.model.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -20,10 +19,9 @@ public class CalendarDao {
 	}
 
 	public List<MyCalendar> selectAllMyCalendar(SqlSessionTemplate sqlSession) {
-		List<MyCalendar> list = new ArrayList<MyCalendar>();
-		return sqlSession.selectList("mycalendarMapper.selectAllMyCalendar", list);
+		return sqlSession.selectList("mycalendarMapper.selectAllMyCalendar");
 	}
-
+	
 	public MyCalendar selectOneMyCalendar(SqlSessionTemplate sqlSession, int mcnum) {
 		return sqlSession.selectOne("mycalendarMapper.selectOneMyCalendar", mcnum);
 	}
