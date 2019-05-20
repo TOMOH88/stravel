@@ -53,5 +53,10 @@ public class RoomDao {
 		return (ArrayList<OwnerReview>)list;
 	}
 
+	public Room selectRsvInfo(SqlSessionTemplate Session,Room room) {
+		// TODO Auto-generated method stub
+		return Session.selectOne("roomMapper.selectRsvInfo",room);
+	}
+
 
 }

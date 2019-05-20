@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,7 +34,12 @@ public class RoomController {
 	public String ohWorkList() {
 		return "room/ohWorkList";
 	}
-	
+	@RequestMapping(value="selectRsvInfo.do",method=RequestMethod.POST)
+	public @ResponseBody Room selectRsvInfo(Room room) {
+		Room result = rs.selectRsvInfo(room);
+		System.out.println("result" + result);
+	return	 result;
+	}
 	@RequestMapping("roomDetail.do")
 	public ModelAndView roomDetailView(ModelAndView mv , @RequestParam(name = "owner_no" ) int owner_no) {
 		//사업자정보
@@ -51,7 +57,7 @@ public class RoomController {
 			roomImgList = rs.selectRoomImg(roomList.get(i).getRoom_no());
 			mv.addObject("roomImgList",roomImgList);
 		}
-		
+		//후기정보
 		ArrayList<OwnerReview> reviewList = rs.selectOwnerReview(owner_no);
 		mv.addObject("reviewList",reviewList);
 		

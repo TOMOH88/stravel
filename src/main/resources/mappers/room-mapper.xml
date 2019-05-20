@@ -43,5 +43,7 @@
 <select id="selectRoomImg" resultMap="resultRoomImg">
 	select * from room_img where room_no = #{room_no}
 </select>
-
+<select id="selectRsvInfo" resultMap="resultRoom">
+	select * from room where owner_no = #{owner_no} and room_name = #{room_name}
+</select>
 </mapper>

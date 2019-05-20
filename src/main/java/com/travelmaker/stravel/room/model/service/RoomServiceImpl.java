@@ -69,4 +69,10 @@ public  class RoomServiceImpl implements RoomService {
 		// TODO Auto-generated method stub
 		return rd.selectOwnerReview(mybatisSession, owner_no);
 	}
+
+	@Override
+	public Room selectRsvInfo(Room room) {
+		// TODO Auto-generated method stub
+		return rd.selectRsvInfo(mybatisSession,room);
+	}
 }

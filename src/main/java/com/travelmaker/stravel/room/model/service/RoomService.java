@@ -35,6 +35,10 @@ public interface RoomService {
 
 
 	ArrayList<OwnerReview> selectOwnerReview(int owner_no);
+
+
+
+	Room selectRsvInfo(Room room);
 	
 }
 
