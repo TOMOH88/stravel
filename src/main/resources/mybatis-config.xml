@@ -48,7 +48,6 @@
 		<mapper resource="mappers/restaurant-mapper.xml"/>
 		<mapper resource="mappers/calendar-mapper.xml"/>
 		<mapper resource="mappers/room-mapper.xml"/>
-		<mapper resource="mappers/reservation-mapper.xml"/>
 		<mapper resource="mappers/owner-mapper.xml"/>
 		<!-- <mapper resource="mappers/faq-mapper.xml"/> -->
 	</mappers>

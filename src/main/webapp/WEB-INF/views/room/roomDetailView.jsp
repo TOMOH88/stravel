@@ -333,7 +333,7 @@
 		</div><!-- 메인정보 -->
 		<div id="roomsidebar" style=" width:260px; border:1px solid #e4e4e4; float:right; position:sticky; top:100px; margin:10px; padding:10px; "><!-- 오른쪽 사이드바 -->
 			<div style="width:260px;height:40px;"><!-- 사이드바 헤드 -->
-				<div><span  id="sideprice" style="color:black;font-weight:bold;">₩85,000</span><span style="font-size:x-small;color:black;font-weight:bold;">/박</span>
+				<div><span  id="sideprice" style="color:black;font-weight:bold;"></span>
 				</div>
 				<div style="font-size:x-small;color:black;font-weight:bold;">별점</div>
 			</div>
@@ -438,7 +438,7 @@
 						<div style="font-size:xx-small;color:black;font-weight:bold;">옵션</div>
 							<div style="height:60px;">
 								<select class="selectroom" name="roomno" required>
-									<option>필수선택</option>
+									<option selected disabled hidden>필수선택</option>
 									<c:forEach items="${roomList}" var="roomList">
 									<option>${roomList.room_name }</option>
 									</c:forEach>
@@ -634,7 +634,7 @@
 	                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
 	                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
 	                ,minDate: "+0D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-
+					
 	                  
 
 		});
@@ -649,8 +649,7 @@
 		$(".selectroom").change(function(){
 			var roomname = this.value;
 			var ownerno = ${owner.owner_no};
-			console.log(this.value);
-			console.log(ownerno);
+			var roomno ;
 			$.ajax({
 				url:"selectRsvInfo.do",
 				data: {room_name: roomname,
@@ -658,20 +657,56 @@
 				type:"post",
 				dataType:"json",
 				success: function(data){
-					console.log(data);
+					
 					var jsonStr = JSON.stringify(data);
 					var json = JSON.parse(jsonStr);
-					
-					var option = "";
+					roomno = json.room_no;
+
+					var option = "<option selected disabled hidden>필수선택</option>";
 					var price
 					for(var i = 2; i < json.max_no+1;i++){
-						option += "<option>"+i +"명</option>";
+						option += "<option>"+i +"</option>";
 					}
 					
 					$(".selectcount").html($(".selectcount").text() + option);
-					$("")
+					$.ajax({
+						url: "selectRsvDate.do",
+						data: {room_no:roomno},
+						type:"post",
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+						 	var jsonStr = JSON.stringify(data);
+							var json = JSON.parse(jsonStr);
+							console.log(roomno);
+							var disableDays = [json.length];
+							for(var i =0; i<json.length; i++){
+								disableDays.push(json.check_in);
+							}
+							console.log(disableDays);
+							$(".datepicker").datepicker({
+								beforShowDay : disableAllTheseDays
+							})
+							function disableAllTheseDays(data){
+								var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+								for ( i = 0; i < disabledDays.length; i++){
+									if($.inArray(y + '-' + (m+1) + '-' + d,disabledDays) != -1){
+										return [false];
+									}
+								}
+								return [true];
+							} 
+							
+						},error: function(jqXHR, textStatus, errorThrown){
+							console.log("error : " + jqXHR + ", " + 
+									textStatus + ", " + errorThrown);
+							
+						}
+					})
 				}	
 			})
+			
+			
 		})
 	}) 
 

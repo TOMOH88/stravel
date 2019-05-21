@@ -18,12 +18,29 @@
 	<result property = "add_person_price" column = "ADD_PERSON_PRICE"/>
 	<result property = "discountrate" column = "DISCOUNTRATE"/>
 </resultMap>
+
 <resultMap id="resultRoomImg" type="roomImgVo">
 	<id property = "room_img_no" column="room_img_no"/>
 	<result property = "room_img" column= "room_img"/>
 	<result property = "room_no" column="room_no"/>
 </resultMap>
 
+<resultMap id="resultReservation" type="rsvVo">
+	<id property ="rsv_vo" column="rsv_vo"/>
+	<result property = "user_no" column="user_no" />
+	<result property = "room_no" column="room_no" />
+	<result property = "check_in" column="check_in" />
+	<result property = "check_out" column="check_out" />
+	<result property = "rsv_status" column="rsv_status" />
+	<result property = "enter_room" column="enter_room" />
+	<result property = "rsv_date" column="rsv_date" />
+	<result property = "member" column="member" />
+	<result property = "total_price" column="total_price" />
+</resultMap>
+
+
+
+<!-- 객실등록 쿼리문 나중에 owner_no 수정해야됨 -->
 <insert id="insertRoom" parameterType = "roomVo">
 	<selectKey keyProperty="room_no" resultType="int" order="BEFORE">
 		select count(ROOM_NO)+1 from STRAVEL.ROOM
@@ -33,17 +50,30 @@
   ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
  VALUES (#{room_no}, #{room_name}, #{room_option}, #{room_content}, #{min_no}, #{max_no}, #{off_season_price}, #{on_season_price}, #{week_extra_price}, #{add_person_price}, #{discountrate}, 1)
 </insert>  
+
+<!-- 객실이미지 -->
 <insert id="insertRoomImg" parameterType = "roomImgVo">
 	insert into room_img (ROOM_IMG_NO,ROOM_IMG,ROOM_NO)
 	values(#{room_img_no},#{room_img},#{room_no})
 </insert>
+
+
 <select id="selectRoom" resultMap="resultRoom">
 	select * from room where owner_no = #{owner_no}
 </select>
+
 <select id="selectRoomImg" resultMap="resultRoomImg">
 	select * from room_img where room_no = #{room_no}
 </select>
+
 <select id="selectRsvInfo" resultMap="resultRoom">
 	select * from room where owner_no = #{owner_no} and room_name = #{room_name}
+</select>
+
+
+<select id="selectRsvDate" resultMap="resultReservation">
+	select * 
+from reservation
+where room_no = #{room_no} and check_in > sysdate
 </select>
 </mapper>
