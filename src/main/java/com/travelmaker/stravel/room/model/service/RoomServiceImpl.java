@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
 import com.travelmaker.stravel.owner.model.vo.OwnerReview;
+import com.travelmaker.stravel.reservation.model.vo.Reservation;
 import com.travelmaker.stravel.room.model.dao.RoomDao;
 import com.travelmaker.stravel.room.model.vo.Room;
 import com.travelmaker.stravel.room.model.vo.RoomImg;
@@ -58,9 +59,9 @@ public  class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public ArrayList<RoomImg> selectRoomImg(int room_no) {
+	public ArrayList<RoomImg> selectRoomImg(int owner_no) {
 		// TODO Auto-generated method stub
-		return rd.selectRoomImg(mybatisSession,room_no);
+		return rd.selectRoomImg(mybatisSession,owner_no);
 		
 	}
 
@@ -74,5 +75,23 @@ public  class RoomServiceImpl implements RoomService {
 	public Room selectRsvInfo(Room room) {
 		// TODO Auto-generated method stub
 		return rd.selectRsvInfo(mybatisSession,room);
+	}
+
+	@Override
+	public ArrayList<Reservation> selectOrderList(int owner_no) {
+		// TODO Auto-generated method stub
+		return rd.selectOrderList(mybatisSession,owner_no);
+	}
+
+	@Override
+	public Room selectUpRoom(int room_no) {
+		// TODO Auto-generated method stub
+		return rd.selectUpRoom(mybatisSession,room_no);
+	}
+
+	@Override
+	public ArrayList<RoomImg> selectUpRoomImg(int room_no) {
+		// TODO Auto-generated method stub
+		return rd.selectUpRoomImg(mybatisSession,room_no);
 	}
 }

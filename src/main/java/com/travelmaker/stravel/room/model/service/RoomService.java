@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
 import com.travelmaker.stravel.owner.model.vo.OwnerReview;
+import com.travelmaker.stravel.reservation.model.vo.Reservation;
 import com.travelmaker.stravel.room.model.vo.Room;
 import com.travelmaker.stravel.room.model.vo.RoomImg;
 
@@ -30,7 +31,7 @@ public interface RoomService {
 
 
 
-	ArrayList<RoomImg> selectRoomImg(int room_no);
+	ArrayList<RoomImg> selectRoomImg(int owner_no);
 
 
 
@@ -39,6 +40,18 @@ public interface RoomService {
 
 
 	Room selectRsvInfo(Room room);
+
+
+
+	ArrayList<Reservation> selectOrderList(int owner_no);
+
+
+
+	Room selectUpRoom(int room_no);
+
+
+
+	ArrayList<RoomImg> selectUpRoomImg(int room_no);
 	
 }
 

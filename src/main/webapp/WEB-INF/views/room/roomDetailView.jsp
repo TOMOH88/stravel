@@ -264,7 +264,7 @@
 								<div class="swiper-wrapper">
 								<c:forEach items="${roomImgList }" var="roomImgList">
 									<c:if test="${roomList.room_no eq roomImgList.room_no }"> 
-									<div class="swiper-slide room"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/1-1.PNG"></div>
+										<div class="swiper-slide room"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/roomImg/${roomImgList.room_img}"></div>
 									</c:if>
 								</c:forEach> 
 									
@@ -685,6 +685,7 @@
 							}
 							console.log(disableDays);
 							$(".datepicker").datepicker({
+	
 								beforShowDay : disableAllTheseDays
 							})
 							function disableAllTheseDays(data){

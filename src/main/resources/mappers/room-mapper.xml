@@ -23,12 +23,15 @@
 	<id property = "room_img_no" column="room_img_no"/>
 	<result property = "room_img" column= "room_img"/>
 	<result property = "room_no" column="room_no"/>
+	<result property = "owner_no" column ="owner_no"/>
 </resultMap>
 
 <resultMap id="resultReservation" type="rsvVo">
 	<id property ="rsv_vo" column="rsv_vo"/>
 	<result property = "user_no" column="user_no" />
+	<result property = "user_name" column = "user_name"/>
 	<result property = "room_no" column="room_no" />
+	<result property = "room_name" column="room_name"/>
 	<result property = "check_in" column="check_in" />
 	<result property = "check_out" column="check_out" />
 	<result property = "rsv_status" column="rsv_status" />
@@ -63,7 +66,13 @@
 </select>
 
 <select id="selectRoomImg" resultMap="resultRoomImg">
-	select * from room_img where room_no = #{room_no}
+	select * 
+from room
+join room_img using (room_no)
+where room_no in(
+    select room_no
+    from room
+    where owner_no = #{owner_no})
 </select>
 
 <select id="selectRsvInfo" resultMap="resultRoom">
@@ -75,5 +84,26 @@
 	select * 
 from reservation
 where room_no = #{room_no} and check_in > sysdate
+</select>
+
+<select id="selectOrderList" resultMap ="resultReservation">
+select * 
+from reservation
+join room using(room_no)
+join stravel_user using (user_no)
+where room_no in (
+    select room_no
+    from room
+    where owner_no = 6)
+    order by check_in
+
+</select>
+
+<select id="selectUpRoom" resultMap="resultRoom">
+	select * from room where room_no = #{room_no}
+</select>
+
+<select id="selectUpRoomImg" resultMap="resultRoomImg">
+	select * from room_img where room_no = #{room_no}
 </select>
 </mapper>

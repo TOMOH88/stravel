@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
 import com.travelmaker.stravel.owner.model.vo.OwnerReview;
+import com.travelmaker.stravel.reservation.model.vo.Reservation;
 import com.travelmaker.stravel.room.model.vo.Room;
 import com.travelmaker.stravel.room.model.vo.RoomImg;
 
@@ -43,8 +44,8 @@ public class RoomDao {
 		return (ArrayList<Room>)list;
 	}
 
-	public ArrayList<RoomImg> selectRoomImg(SqlSessionTemplate Session, int room_no) {
-		List<RoomImg> list = Session.selectList("roomMapper.selectRoomImg",room_no);
+	public ArrayList<RoomImg> selectRoomImg(SqlSessionTemplate Session, int owner_no) {
+		List<RoomImg> list = Session.selectList("roomMapper.selectRoomImg",owner_no);
 		return (ArrayList<RoomImg>)list;
 	}
 
@@ -56,6 +57,21 @@ public class RoomDao {
 	public Room selectRsvInfo(SqlSessionTemplate Session,Room room) {
 		// TODO Auto-generated method stub
 		return Session.selectOne("roomMapper.selectRsvInfo",room);
+	}
+
+	public ArrayList<Reservation> selectOrderList(SqlSessionTemplate Session, int owner_no) {
+		List<Reservation> list = Session.selectList("roomMapper.selectOrderList",owner_no);
+ 		return (ArrayList<Reservation>)list;
+	}
+
+	public Room selectUpRoom(SqlSessionTemplate Session, int room_no) {
+		// TODO Auto-generated method stub
+		return Session.selectOne("roomMapper.selectUpRoom",room_no);
+	}
+
+	public ArrayList<RoomImg> selectUpRoomImg(SqlSessionTemplate Session, int room_no) {
+		List<RoomImg> list = Session.selectList("roomMapper.selectUpRoomImg",room_no);
+		return (ArrayList<RoomImg>)list;
 	}
 
 
