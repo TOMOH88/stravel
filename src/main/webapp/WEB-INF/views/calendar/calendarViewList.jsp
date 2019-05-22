@@ -39,10 +39,11 @@ div{
 <div class="row">
 <div class="col-md-1" style="background:#203341;">
 <button class="btn btn-info btn-sm" onclick="add_div();">일정추가</button>
-
+<c:forEach var="i" begin="1" end="100">
 <div id="pre_set" style="display:none;">
-    <font style="color:white;">Day</font> <input class="btn btn-info btn-sm" type="button" value="삭제" onclick="remove_item(this)">
+    <font style="color:white;"><c:out value="${i}" />Day</font> <input class="btn btn-info btn-sm" type="button" value="삭제" onclick="remove_item(this)">
 </div>
+</c:forEach>
 <div class="row" id="field"></div>
 </div>
 <div class="col-md-2">dd</div>

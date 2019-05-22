@@ -156,10 +156,10 @@ div{
 <img src="${pageContext.request.contextPath }/resources/img/maldives-1993704_1920.jpg" style="height:300px;">
   <div class="content-details fadeIn-top">
         <h3>${m.mycalendar_title }</h3>
-        <p>클릭시 일정상세보기</p>
+        <p>클릭시 ${m.mycalendar_no}번 일정상세보기</p>
         <p>2019-04-03 (화)</p>
         <a href="updatecalendar.do">수정</a>
-        <a href="#">삭제</a>
+        <a href="delmycalendar.do?mycalendar_no=${m.mycalendar_no }">삭제</a>
       </div>
     </a>
   </div>

@@ -36,6 +36,11 @@ public class CalendarServiceImpl implements CalendarService{
 	public List<MyCalendar> MyCalendarAll() {
 		return calendarDao.selectAllMyCalendar(mybatisSession);
 	}
+
+	@Override
+	public int deleteMyCalendar(int mcnum) {
+		return calendarDao.deleteMyCalendar(mybatisSession, mcnum);
+	}
 }
 
 

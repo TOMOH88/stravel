@@ -9,4 +9,5 @@ public interface CalendarService {
 	MyCalendar selectreadMyCalendar(int mcnum);
 	int createMyCalendar(MyCalendar mc);
 	int updateMyCalendar(MyCalendar mc);
+	int deleteMyCalendar(int mcnum);
 }

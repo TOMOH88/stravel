@@ -25,4 +25,8 @@ public class CalendarDao {
 	public MyCalendar selectOneMyCalendar(SqlSessionTemplate sqlSession, int mcnum) {
 		return sqlSession.selectOne("mycalendarMapper.selectOneMyCalendar", mcnum);
 	}
+
+	public int deleteMyCalendar(SqlSessionTemplate sqlSession, int mcnum) {
+		return sqlSession.delete("mycalendarMapper.deleteMyCalendar", mcnum);
+	}
 }

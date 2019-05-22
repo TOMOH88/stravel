@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.calendar.model.service.CalendarService;
@@ -74,13 +75,13 @@ public class CalendarController {
 		return "faq/faqList3";
 	}*/
 	
-	@RequestMapping(value="vcalendar.do", method= {RequestMethod.POST})
+	/*@RequestMapping(value="vcalendar.do", method= {RequestMethod.POST})
 	public String insertCalendar(MyCalendar mc) {
 		if(calendarService.createMyCalendar(mc) > 0)
 		return "calendar/mycalendar";
 		else
 		return "main";
-	}
+	}*/
 	
 	@RequestMapping(value="updatecalendar.do", method=RequestMethod.GET)
 	public String updateinsertCaledar(@ModelAttribute("mc") MyCalendar mc) {
@@ -96,6 +97,13 @@ public class CalendarController {
 		mv.addObject("mclist",mclist);
 		System.out.println("mclist : " + mclist);
 		return mv;
+	}
+	
+	@RequestMapping(value="delmycalendar.do", method=RequestMethod.GET)
+	public String deleteCalendar(@RequestParam(name="mycalendar_no", required=false) int mycalendar_no) {
+		System.out.println("controller" + mycalendar_no);
+		calendarService.deleteMyCalendar(mycalendar_no);
+		return "redirect:mycalendar.do";
 	}
 }
 	
