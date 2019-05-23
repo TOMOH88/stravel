@@ -92,15 +92,7 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 
 		return true; //submit 실행함.
 	}
-	//네이버 아이디로 로그인 처리
-	var naverLogin = new naver.LoginWithNaverId(
-		{
-			clientId: "{YOUR_CLIENT_ID}",
-			callbackUrl: "{YOUR_REDIRECT_URL}",
-			...
-			...
-		}
-	);
+	
 
 	//정규표현식 사용한 값 검사와 유효성 체크 처리
 	function checkValidate2() {
@@ -246,6 +238,7 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="mycalendar.do">나의일정</a></li>
                   <li class="nav-item"><a class="nav-link" href="adminMain.do">예약내역</a></li>
+                  <li class="nav-item"><a class="nav-link" href="">개인정보수정</a></li>
                 </ul>
 							</li>
               <li class="nav-item">
@@ -273,6 +266,7 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 			</nav>
 		</div>
 	</header>
+	<br>
 	
 <!--  회원가입 시작 -->
 <div class="modal fade" id="modal" role="dialog">
@@ -284,15 +278,12 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 				</div>
 				<div class="modal-body">
 					<ul class="nav nav-tabs">
-						<li class="active">
-							<a data-toggle="tab" href="#enroll">사용자 회원가입</a>
-						</li>
-						<li>
-							<a data-toggle="tab" href="#business">사업자 회원가입</a>
-						</li>
+						<li class="active"><a data-toggle="tab" href="#enroll">사용자 회원가입</a></li>
+						<li><a data-toggle="tab" href="#business">사업자 회원가입</a></li>
 					</ul>
+					<div class="tab-content">
 				<div id="enroll" class="tab-pane in active">
-				<article>
+					<article class="card-body">
 						<!-- 여기에 회원가입 코드작성 -->
 						<!-- <p>
 							<a href="" class="btn btn-block btn-twitter"> 
@@ -366,25 +357,83 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 								<span class="form-check-label"> 여성</span>
 							</label>
 						</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-block">회원가입</button>
+							</div><br>
+						<p class="text-center"> 계정이 있으신가요? 
+							<!-- <a href="#login">로그인</a>	 -->						
+							
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#login">로그인</button>
+							
+						</p>
+						</form>
+						</article>
+					</div>					
+					<!-- 사업자 회원등록 코드작성 -->
+					<div id="business" class="tab-pane fade">
+						<!-- 사업자 회원가입 내용입력 -->
+						
+						<form action="binsert.do" method="post">
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> 
+							 <i class="fa fa-envelope"></i>
+							</span>
+						</div>
+						<input name="businessnumber" id="businessnumber" class="form-control" placeholder="사업자등록번호 10자리를 입력하세요" type="number" required>
+					</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-lock"></i>
+								</span>
+							</div>
+							<input class="form-control" name="businesspwd" id="businesspwd"	placeholder="비밀번호를 입력하세요" type="password" required>
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-lock"></i>
+								</span>
+							</div>
+							<input class="form-control" id="businesspwd2" placeholder="비밀번호를 다시입력하세요" type="password" required>
+						</div>
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-user"></i>
+									</span>
+								</div>
+								<input name="businessname" id="businessname" class="form-control" placeholder="이름을 입력하세요" type="text" required>
+							</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-phone"></i>
+								</span>
+							</div>
+								<input name="businessphone" id="businessphone" class="form-control"	placeholder=" 사업장 연락처를 입력하세요" type="text">
+						</div>
+													
+						
 							<div class="form-group"><br>
 								<button type="submit" class="btn btn-primary btn-block">계정 생성</button>
 							</div><br>
 						<p class="text-center"> 계정이 있으신가요? 
-							<a href="">로그인</a>
+							<a href="#login">로그인</a>
 						</p>
-						</form>
-						</article>
+						</form>						
+						
+						<!-- 사업자 회원가입 내용 입력 끗 -->					
 					</div>
-					<!-- 사업자 회원등록 코드작성 -->
-					<div id="business" class="tab-pane fade">
-						<h3>아 내가 부정하는 신이시여</h3>
 					</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
-	</div><div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
+	<!-- <div class="modal-footer"></div> -->
 
 
 	<!-- 로그인 코드작성 -->
@@ -397,8 +446,7 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 				</div>
 				<div class="modal-body">
 					<ul class="nav nav-tabs">
-						<li class="active"><a data-toggle="tab" href="#home">사용자
-								로그인</a></li>
+						<li class="active"><a data-toggle="tab" href="#home">사용자 로그인</a></li>
 						<li><a data-toggle="tab" href="#login1">사업자 로그인</a></li>
 					</ul>
 					<div class="tab-content">
@@ -429,32 +477,6 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 										
 										//
 									</script>
-								<div id="naverIdLogin"></div>
-								<script type="text/javascript">
-										var naverLogin = new naver.LoginWithNaverId(
-												{
-											clientId : "dt5BzI803qGZx7ZLLmcC",
-											callbackUrl : "http://127.0.0.1:8888/stravel",
-											isPopup : false, /* 팝업을 통한 연동처리 여부 */
-											loginButton : {
-												color : "green",
-												type : 3,
-												height : 60
-											}
-												
-										/* 로그인 버튼의 타입을 지정 */
-										});
-									
-										/* 설정정보를 초기화하고 연동을 준비 */
-										naverLogin.init();
-									</script>
-								<!-- 네아로 끗 -->
-
-								<!-- <a href="" class="btn btn-block btn-outline-primary"> <i
-										class="fab fa-facebook-f"></i>   페이스북 계정으로 로그인
-									</a> -->
-								</p>
-								<br>
 								<hr>
 								<br>
 								<form action="login.do" method="post">
@@ -475,24 +497,34 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 										<a class="small" href="#">비밀번호를 잊어버리셨습니까?</a>
 									</div>
 									<br>
-									<div class="row">
 										<div>
 											<div class="form-group"><br>
 												<button type="submit" value="로그인" class="btn btn-primary btn-block">로그인</button>
 											</div>
 										</div>
 
-									</div>
 								</form>
 							</article>
 						</div>
 						<div id="login1" class="tab-pane fade">
 							<!-- Login Form Code Here -->
-						  <div class="form-group">
-						    <input type="text" placeholder="사업자 등록번호를 입력하십시요" name="un" />
-						    <input type="password" placeholder="비밀번호를 입력하십시요" name="pw" />
-						    <button> 사업자로그인 </button>
-						  </div>
+						  <form action="login.do" method="post">
+									<div class="form-group">
+										<input type="text" placeholder="사업자 등록번호를 입력하세요"
+											class="form-control" name="businessnumber">
+									</div>
+									<div class="form-group">
+										<!-- <input name="userpwd" class="form-control"
+											placeholder="비밀번호를 입력하세요" type="password"> -->
+										<input type="password" placeholder="비밀번호를 입력하세요"
+											class="form-control" name="userpwd">
+									</div>
+										<div>
+											<div class="form-group"><br>
+												<button type="submit" value="로그인" class="btn btn-primary btn-block">로그인</button>
+											</div>
+										</div>
+								</form>
 						</div>
 					</div>
 				</div>

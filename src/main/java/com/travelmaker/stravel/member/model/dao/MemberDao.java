@@ -1,11 +1,11 @@
-package com.travelmaker.stravel.memeber.model.dao;
+package com.travelmaker.stravel.member.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
-import com.travelmaker.stravel.memeber.model.vo.Member;
+import com.travelmaker.stravel.member.model.vo.Member;
 
 @Repository("memberDao")
 public class MemberDao {

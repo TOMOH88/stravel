@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+
+	<resultMap id="resultMember" type="Member">
+		<id property="useremail" column="useremail" />
+		<result property="userpwd" column="userpwd" />
+		<result property="username" column="username" />
+		<result property="gender" column="gender" />
+		<result property="age" column="age" />
+		<result property="phone" column="phone" />
+	</resultMap>
+
+	<select id="selectLogin" parameterType="Member" 
+	 resultMap="resultMember" useCache="true">
+		select * from member 
+		where useremail = #{useremail}
+	</select>
+	
+	<select id="selectCheckId" parameterType="string" resultType="_int" useCache="true">
+		select count(useremail) from member 
+		where useremail = #{useremail}
+	</select>
+	
+	<select id="selectMember" parameterType="string" resultType="Member" useCache="true">
+		select * from member 
+		where useremail = #{useremail}
+	</select>
+	
+	<select id="selectList" resultMap="resultMember" useCache="true">
+		select * from member
+	</select>
+	
+	<insert id="insertMember" parameterType="Member" useGeneratedKeys="true">
+		insert into member 
+		values (#{useremail}, #{userpwd}, #{username}, #{gender}, #{age}, #{phone})
+	</insert>
+	
+	<delete id="deleteMember" parameterType="string">
+		delete from member where useremail = #{useremail}
+	</delete>
+	
+	<update id="updateMember" parameterType="Member">
+		update member 
+		set userpwd = #{userpwd}, age = #{age}, phone = #{phone} where useremail = #{useremail}
+	</update>
+</mapper>
