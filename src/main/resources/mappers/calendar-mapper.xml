@@ -15,18 +15,29 @@
 		<id property="notepad" column="NOTEPAD" />
 		<id property="budget" column="BUDGET" />
 	</resultMap>
-	
-	<!-- <select id="selectAllMyCalendar" resultMap="MyCalendar">
+
+	<select id="selectAllMyCalendar" resultMap="resultMyCalendar">
 		select * from tb_mycalendar
 	</select>
-	<select id="selectOneMyCalendar" parameterType="string" 
-	resultType="_int">
-		select * from tb_mycalendar wherer mycalendar_no = #{mycalendar_no}
-	</select> -->
+	
+	<select id="selectOneMyCalendar" resultType="MyCalendar" resultMap="resultMyCalendar">
+		select * from tb_mycalendar where mycalendar_no = #{mycalendar_no}
+	</select>
+	
 	<insert id="insertTitleDate" parameterType="MyCalendar">
-		insert into tb_mycalendar(mycalendar_no, mycalendar_title, mycalendar_start_date, mycalendar_end_date) 
-		values(sq_mycalendar_no.nextval, #{mycalendar_title}, #{mycalendar_start_date}, #{mycalendar_end_date})
+		insert into tb_mycalendar(mycalendar_no, mycalendar_title, mycalendar_start_date, mycalendar_end_date, mycalendar_content, category) 
+		values(sq_mycalendar_no.nextval, #{mycalendar_title}, #{mycalendar_start_date}, #{mycalendar_end_date}, #{mycalendar_content}, #{category})
 	</insert>
+	
+	<update id="updateCalendar" parameterType="MyCalendar">
+		update tb_mycalendar set mycalendar_title = #{mycalendar_title}, mycalendar_start_date = #{mycalendar_start_date},
+		mycalendar_end_date = #{mycalendar_end_date}, mycalendar_content = #{mycalendar_content},
+		category = #{category} where mycalendar_no = #{mycalendar_no}
+	</update>
+	
+	<delete id="deleteMyCalendar" parameterType="_int">
+		delete from tb_mycalendar where mycalendar_no = #{mycalendar_no}
+	</delete>
 <!-- 	<update id="updateFaq" parameterType="Faq">
 		
 	</update>
