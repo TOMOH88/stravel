@@ -52,6 +52,10 @@ public interface RoomService {
 
 
 	ArrayList<RoomImg> selectUpRoomImg(int room_no);
+
+
+
+
 	
 }
 

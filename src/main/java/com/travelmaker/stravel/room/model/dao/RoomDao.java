@@ -74,5 +74,7 @@ public class RoomDao {
 		return (ArrayList<RoomImg>)list;
 	}
 
+	
+
 
 }

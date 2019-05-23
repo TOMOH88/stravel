@@ -94,4 +94,6 @@ public  class RoomServiceImpl implements RoomService {
 		// TODO Auto-generated method stub
 		return rd.selectUpRoomImg(mybatisSession,room_no);
 	}
+
+
 }

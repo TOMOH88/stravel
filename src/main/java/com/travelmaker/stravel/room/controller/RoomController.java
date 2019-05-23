@@ -41,6 +41,7 @@ public class RoomController {
 		System.out.println("result" + result);
 	return	 result;
 	}
+
 	@RequestMapping("roomDetail.do")
 	public ModelAndView roomDetailView(ModelAndView mv , @RequestParam(name = "owner_no" ) int owner_no) {
 		//사업자정보
