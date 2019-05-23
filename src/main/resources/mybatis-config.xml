@@ -12,6 +12,7 @@
 		<!-- 김지훈 -->
 		<typeAlias type="com.travelmaker.stravel.support.model.vo.QnaVo" alias="QnaVo" />
 		<typeAlias type="com.travelmaker.stravel.support.model.vo.NoticeVo" alias="NoticeVo" />
+		<typeAlias type="com.travelmaker.stravel.common.PagingVo" alias="PagingVo"/>
 		<typeAlias type="com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo" alias="TouristspotImagesVo" />
 		<typeAlias type="com.travelmaker.stravel.touristspot.model.vo.TouristspotVo" alias="TouristspotVo" />
 		<typeAlias type="com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo" alias="TouristspotCategoryVo" />
@@ -24,6 +25,7 @@
 		<typeAlias type="com.travelmaker.stravel.restaurant.model.vo.RestaurantImage" alias="RestaurantImage"/>
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage" alias = "MyTripBoardImage"/>
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview" alias = "MyTripBoardReview"/>
+		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardLike" alias = "MyTripBoardLike"/>
 		<!-- 하종은 -->
 		<typeAlias type="com.travelmaker.stravel.calendar.model.vo.MyCalendar" alias="MyCalendar"/>
 		<!-- 오청 -->

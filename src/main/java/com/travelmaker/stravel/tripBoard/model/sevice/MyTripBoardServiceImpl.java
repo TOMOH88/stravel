@@ -87,6 +87,12 @@ public class MyTripBoardServiceImpl implements MyTripBoardService{
 		return boardDao.selectBoardNo(mybatisSession);
 	}
 
+	@Override
+	public ArrayList<MyTripBoard> selectList(String board_title) {
+		
+		return boardDao.selectList(mybatisSession, board_title);
+	}
+
 	
 
 	

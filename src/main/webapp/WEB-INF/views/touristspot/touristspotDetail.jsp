@@ -12,7 +12,6 @@
 <!-- 구글폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans"	rel="stylesheet">
 <script type="text/javascript">
-
 $(document).ready(function(){
 $(':radio[name="stars"]').change(function() {
 	  console.log('New star rating: ' + this.value);
@@ -91,9 +90,9 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 	color: #000;
 }
 
-.rating:not (:hover ) label input:checked ~ .icon, .rating:hover label:hover input 
-	~ .icon {
-	color: #09f;
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: #09f;
 }
 
 .rating label input:focus:not (:checked ) ~ .icon:last-child {

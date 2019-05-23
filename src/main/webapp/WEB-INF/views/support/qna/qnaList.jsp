@@ -11,7 +11,7 @@
 <c:import url="../../common/header.jsp" />
 <section class="section-margin">
 <div class="container">
-<!-- table �역 �작 -->
+<!-- table 시작 -->
 <div class="col-md-12">
                         <div class="card">
                             <div class="header">

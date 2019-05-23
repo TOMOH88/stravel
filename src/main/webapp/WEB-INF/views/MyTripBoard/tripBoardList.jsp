@@ -25,6 +25,13 @@
 <body>
 <h1>일정자랑</h1>
 <table class = "sub_news" border = "1" cellspacing = "0" summary = "게시판의 글제목 리스트">
+<form action = "selectlist.do" method = "post">
+	<div class = "selectList">
+		제목 : <input type = "text" name = "board_title">
+		<!-- 글쓴이 : <input type = "text" name = "user_name"> -->
+		<input type = "submit"`>
+	</div>
+</form>
 <caption>게시판 리스트</caption>
 	<colgroup>
 		<col>

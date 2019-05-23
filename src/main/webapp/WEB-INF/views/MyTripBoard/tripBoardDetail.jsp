@@ -7,6 +7,39 @@
 <head>
 <meta charset="UTF-8">
 <title>stravel</title>
+<script type="text/javascript">
+	function like_func(){
+		var frm_read = $("#frm_read");
+		var board_no = $("#board_no", frm_read).val();
+		console.log("board_no, member_no : " + board_no + ", " + member_no);
+		
+		$.ajax({
+			url:"/stravel/like.do",
+			type:"Get",
+			cache:false,
+			dataType:"json",
+			data:"board_no = " + board_no,
+			success:function(data){
+				var msg = '';
+				var like_img = '';
+				msg += data.msg;
+				alert(msg);
+				
+				if(data.like_check == 0){
+					like_img = "${ pageContext.request.contextPath }/resources/img/hart/emptyhart.png";
+				}else{
+					like_img = "${ pageContext.request.contextPath }/resources/img/hart/redhart.png";
+				}
+				$("#like_img", frm_read).attr("src", like_img);
+				$("#like_cnt").html(data.like_cnt);
+				$(#"like_check").html(data.like_check);
+			},
+			error : function(request, status, error){
+				alert("code:" + request.status + "\n" + "message : " + request.responseText + "\n" + "error:"+error);
+			}
+		});
+	}
+</script>
 <style type="text/css">
 	.sub_news, .sub_news th, .sub_news td{border:0}
 	.sub_news a{color:#383838; text-decoration:none}
@@ -69,6 +102,17 @@
 			</div>
 		</div>
 	</form>
+</fieldset>
+<fieldset>
+	<legend>좋아요</legend>
+		<c:choose>
+			<c:when test="${member_no ne null }">
+				<a href = "javascript: like_func();"><img src = "${ pageContext.request.contextPath }/resources/img/hart/emptyhart.png" id = "like_img"></a>
+			</c:when>
+			<c:otherwise>
+				<a href = "javascript: login_need();"><img src = "${ pageContext.request.contextPath }/resources/img/hart/emptyhart.png"></a>
+			</c:otherwise>
+		</c:choose>
 </fieldset>
 	<div>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%; height: 600px;">

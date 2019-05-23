@@ -73,6 +73,11 @@ public int selectBoardNo(SqlSessionTemplate session) {
 	return session.selectOne("myTripBoardMapper.selectBoardNo");
 }
 
+public ArrayList<MyTripBoard> selectList(SqlSessionTemplate session, String board_title) {
+	List<MyTripBoard> list = session.selectList("myTripBoardMapper.selectList", board_title);
+	return (ArrayList<MyTripBoard>) list;
+}
+
 
 
 

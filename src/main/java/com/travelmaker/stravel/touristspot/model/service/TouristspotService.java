@@ -18,4 +18,9 @@ public interface TouristspotService {
 	int insertTourReview(TouristspotReviewsVo tsrVo);
 	int selectTourReviewNo();
 	ArrayList<TouristspotReviewsVo> selectTouristspotReviews(int tno);
+	ArrayList<TouristspotVo> selectLandmarkTop();
+	ArrayList<TouristspotVo> selectHistoricTop();
+	ArrayList<TouristspotVo> selectMuseumTop();
+	ArrayList<TouristspotVo> selectShoppingTop();
+	ArrayList<TouristspotVo> selectTouristspotCategoryList(String cate);
 }

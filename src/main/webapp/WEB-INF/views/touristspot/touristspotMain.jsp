@@ -29,22 +29,22 @@
                         <h4 class="widget_title"><a href="touristspot.do" class="d-flex">관광지</a></h4>
                         <ul class="list cat-list">
                             <li>
-                                <a href="#" class="d-flex">
+                                <a href="touristspotCategory.do?cate=A001" class="d-flex">
                                     <p>랜드마크</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="d-flex">
+                                <a href="touristspotCategory.do?cate=A002" class="d-flex">
                                     <p>유적지</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="d-flex">
+                                <a href="touristspotCategory.do?cate=A003" class="d-flex">
                                     <p>박물관</p>
                                 </a>
                             </li>
                               <li>
-                                <a href="#" class="d-flex">
+                                <a href="touristspotCategory.do?cate=A004" class="d-flex">
                                     <p>쇼핑</p>
                                 </a>
                             </li>
@@ -56,12 +56,60 @@
       <!-- 작업 작성시작 -->
       <h3>랜드마크</h3>
 	<div class="landmarkcategory">
-		<c:forEach items = "${touristspot }" var = "ts">
+		<c:forEach items = "${landmark }" var = "lm">
 			<div class="landmarklist">
-				<a href = "touristspotDetail.do?tno=${ts.touristspot_no }">
-				<img src="${ pageContext.request.contextPath }/resources/files/touristspotImages/${ts.rename_thumnail}" alt = "${ts.rename_thumnail}" width = "150" height = "150"></a>
+				<a href = "touristspotDetail.do?tno=${lm.touristspot_no }">
+				<img src="${ pageContext.request.contextPath }/resources/files/touristspotImages/${lm.rename_thumnail}" alt = "${lm.rename_thumnail}" width = "150" height = "150"></a>
 					<div>
-						<span>${ts.touristspot_name }</span>
+						<span>${lm.touristspot_name }</span>
+					</div>
+			</div>
+			
+		</c:forEach>
+	</div>
+      <!-- 작성끝 -->
+	<hr>
+      <!-- 작업 작성시작 -->
+      <h3>유적지</h3>
+	<div class="landmarkcategory">
+		<c:forEach items = "${historic }" var = "hi">
+			<div class="landmarklist">
+				<a href = "touristspotDetail.do?tno=${hi.touristspot_no }">
+				<img src="${ pageContext.request.contextPath }/resources/files/touristspotImages/${hi.rename_thumnail}" alt = "${hi.rename_thumnail}" width = "150" height = "150"></a>
+					<div>
+						<span>${hi.touristspot_name }</span>
+					</div>
+			</div>
+			
+		</c:forEach>
+	</div>
+      <!-- 작성끝 -->
+	<hr>
+      <!-- 작업 작성시작 -->
+      <h3>박물관</h3>
+	<div class="landmarkcategory">
+		<c:forEach items = "${museum }" var = "mu">
+			<div class="landmarklist">
+				<a href = "touristspotDetail.do?tno=${mu.touristspot_no }">
+				<img src="${ pageContext.request.contextPath }/resources/files/touristspotImages/${mu.rename_thumnail}" alt = "${mu.rename_thumnail}" width = "150" height = "150"></a>
+					<div>
+						<span>${mu.touristspot_name }</span>
+					</div>
+			</div>
+			
+		</c:forEach>
+	</div>
+      <!-- 작성끝 -->
+	<hr>
+      <!-- 작업 작성시작 -->
+      <h3>쇼핑</h3>
+	<div class="landmarkcategory">
+		<c:forEach items = "${shopping }" var = "sh">
+			<div class="landmarklist">
+				<a href = "touristspotDetail.do?tno=${sh.touristspot_no }">
+				<img src="${ pageContext.request.contextPath }/resources/files/touristspotImages/${sh.rename_thumnail}" alt = "${sh.rename_thumnail}" width = "150" height = "150"></a>
+					<div>
+						<span>${sh.touristspot_name }</span>
 					</div>
 			</div>
 			

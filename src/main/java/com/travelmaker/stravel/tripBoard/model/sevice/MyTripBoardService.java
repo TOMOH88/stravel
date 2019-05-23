@@ -30,6 +30,8 @@ public interface MyTripBoardService {
 
 	int selectBoardNo();
 
+	ArrayList<MyTripBoard> selectList(String board_title);
+
 	
 
 	

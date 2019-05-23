@@ -90,6 +90,21 @@
 	<select id="selectTouristspotReviews" parameterType="_int" resultMap="resultTouristspotReviewsVo">
 		select * from tb_touristspotreviews where TOURISTSPOT_NO = #{touristspot_no} <!-- order by review_no desc -->
 	</select>
+	<select id="selectLandmarkTop" resultMap="resultTouristspotVo">
+	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = 'A001' and 6 > ROWNUM order by touristspot_date desc
+	</select>
+	<select id="selectHistoricTop" resultMap="resultTouristspotVo">
+	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = 'A002' order by touristspot_date desc
+	</select>
+	<select id="selectMuseumTop" resultMap="resultTouristspotVo">
+	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = 'A003' order by touristspot_date desc
+	</select>
+	<select id="selectShoppingTop" resultMap="resultTouristspotVo">
+	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = 'A004' order by touristspot_date desc
+	</select>
+	<select id="selectTouristspotCategoryList" parameterType="String" resultMap="resultTouristspotVo">
+	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = #{category} order by touristspot_date desc 
+	</select>
 <!-- 	
 	<insert id="qnaInsert" parameterType="QnaVo">
 		insert into tb_qna(QNA_NO,QNA_TITLE,QNA_CONTENT,QNA_WRITER,

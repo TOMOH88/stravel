@@ -4,10 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,7 @@ import com.travelmaker.stravel.common.UUIDUtil;
 import com.travelmaker.stravel.tripBoard.model.sevice.MyTripBoardService;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoard;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage;
+import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardLike;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview;
 
 
@@ -49,6 +53,57 @@ public class MyTripBoardController {
 			
 			return mv;
 		}
+		@RequestMapping(value = "selectlist.do", method = RequestMethod.POST)
+		public ModelAndView selectList(ModelAndView mv, @RequestParam (name="board_title") String board_title) {
+			ArrayList<MyTripBoard> boardList = myService.selectList(board_title);
+			mv.addObject("list", boardList);
+			
+			System.out.println(boardList);
+			mv.setViewName("MyTripBoard/tripBoardList");
+			
+			return mv;
+		}
+		
+		/*@RequestMapping(value = "/stravel/like.do", method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
+		public String like(int board_no, HttpSession session) {
+			int member_no = (Integer)session.getAttribute("member_no");
+			JSONObject obj = new JSONObject();
+			
+			ArrayList<String> msgs = new ArrayList<String>();
+			HashMap<String,Object> hashMap = new HashMap<String, Object>();
+			hashMap.put("board_no", board_no);
+			hashMap.put("member_no", member_no);
+			MyTripBoardLike likeVo = liketoProc.read(hashMap);
+			
+			MyTripBoard board = boardProc.read(board_no);
+			int like_cnt = board.getLike_cnt();
+			int like_check = 0;
+			like_check = likeVo.getLike_check();
+			
+			if(liketoProc.countbyLike(hashMap) ==0) {
+				liketoProc.create(hashMap);
+			}
+			
+			if(like_check ==0) {
+				msgs.add("좋아요!");
+				liketoProc.like_check(hashMap);
+				like_check++;
+				like_cnt++;
+				boardProc.like_cnt_up(board_no);
+			}else {
+				msgs.add("좋아요 취소");
+				liketoProc.like_check_cancel(hashMap);
+				like_check--;
+				like_cnt--;
+				boardProc.like_cnt_down(board_no);
+			}
+			obj.put("board_no", likeVo.getBoard_no());
+			obj.put("like_check", like_check);
+			obj.put("like_cnt", like_cnt);
+			obj.put("msg", msgs);
+			
+			return obj.toJSONString();
+		}*/
 		@RequestMapping(value = "insertnotice.do", method = RequestMethod.POST)
 		public String insertNotice(MyTripBoard board, MultipartHttpServletRequest imagerequest, HttpServletRequest request) {
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/img/myTripBoard");
