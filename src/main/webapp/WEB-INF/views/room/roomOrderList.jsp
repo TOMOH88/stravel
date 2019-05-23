@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,9 +131,9 @@ ul li a:hover {
 </style>
 </head>
 <body>
-<div id="headerdiv" style="border: 1px solid black; width:100%; height:100px;">
-	header
-</div>
+<section class="section-margin">
+	<c:import url="../common/header.jsp" />
+    </section>
 <div style="width:100%; display:inline-block;">
 	<div class="ownerside" style=" width:20%; height:100%;  position: sticky; top: 150px;"><!-- ownerside -->
 		<div style="float: left; border: 1px solid #cfcfcf; width: 260px; bottom: 150; margin: 20px;">
@@ -168,18 +169,18 @@ ul li a:hover {
 								<td style="width: 110px;">예약현황</td>
 								<td style="width: 100px;">입실여부</td>
 							</tr>
-						<%-- 	<c:forEach items="${list }" var="reservation">
+						<c:forEach items="${orderList }" var="orderList">
 							<tr>
-								<td>${reservation.roomName }</td>
-								<td>${reservation. }</td>
-								<td>2명</td>
-								<td>2019-04-22</td>
-								<td>2019-05-05</td>
-								<td>2019-05-06</td>
-								<td>결제완료</td>
-								<td><a class="rsvck" value="1">입실확인</a></td>
+								<td>${orderList.room_name }</td>
+								<td>${orderList.user_name }</td>
+								<td>${orderList.member }</td>
+								<td>${orderList.rsv_date }</td>
+								<td>${orderList.check_in }</td>
+								<td>${orderList.check_out }</td>
+								<td>${orderList.rsv_status }</td>
+								<td><a class="rsvck" value="${orderList.rsv_no }">입실확인</a></td>
 							</tr>
-							</c:forEach> --%>
+							</c:forEach>
 							
 							<!-- <tr>
 								<td>201호</td>

@@ -22,6 +22,7 @@
 
 
 
+
 <style type="text/css">
 
 @media (max-width:1405px){
@@ -189,7 +190,7 @@
 
 .selectroom, .selectcount {
 	width: 230px;
-	height: 30px;
+	height: 20px;
 	margin: 5px;
 	border:1px solid #cfcfcf;
 }
@@ -263,7 +264,7 @@
 								<div class="swiper-wrapper">
 								<c:forEach items="${roomImgList }" var="roomImgList">
 									<c:if test="${roomList.room_no eq roomImgList.room_no }"> 
-									<div class="swiper-slide room"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/1-1.PNG"></div>
+										<div class="swiper-slide room"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/roomImg/${roomImgList.room_img}"></div>
 									</c:if>
 								</c:forEach> 
 									
@@ -286,51 +287,30 @@
 				<div style="height:50px; width:1032px;">
 					<!-- <div style="float:left" id="titlediv">&nbsp;&nbsp;후기 400개</div>
 					<div style="float:left"><br>&nbsp;&nbsp;별점</div> -->
-					<span id="titlediv">후기</span><span style="font-size:medium;">400개</span><!-- 별점 -->
+					<span id="titlediv">후기</span><span style="font-size:medium;">${fn:length(reviewList) }</span><!-- 별점 -->
 				</div>
 				<br>
+				<c:forEach items="${reviewList }" var="reviewList">
 				<div style="height:150px;margin:5px; border-bottom:1px solid #e4e4e4;"><!-- 후기하나 -->
 					<div style="width:1032px;height:50px;"><!-- 사진/이름/별점 -->
-						<div style="float:left; margin-right:20opx;"><img id="reviewimg" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"></div><!-- 사진 -->
+						<div style="float:left; margin-right:20opx;">
+						<c:if test="${!empty reviewList.user_picture }">
+							<img id="reviewimg" src="${pageContext.request.contextPath }/resources/files/${reviewList.user_picture}">
+						</c:if>
+						<c:if test="${empty reviewList.user_picture }">
+							<img id="reviewimg" src="${pageContext.request.contextPath }/resources/files/ompimg/사용자이미지.png">
+						</c:if>
+						</div><!-- 사진 -->
 						<div style="float:left;">
-							<div>이름</div><!-- 이름 -->
-							<div>별점</div><!-- 별점 -->
+							<div>${reviewList.user_name }</div><!-- 이름 -->
+							<div>${reviewList.property_review_like }</div><!-- 별점 -->
 						</div>
 					</div>
 					<div style="margin:5px;">
-						통유리로 보는 바다풍경이 넘 멋지고 좋았어요 애월특성상 밤에 <br>
-						편의 시설이 조금 불편하긴 했지만 일찍 도착했는데 잘 도와주셔 <Br>
-						편히 지내다 왔어요 또 머무르고 싶어요
+						${reviewList.property_review_content } 
 					</div>
 				</div>
-				<div style="height:150px;margin:5px; border-bottom:1px solid #e4e4e4;"><!-- 후기하나 -->
-					<div style="height:50px;"><!-- 사진/이름/별점 -->
-						<div style="float:left; margin-right:20opx;"><img id="reviewimg" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"></div><!-- 사진 -->
-						<div style="float:left;">
-							<div>이름</div><!-- 이름 -->
-							<div>별점</div><!-- 별점 -->
-						</div>
-					</div>
-					<div style="margin:5px;">
-						통유리로 보는 바다풍경이 넘 멋지고 좋았어요 애월특성상 밤에 <br>
-						편의 시설이 조금 불편하긴 했지만 일찍 도착했는데 잘 도와주셔 <Br>
-						편히 지내다 왔어요 또 머무르고 싶어요
-					</div>
-				</div>
-				<div style="height:150px;margin:5px; border-bottom:1px solid #e4e4e4;"><!-- 후기하나 -->
-					<div style="height:50px;"><!-- 사진/이름/별점 -->
-						<div style="float:left; margin-right:20opx;"><img id="reviewimg" src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG"></div><!-- 사진 -->
-						<div style="float:left;">
-							<div>이름</div><!-- 이름 -->
-							<div>별점</div><!-- 별점 -->
-						</div>
-					</div>
-					<div style="margin:5px;">
-						통유리로 보는 바다풍경이 넘 멋지고 좋았어요 애월특성상 밤에 <br>
-						편의 시설이 조금 불편하긴 했지만 일찍 도착했는데 잘 도와주셔 <Br>
-						편히 지내다 왔어요 또 머무르고 싶어요
-					</div>
-				</div>
+				</c:forEach>
 			</div><!-- 리뷰 -->
 			<BR>
 			<HR>
@@ -347,13 +327,14 @@
 				</div> 
 				<div style="width:682px; height:350px; margin:20px;"><!-- 구글맵영역 -->
 					<div id="map"></div>
-				</div>
+				</div> 
 			</div><!-- 지역정보 -->
 			<br>
 		</div><!-- 메인정보 -->
 		<div id="roomsidebar" style=" width:260px; border:1px solid #e4e4e4; float:right; position:sticky; top:100px; margin:10px; padding:10px; "><!-- 오른쪽 사이드바 -->
 			<div style="width:260px;height:40px;"><!-- 사이드바 헤드 -->
-				<div><span  id="sideprice" style="color:black;font-weight:bold;">₩85,000</span><span style="font-size:x-small;color:black;font-weight:bold;">/박</span></div>
+				<div><span  id="sideprice" style="color:black;font-weight:bold;"></span>
+				</div>
 				<div style="font-size:x-small;color:black;font-weight:bold;">별점</div>
 			</div>
 			<div style="margin-left:10px;margin-right:10px;"><hr></div>
@@ -361,12 +342,20 @@
 					<form action="" method="post">
 						<div><!-- 객실선택드롭다운 -->
 						<div style="font-size:xx-small;color:black;font-weight:bold;">옵션</div>
-							<div style="height:40px;">
+							<div style="height:60px;">
 								<select class="selectroom" name="roomno" required>
-									<option>101</option>
-									<option>102</option>
-									<option>201</option>
-									<option>202</option>
+									<option>필수선택</option>
+									<c:forEach items="${roomList}" var="roomList">
+									<option value="${roomList.room_name }">${roomList.room_name }</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						<div><!-- 인원선택 ajax -->		
+						<div style="font-size:xx-small;color:black; font-weight:bold;">인원</div>
+							<div style="height:60px;">
+								<select class="selectcount" name="personconut" required>
+									
 								</select>
 							</div>
 						</div>
@@ -376,17 +365,6 @@
 								<input type="text" name="checkin"id="start" class="datepicker" placeholder="CHECK IN" autocomplete="off">
 								<span>&nbsp;→&nbsp;</span>
 								<input type="text"name="checkout" id="end" class="datepicker"  placeholder="CHECK OUT" autocomplete="off">
-							</div>
-						</div>
-						<div><!-- 인원선택 ajax -->		
-						<div style="font-size:xx-small;color:black; font-weight:bold;">옵션</div>
-							<div style="height:30px;">
-								<select class="selectcount" name="personconut" required>
-									<option>2 명</option>
-									<option>3 명</option>
-									<option>4 명</option>
-									<option>5 명</option>
-								</select>
 							</div>
 						</div>
 						<Br>
@@ -407,7 +385,7 @@
  			    <div class="swiper-wrapper">
   			  	  <div class="swiper-slide travelslide">
   			   			<div>
-  			   				<img src="${pageContext.request.contextPath }/resources/files/메인사진1.PNG">
+  			   				<img src="${pageContext.request.contextPath }/resources/files/ompimg/사용자이미지.png">
    			   				<div class="swiper-slide-text" style="text-align:left;">
    			   					<div style="font-size:x-small;">카테고리</div>
    		    					<div style="font-size:small; font-weight:bold;">관광지명</div>
@@ -458,12 +436,20 @@
 					<form action="" method="post">
 						<div><!-- 객실선택드롭다운 -->
 						<div style="font-size:xx-small;color:black;font-weight:bold;">옵션</div>
-							<div style="height:40px;">
+							<div style="height:60px;">
 								<select class="selectroom" name="roomno" required>
-									<option>101</option>
-									<option>102</option>
-									<option>201</option>
-									<option>202</option>
+									<option selected disabled hidden>필수선택</option>
+									<c:forEach items="${roomList}" var="roomList">
+									<option>${roomList.room_name }</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						<div><!-- 인원선택 ajax -->		
+						<div style="font-size:xx-small;color:black; font-weight:bold;">옵션</div>
+							<div style="height:60px;">
+								<select class="selectcount" name="personconut" required>
+									
 								</select>
 							</div>
 						</div>
@@ -473,17 +459,6 @@
 								<input type="text" name="checkin"id="start" placeholder="CHECK IN" autocomplete="off">
 								<span>&nbsp;→&nbsp;</span>
 								<input type="text"name="checkout" id="end"  placeholder="CHECK OUT" autocomplete="off">
-							</div>
-						</div>
-						<div><!-- 인원선택 ajax -->		
-						<div style="font-size:xx-small;color:black; font-weight:bold;">옵션</div>
-							<div style="height:30px;">
-								<select class="selectcount" name="personconut" required>
-									<option>2 명</option>
-									<option>3 명</option>
-									<option>4 명</option>
-									<option>5 명</option>
-								</select>
 							</div>
 						</div>
 						<Br>
@@ -502,7 +477,7 @@
 		<div>
 			<div style="font-size: 2.5em; margin: 10px; float: right; cursor: pointer;"onclick="cmainmodal()">X</div>
 		</div>
-		<!-- <div style="width: 1120px; height: 600px; margin: 150px auto;">
+	<!-- <div style="width: 1120px; height: 600px; margin: 150px auto;">
 		
 			<div class="swiper-container gallery-top modalcon">
 				<div class="swiper-wrapper">
@@ -539,6 +514,10 @@
 			</div>
 		</div> -->
 	</div>
+
+
+</body>
+
  <script src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
  <script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
  <script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
@@ -548,17 +527,18 @@
 <script src="${pageContext.request.contextPath }/resources/js/main.js"></script> 
 <script src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
 <!-- 달력 -->
-<script src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.js"></script>
+<%-- <script src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.js"></script> --%>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-ui.min.js"></script>
 
 
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJoPfOWTR_yPSub9u9VPKGGVauCN0RoAg&callback=initMap"
-    async defer></script><!-- 구글맵 -->
-
-</body>
-</html>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJoPfOWTR_yPSub9u9VPKGGVauCN0RoAg&callback=initMap"
+    async defer></script>
 <script type="text/javascript">
+
+
+
+
 	/* 메인이미지 클릭시 사업자대표이미지 슬라이더 실행할 모달창 만들함수*/
 	function mainmodal(){
 		var mainmodal = document.getElementById("mainmodal");
@@ -582,15 +562,32 @@
 	};
 	
 	
-	
-	
+	/* var placeSearch, autocomplete, lat, lng;
+	function initAutocomplete() {
+	  // Create the autocomplete object, restricting the search to geographical
+	  // location types.
+	  autocomplete = new google.maps.places.Autocomplete(
+	                                      "${owner.owner_address}",{types: ['geocode']});
+	  // When the user selects an address from the dropdown, populate the address
+	  // fields in the form.
+	  autocomplete.addListener('place_changed', fillInAddress);
+	}
+	function fillInAddress() {
+	  // Get the place details from the autocomplete object.
+	  var place = autocomplete.getPlace();
+	   lat =place.geometry.location.lat();
+	   lng =place.geometry.location.lng();
+	   console.log(lat);
+	   console.log(lng);
+	} */
+
 	var map;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -34.397, lng: 150.644},
         zoom: 8
       });
-    }
+    } 
     
     var swiper = new Swiper('.travel', {
         slidesPerView: 3,
@@ -637,7 +634,7 @@
 	                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
 	                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
 	                ,minDate: "+0D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-
+					
 	                  
 
 		});
@@ -648,7 +645,75 @@
 	
 		 
 	});
+ 	$(function(){
+		$(".selectroom").change(function(){
+			var roomname = this.value;
+			var ownerno = ${owner.owner_no};
+			var roomno ;
+			$.ajax({
+				url:"selectRsvInfo.do",
+				data: {room_name: roomname,
+						owner_no: ownerno},
+				type:"post",
+				dataType:"json",
+				success: function(data){
+					
+					var jsonStr = JSON.stringify(data);
+					var json = JSON.parse(jsonStr);
+					roomno = json.room_no;
+
+					var option = "<option selected disabled hidden>필수선택</option>";
+					var price
+					for(var i = 2; i < json.max_no+1;i++){
+						option += "<option>"+i +"</option>";
+					}
+					
+					$(".selectcount").html($(".selectcount").text() + option);
+					$.ajax({
+						url: "selectRsvDate.do",
+						data: {room_no:roomno},
+						type:"post",
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+						 	var jsonStr = JSON.stringify(data);
+							var json = JSON.parse(jsonStr);
+							console.log(roomno);
+							var disableDays = [json.length];
+							for(var i =0; i<json.length; i++){
+								disableDays.push(json.check_in);
+							}
+							console.log(disableDays);
+							$(".datepicker").datepicker({
+	
+								beforShowDay : disableAllTheseDays
+							})
+							function disableAllTheseDays(data){
+								var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+								for ( i = 0; i < disabledDays.length; i++){
+									if($.inArray(y + '-' + (m+1) + '-' + d,disabledDays) != -1){
+										return [false];
+									}
+								}
+								return [true];
+							} 
+							
+						},error: function(jqXHR, textStatus, errorThrown){
+							console.log("error : " + jqXHR + ", " + 
+									textStatus + ", " + errorThrown);
+							
+						}
+					})
+				}	
+			})
+			
+			
+		})
+	}) 
+
 
 
   
 </script>
+</html>
+

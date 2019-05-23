@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +20,7 @@ import com.travelmaker.stravel.common.UUIDUtil;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
 import com.travelmaker.stravel.owner.model.vo.OwnerReview;
+import com.travelmaker.stravel.reservation.model.vo.Reservation;
 import com.travelmaker.stravel.room.model.service.RoomService;
 import com.travelmaker.stravel.room.model.vo.Room;
 import com.travelmaker.stravel.room.model.vo.RoomImg;
@@ -33,7 +35,12 @@ public class RoomController {
 	public String ohWorkList() {
 		return "room/ohWorkList";
 	}
-	
+	@RequestMapping(value="selectRsvInfo.do",method=RequestMethod.POST)
+	public @ResponseBody Room selectRsvInfo(Room room) {
+		Room result = rs.selectRsvInfo(room);
+		System.out.println("result" + result);
+	return	 result;
+	}
 	@RequestMapping("roomDetail.do")
 	public ModelAndView roomDetailView(ModelAndView mv , @RequestParam(name = "owner_no" ) int owner_no) {
 		//사업자정보
@@ -45,13 +52,10 @@ public class RoomController {
 		//사업자 방정보
 		ArrayList<Room> roomList = rs.selectRoom(owner_no);
 		mv.addObject("roomList",roomList);
-		ArrayList<RoomImg> roomImgList = new ArrayList<>();
+		ArrayList<RoomImg> roomImgList = rs.selectRoomImg(owner_no);
+		mv.addObject("roomImgList",roomImgList);
 		
-		for(int i =0; i<roomList.size();i++) {
-			roomImgList = rs.selectRoomImg(roomList.get(i).getRoom_no());
-			mv.addObject("roomImgList",roomImgList);
-		}
-		
+		//후기정보
 		ArrayList<OwnerReview> reviewList = rs.selectOwnerReview(owner_no);
 		mv.addObject("reviewList",reviewList);
 		
@@ -73,9 +77,11 @@ public class RoomController {
 	}
 	
 	@RequestMapping("orderList.do")
-	public String orderList() {
-		
-		return "room/roomOrderList";
+	public ModelAndView orderList(ModelAndView mv, @RequestParam(name="owner_no") int owner_no) {
+		ArrayList<Reservation> list = rs.selectOrderList(owner_no);
+		mv.addObject("orderList",list);
+		mv.setViewName("room/roomOrderList");
+		return mv;
 	}
 	
 	@RequestMapping("insertRoom.do")
@@ -99,7 +105,7 @@ public class RoomController {
 			
 			FileUtil.upLoadFile(fileList.get(i), originalFileName, savePath, renameFileName);
 			
-			roomImgList.add(new RoomImg(i+1,renameFileName,room.getRoom_no()));
+			roomImgList.add(new RoomImg(i+1,renameFileName,room.getRoom_no(),1));
 			int result2 = rs.insertRoomImg(roomImgList.get(i));
 		}
 
@@ -107,11 +113,27 @@ public class RoomController {
 		return "redirect:insertRoom.do";
 	}
 	
-	@RequestMapping("updateRoom.do")
-	public String updateRoom() {
-		return "room/updateRoom";
+	@RequestMapping("updateRoomList.do")
+	public ModelAndView updateRoom(ModelAndView mv,@RequestParam(name="owner_no") int owner_no) {
+		ArrayList<Room> roomList = rs.selectRoom(owner_no);
+		mv.addObject("roomList",roomList);
+		ArrayList<RoomImg> roomImgList = rs.selectRoomImg(owner_no);
+		mv.addObject("roomImgList",roomImgList);
+		
+		mv.setViewName("room/updateRoomList");
+		return mv;
 	}
-	
+	@RequestMapping("updateRoomDetail.do")
+	public ModelAndView selectRoom(ModelAndView mv,@RequestParam(name="room_no") int room_no) {
+		
+		Room room = rs.selectUpRoom(room_no);
+		mv.addObject("room",room);
+		ArrayList<RoomImg> list = rs.selectUpRoomImg(room_no);
+		mv.addObject("roomImg",list);
+		mv.setViewName("room/updateRoom");
+		
+		return mv;
+	}
 	@RequestMapping("updateOwner.do")
 	public String updateOwner() {
 		return "room/updateOwner";
