@@ -50,8 +50,8 @@
     <select id="selectPaging" parameterType="pagingVo" resultType="NoticeVo">
        SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM 
        (SELECT * FROM TB_NOTICE 
-		<if test="items != null and items != '' ">
-   		where notice_title like '%' ||  #{items} || '%'
+		<if test="searchCategory != null and searchCategory !=''">
+   		where ${searchCategory} like '%'||#{items}||'%'
 		</if>
        	ORDER BY NOTICE_NO DESC ) P )
        WHERE RNUM BETWEEN ${start} AND ${last}
@@ -61,8 +61,7 @@
         SELECT COUNT(1) FROM TB_NOTICE  
     </select>
 	<select id="selectTotalPagingSearch" parameterType="pagingVo" resultType="_int">
-        SELECT COUNT(1) FROM TB_NOTICE 
-        where notice_title like '%' || #{items} || '%'
+        SELECT COUNT(1) FROM TB_NOTICE where ${searchCategory} like '%'||#{items}||'%'
     </select>
 	
 	

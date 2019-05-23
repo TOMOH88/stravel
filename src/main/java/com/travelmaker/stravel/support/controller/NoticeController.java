@@ -1,10 +1,6 @@
 package com.travelmaker.stravel.support.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,22 +24,6 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	//공지사항 작업공간
-/*	@RequestMapping("notice.do")
-	public ModelAndView movenoticePage(ModelAndView mv) {
-		ArrayList<NoticeVo> list = noticeService.selectNoticeList();
-		mv.addObject("noticeList", list);
-		mv.setViewName("support/notice/noticeList");
-		return mv;
-
-	}*/
-	
-/*	@RequestMapping("adminnotice.do")
-	public ModelAndView moveAdminNoticePage(ModelAndView mv) {
-		ArrayList<NoticeVo> list = noticeService.selectNoticeList();
-		mv.addObject("noticeList", list);
-		mv.setViewName("support/notice/anoticeList");
-		return mv;
-	}*/
 	
 	@RequestMapping("noticewrite.do")
 	public String moveAdminNoticeWritePage() {
@@ -73,14 +53,36 @@ public class NoticeController {
 	@RequestMapping(value="adminnotice.do", method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView paging(ModelAndView mv, PagingVo paging){
 			System.out.println(paging);
-	        ArrayList<NoticeVo> lists = noticeService.selectPaging(paging);
-	        paging.setTotal(noticeService.selectTotalPaging());
+			if(paging.getSearchCategory() == null && paging.getItems() == null || paging.getSearchCategory() == "" && paging.getItems() == "") {
+				ArrayList<NoticeVo> lists = noticeService.selectPaging(paging);
+				paging.setTotal(noticeService.selectTotalPaging());	
+				System.out.println("모든 게시글 "+lists.size()+"="+paging.getTotal());
+				mv.addObject("noticeList", lists);
+		        mv.addObject("p", paging);
+		        mv.setViewName("support/notice/anoticeList");
+			}else{
+				ArrayList<NoticeVo> lists = noticeService.selectPaging(paging);
+				paging.setTotal(noticeService.selectTotalPagingSearch(paging));	
+				System.out.println("검색된 게시글"+lists.size()+"="+paging.getTotal());
+				mv.addObject("noticeList", lists);
+		        mv.addObject("p", paging);
+		        mv.setViewName("support/notice/anoticeList");
+			}
 	        System.out.println(paging.getTotal());
-	        mv.addObject("noticeList", lists);
-	        mv.addObject("p", paging);
-	        mv.setViewName("support/notice/anoticeList");
 	        return mv;
 	}
+	
+	@RequestMapping(value="notice.do", method={RequestMethod.POST,RequestMethod.GET})	
+	public ModelAndView movenoticePage(ModelAndView mv,PagingVo paging) {
+		ArrayList<NoticeVo> lists = noticeService.selectPaging(paging);
+		paging.setTotal(noticeService.selectTotalPaging());	
+		mv.addObject("noticeList", lists);
+        mv.addObject("p", paging);
+		mv.setViewName("support/notice/noticeList");
+		return mv;
+
+	}
+	
     /*@RequestMapping(value="list.do", method=RequestMethod.GET)
     public String list(String num){
       //  logger.info("list : " + num);

@@ -11,7 +11,7 @@ import com.travelmaker.stravel.support.model.vo.NoticeVo;
 
 @Repository("NoticeDao")
 public class NoticeDao {
-	private final String NM="supportMapper";
+	private final String NM="supportMapper.";
 
 	public int insertNotice(SqlSessionTemplate mybatisSession, NoticeVo notice) {
 		return mybatisSession.insert("supportMapper.insertNotice",notice);
@@ -23,12 +23,16 @@ public class NoticeDao {
 	}
 
 	public ArrayList<NoticeVo> selectPaging(SqlSessionTemplate mybatisSession, PagingVo paging) {
-		List<NoticeVo> list = mybatisSession.selectList(NM+".selectPaging", paging);
+		List<NoticeVo> list = mybatisSession.selectList(NM+"selectPaging", paging);
 		return (ArrayList<NoticeVo>)list;
 	}
 
 	public int selectTotalPaging(SqlSessionTemplate mybatisSession) {
-		return mybatisSession.selectOne(NM+".selectTotalPaging");
+		return mybatisSession.selectOne(NM+"selectTotalPaging");
+	}
+
+	public int selectTotalPagingSearch(SqlSessionTemplate mybatisSession, PagingVo paging) {
+		return mybatisSession.selectOne(NM+"selectTotalPagingSearch",paging);
 	}
 
 }
