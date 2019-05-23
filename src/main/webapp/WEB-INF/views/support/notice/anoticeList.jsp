@@ -8,9 +8,15 @@
 <title>stravel</title>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/paging.js"></script>
-<%-- <link href="${pageContext.request.contextPath }/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
-<link href="${pageContext.request.contextPath }/resources/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath }/resources/assets/css/animate.min.css" rel="stylesheet"/> --%>
+<script type="text/javascript">
+$(function() {
+	'<c:if test="${!empty p.searchCategory}">'
+	var category = '${p.searchCategory}';
+	$("#searchCategory").val(category).prop("selected", true);
+	'</c:if>'
+});
+
+</script>
 </head>
 <body>
 <c:import url="../../common/adminHeader.jsp"/>
@@ -80,23 +86,21 @@
 					            <input type='hidden' name='index' id='index' value='${p.index}'>
 					            <input type='hidden' name='pageStartNum' id='pageStartNum' value='${p.pageStartNum}'>
 					            <input type='hidden' name='listCnt' id='listCnt' value='${p.listCnt}'>
-					            
-					            <select name="SearchCategory" class="btn btn-primary btn-sm">
-									<option value="">선택하세요</option>
-									<option name="SearchCategory" value="userid">아이디</option>
-									<option name="SearchCategory" value="title">제목</option>
-									<option name="SearchCategory" value="content">내용</option>
+					            <div class="row">
+					            <div class="col-xl-6" style="align:center;">
+					            <select name="searchCategory" id="searchCategory" class="btn btn-primary btn-sm">
+									<option name="searchCategory" id="searchCategory" value="">선택하세요</option>
+									<option name="searchCategory" id="searchCategory" value="notice_writer">아이디</option>
+									<option name="searchCategory" id="searchCategory" value="notice_title">제목</option>
+									<option name="searchCategory" id="searchCategory" value="notice_content">내용</option>
 								</select>
+								
 								<input type="text" name="items" class="btn btn-primary btn-sm" placeholder="Search" value="${p.items }" class="form-control" >
 								<input type="button" class="btn btn-primary btn-sm" value="검색" onclick="frmPaging(); return false;">
+								</div>
+								</div>
 					        </form>
-
-							<!--<div style="text-align:center;">
-                                	<button class="btn btn-default btn-sm" onclick="location.href='noticewrite.do'">글등록</button>
-                                	</div>
-                            </div> -->
-    	</div>
-
+							</div>
 </div>
 </div>
 </div>

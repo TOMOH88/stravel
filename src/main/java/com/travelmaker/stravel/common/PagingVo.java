@@ -12,7 +12,7 @@ public class PagingVo implements Serializable{
 	private int pageStartNum;
 	private int listCnt;
 	private int total;
-	private String SearchCategory;
+	private String searchCategory;
 	private String items;
 
 	
@@ -84,10 +84,10 @@ public class PagingVo implements Serializable{
 	}
 	
 	public String getSearchCategory() {
-		return SearchCategory;
+		return searchCategory;
 	}
 	public void setSearchCategory(String searchCategory) {
-		SearchCategory = searchCategory;
+		this.searchCategory = searchCategory;
 	}
 	public String getItems() {
 		return items;
@@ -101,7 +101,7 @@ public class PagingVo implements Serializable{
 	@Override
 	public String toString() {
 		return "PagingVo [pageCnt=" + pageCnt + ", index=" + index + ", pageStartNum=" + pageStartNum + ", listCnt="
-				+ listCnt + ", total=" + total + ", SearchCategory=" + SearchCategory + ", items=" + items + "]";
+				+ listCnt + ", total=" + total + ", searchCategory=" + searchCategory + ", items=" + items + "]";
 	}
     
 	

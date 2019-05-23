@@ -32,5 +32,9 @@ public class NoticeServiceImpl implements NoticeService{
 	public int selectTotalPaging() {
 		return noticeDao.selectTotalPaging(mybatisSession);
 	}
+	@Override
+	public int selectTotalPagingSearch(PagingVo paging) {
+		return noticeDao.selectTotalPagingSearch(mybatisSession,paging);
+	}
 
 }

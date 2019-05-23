@@ -15,4 +15,6 @@ public interface NoticeService {
 
 	int selectTotalPaging();
 
+	int selectTotalPagingSearch(PagingVo paging);
+
 }
