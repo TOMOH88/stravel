@@ -156,7 +156,7 @@ public class RestaurantController {
 	public ModelAndView moveInsertRestaurant(ModelAndView mv) {
 		ArrayList<RestaurantCategory> categoryList = rescateService.categoryList();
 		mv.addObject("list", categoryList);
-		
+		System.out.println(categoryList);
 		mv.setViewName("Restaurant/insertRestaurant");
 		return mv;
 	}

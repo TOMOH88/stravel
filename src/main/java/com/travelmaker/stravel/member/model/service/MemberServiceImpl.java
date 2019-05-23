@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.member.model.service;
+﻿package com.travelmaker.stravel.member.model.service;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.travelmaker.stravel.memeber.model.dao.MemberDao;
-import com.travelmaker.stravel.memeber.model.vo.Member;
+import com.travelmaker.stravel.member.model.dao.MemberDao;
+import com.travelmaker.stravel.member.model.vo.Member;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService{

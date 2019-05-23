@@ -1,6 +1,7 @@
-package com.travelmaker.stravel.support.controller;
+﻿package com.travelmaker.stravel.support.controller;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 

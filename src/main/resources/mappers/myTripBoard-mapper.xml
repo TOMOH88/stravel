@@ -31,6 +31,13 @@
 		<result property = "answer_date" column = "answer_date"/>
 	</resultMap>
 	
+	<resultMap id = "resultTripBoardLike" type = "MyTripBoardLike">
+		<result property = "like_no" column = "like_no"/>
+		<result property = "board_no" column = "board_no"/>
+		<result property = "user_no" column = "user_no"/>
+		<result property = "like_check" column = "like_check"/>
+	</resultMap>
+	
 	<select id="selectBoardList" resultMap = "resultTripBoard">
 		select * from show_schedule where board_deletestatus = 'N'
 	</select>
@@ -71,5 +78,16 @@
 	</update>
 	<select id="selectImageAll" resultMap="resultTripBoardImage">
 		select * from show_schedule_image where board_no = #{board_no}
+	</select>
+	<update id = "like_check" parameterType="HashMap">
+		update show_schedule_like set like_check = like_check+1 where member_no = #{member_no} and board_no = #{board_no}
+	</update>
+	
+	<update id="like_check_cancel" parameterType="HashMap">
+		update show_schedule_like set like_check = 0 where member_no = #{member_no} and board_no = #{board_no}
+	</update>
+	
+	<select id="selectList" resultMap="resultTripBoard">
+		select * from show_schedule where board_title like '%'||#{board_title}||'%'
 	</select>
 </mapper>

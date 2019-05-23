@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.common;
+﻿package com.travelmaker.stravel.common;
 
 import java.io.Serializable;
 

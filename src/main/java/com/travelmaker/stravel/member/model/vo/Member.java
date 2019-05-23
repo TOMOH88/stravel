@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.member.model.vo;
+﻿package com.travelmaker.stravel.member.model.vo;
 
 import org.springframework.stereotype.Component;
 

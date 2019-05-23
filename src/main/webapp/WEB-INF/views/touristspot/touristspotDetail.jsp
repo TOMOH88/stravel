@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -203,7 +203,10 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 							오픈시간 : ${touristspot.touristspot_open }<br>
 							닫는시간 : ${touristspot.touristspot_closed }<br>
 							</c:if>
-							<br>
+							<br>팀원 : 김지훈
+주작업내용 :고객센터 2019-05-17 : 공지사항 글작성 리스트 출력 작업 
+수정된DB내용 : 
+진행율(%) :30%
 							<form class="rating">
 								<label> 
 									<input type="radio" name="stars2" value="1" /> 
@@ -232,7 +235,10 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 										<span class="icon">★</span> 
 										<span class="icon">★</span> 
 										<span class="icon">★</span> 
-										<span class="icon">★</span> 
+										<span class="ic팀원 : 김지훈
+주작업내용 :고객센터 2019-05-17 : 공지사항 글작성 리스트 출력 작업 
+수정된DB내용 : 
+진행율(%) :30%on">★</span> 
 										<span class="icon">★</span>
 									</label>
 							</form>

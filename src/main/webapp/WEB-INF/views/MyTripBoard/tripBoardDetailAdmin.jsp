@@ -1,12 +1,52 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>stravel</title>
+<script type="text/javascript">
+	function like_func(){
+		var frm_read = $("#frm_read");
+		var board_no = $("#board_no", frm_read).val();
+		console.log("board_no, member_no : " + board_no + ", " + member_no);
+		
+		$.ajax({
+			url:"/stravel/like.do",
+			type:"Get",
+			cache:false,
+			dataType:"json",
+			data:"board_no = " + board_no,
+			success:function(data){
+				var msg = '';
+				var like_img = '';
+				msg += data.msg;
+				alert(msg);
+				
+				if(data.like_check == 0){
+					like_img = "${ pageContext.request.contextPath }/resources/img/hart/emptyhart.png";
+				}else{
+					like_img = "${ pageContext.request.contextPath }/resources/img/hart/redhart.png";
+				}
+				$("#like_img", frm_read).attr("src", like_img);
+				$("#like_cnt").html(data.like_cnt);
+				$("like_check").html(data.like_check);
+			},
+			error : function(request, status, error){
+				alert("code:" + request.status + "\n" + "message : " + request.responseText + "\n" + "error:"+error);
+			}
+		});
+	}
+	function deleteSchedule(board_no){
+		location.href = "deleteschedule.do?board_no=" + board_no;
+	}
+	function deleteReview(answer_no, board_no){
+		console.log(answer_no + board_no);
+		location.href = "deletereview.do?answer_no=" + answer_no+"&board_no=" + board_no;
+	}
+</script>
 <style type="text/css">
 	.sub_news, .sub_news th, .sub_news td{border:0}
 	.sub_news a{color:#383838; text-decoration:none}
@@ -21,19 +61,11 @@
 	.sub_news tr.reply .title a{padding-left:16px; background:url(첨부파일/ic_reply.png) 0 1px no-repeat}
 	.trip_board .like .hart {border : none; background-color : white;}
 </style>
-<script type="text/javascript">
-	function deleteSchedule(board_no){
-		location.href = "deleteschedule.do?board_no=" + board_no;
-	}
-	function deleteReview(answer_no, board_no){
-		console.log(answer_no + board_no);
-		location.href = "deletereview.do?answer_no=" + answer_no+"&board_no=" + board_no;
-	}
-</script>
 </head>
 <body>
+<c:import url="../common/header.jsp"></c:import>
 <fieldset>
-	<legend>${ myboard.board_writer }세끼의 글 </legend>
+	<legend>${ myboard.board_writer }님의 글 </legend>
 	<div class = "trip_board">
 		<ul>
 			<li>
@@ -59,48 +91,10 @@
 				<label for = "latter">후기</label><br><br>
 				${myboard.board_content }
 			</li>
-			<div>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%; height: 600px;">
-  <ol class="carousel-indicators">
-    <c:forEach items="${imageList }" var="image">
-    <li data-target="#carouselExampleIndicators" data-slide-to="${image.board_sq }" <c:if test="${image.board_sq eq 1 }"> class="active" </c:if>></li>
-    </c:forEach>
-  		</ol>
-				<div class="carousel-inner" style="height:100%;">
-				<c:forEach items="${image }" var="image">
-					<c:if test="${image.baord_sq eq 1 }">
-				
-							<div class="carousel-item active" style="height:100%;">
-								<img class="d-block w-100"
-									src="${ pageContext.request.contextPath }/resources/img/myTripBoard/${image.baord_imagename}"
-									alt="${image.board_imagename}" style="height: 100%;">
-							</div>
-					
-					</c:if>
-					<c:if test="${image.board_sq > 1 }">
-						<div class="carousel-item" style="height:100%;">
-							<img class="d-block w-100"
-								src="${ pageContext.request.contextPath }/resources/img/myTripBoard/${image.board_imagename}"
-								alt="${image.board_imagename}" style="height: 100%;">
-						</div>
-						
-					</c:if>
-				</c:forEach>
-			</div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-</div>
+			
 		</ul>
 	</div>
 </fieldset>
-
 <fieldset>
 	<legend>리뷰달기</legend>
 	<form action = "insertreview.do" method = "post">
@@ -116,6 +110,55 @@
 		</div>
 	</form>
 </fieldset>
+<fieldset>
+	<legend>좋아요</legend>
+		<c:choose>
+			<c:when test="${member_no ne null }">
+				<a href = "javascript: like_func();"><img src = "${ pageContext.request.contextPath }/resources/img/hart/emptyhart.png" id = "like_img"></a>
+			</c:when>
+			<c:otherwise>
+				<a href = "javascript: login_need();"><img src = "${ pageContext.request.contextPath }/resources/img/hart/emptyhart.png"></a>
+			</c:otherwise>
+		</c:choose>
+</fieldset>
+	<div>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%; height: 600px;">
+  <ol class="carousel-indicators">
+    <c:forEach items="${imageList }" var="image">
+    <li data-target="#carouselExampleIndicators" data-slide-to="${image.board_sq }" <c:if test="${image.board_sq eq 1 }"> class="active" </c:if>></li>
+    </c:forEach>
+  		</ol>
+				<div class="carousel-inner" style="height:100%;">
+				<c:forEach items="${image }" var="image">
+					<c:if test="${image.board_sq eq 1 }">
+				
+							<div class="carousel-item active" style="height:100%;">
+								<img class="d-block w-100"
+									src="${ pageContext.request.contextPath }/resources/img/myTripBoard/${image.board_imagename}"
+									alt="${image.board_imagename}" style="height: 100%;">
+							</div>
+					
+					</c:if>
+					<c:if test="${image.board_sq > 1 }">
+						<div class="carousel-item" style="height:100%;">
+							<img class="d-block w-100"
+								src="${ pageContext.request.contextPath }/resources/img/myTripBoard/${image.board_imagename}"
+								alt="${image.board_imagename}" style="height: 100%;">
+						</div>
+						
+					</c:if>
+				</c:forEach>
+			</div>
+			  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+</div>
+</div>
 <fieldset>
 	<legend>리뷰 작성</legend>
 		<table class = "sub_news" border = "1" cellspacing = "0" summary = "게시판의 글제목 리스트">
@@ -149,5 +192,6 @@
 <div class = "deleteSchedule">
 	<button onclick = "deleteSchedule(${myboard.board_no});">일정 자랑 삭제</button>
 </div>
+
 </body>
 </html>

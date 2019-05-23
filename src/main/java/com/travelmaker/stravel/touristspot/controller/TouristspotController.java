@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.touristspot.model.controller;
+﻿package com.travelmaker.stravel.touristspot.controller;
 
 import java.util.ArrayList;
 import java.util.List;

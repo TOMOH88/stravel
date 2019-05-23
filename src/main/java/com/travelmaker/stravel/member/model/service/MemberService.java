@@ -1,8 +1,8 @@
-package com.travelmaker.stravel.member.model.service;
+﻿package com.travelmaker.stravel.member.model.service;
 
 import java.util.ArrayList;
 
-import com.travelmaker.stravel.memeber.model.vo.Member;
+import com.travelmaker.stravel.member.model.vo.Member;
 
 public interface MemberService {
 	//추상메소드만 멤버로 가짐.

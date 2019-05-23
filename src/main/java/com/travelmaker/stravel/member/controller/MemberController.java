@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.member.controller;
+﻿package com.travelmaker.stravel.member.controller;
 
 import java.io.File;
 
@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.member.model.service.MemberService;
-import com.travelmaker.stravel.memeber.model.vo.Member;
+import com.travelmaker.stravel.member.model.vo.Member;
 
 @Controller
 public class MemberController {
