@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, 
+maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/fontawesome/css/all.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/themify-icons/themify-icons.css">
@@ -13,6 +17,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/flat-icon/font/flaticon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/vendors/nice-select/nice-select.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <!-- 별점 부트스트랩 링크-->
     <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->  
@@ -20,6 +30,160 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-fa.css" media="all" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-svg.css" media="all" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-uni.css" media="all" type="text/css"/>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript">
+
+
+	$(document).on('ready',function() {
+		//암호와 암호확인의 기록값이 일치하는지 확인
+		$("input#userpwd2").blur(function() {
+			//포커스가 없어졌을 때
+			//console.log("focus 없어짐....");
+			var pwd1 = $("#userpwd").val();
+			var pwd2 = $("#userpwd2").val();
+
+			if (pwd1 != pwd2) {
+				alert("암호와 암호확인이 일치하지 않습니다.\n" + "다시 입력하십시요.");
+				$("#userpwd").select();
+			}
+		});
+	});
+
+	function checkValidate() {
+		var useremail = $("#useremail").val();
+		var userpwd = $("#userpwd").val();
+
+		//이메일과 암호의 글자갯수 확인
+		if (!(useremail.length >= 6 && useremail.length <= 40)) {
+			alert("이메일의 글자갯수는 6글자이상 40글자이하여야 합니다.");
+			$("#useremail").select();
+			return false; //submit 실행 안됨.
+		}
+
+		if (!(userpwd.length >= 6 && userpwd.length <= 12)) {
+			alert("암호의 글자갯수는 6글자이상 12글자이하여야 합니다.");
+			$("#userpwd").select();
+			return false; //submit 실행 안됨.
+		}
+
+		//이메일와 암호의 요구한 글자만 포함 확인
+		//영어소문자, 대문자, 숫자, 기호문자(@,_)만 허용
+		//정규표현식을 주로 사용함
+		for ( var i in useremail) {
+			var ch = useremail.charAt(i);
+			if (!((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')
+					|| (ch >= '0' && ch <= '9') || (ch == '@' || ch == '_'))) {
+				alert("이메일은 영어소문자와 영어대문자, " + "숫자, 기호문자(@,_)만 사용할 수 있습니다.");
+				$("#useremail").select();
+				return false;
+			}
+		}
+
+		for ( var i in userpwd) {
+			var ch = userpwd.charAt(i);
+			if (!((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')
+					|| (ch >= '0' && ch <= '9') || (ch == '#' || ch == '_'
+					|| ch == '!' || ch == '*'))) {
+				alert("암호는 영어소문자와 영어대문자, " + "숫자, 기호문자(#,_,!,*)만 사용할 수 있습니다.");
+				$("#userpwd").select();
+				return false;
+			}
+		}
+
+		return true; //submit 실행함.
+	}
+	
+
+	//정규표현식 사용한 값 검사와 유효성 체크 처리
+	function checkValidate2() {
+		/*
+			정규표현식 작성, 사용방법
+			1. var 변수명 = /정규표현식/플래그;
+			2. var 변수명 = new RegExp("정규표현식");
+			
+			if(변수명.test(검사할값)){ 
+				정규식을 만족했을 때 처리내용
+			}
+			
+			예 : 입력값이 숫자로만 구성 확인
+			var re = /^[0-9]+$/;
+			예 : 입력값이 영어소문자와 숫자로만 구성 확인
+			    첫글자는 반드시 영어소문자로 시작
+			    글자갯수가 4글자이상 12글자이하로 작성
+			    \d == [0-9]
+				{4, 12} : 4글자이상 12글자이하
+			var re = /^[a-z][a-z\d]{4,12}$/;
+			예 : 한글로만 2글자 이상
+			var re = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힝]{2,}$/;
+			
+			\w == [a-zA-Z0-9]
+			\w-\.
+			\.[\w-]{1,3} : .뒤에 영어,숫자가 조합된 글자가 
+					1번에서 3번까지 사용 가능함
+		 */
+
+		var useremail = $("#useremail").val();
+		var userpwd = $("#userpwd").val();
+
+		var re = /^[a-zA-Z][\w\_\#\!\*]{6,12}$/;
+
+		if (!re.test(useremail)) {
+			alert("아이디는 영어소문자와 영어대문자, " + "숫자, 기호문자(#,_,!,*)만 사용할 수 있습니다.");
+			$("#useremail").select();
+			return false;
+		}
+
+		if (!re.test(userpwd)) {
+			alert("암호는 영어소문자와 영어대문자, " + "숫자, 기호문자(#,_,!,*)만 사용할 수 있습니다.");
+			$("#userpwd").select();
+			return false;
+		}
+
+		return true;
+	}
+
+	function checkId() {
+		//자바스크립트에서 서블릿으로 서비스요청은 할 수 있음
+		//서블릿이 전송하는 결과값을 받을 수 없음
+		//서블릿은 처리하고 나서 성공/실패에 대한 뷰를 
+		//선택해서 내보내는 방법만 사용 가능함
+		/* location.href = "/first/idchk?useremail=" + 
+				document.getElementById("useremail").value; */
+
+		//서비스를 요청한 페이지가 바뀌지 않게 하면서
+		//네트워크 입출력 방식으로 서블릿이 처리한 결과를
+		//자바스크립트가 받아서 사용하려면, ajax 를 사용해야 함
+		//ajax 는 자바스크립트를 사용해도 되고(코드가 복잡함), 
+		//jQuery 를 사용해도 됨(코드가 간단함).
+		//jQuery.ajax() 사용
+		//웹서버 컨트롤러와 아이디 중복 체크 확인용 통신 처리
+		$.ajax({
+			url : "idchk.do",
+			type : "post",
+			data : {
+				useremail : $("#useremail").val()
+			},
+			success : function(data) {
+				console.log("success : " + data);
+
+				if (data == "ok") {
+					alert("사용 가능한 아이디입니다.");
+					$("#username").focus();
+				} else {
+					alert("이미 존재하는 아이디입니다.\n" + "다시 입력하십시요.");
+					$("#useremail").select();
+				}
+			},
+			error : function(jqXHR, textstatus, errorthrown) {
+				console.log("error : " + jqXHR + ", " + textstatus + ", "
+						+ errorthrown);
+			}
+		});
+
+		return false; //submit 못하게 함
+	}
+</script>
+    
 <title>header</title>
 <style>
 div{ 
@@ -74,16 +238,305 @@ div{
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="mycalendar.do">나의일정</a></li>
                   <li class="nav-item"><a class="nav-link" href="adminMain.do">예약내역</a></li>
+                  <li class="nav-item"><a class="nav-link" href="">개인정보수정</a></li>
                 </ul>
 							</li>
-              <li class="nav-item"><a class="nav-link" href="#">login</a></li>
-            </ul>
-          </div> 
-        </div>
-      </nav>
-    </div>
-  </header>
-  <!--================Header Menu Area =================-->
+              <li class="nav-item">
+								<c:if test="${empty loginMember }">
+									<button type="button" class="btn btn-info" data-toggle="modal"
+										data-target="#modal">
+										<b>회원가입</b>
+									</button>
+									<button type="button" class="btn btn-info" data-toggle="modal"
+										data-target="#login">
+										<b>로그인</b>
+									</button>
+								</c:if>
+								<c:if test="${!empty loginMember }">
+									<button type="button" class="btn btn-info" data-toggle="modal"
+										data-target="#modal">
+										${loginMember.username }님 &nbsp;
+										<a href="logout.do">로그아웃</a>
+									</button>								
+								</c:if>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<br>
+	
+<!--  회원가입 시작 -->
+<div class="modal fade" id="modal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="text-primary">S.travel 회원가입</h3>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#enroll">사용자 회원가입</a></li>
+						<li><a data-toggle="tab" href="#business">사업자 회원가입</a></li>
+					</ul>
+					<div class="tab-content">
+				<div id="enroll" class="tab-pane in active">
+					<article class="card-body">
+						<!-- 여기에 회원가입 코드작성 -->
+						<!-- <p>
+							<a href="" class="btn btn-block btn-twitter"> 
+								<i class="fab fa-twitter"></i>&nbsp;&nbsp;&nbsp;트위터 계정으로 로그인
+							</a> 
+							<a href="" class="btn btn-block btn-facebook"> 
+								<i class="fab fa-facebook-f"></i>&nbsp;&nbsp;&nbsp;페이스북 계정으로 로그인
+							</a>
+						</p> -->
+				<form action="minsert.do" method="post">
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> 
+							 <i class="fa fa-envelope"></i>
+							</span>
+						</div>
+						<input name="useremail" id="useremail" class="form-control"	placeholder="이메일을 입력하세요" type="email" required>
+					</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-lock"></i>
+								</span>
+							</div>
+							<input class="form-control" name="userpwd" id="userpwd"	placeholder="비밀번호를 입력하세요" type="password" required>
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-lock"></i>
+								</span>
+							</div>
+							<input class="form-control" id="userpwd2" placeholder="비밀번호를 다시입력하세요" type="password" required>
+						</div>
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-user"></i>
+									</span>
+								</div>
+								<input name="username" id="username" class="form-control" placeholder="이름을 입력하세요" type="text" required>
+							</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-phone"></i>
+								</span>
+							</div>
+								<input name="phone" id="phone" class="form-control"	placeholder="연락처를 입력하세요" type="text">
+						</div>
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> 
+										<i class="fa fa-birthday-cake"></i>
+									</span>
+								</div>
+								<input name="age" id="age" min="16" max="99" class="form-control" placeholder="나이를 입력하세요" type="number" required>
+							</div>
+						<div class="form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-male"></i>
+									<i class="fa fa-female"></i>
+								</span>
+							</div>
+							<label class="form-check form-check-inline"> 
+								<input class="form-check-input" type="radio" name="gender" value="M">
+								<span class="form-check-label"> 남성 </span>
+							</label> 
+							<label class="form-check form-check-inline"> 
+							 <input class="form-check-input" type="radio" name="gender" value="F">
+								<span class="form-check-label"> 여성</span>
+							</label>
+						</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-block">회원가입</button>
+							</div><br>
+						<p class="text-center"> 계정이 있으신가요? 
+							<!-- <a href="#login">로그인</a>	 -->						
+							
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#login">로그인</button>
+							
+						</p>
+						</form>
+						</article>
+					</div>					
+					<!-- 사업자 회원등록 코드작성 -->
+					<div id="business" class="tab-pane fade">
+						<!-- 사업자 회원가입 내용입력 -->
+						
+						<form action="binsert.do" method="post">
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> 
+							 <i class="fa fa-envelope"></i>
+							</span>
+						</div>
+						<input name="businessnumber" id="businessnumber" class="form-control" placeholder="사업자등록번호 10자리를 입력하세요" type="number" required>
+					</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-lock"></i>
+								</span>
+							</div>
+							<input class="form-control" name="businesspwd" id="businesspwd"	placeholder="비밀번호를 입력하세요" type="password" required>
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-lock"></i>
+								</span>
+							</div>
+							<input class="form-control" id="businesspwd2" placeholder="비밀번호를 다시입력하세요" type="password" required>
+						</div>
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-user"></i>
+									</span>
+								</div>
+								<input name="businessname" id="businessname" class="form-control" placeholder="이름을 입력하세요" type="text" required>
+							</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-phone"></i>
+								</span>
+							</div>
+								<input name="businessphone" id="businessphone" class="form-control"	placeholder=" 사업장 연락처를 입력하세요" type="text">
+						</div>
+													
+						
+							<div class="form-group"><br>
+								<button type="submit" class="btn btn-primary btn-block">계정 생성</button>
+							</div><br>
+						<p class="text-center"> 계정이 있으신가요? 
+							<a href="#login">로그인</a>
+						</p>
+						</form>						
+						
+						<!-- 사업자 회원가입 내용 입력 끗 -->					
+					</div>
+					</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	<!-- <div class="modal-footer"></div> -->
+
+
+	<!-- 로그인 코드작성 -->
+	<div class="modal fade" id="login" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="text-primary">S.Travel 로그인</h3>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>					
+				</div>
+				<div class="modal-body">
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#home">사용자 로그인</a></li>
+						<li><a data-toggle="tab" href="#login1">사업자 로그인</a></li>
+					</ul>
+					<div class="tab-content">
+						<div id="home" class="tab-pane in active">
+
+							<article class="card-body">
+								<p>
+
+									<a id="kakao-login-btn"></a> <a
+										href="http://developers.kakao.com/logout"></a>
+
+									<script type='text/javascript'>
+										//<![CDATA[
+										// 사용할 앱의 JavaScript 키를 설정해 주세요.
+										Kakao
+												.init('5ce073f940a61564cb32f3f5667184e0');
+
+										// 카카오 로그인 버튼을 생성합니다.
+										Kakao.Auth.createLoginButton({
+											container : '#kakao-login-btn',
+											success : function(authObj) {
+												alert(JSON.stringify(authObj));
+											},
+											fail : function(err) {
+												alert(JSON.stringify(err));
+											}
+										});
+										
+										//
+									</script>
+								<hr>
+								<br>
+								<form action="login.do" method="post">
+									<div class="form-group">
+										<!-- <input name="useremail" class="form-control"
+											placeholder="이메일을 입력하세요" type="email"> -->
+										<input type="text" placeholder="이메일을 입력하세요"
+											class="form-control" name="useremail">
+									</div>
+									<div class="form-group">
+										<!-- <input name="userpwd" class="form-control"
+											placeholder="비밀번호를 입력하세요" type="password"> -->
+										<input type="password" placeholder="비밀번호를 입력하세요"
+											class="form-control" name="userpwd">
+									</div>
+									<br>
+									<div>
+										<a class="small" href="#">비밀번호를 잊어버리셨습니까?</a>
+									</div>
+									<br>
+										<div>
+											<div class="form-group"><br>
+												<button type="submit" value="로그인" class="btn btn-primary btn-block">로그인</button>
+											</div>
+										</div>
+
+								</form>
+							</article>
+						</div>
+						<div id="login1" class="tab-pane fade">
+							<!-- Login Form Code Here -->
+						  <form action="login.do" method="post">
+									<div class="form-group">
+										<input type="text" placeholder="사업자 등록번호를 입력하세요"
+											class="form-control" name="businessnumber">
+									</div>
+									<div class="form-group">
+										<!-- <input name="userpwd" class="form-control"
+											placeholder="비밀번호를 입력하세요" type="password"> -->
+										<input type="password" placeholder="비밀번호를 입력하세요"
+											class="form-control" name="userpwd">
+									</div>
+										<div>
+											<div class="form-group"><br>
+												<button type="submit" value="로그인" class="btn btn-primary btn-block">로그인</button>
+											</div>
+										</div>
+								</form>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--================Header Menu Area =================-->
 <script src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/vendors/owl-carousel/owl.carousel.min.js"></script>

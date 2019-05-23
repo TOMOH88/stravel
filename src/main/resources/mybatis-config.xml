@@ -38,6 +38,7 @@
 		<!-- 하종은 -->
 		<!-- 김인규 -->
 		<!-- 구한모 -->
+		<typeAlias type="com.travelmaker.stravel.member.model.vo.Member" alias="Member"/>
 	</typeAliases>
 	<mappers>
 	<!-- 쿼리문 저장용 매퍼 xml 파일 등록 : 필수  -->
@@ -49,6 +50,7 @@
 		<mapper resource="mappers/calendar-mapper.xml"/>
 		<mapper resource="mappers/room-mapper.xml"/>
 		<mapper resource="mappers/owner-mapper.xml"/>
+		<mapper resource="mappers/member-mapper.xml" />
 		<!-- <mapper resource="mappers/faq-mapper.xml"/> -->
 	</mappers>
 </configuration>
