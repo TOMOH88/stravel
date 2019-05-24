@@ -54,6 +54,7 @@
 	.maindiv{
 	width:1032px;}
 }
+
 .maindiv {
 	margin-left: auto !important;
 	margin-right: auto !important;
@@ -190,9 +191,11 @@
 
 .selectroom, .selectcount {
 	width: 230px;
-	height: 20px;
+	height: 40px;
 	margin: 5px;
 	border:1px solid #cfcfcf;
+	border-radius:5px;
+	font:'굴림';
 }
 .roomnext,
 .roomprev{
@@ -433,11 +436,11 @@
 			</div>
 			<div style="margin-left:10px;margin-right:10px;"><hr></div>
 				<div ><!-- 사이드바 바디 -->
-					<form action="" method="post">
+					<form action="moveReservation.do?user_no=1" method="post">
 						<div><!-- 객실선택드롭다운 -->
 						<div style="font-size:xx-small;color:black;font-weight:bold;">옵션</div>
 							<div style="height:60px;">
-								<select class="selectroom" name="roomno" required>
+								<select class="selectroom" name="room_no" required>
 									<option selected disabled hidden>필수선택</option>
 									<c:forEach items="${roomList}" var="roomList">
 									<option>${roomList.room_name }</option>
@@ -448,7 +451,7 @@
 						<div><!-- 인원선택 ajax -->		
 						<div style="font-size:xx-small;color:black; font-weight:bold;">옵션</div>
 							<div style="height:60px;">
-								<select class="selectcount" name="personconut" required>
+								<select class="selectcount" name="member" required>
 									
 								</select>
 							</div>
@@ -456,9 +459,9 @@
 						<div style="font-size:xx-small;color:black;font-weight:bold;">날짜</div>
 						<div>
 							<div>
-								<input type="text" name="checkin"id="start" placeholder="CHECK IN" autocomplete="off">
+								<input type="text" name="check_in"id="start" placeholder="CHECK IN" autocomplete="off">
 								<span>&nbsp;→&nbsp;</span>
-								<input type="text"name="checkout" id="end"  placeholder="CHECK OUT" autocomplete="off">
+								<input type="text"name="check_out" id="end"  placeholder="CHECK OUT" autocomplete="off">
 							</div>
 						</div>
 						<Br>
@@ -527,7 +530,7 @@
 <script src="${pageContext.request.contextPath }/resources/js/main.js"></script> 
 <script src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
 <!-- 달력 -->
-<%-- <script src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath }/resources/js/jquery-1.11.0.min.js"></script> --%>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-ui.min.js"></script>
 
@@ -620,7 +623,7 @@
  
 
     
-   
+/*    
 	$(function(){
 		
 		$(".datepicker").datepicker({
@@ -634,22 +637,21 @@
 	                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
 	                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
 	                ,minDate: "+0D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-					
+					,beforeShowDay:disableDays
 	                  
 
 		});
-		
-        $('#start').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-        //To의 초기값을 내일로 설정
-        $('#end').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
 	
 		 
-	});
+	});  */
  	$(function(){
+ 		
+ 		
 		$(".selectroom").change(function(){
 			var roomname = this.value;
 			var ownerno = ${owner.owner_no};
 			var roomno ;
+			var disableDays=[];
 			$.ajax({
 				url:"selectRsvInfo.do",
 				data: {room_name: roomname,
@@ -669,34 +671,60 @@
 					}
 					
 					$(".selectcount").html($(".selectcount").text() + option);
+					
 					$.ajax({
 						url: "selectRsvDate.do",
 						data: {room_no:roomno},
 						type:"post",
 						dataType:"json",
 						success: function(data){
-							console.log(data);
+							
 						 	var jsonStr = JSON.stringify(data);
 							var json = JSON.parse(jsonStr);
-							console.log(roomno);
-							var disableDays = [json.length];
-							for(var i =0; i<json.length; i++){
-								disableDays.push(json.check_in);
+							
+							for(var i = 0 ; i < json.length;i++){
+								disableDays.push(json[i]);
 							}
 							console.log(disableDays);
-							$(".datepicker").datepicker({
-	
-								beforShowDay : disableAllTheseDays
-							})
-							function disableAllTheseDays(data){
-								var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
-								for ( i = 0; i < disabledDays.length; i++){
-									if($.inArray(y + '-' + (m+1) + '-' + d,disabledDays) != -1){
-										return [false];
-									}
-								}
-								return [true];
-							} 
+							$("#start").datepicker({
+								 dateFormat: 'yy-mm-dd' //Input Display Format 변경
+						                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+						                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+						                ,buttonImage: "/application/db/jquery/images/calendar.gif"
+						                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+						                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+						                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+						                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+						                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+						                ,minDate: "+0D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+										,beforeShowDay: function(date){
+											var string = jQuery.datepicker.formatDate('yy-mm-dd',date);
+											return [disableDays.indexOf(string)==-1]
+										}
+										,onSelect: function(dateText, inst){
+											$("#end").datepicker({
+												 dateFormat: 'yy-mm-dd' //Input Display Format 변경
+							           	     ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+							          	     ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+							           	     ,buttonImage: "/application/db/jquery/images/calendar.gif"
+							           	     ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+							           	     ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+							           	     ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+							           	     ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+							           	     ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+							           	     ,minDate: dateText //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+											,beforeShowDay:function(date){
+												var str = jQuery.datepicker.formatDate('yy-mm-dd',date);
+												return [dateText.indexOf(str)==-1]
+											}
+											})
+											
+											
+											
+							}
+							});
+					
+							
 							
 						},error: function(jqXHR, textStatus, errorThrown){
 							console.log("error : " + jqXHR + ", " + 
@@ -709,9 +737,15 @@
 			
 			
 		})
-	}) 
 
+	
+	
+		
+	});
 
+	
+		
+	
 
   
 </script>

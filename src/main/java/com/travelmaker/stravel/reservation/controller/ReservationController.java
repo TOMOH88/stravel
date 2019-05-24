@@ -1,5 +1,6 @@
 package com.travelmaker.stravel.reservation.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,14 @@ public class ReservationController {
 	private ReservationService rsvservice;
 	
 	@RequestMapping(value = "selectRsvDate.do", method = RequestMethod.POST)
-	public @ResponseBody ArrayList<Reservation> selectRsvDate( Reservation reservation) {
+	public @ResponseBody String[] selectRsvDate( Reservation reservation) {
 		ArrayList<Reservation> list = rsvservice.selectRsvDate(reservation);
-		System.out.println("reservationController" + list);
-		return list; 
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		String DateArr[] = new String[list.size()];
+		for(int i =0;i<list.size();i++) {
+			DateArr[i] = df.format(list.get(i).getCheck_in());
+		}
+		System.out.println(DateArr);
+		return DateArr; 
 	}
 }
