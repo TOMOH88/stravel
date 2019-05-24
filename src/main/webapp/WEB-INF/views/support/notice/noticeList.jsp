@@ -44,7 +44,7 @@ $(function() {
                                     <tbody>	
                                     	<tr>
                                         	<td>${notice.notice_no }</td>
-                                        	<td><a href="">${notice.notice_title }</a></td>
+                                        	<td><a href="noticeDetail.do?notice_no=${notice.notice_no }">${notice.notice_title }</a></td>
                                         	<td>${notice.notice_writer }</td>
                                         	<td>${notice.notice_date }</td>
                                         </tr>                                   
@@ -73,28 +73,28 @@ $(function() {
 					                <li class="page-item"><a class="page-link" onclick='pageLast(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>»</a></li>
 					            </c:if>
 					        </ul>
-					        </div>
-					        <hr>
-					        <div align="center">
-					        <form action="notice.do" method="post" id='frmPaging'>
+
+					        <form action="qnalist.do" method="post" id='frmPaging'>
 					            <!--출력할 페이지번호, 출력할 페이지 시작 번호, 출력할 리스트 갯수 -->
 					            <input type='hidden' name='index' id='index' value='${p.index}'>
 					            <input type='hidden' name='pageStartNum' id='pageStartNum' value='${p.pageStartNum}'>
 					            <input type='hidden' name='listCnt' id='listCnt' value='${p.listCnt}'>
-					            <select  id='listCount' name='listCount' onchange='listCnt();'>
+<!-- 					            <select  id='listCount' name='listCount' onchange='listCnt();'>
 						            <option value='5' >5</option>
 						            <option value='10'>10</option>
 						            <option value='15'>15</option>
 						            <option value='20'>20</option>
-					        	</select>
-					            <select name="searchCategory" id="searchCategory" class="btn btn-primary btn-sm" >
+					        	</select> -->
+<!-- 					            <select name="searchCategory" id="searchCategory" class="btn btn-primary btn-sm" >
 									<option name="searchCategory" id="searchCategory" value="">선택하세요</option>
 									<option name="searchCategory" id="searchCategory" value="notice_writer">아이디</option>
 									<option name="searchCategory" id="searchCategory" value="notice_title">제목</option>
 									<option name="searchCategory" id="searchCategory" value="notice_content">내용</option>
-								</select>
-								<input type="text" name="items" class="btn btn-primary btn-sm" placeholder="Search" value="${p.items }" class="form-control" >
-								<input type="button" class="btn btn-primary btn-sm" value="검색" onclick="frmPaging(); return false;">
+								</select> -->
+								
+								<input type="hidden" id="searchCategory" name="searchCategory" value="notice_title"> 
+								<input type="text" name="items" class="btn btn-primary" placeholder="Search" value="${p.items }" class="form-control" >
+								<input type="button" class="btn btn-primary" value="검색" onclick="frmPaging(); return false;">
 					        </form>
 					        </div>
 </div>

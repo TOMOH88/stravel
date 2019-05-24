@@ -30,10 +30,7 @@
 		<id property="notice_deletestatus" column="NOTICE_DELETESTATUS" />
 	</resultMap>
 	
-
-	<insert id="qnaInsert" parameterType="QnaVo">
-	
-	</insert>
+	<!-- 공지사항 작업 -->
 	<select id="selectNoticeList" resultMap="resultNoticeVo">
 	select * from tb_notice where NOTICE_DELETESTATUS = 'N' order by notice_no desc
 	</select>
@@ -51,25 +48,79 @@
        SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM 
        (SELECT * FROM TB_NOTICE 
 		<if test="searchCategory != null and searchCategory !=''">
-   		where ${searchCategory} like '%'||#{items}||'%'
+   		where ${searchCategory} like '%'||#{items}||'%' AND NOTICE_DELETESTATUS = 'N'
+		</if>
+		<if test="searchCategory == null and searchCategory ==''">
+		WHERE NOTICE_DELETESTATUS = 'N'
 		</if>
        	ORDER BY NOTICE_NO DESC ) P )
        WHERE RNUM BETWEEN ${start} AND ${last}
     </select>
     <!-- 2. Total Query -->
     <select id="selectTotalPaging" resultType="_int">
-        SELECT COUNT(1) FROM TB_NOTICE  
+        SELECT COUNT(1) FROM TB_NOTICE WHERE NOTICE_DELETESTATUS = 'N' 
     </select>
 	<select id="selectTotalPagingSearch" parameterType="pagingVo" resultType="_int">
-        SELECT COUNT(1) FROM TB_NOTICE where ${searchCategory} like '%'||#{items}||'%'
+        SELECT COUNT(1) FROM TB_NOTICE where ${searchCategory} like '%'||#{items}||'%' AND NOTICE_DELETESTATUS = 'N'
     </select>
+	<select id="selectNoticeOne" parameterType="_int" resultType="noticeVo">
+		SELECT * FROM TB_NOTICE WHERE NOTICE_NO = #{NOTICE_NO}
+	</select>
+	<update id="deleteNoticeOne" parameterType="_int">
+		UPDATE TB_NOTICE SET NOTICE_DELETESTATUS = 'Y' WHERE NOTICE_NO = #{NOTICE_NO}
+	</update>
+	<update id="updateNotice" parameterType="noticeVo">
+		UPDATE TB_NOTICE SET NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content}
+		,ORIGINALNAME_NFILENAME = #{originalname_nfilename},RENAME_NFILENAME = #{rename_nfilename}
+		WHERE NOTICE_NO = #{notice_no}
+	</update>
 	
-	
-	
-	
-	
-	
-	
+	<!-- qna 작업 -->
+	<insert id="insertUserQna">
+	<selectKey keyProperty="qna_no" resultType="int" order="BEFORE">
+			select count(1)+1 from tb_qna
+		</selectKey>
+		INSERT INTO TB_QNA (QNA_NO,QNA_TITLE,QNA_CONTENT,QNA_WRITER,RENAME_QFILENAME,QNA_DATE,QNA_STATUS,QNA_DELETESTATUS)
+		VALUES(#{qna_no},#{qna_title},#{qna_content},#{qna_writer},#{rename_qfilename},default,default,default)
+	</insert>
+	<select id="selectPagingQna" parameterType="pagingVo" resultType="QnaVo">
+       SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM 
+       (SELECT * FROM TB_QNA 
+		<if test="searchCategory != null and searchCategory !=''">
+   		where ${searchCategory} like '%'||#{items}||'%' AND QNA_DELETESTATUS = 'N'
+		</if>
+		<if test="searchCategory == null and searchCategory ==''">
+		WHERE QNA_DELETESTATUS = 'N'
+		</if>
+       	ORDER BY QNA_NO DESC ) P )
+       WHERE RNUM BETWEEN ${start} AND ${last}
+    </select>
+    <select id="selectTotalPagingQna" resultType="_int">
+        SELECT COUNT(1) FROM TB_QNA WHERE QNA_DELETESTATUS = 'N' 
+    </select>
+	<select id="selectTotalPagingSearchQna" parameterType="pagingVo" resultType="_int">
+        SELECT COUNT(1) FROM TB_QNA where ${searchCategory} like '%'||#{items}||'%' AND QNA_DELETESTATUS = 'N'
+    </select>
+	<select id="selectAdminQnaOne" parameterType="_int" resultType="qnaVo">
+		SELECT * FROM TB_QNA WHERE QNA_NO = #{qna_no}
+	</select>
+	<update id="updateQnaAnswer" parameterType="qnaVo">
+		UPDATE TB_QNA SET QNA_STATUS = 'Y', QNA_ANSWER = #{qna_answer}, QNA_ANSWERDATE = SYSDATE, QNA_ANSWERWRITER= #{qna_answerwriter}
+		WHERE QNA_NO = ${qna_no}
+	</update>
+	<select id="selectPagingQnaUsers" parameterType="pagingVo" resultType="QnaVo">
+		SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM 
+       (SELECT * FROM TB_QNA 
+		WHERE QNA_DELETESTATUS = 'N' AND QNA_WRITER = #{userId}
+       	ORDER BY QNA_NO DESC ) P )
+       WHERE RNUM BETWEEN ${start} AND ${last}
+	</select>
+	<select id="selectTotalPagingQnaUser" parameterType="pagingVo" resultType="_int">
+		SELECT COUNT(1) FROM TB_QNA WHERE QNA_DELETESTATUS = 'N' AND QNA_WRITER = #{userId}
+	</select>
+	<select id="selectUserQnaOne" parameterType="_int" resultType="qnaVo">
+		SELECT * FROM TB_QNA WHERE QNA_NO = #{qna_no}
+	</select>
 	
 	
 	

@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.travelmaker.stravel.common.PagingVo;
 import com.travelmaker.stravel.support.model.service.QnaService;
+import com.travelmaker.stravel.support.model.vo.NoticeVo;
 import com.travelmaker.stravel.support.model.vo.QnaVo;
 
 @Controller
@@ -26,36 +28,75 @@ public class QnaController {
 	
 	private static final Logger logger= LoggerFactory.getLogger(QnaController.class);
 	@Autowired
-	private QnaService supportService;
-	
-
-
-	
-	
+	private QnaService qnaService;
 	
 	//qna작업공간
 	@RequestMapping("qnalist.do")
-	public ModelAndView moveQnaListPage(ModelAndView mv) {
-		String userid ="김지훈";
-		//ArrayList<QnaVo> list = supportService.selectMyQnaList(userid);
-		
-		mv.setViewName("support/qna/qnaList");
+	public ModelAndView moveQnaListPage(ModelAndView mv,PagingVo paging) {
+		paging.setUserId("김지훈");
+			ArrayList<QnaVo> lists = qnaService.selectPagingQnaUser(paging);
+			paging.setTotal(qnaService.selectTotalPagingQnaUser(paging));	
+			System.out.println("모든 게시글 "+lists.size()+"="+paging.getTotal());
+			mv.addObject("qnaList", lists);
+	        mv.addObject("p", paging);
+	        mv.setViewName("support/qna/qnaList");
+		return mv;
+	}
+	@RequestMapping("qnaWrite.do")
+	public String moveUserQnaWritePage() {
+		return "support/qna/qnaWrite";
+	}
+	@RequestMapping("insertUserQna.do")
+	public ModelAndView insertUserQna(ModelAndView mv,QnaVo qna) {
+		System.out.println(qna);
+		int result = qnaService.insertUserQna(qna);
+		mv.setViewName("redirect:qnalist.do");
 		return mv;
 	}
 	
+	
 	@RequestMapping("adminqna.do")
-	public String moveadminQnaListPage() {
-		return "support/qna/adminQna";
+	public ModelAndView moveadminQnaListPage(ModelAndView mv,PagingVo paging) {
+		
+		if(paging.getSearchCategory() == null && paging.getItems() == null || paging.getSearchCategory() == "" && paging.getItems() == "") {
+			ArrayList<QnaVo> lists = qnaService.selectPaging(paging);
+			paging.setTotal(qnaService.selectTotalPaging());	
+			System.out.println("모든 게시글 "+lists.size()+"="+paging.getTotal());
+			mv.addObject("qnaList", lists);
+	        mv.addObject("p", paging);
+	        mv.setViewName("support/qna/adminQna");
+		}else{
+			ArrayList<QnaVo> lists = qnaService.selectPaging(paging);
+			paging.setTotal(qnaService.selectTotalPagingSearch(paging));	
+			System.out.println("검색된 게시글"+lists.size()+"="+paging.getTotal());
+			mv.addObject("qnaList", lists);
+	        mv.addObject("p", paging);
+	        mv.setViewName("support/qna/adminQna");
+		}
+		return mv;
 	}
 	
 	@RequestMapping("adminqnaView.do")
-	public String moveadminQnaListViewPage() {
-		return "support/qna/qnaListView";
+	public ModelAndView moveadminQnaListViewPage(ModelAndView mv,@RequestParam(name="qna_no", required=false) int qna_no) {
+		QnaVo qna = qnaService.selectAdminQnaOne(qna_no);
+		mv.addObject("qna", qna);
+		mv.setViewName("support/qna/qnaListView");
+		return mv;
+	}
+	@RequestMapping("insertQnaAnswer.do")
+	public ModelAndView updateQnaAnswer(ModelAndView mv,QnaVo qna) {
+		System.out.println(qna);
+		int result = qnaService.updateQnaAnswer(qna);
+		mv.setViewName("redirect:adminqnaView.do?qna_no="+qna.getQna_no());
+		return mv;
 	}
 	
 	@RequestMapping("qnalistView.do")
-	public String moveQnaListViewPage() {
-		return "support/qna/uqnaListView";
+	public ModelAndView moveQnaListViewPage(ModelAndView mv,@RequestParam(name="qna_no", required=false) int qna_no) {
+		QnaVo qna = qnaService.selectUserQnaOne(qna_no);
+		mv.addObject("qna", qna);
+		mv.setViewName("support/qna/uqnaListView");
+		return mv;
 	}
 	
 	

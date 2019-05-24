@@ -79,7 +79,7 @@ $(function(){
                                 </table>
                                 <div style="text-align:center;">
                                 <button class="btn btn-default btn-sm"  id="save">글작성</button>
-                        <button class="btn btn-default btn-sm" onclick="location.href='faqinsert.do'">이동</button>
+                        		<button class="btn btn-default btn-sm" onclick="location.href='adminnotice.do'">이동</button>
                         </div>
                                 </form>
                             </div>

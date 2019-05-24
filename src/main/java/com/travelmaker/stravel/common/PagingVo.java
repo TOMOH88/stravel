@@ -14,6 +14,7 @@ public class PagingVo implements Serializable{
 	private int total;
 	private String searchCategory;
 	private String items;
+	private String userId;
 
 	
 	{
@@ -94,6 +95,13 @@ public class PagingVo implements Serializable{
 	}
 	public void setItems(String items) {
 		this.items = items;
+	}
+	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;

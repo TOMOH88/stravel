@@ -35,4 +35,16 @@ public class NoticeDao {
 		return mybatisSession.selectOne(NM+"selectTotalPagingSearch",paging);
 	}
 
+	public NoticeVo selectNoticeOne(SqlSessionTemplate mybatisSession, int notice_no) {
+		return mybatisSession.selectOne(NM+"selectNoticeOne",notice_no);
+	}
+
+	public int deleteNoticeOne(SqlSessionTemplate mybatisSession, int notice_no) {
+		return mybatisSession.update(NM+"deleteNoticeOne",notice_no);
+	}
+
+	public int updateNotice(SqlSessionTemplate mybatisSession, NoticeVo notice) {
+		return mybatisSession.update(NM+"updateNotice",notice);
+	}
+
 }
