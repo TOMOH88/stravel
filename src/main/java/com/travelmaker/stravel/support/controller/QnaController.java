@@ -1,26 +1,17 @@
 package com.travelmaker.stravel.support.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.common.PagingVo;
 import com.travelmaker.stravel.support.model.service.QnaService;
-import com.travelmaker.stravel.support.model.vo.NoticeVo;
 import com.travelmaker.stravel.support.model.vo.QnaVo;
 
 @Controller
@@ -48,7 +39,6 @@ public class QnaController {
 	}
 	@RequestMapping("insertUserQna.do")
 	public ModelAndView insertUserQna(ModelAndView mv,QnaVo qna) {
-		System.out.println(qna);
 		int result = qnaService.insertUserQna(qna);
 		mv.setViewName("redirect:qnalist.do");
 		return mv;

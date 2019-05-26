@@ -61,7 +61,11 @@
 
 	ALTER TABLE TB_FAQCATEGORY
 	ADD CONSTRAINT PK_FAQCCODE PRIMARY KEY (FAQ_CATEGORYCODE);
-
+	
+	insert into tb_faqcategory values('C001','결제');
+	insert into tb_faqcategory values('C002','상품');
+	insert into tb_faqcategory values('C003','회원계정');
+	
 	CREATE TABLE TB_FAQ(
 	    FAQ_NO NUMBER,
 	    FAQ_CATEGORYCODE CHAR(4) REFERENCES TB_FAQCATEGORY(FAQ_CATEGORYCODE) ,
