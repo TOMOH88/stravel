@@ -658,6 +658,7 @@
 						owner_no: ownerno},
 				type:"post",
 				dataType:"json",
+				cache:false,
 				success: function(data){
 					
 					var jsonStr = JSON.stringify(data);
@@ -677,6 +678,7 @@
 						data: {room_no:roomno},
 						type:"post",
 						dataType:"json",
+						cache:false,
 						success: function(data){
 							
 						 	var jsonStr = JSON.stringify(data);

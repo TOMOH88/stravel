@@ -164,7 +164,7 @@ ul li a:hover {
 					<li><a href="ownerMain.do">마이페이지</a></li>
 					<li><a href="orderList.do">예약현황</a></li>
 					<li><a href="insertRoom.do">상품등록</a></li>
-					<li><a href="updateRoom.do">상품수정</a></li>
+					<li><a href="updateRoomList.do?owner_no=6">상품수정</a></li>
 					<li><a href="updateOwner.do">정보수정</a></li>
 				</ul>
 			</div>

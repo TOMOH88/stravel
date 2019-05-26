@@ -59,7 +59,7 @@ function listCnt() {
     document.getElementById("listCnt").value = document.getElementById("listCount").value;
     frmPaging();
 }
-window.onload = function() {
+   $(function() {
     // 현재번호 active
     var index = document.getElementById("index").value;
     var pageIndex = document.querySelector('.pageIndex'+(Number(index)+1));
@@ -70,4 +70,4 @@ window.onload = function() {
             $(this).prop("selected", true);
         }
     });
-}
+});
