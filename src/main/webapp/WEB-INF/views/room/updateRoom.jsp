@@ -210,7 +210,7 @@ ul li a:hover {
 				<hr>
 				<div>
 					<table>
-								<c:forTokens items="${room.option }" delims="," var="hb">
+								<c:forTokens items="${room.room_option }" delims="," var="hb">
 									<c:if test="${hb eq 'wifi' }">
 										<c:set var="checked0" value="checked" />
 									</c:if>
@@ -271,6 +271,7 @@ ul li a:hover {
 				<div>사진 </div>
 				<div>
 				<input multiple="multiple" type="file" name="roomImg" class="multi with-preview"/>
+					
 				</div>
 				<hr>
 				<br>

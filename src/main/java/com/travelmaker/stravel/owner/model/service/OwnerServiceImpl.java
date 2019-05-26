@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.travelmaker.stravel.common.PagingVo;
 import com.travelmaker.stravel.owner.model.dao.OwnerDao;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
@@ -20,8 +21,8 @@ public class OwnerServiceImpl implements OwnerService{
 	private OwnerDao od;
 
 	@Override
-	public ArrayList<Owner> selectRoomList() {
-		ArrayList<Owner> list = od.selectRoomList(mybatisSession);
+	public ArrayList<Owner> selectRoomList(PagingVo paging) {
+		ArrayList<Owner> list = od.selectRoomList(mybatisSession,paging);
 		return list;
 	}
 

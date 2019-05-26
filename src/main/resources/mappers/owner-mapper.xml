@@ -44,11 +44,14 @@
 		<result property="owner_no" column="owner_no"/>
 	</resultMap>
 
-	<select id="selectRoomList" resultMap="resultOwnerList">
-    select owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
+	<select id="selectRoomList" resultMap="resultOwnerList" parameterType="pagingVo">
+    SELECT *
+        FROM (    SELECT ROWNUM RNUM, P.*
+                FROM (   select  owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
     from owner
     join room using (owner_no)
-    group by owner_no,owner_companyname, owner_address, owner_category
+    group by owner_no,owner_companyname, owner_address, owner_category   ) P )
+        WHERE RNUM BETWEEN #{start} AND #{last}
     
 
 	</select>

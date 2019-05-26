@@ -6,16 +6,17 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.travelmaker.stravel.common.PagingVo;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
 
 @Repository("od")
 public class OwnerDao {
 
-	public ArrayList<Owner> selectRoomList(SqlSessionTemplate Session) {
+	public ArrayList<Owner> selectRoomList(SqlSessionTemplate Session,PagingVo paging) {
 		// TODO Auto-generated method stub
 		
-		List<Owner> list = Session.selectList("ownerMapper.selectRoomList");
+		List<Owner> list = Session.selectList("ownerMapper.selectRoomList",paging);
 		System.out.println("dao selectList : " + list);
 		return (ArrayList<Owner>)list;
 		
