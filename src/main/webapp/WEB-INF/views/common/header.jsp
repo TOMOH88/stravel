@@ -263,7 +263,7 @@ div{
 								<c:if test="${!empty loginMember }">
 									<button type="button" class="btn btn-info" data-toggle="modal"
 										data-target="#modal">
-										${loginMember.username }님 &nbsp;
+										${loginMember.user_name }님 &nbsp;
 										<a href="logout.do">로그아웃</a>
 									</button>								
 								</c:if>
@@ -307,7 +307,7 @@ div{
 							 <i class="fa fa-envelope"></i>
 							</span>
 						</div>
-						<input name="useremail" id="useremail" class="form-control"	placeholder="이메일을 입력하세요" type="email" required>
+						<input name="user_email" id="useremail" class="form-control"	placeholder="이메일을 입력하세요" type="email" required>
 					</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
@@ -315,7 +315,7 @@ div{
 									<i class="fa fa-lock"></i>
 								</span>
 							</div>
-							<input class="form-control" name="userpwd" id="userpwd"	placeholder="비밀번호를 입력하세요" type="password" required>
+							<input class="form-control" name="user_password" id="userpwd"	placeholder="비밀번호를 입력하세요" type="password" required>
 						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
@@ -330,7 +330,7 @@ div{
 									<span class="input-group-text"> <i class="fa fa-user"></i>
 									</span>
 								</div>
-								<input name="username" id="username" class="form-control" placeholder="이름을 입력하세요" type="text" required>
+								<input name="user_name" id="username" class="form-control" placeholder="이름을 입력하세요" type="text" required>
 							</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
@@ -338,7 +338,7 @@ div{
 									<i class="fa fa-phone"></i>
 								</span>
 							</div>
-								<input name="phone" id="phone" class="form-control"	placeholder="연락처를 입력하세요" type="text">
+								<input name="user_phone" id="phone" class="form-control"	placeholder="연락처를 입력하세요" type="text">
 						</div>
 							<div class="form-group input-group">
 								<div class="input-group-prepend">
@@ -460,14 +460,14 @@ div{
 									<div class="form-group">
 										<!-- <input name="useremail" class="form-control"
 											placeholder="이메일을 입력하세요" type="email"> -->
-										<input type="text" placeholder="이메일을 입력하세요"
-											class="form-control" name="useremail">
+										<input type="text" name="user_email" placeholder="이메일을 입력하세요"
+											class="form-control">
 									</div>
 									<div class="form-group">
 										<!-- <input name="userpwd" class="form-control"
 											placeholder="비밀번호를 입력하세요" type="password"> -->
-										<input type="password" placeholder="비밀번호를 입력하세요"
-											class="form-control" name="userpwd">
+										<input type="password" name="user_password" placeholder="비밀번호를 입력하세요"
+											class="form-control">
 									</div>
 									<br>
 									<div>
@@ -502,18 +502,6 @@ div{
 		</div>
 	</div>
 
-
-									</div>
-									<br>
-										<div>
-											<div class="form-group"><br>
-												<button type="submit" value="로그인" class="btn btn-primary btn-block">로그인</button>
-											</div>
-										</div>
-
-								</form>
-							</article>
-						</div>
 						<div id="login1" class="tab-pane fade">
 							<!-- Login Form Code Here -->
 						  <form action="login.do" method="post">
@@ -534,14 +522,7 @@ div{
 										</div>
 								</form>
 						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
+					
 
 
 	<!--================Header Menu Area =================-->

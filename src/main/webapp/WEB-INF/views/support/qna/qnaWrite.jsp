@@ -59,7 +59,7 @@ $(function(){
                                 <table class="table table-hover table-striped">
                                     <tr>
                                     <th class="success">제목</th><td><input type="text" name="qna_title"></td>
-                                    <th class="success">작성자</th><td><input type="text" name="qna_writer"></td>
+                                    <th class="success">작성자</th><td><input type="text" name="qna_writer" value="${loginMember.user_name }" readonly="readonly"></td>
                                     </tr>
                                     <tr>
                                     <th class="success">내용</th><td colspan="3" width="90%"><textarea id="con1" name="qna_content"></textarea></td>

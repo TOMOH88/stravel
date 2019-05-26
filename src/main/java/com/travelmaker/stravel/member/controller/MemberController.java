@@ -9,14 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-/*import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;*/
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.multipart.MultipartFile;
+/*import org.springframework.web.multipart.MultipartFile;*/
 import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.member.model.service.MemberService;
@@ -34,7 +33,7 @@ public class MemberController {
 	@Autowired
 	BCryptPasswordEncoder bcryptpasswordEncoder;
 	
-	@RequestMapping(value="login.do", method=RequestMethod.POST)
+/*	@RequestMapping(value="login.do", method=RequestMethod.POST)
 	public String loginMethod(Member member, 
 			HttpSession session, SessionStatus status, Model model) {
 		logger.info("login.do run.");
@@ -50,8 +49,17 @@ public class MemberController {
 		model.addAttribute("message", "로그인실패!");
 		return "common/error";
 		}
+	}*/
+	@RequestMapping(value="login.do", method=RequestMethod.POST)
+	public String loginMethod(Member member, 
+			HttpSession session, SessionStatus status) {
+		logger.info("login.do run.");
+		System.out.println(member);
+		Member loginMember = memberService.selectLogin(member);	
+		session.setAttribute("loginMember", loginMember);
+		status.setComplete();
+		return "home";
 	}
-	
 	@RequestMapping("logout.do")
 	public String logoutMethod(HttpServletRequest request) {
 		logger.info("logout.do run.");
@@ -69,7 +77,7 @@ public class MemberController {
 		return "member/enrollPage";
 	}
 	
-	@RequestMapping(value="minsert.do", method=RequestMethod.POST)
+	/*@RequestMapping(value="minsert.do", method=RequestMethod.POST)
 	public String insertMember(Member member, 
 			@RequestParam(name="photo", required=false) MultipartFile mphoto, HttpServletRequest request,
 			Model model) {
@@ -99,8 +107,19 @@ public class MemberController {
 			model.addAttribute("message", "회원 가입 실패!");
 			return "common/error";
 		}
+	}*/
+	@RequestMapping(value="minsert.do", method=RequestMethod.POST)
+	public String insertMember(Member mb) {
+		System.out.println(mb);
+		mb.setUser_password(
+				bcryptpasswordEncoder.encode(mb.getUser_password()));
+		System.out.println(mb);
+		int result = memberService.insertMember(mb);
+		
+		
+		return "home";
+		
 	}
-	
 	@RequestMapping("myinfo.do")
 	public ModelAndView selectMember(ModelAndView mv, /*HttpServletRequest request*/
 			@RequestParam(name="useremail") String useremail) {
@@ -153,7 +172,7 @@ public class MemberController {
 		
 		int result = memberService.updateMember(member);		
 		if(result > 0) {
-			return "redirect:myinfo.do?useremail=" + member.getUseremail();			
+			return "redirect:myinfo.do?useremail=" + member.getUser_email();			
 		}else {
 			model.addAttribute("message", "회원정보 수정 실패!");
 		return "common/error";

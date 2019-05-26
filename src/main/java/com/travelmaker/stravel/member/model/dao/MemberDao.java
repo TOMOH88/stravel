@@ -15,8 +15,8 @@ public class MemberDao {
 
 	public Member selectLogin(SqlSessionTemplate session, Member member) {
 		Member loginMember = session.selectOne("memberMapper.selectLogin", member);
-		
-		if(!bcryptpasswordEncoder.matches(member.getUserpwd(), loginMember.getUserpwd())) {
+		System.out.println(loginMember);
+		if(!bcryptpasswordEncoder.matches(member.getUser_password(), loginMember.getUser_password())) {
 			loginMember = null;
 		}
 		

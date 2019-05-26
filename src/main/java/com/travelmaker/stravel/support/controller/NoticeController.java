@@ -127,7 +127,6 @@ public class NoticeController {
 	@RequestMapping("fdown.do")
 	public ModelAndView fileDownMethod(HttpServletRequest request,@RequestParam(name="filename") String fileName) {
 		String saveFath = request.getSession().getServletContext().getRealPath("/resources/files/notice");
-		System.out.println(fileName);
 		File downFile = new File(saveFath+"\\"+fileName);
 	    return new ModelAndView("filedown", "downFile", downFile);
 	}

@@ -74,7 +74,7 @@ $(function() {
 					            </c:if>
 					        </ul>
 
-					        <form action="qnalist.do" method="post" id='frmPaging'>
+					        <form action="notice.do" method="post" id='frmPaging'>
 					            <!--출력할 페이지번호, 출력할 페이지 시작 번호, 출력할 리스트 갯수 -->
 					            <input type='hidden' name='index' id='index' value='${p.index}'>
 					            <input type='hidden' name='pageStartNum' id='pageStartNum' value='${p.pageStartNum}'>

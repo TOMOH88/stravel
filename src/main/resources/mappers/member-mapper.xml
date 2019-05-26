@@ -5,20 +5,21 @@
 <mapper namespace="memberMapper">
 
 	<resultMap id="resultMember" type="Member">
-		<id property="useremail" column="useremail" />
-		<result property="userpwd" column="userpwd" />
-		<result property="username" column="username" />
-		<result property="gender" column="gender" />
-		<result property="age" column="age" />
-		<result property="phone" column="phone" />
+		<result property="user_no" column="USER_NO" />
+		<result property="user_email" column="USER_EMAIL" />
+		<result property="user_password" column="USER_PASSWORD" />
+		<result property="user_name" column="USER_NAME" />
+		<result property="user_phone" column="USER_PHONE" />
+		<result property="user_picture" column="USER_PICTURE" />
+		<result property="gender" column="GENDER" />
 	</resultMap>
-
-	<select id="selectLogin" parameterType="Member" 
-	 resultMap="resultMember" useCache="true">
-		select * from member 
-		where useremail = #{useremail}
-	</select>
 	
+	<select id="selectLogin" parameterType="Member" 
+	 resultType="Member">
+		select * from STRAVEL_USER
+		where user_email = #{user_email}
+	</select>
+	<!-- 
 	<select id="selectCheckId" parameterType="string" resultType="_int" useCache="true">
 		select count(useremail) from member 
 		where useremail = #{useremail}
@@ -31,13 +32,16 @@
 	
 	<select id="selectList" resultMap="resultMember" useCache="true">
 		select * from member
-	</select>
+	</select> -->
 	
 	<insert id="insertMember" parameterType="Member" useGeneratedKeys="true">
-		insert into member 
-		values (#{useremail}, #{userpwd}, #{username}, #{gender}, #{age}, #{phone})
+		<selectKey keyProperty="user_no" resultType="int" order="BEFORE">
+			select count(1)+1 from STRAVEL_USER
+		</selectKey>
+		insert into STRAVEL_USER(USER_NO,USER_EMAIL,USER_PASSWORD,USER_NAME,USER_PHONE,USER_PICTURE,GENDER)
+		values (#{user_no},#{user_email}, #{user_password}, #{user_name}, #{user_phone}, #{user_picture}, #{gender})
 	</insert>
-	
+<!-- 	
 	<delete id="deleteMember" parameterType="string">
 		delete from member where useremail = #{useremail}
 	</delete>
@@ -45,5 +49,5 @@
 	<update id="updateMember" parameterType="Member">
 		update member 
 		set userpwd = #{userpwd}, age = #{age}, phone = #{phone} where useremail = #{useremail}
-	</update>
+	</update> -->
 </mapper>
