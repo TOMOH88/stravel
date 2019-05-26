@@ -156,7 +156,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="container" id="c1">
-				<c:import url="../common/adminHeader.jsp" />
+				<%-- <c:import url="../common/adminHeader.jsp" /> --%>
 					<h1 id="f1">${touristspot.touristspot_name }</h1>
 					<div class="landmarkcategory" style="width: 100%;">
 						<c:forEach items="${touristspotImages }" var="tsi">
@@ -223,6 +223,9 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div align="center">
+	 <button onclick="location.href='updatetouristspot.do?tno=${touristspot.touristspot_no}'">수정하기</button>
 	</div>
 	<br>
 	<div class="container" id="c2">

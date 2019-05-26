@@ -131,6 +131,20 @@ public class TouristspotController {
 		return mv;
 		
 	}
+	@RequestMapping("updatetouristspot.do")
+	public ModelAndView touristspotUpdateAdmin(ModelAndView mv,@RequestParam(name = "tno") int tno) {
+		TouristspotVo ts = touristspotService.selectTouristspotDetail(tno);
+		ArrayList<TouristspotImagesVo> tsiList =  touristspotService.selectTouristspotImages(tno);
+		ArrayList<TouristspotReviewsVo> tsrList = touristspotService.selectTouristspotReviews(tno);
+		ArrayList<TouristspotCategoryVo> list = touristspotService.selectTouristspotCategory();
+		mv.addObject("TSCategory", list);
+		mv.addObject("touristspot", ts);
+		mv.addObject("touristspotImages", tsiList);
+		mv.addObject("touristspotReviews", tsrList);
+		mv.setViewName("touristspot/touristspotUpdateAdmin");
+		return mv;
+		
+	}
 	@RequestMapping(value="insertTourReview.do", method=RequestMethod.POST)
 	public String insertTourReview(TouristspotReviewsVo tsrVo) {
 		tsrVo.setReview_no(touristspotService.selectTourReviewNo());
