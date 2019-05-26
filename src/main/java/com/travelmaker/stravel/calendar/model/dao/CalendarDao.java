@@ -1,11 +1,13 @@
 package com.travelmaker.stravel.calendar.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.travelmaker.stravel.calendar.model.vo.MyCalendar;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Repository("CalendarDao")
 public class CalendarDao {
@@ -28,5 +30,10 @@ public class CalendarDao {
 
 	public int deleteMyCalendar(SqlSessionTemplate sqlSession, int mcnum) {
 		return sqlSession.delete("mycalendarMapper.deleteMyCalendar", mcnum);
+	}
+
+	public ArrayList<TouristspotVo> selectTouristspotList(SqlSessionTemplate sqlSession) {
+		List<TouristspotVo> list = sqlSession.selectList("mycalendarMapper.selectTouristspotList");
+		return (ArrayList<TouristspotVo>)list;
 	}
 }

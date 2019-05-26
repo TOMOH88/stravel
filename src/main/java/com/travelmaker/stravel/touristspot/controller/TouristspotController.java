@@ -25,6 +25,7 @@ import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotReviewsVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
+
 @Controller
 public class TouristspotController {
 	
@@ -63,6 +64,7 @@ public class TouristspotController {
 		mv.setViewName("touristspot/touristspotMain");
 		return mv;
 	}
+	
 	@RequestMapping("moveTSAdmin.do")
 	public ModelAndView moveTouristspotAdminMain(ModelAndView mv) {
 		logger.info("관광지 리스트 관리자 ");
@@ -161,4 +163,5 @@ public class TouristspotController {
 		return mv;
 		
 	}
+
 }

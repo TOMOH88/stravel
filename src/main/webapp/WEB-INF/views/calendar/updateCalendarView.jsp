@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 function add_div(){
     var div = document.createElement('div');
@@ -19,29 +19,11 @@ function remove_item(obj){
     document.getElementById('field').removeChild(obj.parentNode);
 }
 
-$(function(){
-	$.ajax({
-		type: "POST",
-		url : "cview.do",
-		dataType: "JSON",
-		contentType:"application/json; charset=UTF-8",
-		success : function(data){
-			var jsonStr = JSON.stringify(data);
-			var json = JSON.parse(jsonStr);
-			for (i in json.list) {
-				var touristspotno = json.list[i].touristspot_no;
-				var touristspotname = json.list[i].touristspot_name;
-				var touristspot = json.list[i].touristspot;
-			}
-			
-			console.log(touristspotno);
-            	
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert(jqXHR.responseText.errorThrown)
-		}
-	});
+$(document).ready(function(){
+	$("input:radio[name=category]:input[value=${mc.category}]").attr("checked", true);
 });
+
+
 </script>
 <title>stravel</title>
 <style type="text/css">
@@ -69,17 +51,16 @@ div{
 </c:forEach>
 <div class="row" id="field"></div>
 </div>
-<div class="col-md-2">
-<div class="row" id="result">asd</div>
-</div>
+<div class="col-md-2">dd</div>
 <div class="col-md-2">asd</div>
 <div class="col-md-7" id="map" style="height:530px; position:static;">
 </div>
 </div>
 </div>
-<div style="position:absolute; left: 1190px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div>
+<div style="position:absolute; left: 1190px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">수정</button></div>
 <div style="position:absolute; left: 1240px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='mycalendar.do'">닫기</button></div>
-<form action="vcalendar.do" method="post">
+<form action="updatecalendar.do" method="post">
+<input type="hidden" name="mycalendar_no" value="${mc.mycalendar_no }">
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -91,37 +72,37 @@ div{
       </div>
       <div class="modal-body">
       <div>
-      <font>제목</font><input type="text" name="mycalendar_title" class="form-control" required></div>
+      <font>제목</font><input type="text" name="mycalendar_title" class="form-control" required value="${mc.mycalendar_title }"></div>
       <div class="row">
        <div class="col-xl-6">
-       <font>출발일</font><input type="date" name="mycalendar_start_date" class="form-control" required>
+       <font>출발일</font><input type="date" name="mycalendar_start_date" class="form-control" required value="${mc.mycalendar_start_date }">
       </div>
       <div class="col-xl-6">
-       <font>종료일</font><input type="date" name="mycalendar_end_date" class="form-control" required>
+       <font>종료일</font><input type="date" name="mycalendar_end_date" class="form-control" required value="${mc.mycalendar_end_date }">
       </div>
       </div>
       <div>
       <label>내용
-      <textarea rows="auto" cols="100" style="width:100%;" name="mycalendar_content" required></textarea></label></div>
+      <textarea rows="auto" cols="100" style="width:100%;" name="mycalendar_content" required>${mc.mycalendar_content }</textarea></label></div>
       <div>
       <label>여행테마</label>
       <div class="row">
       <div class="col-xl-4">
-      <input type="radio" value="나홀로" name="category" required>나홀로
+      <input type="radio" value="나홀로" name="category" required value="${mc.category }" >나홀로
       </div>
       <div class="col-xl-4">
-      <input type="radio" value="단체" name="category" required>단체
+      <input type="radio" value="단체" name="category" required value="${mc.category }"  >단체
       </div>
       <div class="col-xl-4">
-      <input type="radio" value="가족" name="category" required>가족
+      <input type="radio" value="가족" name="category" required value="${mc.category }"  >가족
       </div>
       </div>
       <div class="row">
       <div class="col-xl-6">
-      <input type="radio" value="커플" name="category" required>커플
+      <input type="radio" value="커플" name="category" required value="${mc.category }"  >커플
       </div>
       <div class="col-xl-6">
-      <input type="radio" value="친구" name="category" required>친구
+      <input type="radio" value="친구" name="category" required value="${mc.category }"  >친구
       </div>
       </div>
       </div>
@@ -152,7 +133,7 @@ function initialize() {
     var size_y = 30; // 마커로 사용할 이미지의 세로 크기
      
     // 마커로 사용할 이미지 주소
-    
+     
     var marker;
     marker = new google.maps.Marker({
            position: markLocation, // 마커가 위치할 위도와 경도(변수)
