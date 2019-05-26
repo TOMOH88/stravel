@@ -31,4 +31,5 @@ public class OwnerController {
 		mv.setViewName("room/roomList");
 		return mv;
 	}
+	
 }
