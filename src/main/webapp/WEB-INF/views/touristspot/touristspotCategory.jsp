@@ -54,7 +54,7 @@
 </div>
       <div class="col-md-10">
       <!-- 작업 작성시작 -->
-      <h3>랜드마크</h3>
+      <h3>${cate }</h3>
 	<div class="landmarkcategory">
 		<c:forEach items = "${touristspot }" var = "ts">
 			<div class="landmarklist">
