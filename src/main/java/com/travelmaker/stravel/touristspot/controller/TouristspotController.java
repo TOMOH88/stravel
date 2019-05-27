@@ -109,6 +109,32 @@ public class TouristspotController {
 		}*/
 		return path;
 	}
+	@RequestMapping(value="TSWriterUpdate.do",method=RequestMethod.POST)
+	public String updateTouristspot(TouristspotVo ts,MultipartHttpServletRequest mtfRequest,HttpServletRequest request) {
+		String path = "redirect:moveTSAdmin.do";
+		System.out.println(ts);
+		int result = touristspotService.updateTouristspot(ts);
+		if(result <=0) {
+			return "redirect:moveTSAdmin.do";
+		}		
+		//사진 연속업로드
+		ArrayList<TouristspotImagesVo> tsImages = new ArrayList<TouristspotImagesVo>();
+		List<MultipartFile> fileList = mtfRequest.getFiles("tsimages");
+		if(!fileList.isEmpty()) {
+		for(int i=0;i<fileList.size();i++) {
+			String originalFileName = fileList.get(i).getOriginalFilename();
+			String renameFileName = ts.getTouristspot_name()+"-"+UUIDUtil.GetUUID()
+			+ "." + FileUtil.getExtension(originalFileName);
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/files/touristspotImages");
+			
+			FileUtil.upLoadFile(fileList.get(i), originalFileName, savePath, renameFileName);
+			
+			tsImages.add(new TouristspotImagesVo(ts.getTouristspot_no(), touristspotService.selectImagesNumber(ts)+1, renameFileName));
+			int result2 = touristspotService.insertTouristspotImages(tsImages.get(i));
+		}
+		}
+		return path;
+	}
 	@RequestMapping("touristspotDetail.do")
 	public ModelAndView touristspotDetail(ModelAndView mv,@RequestParam(name = "tno") int tno) {
 		TouristspotVo ts = touristspotService.selectTouristspotDetail(tno);
@@ -133,6 +159,20 @@ public class TouristspotController {
 		return mv;
 		
 	}
+	@RequestMapping("updatetouristspot.do")
+	public ModelAndView touristspotUpdateAdmin(ModelAndView mv,@RequestParam(name = "tno") int tno) {
+		TouristspotVo ts = touristspotService.selectTouristspotDetail(tno);
+		ArrayList<TouristspotImagesVo> tsiList =  touristspotService.selectTouristspotImages(tno);
+		ArrayList<TouristspotReviewsVo> tsrList = touristspotService.selectTouristspotReviews(tno);
+		ArrayList<TouristspotCategoryVo> list = touristspotService.selectTouristspotCategory();
+		mv.addObject("TSCategory", list);
+		mv.addObject("touristspot", ts);
+		mv.addObject("touristspotImages", tsiList);
+		mv.addObject("touristspotReviews", tsrList);
+		mv.setViewName("touristspot/touristspotUpdateAdmin");
+		return mv;
+		
+	}
 	@RequestMapping(value="insertTourReview.do", method=RequestMethod.POST)
 	public String insertTourReview(TouristspotReviewsVo tsrVo) {
 		tsrVo.setReview_no(touristspotService.selectTourReviewNo());
@@ -146,22 +186,49 @@ public class TouristspotController {
 		if(cate.equals("A001")) {
 			ArrayList<TouristspotVo> landmark = touristspotService.selectTouristspotCategoryList(cate);
 			mv.addObject("touristspot", landmark);
+			mv.addObject("cate","랜드마크");
 		}
 		if(cate.equals("A002")) {
 			ArrayList<TouristspotVo> historic = touristspotService.selectTouristspotCategoryList(cate);
 			mv.addObject("touristspot", historic);
-				}
+			mv.addObject("cate","유적지");
+		}
 		if(cate.equals("A003")) {
 			ArrayList<TouristspotVo> museum = touristspotService.selectTouristspotCategoryList(cate);
 			mv.addObject("touristspot", museum);
+			mv.addObject("cate","박물관");
 		}
 		if(cate.equals("A004")) {
 			ArrayList<TouristspotVo> shopping = touristspotService.selectTouristspotCategoryList(cate);
 			mv.addObject("touristspot", shopping);
+			mv.addObject("cate","쇼핑");
 		}
 		mv.setViewName("touristspot/touristspotCategory");
 		return mv;
 		
 	}
+	@RequestMapping("deletetouristspot.do")
+	public ModelAndView touristspotDeleteAdmin(ModelAndView mv,@RequestParam(name = "tno") int tno) {
+		int result = touristspotService.updateTouristspotStatus(tno);
+		mv.setViewName("redirect:moveTSAdmin.do");
+		return mv;
+			
+	}
+	@RequestMapping("reviewBlind.do")
+	public ModelAndView reviewBlindAdmin(ModelAndView mv,@RequestParam(name = "rno") int rno,@RequestParam(name = "tno") int tno) {
+		System.out.println(rno);
+		int result = touristspotService.updateReviewBlindStatus(rno);
+		mv.setViewName("redirect:touristspotDetailAdmin.do?tno="+tno);
+		return mv;
+			
+	}	
+	@RequestMapping("reviewDelete.do")
+	public ModelAndView reviewDeleteAdmin(ModelAndView mv,@RequestParam(name = "rno") int rno,@RequestParam(name = "tno") int tno) {
+		System.out.println(rno);
+		int result = touristspotService.updateReviewDeleteStatus(rno);
+		mv.setViewName("redirect:touristspotDetailAdmin.do?tno="+tno);
+		return mv;
+			
+	}	
 
 }

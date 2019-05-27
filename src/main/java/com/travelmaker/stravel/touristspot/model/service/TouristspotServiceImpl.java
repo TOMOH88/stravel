@@ -97,4 +97,29 @@ public class TouristspotServiceImpl implements TouristspotService{
 		return touristspotDao.selectTouristspotCategoryList(mybatisSession,cate);
 	}
 
+	@Override
+	public int updateTouristspot(TouristspotVo ts) {
+		return touristspotDao.updateTouristspot(mybatisSession,ts);
+	}
+
+	@Override
+	public int selectImagesNumber(TouristspotVo ts) {
+		return touristspotDao.selectImagesNumber(mybatisSession,ts);
+	}
+
+	@Override
+	public int updateTouristspotStatus(int tno) {
+		return touristspotDao.updateTouristspotStatus(mybatisSession,tno);
+	}
+
+	@Override
+	public int updateReviewBlindStatus(int rno) {
+		return touristspotDao.updateReviewBlindStatus(mybatisSession,rno);
+	}
+
+	@Override
+	public int updateReviewDeleteStatus(int rno) {
+		return touristspotDao.updateReviewDeleteStatus(mybatisSession,rno);
+	}
+
 }

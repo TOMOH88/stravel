@@ -70,7 +70,7 @@
 		update tb_touristspot set RENAME_THUMNAIL = #{rename_thumnail} where TOURISTSPOT_NO = #{touristspot_no}
 	</update>
 	<select id="selectTouristspotList" resultType="TouristspotVo">
-		select * from TB_TOURISTSPOT order by TOURISTSPOT_NO 
+		select * from TB_TOURISTSPOT where TOURISTSPOT_DELETESTATUS = 'N' order by TOURISTSPOT_NO 
 	</select>
 	<select id="selectTouristspotDetail" parameterType="_int" resultType="TouristspotVo">
 		select * from TB_TOURISTSPOT where TOURISTSPOT_NO = #{touristspot_no}
@@ -88,23 +88,41 @@
 		(#{touristspot_no},#{review_no},#{review_writer},#{review_content},#{review_point},default,default,default,default,#{review_tourdate})
 	</insert>
 	<select id="selectTouristspotReviews" parameterType="_int" resultMap="resultTouristspotReviewsVo">
-		select * from tb_touristspotreviews where TOURISTSPOT_NO = #{touristspot_no} <!-- order by review_no desc -->
+		select * from tb_touristspotreviews where TOURISTSPOT_NO = #{touristspot_no} and REVIEW_DELETESTATUS = 'N'<!-- order by review_no desc -->
 	</select>
 	<select id="selectLandmarkTop" resultMap="resultTouristspotVo">
-	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = 'A001' and 6 > ROWNUM order by touristspot_date desc
+	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = 'A001' and 6 > ROWNUM and TOURISTSPOT_DELETESTATUS = 'N' order by touristspot_date desc
 	</select>
 	<select id="selectHistoricTop" resultMap="resultTouristspotVo">
-	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = 'A002' order by touristspot_date desc
+	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = 'A002' and 6 > ROWNUM and TOURISTSPOT_DELETESTATUS = 'N' order by touristspot_date desc
 	</select>
 	<select id="selectMuseumTop" resultMap="resultTouristspotVo">
-	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = 'A003' order by touristspot_date desc
+	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = 'A003' and 6 > ROWNUM and TOURISTSPOT_DELETESTATUS = 'N' order by touristspot_date desc
 	</select>
 	<select id="selectShoppingTop" resultMap="resultTouristspotVo">
-	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = 'A004' order by touristspot_date desc
+	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = 'A004' and 6 > ROWNUM and TOURISTSPOT_DELETESTATUS = 'N' order by touristspot_date desc
 	</select>
 	<select id="selectTouristspotCategoryList" parameterType="String" resultMap="resultTouristspotVo">
-	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = #{category} order by touristspot_date desc 
+	select * from TB_TOURISTSPOT where TOURISTSPOTCATEGORYCODE = #{category} and TOURISTSPOT_DELETESTATUS = 'N' order by touristspot_date desc 
 	</select>
+	<select id="selectImagesNumber" parameterType="TouristspotVo" resultType="_int">
+	select count(1) from TB_TOURISTSPOTIMAGES where TOURISTSPOT_NO = #{touristspot_no}
+	</select>
+	<update id="updateTouristspot" parameterType="TouristspotVo">
+	update tb_touristspot set TOURISTSPOTCATEGORYCODE = #{touristspotcategorycode},TOURISTSPOT_CONTENT = #{touristspot_content},
+	TOURISTSPOT_OPEN = #{touristspot_open},TOURISTSPOT_CLOSED = #{touristspot_closed},TOURISTSPOT_HOMEPAGE = #{touristspot_homepage},TOURISTSPOT_ADDRESS = #{touristspot_address},
+	TOURISTSPOT_TEL = #{touristspot_tel},TOURISTSPOT_LATITUDE = #{touristspot_latitude},TOURISTSPOT_LONGITUDE = #{touristspot_longitude},TOURISTSPOT_LASTMODIFIED = DEFAULT 
+	where TOURISTSPOT_NO = #{touristspot_no}
+	</update>
+	<update id="updateTouristspotStatus" parameterType="_int">
+	update tb_touristspot set TOURISTSPOT_DELETESTATUS = 'Y' where TOURISTSPOT_NO = #{touristspot_no}
+	</update>
+	<update id="updateReviewBlindStatus" parameterType="_int">
+	update tb_touristspotreviews set REVIEW_BLIND = 'Y' where REVIEW_NO = #{REVIEW_NO}
+	</update>
+	<update id="updateReviewDeleteStatus" parameterType="_int">
+	update tb_touristspotreviews set REVIEW_DELETESTATUS = 'Y' where REVIEW_NO = #{REVIEW_NO}
+	</update>
 <!-- 	
 	<insert id="qnaInsert" parameterType="QnaVo">
 		insert into tb_qna(QNA_NO,QNA_TITLE,QNA_CONTENT,QNA_WRITER,

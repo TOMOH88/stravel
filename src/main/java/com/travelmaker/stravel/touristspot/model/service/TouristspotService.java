@@ -23,4 +23,9 @@ public interface TouristspotService {
 	ArrayList<TouristspotVo> selectMuseumTop();
 	ArrayList<TouristspotVo> selectShoppingTop();
 	ArrayList<TouristspotVo> selectTouristspotCategoryList(String cate);
+	int updateTouristspot(TouristspotVo ts);
+	int selectImagesNumber(TouristspotVo ts);
+	int updateTouristspotStatus(int tno);
+	int updateReviewBlindStatus(int rno);
+	int updateReviewDeleteStatus(int rno);
 }
