@@ -35,6 +35,7 @@
 		<typeAlias type="com.travelmaker.stravel.owner.model.vo.OwnerImg" alias="ownerImgVo"/>
 		<typeAlias type="com.travelmaker.stravel.owner.model.vo.OwnerList" alias="ownerListVo"/>
 		<typeAlias type="com.travelmaker.stravel.owner.model.vo.OwnerReview" alias="ownerReviewVo"/>
+		<typeAlias type="com.travelmaker.stravel.owner.model.vo.OwnerPaging" alias="ownerPagingVo"/>
 		<!-- 하종은 -->
 		<!-- 김인규 -->
 		<!-- 구한모 -->

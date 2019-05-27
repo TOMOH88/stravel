@@ -44,16 +44,36 @@
 		<result property="owner_no" column="owner_no"/>
 	</resultMap>
 
-	<select id="selectRoomList" resultMap="resultOwnerList" parameterType="pagingVo">
+	<select id="selectRoomList" resultMap="resultOwnerList" >
     SELECT *
         FROM (    SELECT ROWNUM RNUM, P.*
                 FROM (   select  owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
     from owner
     join room using (owner_no)
     group by owner_no,owner_companyname, owner_address, owner_category   ) P )
-        WHERE RNUM BETWEEN #{start} AND #{last}
+        WHERE RNUM BETWEEN #{startList} +1 AND #{listSize} + #{startList}
     
 
+	</select>
+	<select id="selectRoomList1" resultMap="resultOwnerList" >
+    SELECT *
+        FROM (    SELECT ROWNUM RNUM, P.*
+                FROM (   select  owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
+    from owner
+    join room using (owner_no)
+    group by owner_no,owner_companyname, owner_address, owner_category 
+    having  OWNER_COMPANYNAME like '%'||#{search}||'%' or OWNER_ADDRESS like '%'||#{search}||'%'  ) P )
+        WHERE RNUM BETWEEN #{startList} +1 AND #{listSize} + #{startList}
+
+	</select>
+	<select id="selectOwnerTotal1" resultType="int">
+	  SELECT  count(1)
+        FROM (    SELECT ROWNUM RNUM, P.*
+                FROM (   select  owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
+    from owner
+    join room using (owner_no)
+    group by owner_no,owner_companyname, owner_address, owner_category 
+    having  OWNER_COMPANYNAME like '%'||#{search}||'%' or OWNER_ADDRESS like '%'||#{search}||'%'  ) P )
 	</select>
 	<select id="selectOwnerImgList" resultMap="resultOwnerImg" >
 	    select * from owner_img
@@ -74,5 +94,10 @@ JOIN STRAVEL_USER USING (USER_NO)
 JOIN RESERVATION USING(RSV_NO)
 JOIN ROOM USING (ROOM_NO)
 where owner_no = #{owner_no}
+	</select>
+	
+	<select id="selectOwnerTotal" resultType="int" >
+		select count(1)
+		from owner
 	</select>
 </mapper>
