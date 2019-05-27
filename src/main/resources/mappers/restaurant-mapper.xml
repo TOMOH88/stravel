@@ -36,14 +36,14 @@
 	
 	<resultMap type="RestaurantReview" id="resultRestaurantReview">
 		<result property = "restaurant_no" column = "restaurant_no"/>
-		<result property = "restaurant_answer_no" column = "restaurant_answer_no"/>
-		<result property = "restaurant_answer_content" column = "restaurant_answer_content"/>
-		<result property = "restaurant_answer_writer" column = "restaurant_answer_writer"/>
-		<result property = "restaurant_answer_date" column = "restaurant_answer_date"/>
-		<result property = "restaurant_answer_point" column = "restaurant_answer_point"/>
-		<result property = "restaurant_answer_blind" column = "restaurant_answer_blind"/>
-		<result property = "restaurant_answer_lastmodified" column = "restaurant_answer_lastmodified"/>
-		<result property = "restaurant_answer_enjoydate" column = "restaurant_answer_enjoydate"/>
+		<result property = "restaurant_review_no" column = "restaurant_review_no"/>
+		<result property = "restaurant_review_content" column = "restaurant_review_content"/>
+		<result property = "restaurant_review_writer" column = "restaurant_review_writer"/>
+		<result property = "restaurant_review_date" column = "restaurant_review_date"/>
+		<result property = "restaurant_review_point" column = "restaurant_review_point"/>
+		<result property = "restaurant_review_blind" column = "restaurant_review_blind"/>
+		<result property = "restaurant_review_lastmodified" column = "restaurant_review_lastmodified"/>
+		<result property = "restaurant_review_tourdate" column = "restaurant_review_tourdate"/>
 	</resultMap>
 	
 	
@@ -100,14 +100,14 @@
 		select count(1)+1 from restaurant_review
 	</select>
 	<insert id="insertRestaurantReview" parameterType = "RestaurantReview">
-		insert into restaurant_review (restaurant_no, restaurant_answer_no, 
-		restaurant_answer_content, restaurant_answer_writer, 
-		restaurant_answer_date, restaurant_answer_point, 
-		restaurant_answer_blind, restaurant_answer_lastmodified, 
-		restaurant_answer_enjoydate) values (#{restaurant_no}, #{restaurant_answer_no}, 
-		#{restaurant_answer_content}, #{restaurant_answer_writer}, 
-		default, #{restaurant_answer_point}, 
-		default, default, #{restaurant_answer_enjoydate} )
+		insert into restaurant_review (restaurant_no, restaurant_review_no, 
+		restaurant_review_content, restaurant_review_writer, 
+		restaurant_review_date, restaurant_review_point, 
+		restaurant_review_blind, restaurant_review_lastmodified, 
+		restaurant_review_tourdate) values (#{restaurant_no}, #{restaurant_review_no}, 
+		#{restaurant_review_content}, #{restaurant_review_writer}, 
+		default, #{restaurant_review_point}, 
+		default, default, #{restaurant_review_tourdate} )
 	</insert>
 
 </mapper>

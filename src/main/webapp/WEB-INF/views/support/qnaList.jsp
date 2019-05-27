@@ -18,7 +18,7 @@
 <script type="text/javascript">
 	function moveWritePage() {
 	location.href="qnawrite.do";	
-	}
+	}	
 </script>
 </head>
 <body>

@@ -6,30 +6,30 @@ public class RestaurantReview implements java.io.Serializable{
 
 	private static final long serialVersionUID = 93658L;
 	private int restaurant_no;
-	private int restaurant_answer_no;
-	private String restaurant_answer_content;
-	private String restaurant_answer_writer;
-	private Date restaurant_answer_date;
-	private int restaurant_answer_point;
-	private String restaurant_answer_blind;
-	private Date restaurant_answer_lastmodified;
-	private Date restaurant_answer_enjoydate;
+	private int restaurant_review_no;
+	private String restaurant_review_content;
+	private String restaurant_review_writer;
+	private Date restaurant_review_date;
+	private int restaurant_review_point;
+	private String restaurant_review_blind;
+	private Date restaurant_review_lastmodified;
+	private Date restaurant_review_tourdate;
 	
 	public RestaurantReview() {}
 
-	public RestaurantReview(int restaurant_no, int restaurant_answer_no, String restaurant_answer_content,
-			String restaurant_answer_writer, Date restaurant_answer_date, int restaurant_answer_point,
-			String restaurant_answer_blind, Date restaurant_answer_lastmodified, Date restaurant_answer_enjoydate) {
+	public RestaurantReview(int restaurant_no, int restaurant_review_no, String restaurant_review_content,
+			String restaurant_review_writer, Date restaurant_review_date, int restaurant_review_point,
+			String restaurant_review_blind, Date restaurant_review_lastmodified, Date restaurant_review_tourdate) {
 		super();
 		this.restaurant_no = restaurant_no;
-		this.restaurant_answer_no = restaurant_answer_no;
-		this.restaurant_answer_content = restaurant_answer_content;
-		this.restaurant_answer_writer = restaurant_answer_writer;
-		this.restaurant_answer_date = restaurant_answer_date;
-		this.restaurant_answer_point = restaurant_answer_point;
-		this.restaurant_answer_blind = restaurant_answer_blind;
-		this.restaurant_answer_lastmodified = restaurant_answer_lastmodified;
-		this.restaurant_answer_enjoydate = restaurant_answer_enjoydate;
+		this.restaurant_review_no = restaurant_review_no;
+		this.restaurant_review_content = restaurant_review_content;
+		this.restaurant_review_writer = restaurant_review_writer;
+		this.restaurant_review_date = restaurant_review_date;
+		this.restaurant_review_point = restaurant_review_point;
+		this.restaurant_review_blind = restaurant_review_blind;
+		this.restaurant_review_lastmodified = restaurant_review_lastmodified;
+		this.restaurant_review_tourdate = restaurant_review_tourdate;
 	}
 
 	public int getRestaurant_no() {
@@ -40,68 +40,68 @@ public class RestaurantReview implements java.io.Serializable{
 		this.restaurant_no = restaurant_no;
 	}
 
-	public int getRestaurant_answer_no() {
-		return restaurant_answer_no;
+	public int getRestaurant_review_no() {
+		return restaurant_review_no;
 	}
 
-	public void setRestaurant_answer_no(int restaurant_answer_no) {
-		this.restaurant_answer_no = restaurant_answer_no;
+	public void setRestaurant_review_no(int restaurant_review_no) {
+		this.restaurant_review_no = restaurant_review_no;
 	}
 
-	public String getRestaurant_answer_content() {
-		return restaurant_answer_content;
+	public String getRestaurant_review_content() {
+		return restaurant_review_content;
 	}
 
-	public void setRestaurant_answer_content(String restaurant_answer_content) {
-		this.restaurant_answer_content = restaurant_answer_content;
+	public void setRestaurant_review_content(String restaurant_review_content) {
+		this.restaurant_review_content = restaurant_review_content;
 	}
 
-	public String getRestaurant_answer_writer() {
-		return restaurant_answer_writer;
+	public String getRestaurant_review_writer() {
+		return restaurant_review_writer;
 	}
 
-	public void setRestaurant_answer_writer(String restaurant_answer_writer) {
-		this.restaurant_answer_writer = restaurant_answer_writer;
+	public void setRestaurant_review_writer(String restaurant_review_writer) {
+		this.restaurant_review_writer = restaurant_review_writer;
 	}
 
-	public Date getRestaurant_answer_date() {
-		return restaurant_answer_date;
+	public Date getRestaurant_review_date() {
+		return restaurant_review_date;
 	}
 
-	public void setRestaurant_answer_date(Date restaurant_answer_date) {
-		this.restaurant_answer_date = restaurant_answer_date;
+	public void setRestaurant_review_date(Date restaurant_review_date) {
+		this.restaurant_review_date = restaurant_review_date;
 	}
 
-	public int getRestaurant_answer_point() {
-		return restaurant_answer_point;
+	public int getRestaurant_review_point() {
+		return restaurant_review_point;
 	}
 
-	public void setRestaurant_answer_point(int restaurant_answer_point) {
-		this.restaurant_answer_point = restaurant_answer_point;
+	public void setRestaurant_review_point(int restaurant_review_point) {
+		this.restaurant_review_point = restaurant_review_point;
 	}
 
-	public String getRestaurant_answer_blind() {
-		return restaurant_answer_blind;
+	public String getRestaurant_review_blind() {
+		return restaurant_review_blind;
 	}
 
-	public void setRestaurant_answer_blind(String restaurant_answer_blind) {
-		this.restaurant_answer_blind = restaurant_answer_blind;
+	public void setRestaurant_review_blind(String restaurant_review_blind) {
+		this.restaurant_review_blind = restaurant_review_blind;
 	}
 
-	public Date getRestaurant_answer_lastmodified() {
-		return restaurant_answer_lastmodified;
+	public Date getRestaurant_review_lastmodified() {
+		return restaurant_review_lastmodified;
 	}
 
-	public void setRestaurant_answer_lastmodified(Date restaurant_answer_lastmodified) {
-		this.restaurant_answer_lastmodified = restaurant_answer_lastmodified;
+	public void setRestaurant_review_lastmodified(Date restaurant_review_lastmodified) {
+		this.restaurant_review_lastmodified = restaurant_review_lastmodified;
 	}
 
-	public Date getRestaurant_answer_enjoydate() {
-		return restaurant_answer_enjoydate;
+	public Date getRestaurant_review_tourdate() {
+		return restaurant_review_tourdate;
 	}
 
-	public void setRestaurant_answer_enjoydate(Date restaurant_answer_enjoydate) {
-		this.restaurant_answer_enjoydate = restaurant_answer_enjoydate;
+	public void setRestaurant_review_tourdate(Date restaurant_review_tourdate) {
+		this.restaurant_review_tourdate = restaurant_review_tourdate;
 	}
 
 	public static long getSerialversionuid() {
@@ -110,12 +110,12 @@ public class RestaurantReview implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "RestaurantReview [restaurant_no=" + restaurant_no + ", restaurant_answer_no=" + restaurant_answer_no
-				+ ", restaurant_answer_content=" + restaurant_answer_content + ", restaurant_answer_writer="
-				+ restaurant_answer_writer + ", restaurant_answer_date=" + restaurant_answer_date
-				+ ", restaurant_answer_point=" + restaurant_answer_point + ", restaurant_answer_blind="
-				+ restaurant_answer_blind + ", restaurant_answer_lastmodified=" + restaurant_answer_lastmodified
-				+ ", restaurant_answer_enjoydate=" + restaurant_answer_enjoydate + "]";
+		return "RestaurantReview [restaurant_no=" + restaurant_no + ", restaurant_review_no=" + restaurant_review_no
+				+ ", restaurant_review_content=" + restaurant_review_content + ", restaurant_review_writer="
+				+ restaurant_review_writer + ", restaurant_review_date=" + restaurant_review_date
+				+ ", restaurant_review_point=" + restaurant_review_point + ", restaurant_review_blind="
+				+ restaurant_review_blind + ", restaurant_review_lastmodified=" + restaurant_review_lastmodified
+				+ ", restaurant_review_tourdate=" + restaurant_review_tourdate + "]";
 	}
 
 	

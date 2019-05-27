@@ -44,6 +44,20 @@ public class RestaurantController {
 		mv.setViewName("Restaurant/seafoodRestaurantAll");
 		return mv;
 	}
+	@RequestMapping("seafoodalladmin.do")
+	public ModelAndView seafoodAllListAdmin(ModelAndView mv) {
+		ArrayList<Restaurant> SeafoodList = resService.SeafoodList();
+		mv.addObject("seaList", SeafoodList);
+		mv.setViewName("Restaurant/seafoodRestaurantAllAdmin");
+		return mv;
+	}
+	@RequestMapping("koreanfoodalladmin.do")
+	public ModelAndView koreanAllListAdmin(ModelAndView mv) {
+		ArrayList<Restaurant> koreanfoodList = resService.koreanfoodList();
+		mv.addObject("koreanfoodList", koreanfoodList);
+		mv.setViewName("Restaurant/koreanRestaurantAllAdmin");
+		return mv;
+	}
 	@RequestMapping("koreanfoodall.do")
 	public ModelAndView koreanAllList(ModelAndView mv) {
 		ArrayList<Restaurant> koreanfoodList = resService.koreanfoodList();
@@ -58,11 +72,25 @@ public class RestaurantController {
 		mv.setViewName("Restaurant/barbecueRestaurantAll");
 		return mv;
 	}
+	@RequestMapping("barbecuefoodalladmin.do")
+	public ModelAndView barbecueAllListAdmin(ModelAndView mv) {
+		ArrayList<Restaurant> barbecueList = resService.barbecueList();
+		mv.addObject("barbecueList", barbecueList);
+		mv.setViewName("Restaurant/barbecueRestaurantAllAdmin");
+		return mv;
+	}
 	@RequestMapping("caferestaurantall.do")
 	public ModelAndView cafeAllList(ModelAndView mv) {
 		ArrayList<Restaurant> cafeList = resService.cafeList();
 		mv.addObject("cafeList", cafeList);
 		mv.setViewName("Restaurant/cafeRestaurantAll");
+		return mv;
+	}
+	@RequestMapping("caferestaurantalladmin.do")
+	public ModelAndView cafeAllListAdmin(ModelAndView mv) {
+		ArrayList<Restaurant> cafeList = resService.cafeList();
+		mv.addObject("cafeList", cafeList);
+		mv.setViewName("Restaurant/cafeRestaurantAllAdmin");
 		return mv;
 	}
 	
@@ -80,6 +108,20 @@ public class RestaurantController {
 		mv.setViewName("Restaurant/restaurantDetail");
 		return mv;
 	}
+	@RequestMapping("restaurantdetailadmin.do")
+	public ModelAndView restaurantDetailAdmin(ModelAndView mv, @RequestParam(name = "restaurant_no") int restaurant_no) {
+		Restaurant restaurant = resService.restaurantDetail(restaurant_no);
+		ArrayList<RestaurantImage> imageList = resService.selectRestaurantImage(restaurant_no);
+		ArrayList<RestaurantReview> reviewList = resService.selectRestaurantReview(restaurant_no);
+		
+		mv.addObject("list", restaurant);
+		mv.addObject("image", imageList);
+		mv.addObject("review", reviewList);
+		
+		mv.setViewName("Restaurant/restaurantDetailAdmin");
+		return mv;
+	}
+	
 	
 	@RequestMapping("restaurantlist.do")
 	public ModelAndView moveRestaurantList(ModelAndView mv) {
@@ -100,10 +142,25 @@ public class RestaurantController {
 		
 		return mv;
 	}
-	/*@RequestMapping("restaurantlist.do")
-	public String moveRestaurantList() {
-		return "Restaurant/restaurantList";
-	}*/
+	@RequestMapping("restaurantlistadmin.do")
+	public ModelAndView moveRestaurantListAdmin(ModelAndView mv) {
+		ArrayList<Restaurant> SeafoodList = resService.SeafoodList();
+		mv.addObject("seaList", SeafoodList);
+		
+		ArrayList<Restaurant> barbecueList = resService.barbecueList();
+		mv.addObject("barbecueList", barbecueList);
+		
+		ArrayList<Restaurant> koreanfoodList = resService.koreanfoodList();
+		mv.addObject("koreanfoodList", koreanfoodList);
+		
+		ArrayList<Restaurant> cafeList = resService.cafeList();
+		mv.addObject("cafeList", cafeList);
+		
+		
+		mv.setViewName("Restaurant/restaurantListAdmin");
+		
+		return mv;
+	}
 	@RequestMapping(value = "insertrestaurant.do", method = RequestMethod.POST)
 	public String insertRestaurant(Restaurant rest, MultipartHttpServletRequest resimRequest, HttpServletRequest request) {
 		String path = "redirect:restaurantlist.do";
@@ -163,7 +220,7 @@ public class RestaurantController {
 	@RequestMapping(value="insertRestaurantReview.do", method=RequestMethod.POST)
 	public String insertRestaurantReview(RestaurantReview review) {
 		System.out.println("review"+review);
-		review.setRestaurant_answer_no(resService.selectRestaurantReviewNO());
+		review.setRestaurant_review_no(resService.selectRestaurantReviewNO());
 		int result = resService.insertRestaurantReview(review);
 		System.out.println("result" + result);
 		return "redirect:restaurantdetail.do?restaurant_no=" + review.getRestaurant_no();
