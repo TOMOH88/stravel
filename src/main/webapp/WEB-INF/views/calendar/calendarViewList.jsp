@@ -23,25 +23,66 @@ $(function(){
 	$.ajax({
 		type: "POST",
 		url : "cview.do",
-		dataType: "JSON",
+		dataType: "json",
 		contentType:"application/json; charset=UTF-8",
 		success : function(data){
-			var jsonStr = JSON.stringify(data);
-			var json = JSON.parse(jsonStr);
-			for (i in json.list) {
-				var touristspotno = json.list[i].touristspot_no;
-				var touristspotname = json.list[i].touristspot_name;
-				var touristspot = json.list[i].touristspot;
-			}
-			
-			console.log(touristspotno);
-            	
+			if(data.code == "ok")
+			var location = [];
+			for(i in data.tour){
+				
+				var no = data.tour[i].touristspot_no;
+				var name = data.tour[i].touristspot_name;
+				var touristspot = data.tour[i].touristspot;
+				var latitude = data.tour[i].touristspot_latitude;
+				var longitude = data.tour[i].touristspot_longitude;
+				location = new google.maps.LatLng(latitude, longitude);
+				}
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 			alert(jqXHR.responseText.errorThrown)
 		}
 	});
 });
+
+function initialize(location) {
+    var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도
+    var	markLocation = new google.maps.LatLng(latitude, longitude); 
+    
+    var mapOptions = {
+      center: mapLocation, // 지도에서 가운데로 위치할 위도와 경도(변수)
+      zoom: 11, // 지도 zoom단계
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map"), // id: map-canvas, body에 있는 div태그의 id와 같아야 함
+        mapOptions);
+    
+    var size_x = 30; // 마커로 사용할 이미지의 가로 크기
+    var size_y = 30; // 마커로 사용할 이미지의 세로 크기
+     
+    // 마커로 사용할 이미지 주소
+    var marker;
+    marker = new google.maps.Marker({
+           position: location, // 마커가 위치할 위도와 경도(변수)
+           map: map,
+//         info: '말풍선 안에 들어갈 내용',
+           title: '제주펜션' // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
+    });
+    var content = 
+    	"<a href='main.do'>"
+    	 + "<div style='width: 200px; height: 150px;'>"
+    	+ "<img src='${pageContext.request.contextPath}/resources/img/maldives-1993704_1920.jpg' style='width:100%; height:100%;'></div></a>"
+    	+ "<hr><div style='width: 200px; height: 70px;'><font>침대1개</font><br>올레펜션<br>₩28,500 x 1박 &nbsp;&nbsp; ★★★★★</div>"; // 말풍선 안에 들어갈 내용
+     
+    // 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
+    var infowindow = new google.maps.InfoWindow({ content: content});
+
+    google.maps.event.addListener(marker, "click", function() {
+        infowindow.open(map,marker);
+    });
+
+     
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <title>stravel</title>
 <style type="text/css">
@@ -77,8 +118,8 @@ div{
 </div>
 </div>
 </div>
-<div style="position:absolute; left: 1190px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div>
-<div style="position:absolute; left: 1240px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='mycalendar.do'">닫기</button></div>
+<div style="position:absolute; left: 1190px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div>
+<div style="position:absolute; left: 1240px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='mycalendar.do'">닫기</button></div>
 <form action="vcalendar.do" method="post">
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -134,49 +175,5 @@ div{
   </div>
 </div>
 </form>
-<script>
-function initialize() {
-    var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도
-    var markLocation = new google.maps.LatLng('33.321349', '126.684723'); // 마커가 위치할 위도와 경도
-
-
-    var mapOptions = {
-      center: mapLocation, // 지도에서 가운데로 위치할 위도와 경도(변수)
-      zoom: 18, // 지도 zoom단계
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map"), // id: map-canvas, body에 있는 div태그의 id와 같아야 함
-        mapOptions);
-    
-    var size_x = 30; // 마커로 사용할 이미지의 가로 크기
-    var size_y = 30; // 마커로 사용할 이미지의 세로 크기
-     
-    // 마커로 사용할 이미지 주소
-    
-    var marker;
-    marker = new google.maps.Marker({
-           position: markLocation, // 마커가 위치할 위도와 경도(변수)
-           map: map,
-//         info: '말풍선 안에 들어갈 내용',
-           title: '제주펜션~' // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
-    });
-     
-    var content = 
-    	"<a href='main.do'>"
-    	 + "<div style='width: 200px; height: 150px;'>"
-    	+ "<img src='${pageContext.request.contextPath}/resources/img/maldives-1993704_1920.jpg' style='width:100%; height:100%;'></div></a>"
-    	+ "<hr><div style='width: 200px; height: 70px;'><font>침대1개</font><br>올레펜션<br>₩28,500 x 1박 &nbsp;&nbsp; ★★★★★</div>"; // 말풍선 안에 들어갈 내용
-     
-    // 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
-    var infowindow = new google.maps.InfoWindow({ content: content});
-
-    google.maps.event.addListener(marker, "click", function() {
-        infowindow.open(map,marker);
-    });
-
-     
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);
-			</script> 
 </body>
 </html>

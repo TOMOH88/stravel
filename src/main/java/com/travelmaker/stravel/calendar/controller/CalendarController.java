@@ -121,11 +121,11 @@ public class CalendarController {
 		return "redirect:mycalendar.do";
 	}
 	
-	@RequestMapping(value="cview.do", method= RequestMethod.POST)
-	public ModelAndView atourPage(ModelAndView mv) {
+	@RequestMapping(value="cview.do", method= RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public @ResponseBody ModelAndView atourPage(ModelAndView mv) {
 		ArrayList<TouristspotVo> tour = calendarService.selectTour();
 			mv.addObject("tour", tour);
-			System.out.println(tour);
+			mv.addObject("code", "ok");
 			mv.setViewName("jsonView");
 		return mv;
 	}
