@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoard;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage;
+import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardLike;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview;
 
 public interface MyTripBoardService {
@@ -31,6 +32,8 @@ public interface MyTripBoardService {
 	int selectBoardNo();
 
 	ArrayList<MyTripBoard> selectList(String board_title);
+
+	
 
 	
 

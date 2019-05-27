@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoard;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage;
+import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardLike;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview;
 
 @Repository("MyTripBoardDao")
@@ -77,6 +78,8 @@ public ArrayList<MyTripBoard> selectList(SqlSessionTemplate session, String boar
 	List<MyTripBoard> list = session.selectList("myTripBoardMapper.selectList", board_title);
 	return (ArrayList<MyTripBoard>) list;
 }
+
+
 
 
 

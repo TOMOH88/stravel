@@ -18,7 +18,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-$(':radio[name="stars"]').change(function() {
+$(':radio').change(function() {
 	  console.log('New star rating: ' + this.value);
 	  $('#review_point').val(this.value);
 	});
@@ -26,7 +26,6 @@ $(':radio[name="stars"]').change(function() {
 
 $(document).ready(function(){
 $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
-
 });
 </script>
 </head>
@@ -34,10 +33,24 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 	#c1, #c2{
 		border:1px dotted black;
 	}
+	#map{
+		height:400px;
+		width:100%;
+	}
 	#f1{
     font-family: 'Black Han Sans', sans-serif;
     }
-    
+    .landmarkcategory:after{
+    	display:block;
+    	content:'';
+    	clear:both;
+    }
+    .landmarkcategory .landmarklist{
+    	float:left;
+    	width:180;
+    	margin-right:25px;
+    	margin-bottom:25px;
+    }
 .rating {
   display: inline-block;
   position: relative;
@@ -142,51 +155,20 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
     </script>    
 </head>
 <body>
-<c:import url="../common/header.jsp" />
-<section class="section-margin">
-<div class="content" >
-<div class="container-fluid">
-<div class="container" id="c1">
-<h1 id="f1">${list.restaurant_name }</h1>
-<div>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%; height: 600px;">
-  <ol class="carousel-indicators">
-    <c:forEach items="${imageList }" var="image">
-    <li data-target="#carouselExampleIndicators" data-slide-to="${image.restaurant_sq }" <c:if test="${image.restaurant_sq eq 1 }"> class="active" </c:if>></li>
-    </c:forEach>
-  </ol>
-				<div class="carousel-inner" style="height:100%;">
-				<c:forEach items="${image }" var="image">
-					<c:if test="${image.restaurant_sq eq 1 }">
-				
-							<div class="carousel-item active" style="height:100%;">
-								<img class="d-block w-100"
-									src="${ pageContext.request.contextPath }/resources/img/restaurant/${image.restaurant_imagename}"
-									alt="${image.restaurant_imagename}" style="height: 100%;">
-							</div>
-					
-					</c:if>
-					<c:if test="${image.restaurant_sq > 1 }">
-						<div class="carousel-item" style="height:100%;">
-							<img class="d-block w-100"
-								src="${ pageContext.request.contextPath }/resources/img/restaurant/${image.restaurant_imagename}"
-								alt="${image.restaurant_imagename}" style="height: 100%;">
-						</div>
-						
-					</c:if>
-				</c:forEach>
-			</div>
-				  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				  </a>
-				  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </a>
-</div>
-</div>
-<hr>
+<c:import url="../common/adminHeader.jsp" />
+	<div class="content" >
+		<div class="container-fluid">
+			<div class="container" id="c1">
+				<c:import url="../common/adminHeader.jsp" />
+				<h1 id="f1">${list.restaurant_name }</h1>	
+					<div class="landmarkcategory" style="width: 100%;">
+			    		<c:forEach items="${imageList }" var="image">
+			    			<div class = "landmarklist">
+			    				<img alt="${image.restaurant_sq }" src = "${pageContext.request.contextPath }/resources/img/restaurant/${image.restaurant_imagename}" width = "200" height = "200">
+			    			</div>
+			   			</c:forEach>
+					</div>
+					<hr>
 <div>
 ${list.restaurant_content }
 
@@ -253,64 +235,13 @@ ${list.restaurant_content }
 			<th>${review.restaurant_review_writer }</th>
 				<td width="80%">${review.restaurant_review_content }</td>
 			<th>${review.restaurant_review_date }</th>
+			<th><input type = "button" value = "블라인드"></th>
+			<th><input type = "button" value= "삭제"></th>
 		</tr>
 	</c:forEach>
 </table>
 </div>
 <br>
-<div class="container" id="c2">
-<font>리뷰 작성</font>
-<br>
-<div>
-<font>평점</font>&nbsp;&nbsp;&nbsp;
-<form class="rating">
-  <label>
-    <input type="radio" name="stars" value="1" />
-    <span class="icon">★</span>
-  </label>
-  <label>
-    <input type="radio" name="stars" value="2" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-  </label>
-  <label>
-    <input type="radio" name="stars" value="3" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>   
-  </label>
-  <label>
-    <input type="radio" name="stars" value="4" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-  </label>
-  <label>
-    <input type="radio" name="stars" value="5" />
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-    <span class="icon">★</span>
-  </label>
-</form>
-</div>
-<form action="insertRestaurantReview.do" method="post">
-<table>
-<tr>
-	<td>
-		방문일 : <input type="date" name="restaurant_review_tourdate"/>
-		<input type="text" id="restaurant_review_point" name="restaurant_review_point" value="0"/>
-		<input type="text" name="restaurant_no" value="${list.restaurant_no }"> 
-		<input type="text" name="restaurant_review_writer" value="고상훈"/>
-	</td>
-</tr>
-<tr><td><textarea rows="4" cols="100%" name="restaurant_review_content"></textarea></td><td><input type="submit" value="작성" /></td></tr>
-</table>
-</form>
-</div>
-</section>
-<c:import url="../common/footer.jsp" />
+<c:import url="../common/afooter.jsp" />
 </body>
 </html>

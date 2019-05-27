@@ -35,33 +35,33 @@
 </style>
 </head>
 <body>
-<c:import url="../common/header.jsp" />
+<c:import url="../common/adminHeader.jsp" />
 <section class="section-margin">
 <div class="rgba-black-strong py-5 px-4">
     <div class="row d-flex justify-content-center">
     <div class="col-md-2">
    <div class="blog_right_sidebar">
-   <center><button onclick="moveWritePage(); return false;">글쓰기</button></center>
+   
    <aside class="single_sidebar_widget post_category_widget">
                         <h4 class="widget_title"><a href="restaurantlist.do" class="d-flex">식당</a></h4>
                         <ul class="list cat-list">
                             <li>
-                                <a href="seafoodall.do" class="d-flex">
+                                <a href="seafoodalladmin.do" class="d-flex">
                                     <p>Seafood</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="koreanfoodall.do" class="d-flex">
+                                <a href="koreanfoodalladmin.do" class="d-flex">
                                     <p>Koreanfood</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="barbecuefoodall.do" class="d-flex">
+                                <a href="barbecuefoodalladmin.do" class="d-flex">
                                     <p>Barbecue</p>
                                 </a>
                             </li>
                               <li>
-                                <a href="caferestaurantall.do" class="d-flex">
+                                <a href="caferestaurantalladmin.do" class="d-flex">
                                     <p>Cafe/Dessert</p>
                                 </a>
                             </li>
@@ -71,11 +71,14 @@
 </div>
       <div class="col-md-10">
       <!-- 작업 작성시작 -->
+      <h1>식당 리스트 관리자</h1>
+      <center><button onclick="moveWritePage(); return false;">글쓰기</button></center>
       <h3>Seafood</h3>
+      
 	<div class="landmarkcategory">
 		<c:forEach items = "${seaList }" var = "s">
 			<div class = "seafoodlist">
-				<a href = "restaurantdetail.do?restaurant_no=${s.restaurant_no }">
+				<a href = "restaurantdetailadmin.do?restaurant_no=${s.restaurant_no }">
 				<img src="${ pageContext.request.contextPath }/resources/img/restaurant/${s.rename_thumnail}" alt = "${s.restaurant_name }" width = "150" height = "150">
 					<div class = "seafoodname">
 						<span class = "restaurntname">${s.restaurant_name }</span>
@@ -89,7 +92,7 @@
 	<div class = "koreancategory">
 		<c:forEach items = "${koreanfoodList }" var = "k">
 			<div class = "koreanlist">
-				<a href = "restaurantdetail.do?restaurant_no=${k.restaurant_no }">
+				<a href = "restaurantdetailadmin.do?restaurant_no=${k.restaurant_no }">
 				<img src="${pageContext.request.contextPath }/resources/img/restaurant/${k.rename_thumnail}" width = "150" height = "150">
 					<div class = "koreanname">
 						<span class = "koreanname">${k.restaurant_name }</span>
@@ -103,7 +106,7 @@
 	<div class = "barbecuecategory">
 		<c:forEach items = "${barbecueList }" var = "b">
 			<div class = "barbecuelist">
-				<a href = "restaurantdetail.do?restaurant_no=${b.restaurant_no }">
+				<a href = "restaurantdetailadmin.do?restaurant_no=${b.restaurant_no }">
 				<img src = "${pageContext.request.contextPath }/resources/img/restaurant/${b.rename_thumnail}" width = "150" height = "150">
 					<div class = "barbecuename">
 						<span class = "barbecuename">${b.restaurant_name }</span>
@@ -117,7 +120,7 @@
 	<div class = "cafecategory">
 		<c:forEach items = "${cafeList }" var = "c">
 			<div class = "cafelist">
-				<a href = "restaurantdetail.do?rest	aurant_no=${c.restaurant_no }">
+				<a href = "restaurantdetailadmin.do?rest	aurant_no=${c.restaurant_no }">
 				<img src = "${pageContext.request.contextPath }/resources/img/restaurant/${c.rename_thumnail}" width = "150" height = "150">
 					<div class = "cafename">
 						<span class = "cafename">${c.restaurant_name }</span>
@@ -132,7 +135,7 @@
       </div>
       </div>
 </section>
-<c:import url="../common/footer.jsp"/>
+<c:import url="../common/afooter.jsp"/>
 </body>
 </head>
 <!-- <style type="text/css">

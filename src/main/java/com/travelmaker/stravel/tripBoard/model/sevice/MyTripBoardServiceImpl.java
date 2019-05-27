@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.travelmaker.stravel.tripBoard.model.dao.MyTripBoardDao;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoard;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage;
+import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardLike;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview;
 
 @Service("MyTripBoardService")
@@ -93,6 +94,7 @@ public class MyTripBoardServiceImpl implements MyTripBoardService{
 		return boardDao.selectList(mybatisSession, board_title);
 	}
 
+	
 	
 
 	

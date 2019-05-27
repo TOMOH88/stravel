@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.travelmaker.stravel.common.PagingVo;
 import com.travelmaker.stravel.common.UUIDUtil;
 import com.travelmaker.stravel.tripBoard.model.sevice.MyTripBoardService;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoard;
@@ -42,11 +43,12 @@ public class MyTripBoardController {
 		private MyTripBoardService myService;
 		
 		@RequestMapping("tripboard.do")
-		public ModelAndView moveTripList(ModelAndView mv) {
+		public ModelAndView moveTripList(ModelAndView mv, PagingVo paging) {
 			logger.info("일정자랑 접속");
 			
 			ArrayList<MyTripBoard> boardList = myService.tripBoardListAll();
 			mv.addObject("list", boardList);
+			mv.addObject("p", paging);
 			
 			System.out.println(boardList);
 			mv.setViewName("MyTripBoard/tripBoardList");
@@ -57,6 +59,7 @@ public class MyTripBoardController {
 		public ModelAndView selectList(ModelAndView mv, @RequestParam (name="board_title") String board_title) {
 			ArrayList<MyTripBoard> boardList = myService.selectList(board_title);
 			mv.addObject("list", boardList);
+			 
 			
 			System.out.println(boardList);
 			mv.setViewName("MyTripBoard/tripBoardList");
@@ -161,6 +164,7 @@ public class MyTripBoardController {
 			
 			MyTripBoard myboard = myService.tripBoardDetail(board_no);
 			mv.addObject("myboard", myboard);
+			
 			
 			myService.addReadCount(board_no);
 			
