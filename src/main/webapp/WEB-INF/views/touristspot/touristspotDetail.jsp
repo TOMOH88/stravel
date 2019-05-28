@@ -20,9 +20,10 @@ $(':radio[name="stars"]').change(function() {
 });
 
 $(document).ready(function(){
-$("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
+	$("input:radio[name='stars2']:radio[value='${point}']").prop('checked', true);
 
 });
+
 </script>
 </head>
 <style>
@@ -187,6 +188,7 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 					</div>
 					<hr>
 					<div>${touristspot.touristspot_content }</div>
+					<hr>
 					<div class="row">
 						<div class="col-md-6">
 							<div id="map"></div>
@@ -203,10 +205,8 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 							오픈시간 : ${touristspot.touristspot_open }<br>
 							닫는시간 : ${touristspot.touristspot_closed }<br>
 							</c:if>
-							<br>팀원 : 김지훈
-주작업내용 :고객센터 2019-05-17 : 공지사항 글작성 리스트 출력 작업 
-수정된DB내용 : 
-진행율(%) :30%
+							<br>
+							<c:if test="${!empty point2 }">평점 : ${point2 }<br>
 							<form class="rating">
 								<label> 
 									<input type="radio" name="stars2" value="1" /> 
@@ -235,13 +235,11 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 										<span class="icon">★</span> 
 										<span class="icon">★</span> 
 										<span class="icon">★</span> 
-										<span class="ic팀원 : 김지훈
-주작업내용 :고객센터 2019-05-17 : 공지사항 글작성 리스트 출력 작업 
-수정된DB내용 : 
-진행율(%) :30%on">★</span> 
+										<span class="icon">★</span> 
 										<span class="icon">★</span>
 									</label>
 							</form>
+							</c:if>
 						</div>
 					</div>
 				</div>
@@ -249,18 +247,28 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 		</div>
 		<br>
 		<div class="container" id="c2">
-			댓글 : ${fn:length(touristspotReviews)}
+			리뷰 : ${fn:length(touristspotReviews)}
 			<table>
+
 				<c:forEach items="${touristspotReviews }" var="tsr">
 					<tr>
 						<th width="10%" >${tsr.review_writer }</th>
-						<td width="80%">${tsr.review_content }</td>
+						<td width="70%">
+						<c:if test="${tsr.review_blind eq 'Y' }">블라인드 된 글입니다.</c:if>
+						<c:if test="${tsr.review_blind eq 'N' }">${tsr.review_content }</c:if>
+						</td>
 						<th width="10%">${tsr.review_date }</th>
+						<th>
+						<c:if test="${loginMember.user_name eq tsr.review_writer }">
+							&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" onclick="location.href='reviewDeleteUser.do?rno=${tsr.review_no}&tno=${touristspot.touristspot_no }'">리뷰 삭제</button>
+						</c:if>
+						</th>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
 		<br>
+		<c:if test="${!empty loginMember }">
 		<div class="container" id="c2">
 			<font>리뷰 작성</font> <br>
 			<div>
@@ -298,14 +306,15 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 					</label>
 				</form>
 			</div>
+			
 			<form action="insertTourReview.do" method="post">
 				<table>
 					<tr>
 						<td>
-							방문일 : <input type="date" name="review_tourdate" /> 
-							<input type="hidden" id="review_point" name="review_point" value="0" /> 
+							방문일 : <input type="date" name="review_tourdate" required="required"/> 
+							<input type="hidden" id="review_point" name="review_point" value="1" /> 
 							<input type="hidden" name="touristspot_no" value="${touristspot.touristspot_no }">
-							<input type="hidden" name="review_writer" value="김지훈" />
+							<input type="hidden" name="review_writer" value="${loginMember.user_name }" />
 						</td>
 					</tr>
 					<tr>
@@ -319,6 +328,7 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 				</table>
 			</form>
 		</div>
+		</c:if>
 	</section>
 	<c:import url="../common/footer.jsp" />
 </body>

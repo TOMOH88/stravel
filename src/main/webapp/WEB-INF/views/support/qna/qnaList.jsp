@@ -26,8 +26,10 @@
 <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">1:1문의</h4>
+                                <h3 class="title">1:1문의</h3>
+                                <c:if test="${!empty loginMember }">
                                 <button onclick="location.href='qnaWrite.do'">문의 하기</button>
+                                </c:if>
                                 <p class="category"></p>
                             </div>
                             <div class="content table-responsive table-full-width">

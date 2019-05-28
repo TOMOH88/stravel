@@ -10,6 +10,7 @@ import com.travelmaker.stravel.common.PagingVo;
 import com.travelmaker.stravel.support.model.dao.FaqDao;
 import com.travelmaker.stravel.support.model.vo.FaqCategoryVo;
 import com.travelmaker.stravel.support.model.vo.FaqVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Service("FaqService")
 public class FaqServiceImpl implements FaqService{
@@ -41,6 +42,22 @@ public class FaqServiceImpl implements FaqService{
 	@Override
 	public int deleteFaq(int faq_no) {
 		return faqDao.deleteFaq(mybatisSession,faq_no);
+	}
+	@Override
+	public ArrayList<FaqVo> selectFaqPayList() {
+		return  faqDao.selectFaqPayList(mybatisSession);
+	}
+	@Override
+	public ArrayList<FaqVo> selectFaqUserList() {
+		return faqDao.selectFaqUserList(mybatisSession);
+	}
+	@Override
+	public ArrayList<FaqVo> selectFaqItemList() {
+		return faqDao.selectFaqItemList(mybatisSession);
+	}
+	@Override
+	public ArrayList<FaqVo> selectFaqListCategory(String cate) {
+		return faqDao.selectFaqListCategory(mybatisSession,cate);
 	}
 
 }

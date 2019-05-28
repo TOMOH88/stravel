@@ -30,8 +30,6 @@ $(function() {
                                 <h4 class="title">1:1문의</h4>
                                 <p class="category">
                                 <br>
-                                <button class="btn btn-info btn-sm">사용자</button>
-                                <button class="btn btn-info btn-sm">사업자</button>
                                 </p>
                             </div>
                             <div class="content table-responsive table-full-width">

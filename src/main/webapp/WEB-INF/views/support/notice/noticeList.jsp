@@ -22,13 +22,13 @@ $(function() {
 <c:import url="../../common/header.jsp"/>
 <section class="section-margin">
 <div class="content">
-<div class="container-fluid">
+<div class="container">
 <div class="row">
 <!-- table 영역 시작 -->
 <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">공지사항</h4>
+                                <h3 class="title">공지사항</h3>
                                 <p class="category"></p>
                             </div>
                             <div class="content table-responsive table-full-width">

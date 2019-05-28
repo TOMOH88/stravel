@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.travelmaker.stravel.common.PagingVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotReviewsVo;
@@ -32,8 +33,8 @@ public class TouristspotDao {
 		return mybatisSession.update("touristspotMapper.updateTouristspotThumnail", ts);
 	}
 
-	public ArrayList<TouristspotVo> selectTouristspotList(SqlSessionTemplate mybatisSession) {
-		List<TouristspotVo> list = mybatisSession.selectList("touristspotMapper.selectTouristspotList");
+	public ArrayList<TouristspotVo> selectTouristspotList(SqlSessionTemplate mybatisSession, PagingVo paging) {
+		List<TouristspotVo> list = mybatisSession.selectList("touristspotMapper.selectTouristspotList",paging);
 		return (ArrayList<TouristspotVo>)list;
 	}
 
@@ -50,8 +51,8 @@ public class TouristspotDao {
 		return mybatisSession.insert("touristspotMapper.insertTourReview", tsrVo);
 	}
 
-	public int selectTourReviewNo(SqlSessionTemplate mybatisSession) {
-		return mybatisSession.selectOne("touristspotMapper.selectTourReviewNo");
+	public int selectTourReviewNo(SqlSessionTemplate mybatisSession, int tno) {
+		return mybatisSession.selectOne("touristspotMapper.selectTourReviewNo",tno);
 	}
 
 	public ArrayList<TouristspotReviewsVo> selectTouristspotReviews(SqlSessionTemplate mybatisSession, int tno) {
@@ -102,5 +103,13 @@ public class TouristspotDao {
 
 	public int updateReviewDeleteStatus(SqlSessionTemplate mybatisSession, int rno) {
 		return mybatisSession.update("touristspotMapper.updateReviewDeleteStatus",rno);
+	}
+
+	public Double selectReviewPoint(SqlSessionTemplate mybatisSession, int tno) {
+		return mybatisSession.selectOne("touristspotMapper.selectReviewPoint",tno);
+	}
+
+	public int selectTotalPaging(SqlSessionTemplate mybatisSession) {
+		return mybatisSession.selectOne("touristspotMapper.selectTotalPaging");
 	}
 }

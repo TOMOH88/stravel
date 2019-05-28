@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.common.FileUtil;
+import com.travelmaker.stravel.common.PagingVo;
 import com.travelmaker.stravel.common.UUIDUtil;
 import com.travelmaker.stravel.support.controller.QnaController;
 import com.travelmaker.stravel.touristspot.model.service.TouristspotService;
@@ -65,11 +66,14 @@ public class TouristspotController {
 		return mv;
 	}
 	
-	@RequestMapping("moveTSAdmin.do")
-	public ModelAndView moveTouristspotAdminMain(ModelAndView mv) {
+	@RequestMapping(value="moveTSAdmin.do", method={RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView moveTouristspotAdminMain(ModelAndView mv,PagingVo paging) {
 		logger.info("관광지 리스트 관리자 ");
-		ArrayList<TouristspotVo> touristspot = touristspotService.selectTouristspotList();
+		paging.setListCnt(10);
+		ArrayList<TouristspotVo> touristspot = touristspotService.selectTouristspotList(paging);
+		paging.setTotal(touristspotService.selectTotalPaging());
 		mv.addObject("touristspot", touristspot);
+		mv.addObject("p", paging);
 		mv.setViewName("touristspot/touristspotMainAdmin");
 		return mv;
 	}
@@ -140,6 +144,13 @@ public class TouristspotController {
 		TouristspotVo ts = touristspotService.selectTouristspotDetail(tno);
 		ArrayList<TouristspotImagesVo> tsiList =  touristspotService.selectTouristspotImages(tno);
 		ArrayList<TouristspotReviewsVo> tsrList = touristspotService.selectTouristspotReviews(tno);
+		Double point2 = touristspotService.selectReviewPoint(tno);
+		if(point2 == null) {
+			point2 = 0.0;
+		}
+		int point = Integer.parseInt(String.valueOf(Math.round(point2)));
+		mv.addObject("point", (point -1));
+		mv.addObject("point2", Math.round(point2*100)/100.0);
 		mv.addObject("touristspot", ts);
 		mv.addObject("touristspotImages", tsiList);
 		mv.addObject("touristspotReviews", tsrList);
@@ -152,7 +163,11 @@ public class TouristspotController {
 		TouristspotVo ts = touristspotService.selectTouristspotDetail(tno);
 		ArrayList<TouristspotImagesVo> tsiList =  touristspotService.selectTouristspotImages(tno);
 		ArrayList<TouristspotReviewsVo> tsrList = touristspotService.selectTouristspotReviews(tno);
+		Double point2 = touristspotService.selectReviewPoint(tno);
 		mv.addObject("touristspot", ts);
+		if(point2 != null) {
+		mv.addObject("point2", Math.round(point2*100)/100.0);
+		}
 		mv.addObject("touristspotImages", tsiList);
 		mv.addObject("touristspotReviews", tsrList);
 		mv.setViewName("touristspot/touristspotDetailAdmin");
@@ -175,7 +190,8 @@ public class TouristspotController {
 	}
 	@RequestMapping(value="insertTourReview.do", method=RequestMethod.POST)
 	public String insertTourReview(TouristspotReviewsVo tsrVo) {
-		tsrVo.setReview_no(touristspotService.selectTourReviewNo());
+		System.out.println(tsrVo);
+		tsrVo.setReview_no(touristspotService.selectTourReviewNo(tsrVo.getTouristspot_no()));
 		int result = touristspotService.insertTourReview(tsrVo);
 		System.out.println(result);
 		return "redirect: touristspotDetail.do?tno="+tsrVo.getTouristspot_no();
@@ -227,6 +243,14 @@ public class TouristspotController {
 		System.out.println(rno);
 		int result = touristspotService.updateReviewDeleteStatus(rno);
 		mv.setViewName("redirect:touristspotDetailAdmin.do?tno="+tno);
+		return mv;
+			
+	}
+	@RequestMapping("reviewDeleteUser.do")
+	public ModelAndView reviewDeleteUser(ModelAndView mv,@RequestParam(name = "rno") int rno,@RequestParam(name = "tno") int tno) {
+		System.out.println(rno);
+		int result = touristspotService.updateReviewDeleteStatus(rno);
+		mv.setViewName("redirect:touristspotDetail.do?tno="+tno);
 		return mv;
 			
 	}	
