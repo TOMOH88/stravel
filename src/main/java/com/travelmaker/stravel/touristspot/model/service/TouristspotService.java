@@ -2,6 +2,7 @@ package com.travelmaker.stravel.touristspot.model.service;
 
 import java.util.ArrayList;
 
+import com.travelmaker.stravel.common.PagingVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotReviewsVo;
@@ -12,11 +13,11 @@ public interface TouristspotService {
 	int insertTouristspotImages(TouristspotImagesVo touristspotImagesVo);
 	ArrayList<TouristspotCategoryVo> selectTouristspotCategory();
 	int updateTouristspotThumnail(TouristspotVo ts);
-	ArrayList<TouristspotVo> selectTouristspotList();
+	ArrayList<TouristspotVo> selectTouristspotList(PagingVo paging);
 	TouristspotVo selectTouristspotDetail(int tno);
 	ArrayList<TouristspotImagesVo> selectTouristspotImages(int tno);
 	int insertTourReview(TouristspotReviewsVo tsrVo);
-	int selectTourReviewNo();
+	int selectTourReviewNo(int tno);
 	ArrayList<TouristspotReviewsVo> selectTouristspotReviews(int tno);
 	ArrayList<TouristspotVo> selectLandmarkTop();
 	ArrayList<TouristspotVo> selectHistoricTop();
@@ -28,4 +29,6 @@ public interface TouristspotService {
 	int updateTouristspotStatus(int tno);
 	int updateReviewBlindStatus(int rno);
 	int updateReviewDeleteStatus(int rno);
+	Double selectReviewPoint(int tno);
+	int selectTotalPaging();
 }

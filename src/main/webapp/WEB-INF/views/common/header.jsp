@@ -194,9 +194,9 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
     
 <title>header</title>
 <style>
-div{ 
+/* div{ 
 	border:1px solid black;
-}
+} */
 </style>
 </head>
 <body>

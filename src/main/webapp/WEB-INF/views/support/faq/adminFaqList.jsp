@@ -28,7 +28,8 @@ $(function() {
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">FAQ</h4>
-                                <p class="category">Here is a subtitle for this table</p>
+                                <p class="category"></p>
+                                <div class="content table-responsive table-full-width"><button class="btn btn-primary" onclick="location.href='faqinsert.do'">글쓰기</button></div>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
@@ -57,10 +58,7 @@ $(function() {
                                 </table>
 
                             </div>
-                        </div>
-                        <div style="text-align:center;">
-                        <button class="btn btn-default btn-sm" onclick="location.href='faqinsert.do'">글쓰기</button>
-                        
+                                                    <div style="text-align:center;">                        
                          <div align="center">
                                 <!-- Pagination 시작 ( 페이징 )-->
 								<ul class="pagination">
@@ -102,6 +100,7 @@ $(function() {
 								</div>
 					        </form>
 							</div>
+                        </div>
                         </div>
                     </div>
 </div>

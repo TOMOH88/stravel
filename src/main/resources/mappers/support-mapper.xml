@@ -125,7 +125,8 @@
 	<select id="selectPagingQnaUsers" parameterType="pagingVo" resultType="QnaVo">
 		SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM 
        (SELECT * FROM TB_QNA 
-		WHERE QNA_DELETESTATUS = 'N' AND QNA_WRITER = #{userId}
+		WHERE QNA_DELETESTATUS = 'N'
+		AND QNA_WRITER = #{userId}
        	ORDER BY QNA_NO DESC ) P )
        WHERE RNUM BETWEEN ${start} AND ${last}
 	</select>
@@ -162,4 +163,16 @@
 	<update id="deleteFaq" parameterType="_int">
 		UPDATE TB_FAQ SET FAQ_DELETESTATUS = 'Y' WHERE FAQ_NO = #{faq_no}
 	</update>
+	<select id="selectFaqPayList" resultType="FaqVo">
+		SELECT * FROM TB_FAQ WHERE FAQ_CATEGORYCODE = 'C001' AND 3 > ROWNUM ORDER BY FAQ_DATE DESC
+	</select>
+	<select id="selectFaqUserList" resultType="FaqVo">
+		SELECT * FROM TB_FAQ WHERE FAQ_CATEGORYCODE = 'C002' AND 3 > ROWNUM ORDER BY FAQ_DATE DESC
+	</select>
+	<select id="selectFaqItemList" resultType="FaqVo">
+		SELECT * FROM TB_FAQ WHERE FAQ_CATEGORYCODE = 'C003' AND 3 > ROWNUM ORDER BY FAQ_DATE DESC
+	</select>
+	<select id="selectFaqListCategory" resultType="FaqVo" parameterType="string">
+		select * from TB_FAQ where FAQ_CATEGORYCODE = #{category} and FAQ_DELETESTATUS = 'N' order by faq_date desc 
+	</select>
 </mapper>

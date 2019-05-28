@@ -186,7 +186,8 @@
 							닫는시간 : ${touristspot.touristspot_closed }<br>
 							</c:if>
 							<br>
-							<form class="rating">
+							<c:if test="${!empty point2 }">평점 : ${point2 }<br></c:if>
+							<!-- <form class="rating">
 								<label> 
 									<input type="radio" name="stars2" value="1" /> 
 									<span class="icon">★</span>
@@ -217,7 +218,7 @@
 										<span class="icon">★</span> 
 										<span class="icon">★</span>
 									</label>
-							</form>
+							</form> -->
 						</div>
 					</div>
 				</div>
@@ -229,6 +230,7 @@
 	 <button onclick="location.href='deletetouristspot.do?tno=${touristspot.touristspot_no}'">삭제하기</button>
 	</div>
 	<br>
+
 	<div class="container" id="c2">
 		댓글 : ${fn:length(touristspotReviews)}
 		<table>

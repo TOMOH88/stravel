@@ -69,8 +69,13 @@
 	<update id="updateTouristspotThumnail" parameterType="TouristspotVo">
 		update tb_touristspot set RENAME_THUMNAIL = #{rename_thumnail} where TOURISTSPOT_NO = #{touristspot_no}
 	</update>
-	<select id="selectTouristspotList" resultType="TouristspotVo">
-		select * from TB_TOURISTSPOT where TOURISTSPOT_DELETESTATUS = 'N' order by TOURISTSPOT_NO 
+	<select id="selectTouristspotList" resultType="TouristspotVo" parameterType="pagingVo">
+		 SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM 
+		 (SELECT * FROM TB_TOURISTSPOT WHERE TOURISTSPOT_DELETESTATUS = 'N' 
+		 ORDER BY TOURISTSPOT_DATE DESC ) P ) WHERE RNUM BETWEEN ${start} AND ${last}
+	</select>
+	<select id="selectTotalPaging" resultType="_int">
+		SELECT COUNT(1) FROM TB_TOURISTSPOT WHERE TOURISTSPOT_DELETESTATUS = 'N' 
 	</select>
 	<select id="selectTouristspotDetail" parameterType="_int" resultType="TouristspotVo">
 		select * from TB_TOURISTSPOT where TOURISTSPOT_NO = #{touristspot_no}
@@ -79,7 +84,7 @@
 		select * from TB_TOURISTSPOTIMAGES where TOURISTSPOT_NO = #{touristspot_no}
 	</select>
 	<select id="selectTourReviewNo" resultType="_int">
-		select count(1)+1 from tb_touristspotreviews
+		select count(1)+1 from tb_touristspotreviews where TOURISTSPOT_NO = #{touristspot_no}
 	</select>
 	<insert id="insertTourReview" parameterType="TouristspotReviewsVo">
 		insert into tb_touristspotreviews
@@ -123,6 +128,10 @@
 	<update id="updateReviewDeleteStatus" parameterType="_int">
 	update tb_touristspotreviews set REVIEW_DELETESTATUS = 'Y' where REVIEW_NO = #{REVIEW_NO}
 	</update>
+	<select id="selectReviewPoint" resultType="_double" parameterType="_int">
+	SELECT AVG(REVIEW_POINT) FROM TB_TOURISTSPOTREVIEWS WHERE TOURISTSPOT_NO = #{touristspot_no} AND REVIEW_DELETESTATUS = 'N'
+	</select>
+	
 <!-- 	
 	<insert id="qnaInsert" parameterType="QnaVo">
 		insert into tb_qna(QNA_NO,QNA_TITLE,QNA_CONTENT,QNA_WRITER,

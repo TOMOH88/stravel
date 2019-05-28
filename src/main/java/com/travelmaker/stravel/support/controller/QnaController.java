@@ -2,6 +2,8 @@ package com.travelmaker.stravel.support.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.common.PagingVo;
+import com.travelmaker.stravel.member.model.vo.Member;
 import com.travelmaker.stravel.support.model.service.QnaService;
 import com.travelmaker.stravel.support.model.vo.QnaVo;
 
@@ -23,14 +26,23 @@ public class QnaController {
 	
 	//qna작업공간
 	@RequestMapping("qnalist.do")
-	public ModelAndView moveQnaListPage(ModelAndView mv,PagingVo paging) {
-		paging.setUserId("김지훈");
-			ArrayList<QnaVo> lists = qnaService.selectPagingQnaUser(paging);
-			paging.setTotal(qnaService.selectTotalPagingQnaUser(paging));	
-			System.out.println("모든 게시글 "+lists.size()+"="+paging.getTotal());
-			mv.addObject("qnaList", lists);
-	        mv.addObject("p", paging);
-	        mv.setViewName("support/qna/qnaList");
+	public ModelAndView moveQnaListPage(ModelAndView mv,PagingVo paging,HttpSession session) {
+			Member member = (Member)session.getAttribute("loginMember");
+			System.out.println("1");
+			if(member ==null) {
+			mv.addObject("p", paging);
+			mv.setViewName("support/qna/qnaList");
+			
+			}else {
+				paging.setUserId(member.getUser_name());
+				ArrayList<QnaVo> lists = qnaService.selectPagingQnaUser(paging);
+				paging.setTotal(qnaService.selectTotalPagingQnaUser(paging));	
+				System.out.println("모든 게시글 "+lists.size()+"="+paging.getTotal());
+				mv.addObject("qnaList", lists);
+		        mv.addObject("p", paging);
+		        mv.setViewName("support/qna/qnaList");
+			}
+			
 		return mv;
 	}
 	@RequestMapping("qnaWrite.do")

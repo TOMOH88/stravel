@@ -33,5 +33,21 @@ public class FaqDao {
 	public int deleteFaq(SqlSessionTemplate mybatisSession, int faq_no) {
 		return mybatisSession.update(NM+"deleteFaq", faq_no);
 	}
+	public ArrayList<FaqVo> selectFaqPayList(SqlSessionTemplate mybatisSession) {
+		List<FaqVo> list = mybatisSession.selectList(NM+"selectFaqPayList");
+		return (ArrayList<FaqVo>)list;
+	}
+	public ArrayList<FaqVo> selectFaqUserList(SqlSessionTemplate mybatisSession) {
+		List<FaqVo> list = mybatisSession.selectList(NM+"selectFaqUserList");
+		return (ArrayList<FaqVo>)list;
+	}
+	public ArrayList<FaqVo> selectFaqItemList(SqlSessionTemplate mybatisSession) {
+		List<FaqVo> list = mybatisSession.selectList(NM+"selectFaqItemList");
+		return (ArrayList<FaqVo>)list;
+	}
+	public ArrayList<FaqVo> selectFaqListCategory(SqlSessionTemplate mybatisSession, String cate) {
+		List<FaqVo> list = mybatisSession.selectList(NM+"selectFaqListCategory",cate);
+		return (ArrayList<FaqVo>)list;
+	}
 
 }

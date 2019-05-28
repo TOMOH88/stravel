@@ -26,8 +26,39 @@ public class FaqController {
 	@Autowired
 	private FaqService faqService;
 		@RequestMapping("faqlist.do")
-		public String moveFaqList1Page() {
-			return "support/faq/faqList";
+		public ModelAndView moveFaqList1Page(ModelAndView mv) {
+			ArrayList<FaqVo> pay = faqService.selectFaqPayList();
+			ArrayList<FaqVo> user = faqService.selectFaqUserList();
+			ArrayList<FaqVo> item = faqService.selectFaqItemList();
+			mv.addObject("pay", pay);
+			mv.addObject("user", user);
+			mv.addObject("item", item);
+			mv.setViewName("support/faq/faqList");
+			return mv;
+		}
+		
+		@RequestMapping("faqListCategory.do")
+		public ModelAndView faqListCategory(ModelAndView mv,@RequestParam(name = "cate") String cate) {
+			System.out.println(cate);
+			if(cate.equals("C001")) {
+				ArrayList<FaqVo> pay = faqService.selectFaqListCategory(cate);
+				mv.addObject("faq", pay);
+				mv.addObject("cate","결제");
+			}
+			if(cate.equals("C002")) {
+				ArrayList<FaqVo> item = faqService.selectFaqListCategory(cate);
+				mv.addObject("faq", item);
+				mv.addObject("cate","상품");
+			}
+			if(cate.equals("C003")) {
+				ArrayList<FaqVo> user = faqService.selectFaqListCategory(cate);
+				mv.addObject("faq", user);
+				mv.addObject("cate","계정");
+			}
+
+			mv.setViewName("support/faq/faqListCategory");
+			return mv;
+			
 		}
 		
 		@RequestMapping("adminfaq.do")
@@ -55,6 +86,13 @@ public class FaqController {
 			FaqVo faq = faqService.selectFaqOne(faq_no);
 			mv.addObject("faq", faq);
 			mv.setViewName("support/faq/adminFaqListView");
+			return mv;
+		}
+		@RequestMapping("faqView.do")
+		public ModelAndView moveUserFaqListViewPage(ModelAndView mv,@RequestParam(name="faq_no", required=false) int faq_no) {
+			FaqVo faq = faqService.selectFaqOne(faq_no);
+			mv.addObject("faq", faq);
+			mv.setViewName("support/faq/faqListView");
 			return mv;
 		}
 		@RequestMapping(value="faqinsert.do",method=RequestMethod.POST)
