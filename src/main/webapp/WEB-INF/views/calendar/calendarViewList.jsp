@@ -140,6 +140,10 @@ $(function(){
             infowindow.open(map,marker);
         });
         iterator++;
+        
+        google.maps.event.addListener(map, 'click', function() { 
+            infowindow.close(); 
+           }); 
     }
      
     google.maps.event.addDomListener(window, 'load', initialize);

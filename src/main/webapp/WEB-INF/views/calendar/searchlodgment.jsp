@@ -11,9 +11,6 @@
 </script>
 <title>stravel</title>
 <style type="text/css">
-div{
-	border:1px solid black;
-}
 
 .map{
 	position:fixed;
@@ -161,45 +158,44 @@ div{
 <!-- 필터끝-->
 </div>
 <br>
-<div class="row">
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height:100%; width:200px;">
+<!-- 리스트 영역 시작 -->
+<c:forEach var="list" items="${ow}" varStatus="status">
+<div class="row" style="border:1px solid Wheat; background:LightGoldenrodYellow">
+<div class="col-xl-5">
+<div id="carouselExampleIndicators${status }" class="carousel slide" data-ride="carousel" style="height:100%; widht:100%;">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators${status }" data-slide-to="${status }" class="active"></li>
+    <li data-target="#carouselExampleIndicators${status }" data-slide-to="${status }"></li>
+    <li data-target="#carouselExampleIndicators${status }" data-slide-to="${status }"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg" alt="첫번째 슬라이드"></a>
+      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/maldives-1993704_1920.jpg" alt="${status }"></a>
     </div>
     <div class="carousel-item">
-      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg" alt="두번째 슬라이드"></a>
+      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/maldives-1993704_1920.jpg"></a>
     </div>
     <div class="carousel-item">
-      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg" alt="세번째 슬라이드"></a>
+      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/maldives-1993704_1920.jpg"></a>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">이전</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">다음</span>
-  </a>
+  <div style="background:Burlywood;" align="center"><font style="color:LightSlateGray;">TravelMaker.stravel</font></div>
+</div>
 </div>
 <div class="col-xl-7">
-<a href="#">호텔1</a> <br>
-<font style="font-size:8pt;">주택의 개인실
-인원 1명
-침실 1개
-침대 1개
-공동 사용 욕실 1개</font>
+<a href="roomDetail.do?owner_no=${list.owner_no }">${list.owner_companyName }</a> <br>
+<font style="font-size:8pt;">
+${list.owner_category }<br>
+TEL : ${list.owner_phone } &nbsp; 가격 : ${list.off_season_price }<br>
+주소 : ${list.owner_address }
+</font>
 <br>
-<br>
-★★★★★
+별점 : ${list.property_review_like }
 </div>
 </div>
+<br>
+<!-- 리스트 영역 끝 -->
+</c:forEach>
 </div>
 </div>
 <!-- map 시작 -->

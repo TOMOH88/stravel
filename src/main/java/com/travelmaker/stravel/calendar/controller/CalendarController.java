@@ -4,6 +4,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.calendar.model.service.CalendarService;
 import com.travelmaker.stravel.calendar.model.vo.MyCalendar;
+import com.travelmaker.stravel.owner.model.vo.Owner;
+import com.travelmaker.stravel.owner.model.vo.OwnerImg;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 
@@ -24,18 +27,26 @@ public class CalendarController {
 	@Autowired
 	private CalendarService calendarService;
 	
-	@RequestMapping("scalendar.do")
-	public String movesCalendarPage() {
-		return "calendar/scalendar";
-	}
-	
 	@RequestMapping("searchcalendar.do")
-	public String moveSearchCalendarPage() {
+	public String movesCalendarPage() {
 		return "calendar/searchcalendar";
 	}
 	
-	@RequestMapping("searchlodgment.do")
-	public String moveSearchLodgmentPage() {
+	@RequestMapping("scalendar.do")
+	public String moveSearchCalendarPage() {
+		return "calendar/scalendar";
+	}
+	
+	@RequestMapping("searchlodgment2.do")
+	public String moveSearchLodgment2Page() {
+		return "calendar/searchlodgment";
+	}
+	
+	@RequestMapping(value="searchlodgment.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public String moveSearchLodgmentPage(@RequestParam("owner_address") String owner_address, Model mo) {
+		ArrayList<Owner> ow = calendarService.searchForm(owner_address);
+		ArrayList<OwnerImg> ow1 = calendarService.selectOwnerImg();
+		mo.addAttribute("ow", ow);
 		return "calendar/searchlodgment";
 	}
 	
@@ -128,6 +139,11 @@ public class CalendarController {
 			mv.addObject("code", "ok");
 			mv.setViewName("jsonView");
 		return mv;
+	}
+	
+	@RequestMapping(value="searchView.do")
+	public String movesearchView() {
+		return "";
 	}
 }
 	

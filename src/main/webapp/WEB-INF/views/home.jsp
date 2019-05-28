@@ -31,10 +31,10 @@ p{
         <div class="col-lg-6 col-xl-6 offset-xl-1">
           <div class="search-wrapper">
             <h3>STRAVEL</h3>
-            <form class="search-form" action="searchlodgment.do">
+            <form class="search-form" action="searchlodgment.do" method="post">
               <div class="form-group">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="목적지/위치">
+                  <input type="text" name="owner_address" class="form-control" placeholder="목적지/위치" required>
                   <div class="input-group-append">
                     <span class="input-group-text"><i class="ti-search"></i></span>
                   </div>
@@ -48,7 +48,7 @@ p{
               <div class="row">
               <div class="col-md-6">
                 <div class="input-group">
-                  <input type="date" class="form-control">
+                  <input type="date" class="form-control" name="check_in">
                   <div class="input-group-append">
                     <span class="input-group-text"><i class="ti-notepad"></i></span>
                   </div>
@@ -56,7 +56,7 @@ p{
                 </div>
                 <div class="col-md-6">
                 <div class="input-group">
-                  <input type="date" class="form-control">
+                  <input type="date" class="form-control" name="check_out">
                   <div class="input-group-append">
                     <span class="input-group-text"><i class="ti-notepad"></i></span>
                   </div>
@@ -71,17 +71,21 @@ p{
               <div class="form-group">
               <div class="row">
               <div class="col-md-6">
-                <select name="tourDucation" id="tourDuration">
-                  <option value="disabled" disabled selected>성인</option>
+                <select name="min_no" id="min_no">
+                  <option value="disabled" disabled selected>최소</option>
                   <option value="1">1명</option>
                   <option value="2">2명</option>
+                  <option value="3">3명</option>
+                  <option value="4">4명</option>
                 </select>
                 </div>
                 <div class="col-md-6">
-                <select name="tourDucation" id="tourDuration">
-                  <option value="disabled" disabled selected>어린이</option>
+                <select name="max_no" id="max_no">
+                  <option value="disabled" disabled selected>최대</option>
                   <option value="1">1명</option>
                   <option value="2">2명</option>
+                  <option value="3">3명</option>
+                  <option value="4">4명</option>
                 </select>
                 </div>
                 </div>
