@@ -15,7 +15,6 @@ import com.travelmaker.stravel.owner.model.vo.OwnerPaging;
 public class OwnerDao {
 
 	public ArrayList<Owner> selectRoomList(SqlSessionTemplate Session,OwnerPaging paging) {
-		// TODO Auto-generated method stub
 		
 		List<Owner> list = Session.selectList("ownerMapper.selectRoomList",paging);
 
@@ -28,7 +27,6 @@ public class OwnerDao {
 		return (ArrayList<OwnerImg>)list;
 	}
 	public int selectOwnerTotal(SqlSessionTemplate Session) {
-		// TODO Auto-generated method stub
 		return Session.selectOne("ownerMapper.selectOwnerTotal");
 	}
 	public ArrayList<Owner> selectRoomList1(SqlSessionTemplate Session, OwnerPaging paging, String search) {
@@ -36,8 +34,10 @@ public class OwnerDao {
 		return (ArrayList<Owner>)list;
 	}
 	public int selectOwnerTotal1(SqlSessionTemplate Session, String search) {
-		// TODO Auto-generated method stub
 		return Session.selectOne("ownerMapper.selectOwnerTotal1");
+	}
+	public int insertOwner(SqlSessionTemplate Session, Owner ow) {
+		return Session.insert("ownerMapper.businessinsert", ow);
 	}
 
 }

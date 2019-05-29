@@ -51,5 +51,17 @@ public class OwnerController {
 		return mv;
 	}
 	
-
+	@RequestMapping(value="binsert.do", method=RequestMethod.POST)
+	public String binsertPage(Owner ow) {
+		if(os.insertOwner(ow) > 0) {
+			return "home";
+		}else {
+			return "common/error";
+		}
+		
+	}
 }
+
+
+
+

@@ -19,5 +19,7 @@ public interface OwnerService {
 
 	int selectOwnerTotal1(String search);
 
+	int insertOwner(Owner ow);
+
 
 }

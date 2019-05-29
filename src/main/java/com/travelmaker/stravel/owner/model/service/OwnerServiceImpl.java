@@ -34,20 +34,22 @@ public class OwnerServiceImpl implements OwnerService{
 
 	@Override
 	public int selectOwnerTotal() {
-		// TODO Auto-generated method stub
 		return od.selectOwnerTotal(mybatisSession);
 	}
 
 	@Override
 	public ArrayList<Owner> selectRoomList1(OwnerPaging paging, String search) {
-		// TODO Auto-generated method stub
 		return od.selectRoomList1(mybatisSession, paging , search);
 	}
 
 	@Override
 	public int selectOwnerTotal1(String search) {
-		// TODO Auto-generated method stub
 		return od.selectOwnerTotal1(mybatisSession,search);
+	}
+
+	@Override
+	public int insertOwner(Owner ow) {
+		return od.insertOwner(mybatisSession, ow);
 	}
 
 }

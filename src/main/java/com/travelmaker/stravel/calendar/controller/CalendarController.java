@@ -102,7 +102,7 @@ public class CalendarController {
 		if(calendarService.createMyCalendar(mc) > 0)
 		return "redirect:mycalendar.do";
 		else
-		return "main";
+		return "home";
 	}
 	
 	@RequestMapping(value="updatecalendar.do", method={RequestMethod.POST, RequestMethod.GET})
@@ -111,7 +111,7 @@ public class CalendarController {
 		if(calendarService.updateMyCalendar(mc) > 0) {
 			return "redirect:mycalendar.do";
 		}else {
-			return "main";
+			return "home";
 		}
 	}
 	
