@@ -41,8 +41,8 @@
 				<form action="compreplyinsert.do?companion_no=${companion.companion_no }" name="companionReply" method="post">
 				<br><br>
 			<input type="hidden" id="companion_no" name="companion_no" value="${companion.companion_no }"/>
-			<input type="hidden" id="companion_reply_ref" name="companion_reply_ref" value="${companion.companion_no}">
-			<input type="hidden" id="companion_reply_lev" name="companion_reply_lev" value="1">
+			<input type="hidden" id="companion_reply_ref" name="companion_reply_ref" value="0">
+			<input type="hidden" id="companion_reply_lev" name="companion_reply_lev" value="0">
 			<input type="text" id="user_email" name="user_email" />
 			<div>
 				<span><strong>댓글</strong></span>
