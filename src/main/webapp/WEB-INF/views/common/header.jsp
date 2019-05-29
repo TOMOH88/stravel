@@ -223,9 +223,9 @@ var marker;
     
 <title>header</title>
 <style>
- div{ 
+/*  div{ 
 	border:1px solid black;
-} 
+}  */
 
 #map {
         height: 100%;
@@ -281,7 +281,7 @@ var marker;
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="mycalendar.do">나의일정</a></li>
                   <li class="nav-item"><a class="nav-link" href="adminMain.do">예약내역</a></li>
-                  <li class="nav-item"><a class="nav-link" href="adminMain.do">개인정보수정</a></li>
+                  <li class="nav-item"><a class="nav-link" href="myinfo.do?uno=${loginMember.user_no }">개인정보수정</a></li>
                 </ul>
 							</li>
               <li class="nav-item">
@@ -480,58 +480,7 @@ var marker;
 						<div id="home" class="tab-pane in active">
 
 							<article class="card-body">
-								<p>
-
-									<a id="kakao-login-btn"></a> <a
-										href="http://developers.kakao.com/logout"></a>
-
-									<script type='text/javascript'>
-										//<![CDATA[
-										// 사용할 앱의 JavaScript 키를 설정해 주세요.
-										Kakao
-												.init('5ce073f940a61564cb32f3f5667184e0');
-
-										// 카카오 로그인 버튼을 생성합니다.
-										Kakao.Auth.createLoginButton({
-											container : '#kakao-login-btn',
-											success : function(authObj) {
-												alert(JSON.stringify(authObj));
-											},
-											fail : function(err) {
-												alert(JSON.stringify(err));
-											}
-										});
-										
-										//
-									</script>
-								<div id="naverIdLogin"></div>
-								<script type="text/javascript">
-										var naverLogin = new naver.LoginWithNaverId(
-												{
-											clientId : "dt5BzI803qGZx7ZLLmcC",
-											callbackUrl : "http://127.0.0.1:8888/stravel",
-											isPopup : false, /* 팝업을 통한 연동처리 여부 */
-											loginButton : {
-												color : "green",
-												type : 3,
-												height : 60
-											}
-												
-										/* 로그인 버튼의 타입을 지정 */
-										});
-									
-										/* 설정정보를 초기화하고 연동을 준비 */
-										naverLogin.init();
-									</script>
-								<!-- 네아로 끗 -->
-
-								<!-- <a href="" class="btn btn-block btn-outline-primary"> <i
-										class="fab fa-facebook-f"></i>   페이스북 계정으로 로그인
-									</a> -->
 								
-								<br>
-								<hr>
-								<br>
 								<form action="login.do" method="post">
 									<div class="form-group">
 										<!-- <input name="useremail" class="form-control"
@@ -545,11 +494,6 @@ var marker;
 										<input type="password" name="user_password" placeholder="비밀번호를 입력하세요"
 											class="form-control">
 									</div>
-									<br>
-									<div>
-										<a class="small" href="#">비밀번호를 잊어버리셨습니까?</a>
-									</div>
-									<br>
 									<div class="row">
 										<div>
 											<div class="form-group"><br>
