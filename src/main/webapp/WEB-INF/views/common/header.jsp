@@ -228,8 +228,9 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">커뮤니티</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="#">동행찾기</a></li>
+                  <li class="nav-item"><a class="nav-link" href="comp.do">동행찾기</a></li>
                   <li class="nav-item"><a class="nav-link" href="tripboard.do">일정자랑</a></li>
+                  <li class="nav-item"><a class="nav-link" href="pay1.do">결제뷰</a></li>
                 </ul>
 							</li>			
               <li class="nav-item submenu dropdown">

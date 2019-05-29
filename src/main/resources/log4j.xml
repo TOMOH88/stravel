@@ -43,7 +43,7 @@
 	<!-- Root Logger -->
 	<root>
 		<priority value="warn" />
-		<appender-ref ref="console" />
+		<appender-ref ref="fileLogger" />
 	</root>
 	
 </log4j:configuration>

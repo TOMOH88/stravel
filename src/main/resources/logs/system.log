@@ -1,4 +1,4 @@
-[19:03:50][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
+﻿[19:03:50][INFO ][ContextLoader.java:270]: - Root WebApplicationContext: initialization started
 [19:03:51][INFO ][AbstractApplicationContext.java:589]: - Refreshing Root WebApplicationContext: startup date [Thu May 16 19:03:51 KST 2019]; root of context hierarchy
 [19:03:51][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from class path resource [root-context.xml]
 [19:03:52][INFO ][XmlBeanDefinitionReader.java:316]: - Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/spring-security.xml]
