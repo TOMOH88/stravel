@@ -55,6 +55,91 @@
 		<id property="review_lastmodified" column="REVIEW_LASTMODIFIED" />
 		<id property="review_tourdate" column="REVIEW_TOURDATE" />
 	</resultMap>
+	
+	<resultMap id = "resultOwner" type="ownerVo">
+		<result property="owner_no" column="owner_no"/>
+		<result property="owner_license_no" column="owner_license_no"/>
+		<result property="owner_password" column="owner_password"/>
+		<result property="owner_name" column="owner_name"/>
+		<result property="owner_companyName" column="owner_companyname"/>
+		<result property="owner_telephone" column="owner_telephone"/>
+		<result property="owner_phone" column="owner_phone"/>
+		<result property="owner_account" column="owner_account"/>
+		<result property="owner_address" column="owner_address"/>
+		<result property="owner_category" column="owner_category"/>
+		<result property="owner_approve" column="owner_approve"/>
+		<result property="off_season_price" column="off_season_price"/>
+		<result property="property_review_like" column="property_review_like"/>
+	</resultMap>
+	
+	<resultMap id="resultOwnerList" type="ownerListVo" >
+		<result property="owner_no" column="owner_no"/>
+		<result property="owner_companyName" column="owner_companyname"/>
+		<result property="owner_address" column="owner_address"/>
+		<result property="owner_category" column="owner_category"/>
+		<result property="off_season_price" column="off_season_price"/>
+		<result property="property_review_like" column="property_review_like"/>
+	</resultMap>
+
+	<resultMap id ="resultOwnerImg" type="ownerImgVo">
+		<result property="owner_img_no" column="owner_img_no"/>
+		<result property="owner_img" column="owner_img"/>
+		<result property="owner_no" column="owner_no"/>
+	</resultMap>
+	
+	<resultMap id="resultOwnerReview" type="ownerReviewVo">
+		<result property="user_name" column="user_name"/>
+		<result property="property_review_content" column="property_review_content"/>
+		<result property="property_review_like" column="property_review_like"/>
+		<result property="user_picture" column="user_picturn"/>
+		<result property="owner_no" column="owner_no"/>
+	</resultMap>
+	
+	<resultMap id= "resultRoom" type = "roomVo">
+	<id property = "room_no" column = "ROOM_NO"/>
+	<result property = "owner_no" column = "OWNER_NO"/>
+	<result property = "room_name" column = "ROOM_NAME"/>
+	<result property = "room_option" column = "ROOM_OPTION"/>
+	<result property = "room_content" column = "ROOM_CONTENT"/>
+	<result property = "min_no" column = "min_No"/>
+	<result property = "max_no" column = "max_No"/>
+	<result property = "off_season_price" column = "OFF_SEASON_PRICE"/>
+	<result property = "on_season_price" column = "ON_SEASON_PRICE"/>
+	<result property = "week_extra_price" column = "WEEK_EXTRA_PRICE"/>
+	<result property = "add_person_price" column = "ADD_PERSON_PRICE"/>
+	<result property = "discountrate" column = "DISCOUNTRATE"/>
+</resultMap>
+
+<resultMap id="resultRoomImg" type="roomImgVo">
+	<id property = "room_img_no" column="room_img_no"/>
+	<result property = "room_img" column= "room_img"/>
+	<result property = "room_no" column="room_no"/>
+	<result property = "owner_no" column ="owner_no"/>
+</resultMap>
+
+<resultMap id="resultReservation" type="rsvVo">
+	<id property ="rsv_vo" column="rsv_vo"/>
+	<result property = "user_no" column="user_no" />
+	<result property = "user_name" column = "user_name"/>
+	<result property = "room_no" column="room_no" />
+	<result property = "room_name" column="room_name"/>
+	<result property = "check_in" column="check_in" />
+	<result property = "check_out" column="check_out" />
+	<result property = "rsv_status" column="rsv_status" />
+	<result property = "enter_room" column="enter_room" />
+	<result property = "rsv_date" column="rsv_date" />
+	<result property = "member" column="member" />
+	<result property = "total_price" column="total_price" />
+</resultMap>
+	
+	<select id="selectOwnerImg" resultMap="resultOwnerImg">
+		select * from owner_img
+	</select>
+	
+	<select id="selectSearchlodgment" resultMap="resultOwner">
+		select * from owner where OWNER_ADDRESS LIKE '%'|| #{OWNER_ADDRESS} ||'%'
+	</select>
+
 	<select id="selectAllMyCalendar" resultMap="resultMyCalendar">
 		select * from tb_mycalendar
 	</select>

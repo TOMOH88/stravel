@@ -17,6 +17,8 @@
 		<result property="owner_address" column="owner_address"/>
 		<result property="owner_category" column="owner_category"/>
 		<result property="owner_approve" column="owner_approve"/>
+		<result property="owner_latitude" column="owner_latitude"/>
+		<result property="owner_longitude" column="owner_longitude"/>
 		<result property="off_season_price" column="off_season_price"/>
 		<result property="property_review_like" column="property_review_like"/>
 	</resultMap>
@@ -93,4 +95,16 @@ where owner_no = #{owner_no}
 		select count(1)
 		from owner
 	</select>
+	
+	<insert id="businessinsert" parameterType="ownerVo">
+		insert into owner(owner_no, owner_license_no, owner_password, owner_name, owner_companyName, owner_telephone,
+		owner_phone, owner_account, owner_address, owner_category, owner_approve, owner_latitude, owner_longitude) 
+		values(seq_owner_no.nextval, #{owner_license_no}, #{owner_password}, #{owner_name}, #{owner_companyName}, 
+		#{owner_telephone}, #{owner_phone}, #{owner_account}, #{owner_address}, #{owner_category}, '승인', #{owner_latitude}, #{owner_longitude})
+	</insert>
 </mapper>
+
+
+
+
+

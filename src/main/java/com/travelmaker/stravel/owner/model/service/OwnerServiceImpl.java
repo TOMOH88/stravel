@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.owner.model.service;
+﻿package com.travelmaker.stravel.owner.model.service;
 
 import java.util.ArrayList;
 
@@ -34,20 +34,22 @@ public class OwnerServiceImpl implements OwnerService{
 
 	@Override
 	public int selectOwnerTotal() {
-		// TODO Auto-generated method stub
 		return od.selectOwnerTotal(mybatisSession);
 	}
 
 	@Override
 	public ArrayList<Owner> selectRoomList1(OwnerPaging paging, String search) {
-		// TODO Auto-generated method stub
 		return od.selectRoomList1(mybatisSession, paging , search);
 	}
 
 	@Override
 	public int selectOwnerTotal1(OwnerPaging paging) {
-		// TODO Auto-generated method stub
 		return od.selectOwnerTotal1(mybatisSession,paging);
+	}
+
+	@Override
+	public int insertOwner(Owner ow) {
+		return od.insertOwner(mybatisSession, ow);
 	}
 
 }

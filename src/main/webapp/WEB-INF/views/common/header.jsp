@@ -32,7 +32,38 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-uni.css" media="all" type="text/css"/>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
-
+var map;
+var marker;
+  function geoCode() {
+	  	var faddr_lat = 37.5007939;
+		var faddr_lng = 127.03696560000003;
+	  	var faddr = document.getElementById('owner_address').value;
+	  	var geocoder;
+	  	geocoder = new google.maps.Geocoder();
+	  	geocoder.geocode( { 'address': faddr}, function(results, status) {
+	  		if (status == google.maps.GeocoderStatus.OK) {
+	  			var faddr_lat = results[0].geometry.location.lat();	//위도
+	  			var faddr_lng = results[0].geometry.location.lng();	//경도
+	  		} else {
+	  			var faddr_lat = 37.5007939;
+	  			var faddr_lng = 127.03696560000003;
+	  		}
+	  		map = new google.maps.Map(document.getElementById('map'), {
+    	        center: {lat: faddr_lat, lng: faddr_lng},
+    	        zoom: 15});
+	  		
+	  		marker = new google.maps.Marker({
+	                position: {lat: faddr_lat, lng: faddr_lng},
+	                map: map/* ,
+	                title: 'Hello World!' */
+	            });
+	  		$("#owner_latitude").val(faddr_lat);
+	  		$("#owner_longitude").val(faddr_lng);
+	  		
+	  		return;
+	  	});
+			
+	  }
 
 	$(document).on('ready',function() {
 		//암호와 암호확인의 기록값이 일치하는지 확인
@@ -97,8 +128,6 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 		{
 			clientId: "{YOUR_CLIENT_ID}",
 			callbackUrl: "{YOUR_REDIRECT_URL}",
-			...
-			...
 		}
 	);
 
@@ -194,9 +223,14 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
     
 <title>header</title>
 <style>
-/* div{ 
+ div{ 
 	border:1px solid black;
-} */
+} 
+
+#map {
+        height: 100%;
+        width: 100%;
+      }
 </style>
 </head>
 <body>
@@ -288,8 +322,9 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 				<div class="modal-body">
 					<ul class="nav nav-tabs">
 						<li class="active"><a data-toggle="tab" href="#enroll">사용자 회원가입</a></li>
-						<li><a data-toggle="tab" href="#business">사업자 회원가입</a></li>
+						<li class="active"><a data-toggle="tab" href="#business">사업자 회원가입</a></li>
 					</ul>
+					<div class="tab-content">
 				<div id="enroll" class="tab-pane in active">
 					<article class="card-body">
 						<!-- 여기에 회원가입 코드작성 -->
@@ -374,13 +409,53 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 						</form>
 						</article>
 					</div>
-					
-					<!-- 사업자 회원등록 코드작성 -->
 					<div id="business" class="tab-pane fade">
-					<div class="form-group">
-						    <h3>아 내가 부정하는 신이시여</h3>
-					</div>						
+							<!-- Login Form Code Here -->
+							<form action="binsert.do" method="post">
+						  <div class="form-group">
+						  <label>아이디
+						  <input type="number" name="owner_license_no"></label><br>
+						  <label>비밀번호
+						  <input type="text" name="owner_password"></label>
+						  <label>대표자명
+						  <input type="text" name="owner_name"></label>
+						  <label>업체명
+						  <input type="text" name="owner_companyName"></label>
+						  <label>전화번호
+						  <input type="number" name="owner_telephone"></label>
+						  <label>휴대폰번호
+						  <input type="number" name="owner_phone"></label>
+						  <label>계좌번호
+						  <input type="text" name="owner_account"></label>
+						  <label>주소
+						  <input type="text" name="owner_address" id="owner_address"><input type="button" onclick="geoCode();" value="검색">
+						  </label><div id="map" style="height:200px; widht:200px;"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
+    async defer></script>
+    					  <input type="hidden" name="owner_latitude" id="owner_latitude">
+						  <input type="hidden" name="owner_longitude" id="owner_longitude">
+						  <div class="row">
+						  <div class="col-xl-3">
+						  <input type="radio" name="owner_category" value="호텔">호텔
+						  </div>
+						  <div class="col-xl-3">
+						  <input type="radio" name="owner_category" value="펜션">펜션 
+						  </div>
+						  <div class="col-xl-3">
+						  <input type="radio" name="owner_category" value="풀빌라">풀빌라 
+						  </div>
+						  <div class="col-xl-3">
+						  <input type="radio" name="owner_category" value="리조트">리조트
+						  </div>
+						  </div>
+						    <input type="submit" value="사업자 회원가입">
+						  </div>
+						  </form>
+						</div>
 					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
