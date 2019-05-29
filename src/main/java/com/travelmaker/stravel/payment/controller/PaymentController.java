@@ -23,11 +23,6 @@ public class PaymentController {
 		return "payment/paymentView2";
 	}
 	
-	@RequestMapping("pay3.do")
-	public String PaymentView3() {
-		return "payment/paymentView3";
-	}
-	
 	@RequestMapping("test.do")
 	public String testPay() {
 		return "payment/testpay";

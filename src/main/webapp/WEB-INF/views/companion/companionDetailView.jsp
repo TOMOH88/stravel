@@ -18,7 +18,7 @@
 <h2 align="center">동행 찾기 ${companion.companion_no } 번 글 상세보기</h2>
 <br><br>
 
-<div style="width:1032px;   border:1px solid #bcbcbc;margin:0px auto; padding:50px;"><!-- 전체 -->
+<div style="width:1032px; border:1px solid #bcbcbc;margin:0px auto; padding:50px;"><!-- 전체 -->
 	
 		<div style="width:100%; height:90px; background:yellow;" ><!-- 헤더 -->
 			<div>
@@ -41,8 +41,8 @@
 				<form action="compreplyinsert.do?companion_no=${companion.companion_no }" name="companionReply" method="post">
 				<br><br>
 			<input type="hidden" id="companion_no" name="companion_no" value="${companion.companion_no }"/>
-			<input type="hidden" id="companion_reply_ref" name="companion_reply_ref" value="${companion.companion_no}">
-			<input type="hidden" id="companion_reply_lev" name="companion_reply_lev" value="1">
+			<input type="hidden" id="companion_reply_ref" name="companion_reply_ref" value="<c:out value="${companion.companion_no }"/>">
+			<input type="hidden" id="companion_reply_lev" name="companion_reply_lev" value="0">
 			<input type="text" id="user_email" name="user_email" />
 			<div>
 				<span><strong>댓글</strong></span>
@@ -87,8 +87,8 @@
 
 			</script>
 		 			<input type="hidden" id="companion_no" name="companion_no" value="${c.companion_no }">
-		 			<input type="hidden" id="companion_reply_ref" name="companion_reply_ref" value="${c.companion_reply_ref}">
-		 			<a>${c.companion_reply_ref }</a>
+		 			<input type="hidden" id="companion_reply_ref "name="companion_reply_ref" value="<c:out value="${c.companion_reply_ref}"/>">
+		 			<input type="hidden" id="companion_reply_lev" name="companion_reply_lev" value="${c.companion_reply_lev + 1}">
 		 			<input type="text" id="user_email" name="user_email" size="20" maxlength="30"><br>
 		 			<textarea id="companion_reply_content" name="companion_reply_content" rows="1" cols="100" maxlength="400"></textarea>
 		 			<input type="submit" value="등록" />

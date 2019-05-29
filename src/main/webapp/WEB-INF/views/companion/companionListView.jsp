@@ -35,13 +35,9 @@ function writeform(){
 	<td>${c.user_email }</td>
 	<th>
 	<%-- 로그인 상태일 때만 상세보기 링크 설정함 --%>
-	<c:if test="${!empty loginUser }">
-		<a href="compdetail.do?companion_no=${c.companion_no }">${c.companion_title }</a>
-	</c:if>
-	<c:if test="${empty loginUser }">
-		<a href="compdetail.do?companion_no=${c.companion_no }">${c.companion_title }</a>
-	</c:if>
 	
+		<a href="compdetail.do?companion_no=${c.companion_no }">${c.companion_title }</a>
+
 	</th>
 	<c:if test="${c.companion_progress eq '1'}">
 	<th><button style="background-color:#bcbcbc; color:blue; border:0; width:80px; height:25px; border-radius:5px;">진행중</button></th>
@@ -98,16 +94,6 @@ function writeform(){
 
 
 <br><br><br>
-
-
-
-
-
-
-
-
-
-
 
 
 <c:import url="../common/footer.jsp" />

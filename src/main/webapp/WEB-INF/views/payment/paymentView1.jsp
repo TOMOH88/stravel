@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,149 +29,38 @@
 <title>stravel</title>
 </head>
 <body>
-<c:import url="../common/header.jsp" />
-
-<br><br><br>
-<div align="center">
-<h7 style="color:blue;">1. 이용 규칙 및 상세 내용</h7>
-<h7>  >  </h7>
-<h7 style="color:#bcbcbc;">  2. 사용자 정보 입력</h7>
-<h7>  >  </h7>
-<h7 style="color:#bcbcbc;">  3. 확인 및 결제</h7>
-</div>
+<div><c:import url="../common/header.jsp" /></div>
+<div style="width:1200px; height: 1200px; margin:0px auto; background:yellow;"><!-- 전체 -->
 <br>
+	<div align="center"><!-- 헤더 -->
+	<h7 style="color:blue;"> 이용 규칙 및 상세 내용</h7>
+	<h7>  >  </h7>
+	<h7 style="color:#bcbcbc;"> 확인 및 결제</h7>
+	</div>
 <hr>
-<br><br>
-<div style="width:1650px; height:1000px; float:left;">
-	<div style="width:16%; height:100%; float:left;"> <!-- 공백 -->
-	</div>
-
-	<div style="width:43%; height:100%; float:left;"> <!-- 메인 -->
-	<br><br>
-	<h2>숙소 이용 규칙 확인하기</h2>
-	<br><br><hr><br><br>
-	<div>Seogwi-dong, Seogwipo-si 1박</div>
-	<br><br>
-	<div style="width:50%; height:10%; float:left;"> <!-- 공백 -->
-	<div style="height:50%; float:top;">
-	5월 체크인 : 일요일
-	</div>
-	<div style="height:50%; float:top;">
-	5일 16:00 - 00:00
-	</div>
-	
-	</div>
-	<div style="width:50%; height:10%; float:left;"> <!-- 공백 -->
-	<div style="height:50%; float:top;">
-	5월 체크아웃 : 월요일
-	</div>
-	<div style="height:50%; float:top;">
-	6일 11:00
-	</div>
-	</div>
-	
-	<div style="width:100%; height:50%; float:left;">
-	체크인 정보 : 안내 직원으로 셀프 체크인
-	<hr><br>
-	<div><h4>주의 및 유의할 사항</h4></div>
-	<br><hr><br>
-	<div style="width:100%; height:60%; float:left;">
-	<br><br>
-	<img src="${pageContext.request.contextPath }/resources/files/번호1.jpg">반려동물 동반 불가</img><br><hr>
-	<img src="${pageContext.request.contextPath }/resources/files/번호2.jpg">파티나 이벤트 금지</img><br><hr>
-	<img src="${pageContext.request.contextPath }/resources/files/금연.jpg">흡연 금지</img><br><hr>
-
-	</div>
-	
-	<a href="pay2.do"><button style="background-color:#bcbcbc; color:blue; border:0; width:140px; height:30px; border-radius:5px;">동의 및 계속하기</button></a>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	</div>
-<!-- 사이드박스 div -->
-
-	<div style="width:25%; height:100%; float:left;"> <!-- 사이드 -->
-<div style="width:5%; height:100%; float:left;"><!-- 공백 -->
-</div>
-
-<div style="width:90%; height:100%; float:left;"><!-- 사이드라인 -->
-<div style="width:370px; height:500px; float:left; border:1; border-radius:30px; background-color:#E0FFFF;"><!-- 사이드박스 -->
-<div style="width:100%; height:5%; float:top;"><!-- 공백 -->
-<img src="${pageContext.request.contextPath }/resources/files/paymentImges/1.jpg" style="width:100px; height:70px;" align="right">
-</div>
-<div style="width:100%; height:90%; float:top;"><!-- 사이드값 -->
-<div style="padding:10px; text-align:center;"><h6>서귀포 최고의 오션뷰 호텔연</h6></div>
-<br>
-<hr>
-<br>
-<div style="width:50%; height:100; float:left;">
-<div style="padding:10px;">인원 : 게스트 1명</div>
-<div style="padding:10px;">2019년 5월 5일</div>
-<div style="padding:10px;">₩59,000 X 1박</div>
-<div style="padding:10px;">서비스 수수료 </div>
-<hr><br>
-<div style="padding:10px;"><h5>총 합계 (KRW)</h5></div>
-</div>
-<div style="width:50%; height:100; float:left;">
-<div style="padding:10px; text-align:right;">-</div>
-<div style="padding:10px; text-align:right;"> ~ 2019년 5월6일</div>
- <div style="padding:10px; text-align:right;">	₩59,000</div>
-
- <div style="padding:10px; text-align:right;">	₩7,611</div>
- <hr><br>
- <div style="padding:10px; text-align:right;"><h5>₩66,611</h5></div>
-
-</div>
-
-
-
-<div style="width:100%; height:5%; float:top;"><!-- 공백 -->
-</div>
-
-
-
-
-
-
-
-
-
-</div>
-
-</div><!-- 사이드박스 -->
-
-
-</div><!-- 사이드라인 -->
-
+	<div style="width:760px; display:table-cell; background:blue;"><!-- 메인 -->
+		<div style="width:740px; margin:0px auto; background:white;">
+			<div style="height:300px; padding:30px;"><h2>숙소 이용 규칙 확인하기</h2></div>
+			<div style="height:200px; padding:30px;">주의사항</div>
+			<div style="height:200px; padding:30px;">주의</div>
+			<div style="height:200px; padding:30px;">주의</div>
+			<div style="height:200px; padding:30px;"><!-- 푸터 -->
+			<a href="pay2.do"><button style="background-color:#bcbcbc; color:blue; border:0; width:140px; height:30px; border-radius:5px;">동의 및 계속하기</button></a>
+		</div>
+		</div>
+	</div><!-- 메인 -->
+	<div style="width:460px; display:table-cell; background:green;"><!-- 사이드 -->
+		<div style="width:440px; margin:0px auto; background:white; position:sticky; top:100px;">
+			<div style="height:100px;">제목</div><!-- 제목/사진 -->
+			<div style="height:100px;">인원</div><!-- 인원 -->
+			<div style="height:100px;">날짜</div><!-- 날짜 -->
+			<div style="height:100px;">가격</div><!-- 가격 -->
+			<div style="height:100px;">총금액</div><!-- 총가격 -->
+		</div>	
 	</div><!-- 사이드 -->
-</div> <!-- 전체 -->
+	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div><!-- 전체 -->
 
 
 
@@ -181,6 +72,6 @@
   <script src="${pageContext.request.contextPath }/resources/js/mail-script.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/skrollr.min.js"></script>
   <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
-<c:import url="../common/footer.jsp" />
+<div><c:import url="../common/footer.jsp" /></div>
 </body>
 </html>

@@ -35,7 +35,7 @@
 	
 	<select id="selectCompanionReplyList" parameterType="CompanionReply" resultMap="resultCompanionReply" >
 		select * from companion_reply where companion_no = #{companion_no}
-		order by companion_reply_no desc, companion_reply_ref asc, companion_reply_lev asc, companion_reply_seq asc
+		order by companion_reply_no asc, companion_reply_ref asc, companion_reply_lev asc, companion_reply_seq asc
 	</select>
 	
 	<select id="selectCompanionList" parameterType="Companion"
@@ -49,8 +49,6 @@
 								where rnum >= #{offset } and rnum <=
 								#{limit }
 							]]>
-							
-						
 	</select>
 	
 	<select id="selectListCount" resultType="_int">
@@ -69,7 +67,7 @@
 	
 		insert into companion_reply 
 		values (seq_cpreply_no.nextval, 
-		#{companion_no}, #{companion_reply_ref},  #{companion_reply_lev},
+		#{companion_no}, #{companion_reply_ref}, #{companion_reply_lev},
 		seq_cpreply_seq.nextval, #{user_email}, #{companion_reply_content}, SYSDATE)
 	</insert>
 	
@@ -77,7 +75,7 @@
 	<![CDATA[
 		insert into companion_reply 
 		values (seq_cpreply_no.nextval, 
-		#{companion_no}, #{companion_reply_ref}, (select max(companion_reply_lev) + 1 from companion_reply),
+		#{companion_no}, #{companion_reply_ref}, #{companion_reply_lev},
 		seq_cpreply_seq.nextval,  #{user_email}, #{companion_reply_content}, SYSDATE)
 		]]>
 	</insert>
