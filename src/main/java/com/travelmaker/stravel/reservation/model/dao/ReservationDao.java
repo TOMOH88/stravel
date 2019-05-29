@@ -24,4 +24,9 @@ public class ReservationDao {
 		return (ArrayList<Reservation>)list;
 	}
 
+	public int insertRsv(SqlSessionTemplate Session, Reservation rs) {
+		// TODO Auto-generated method stub
+		return Session.insert("roomMapper.insertRsv",rs);
+	}
+
 }

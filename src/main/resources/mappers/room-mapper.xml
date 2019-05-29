@@ -60,6 +60,11 @@
 	values(#{room_img_no},#{room_img},#{room_no})
 </insert>
 
+<insert id="insertRsv" parameterType ="rsvVo">
+ insert into reservation
+values (seq_rsv_no.nextval, #{user_no}, #{room_no}, #{check_in}, #{check_out}, '결제대기', '입실대기', sysdate, #{member}, #{total_price})
+</insert>
+
 
 <select id="selectRoom" resultMap="resultRoom">
 	select * from room where owner_no = #{owner_no}
@@ -106,4 +111,6 @@ where room_no in (
 <select id="selectUpRoomImg" resultMap="resultRoomImg">
 	select * from room_img where room_no = #{room_no}
 </select>
+
+
 </mapper>
