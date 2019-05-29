@@ -35,7 +35,7 @@ public class OwnerDao {
 		List<Owner> list = Session.selectList("ownerMapper.selectRoomList1");
 		return (ArrayList<Owner>)list;
 	}
-	public int selectOwnerTotal1(SqlSessionTemplate Session, String search) {
+	public int selectOwnerTotal1(SqlSessionTemplate Session, OwnerPaging paging) {
 		// TODO Auto-generated method stub
 		return Session.selectOne("ownerMapper.selectOwnerTotal1");
 	}
