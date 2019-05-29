@@ -67,10 +67,10 @@ public class RoomController {
 		return mv;
 	}
 	
-	@RequestMapping("test.do")
+/*	@RequestMapping("test.do")
 	public String test() {
 		return "room/test";
-	}
+	}*/
 	
 	@RequestMapping("ownerMain.do")
 	public String ownerMain() {

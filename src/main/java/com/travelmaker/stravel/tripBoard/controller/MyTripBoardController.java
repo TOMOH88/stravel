@@ -1,7 +1,13 @@
 ﻿package com.travelmaker.stravel.tripBoard.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -13,12 +19,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.common.PagingVo;
+import com.travelmaker.stravel.common.UUIDUtil;
 import com.travelmaker.stravel.tripBoard.model.sevice.MyTripBoardService;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoard;
+import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage;
 import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardLike;
+import com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview;
 
 
 @Controller
