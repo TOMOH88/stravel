@@ -19,6 +19,7 @@
 		<result property="companion_no" column="companion_no" />
 		<result property="companion_reply_ref" column="companion_reply_ref" />
 		<result property="companion_reply_lev" column="companion_reply_lev"/>
+		<result property="companion_reply_seq" column="companion_reply_seq"/>
 		<result property="user_email" column="user_email" />
 		<result property="companion_reply_content" column="companion_reply_content" />
 		<result property="companion_reply_date" column="companion_reply_date" />
@@ -34,7 +35,7 @@
 	
 	<select id="selectCompanionReplyList" parameterType="CompanionReply" resultMap="resultCompanionReply" >
 		select * from companion_reply where companion_no = #{companion_no}
-		order by companion_reply_ref asc , companion_reply_no desc
+		order by companion_reply_no desc, companion_reply_ref asc, companion_reply_lev asc, companion_reply_seq asc
 	</select>
 	
 	<select id="selectCompanionList" parameterType="Companion"
@@ -58,13 +59,27 @@
 	
 	<insert id="insertCompanion" parameterType="Companion" useGeneratedKeys="true" >
 	
-		insert into companion 
-		values ((select max(companion_no) + 1 from companion),  
+		insert into companion
+		values (seq_cp_no.nextval,  
 		#{companion_title}, #{user_email},
 		#{companion_content}, SYSDATE, null, 1)
 	</insert>
 	
-
-
+	<insert id="insertCompanionReply" parameterType="CompanionReply" useGeneratedKeys="true" >
+	
+		insert into companion_reply 
+		values (seq_cpreply_no.nextval, 
+		#{companion_no}, #{companion_reply_ref},  #{companion_reply_lev},
+		seq_cpreply_seq.nextval, #{user_email}, #{companion_reply_content}, SYSDATE)
+	</insert>
+	
+	<insert id="insertCompanionRereply" parameterType="CompanionReply" useGeneratedKeys="true" >
+	<![CDATA[
+		insert into companion_reply 
+		values (seq_cpreply_no.nextval, 
+		#{companion_no}, #{companion_reply_ref}, (select max(companion_reply_lev) + 1 from companion_reply),
+		seq_cpreply_seq.nextval,  #{user_email}, #{companion_reply_content}, SYSDATE)
+		]]>
+	</insert>
 
 </mapper>

@@ -1,30 +1,30 @@
 package com.travelmaker.stravel.companion.controller;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
 
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.companion.model.service.CompanionReplyService;
 import com.travelmaker.stravel.companion.model.service.CompanionService;
 import com.travelmaker.stravel.companion.model.vo.Companion;
 import com.travelmaker.stravel.companion.model.vo.CompanionReply;
+
 
 @Controller
 public class CompanionController {
@@ -84,41 +84,51 @@ public class CompanionController {
 			@RequestParam(name="companion_no", required=false) int companion_no) {
 		logger.info("동행찾기 글 상세보기");
 		Companion companion = companionService.selectCompanion(companion_no);
+		ArrayList<CompanionReply> companionReply = companionReplyService.selectCompanionReplyList(companion_no);
 		
 		mv.setViewName("companion/companionDetailView");
 		mv.addObject("companion", companion);
+		mv.addObject("companionReply", companionReply);
 		
 		return mv;
 	}
 	
-	@RequestMapping(value="compReplyList.do", produces="application/json; charset=utf-8")
-	@ResponseBody
-	public ResponseEntity companionList(@ModelAttribute("companionReply") 
-	Companion companion, HttpServletRequest request) {
-		HttpHeaders responseHeaders = new HttpHeaders();
-		ArrayList<HashMap> hmlist = new ArrayList<HashMap>();
-		
-		//해당 게시물 댓글
-		List<CompanionReply> companionReply = companionReplyService.selectCompanionReplyList(companion);
-		
-		if(companionReply.size() > 0) {
-			for(int i = 0; i<companionReply.size(); i++) {
-				HashMap hm = new HashMap();
-				hm.put("companion_reply_no", companionReply.get(i).getCompanion_no());
-				hm.put("companion_reply_ref", companionReply.get(i).getCompanion_reply_ref());
-				hm.put("companion_reply_date", companionReply.get(i).getCompanion_reply_date());
-				hm.put("user_email", companionReply.get(i).getUser_email());
-				hm.put("conpanion_reply_content", companionReply.get(i).getCompanion_reply_content());
-			
-				hmlist.add(hm);
-			}
-			
-			
-		}
-		
-		JSONArray json = new JSONArray();
-		return new ResponseEntity(json.toString(), responseHeaders, HttpStatus.CREATED);
-	}
+	  @RequestMapping(value="companionReplyList.do", method=RequestMethod.POST)
+	  public void companionReplyList(HttpServletResponse response, @RequestParam(name="companion_no", required=false) int companion_no) throws IOException {
+		  
+		  response.setContentType("text/html; charset=utf-8");
+		  List<CompanionReply> list = companionReplyService.selectCompanionReplyList(companion_no);
+		  
+		  JSONObject sendObj = new JSONObject();
+		  JSONArray jarr = new JSONArray();
+		  
+		  for(CompanionReply companionreply : list) {
+			  JSONObject jcomp = new JSONObject();
+			  
+			  jcomp.put("companion_reply_no", companionreply.getCompanion_reply_no());
+			  jcomp.put("companion_no", companionreply.getCompanion_no());
+			  jcomp.put("companion_reply_ref", companionreply.getCompanion_reply_ref());
+			  jcomp.put("companion_reply_lev", companionreply.getCompanion_reply_lev());
+			  jcomp.put("companion_reply_seq", companionreply.getCompanion_reply_seq());
+			  jcomp.put("user_email", companionreply.getUser_email());
+			  jcomp.put("companion_reply_content", companionreply.getCompanion_reply_content());
+			  jcomp.put("companion_reply_date", companionreply.getCompanion_reply_date());
+		  
+			 jarr.add(jcomp);
+		  
+		  }
+		  sendObj.put("list", jarr);
+		  
+		  response.setContentType("application/json; charset=utf-8");
+		  PrintWriter out = response.getWriter();
+		  out.println(sendObj.toJSONString());
+		  out.flush();
+		  out.close();
+	  }
+	
+	
+	
+	
 	
 	@RequestMapping("compwrite.do")
 	public String writeCompanion() {
@@ -164,9 +174,15 @@ public class CompanionController {
 	@RequestMapping(value="compreplyinsert.do", method=RequestMethod.POST)
 	public String insertCompanionReply(CompanionReply companionreply) {
 		companionReplyService.insertCompanionReply(companionreply);
-		return "redirect:compdetail.do";
+		return "redirect:compdetail.do?companion_no=" + companionreply.getCompanion_no();
 	}
 	
+	@RequestMapping(value="compRereplyinsert.do", method=RequestMethod.POST)
+	public String insertCompanionRereply(CompanionReply companionreply) {
+		companionReplyService.insertCompanionRereply(companionreply);
+		return "redirect:compdetail.do?companion_no=" + companionreply.getCompanion_no();
 	
+			
+	}
 
 }

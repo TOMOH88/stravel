@@ -24,8 +24,8 @@ public class CompanionReplyServiceImpl implements CompanionReplyService{
 	}
 	
 	@Override
-	public ArrayList<CompanionReply> selectCompanionReplyList(Companion companion){
-		return compreplyDao.companionReplyList(mybatisSession, companion);
+	public ArrayList<CompanionReply> selectCompanionReplyList(int companion_no){
+		return compreplyDao.companionReplyList(mybatisSession, companion_no);
 	}
 	
 	@Override
@@ -43,5 +43,11 @@ public class CompanionReplyServiceImpl implements CompanionReplyService{
 		return compreplyDao.deleteCompanionReply(mybatisSession, companion_reply_no);
 	}
 	
+	@Override
+	public int insertCompanionRereply(CompanionReply companionreply) {
+		return compreplyDao.insertCompanionReply(mybatisSession, companionreply);
+	}
+	
+
 	
 }

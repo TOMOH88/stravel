@@ -21,7 +21,7 @@ function cancle(){
 <!-- 등록모달 -->
 <div id="compmodal" class="compmodalout">
 <form action="compinsert.do" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="user_email" value="#">
+	<input type="text" id="user_email" name="user_email" />
 <table class="compwritemodalin" align="center" cellpadding="10px" style="width:700px; border-collapse: collapse;">
 	<tr>
 		<td colspan="6">

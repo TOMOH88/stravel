@@ -16,8 +16,8 @@ public class CompanionReplyDao {
 		return session.selectOne("companionMapper.selectOne", companionreply_no);
 	}
 
-	public ArrayList<CompanionReply> companionReplyList(SqlSessionTemplate session, Companion companion) {
-		List<CompanionReply> list = session.selectList("companionMapper.selectCompanionReplyList", companion);
+	public ArrayList<CompanionReply> companionReplyList(SqlSessionTemplate session, int companion_no) {
+		List<CompanionReply> list = session.selectList("companionMapper.selectCompanionReplyList", companion_no);
 		
 		return (ArrayList<CompanionReply>)list; 
 	}
@@ -33,5 +33,11 @@ public class CompanionReplyDao {
 	public int deleteCompanionReply(SqlSessionTemplate session, int companionreply_no) {
 		return session.delete("companionMapper.deleteComapnionReply", companionreply_no);
 	}
+	
+	public int insertCompanionRereply(SqlSessionTemplate session, CompanionReply companionreply) {
+		return session.insert("companionMapper.insertCompanionRereply", companionreply);
+	}
+
+
 
 }
