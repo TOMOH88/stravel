@@ -72,9 +72,25 @@
 		 	<div  style="padding: 5px; width:200px; display:table-cell;">${c.user_email }</div>
 		 	<div  style="padding: 5px; width:100px; display:table-cell;">${c.companion_reply_date }</div>
 		 	<div align="right">
-		 	<div style="display:table-cell; padding: 5px;"><button>수정</button></div>
-		 	<div style="display:table-cell; padding: 5px;"><button>삭제</button></div>
-		 
+		 	
+		 	<div id="update_reply${status.count }" style="display:table-cell; padding: 5px;"><a>수정</a></div>
+		 	<div style="display:table-cell; padding: 5px;"><a href="compreplydelete.do?companion_reply_no=${c.companion_reply_no }&companion_no=${c.companion_no}">삭제</a></div>
+		 	<div id="updateform${status.count }" style="display:none; width:99%;">
+		 		<form name="replyform${status.count }" action="compreplyupdate.do" method="post" >
+		 	<script>
+				$(function(){
+					$('#update_reply${status.count}').on('click', function (event) {
+						$('#updateform${status.count}').css('display', 'block');
+					});
+				});
+
+			</script>
+					<input type="hidden" id="companion_reply_no" name="companion_reply_no" value="${c.companion_reply_no }">
+		 			<input type="hidden" id="companion_no" name="companion_no" value="${c.companion_no }">
+		 			<textarea id="companion_reply_content" name="companion_reply_content" rows="1" cols="100" maxlength="400"></textarea>
+		 			<input type="submit" value="수정" />
+		 		</form>
+		 	</div>
 		 	</div>
 		</div>
 		 </c:forEach>

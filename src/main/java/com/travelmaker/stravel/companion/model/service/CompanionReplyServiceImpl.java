@@ -48,6 +48,8 @@ public class CompanionReplyServiceImpl implements CompanionReplyService{
 		return compreplyDao.insertCompanionReply(mybatisSession, companionreply);
 	}
 	
+	
+	
 
 	
 }

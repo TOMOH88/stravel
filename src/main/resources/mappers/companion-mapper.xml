@@ -63,6 +63,18 @@
 		#{companion_content}, SYSDATE, null, 1)
 	</insert>
 	
+	<update id="updateCompanion" parameterType="CompanionReply">
+		update companion
+		set companion_title = #{companion_title}
+			companion_content = #{companion_content}
+		where companion_no = #{companion_no}
+	</update>
+	
+	<delete id="deleteCompanion" parameterType="int">
+		delete from companion
+		where companion_no = #{companion_no}
+	</delete>
+	
 	<insert id="insertCompanionReply" parameterType="CompanionReply" useGeneratedKeys="true" >
 	
 		insert into companion_reply 
@@ -79,5 +91,17 @@
 		seq_cpreply_seq.nextval,  #{user_email}, #{companion_reply_content}, SYSDATE)
 		]]>
 	</insert>
+	
+	<update id="updateCompanionReply" parameterType="CompanionReply">
+		update companion_reply
+		set companion_reply_content = #{companion_reply_content},
+			companion_no = #{companion_no}
+		where companion_reply_no = #{companion_reply_no}
+	</update>
+	
+	<delete id="deleteCompanionReply" parameterType="_int">
+		delete from companion_reply
+		where companion_reply_no = #{companion_reply_no}
+	</delete>
 
 </mapper>

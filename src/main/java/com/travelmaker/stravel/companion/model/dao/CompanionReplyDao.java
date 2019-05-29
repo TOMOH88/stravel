@@ -31,7 +31,7 @@ public class CompanionReplyDao {
 	}
 
 	public int deleteCompanionReply(SqlSessionTemplate session, int companionreply_no) {
-		return session.delete("companionMapper.deleteComapnionReply", companionreply_no);
+		return session.delete("companionMapper.deleteCompanionReply", companionreply_no);
 	}
 	
 	public int insertCompanionRereply(SqlSessionTemplate session, CompanionReply companionreply) {
