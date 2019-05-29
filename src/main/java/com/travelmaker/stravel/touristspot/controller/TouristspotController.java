@@ -70,11 +70,26 @@ public class TouristspotController {
 	public ModelAndView moveTouristspotAdminMain(ModelAndView mv,PagingVo paging) {
 		logger.info("관광지 리스트 관리자 ");
 		paging.setListCnt(10);
-		ArrayList<TouristspotVo> touristspot = touristspotService.selectTouristspotList(paging);
+		if(paging.getSearchCategory() == null && paging.getItems() == null || paging.getSearchCategory() == "" && paging.getItems() == "") {
+			ArrayList<TouristspotVo> touristspot = touristspotService.selectTouristspotList(paging);
+			paging.setTotal(touristspotService.selectTotalPaging());
+			mv.addObject("touristspot", touristspot);
+			mv.addObject("p", paging);
+			mv.setViewName("touristspot/touristspotMainAdmin");
+		}else{
+			ArrayList<TouristspotVo> touristspot = touristspotService.selectTouristspotList(paging);
+			paging.setTotal(touristspotService.selectTotalPaging());
+			mv.addObject("touristspot", touristspot);
+			mv.addObject("p", paging);
+			mv.setViewName("touristspot/touristspotMainAdmin");
+		}
+		
+		
+/*		ArrayList<TouristspotVo> touristspot = touristspotService.selectTouristspotList(paging);
 		paging.setTotal(touristspotService.selectTotalPaging());
 		mv.addObject("touristspot", touristspot);
 		mv.addObject("p", paging);
-		mv.setViewName("touristspot/touristspotMainAdmin");
+		mv.setViewName("touristspot/touristspotMainAdmin");*/
 		return mv;
 	}
 	@RequestMapping("TSWriter.do")
