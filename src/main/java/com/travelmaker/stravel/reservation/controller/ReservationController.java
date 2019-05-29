@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.reservation.model.service.ReservationService;
 import com.travelmaker.stravel.reservation.model.vo.Reservation;
@@ -27,5 +28,13 @@ public class ReservationController {
 		}
 		System.out.println(DateArr);
 		return DateArr; 
+	}
+	
+	@RequestMapping(value="meveReservation.do", method=RequestMethod.POST)
+	public ModelAndView insertRsv(ModelAndView mv, Reservation rs) {
+		int result = rsvservice.insertRsv(rs);
+		mv.addObject("rsvInfo",rs);
+		mv.setViewName("payment/paymentView1");
+		return mv;
 	}
 }

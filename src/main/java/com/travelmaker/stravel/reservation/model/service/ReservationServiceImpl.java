@@ -24,6 +24,12 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		return rsvdao.selectRsvDate(mybatisSession,reservation);
 	}
+
+	@Override
+	public int insertRsv(Reservation rs) {
+		// TODO Auto-generated method stub
+		return rsvdao.insertRsv(mybatisSession, rs);
+	}
 	
 	
 }

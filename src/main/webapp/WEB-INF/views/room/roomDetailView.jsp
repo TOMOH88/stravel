@@ -443,7 +443,7 @@
 								<select class="selectroom" name="room_no" required>
 									<option selected disabled hidden>필수선택</option>
 									<c:forEach items="${roomList}" var="roomList">
-									<option>${roomList.room_name }</option>
+									<option value="${r.room_no }">${roomList.room_name }</option>
 									</c:forEach>
 								</select>
 							</div>
@@ -668,7 +668,7 @@
 					var option = "<option selected disabled hidden>필수선택</option>";
 					var price
 					for(var i = 2; i < json.max_no+1;i++){
-						option += "<option>"+i +"</option>";
+						option += "<option value="+i+">"+i +"</option>";
 					}
 					
 					$(".selectcount").html($(".selectcount").text() + option);
