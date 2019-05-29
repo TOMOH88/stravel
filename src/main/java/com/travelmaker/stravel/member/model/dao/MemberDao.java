@@ -19,7 +19,7 @@ public class MemberDao {
 		if(!bcryptpasswordEncoder.matches(member.getUser_password(), loginMember.getUser_password())) {
 			loginMember = null;
 		}
-		
+		System.out.println(loginMember);
 		return loginMember;
 	}
 

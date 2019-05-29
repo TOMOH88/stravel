@@ -107,7 +107,7 @@ $(document).ready(function(){
 }
 </style>
     <script type="text/javascript">    
-	var map;
+    var map;
 	var marker;
       function geoCode() {
     	  	var faddr_lat = ${touristspot.touristspot_latitude };
