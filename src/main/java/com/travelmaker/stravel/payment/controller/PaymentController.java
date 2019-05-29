@@ -4,8 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.travelmaker.stravel.companion.controller.CompanionController;
+import com.travelmaker.stravel.member.model.vo.Member;
+import com.travelmaker.stravel.reservation.model.vo.Reservation;
 
 @Controller
 public class PaymentController {
@@ -13,10 +15,9 @@ public class PaymentController {
 	private static final Logger logger = 
 			LoggerFactory.getLogger(PaymentController.class);
 	
-	@RequestMapping("pay1.do")
-	public String PaymentView1() {
-		return "payment/paymentView1";
-	}
+
+	
+	
 	
 	@RequestMapping("pay2.do")
 	public String PaymentView2() {

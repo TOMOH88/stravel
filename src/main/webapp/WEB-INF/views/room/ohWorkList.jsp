@@ -19,7 +19,7 @@
 <h1>오청 작업리스트</h1><br><hr>
 <table>
 <tr><th>상품상세페이지</th><td><a href="roomDetail.do">작업물 링크</a></td></tr>
-<tr><th>사업자 메인페이지</th><td><a href="ownerMain.do">작업물 링크</a></td></tr>
+<tr><th>사업자 메인페이지</th><td><a href="ownerMain.do?owner_no=6">작업물 링크</a></td></tr>
 <tr><th>상품리스트</th><td><a href="roomList.do">작업물링크</a></td></tr>
 <tr><th>객실등록</th><td><a>작업물 링크</a></td></tr>
 <tr><th>객실수정</th><td><a>작업물 링크</a></td></tr>

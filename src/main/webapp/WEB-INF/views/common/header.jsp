@@ -223,9 +223,6 @@ var marker;
     
 <title>header</title>
 <style>
- div{ 
-	border:1px solid black;
-} 
 
 #map {
         height: 100%;

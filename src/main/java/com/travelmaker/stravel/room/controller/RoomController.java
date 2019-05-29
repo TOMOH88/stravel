@@ -36,8 +36,8 @@ public class RoomController {
 		return "room/ohWorkList";
 	}
 	@RequestMapping(value="selectRsvInfo.do",method=RequestMethod.POST)
-	public @ResponseBody Room selectRsvInfo(Room room) {
-		Room result = rs.selectRsvInfo(room);
+	public @ResponseBody Room selectRsvInfo(@RequestParam(name="room_no") int room_no) {
+		Room result = rs.selectRsvInfo(room_no);
 		System.out.println("result" + result);
 	return	 result;
 	}
@@ -73,8 +73,11 @@ public class RoomController {
 	}*/
 	
 	@RequestMapping("ownerMain.do")
-	public String ownerMain() {
-		return "room/ownerMain";
+	public ModelAndView ownerMain(ModelAndView mv, @RequestParam(name="owner_no") int owner_no) {
+		ArrayList<Reservation> list = rs.selectOrderList(owner_no);
+		mv.addObject("orderList",list);
+		mv.setViewName("room/ownerMain");
+		return mv;
 	}
 	
 	@RequestMapping("orderList.do")

@@ -39,6 +39,7 @@
 	<result property = "rsv_date" column="rsv_date" />
 	<result property = "member" column="member" />
 	<result property = "total_price" column="total_price" />
+	<result property = "owner_no" column="owner_no"/> 
 </resultMap>
 
 
@@ -81,7 +82,7 @@ where room_no in(
 </select>
 
 <select id="selectRsvInfo" resultMap="resultRoom">
-	select * from room where owner_no = #{owner_no} and room_name = #{room_name}
+	select * from room where room_no = #{room_no}
 </select>
 
 
@@ -99,7 +100,7 @@ join stravel_user using (user_no)
 where room_no in (
     select room_no
     from room
-    where owner_no = 6)
+    where owner_no = #{owner_no})
     order by check_in
 
 </select>
@@ -112,5 +113,7 @@ where room_no in (
 	select * from room_img where room_no = #{room_no}
 </select>
 
-
+<update id="updateStatus" parameterType="rsvVo">
+	update reservation set rsv_status = '입실완료' 
+</update>
 </mapper>

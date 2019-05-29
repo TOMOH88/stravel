@@ -30,6 +30,12 @@ public class ReservationServiceImpl implements ReservationService{
 		// TODO Auto-generated method stub
 		return rsvdao.insertRsv(mybatisSession, rs);
 	}
+
+	@Override
+	public int updateStatus(int rsv_no) {
+		// TODO Auto-generated method stub
+		return rsvdao.updateStatus(mybatisSession,rsv_no);
+	}
 	
 	
 }
