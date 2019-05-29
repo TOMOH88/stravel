@@ -8,7 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/swiper.min.css">
+
 <script src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/paging.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 
 <style type="text/css">
 @media (max-width:992px){
@@ -89,16 +92,32 @@
 	<c:import url="../common/header.jsp" />
 </section> 
 <div> <!-- maindiv -->	
-	<div id="mdiv"  style="border:1px solid black; ">
-		<form action="">
-		<div id="sdiv" style="width:100%; height:50px;padding:5px; border:1px solid black;"><!-- 검색 필터링 공간 -->
-		<form action="roomList.do">
-			<input type="text" name="search">
-			<input type="hidden" name="page" value="1">
-			<input type="hidden" name="range" value="1">
-		</form>
+	<div id="mdiv"  >
+		<div id="sdiv" style="width:100%; height:50px;padding:5px; border:1px solid #cfcfcf;"><!-- 검색 필터링 공간 -->		
+		<div style="float:left;">
+			<select class='btn btn-primary' id='listCount' name='listCount' onchange='listCnt();'>
+				<!-- <option disabled selected>보기</option> -->
+				<option value='9' >9</option>
+				<option value='27'>27</option>
+				<option value='54'>54</option>
+			</select>
 		</div>
-		</form>
+		<div align="right">
+              <!-- Pagination 시작 ( 페이징 )-->
+			
+					        <form action="roomList.do" method="post" id='frmPaging'>
+					            <!--출력할 페이지번호, 출력할 페이지 시작 번호, 출력할 리스트 갯수 -->
+					            <input type='hidden' name='index' id='index' value='${p.index}'>
+					            <input type='hidden' name='pageStartNum' id='pageStartNum' value='${p.pageStartNum}'>
+					            <input type='hidden' name='listCnt' id='listCnt' value='${p.listCnt}'>
+					            
+					            
+								<input type="text" name="items" class="btn btn-primary btn-sm" placeholder="Search" value="${p.items }" class="form-control" >
+								<input type="button" class="btn btn-primary btn-sm" value="검색" onclick="frmPaging(); return false;">
+					        </form>
+    	</div>
+		</div>
+		
 		<div style="display:inline-block; width:1108px;">
 		<c:forEach items="${roomList }" var="r" >
 			<div id="rlist" style="margin-top: 20px;cursor:pointer;" >
@@ -108,7 +127,7 @@
 								
 								<c:forEach items="${ownerImgList}" var="img" >
 								<c:if test="${r.owner_no eq img.owner_no }">
-										<div class="swiper-slide" onclick="moveDetail(${r.owner_no})"><img src="${pageContext.request.contextPath }/resources/files/ownerImg/${img.owner_img}"></div>
+										<div class="swiper-slide" onclick ="moveDetail(${r.owner_no})"><img src="${pageContext.request.contextPath }/resources/files/ownerImg/${img.owner_img}"></div>
 								</c:if>
 								</c:forEach> 
 								
@@ -128,7 +147,28 @@
 				</div>
 			</c:forEach>
 			</div>
-			<div style="width: 1000px; margin: 50px;">
+			<div>
+				<ul class="pagination">
+			<c:if test="${p.pageStartNum ne 1}">
+			 <!--맨 첫페이지 이동 -->
+			<li><a onclick='pagePre(${p.pageCnt+1},${p.pageCnt});'>«</a></li>
+			 <!--이전 페이지 이동 -->
+			<li><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});'>‹</a></li>
+			</c:if>
+			<!--페이지번호 -->
+			<c:forEach var='i' begin="${p.pageStartNum}" end="${p.pageLastNum}" step="1">
+			<li class='pageIndex${i}'><a onclick='pageIndex(${i});'>${i}</a></li>
+			</c:forEach>
+					            
+					            <c:if test="${p.lastChk}">
+					                <!--다음 페이지 이동 -->
+					                <li><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>›</a></li>
+					                <!--마지막 페이지 이동 -->
+					                <li><a onclick='pageLast(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});'>»</a></li>
+					            </c:if>
+					        </ul>
+			</div>
+			<%-- <div style="width: 1000px; margin: 50px;">
 				<!-- 페이징처리공간 -->
 				<div id="paginationBox">
 					<ul class="pagination">
@@ -149,7 +189,7 @@
 						</c:if>
 					</ul>
 				</div>
-			</div>
+			</div> --%>
 		</div>
 </div>
 
@@ -167,9 +207,10 @@ var swiper = new Swiper('.swiper-container', {
     },
   });
   
-  function moveDetail(el){
+   function moveDetail(el){
 	  location.href= "roomDetail.do?owner_no=" +el; 
   }
+   /*
   function fn_prev(page, range, rangeSize) {
 		var page = ((range - 2) * rangeSize) + 1;
 		var range = range - 1;
@@ -195,7 +236,7 @@ var swiper = new Swiper('.swiper-container', {
 		location.href = url;
 	}
 
-
+ */
 
 
 

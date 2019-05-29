@@ -50,30 +50,23 @@
                 FROM (   select  owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
     from owner
     join room using (owner_no)
-    group by owner_no,owner_companyname, owner_address, owner_category   ) P )
-        WHERE RNUM BETWEEN #{startList} +1 AND #{listSize} + #{startList}
+    group by owner_no,owner_companyname, owner_address, owner_category  
+    <if test="items != null and items != '' ">
+    	 having  OWNER_COMPANYNAME like '%' || #{items} || '%' or OWNER_ADDRESS like '%' || #{items} || '%'
+    </if>
+     ) P )
+        WHERE RNUM BETWEEN #{start} AND #{last}
     
 
 	</select>
-	<select id="selectRoomList1" resultMap="resultOwnerList" >
-    SELECT *
-        FROM (    SELECT ROWNUM RNUM, P.*
-                FROM (   select  owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
-    from owner
-    join room using (owner_no)
-    group by owner_no,owner_companyname, owner_address, owner_category 
-    having  OWNER_COMPANYNAME like '%'||#{search}||'%' or OWNER_ADDRESS like '%'||#{search}||'%'  ) P )
-        WHERE RNUM BETWEEN #{startList} +1 AND #{listSize} + #{startList}
-
-	</select>
-	<select id="selectOwnerTotal1" resultType="int">
+	<select id="selectOwnerTotal1" resultType="int" parameterType="ownerPagingVo">
 	  SELECT  count(1)
         FROM (    SELECT ROWNUM RNUM, P.*
                 FROM (   select  owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
     from owner
     join room using (owner_no)
     group by owner_no,owner_companyname, owner_address, owner_category 
-    having  OWNER_COMPANYNAME like '%'||#{search}||'%' or OWNER_ADDRESS like '%'||#{search}||'%'  ) P )
+    having  OWNER_COMPANYNAME like '%' || #{items} || '%' or OWNER_ADDRESS like '%' || #{items} || '%'  ) P )
 	</select>
 	<select id="selectOwnerImgList" resultMap="resultOwnerImg" >
 	    select * from owner_img

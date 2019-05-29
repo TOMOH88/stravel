@@ -17,7 +17,7 @@ public interface OwnerService {
 
 	ArrayList<Owner> selectRoomList1(OwnerPaging paging, String search);
 
-	int selectOwnerTotal1(String search);
+	int selectOwnerTotal1(OwnerPaging paging);
 
 
 }

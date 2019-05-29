@@ -45,9 +45,9 @@ public class OwnerServiceImpl implements OwnerService{
 	}
 
 	@Override
-	public int selectOwnerTotal1(String search) {
+	public int selectOwnerTotal1(OwnerPaging paging) {
 		// TODO Auto-generated method stub
-		return od.selectOwnerTotal1(mybatisSession,search);
+		return od.selectOwnerTotal1(mybatisSession,paging);
 	}
 
 }
