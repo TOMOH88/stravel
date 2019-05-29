@@ -72,28 +72,9 @@
 		 	<div  style="padding: 5px; width:200px; display:table-cell;">${c.user_email }</div>
 		 	<div  style="padding: 5px; width:100px; display:table-cell;">${c.companion_reply_date }</div>
 		 	<div align="right">
-		 	<div id="re_reply${status.count }" style="display:table-cell; padding: 5px;"><button>댓글</button></div>
 		 	<div style="display:table-cell; padding: 5px;"><button>수정</button></div>
 		 	<div style="display:table-cell; padding: 5px;"><button>삭제</button></div>
-		 	<div id="replyform${status.count }" style="display:none; width:99%;">
-
-		 		<form name="replyform${status.count }" action="compRereplyinsert.do" method="post" >
-		 	<script>
-				$(function(){
-					$('#re_reply${status.count}').on('click', function (event) {
-						$('#replyform${status.count}').css('display', 'block');
-					});
-				});
-
-			</script>
-		 			<input type="hidden" id="companion_no" name="companion_no" value="${c.companion_no }">
-		 			<input type="hidden" id="companion_reply_ref "name="companion_reply_ref" value="<c:out value="${c.companion_reply_ref}"/>">
-		 			<input type="hidden" id="companion_reply_lev" name="companion_reply_lev" value="${c.companion_reply_lev + 1}">
-		 			<input type="text" id="user_email" name="user_email" size="20" maxlength="30"><br>
-		 			<textarea id="companion_reply_content" name="companion_reply_content" rows="1" cols="100" maxlength="400"></textarea>
-		 			<input type="submit" value="등록" />
-		 		</form>
-		 	</div>
+		 
 		 	</div>
 		</div>
 		 </c:forEach>
