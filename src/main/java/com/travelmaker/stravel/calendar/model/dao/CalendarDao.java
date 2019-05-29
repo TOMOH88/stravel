@@ -11,6 +11,7 @@ import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
 import com.travelmaker.stravel.reservation.model.vo.Reservation;
 import com.travelmaker.stravel.room.model.vo.Room;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Repository("CalendarDao")
@@ -49,6 +50,11 @@ public class CalendarDao {
 	public ArrayList<OwnerImg> selectOwnerImg(SqlSessionTemplate sqlSession) {
 		List<OwnerImg> list = sqlSession.selectList("mycalendarMapper.selectOwnerImg");
 		return (ArrayList<OwnerImg>)list;
+	}
+
+	public ArrayList<Owner> selectOwner(SqlSessionTemplate sqlSession) {
+		List<Owner> list = sqlSession.selectList("mycalendarMapper.selectOwner");
+		return (ArrayList<Owner>)list;
 	}
 
 }

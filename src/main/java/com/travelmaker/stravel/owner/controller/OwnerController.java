@@ -43,6 +43,15 @@ public class OwnerController {
         System.out.println(paging.getTotal());
         return mv;
 	}
-
-
+	
+	@RequestMapping(value="binsert.do", method=RequestMethod.POST)
+	public String binsertPage(Owner ow) {
+		System.out.println("ow : " + ow);
+		if(os.insertOwner(ow) > 0) {
+			return "home";
+		}else {
+			return "common/error";
+		}
+		
+	}
 }

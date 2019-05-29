@@ -8,6 +8,7 @@ import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
 import com.travelmaker.stravel.reservation.model.vo.Reservation;
 import com.travelmaker.stravel.room.model.vo.Room;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 public interface CalendarService {
@@ -19,4 +20,5 @@ public interface CalendarService {
 	ArrayList<TouristspotVo> selectTour();
 	ArrayList<Owner> searchForm(String owner_address);
 	ArrayList<OwnerImg> selectOwnerImg();
+	ArrayList<Owner> selectOwner();
 }
