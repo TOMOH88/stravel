@@ -9,7 +9,8 @@
     </settings>
 
 	<typeAliases>
-		<!-- 김지훈 -->
+		<!-- 김지훈 -->		
+		<typeAlias type="com.travelmaker.stravel.admin.model.vo.AdminVo" alias="AdminVo" />
 		<typeAlias type="com.travelmaker.stravel.support.model.vo.QnaVo" alias="QnaVo" />
 		<typeAlias type="com.travelmaker.stravel.support.model.vo.NoticeVo" alias="NoticeVo" />
 		<typeAlias type="com.travelmaker.stravel.support.model.vo.FaqCategoryVo" alias="FaqCategoryVo" />
@@ -48,6 +49,7 @@
 	<!-- 주의 : 등록된 매퍼 파일 안의 쿼리문 오류가 있으면 톰캣 실행 안됨. config 파일도 오류로 처리됨. -->
 		<mapper resource="mappers/support-mapper.xml" />
 		<mapper resource="mappers/touristspot-mapper.xml" />
+		<mapper resource="mappers/admin-mapper.xml" />
 		<mapper resource="mappers/myTripBoard-mapper.xml"/>
 		<mapper resource="mappers/restaurant-mapper.xml"/>
 		<mapper resource="mappers/calendar-mapper.xml"/>

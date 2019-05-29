@@ -71,11 +71,18 @@
 	</update>
 	<select id="selectTouristspotList" resultType="TouristspotVo" parameterType="pagingVo">
 		 SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM 
-		 (SELECT * FROM TB_TOURISTSPOT WHERE TOURISTSPOT_DELETESTATUS = 'N' 
+		 (SELECT * FROM TB_TOURISTSPOT 
+		 WHERE TOURISTSPOT_DELETESTATUS = 'N' 
+		 <if test="searchCategory != null and searchCategory !=''">
+		 AND ${searchCategory} like '%'||#{items}||'%'
+		 </if>
 		 ORDER BY TOURISTSPOT_DATE DESC ) P ) WHERE RNUM BETWEEN ${start} AND ${last}
 	</select>
-	<select id="selectTotalPaging" resultType="_int">
+	<select id="selectTotalPaging" resultType="_int" parameterType="pagingVo">
 		SELECT COUNT(1) FROM TB_TOURISTSPOT WHERE TOURISTSPOT_DELETESTATUS = 'N' 
+		<if test="searchCategory != null and searchCategory !=''">
+		${searchCategory} like '%'||#{items}||'%'
+		</if> 
 	</select>
 	<select id="selectTouristspotDetail" parameterType="_int" resultType="TouristspotVo">
 		select * from TB_TOURISTSPOT where TOURISTSPOT_NO = #{touristspot_no}

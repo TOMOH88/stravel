@@ -10,18 +10,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/paging.js"></script>
 </head>
 <style>
-/* div{
-	border:1px solid black;
-}
-  table {
-    border: 1px solid #444444;
-  }
-  th, td {
-    border: 1px solid #444444;
-  }
-   */
-  
-  
   	.landmarkcategory:after {display:block; content:''; clear:both}
 	.landmarkcategory .landmarklist{float:left; width : 180; margin-right : 25px;}	
 	
@@ -30,6 +18,14 @@
 	
 </style>
 <script type="text/javascript">
+$(function() {
+	'<c:if test="${!empty p.searchCategory}">'
+	var category = '${p.searchCategory}';
+	$("#searchCategory").val(category).prop("selected", true);
+	'</c:if>'
+});
+
+
 	function moveWritePage() {
 	location.href="TSWriter.do";	
 	}
@@ -97,9 +93,9 @@
 					            <div class="col-xl-6" style="align:center;">
 					            <select name="searchCategory" id="searchCategory" class="btn btn-primary btn-sm">
 									<option name="searchCategory" id="searchCategory" value="">선택하세요</option>
-									<option name="searchCategory" id="searchCategory" value="notice_writer">아이디</option>
-									<option name="searchCategory" id="searchCategory" value="notice_title">제목</option>
-									<option name="searchCategory" id="searchCategory" value="notice_content">내용</option>
+									<option name="searchCategory" id="searchCategory" value="touristspot_name">제목</option>
+									<option name="searchCategory" id="searchCategory" value="touristspot_content">내용</option>
+									<option name="searchCategory" id="searchCategory" value="touristspot_address">위치</option>
 								</select>
 								
 								<input type="text" name="items" class="btn btn-primary btn-sm" placeholder="Search" value="${p.items }" class="form-control" >

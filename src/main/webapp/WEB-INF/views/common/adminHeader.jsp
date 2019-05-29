@@ -40,13 +40,16 @@
                 </a>
             </div>
             <ul class="nav">
+            	<li class="active">
+            		<a href="adminLogout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	</li>
 				<li class="active">
                     <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>회원관리</p>
                         <ul>
-                        <li><a href="#">-사용자</a></li>
-                    	<li><a href="#">-사업자</a></li>
+                        <li><a href="memberManager.do">-사용자</a></li>
+                    	<li><a href="ownerManager.do">-사업자</a></li>
                     	</ul>
                     </a>
                 </li>
@@ -98,7 +101,7 @@
     </div>
 
     <div class="main-panel">
-        <nav class="navbar navbar-default navbar-fixed">
+    <!--     <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse">
@@ -127,8 +130,9 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> -->
     <!--   Core JS Files   -->
+
     <script src="${pageContext.request.contextPath }/resources/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath }/resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
