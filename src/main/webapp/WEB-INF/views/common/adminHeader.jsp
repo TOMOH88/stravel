@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,10 +40,13 @@
                     STRAVEL
                 </a>
             </div>
+            
             <ul class="nav">
+            <c:if test="${!empty loginAdmin}">
             	<li class="active">
             		<a href="adminLogout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
             	</li>
+            	</c:if>
 				<li class="active">
                     <a href="#">
                         <i class="pe-7s-graph"></i>

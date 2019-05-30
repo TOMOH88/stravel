@@ -153,8 +153,8 @@ public class CompanionController {
 		return "redirect:comp.do";
 	}
 	
-	@RequestMapping(value="compdelete.do", method=RequestMethod.POST)
-	public String deleteCompanion(@RequestParam int companion_no) {
+	@RequestMapping("compdelete.do")
+	public String deleteCompanion(@RequestParam(name="companion_no") int companion_no) {
 		companionService.deleteCompanion(companion_no);
 		return "redirect:comp.do";
 	}
@@ -162,13 +162,13 @@ public class CompanionController {
 	@RequestMapping(value="compreplyupdate.do", method=RequestMethod.POST)
 	public String updateCompanionReply(CompanionReply companionreply) {
 		companionReplyService.updateCompanionReply(companionreply);
-		return "redirect:compdetail.do";
+		return "redirect:compdetail.do?companion_no="+ companionreply.getCompanion_no();
 	}
 	
-	@RequestMapping(value="compreplydelete.do", method=RequestMethod.POST)
-	public String deleteCompanionReply(@RequestParam int companion_reply_no) {
+	@RequestMapping(value="compreplydelete.do", method=RequestMethod.GET)
+	public String deleteCompanionReply(@RequestParam(name="companion_reply_no") int companion_reply_no,@RequestParam(name="companion_no") int companion_no) {
 		companionReplyService.deleteCompanionReply(companion_reply_no);
-		return "redirect:compdetail.do";
+		return "redirect:compdetail.do?companion_no="+ companion_no;
 	}
 	
 	@RequestMapping(value="compreplyinsert.do", method=RequestMethod.POST)

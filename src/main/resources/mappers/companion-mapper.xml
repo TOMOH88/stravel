@@ -35,7 +35,7 @@
 	
 	<select id="selectCompanionReplyList" parameterType="CompanionReply" resultMap="resultCompanionReply" >
 		select * from companion_reply where companion_no = #{companion_no}
-		order by companion_reply_no desc, companion_reply_ref asc, companion_reply_lev asc, companion_reply_seq asc
+		order by companion_reply_no asc, companion_reply_ref asc, companion_reply_lev asc, companion_reply_seq asc
 	</select>
 	
 	<select id="selectCompanionList" parameterType="Companion"
@@ -49,8 +49,6 @@
 								where rnum >= #{offset } and rnum <=
 								#{limit }
 							]]>
-							
-						
 	</select>
 	
 	<select id="selectListCount" resultType="_int">
@@ -65,11 +63,23 @@
 		#{companion_content}, SYSDATE, null, 1)
 	</insert>
 	
+	<update id="updateCompanion" parameterType="CompanionReply">
+		update companion
+		set companion_title = #{companion_title}
+			companion_content = #{companion_content}
+		where companion_no = #{companion_no}
+	</update>
+	
+	<delete id="deleteCompanion" parameterType="int">
+		delete from companion
+		where companion_no = #{companion_no}
+	</delete>
+	
 	<insert id="insertCompanionReply" parameterType="CompanionReply" useGeneratedKeys="true" >
 	
 		insert into companion_reply 
 		values (seq_cpreply_no.nextval, 
-		#{companion_no}, #{companion_reply_ref},  #{companion_reply_lev},
+		#{companion_no}, #{companion_reply_ref}, #{companion_reply_lev},
 		seq_cpreply_seq.nextval, #{user_email}, #{companion_reply_content}, SYSDATE)
 	</insert>
 	
@@ -77,9 +87,21 @@
 	<![CDATA[
 		insert into companion_reply 
 		values (seq_cpreply_no.nextval, 
-		#{companion_no}, #{companion_reply_ref}, (select max(companion_reply_lev) + 1 from companion_reply),
+		#{companion_no}, #{companion_reply_ref}, #{companion_reply_lev},
 		seq_cpreply_seq.nextval,  #{user_email}, #{companion_reply_content}, SYSDATE)
 		]]>
 	</insert>
+	
+	<update id="updateCompanionReply" parameterType="CompanionReply">
+		update companion_reply
+		set companion_reply_content = #{companion_reply_content},
+			companion_no = #{companion_no}
+		where companion_reply_no = #{companion_reply_no}
+	</update>
+	
+	<delete id="deleteCompanionReply" parameterType="_int">
+		delete from companion_reply
+		where companion_reply_no = #{companion_reply_no}
+	</delete>
 
 </mapper>

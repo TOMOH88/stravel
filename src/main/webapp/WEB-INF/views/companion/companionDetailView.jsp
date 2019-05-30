@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -18,7 +18,7 @@
 <h2 align="center">동행 찾기 ${companion.companion_no } 번 글 상세보기</h2>
 <br><br>
 
-<div style="width:1032px;   border:1px solid #bcbcbc;margin:0px auto; padding:50px;"><!-- 전체 -->
+<div style="width:1032px; border:1px solid #bcbcbc;margin:0px auto; padding:50px;"><!-- 전체 -->
 	
 		<div style="width:100%; height:90px; background:yellow;" ><!-- 헤더 -->
 			<div>
@@ -41,7 +41,7 @@
 				<form action="compreplyinsert.do?companion_no=${companion.companion_no }" name="companionReply" method="post">
 				<br><br>
 			<input type="hidden" id="companion_no" name="companion_no" value="${companion.companion_no }"/>
-			<input type="hidden" id="companion_reply_ref" name="companion_reply_ref" value="0">
+			<input type="hidden" id="companion_reply_ref" name="companion_reply_ref" value="<c:out value="${companion.companion_no }"/>">
 			<input type="hidden" id="companion_reply_lev" name="companion_reply_lev" value="0">
 			<input type="text" id="user_email" name="user_email" />
 			<div>
@@ -72,26 +72,23 @@
 		 	<div  style="padding: 5px; width:200px; display:table-cell;">${c.user_email }</div>
 		 	<div  style="padding: 5px; width:100px; display:table-cell;">${c.companion_reply_date }</div>
 		 	<div align="right">
-		 	<div id="re_reply${status.count }" style="display:table-cell; padding: 5px;"><button>댓글</button></div>
-		 	<div style="display:table-cell; padding: 5px;"><button>수정</button></div>
-		 	<div style="display:table-cell; padding: 5px;"><button>삭제</button></div>
-		 	<div id="replyform${status.count }" style="display:none; width:99%;">
-
-		 		<form name="replyform${status.count }" action="compRereplyinsert.do" method="post" >
+		 	
+		 	<div id="update_reply${status.count }" style="display:table-cell; padding: 5px;"><a>수정</a></div>
+		 	<div style="display:table-cell; padding: 5px;"><a href="compreplydelete.do?companion_reply_no=${c.companion_reply_no }&companion_no=${c.companion_no}">삭제</a></div>
+		 	<div id="updateform${status.count }" style="display:none; width:99%;">
+		 		<form name="replyform${status.count }" action="compreplyupdate.do" method="post" >
 		 	<script>
 				$(function(){
-					$('#re_reply${status.count}').on('click', function (event) {
-						$('#replyform${status.count}').css('display', 'block');
+					$('#update_reply${status.count}').on('click', function (event) {
+						$('#updateform${status.count}').css('display', 'block');
 					});
 				});
 
 			</script>
+					<input type="hidden" id="companion_reply_no" name="companion_reply_no" value="${c.companion_reply_no }">
 		 			<input type="hidden" id="companion_no" name="companion_no" value="${c.companion_no }">
-		 			<input type="hidden" id="companion_reply_ref" name="companion_reply_ref" value="${c.companion_reply_ref}">
-		 			<a>${c.companion_reply_ref }</a>
-		 			<input type="text" id="user_email" name="user_email" size="20" maxlength="30"><br>
 		 			<textarea id="companion_reply_content" name="companion_reply_content" rows="1" cols="100" maxlength="400"></textarea>
-		 			<input type="submit" value="등록" />
+		 			<input type="submit" value="수정" />
 		 		</form>
 		 	</div>
 		 	</div>
