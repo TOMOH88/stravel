@@ -39,7 +39,7 @@ public class CompanionDao {
 	}
 	
 	public int updateCompanion(SqlSessionTemplate session, Companion companion) {
-		return session.update("companionMappner.updateCompanion", companion);
+		return session.update("companionMapper.updateCompanion", companion);
 	}
 
 	public int deleteCompanion(SqlSessionTemplate session, int companion_no) {
