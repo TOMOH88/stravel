@@ -7,6 +7,15 @@
 <meta charset="UTF-8">
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/paging.js"></script>
+<script type="text/javascript">
+$(function() {
+	'<c:if test="${!empty p.searchCategory}">'
+	var category = '${p.searchCategory}';
+	$("#searchCategory").val(category).prop("selected", true);
+	'</c:if>'
+});
+
+</script>
 <title>stravel</title>
 </head>
 <body>
@@ -17,7 +26,7 @@
 <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">공지사항</h4>
+                                <h4 class="title">사업자 정보</h4>
                                 <p class="category"></p>
                             </div>
                             <div class="content table-responsive table-full-width">
@@ -28,8 +37,6 @@
 					            <option value='15'>15</option>
 					            <option value='20'>20</option>
 					        </select>
-					       	&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button class="btn btn-primary" onclick="location.href='noticewrite.do'">글등록</button>
                             </div>
                                 <table class="table table-hover table-striped">
                                 
@@ -44,7 +51,7 @@
                                     <tbody>	
                                     	<tr>
                                         	<td>${Owner.owner_no }</td>
-                                        	<td><a href="anoticeDetail.do?notice_no=${Owner.owner_no }">${Owner.owner_companyName }</a></td>
+                                        	<td><a href="aownerDetail.do?ono=${Owner.owner_no }">${Owner.owner_companyName }</a></td>
                                         	<td>${Owner.owner_category }</td>
                                         	<td>${Owner.owner_approve }</td>
                                         </tr>                                   
@@ -81,9 +88,9 @@
 					            <div class="col-xl-6" style="align:center;">
 					            <select name="searchCategory" id="searchCategory" class="btn btn-primary btn-sm">
 									<option name="searchCategory" id="searchCategory" value="">선택하세요</option>
-									<option name="searchCategory" id="searchCategory" value="user_email">아이디</option>
-									<option name="searchCategory" id="searchCategory" value="user_name">이름</option>
-									<option name="searchCategory" id="searchCategory" value="user_phone">전화번호</option>
+									<option name="searchCategory" id="searchCategory" value="owner_license_no">사업자 번호</option>
+									<option name="searchCategory" id="searchCategory" value="owner_name">대표이름</option>
+									<option name="searchCategory" id="searchCategory" value="owner_companyName">업체명</option>
 								</select>
 								
 								<input type="text" name="items" class="btn btn-primary btn-sm" placeholder="Search" value="${p.items }" class="form-control" >

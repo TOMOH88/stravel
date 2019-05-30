@@ -49,9 +49,10 @@ public class MemberServiceImpl implements MemberService{
 		return null;
 	}
 
+
 	@Override
-	public Member selectMember(String useremail) {		
-		return memberDao.selectMember(mybatisSession, useremail);
+	public Member selectMember(int uno) {
+		return memberDao.selectMember(mybatisSession,uno);
 	}
 	
 	

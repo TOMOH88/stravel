@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -69,6 +70,26 @@ public class adminController {
 		mv.addObject("Owner", list);
 		mv.addObject("p", paging);
 		mv.setViewName("admin/adminOwnerManager");
+		return mv;
+	}
+	@RequestMapping("userDetail.do")
+	public ModelAndView selectUserDetail(ModelAndView mv,@RequestParam(name="uno", required=false) int uno) {
+		Member member = adminService.selectUserDetail(uno);
+		mv.addObject("member", member);
+		mv.setViewName("admin/adminMemberDetailView");
+		return mv;
+	}	
+	@RequestMapping("aownerDetail.do")
+	public ModelAndView selectOwnerDetail(ModelAndView mv,@RequestParam(name="ono", required=false) int ono) {
+		Owner owner = adminService.selectOwnerDetail(ono);
+		mv.addObject("owner", owner);
+		mv.setViewName("admin/adminOwnerDetailView");
+		return mv;
+	}
+	@RequestMapping(value="ownerApprove.do",method=RequestMethod.POST)
+	public ModelAndView updateOwnerApprove(ModelAndView mv,Owner owner) {
+		int result = adminService.updateOwnerApprove(owner);
+		mv.setViewName("redirect:aownerDetail.do?ono="+owner.getOwner_no());
 		return mv;
 	}
 }

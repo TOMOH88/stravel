@@ -42,5 +42,17 @@ public class AdminServiceImpl implements AdminService{
 	public int selectTotalOwnerPaging(PagingVo paging) {
 		return adminDao.selectTotalOwnerPaging(mybatisSession,paging);
 	}
+	@Override
+	public Member selectUserDetail(int uno) {
+		return adminDao.selectUserDetail(mybatisSession,uno);
+	}
+	@Override
+	public Owner selectOwnerDetail(int ono) {
+		return adminDao.selectOwnerDetail(mybatisSession,ono);
+	}
+	@Override
+	public int updateOwnerApprove(Owner owner) {
+		return adminDao.updateOwnerApprove(mybatisSession,owner);
+	}
 
 }

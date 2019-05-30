@@ -17,7 +17,7 @@
 <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">공지사항</h4>
+                                <h4 class="title">사용자 정보</h4>
                                 <p class="category"></p>
                             </div>
                             <div class="content table-responsive table-full-width">
@@ -28,8 +28,6 @@
 					            <option value='15'>15</option>
 					            <option value='20'>20</option>
 					        </select>
-					       	&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button class="btn btn-primary" onclick="location.href='noticewrite.do'">글등록</button>
                             </div>
                                 <table class="table table-hover table-striped">
                                 
@@ -44,7 +42,7 @@
                                     <tbody>	
                                     	<tr>
                                         	<td>${member.user_no }</td>
-                                        	<td><a href="anoticeDetail.do?notice_no=${member.user_no }">${member.user_email }</a></td>
+                                        	<td><a href="userDetail.do?uno=${member.user_no }">${member.user_email }</a></td>
                                         	<td>${member.user_name }</td>
                                         	<td>${member.user_phone }</td>
                                         	<td>${member.gender }</td>

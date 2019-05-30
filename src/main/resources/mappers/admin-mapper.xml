@@ -45,4 +45,13 @@
 		WHERE ${searchCategory} like '%'||#{items}||'%'
 		</if> 
 	</select>
+	<select id="selectUserDetail" parameterType="_int" resultType="Member">
+		select * from STRAVEL_USER where user_no = #{user_no}
+	</select>
+	<select id="selectOwnerDetail" parameterType="_int" resultType="ownerVo">
+		select * from owner where owner_no = #{owner_no}
+	</select>
+	<update id="updateOwnerApprove" parameterType="ownerVo">
+	 	update owner set owner_approve = #{owner_approve} where owner_no = #{owner_no}
+	</update>
 </mapper>

@@ -46,19 +46,20 @@ $(function(){
 </head>
 <body>
 <c:import url="../../common/header.jsp"/>
+<section class="section-margin">
 <div class="content">
-<div class="container-fluid">
+<div class="container">
 <div class="row">
-<div class="card">
+<div class="col-md-12">
                             <div class="header">
                                 <h4 class="title">공지사항</h4>
-                                <p class="category">글쓰기</p>
+                                <p class="category"></p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <tr>
-                                    <th class="success">TITLE</th>
-                                     <td>
+                                    <th class="success" width="10%">TITLE</th>
+                                     <td >
                                     ${notice.notice_title }
                                     <input type="hidden" name="notice_writer" value="amdin01"/> 
                                     </td>
@@ -87,6 +88,7 @@ $(function(){
                     </div>
 </div>
 </div>
+</section>
 <c:import url="../../common/footer.jsp"/>
 </body>
 </html>

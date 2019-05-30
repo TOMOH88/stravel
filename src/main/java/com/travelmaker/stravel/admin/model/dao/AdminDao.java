@@ -49,4 +49,16 @@ public class AdminDao{
 		return mybatisSession.selectOne("adminMapper.selectTotalOwnerPaging", paging);
 	}
 
+	public Member selectUserDetail(SqlSessionTemplate mybatisSession, int uno) {
+		return mybatisSession.selectOne("adminMapper.selectUserDetail", uno);
+	}
+
+	public Owner selectOwnerDetail(SqlSessionTemplate mybatisSession, int ono) {
+		return mybatisSession.selectOne("adminMapper.selectOwnerDetail", ono);
+	}
+
+	public int updateOwnerApprove(SqlSessionTemplate mybatisSession, Owner owner) {
+		return mybatisSession.update("adminMapper.updateOwnerApprove", owner);
+	}
+
 }
