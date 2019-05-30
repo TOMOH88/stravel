@@ -29,6 +29,14 @@
 	href="${pageContext.request.contextPath }/resources/css/jquery-ui.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/swiper.min.css">
+<link href="${pageContext.request.contextPath }/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Animation library for notifications   -->
+<link href="${pageContext.request.contextPath }/resources/assets/css/animate.min.css" rel="stylesheet"/>
+<!--  Light Bootstrap Table core CSS    -->
+<link href="${pageContext.request.contextPath }/resources/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+<!--     Fonts and icons     -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+<link href="${pageContext.request.contextPath }/resources/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
 <style type="text/css">
 @media ( max-width :1405px) {
@@ -68,7 +76,8 @@
 
 table tr td {
 	border-bottom: 1px solid rgba(67, 67, 67, 0.8);
-	"
+	padding:auto;
+	height:33px;
 }
 
 table tr:nth-child(2n) {
@@ -83,7 +92,7 @@ table tr:nth-child(1) {
 	background-color: rgba(67, 67, 67);
 }
 
-ul li {
+/* ul li {
 	font-size: 1.5em;
 	font-weight: bold;
 	margin-bottom: 5px;
@@ -95,7 +104,7 @@ ul li a:link, ul li a:visited {
 
 ul li a:hover {
 	font-size: 1.1em;
-}
+} */
 
 #titlediv {
 	font-size: 1.5em;
@@ -135,21 +144,39 @@ ul li a:hover {
 	<c:import url="../common/header.jsp" />
     </section> --%>
 <div style="width:100%; display:inline-block;">
-	<div class="ownerside" style=" width:20%; height:100%;  position: sticky; top: 150px;"><!-- ownerside -->
-		<div style="float: left; border: 1px solid #cfcfcf; width: 260px; bottom: 150; margin: 20px;">
-			<div style="margin: 30px;">
-				<ul>
-					<li><a href="ownerMain.do">마이페이지</a></li>
-					<li><a href="orderList.do">예약현황</a></li>
-					<li><a href="insertRoom.do">상품등록</a></li>
-					<li><a href="updateRoom.do">상품수정</a></li>
-					<li><a href="updateOwner.do">정보수정</a></li>
-				</ul>
-			</div>
-		</div>
-	</div><!-- ownerside -->
+	<div class="ownerbody"  style="width:69%; height:700px; display:table-cell;"><!-- ownerbody -->
+		<bR><BR><BR>
+		<c:forEach items="${roomList }" var="roomList">
+				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
+					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+								<c:forEach items="${roomImgList }" var="roomImgList">
+									<c:if test="${roomList.room_no eq roomImgList.room_no }"> 
+									<div class="swiper-slide"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/roomImg/${roomImgList.room_img}"></div>
+									</c:if>
+								</c:forEach> 
+									
+								</div>
+								<!-- Add Pagination -->
+								<div class="swiper-pagination"></div>
+								<!-- Add Arrows -->
+								<div class="swiper-button-next roomnext"></div>
+								<div class="swiper-button-prev roomprev"></div>
+							</div>
+						</div>
+					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">${roomList.room_content }<br>최소인원 : ${roomList.min_no }<br>최대인원 : ${roomList.max_no }
+					<div><a class="rsvck" href="updateRoomDetail.do?room_no=${roomList.room_no }">수정하기</a></div>	
+					</div><!-- 각객실당정보 -->
+					
+				</div>
+				
+			</c:forEach> 
+	</div><!-- ownerbody -->
+	
+    
 		
-	<div class="ownerbody"  style="width:69%; display:table-cell;"><!-- ownerbody -->
+	<div class="ownerbody"  style="width:1100px; margin:0px auto"><!-- ownerbody -->
 	<br><br><br>
 		<div style="margin: 0 auto; width:900px;">
 				<div id="titlediv">예약 현황</div>
@@ -169,6 +196,7 @@ ul li a:hover {
 								<td style="width: 110px;">예약현황</td>
 								<td style="width: 100px;">입실여부</td>
 							</tr>
+						<c:if test="${!empty orderList && empty passOrderList}">
 						<c:forEach items="${orderList }" var="orderList">
 							<tr>
 								<td>${orderList.room_name }</td>
@@ -180,11 +208,28 @@ ul li a:hover {
 								<td>${orderList.rsv_status }</td>
 								<td>
 								<c:if test="${orderList.rsv_status eq '결제완료' && orderList.enter_room eq '입실대기' }">
-								<a class="rsvck" onclick="updateStatus.do?rsv_no=${orderList.rsv_no }, owner_no=${orderList.owner_no}">입실확인</a>
+								<a href="updateStatus.do?rsv_no=${orderList.rsv_no }&owner_no=${orderList.owner_no}" class="rsvck">입실확인</a>
 								</c:if>
 								</td>
 							</tr>
 							</c:forEach>
+							</c:if>
+							<c:if test="${empty orderList && !empty passOrderList}">
+						<c:forEach items="${passOrderList }" var="orderList">
+							<tr>
+								<td>${orderList.room_name }</td>
+								<td>${orderList.user_name }</td>
+								<td>${orderList.member }</td>
+								<td>${orderList.rsv_date }</td>
+								<td>${orderList.check_in }</td>
+								<td>${orderList.check_out }</td>
+								<td>${orderList.rsv_status }</td>
+								<td>
+								입실완료
+								</td>
+							</tr>
+							</c:forEach>
+							</c:if>
 						</table>
 					</div>
 				</div>
@@ -213,8 +258,8 @@ ul li a:hover {
 	<script
 		src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
 	<!-- 달력 -->
-	<script
-		src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.js"></script>
+	<%-- <script
+		src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.js"></script> --%>
 	<script
 		src="${pageContext.request.contextPath }/resources/js/jquery-ui.js"></script>
 	<script
@@ -222,7 +267,16 @@ ul li a:hover {
 		
 		
 	<script type="text/javascript">
-	
+	 	/* $(".rsvck").click(function(){
+			var el = $(".rsvck").val();
+			 /* location.href="updateStatus.do?rsv_no=" + el;  
+			 alert($(".rsvck").val());
+		
+		})  */
+		
+		/* function moveUpdate(el){
+	 		location.href = "updateStatus.do?rsv_no=" + el;
+	 	} */
 	</script>
 
 </body>

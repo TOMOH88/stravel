@@ -74,6 +74,11 @@ public class RoomDao {
 		return (ArrayList<RoomImg>)list;
 	}
 
+	public ArrayList<Reservation> selectPassOrderList(SqlSessionTemplate Session, int owner_no) {
+		List<Reservation> list = Session.selectList("roomMapper.selectPassOrderList",owner_no);
+		return (ArrayList<Reservation>)list;
+	}
+
 	
 
 

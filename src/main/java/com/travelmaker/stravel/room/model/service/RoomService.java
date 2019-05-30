@@ -55,6 +55,10 @@ public interface RoomService {
 
 
 
+	ArrayList<Reservation> selectPassOrderList(int owner_no);
+
+
+
 
 	
 }

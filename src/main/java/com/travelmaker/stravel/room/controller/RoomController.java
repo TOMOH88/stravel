@@ -87,9 +87,17 @@ public class RoomController {
 		mv.setViewName("room/roomOrderList");
 		return mv;
 	}
+	@RequestMapping("passOrderList.do")
+	public ModelAndView passOrderList(ModelAndView mv, @RequestParam(name="owner_no")int owner_no ) {
+		ArrayList<Reservation> list= rs.selectPassOrderList(owner_no);
+		System.out.println(list);
+		mv.addObject("passOrderList",list);
+		mv.setViewName("room/roomOrderList");
+		return mv;
+	}
 	
 	@RequestMapping("insertRoom.do")
-	public String inserRoom() {
+	public String inserRoom () {
 		return "room/insertRoom";
 	}
 	@RequestMapping(value="insertRoomSub.do",method=RequestMethod.POST)

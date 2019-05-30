@@ -166,19 +166,35 @@ ul li a:hover {
 	<c:import url="../common/header.jsp" />
     </section>
 <div style="width:100%; display:inline-block;">
-	<div class="ownerside" style=" width:20%; height:100%;  position: sticky; top: 150px;"><!-- ownerside -->
-		<div style="float: left; border: 1px solid #cfcfcf; width: 260px; bottom: 150; margin: 20px;">
-			<div style="margin: 30px;">
-				<ul>
-					<li><a href="ownerMain.do">마이페이지</a></li>
-					<li><a href="orderList.do">예약현황</a></li>
-					<li><a href="insertRoom.do">상품등록</a></li>
-					<li><a href="updateRoom.do">상품수정</a></li>
-					<li><a href="updateOwner.do">정보수정</a></li>
-				</ul>
-			</div>
-		</div>
-	</div><!-- ownerside -->
+		<div class="ownerbody"  style="width:69%; height:700px; display:table-cell;"><!-- ownerbody -->
+		<bR><BR><BR>
+		<c:forEach items="${roomList }" var="roomList">
+				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
+					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+								<c:forEach items="${roomImgList }" var="roomImgList">
+									<c:if test="${roomList.room_no eq roomImgList.room_no }"> 
+									<div class="swiper-slide"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/roomImg/${roomImgList.room_img}"></div>
+									</c:if>
+								</c:forEach> 
+									
+								</div>
+								<!-- Add Pagination -->
+								<div class="swiper-pagination"></div>
+								<!-- Add Arrows -->
+								<div class="swiper-button-next roomnext"></div>
+								<div class="swiper-button-prev roomprev"></div>
+							</div>
+						</div>
+					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">${roomList.room_content }<br>최소인원 : ${roomList.min_no }<br>최대인원 : ${roomList.max_no }
+					<div><a class="rsvck" href="updateRoomDetail.do?room_no=${roomList.room_no }">수정하기</a></div>	
+					</div><!-- 각객실당정보 -->
+					
+				</div>
+				
+			</c:forEach> 
+	</div><!-- ownerbody -->
 		
 		<div class="ownerbody"  style="width:69%; display:table-cell;"><!-- ownerbody -->
 		<bR><BR><BR>
@@ -186,7 +202,7 @@ ul li a:hover {
 			<div style="text-align:center; font-size:2em; margin-bottom:20px; color:black; font-weight:bold; ">객실등록</div>
 			<div id="isroom" style="margin:20px; border:1px solid #cfcfcf; background:white;padding:30px;">
 			<form action="insertRoomSub.do" method="post" enctype="multipart/form-data" >
-				
+				<input type="hidden" value="${loginMember.owner_no }" name="owner_no">
 				<div>객실정보</div>
 				<hr>
 				<div>객실명 : <input type="text" name="room_name" required></div>

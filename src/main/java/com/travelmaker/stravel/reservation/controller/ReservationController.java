@@ -51,6 +51,13 @@ public class ReservationController {
 	public String updateStatus(@RequestParam(name="rsv_no")int rsv_no,
 										  @RequestParam(name="owner_no")int owner_no) {
 		int result = rsvservice.updateStatus(rsv_no);
-		return "orderList.do?owner_no="+owner_no;
+		System.out.println(rsv_no + ", " + owner_no);
+		String move ;
+		if(result > 0 ) {
+			move = "redirect:orderList.do?owner_no=" + owner_no ;
+		}else {
+			move = "redirect:orderList.do?owner_no=" + owner_no ;
+		}
+		return move;
 	}
 }

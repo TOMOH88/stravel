@@ -157,19 +157,62 @@ ul li a:hover {
 	<c:import url="../common/header.jsp" />
     </section>
 <div style="width:100%; display:inline-block;">
-	<div class="ownerside" style=" width:20%; height:100%;  position: sticky; top: 150px;"><!-- ownerside -->
-		<div style="float: left; border: 1px solid #cfcfcf; width: 260px; bottom: 150; margin: 20px;">
-			<div style="margin: 30px;">
-				<ul>
-					<li><a href="ownerMain.do">마이페이지</a></li>
-					<li><a href="orderList.do">예약현황</a></li>
-					<li><a href="insertRoom.do">상품등록</a></li>
-					<li><a href="updateRoomList.do?owner_no=6">상품수정</a></li>
-					<li><a href="updateOwner.do">정보수정</a></li>
-				</ul>
-			</div>
-		</div>
-	</div><!-- ownerside -->
+	<div class="ownerside" style=" width:20%; /* height:100%;  position: sticky; top: 150px; */"><!-- ownerside -->
+		<div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath }/resources/assets/img/sidebar-5.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="main.do" class="simple-text">
+                    STRAVEL
+                </a>
+            </div>
+            <ul class="nav">
+            	<li class="active">
+            		<a href="ownerLogout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	</li>
+				<li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>예약관리</p>
+                        <ul>
+                        <li><a href="orderList.do?${loginOwner.owner_no }">오늘 예약건</a></li>
+                    	<li><a href="passOrderList.do?${loginOwner.owner_no }">지난 예약건</a></li>
+                    	</ul>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>마이페이지</p>
+                        <ul>
+                        <li><a href="#">개인정보수정</a></li>
+                        <li><a href="sampStar.do">매출관리</a></li>
+                    	<li><a href="#">후기관리</a></li>
+                        </ul>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>객실관리</p>
+                        <ul>
+                        <li><a href="adminfaq.do">객실리스트</a></li>
+                        <li><a href="insertRoom.do">객실등록</a></li>
+                    	<li><a href="updateRoomList.do?${loginOwner.owner_no }">객실수정</a></li>
+                        </ul>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+	</div><!-- ownerside  -->
 		
 	<div class="ownerbody"  style="width:69%; height:700px; display:table-cell;"><!-- ownerbody -->
 		<bR><BR><BR>

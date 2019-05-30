@@ -52,7 +52,7 @@
 	INSERT INTO STRAVEl.ROOM
  (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE,
   ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
- VALUES (#{room_no}, #{room_name}, #{room_option}, #{room_content}, #{min_no}, #{max_no}, #{off_season_price}, #{on_season_price}, #{week_extra_price}, #{add_person_price}, #{discountrate}, 1)
+ VALUES (#{room_no}, #{room_name}, #{room_option}, #{room_content}, #{min_no}, #{max_no}, #{off_season_price}, #{on_season_price}, #{week_extra_price}, #{add_person_price}, #{discountrate}, #{owner_no})
 </insert>  
 
 <!-- 객실이미지 -->
@@ -101,10 +101,25 @@ where room_no in (
     select room_no
     from room
     where owner_no = #{owner_no})
-    order by check_in
+     and check_in = to_char(sysdate,'yy/MM/dd')
+    order by room_no
 
 </select>
-
+<select id="selectPassOrderList" resultMap="resultReservation">
+<![CDATA[
+	select * 
+from reservation
+join room using(room_no)
+join stravel_user using (user_no)
+where room_no in (
+    select room_no
+    from room
+    where owner_no = #{owner_no})
+    and check_in < to_char(sysdate,'yy/MM/dd')
+    and rsv_status = '결제완료'
+    and enter_room = '입실완료'
+    order by room_no ]]>
+</select>
 <select id="selectUpRoom" resultMap="resultRoom">
 	select * from room where room_no = #{room_no}
 </select>
@@ -114,6 +129,6 @@ where room_no in (
 </select>
 
 <update id="updateStatus" parameterType="rsvVo">
-	update reservation set rsv_status = '입실완료' 
+	update reservation set enter_room = '입실완료' where rsv_no = #{rsv_no} 
 </update>
 </mapper>

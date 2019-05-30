@@ -95,5 +95,11 @@ public  class RoomServiceImpl implements RoomService {
 		return rd.selectUpRoomImg(mybatisSession,room_no);
 	}
 
+	@Override
+	public ArrayList<Reservation> selectPassOrderList(int owner_no) {
+		// TODO Auto-generated method stub
+		return rd.selectPassOrderList(mybatisSession,owner_no);
+	}
+
 
 }
