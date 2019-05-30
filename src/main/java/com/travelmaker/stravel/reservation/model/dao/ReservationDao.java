@@ -29,4 +29,9 @@ public class ReservationDao {
 		return Session.insert("roomMapper.insertRsv",rs);
 	}
 
+	public int updateStatus(SqlSessionTemplate Session, int rsv_no) {
+		// TODO Auto-generated method stub
+		return Session.update("roomMapper.updateStatus",rsv_no);
+	}
+
 }

@@ -39,7 +39,7 @@ public interface RoomService {
 
 
 
-	Room selectRsvInfo(Room room);
+	Room selectRsvInfo(int room_no);
 
 
 

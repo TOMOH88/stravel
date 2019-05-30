@@ -131,9 +131,9 @@ ul li a:hover {
 </style>
 </head>
 <body>
-<section class="section-margin">
+<%-- <section class="section-margin">
 	<c:import url="../common/header.jsp" />
-    </section>
+    </section> --%>
 <div style="width:100%; display:inline-block;">
 	<div class="ownerside" style=" width:20%; height:100%;  position: sticky; top: 150px;"><!-- ownerside -->
 		<div style="float: left; border: 1px solid #cfcfcf; width: 260px; bottom: 150; margin: 20px;">
@@ -178,20 +178,13 @@ ul li a:hover {
 								<td>${orderList.check_in }</td>
 								<td>${orderList.check_out }</td>
 								<td>${orderList.rsv_status }</td>
-								<td><a class="rsvck" value="${orderList.rsv_no }">입실확인</a></td>
+								<td>
+								<c:if test="${orderList.rsv_status eq '결제완료' && orderList.enter_room eq '입실대기' }">
+								<a class="rsvck" onclick="updateStatus.do?rsv_no=${orderList.rsv_no }, owner_no=${orderList.owner_no}">입실확인</a>
+								</c:if>
+								</td>
 							</tr>
 							</c:forEach>
-							
-							<!-- <tr>
-								<td>201호</td>
-								<td>오청</td>
-								<td>2명</td>
-								<td>2019-04-22</td>
-								<td>2019-05-05</td>
-								<td>2019-05-06</td>
-								<td>결제완료</td>
-								<td><a class="rsvck" value="1">입실확인</a></td>
-							</tr> -->
 						</table>
 					</div>
 				</div>
@@ -229,7 +222,7 @@ ul li a:hover {
 		
 		
 	<script type="text/javascript">
-
+	
 	</script>
 
 </body>

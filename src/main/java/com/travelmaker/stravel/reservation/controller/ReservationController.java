@@ -1,5 +1,6 @@
 package com.travelmaker.stravel.reservation.controller;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,11 +32,25 @@ public class ReservationController {
 		return DateArr; 
 	}
 	
-	@RequestMapping(value="meveReservation.do", method=RequestMethod.POST)
-	public ModelAndView insertRsv(ModelAndView mv, Reservation rs) {
+	@RequestMapping(value="moveReservation.do", method=RequestMethod.POST)
+	public ModelAndView insertRsv(ModelAndView mv, Reservation rs,
+			@RequestParam(name="owner_no") int owner_no) {
+		System.out.println("reservation" + rs);
 		int result = rsvservice.insertRsv(rs);
 		mv.addObject("rsvInfo",rs);
-		mv.setViewName("payment/paymentView1");
+		if(result > 0) {
+		/*mv.setViewName("payment/paymentView1");*/
+		mv.setViewName("pay1.do");
+		}else {
+		mv.setViewName("room/roomDetail?owner_no="+owner_no);	
+		}
 		return mv;
+	}
+	
+	@RequestMapping("updateStatus.do")
+	public String updateStatus(@RequestParam(name="rsv_no")int rsv_no,
+										  @RequestParam(name="owner_no")int owner_no) {
+		int result = rsvservice.updateStatus(rsv_no);
+		return "orderList.do?owner_no="+owner_no;
 	}
 }

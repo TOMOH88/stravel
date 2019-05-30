@@ -189,7 +189,7 @@
 }
 
 
-.selectroom, .selectcount {
+.selectroom, .selectCount {
 	width: 230px;
 	height: 40px;
 	margin: 5px;
@@ -221,9 +221,9 @@
 </style>
 </head>
 <body class="roomBody">
-<section class="section-margin">
+<%-- <section class="section-margin">
 	<c:import url="../common/header.jsp" />
-    </section>
+    </section> --%>
 
 <div onclick="mainmodal()" style="width:100%;height:592px;" class="timgdiv" ><!-- 나중에 클릭시 모달창 함수 실행시킬 div 영역 -->
 	<div class="timgdiv1" style="height:592px; float:left; ">
@@ -339,41 +339,47 @@
 				<div><span  id="sideprice" style="color:black;font-weight:bold;"></span>
 				</div>
 				<div style="font-size:x-small;color:black;font-weight:bold;">별점</div>
+				<div class="priceDiv"></div>
+				
+				
 			</div>
 			<div style="margin-left:10px;margin-right:10px;"><hr></div>
 				<div ><!-- 사이드바 바디 -->
-					<form action="" method="post">
+					<form action="moveReservation.do" method="post">
+					<div class="hiddenPrice"></div>
+					<input type="hidden" value="1" name="user_no">
 						<div><!-- 객실선택드롭다운 -->
 						<div style="font-size:xx-small;color:black;font-weight:bold;">옵션</div>
 							<div style="height:60px;">
-								<select class="selectroom" name="roomno" required>
+								<select class="selectroom" name="room_no" required>
 									<option>필수선택</option>
 									<c:forEach items="${roomList}" var="roomList">
-									<option value="${roomList.room_name }">${roomList.room_name }</option>
+									<option value="${roomList.room_no }">${roomList.room_name }</option>
 									</c:forEach>
-								</select>
-							</div>
-						</div>
-						<div><!-- 인원선택 ajax -->		
-						<div style="font-size:xx-small;color:black; font-weight:bold;">인원</div>
-							<div style="height:60px;">
-								<select class="selectcount" name="personconut" required>
-									
 								</select>
 							</div>
 						</div>
 						<div style="font-size:xx-small;color:black;font-weight:bold;">날짜</div>
 						<div>
 							<div>
-								<input type="text" name="checkin"id="start" class="datepicker" placeholder="CHECK IN" autocomplete="off">
+								<input type="text" name="check_in"id="start" class="datepicker" placeholder="CHECK IN" autocomplete="off">
 								<span>&nbsp;→&nbsp;</span>
-								<input type="text"name="checkout" id="end" class="datepicker"  placeholder="CHECK OUT" autocomplete="off">
+								<input type="text"name="check_out" id="end" class="datepicker"  placeholder="CHECK OUT" autocomplete="off">
 							</div>
 						</div>
+						<div><!-- 인원선택 ajax -->		
+						<div style="font-size:xx-small;color:black; font-weight:bold;">인원</div>
+							<div style="height:60px;">
+								<select class="selectCount" name="member" required >
+									
+								</select>
+							</div>
+						</div>
+						
 						<Br>
 						<hr>
 						<div style="padding:8px;"><!-- 예약하기 버튼 -->
-							<input type="submit" value="예약하기" name="reservation" class="rsvbt">
+							<input type="submit" value="예약하기" class="rsvbt">
 						</div>
 					</form>
 				</div>
@@ -448,14 +454,6 @@
 								</select>
 							</div>
 						</div>
-						<div><!-- 인원선택 ajax -->		
-						<div style="font-size:xx-small;color:black; font-weight:bold;">옵션</div>
-							<div style="height:60px;">
-								<select class="selectcount" name="member" required>
-									
-								</select>
-							</div>
-						</div>
 						<div style="font-size:xx-small;color:black;font-weight:bold;">날짜</div>
 						<div>
 							<div>
@@ -464,9 +462,19 @@
 								<input type="text"name="check_out" id="end"  placeholder="CHECK OUT" autocomplete="off">
 							</div>
 						</div>
+						<div><!-- 인원선택 ajax -->		
+						<div style="font-size:xx-small;color:black; font-weight:bold;">옵션</div>
+							<div style="height:60px;">
+								<select class="selectCount" name="member" onchange="javascript:viewPrice(this);">
+									
+								</select> 
+							</div>
+						</div>
+						
 						<Br>
 						<hr>
 						<div style="padding:8px;"><!-- 예약하기 버튼 -->
+							
 							<input type="submit" value="예약하기" name="reservation" class="rsvbt">
 						</div>
 					</form>
@@ -644,18 +652,18 @@
 	
 		 
 	});  */
- 	$(function(){
- 		
- 		
+	var roomno ;
+	var price ;
+	var addPrice;
+
 		$(".selectroom").change(function(){
-			var roomname = this.value;
-			var ownerno = ${owner.owner_no};
-			var roomno ;
+			roomno = this.value;
+			
+			
 			var disableDays=[];
 			$.ajax({
 				url:"selectRsvInfo.do",
-				data: {room_name: roomname,
-						owner_no: ownerno},
+				data: {room_no: roomno},
 				type:"post",
 				dataType:"json",
 				cache:false,
@@ -663,15 +671,16 @@
 					
 					var jsonStr = JSON.stringify(data);
 					var json = JSON.parse(jsonStr);
-					roomno = json.room_no;
-
+					var weekPrice = json.on_season_price;
+					var nomalPrice = json.off_season_price;
+					addPrice = json.add_person_price;
 					var option = "<option selected disabled hidden>필수선택</option>";
-					var price
+					
 					for(var i = 2; i < json.max_no+1;i++){
 						option += "<option value="+i+">"+i +"</option>";
 					}
 					
-					$(".selectcount").html($(".selectcount").text() + option);
+					$(".selectCount").html($(".selectCount").text() + option );
 					
 					$.ajax({
 						url: "selectRsvDate.do",
@@ -705,7 +714,7 @@
 										}
 										,onSelect: function(dateText, inst){
 											$("#end").datepicker({
-												 dateFormat: 'yy-mm-dd' //Input Display Format 변경
+											 dateFormat: 'yy-mm-dd' //Input Display Format 변경
 							           	     ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
 							          	     ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
 							           	     ,buttonImage: "/application/db/jquery/images/calendar.gif"
@@ -719,10 +728,19 @@
 												var str = jQuery.datepicker.formatDate('yy-mm-dd',date);
 												return [dateText.indexOf(str)==-1]
 											}
-											})
-											
-											
-											
+										})
+										var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일');
+										var isWeek = new Date(dateText).getDay();
+										
+										if(isWeek == 5 || isWeek == 6){
+											price = weekPrice;
+										}else{
+											price = nomalPrice;
+										}
+										
+										console.log(isWeek);
+										console.log(price);
+			
 							}
 							});
 					
@@ -738,15 +756,20 @@
 			})
 			
 			
-		})
+		});
 
 	
 	
 		
-	});
-
+$(".selectCount").change(function(){
+	var el = $(this).val();
+	var totalPrice = price + (addPrice * (el-2));
+	console.log(totalPrice);
+	$(".priceDiv").html(totalPrice);
+	$(".hiddenPrice").html("<input type='hidden' name='total_price' value='" + totalPrice +"' >");
+})
+ 
 	
-		
 	
 
   

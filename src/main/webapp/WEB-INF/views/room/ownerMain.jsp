@@ -165,8 +165,8 @@ ul li a:hover {
 							<img src="${pageContext.request.contextPath }/resources/files/ompimg/ownerrsv.png">
 						</div>
 						<div class="ompmtext">
-							<div>오늘 예약건 </div>
-							<div>22개</div>
+							<div> 예약건 </div>
+							<div>${fn:length(orderList) } 개</div>
 						</div>
 					</div>
 					<div class="ompm">
