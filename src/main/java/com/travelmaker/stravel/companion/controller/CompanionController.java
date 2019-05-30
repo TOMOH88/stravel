@@ -95,50 +95,10 @@ public class CompanionController {
 		return mv;
 	}
 	
-	  @RequestMapping(value="companionReplyList.do", method=RequestMethod.POST)
-	  public void companionReplyList(HttpServletResponse response, @RequestParam(name="companion_no", required=false) int companion_no) throws IOException {
-		  
-		  response.setContentType("text/html; charset=utf-8");
-		  List<CompanionReply> list = companionReplyService.selectCompanionReplyList(companion_no);
-		  
-		  JSONObject sendObj = new JSONObject();
-		  JSONArray jarr = new JSONArray();
-		  
-		  for(CompanionReply companionreply : list) {
-			  JSONObject jcomp = new JSONObject();
-			  
-			  jcomp.put("companion_reply_no", companionreply.getCompanion_reply_no());
-			  jcomp.put("companion_no", companionreply.getCompanion_no());
-			  jcomp.put("companion_reply_ref", companionreply.getCompanion_reply_ref());
-			  jcomp.put("companion_reply_lev", companionreply.getCompanion_reply_lev());
-			  jcomp.put("companion_reply_seq", companionreply.getCompanion_reply_seq());
-			  jcomp.put("user_email", companionreply.getUser_email());
-			  jcomp.put("companion_reply_content", companionreply.getCompanion_reply_content());
-			  jcomp.put("companion_reply_date", companionreply.getCompanion_reply_date());
-		  
-			 jarr.add(jcomp);
-		  
-		  }
-		  sendObj.put("list", jarr);
-		  
-		  response.setContentType("application/json; charset=utf-8");
-		  PrintWriter out = response.getWriter();
-		  out.println(sendObj.toJSONString());
-		  out.flush();
-		  out.close();
-	  }
-	
-	
-	
-	
-	
 	@RequestMapping("compwrite.do")
 	public String writeCompanion() {
-
 		logger.info("동행찾기 글쓰기");
-		
 		return "companion/companionWriteForm";
-		
 	}
 	
 	@RequestMapping(value="compinsert.do", method=RequestMethod.POST)
@@ -170,5 +130,29 @@ public class CompanionController {
 	public String deleteCompanion(@RequestParam(name="companion_no") int companion_no) {
 		companionService.deleteCompanion(companion_no);
 		return "redirect:comp.do";
+	}
+	
+	@RequestMapping("upprogress.do")
+	public String updateProgress(Companion companion) {
+		companionService.updateProgress(companion);
+		return "redirect:comp.do";
+	}
+	
+	@RequestMapping(value="compreplyupdate.do", method=RequestMethod.POST)
+	public String updateCompanionReply(CompanionReply companionreply) {
+		companionReplyService.updateCompanionReply(companionreply);
+		return "redirect:compdetail.do?companion_no="+ companionreply.getCompanion_no();
+	}
+	
+	@RequestMapping(value="compreplydelete.do", method=RequestMethod.GET)
+	public String deleteCompanionReply(@RequestParam(name="companion_reply_no") int companion_reply_no,@RequestParam(name="companion_no") int companion_no) {
+		companionReplyService.deleteCompanionReply(companion_reply_no);
+		return "redirect:compdetail.do?companion_no="+ companion_no;
+	}
+	
+	@RequestMapping(value="compreplyinsert.do", method=RequestMethod.POST)
+	public String insertCompanionReply(CompanionReply companionreply) {
+		companionReplyService.insertCompanionReply(companionreply);
+		return "redirect:compdetail.do?companion_no=" + companionreply.getCompanion_no();
 	}
 }

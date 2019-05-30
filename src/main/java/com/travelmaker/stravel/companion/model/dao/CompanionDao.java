@@ -46,6 +46,11 @@ public class CompanionDao {
 		return session.delete("companionMapper.deleteCompanion", companion_no);
 	}
 
+	public int updateProgress(SqlSessionTemplate session, Companion companion) {
+		
+		return session.update("companionMapper.updateProgress", companion);
+	}
+
 
 
 }

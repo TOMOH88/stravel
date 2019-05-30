@@ -17,6 +17,7 @@ public interface CompanionService {
 	int insertCompanion(Companion companion);
 	int updateCompanion(Companion companion);
 	int deleteCompanion(int companion_no);
+	int updateProgress(Companion companion);
 	
 	
 	
