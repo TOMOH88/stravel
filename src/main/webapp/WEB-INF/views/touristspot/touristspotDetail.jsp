@@ -200,12 +200,11 @@ $(document).ready(function(){
 								href="${touristspot.touristspot_homepage }">홈페이지 접속하기</a><br>
 							전화번호 : ${touristspot.touristspot_tel }<br>
 
-							<c:if test="${touristspot.touristspot_open eq null }">24시간 오픈</c:if>
-							<c:if test="${!touristspot.touristspot_open eq null }">
+							<c:if test="${touristspot.touristspot_open eq null }">24시간 오픈<br></c:if>
+							<c:if test="${touristspot.touristspot_open != null }">
 							오픈시간 : ${touristspot.touristspot_open }<br>
 							닫는시간 : ${touristspot.touristspot_closed }<br>
 							</c:if>
-							<br>
 							<c:if test="${!empty point2 }">평점 : ${point2 }<br>
 							<form class="rating">
 								<label> 
