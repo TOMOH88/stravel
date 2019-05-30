@@ -159,9 +159,14 @@ $(function(){
 <div></div>
 <div class="row" style="background:gray;">
 <div class="col-md-2" style="margin:auto; text-align:center;">
-<button type="button" class="btn btn-info btn-sm" onclick="movecView();">
+<!-- <button type="button" class="btn btn-info btn-sm" onclick="movecView();">
  상세일정만들기
-</button>
+</button> -->
+<form action="cinsert.do" method="post">
+<input type="text" value="제목">
+<input type="submit" value="저장">
+<input type="button" value="닫기">
+</form>
 </div>
 <div class="col-md-10" id="map" style="height:530px; position:static"></div>
 </div>

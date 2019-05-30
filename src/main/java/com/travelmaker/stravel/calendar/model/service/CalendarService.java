@@ -3,6 +3,7 @@ package com.travelmaker.stravel.calendar.model.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.travelmaker.stravel.calendar.model.vo.Calendar;
 import com.travelmaker.stravel.calendar.model.vo.MyCalendar;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
@@ -21,4 +22,9 @@ public interface CalendarService {
 	ArrayList<Owner> searchForm(String owner_address);
 	ArrayList<OwnerImg> selectOwnerImg();
 	ArrayList<Owner> selectOwner();
+	int insertCalendar(Calendar ca);
+	ArrayList<Calendar> selectCalendarList();
+	int deleteDay(int calendar_no);
+	Calendar selectOneCalendar(int calendar_no);
+	int calendarinsert(MyCalendar mc);
 }

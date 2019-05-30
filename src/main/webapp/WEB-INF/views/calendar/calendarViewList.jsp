@@ -8,7 +8,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg"></script>
 <script type="text/javascript">
-function add_div(){
+/* function add_div(){
     var div = document.createElement('div');
     div.innerHTML = document.getElementById('pre_set').innerHTML;
     document.getElementById('field').appendChild(div);
@@ -17,22 +17,7 @@ function add_div(){
 function remove_item(obj){
     // obj.parentNode 를 이용하여 삭제
     document.getElementById('field').removeChild(obj.parentNode);
-}
-
-/* $(function(){
-	$.ajax({
-		type: "POST",
-		url : "acalendar.do",
-		dataType: "json",
-		contentType:"application/json; charset=UTF-8",
-		success : function(data){
-			
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert(jqXHR.responseText.errorThrown)
-		}
-	});
-}); */
+} */
 
 var markerArray = [];
 var iConArray = [];
@@ -163,7 +148,7 @@ $(function(){
      
     google.maps.event.addDomListener(window, 'load', initialize);
 
-
+    
 </script>
 <title>stravel</title>
 <style type="text/css">
@@ -182,17 +167,28 @@ div{
 <div style="height:90px;"></div>
 <div class="container-fluid">
 <div class="row" style="height:530px;">
-<div class="col-md-1" style="background:#203341; height:530px;">
-<button class="btn btn-info btn-sm" onclick="add_div();">일정추가</button>
-<c:forEach var="i" begin="1" end="100">
-<div id="pre_set" style="display:none;">
-    <font style="color:white;"><c:out value="${i}" />Day</font> <input class="btn btn-info btn-sm" type="button" value="삭제" onclick="remove_item(this)">
+<div class="col-md-1" style="background:#203341; height:530px; overflow:scroll;">
+<form action="acalendar.do" method="post">
+<input type="submit" value="일정추가">
+<div id="pre_set" class="row">
+    <font style="color:white;">Day</font>
+<input type="hidden" name="calendar_title" id="calendar_title" value="day">
+</div>
+</form>
+<c:forEach var="c" items="${ca }" varStatus="status">
+<div class="row" id="field">
+<a href="dayOne.do?calendar_no=${c.calendar_no }">
+<label>
+${status.count} ${c.calendar_title }
+</label></a>
+<a href="delDay.do?calendar_no=${c.calendar_no }">삭제</a>
 </div>
 </c:forEach>
-<div class="row" id="field"></div>
 </div>
 <div class="col-md-2" style="overflow:scroll; height:530px;">
-<div class="row" id="result">asd</div>
+<div class="row" id="result">
+${oca.calendar_no }${oca.calendar_title }
+</div>
 </div>
 <div class="col-md-2" style="overflow:scroll; height:530px;">
 <c:forEach var="tl" items="${tour}">
@@ -200,7 +196,7 @@ div{
 <img src="${pageContext.request.contextPath }/resources/files/touristspotImages/${tl.rename_thumnail }" style="width:100%; height:100px;">
 <div class="col-xl-12">
 <div class="row">
-<a href="touristspotDetail.do?tno=${tl.touristspot_no }">${tl.touristspot_name }</a>
+<a href="delDay.do?tno=${tl.touristspot_no }">${tl.touristspot_name }</a>
 </div>
 </div>
 <div class="col-xl-12">

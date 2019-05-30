@@ -3,6 +3,13 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mycalendarMapper">
+	
+	<resultMap id="resultCalendar" type="Calendar">
+		<id property="calendar_no" column="CALENDAR_NO" />
+		<id property="calendar_title" column="CALENDAR_TITLE" />
+		<id property="touristopt_no" column="TOURISTSPOT_NO" />
+		<id property="mycalendar_no" column="MYCALENDAR_NO" />
+	</resultMap>
 
  	<resultMap id="resultMyCalendar" type="MyCalendar">
 		<id property="mycalendar_no" column="MYCALENDAR_NO" />
@@ -133,6 +140,25 @@
 	<result property = "member" column="member" />
 	<result property = "total_price" column="total_price" />
 </resultMap>
+	<insert id="insertTitlecalendar" parameterType="Calendar">
+		insert into tb_mycalendar (mycalendar_no, mycalendar_title) values (sq_mycalendar_no.nextval, #{mycalendar_title})
+	</insert>
+	
+	<select id="selectOneDay" resultType="Calendar" resultMap="resultCalendar">
+		select * from tb_calendar where calendar_no = #{calendar_no}
+	</select>
+
+	<delete id="deleteDay" parameterType="_int">
+		delete from tb_calendar where calendar_no = #{calendar_no}
+	</delete>
+
+	<select id="selectCalendarList" resultMap="resultCalendar">
+		select * from tb_calendar
+	</select>
+
+	<insert id="insertCalendar" parameterType="Calendar">
+		insert into tb_calendar(calendar_no , calendar_title) values(sq_calendar_no.nextval, #{calendar_title})
+	</insert>
 
 	<select id="selectOwner" resultMap="resultOwner">
 		select * from owner

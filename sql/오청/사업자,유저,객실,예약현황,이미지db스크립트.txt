@@ -46,6 +46,8 @@ owner_account varchar2(50) not null,
 owner_address varchar2(100) not null,
 owner_category varchar2(50) not null,
 owner_approve varchar2(50) not null,
+owner_latitude varchar2(50) null,
+owner_longitude varchar2(50) null,
 constraint pk_ono primary key(owner_no)
 );
 
@@ -60,6 +62,8 @@ comment on column owner.owner_account is '계좌번호';
 comment on column owner.owner_address is '주소';
 comment on column owner.owner_category is '업체구분';
 comment on column owner.owner_approve is '승인/미승인';
+comment on column owner.owner_latitude is '위도';
+comment on column owner.owner_longitude is '경도';
 
 create table room(
 room_no number not null,

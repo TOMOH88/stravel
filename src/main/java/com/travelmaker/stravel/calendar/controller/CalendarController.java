@@ -52,6 +52,8 @@ public class CalendarController {
 	
 	@RequestMapping(value="cview.do", method=RequestMethod.GET)
 	public String moveCalendarViewPage(Model mo) {
+		ArrayList<Calendar> ca = calendarService.selectCalendarList();
+		mo.addAttribute("ca", ca);
 		ArrayList<TouristspotVo> tour = calendarService.selectTour();
 		mo.addAttribute("tour", tour);
 		return "calendar/calendarViewList";
@@ -118,11 +120,35 @@ public class CalendarController {
 		return mv;
 	}
 	
-	
-	@RequestMapping(value="acalendar.do")
+	@RequestMapping(value="acalendar.do", method=RequestMethod.POST)
 	public String acalendarMove(Calendar ca) {
-		
-		return "calendar/calendarViewList";
+		if(calendarService.insertCalendar(ca) > 0) {
+		return "redirect:cview.do";
+		}else {
+		return "common/error";
+		}
+	}
+	
+	@RequestMapping(value="delDay.do", method=RequestMethod.GET)
+	public String delDayPage(@RequestParam(name="calendar_no", required=false) int calendar_no) {
+		calendarService.deleteDay(calendar_no);
+		return "redirect:cview.do";
+	}
+	
+	@RequestMapping(value="dayOne.do", method=RequestMethod.GET)
+	public String dayOnePage(Model mo, @RequestParam(name="calendar_no", required=false) int calendar_no) {
+		Calendar oca = calendarService.selectOneCalendar(calendar_no);
+		mo.addAttribute("oca", oca);
+		return "redirect:cview.do";
+	}
+	
+	@RequestMapping(value="cinsert.do", method=RequestMethod.POST)
+	public String cinsertPage(MyCalendar mc) {
+		if(calendarService.calendarinsert(mc) > 0) {
+		return "calendar/mycalendar";
+		}else {
+			return "common/error";
+		}
 	}
 }
 	
