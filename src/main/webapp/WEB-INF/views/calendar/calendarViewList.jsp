@@ -19,6 +19,21 @@ function remove_item(obj){
     document.getElementById('field').removeChild(obj.parentNode);
 }
 
+/* $(function(){
+	$.ajax({
+		type: "POST",
+		url : "acalendar.do",
+		dataType: "json",
+		contentType:"application/json; charset=UTF-8",
+		success : function(data){
+			
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert(jqXHR.responseText.errorThrown)
+		}
+	});
+}); */
+
 var markerArray = [];
 var iConArray = [];
 var nameArray = [];
@@ -166,8 +181,8 @@ div{
 <c:import url="../common/sheader.jsp" />
 <div style="height:90px;"></div>
 <div class="container-fluid">
-<div class="row">
-<div class="col-md-1" style="background:#203341;">
+<div class="row" style="height:530px;">
+<div class="col-md-1" style="background:#203341; height:530px;">
 <button class="btn btn-info btn-sm" onclick="add_div();">일정추가</button>
 <c:forEach var="i" begin="1" end="100">
 <div id="pre_set" style="display:none;">
@@ -176,10 +191,39 @@ div{
 </c:forEach>
 <div class="row" id="field"></div>
 </div>
-<div class="col-md-2">
+<div class="col-md-2" style="overflow:scroll; height:530px;">
 <div class="row" id="result">asd</div>
 </div>
-<div class="col-md-2">asd</div>
+<div class="col-md-2" style="overflow:scroll; height:530px;">
+<c:forEach var="tl" items="${tour}">
+<div class="row">
+<img src="${pageContext.request.contextPath }/resources/files/touristspotImages/${tl.rename_thumnail }" style="width:100%; height:100px;">
+<div class="col-xl-12">
+<div class="row">
+<a href="touristspotDetail.do?tno=${tl.touristspot_no }">${tl.touristspot_name }</a>
+</div>
+</div>
+<div class="col-xl-12">
+<div class="row">
+<font style="font-size:8pt;">${tl.touristspot_content }</font>
+</div>
+<div class="row">
+<div class="col-xl-6">
+<div class="row">
+<font style="font-size:8pt;">${tl.touristspot_tel }</font>
+</div>
+<div class="row">
+<a href="${tl.touristspot_homepage }"><font style="font-size:8pt;">사이트 이동</font></a>
+</div>
+</div>
+<div class="col-xl-6" align="center" style="margin:auto;">
+<button>추가</button>
+</div>
+</div>
+</div>
+</div>
+</c:forEach>
+</div>
 <div class="col-md-7" id="map" style="height:530px; position:static;">
 </div>
 </div>

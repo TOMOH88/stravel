@@ -38,7 +38,6 @@ $(function(){
 				iConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
 				contentArray[i] = [data.tour[i].touristspot_content];
 				
-				
 				addMarker(no, data, contentArray, location, nameArray)
 				
 				}

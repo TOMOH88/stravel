@@ -244,8 +244,6 @@ var marker;
           </button>
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-end">
-            <li class="nav-item"><a class="nav-link" href="test1.do">테스트용</a></li>
-            <li class="nav-item"><a class="nav-link" href="test3.do">테스트용2</a></li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">고객센터</a>
@@ -277,8 +275,8 @@ var marker;
                   aria-expanded="false">마이페이지</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="mycalendar.do">나의일정</a></li>
-                  <li class="nav-item"><a class="nav-link" href="adminMain.do">예약내역</a></li>
-                  <li class="nav-item"><a class="nav-link" href="adminMain.do">개인정보수정</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">예약내역</a></li>
+                  <li class="nav-item"><a class="nav-link" href="admin.do">개인정보수정</a></li>
                 </ul>
 							</li>
               <li class="nav-item">
@@ -407,26 +405,81 @@ var marker;
 						</article>
 					</div>
 					<div id="business" class="tab-pane fade">
+					<article class="card-body">
 							<!-- Login Form Code Here -->
 							<form action="binsert.do" method="post">
-						  <div class="form-group">
-						  <label>아이디
-						  <input type="number" name="owner_license_no"></label><br>
-						  <label>비밀번호
-						  <input type="text" name="owner_password"></label>
-						  <label>대표자명
-						  <input type="text" name="owner_name"></label>
-						  <label>업체명
-						  <input type="text" name="owner_companyName"></label>
-						  <label>전화번호
-						  <input type="number" name="owner_telephone"></label>
-						  <label>휴대폰번호
-						  <input type="number" name="owner_phone"></label>
-						  <label>계좌번호
-						  <input type="text" name="owner_account"></label>
-						  <label>주소
-						  <input type="text" name="owner_address" id="owner_address"><input type="button" onclick="geoCode();" value="검색">
-						  </label><div id="map" style="height:200px; widht:200px;"></div>
+						  <div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> 
+							 <i class="fa fa-envelope"></i>
+							</span>
+						</div>
+						<input type="number" name="owner_license_no" class="form-control"	placeholder="아이디(사업자번호) 입력하세요" required>
+					</div>
+					<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-lock"></i>
+								</span>
+							</div>
+							<input class="form-control" name="owner_password" id="owner_password"	placeholder="비밀번호를 입력하세요" type="password" required>
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-lock"></i>
+								</span>
+							</div>
+							<input class="form-control" id="owner_password" placeholder="비밀번호를 다시입력하세요" type="password" required>
+						</div>
+						<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-user"></i>
+									</span>
+								</div>
+								<input name="owner_name" class="form-control" placeholder="대표자명을 입력하세요" type="text" required>
+							</div>
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-user"></i>
+									</span>
+								</div>
+								<input name="owner_companyName" class="form-control" placeholder="업체명을 입력하세요" type="text" required>
+							</div>
+							<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-phone"></i>
+								</span>
+							</div>
+								<input name="owner_telephone" class="form-control"	placeholder="대표전화번호를 입력하세요" type="number">
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-phone"></i>
+								</span>
+							</div>
+								<input name="owner_phone" class="form-control"	placeholder="대표휴대전화를 입력하세요" type="number">
+						</div>
+						<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> 
+							 <i class="fa fa-envelope"></i>
+							</span>
+						</div>
+						<input name="owner_account" class="form-control"	placeholder="계좌번호를 입력하세요" type="text" required>
+					</div>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> 
+							 <i class="fa fa-envelope"></i>
+							</span>
+						</div>
+						<input name="owner_address" id="owner_address" class="form-control"	placeholder="주소를 입력하세요" type="text" required>
+						<input type="button" onclick="geoCode();" value="검색" class="btn btn-info btn-sm">
+						<div id="map" style="height:200px; widht:200px;"></div>
+					</div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
     async defer></script>
     					  <input type="hidden" name="owner_latitude" id="owner_latitude">
@@ -445,10 +498,13 @@ var marker;
 						  <input type="radio" name="owner_category" value="리조트">리조트
 						  </div>
 						  </div>
-						    <input type="submit" value="사업자 회원가입">
+						  <div style="text-align:center;">
+						  <br>
+						    <input type="submit" value="사업자 회원가입" class="btn btn-info btn-sm">
+						    </div>
 						  </div>
 						  </form>
-						</div>
+						  </article>
 					</div>
 				</div>
 				<div class="modal-footer">

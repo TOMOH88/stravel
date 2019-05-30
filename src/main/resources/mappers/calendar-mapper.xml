@@ -57,19 +57,21 @@
 	</resultMap>
 	
 	<resultMap id = "resultOwner" type="ownerVo">
-		<result property="owner_no" column="owner_no"/>
-		<result property="owner_license_no" column="owner_license_no"/>
-		<result property="owner_password" column="owner_password"/>
-		<result property="owner_name" column="owner_name"/>
-		<result property="owner_companyName" column="owner_companyname"/>
-		<result property="owner_telephone" column="owner_telephone"/>
-		<result property="owner_phone" column="owner_phone"/>
-		<result property="owner_account" column="owner_account"/>
-		<result property="owner_address" column="owner_address"/>
-		<result property="owner_category" column="owner_category"/>
-		<result property="owner_approve" column="owner_approve"/>
-		<result property="off_season_price" column="off_season_price"/>
-		<result property="property_review_like" column="property_review_like"/>
+		<result property="owner_no" column="OWNER_NO"/>
+		<result property="owner_license_no" column="OWNER_LICENSE_NO"/>
+		<result property="owner_password" column="OWNER_PASSWORD"/>
+		<result property="owner_name" column="OWNER_NAME"/>
+		<result property="owner_companyName" column="OWNER_COMPANYNAME"/>
+		<result property="owner_telephone" column="OWNER_TELEPHONE"/>
+		<result property="owner_phone" column="OWNER_PHONE"/>
+		<result property="owner_account" column="OWNER_ACCOUNT"/>
+		<result property="owner_address" column="OWNER_ADDRESS"/>
+		<result property="owner_category" column="OWNER_CATEGORY"/>
+		<result property="owner_approve" column="OWNER_APPROVE"/>
+		<result property="owner_latitude" column="OWNER_LATITUDE"/>
+		<result property="owner_longitude" column="OWNER_LONGITUDE"/>
+		<result property="off_season_price" column="OFF-SEASON-PRICE"/>
+		<result property="property_review_like" column="PROPERTY_REVIEW_LIKE"/>
 	</resultMap>
 	
 	<resultMap id="resultOwnerList" type="ownerListVo" >
@@ -131,13 +133,18 @@
 	<result property = "member" column="member" />
 	<result property = "total_price" column="total_price" />
 </resultMap>
+
+	<select id="selectOwner" resultMap="resultOwner">
+		select * from owner
+	</select>
 	
 	<select id="selectOwnerImg" resultMap="resultOwnerImg">
 		select * from owner_img
 	</select>
 	
 	<select id="selectSearchlodgment" resultMap="resultOwner">
-		select * from owner where OWNER_ADDRESS LIKE '%'|| #{OWNER_ADDRESS} ||'%'
+		select * from owner 
+		where OWNER_ADDRESS LIKE '%'|| #{OWNER_ADDRESS} ||'%'
 	</select>
 
 	<select id="selectAllMyCalendar" resultMap="resultMyCalendar">

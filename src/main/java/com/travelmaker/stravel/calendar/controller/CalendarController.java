@@ -4,7 +4,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.calendar.model.service.CalendarService;
+import com.travelmaker.stravel.calendar.model.vo.Calendar;
 import com.travelmaker.stravel.calendar.model.vo.MyCalendar;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
@@ -50,13 +50,10 @@ public class CalendarController {
 		return "calendar/searchlodgment";
 	}
 	
-	@RequestMapping("adminMain.do")
-	public String moveTest() {
-		return "calendar/test";
-	}
-	
 	@RequestMapping(value="cview.do", method=RequestMethod.GET)
-	public String moveCalendarViewPage() {
+	public String moveCalendarViewPage(Model mo) {
+		ArrayList<TouristspotVo> tour = calendarService.selectTour();
+		mo.addAttribute("tour", tour);
 		return "calendar/calendarViewList";
 	}
 	
@@ -67,35 +64,6 @@ public class CalendarController {
 		System.out.println(mycalendar_no);
 		return "calendar/updateCalendarView";
 	}
-	
-/*	@RequestMapping("adminMain.do")
-	public String moveTest() {
-		return "calendar/test";
-	}
-	@RequestMapping("test2.do")
-	public String moveTest2() {
-		return "calendar/test2";
-	}
-	
-	@RequestMapping("vcalendar.do")
-	public String moveViewCalendarPage() {
-		return "calendar/calendarViewList";
-	}
-	
-	@RequestMapping("adminMain.do")
-	public String moveTest() {
-		return "calendar/test";
-	}
-	
-	@RequestMapping("test2.do")
-	public String moveTest2() {
-		return "calendar/test2";
-	}*/
-	
-	/*	@RequestMapping("faqlist3.do")
-	public String moveQnaList3Page() {
-		return "faq/faqList3";
-	}*/
 	
 	@RequestMapping(value="vcalendar.do", method=RequestMethod.POST)
 	public String insertCalendar(MyCalendar mc) {
@@ -141,9 +109,20 @@ public class CalendarController {
 		return mv;
 	}
 	
-	@RequestMapping(value="searchView.do")
-	public String movesearchView() {
-		return "";
+	@RequestMapping(value="aview.do", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public @ResponseBody ModelAndView alodgmentPage(ModelAndView mv) {
+		ArrayList<Owner> owner = calendarService.selectOwner();
+		mv.addObject("owner", owner);
+		mv.addObject("code", "ok");
+		mv.setViewName("jsonView");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="acalendar.do")
+	public String acalendarMove(Calendar ca) {
+		
+		return "calendar/calendarViewList";
 	}
 }
 	
