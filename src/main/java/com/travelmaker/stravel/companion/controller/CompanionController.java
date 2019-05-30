@@ -4,7 +4,6 @@ package com.travelmaker.stravel.companion.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +23,8 @@ import com.travelmaker.stravel.companion.model.service.CompanionReplyService;
 import com.travelmaker.stravel.companion.model.service.CompanionService;
 import com.travelmaker.stravel.companion.model.vo.Companion;
 import com.travelmaker.stravel.companion.model.vo.CompanionReply;
+import com.travelmaker.stravel.member.model.service.MemberService;
+import com.travelmaker.stravel.member.model.vo.Member;
 
 
 @Controller
@@ -36,6 +37,7 @@ public class CompanionController {
 		private CompanionService companionService;
 		@Autowired
 		private CompanionReplyService companionReplyService;
+	
 		
 	
 	@RequestMapping("comp.do")
@@ -169,29 +171,4 @@ public class CompanionController {
 		companionService.deleteCompanion(companion_no);
 		return "redirect:comp.do";
 	}
-	
-	@RequestMapping(value="compreplyupdate.do", method=RequestMethod.POST)
-	public String updateCompanionReply(CompanionReply companionreply) {
-		companionReplyService.updateCompanionReply(companionreply);
-		return "redirect:compdetail.do?companion_no="+ companionreply.getCompanion_no();
-	}
-	
-	@RequestMapping(value="compreplydelete.do", method=RequestMethod.GET)
-	public String deleteCompanionReply(@RequestParam(name="companion_reply_no") int companion_reply_no,@RequestParam(name="companion_no") int companion_no) {
-		companionReplyService.deleteCompanionReply(companion_reply_no);
-		return "redirect:compdetail.do?companion_no="+ companion_no;
-	}
-	
-	@RequestMapping(value="compreplyinsert.do", method=RequestMethod.POST)
-	public String insertCompanionReply(CompanionReply companionreply) {
-		companionReplyService.insertCompanionReply(companionreply);
-		return "redirect:compdetail.do?companion_no=" + companionreply.getCompanion_no();
-	}
-	
-	@RequestMapping(value="compRereplyinsert.do", method=RequestMethod.POST)
-	public String insertCompanionRereply(CompanionReply companionreply) {
-		companionReplyService.insertCompanionRereply(companionreply);
-		return "redirect:compdetail.do?companion_no=" + companionreply.getCompanion_no();
-	}
-
 }

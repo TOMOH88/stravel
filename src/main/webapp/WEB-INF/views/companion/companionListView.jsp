@@ -54,12 +54,15 @@ table tr td div{
 <tr>
 	<td><div>${c.companion_no }</div></td>
 	<td><div>${c.user_email }</div></td>
-	<td><div>
+	<td>
 	<%-- 로그인 상태일 때만 상세보기 링크 설정함 --%>
-	
-		<a href="compdetail.do?companion_no=${c.companion_no }">${c.companion_title }</a>
-
-	</div></td>
+	<c:if test="${!empty loginMember }">
+		<div><a href="compdetail.do?companion_no=${c.companion_no }">${c.companion_title }</a></div>
+	</c:if>
+	<c:if test="${empty loginMember }">
+		<div>${c.companion_title }</div>
+	</c:if>
+	</td>
 	<c:if test="${c.companion_progress eq '1'}">
 	<td><div align="center"><button style="background-color:#bcbcbc; color:blue; border:0; width:80px; height:25px; border-radius:5px;">진행중</button></div></td>
 	</c:if>
@@ -70,7 +73,12 @@ table tr td div{
 </c:forEach>
 </table>
 <br>
+<c:if test="${!empty loginMember }">
 <div align="center"><button style="background-color:#bcbcbc; color:blue; border:0; width:140px; height:30px; border-radius:5px;" onclick="writeform()">글쓰기</button></div>
+</c:if>
+<c:if test="${empty loginMember }">
+<div align="center"><button style="background-color:#bcbcbc; color:blue; border:0; width:140px; height:30px; border-radius:5px;">글쓰기</button></div>
+</c:if>
 <br><br><br>
 <%-- 페이징 처리 --%>
 <div style="text-align:center;">
