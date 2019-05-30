@@ -52,4 +52,9 @@ public class OwnerServiceImpl implements OwnerService{
 		return od.insertOwner(mybatisSession, ow);
 	}
 
+	@Override
+	public Owner selectOLogin(Owner ow) {
+		return  od.selectOLogin(mybatisSession, ow);
+	}
+
 }

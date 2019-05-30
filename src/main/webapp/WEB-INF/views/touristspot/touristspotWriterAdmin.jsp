@@ -69,7 +69,7 @@
 <div class="container">
 <h1 align="center">관광지 글쓰기 페이지</h1>
 <form action="TSWriterUpload.do" method="post" enctype="multipart/form-data">
-<input type="hidden" name="touristspot_writer" value="김지훈">
+<input type="hidden" name="touristspot_writer" value="${loginAdmin.admin_name }">
 <table class="table">
 <tr>
 	<th>관광지 명</th><td><input type="text" name="touristspot_name" required="required" class="form-control"/></td>

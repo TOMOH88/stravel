@@ -283,6 +283,13 @@ var marker;
 										<a href="logout.do">로그아웃</a>
 									</button>								
 								</c:if>
+								<c:if test="${!empty loginOwner }">
+									<button type="button" class="btn btn-info" data-toggle="modal"
+										data-target="#modal">
+										${loginOwner.owner_name }님 &nbsp;
+										<a href="logout.do">로그아웃</a>
+									</button>								
+								</c:if>
 							</li>
 						</ul>
 					</div>
@@ -432,14 +439,14 @@ var marker;
 								</div>
 								<input name="owner_companyName" class="form-control" placeholder="업체명을 입력하세요" type="text" required>
 							</div>
-							<div class="form-group input-group">
+<!-- 							<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> 
 									<i class="fa fa-phone"></i>
 								</span>
 							</div>
 								<input name="owner_telephone" class="form-control"	placeholder="대표전화번호를 입력하세요" type="number">
-						</div>
+						</div> -->
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> 
@@ -448,15 +455,15 @@ var marker;
 							</div>
 								<input name="owner_phone" class="form-control"	placeholder="대표휴대전화를 입력하세요" type="number">
 						</div>
-						<div class="form-group input-group">
+		<!-- 				<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> 
 							 <i class="fa fa-envelope"></i>
 							</span>
 						</div>
 						<input name="owner_account" class="form-control"	placeholder="계좌번호를 입력하세요" type="text" required>
-					</div>
-					<div class="form-group input-group">
+					</div> -->
+					<!-- <div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> 
 							 <i class="fa fa-envelope"></i>
@@ -468,8 +475,8 @@ var marker;
 					</div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
     async defer></script> -->
-    					  <input type="hidden" name="owner_latitude" id="owner_latitude">
-						  <input type="hidden" name="owner_longitude" id="owner_longitude">
+    					<!--  <input type="hidden" name="owner_latitude" id="owner_latitude">
+						  <input type="hidden" name="owner_longitude" id="owner_longitude"> -->
 						  <div class="row">
 						  <div class="col-xl-3">
 						  <input type="radio" name="owner_category" value="호텔">호텔
@@ -545,12 +552,14 @@ var marker;
 							</article>
 						</div>
 						<div id="login1" class="tab-pane fade">
+							 <form action="ologin.do" method="post">
 							<!-- Login Form Code Here -->
 						  <div class="form-group">
-						    <input type="text" placeholder="사업자 등록번호를 입력하십시요" name="un" />
-						    <input type="password" placeholder="비밀번호를 입력하십시요" name="pw" />
-						    <button> 사업자로그인 </button>
+						    <input type="text" placeholder="사업자 등록번호를 입력하십시요" name="owner_license_no" />
+						    <input type="password" placeholder="비밀번호를 입력하십시요" name="owner_password" />
+						    <button type="submit" class="btn btn-primary btn-block"> 사업자 로그인</button>
 						  </div>
+						  </form>
 						</div>
 					</div>
 				</div>
@@ -563,16 +572,16 @@ var marker;
 
 						<div id="login1" class="tab-pane fade">
 							<!-- Login Form Code Here -->
-						  <form action="login.do" method="post">
+						  <form action="ologin.do" method="post">
 									<div class="form-group">
-										<input type="text" placeholder="사업자 등록번호를 입력하세요"
-											class="form-control" name="businessnumber">
-									</div>
+										<input type="text" placeholder="사업자 등록번호를 입력하세요?"
+											class="form-control" name="owner_license_no">
+									</div><br>
 									<div class="form-group">
 										<!-- <input name="userpwd" class="form-control"
 											placeholder="비밀번호를 입력하세요" type="password"> -->
 										<input type="password" placeholder="비밀번호를 입력하세요"
-											class="form-control" name="userpwd">
+											class="form-control" name="owner_password">
 									</div>
 										<div>
 											<div class="form-group"><br>

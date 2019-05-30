@@ -102,7 +102,9 @@ where owner_no = #{owner_no}
 		values(seq_owner_no.nextval, #{owner_license_no}, #{owner_password}, #{owner_name}, #{owner_companyName}, 
 		#{owner_telephone}, #{owner_phone}, #{owner_account}, #{owner_address}, #{owner_category}, '승인', #{owner_latitude}, #{owner_longitude})
 	</insert>
-	
+	<select id="selectOLogin" parameterType="ownerVo" resultType="ownerVo">
+		select * from owner where OWNER_LICENSE_NO = #{owner_license_no}
+	</select>
 </mapper>
 
 

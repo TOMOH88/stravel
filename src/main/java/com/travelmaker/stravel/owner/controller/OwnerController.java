@@ -2,10 +2,14 @@
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.travelmaker.stravel.owner.model.service.OwnerService;
@@ -18,6 +22,8 @@ public class OwnerController {
 
 	@Autowired
 	private OwnerService os;
+	@Autowired
+	BCryptPasswordEncoder bcryptpasswordEncoder;
 	
 	@RequestMapping(value="roomList.do", method= {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView selectRoomList(ModelAndView mv, OwnerPaging paging) {
@@ -47,11 +53,26 @@ public class OwnerController {
 	@RequestMapping(value="binsert.do", method=RequestMethod.POST)
 	public String binsertPage(Owner ow) {
 		System.out.println("ow : " + ow);
+		ow.setOwner_password(bcryptpasswordEncoder.encode(ow.getOwner_password()));
 		if(os.insertOwner(ow) > 0) {
 			return "home";
 		}else {
 			return "common/error";
 		}
+		
+	}
+	@RequestMapping(value="ologin.do", method=RequestMethod.POST)
+	public String ologinMethod(Owner ow, 
+			HttpSession session, SessionStatus status) {
+		String path ="home";
+		
+		Owner owner = os.selectOLogin(ow);
+		if(owner != null) {
+			session.setAttribute("loginOwner", owner);
+			status.setComplete();
+			path= "home";
+			}
+		return path;
 		
 	}
 }

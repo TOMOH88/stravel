@@ -69,7 +69,7 @@ public class TouristspotController {
 	@RequestMapping(value="moveTSAdmin.do", method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView moveTouristspotAdminMain(ModelAndView mv,PagingVo paging) {
 		logger.info("관광지 리스트 관리자 ");
-		paging.setListCnt(10);
+		paging.setListCnt(9);
 		if(paging.getSearchCategory() == null && paging.getItems() == null || paging.getSearchCategory() == "" && paging.getItems() == "") {
 			ArrayList<TouristspotVo> touristspot = touristspotService.selectTouristspotList(paging);
 			paging.setTotal(touristspotService.selectTotalPaging());

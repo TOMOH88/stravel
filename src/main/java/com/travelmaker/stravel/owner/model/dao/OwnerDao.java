@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
+import com.travelmaker.stravel.admin.model.vo.AdminVo;
 import com.travelmaker.stravel.common.PagingVo;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
@@ -13,7 +16,9 @@ import com.travelmaker.stravel.owner.model.vo.OwnerPaging;
 
 @Repository("od")
 public class OwnerDao {
-
+	@Autowired
+	BCryptPasswordEncoder bcryptpasswordEncoder;
+	
 	public ArrayList<Owner> selectRoomList(SqlSessionTemplate Session,OwnerPaging paging) {
 		
 		List<Owner> list = Session.selectList("ownerMapper.selectRoomList",paging);
@@ -38,6 +43,14 @@ public class OwnerDao {
 	}
 	public int insertOwner(SqlSessionTemplate Session, Owner ow) {
 		return Session.insert("ownerMapper.businessinsert", ow);
+	}
+	public Owner selectOLogin(SqlSessionTemplate mybatisSession, Owner ow) {
+		Owner loginOwner = mybatisSession.selectOne("ownerMapper.selectOLogin", ow);
+		if(!bcryptpasswordEncoder.matches(ow.getOwner_password(), loginOwner.getOwner_password())) {
+			loginOwner = null;
+		}
+		
+		return loginOwner;
 	}
 
 }

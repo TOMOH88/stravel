@@ -21,5 +21,7 @@ public interface OwnerService {
 
 	int insertOwner(Owner ow);
 
+	Owner selectOLogin(Owner ow);
+
 
 }
