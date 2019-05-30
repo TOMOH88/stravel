@@ -51,7 +51,14 @@ table tr td div{
 				<div style="padding:10px; display:table-cell; width:200px;">${companion.companion_date }</div>
 			</div>
 			<div style="padding:10px; display:table-cell; width:100px;">작성자</div>
-			<div style="padding:10px; display:table-cell; width:200px;">${companion.user_email }</div>
+			<div style="padding:10px; display:table-cell; width:800px;">${companion.user_email }</div>
+			<div style="padding:10px; display:table-cell; width:100px;">진행 상황</div>
+			<c:if test="${!empty loginMember and loginMember eq companion.user_email }">
+			<div style="padding:10px; display:table-cell; width:200px;"><a href="upprogress.do">${companion.companion_progress }</a></div>
+			</c:if>
+			<c:if test="${empty loginMember or loginMember !eq companion.user_email }">
+			<div style="padding:10px; display:table-cell; width:200px;"><a>${companion.companion_progress }</a></div>	
+			</c:if>
 		</div><!-- 헤더 -->
 		<div style="width:100%; height:400px;"><!-- 바디 -->
 		

@@ -103,5 +103,11 @@
 		delete from companion_reply
 		where companion_reply_no = #{companion_reply_no}
 	</delete>
-
+	
+	<update id="updateProgress" parameterType="_int">
+		update companion
+		set companion_progress = #{companion_progress}
+		where companion_no = #{companion_no}
+	
+	</update>
 </mapper>

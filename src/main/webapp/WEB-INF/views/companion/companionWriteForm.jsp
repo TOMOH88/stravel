@@ -16,33 +16,43 @@ function cancle(){
 <body>
  <c:import url="../common/header.jsp" />
 
-<h2 align="center">동행찾기 상세 글 쓰기</h2>
-<br><br><br>
-<!-- 등록모달 -->
-<div id="compmodal" class="compmodalout">
+
+
+<div style="width:1200px; height:1000px; margin:0px auto; background:#48d1CC;"><!-- 전체 -->
+<div style="height:200px;"><!-- 헤더 -->
+<div align="center" style="padding:50px;"><h2>동행찾기 상세 글 쓰기</h2></div>
+</div><!-- 헤더 -->
+<div><!-- 바디 -->
 <form action="compinsert.do" method="post" enctype="multipart/form-data">
-	<input type="text" id="user_email" name="user_email" />
-<table class="compwritemodalin" align="center" cellpadding="10px" style="width:700px; border-collapse: collapse;">
-	<tr>
-		<td colspan="6">
-		<table style="width:100%;">
-			<tr>
-				<td style="align:left; width:3%;">
-					<span class="bspan">제목</span>
-				</td>
-				<td style="width:30%;">
-				<input type="text" name="companion_title" style="width:70%;" required>
-				</td>
-			</tr>
-		</table>
-		</td>
-	</tr>
-	<tr><td align="center" colspan="6"><textarea class="compcontents" name="companion_content" placeholder="내용을 입력해주세요" style="width:95%; height:160px;" required></textarea></td></tr>
-	<tr><td align="center" colspan="3" style="width:50%;"><input type="submit" class="compsubmitbtn" value="등록" style="width:90%;"></td>
-		<td align="center" colspan="3" style="width:50%;"><input type="button" class="compcanclebtn" value="취소" onclick="cancle()" style="width:90%"></td></tr>
-</table>
+	<div><input type="hidden" id="user_email" name="user_email" value="${loginMember.useremail }"></div>
+	<div style="padding: 30px; width:100px; height:100px; display:table-cell;">제목</div><div style="width:1000;height:100px; display:table-cell;"><input type="text" id="companion_title" name="companion_title" style="width:1000px;" required></div>
+	<div align="center"><textarea class="compcontents" name="companion_content" placeholder="내용을 입력해주세요" style="width:1000px; height:500px; margin:0px auto;"required></textarea></div>
+	<br>
+	<div style="width:400px; margin:0px auto;">
+	<div style="display:table-cell; width:230px;"><input type="submit" value="등록" style="width:100px;"/></div><div style="display:table-cell; width:230px;"><input type="button" value="취소" onclick="cancle()" style="width:100px;"></div>
+	</div>
 </form>
-</div>
+
+</div><!-- 바디 -->
+
+
+
+
+
+
+
+</div><!-- 전체 -->
+
+
+
+
+
+
+
+
+
+
+
 
 <br><br><br>
 <c:import url="../common/footer.jsp" />
