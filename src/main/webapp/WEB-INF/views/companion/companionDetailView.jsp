@@ -7,6 +7,7 @@
 <head>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js">
 </script>
+
 <style>
 div{
 	 border-bottom: 1px solid rgba(67, 67, 67, 0.8);
@@ -51,13 +52,24 @@ table tr td div{
 				<div style="padding:10px; display:table-cell; width:200px;">${companion.companion_date }</div>
 			</div>
 			<div style="padding:10px; display:table-cell; width:100px;">작성자</div>
-			<div style="padding:10px; display:table-cell; width:800px;">${companion.user_email }</div>
-			<div style="padding:10px; display:table-cell; width:100px;">진행 상황</div>
-			<c:if test="${!empty loginMember and loginMember eq companion.user_email }">
-			<div style="padding:10px; display:table-cell; width:200px;"><a href="upprogress.do">${companion.companion_progress }</a></div>
+			<div style="padding:10px; display:table-cell; width:800px;">${companion.companion_writer }</div>
+			<div style="padding:10px; display:table-cell; width:150px;">진행 상황</div>
+			<c:if test="${loginMember.user_email eq companion.companion_writer }">
+			<div style="padding:10px; display:table-cell; width:200px;">
+			<c:if test="${companion.companion_progress eq '1'}">
+			<a href="upprogress.do?companion_no=${companion.companion_no }"><button style="background-color:#bcbcbc; color:blue; border:0; width:80px; height:25px; border-radius:5px;">진행중</button></a>
 			</c:if>
-			<c:if test="${empty loginMember or loginMember !eq companion.user_email }">
-			<div style="padding:10px; display:table-cell; width:200px;"><a>${companion.companion_progress }</a></div>	
+			</div>
+			</c:if>
+			<c:if test="${loginMember.user_email != companion.companion_writer }">
+			<div style="padding:10px; display:table-cell; width:200px;">
+			<c:if test="${companion.companion_progress eq '1'}">
+			<button style="background-color:#bcbcbc; color:blue; border:0; width:80px; height:25px; border-radius:5px;">진행중</button>
+			</c:if>
+			<c:if test="${companion.companion_progress eq '2'}">
+			<button style="background-color:#bcbcbc; color:red; border:0; width:80px; height:25px; border-radius:5px;">진행완료</button>
+			</c:if>
+			</div>	
 			</c:if>
 		</div><!-- 헤더 -->
 		<div style="width:100%; height:400px;"><!-- 바디 -->
@@ -67,25 +79,23 @@ table tr td div{
 
 		</div><!-- 바디 -->
 		<div style="width:100%; "><!-- 풋터-->
-		<c:if test="${!empty loginMember and loginMember.useremail eq companion.user_email}">
+		<c:if test="${!empty loginMember and loginMember.user_email eq companion.companion_writer}">
 		<div style="padding:10px; display:table-cell;"><a href="compupview.do?companion_no=${companion.companion_no }">수정</a></div>
 		<div style="padding:10px; display:table-cell;"><a href="compdelete.do?companion_no=${companion.companion_no }">삭제</a></div>
 		</c:if>
-		<c:if test="${empty loginMember and loginMember.useremail eq companion.user_email}">
+		<c:if test="${empty loginMember and loginMember.user_email != companion.companion_writer}">
 		<div style="padding:10px; display:table-cell;"><a href="#">수정</a></div>
 		<div style="padding:10px; display:table-cell;"><a href="#">삭제</a></div>
 		</c:if>	
+		<c:if test="${!empty loginMember }">
 			<div class="container">
 				<form action="compreplyinsert.do?companion_no=${companion.companion_no }" name="companionReply" method="post">
 				<br><br>
 			<input type="hidden" id="companion_no" name="companion_no" value="${companion.companion_no }"/>
-			<input type="hidden" id="companion_reply_ref" name="companion_reply_ref" value="<c:out value="${companion.companion_no }"/>">
-			<input type="hidden" id="companion_reply_lev" name="companion_reply_lev" value="0">
-			<input type="hidden" id="user_email" name="user_email"  value="${loginMember.useremail }"/>
+			<input type="hidden" id="companion_reply_writer" name="companion_reply_writer"  value="${loginMember.user_email }"/>
 			<div>
 				<span><strong>댓글</strong></span>
 			</div>
-			<c:if test="${!empty loginMember }">
 			<div>
 			<table class="table">
 				<tr>
@@ -97,20 +107,17 @@ table tr td div{
 				</tr>
 			</table>
 			</div>
-			</c:if>
-	
-	
-	</form>
-</div>			
-		
+			</form>
+		</div>			
+		</c:if>		
 		<c:forEach items="${companionReply }" var="c" varStatus="status">
 		<div style="width: 800px; padding: 5px; margin-top: 5px;
 				display:inline-block;"><!-- 댓글리스트 -->
 		 	<div  style="padding: 5px; width:500px; display:table-cell;">${c.companion_reply_content }</div>
-		 	<div  style="padding: 5px; width:200px; display:table-cell;">${c.user_email }</div>
+		 	<div  style="padding: 5px; width:200px; display:table-cell;">${c.companion_reply_writer }</div>
 		 	<div  style="padding: 5px; width:100px; display:table-cell;">${c.companion_reply_date }</div>
 		 	<div align="right">
-		 	<c:if test="${!empty loginMember and loginMember eq c.user_email }">
+		 	<c:if test="${!empty loginMember and loginMember.user_email eq c.companion_reply_writer }">
 		 	<div id="update_reply${status.count }" style="display:table-cell; padding: 5px;"><a>수정</a></div>
 		 	<div style="display:table-cell; padding: 5px;"><a href="compreplydelete.do?companion_reply_no=${c.companion_reply_no }&companion_no=${c.companion_no}">삭제</a></div>
 		 	<div id="updateform${status.count }" style="display:none; width:99%;">

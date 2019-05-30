@@ -7,7 +7,7 @@
 	<resultMap id="resultCompanion" type="Companion">
 		<id property="companion_no" column="companion_no" />
 		<result property="companion_title" column="companion_title" />
-		<result property="user_email" column="user_email" />
+		<result property="companion_writer" column="companion_writer" />
 		<result property="companion_content" column="companion_content" />
 		<result property="companion_date" column="companion_date" />
 		<result property="companion_schedule" column="companion_schedule" />
@@ -20,7 +20,7 @@
 		<result property="companion_reply_ref" column="companion_reply_ref" />
 		<result property="companion_reply_lev" column="companion_reply_lev"/>
 		<result property="companion_reply_seq" column="companion_reply_seq"/>
-		<result property="user_email" column="user_email" />
+		<result property="companion_reply_writer" column="companion_reply_writer" />
 		<result property="companion_reply_content" column="companion_reply_content" />
 		<result property="companion_reply_date" column="companion_reply_date" />
 	</resultMap>
@@ -35,14 +35,14 @@
 	
 	<select id="selectCompanionReplyList" parameterType="CompanionReply" resultMap="resultCompanionReply" >
 		select * from companion_reply where companion_no = #{companion_no}
-		order by companion_reply_no asc, companion_reply_ref asc, companion_reply_lev asc, companion_reply_seq asc
+		order by companion_reply_no asc
 	</select>
 	
 	<select id="selectCompanionList" parameterType="_int"
 	resultMap="resultCompanion">
 	<![CDATA[
 		select * from (select rownum rnum, companion_no,
-							companion_title, user_email, companion_content,
+							companion_title, companion_writer, companion_content,
 							companion_date, companion_schedule, companion_progress
 							from (select * from companion 
 								order by companion_no desc))
@@ -59,7 +59,7 @@
 	
 		insert into companion
 		values (seq_cp_no.nextval,  
-		#{companion_title}, #{user_email},
+		#{companion_title}, #{companion_writer},
 		#{companion_content}, SYSDATE, null, 1)
 	</insert>
 	
@@ -78,19 +78,10 @@
 	<insert id="insertCompanionReply" parameterType="CompanionReply" useGeneratedKeys="true" >
 	
 		insert into companion_reply 
-		values (seq_cpreply_no.nextval, 
-		#{companion_no}, #{companion_reply_ref}, #{companion_reply_lev},
-		seq_cpreply_seq.nextval, #{user_email}, #{companion_reply_content}, SYSDATE)
+		values (seq_cpreply_no.nextval, #{companion_no}, #{companion_reply_writer}, #{companion_reply_content}, default)
 	</insert>
 	
-	<insert id="insertCompanionRereply" parameterType="CompanionReply" useGeneratedKeys="true" >
-	<![CDATA[
-		insert into companion_reply 
-		values (seq_cpreply_no.nextval, 
-		#{companion_no}, #{companion_reply_ref}, #{companion_reply_lev},
-		seq_cpreply_seq.nextval,  #{user_email}, #{companion_reply_content}, SYSDATE)
-		]]>
-	</insert>
+	
 	
 	<update id="updateCompanionReply" parameterType="CompanionReply">
 		update companion_reply
@@ -106,7 +97,7 @@
 	
 	<update id="updateProgress" parameterType="_int">
 		update companion
-		set companion_progress = #{companion_progress}
+		set companion_progress = 2
 		where companion_no = #{companion_no}
 	
 	</update>

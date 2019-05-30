@@ -1,56 +1,194 @@
---임시사용자
-DROP TABLE AC CASCADE CONSTRAINTS;
+drop table owner cascade constraints;
+drop table room cascade constraints;
+drop table room_review cascade constraints;
+drop table reservation cascade constraints;
+drop table room_img cascade constraints;
+drop table owner_img cascade constraints;
+drop table stravel_user cascade constraints;
 
-CREATE TABLE AC(
-    USER_NO NUMBER NOT NULL,
-    USER_ID VARCHAR2(15) NOT NULL,
-    BIRTH DATE NOT NULL,
-    USER_PWD VARCHAR2(50) NOT NULL,
-    GENDER VARCHAR2(2) NOT NULL,
-    USER_NAME VARCHAR2(20) NOT NULL,
-    EMAIL VARCHAR2(100)  NOT NULL,
-    PHONE VARCHAR2(12)  NOT NULL,
-    CODE_POSTAL VARCHAR2(20)  NOT NULL,
-    ADDRESS VARCHAR2(160)  NOT NULL,
-    ADDRESS2 VARCHAR2(160)  NOT NULL,
-    JOIN_DATE DATE DEFAULT SYSDATE NOT NULL,
-    SMS_YN VARCHAR2(2),
-    EMAIL_YN VARCHAR2(2),
-    POINT NUMBER NOT NULL,
-    
-    CONSTRAINT PK_USERNO PRIMARY KEY(USER_NO)--기본키
+drop sequence seq_owner_no;
+drop sequence seq_owner_img_no;
+drop sequence seq_rsv_no;
+drop sequence seq_room_no;
+drop sequence seq_room_img_no;
+drop sequence seq_property_review_no;
+drop sequence seq_user_no;
+
+
+create table stravel_user(
+user_no number not null,
+user_email varchar2(100) not null,
+user_password varchar2(100) not null,
+user_name varchar2(50) not null,
+user_phone varchar2(50) not null,
+user_picture varchar2(100),
+gender varchar2(50) not null,
+constraint pk_un primary key(user_no)
+);
+comment on column stravel_user.user_no is '사용자번호';
+comment on column stravel_user.user_email is '사용자이메일';
+comment on column stravel_user.user_password is '비밀번호';
+comment on column stravel_user.user_name is '이름';
+comment on column stravel_user.user_phone is '휴대전화';
+comment on column stravel_user.user_picture is '사용자이미지';
+comment on column stravel_user.gender is '성별';
+
+
+create table owner (
+owner_no number not null,
+owner_license_no number not null,
+owner_password varchar2(50) not null,
+owner_name varchar2(50) not null,
+owner_companyname varchar2(50) not null,
+owner_telephone number not null,
+owner_phone number not null,
+owner_account varchar2(50) not null,
+owner_address varchar2(100) not null,
+owner_category varchar2(50) not null,
+owner_approve varchar2(50) not null,
+constraint pk_ono primary key(owner_no)
 );
 
-DROP SEQUENCE SEQ_USER_NO;
+comment on column owner.owner_no is '사업자번호';
+comment on column owner.owner_license_no is '사업자등록번호';
+comment on column owner.owner_password is '비밀번호';
+comment on column owner.owner_name is '이름';
+comment on column owner.owner_companyname is '사업체명';
+comment on column owner.owner_telephone is '휴대전화';
+comment on column owner.owner_phone is '전화번호';
+comment on column owner.owner_account is '계좌번호';
+comment on column owner.owner_address is '주소';
+comment on column owner.owner_category is '업체구분';
+comment on column owner.owner_approve is '승인/미승인';
 
-CREATE SEQUENCE SEQ_USER_NO 
-START WITH 1
-INCREMENT BY 1
-NOCYCLE     
-NOCACHE;   
+create table room(
+room_no number not null,
+room_name varchar2(50) not null,
+room_option varchar2(1000) not null,
+room_content varchar2(1000) not null,
+min_no number not null,
+max_no number not null,
+off_season_price number not null,
+on_season_price number not null,
+week_extra_price number not null,
+add_person_price number not null,
+discountrate number,
+owner_no number not null,
+constraint pk_rno primary key (room_no),
+constraint fk_ono foreign key (owner_no) references owner
+);
 
--- 사용자 SAMPLE INSERT
-INSERT INTO AC VALUES(SEQ_USER_NO.NEXTVAL,'user01','1990-01-01','pass01','F','홍길동','hogildong@naver.com','01099996777','475-765','강남구','kh정보교육원',DEFAULT,'N','N',0);
+comment on column room.room_no is '객실번호';
+comment on column room.room_name is '객실명';
+comment on column room.room_option is '편의시설';
+comment on column room.room_content is '객실정보';
+comment on column room.min_no is '최소인원';
+comment on column room.max_no is '최대인원';
+comment on column room.off_season_price is '비수기가격';
+comment on column room.on_season_price is '성수기가격';
+comment on column room.week_extra_price is '주말추가가격';
+comment on column room.add_person_price is '인원추가가격';
+comment on column room.discountrate is '할인율';
+comment on column room.owner_no is '사업자번호';
+
+create table reservation (
+rsv_no number,
+user_no number not null,
+room_no number not null,
+check_in date not null,
+check_out date not null,
+rsv_status varchar2(50) not null,
+enter_room varchar2(50) not null,
+rsv_date date not null,
+member number not null,
+total_price number not null,
+constraint pk_rn primary key(rsv_no),
+constraint fk_un foreign key(user_no) references stravel_user,
+constraint fk_rn foreign key(room_no) references room
+);
+comment on column reservation.rsv_no is '예약번호';
+comment on column reservation.user_no is '사용자번호';
+comment on column reservation.room_no is '객실번호';
+comment on column reservation.check_in is '입실날짜';
+comment on column reservation.check_out is '퇴실날짜';
+comment on column reservation.rsv_status is '예약현황';
+comment on column reservation.enter_room is '입실여부';
+comment on column reservation.rsv_date is '신청날짜';
+comment on column reservation.member is '입실인원';
+comment on column reservation.total_price is '총가격';
+
+create table room_review (
+property_review_no number,
+property_review_content varchar2(1000) not null,
+property_review_like number not null,
+user_no number not null,
+rsv_no number not null,
+constraint pk_prn primary key(property_review_no),
+constraint fk_un1 foreign key(user_no) references stravel_user,
+constraint fk_rn1 foreign key(rsv_no) references reservation
+);
+
+comment on column room_review.property_review_no is '후기번호';
+comment on column room_review.property_review_content is '후기내용';
+comment on column room_review.property_review_like is '별점';
+comment on column room_review.user_no is '사용자번호';
+comment on column room_review.rsv_no is '예약번호';
+
+
+
+create table room_img(
+room_img_no number,
+room_img varchar2(100) not null,
+room_no number not null,
+constraint pk_rin1 primary key(room_img_no),
+constraint fk_rn2 foreign key(room_no) references room
+);
+
+comment on column room_img.room_img_no is '이미지번호';
+comment on column room_img.room_img is '이미지';
+comment on column room_img.room_no is '객실번호';
+
+create table owner_img(
+owner_img_no number,
+owner_img varchar2(100) not null,
+owner_no number not null,
+constraint pk_oin primary key(owner_img_no),
+constraint fk_on1 foreign key(owner_no) references owner
+);
+
+comment on column owner_img.owner_img_no is '이미지번호';
+comment on column owner_img.owner_img is '이미지';
+comment on column owner_img.owner_no is '사업자번호';
+
+
+create sequence seq_owner_no nocycle nocache;
+create sequence seq_owner_img_no nocycle nocache;
+create sequence seq_rsv_no nocycle nocache;
+create sequence seq_room_no nocycle nocache;
+create sequence seq_room_img_no nocycle nocache;
+create sequence seq_property_review_no nocycle nocache;
+create sequence seq_user_no nocycle nocache;
+
 
 DROP TABLE COMPANION CASCADE CONSTRAINTS;
 
 CREATE TABLE COMPANION(
 	COMPANION_NO NUMBER NOT NULL,
 	COMPANION_TITLE VARCHAR2(50) NOT NULL,
-	USER_NO NUMBER NOT NULL,
+	companion_writer varchar2(100) not null,
 	COMPANION_CONTENT VARCHAR2(50) NOT NULL,
 	COMPANION_DATE DATE DEFAULT SYSDATE NOT NULL,
 	COMPANION_SCHEDULE VARCHAR2(50),
 	COMPANION_PROGRESS NUMBER NOT NULL,
 
-	CONSTRAINT PK_COMPANIONNO PRIMARY KEY(COMPANION_NO), -- 기본키
-	CONSTRAINT FK_CUSERNO FOREIGN KEY (USER_NO) REFERENCES AC(USER_NO) --외래키
+	CONSTRAINT PK_COMPANIONNO PRIMARY KEY(COMPANION_NO) -- 기본키
+	
 
 );
 
 COMMENT ON COLUMN COMPANION.COMPANION_NO IS '게시판번호';
 COMMENT ON COLUMN COMPANION.COMPANION_TITLE IS '제목';
-COMMENT ON COLUMN COMPANION.USER_NO IS '작성자';
+comment on column companion.companion_writer is '작성자';
 COMMENT ON COLUMN COMPANION.COMPANION_CONTENT IS '내용';
 COMMENT ON COLUMN COMPANION.COMPANION_DATE IS '작성일';
 COMMENT ON COLUMN COMPANION.COMPANION_SCHEDULE IS '일정공유';
@@ -66,7 +204,7 @@ NOCYCLE
 NOCACHE;
 
 --동행 찾기 샘플 INSERT
-INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 1, '즐거운여행해요', '2019-05-08', NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', '2019-05-08', NULL, 1); 
 
 
 
@@ -76,18 +214,19 @@ DROP TABLE COMPANION_REPLY CASCADE CONSTRAINTS;
 CREATE TABLE COMPANION_REPLY(
 COMPANION_REPLY_NO NUMBER NOT NULL,
 COMPANION_NO NUMBER NOT NULL,
-USER_NO NUMBER NOT NULL,
+companion_reply_writer varchar2(100) NOT NULL,
 COMPANION_REPLY_CONTENT VARCHAR2(100) NOT NULL,
+companion_reply_date date default sysdate not null,
 
 CONSTRAINT PK_COMPREPLYNO PRIMARY KEY(COMPANION_REPLY_NO), -- 기본키
-CONSTRAINT FK_CPRCOMPNO FOREIGN KEY (COMPANION_NO) REFERENCES COMPANION(COMPANION_NO),
-CONSTRAINT FK_CPRACUSERNO FOREIGN KEY (USER_NO) REFERENCES AC(USER_NO) --외래키
+CONSTRAINT FK_CPRCOMPNO FOREIGN KEY (COMPANION_NO) REFERENCES COMPANION(COMPANION_NO)
 );
 
 COMMENT ON COLUMN COMPANION_REPLY.COMPANION_REPLY_NO IS '댓글번호';
 COMMENT ON COLUMN COMPANION_REPLY.COMPANION_NO IS '게시판번호';
-COMMENT ON COLUMN COMPANION_REPLY.USER_NO IS '작성자';
+COMMENT ON COLUMN COMPANION_REPLY.companion_reply_writer IS '작성자';
 COMMENT ON COLUMN COMPANION_REPLY.COMPANION_REPLY_CONTENT IS '댓글내용';
+comment on column companion_reply.companion_reply_date is '작성일';
 
 DROP SEQUENCE SEQ_CPREPLY_NO;
 -- 동행찾기댓글번호 시퀀스
@@ -98,4 +237,6 @@ NOCYCLE
 NOCACHE;
 
 -- 동행찾기 댓글 샘플 INSERT
-INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 1, 1, '즐거운여행해요');
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 1, 'kyu3135@naver.com', '즐거운여행해요', sysdate);
+
+commit;

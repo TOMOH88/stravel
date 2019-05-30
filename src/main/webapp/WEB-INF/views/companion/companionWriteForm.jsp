@@ -24,7 +24,7 @@ function cancle(){
 </div><!-- 헤더 -->
 <div><!-- 바디 -->
 <form action="compinsert.do" method="post" enctype="multipart/form-data">
-	<div><input type="hidden" id="user_email" name="user_email" value="${loginMember.useremail }"></div>
+	<div><input type="hidden" id="companion_writer" name="companion_writer" value="${loginMember.user_email }"></div>
 	<div style="padding: 30px; width:100px; height:100px; display:table-cell;">제목</div><div style="width:1000;height:100px; display:table-cell;"><input type="text" id="companion_title" name="companion_title" style="width:1000px;" required></div>
 	<div align="center"><textarea class="compcontents" name="companion_content" placeholder="내용을 입력해주세요" style="width:1000px; height:500px; margin:0px auto;"required></textarea></div>
 	<br>
@@ -40,7 +40,7 @@ function cancle(){
 
 
 
-
+x
 </div><!-- 전체 -->
 
 

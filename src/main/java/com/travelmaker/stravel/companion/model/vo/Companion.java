@@ -8,7 +8,8 @@ public class Companion implements java.io.Serializable{
 	
 	private int companion_no;
 	private String companion_title;
-	private String user_email;
+	private int user_no;
+	private String companion_writer;
 	private String companion_content;
 	private Date companion_date;
 	private String companion_schedule;
@@ -16,12 +17,13 @@ public class Companion implements java.io.Serializable{
 	
 	public Companion() {}
 
-	public Companion(int companion_no, String companion_title, String user_email, String companion_content,
-			Date companion_date, String companion_schedule, int companion_progress) {
+	public Companion(int companion_no, String companion_title, int user_no, String companion_writer,
+			String companion_content, Date companion_date, String companion_schedule, int companion_progress) {
 		super();
 		this.companion_no = companion_no;
 		this.companion_title = companion_title;
-		this.user_email = user_email;
+		this.user_no = user_no;
+		this.companion_writer = companion_writer;
 		this.companion_content = companion_content;
 		this.companion_date = companion_date;
 		this.companion_schedule = companion_schedule;
@@ -44,12 +46,20 @@ public class Companion implements java.io.Serializable{
 		this.companion_title = companion_title;
 	}
 
-	public String getUser_email() {
-		return user_email;
+	public int getUser_no() {
+		return user_no;
 	}
 
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
+	}
+
+	public String getCompanion_writer() {
+		return companion_writer;
+	}
+
+	public void setCompanion_writer(String companion_writer) {
+		this.companion_writer = companion_writer;
 	}
 
 	public String getCompanion_content() {
@@ -90,15 +100,11 @@ public class Companion implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "Companion [companion_no=" + companion_no + ", companion_title=" + companion_title + ", user_email="
-				+ user_email + ", companion_content=" + companion_content + ", companion_date=" + companion_date
-				+ ", companion_schedule=" + companion_schedule + ", companion_progress=" + companion_progress + "]";
+		return "Companion [companion_no=" + companion_no + ", companion_title=" + companion_title + ", user_no="
+				+ user_no + ", companion_writer=" + companion_writer + ", companion_content=" + companion_content
+				+ ", companion_date=" + companion_date + ", companion_schedule=" + companion_schedule
+				+ ", companion_progress=" + companion_progress + "]";
 	}
-
-	
-	
-	
-	
 
 	
 	
