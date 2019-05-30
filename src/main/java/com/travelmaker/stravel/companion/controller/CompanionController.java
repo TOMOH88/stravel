@@ -145,7 +145,18 @@ public class CompanionController {
 		return "redirect:comp.do";
 	}
 	
-
+	@RequestMapping(value="compupview.do", method=RequestMethod.GET)
+	public ModelAndView updateComanionView(ModelAndView mv,
+			@RequestParam(name="companion_no", required=false) int companion_no) {
+		logger.info("동행찾기 글 수정페이지");
+		Companion companion = companionService.selectCompanion(companion_no);
+		
+		mv.setViewName("companion/companionUpdateView");
+		mv.addObject("companion", companion);
+		
+		
+		return mv;
+	}
 	
 	@RequestMapping(value="compupdate.do", method=RequestMethod.POST)
 	public String updateCompanion(Companion companion) {
@@ -181,8 +192,6 @@ public class CompanionController {
 	public String insertCompanionRereply(CompanionReply companionreply) {
 		companionReplyService.insertCompanionRereply(companionreply);
 		return "redirect:compdetail.do?companion_no=" + companionreply.getCompanion_no();
-	
-			
 	}
 
 }

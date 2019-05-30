@@ -10,6 +10,27 @@ function writeform(){
 	location.href="compwrite.do";
 }
 </script>
+<style>
+table tr td {
+   border-bottom: 1px solid rgba(67, 67, 67, 0.8);
+   "
+}
+
+table tr:nth-child(2n) {
+   background-color: white;
+}
+
+table tr:nth-child(2n+1) {
+   background-color: #edf7f8;
+}
+
+table tr:nth-child(1) {
+   background-color: rgba(67, 67, 67);
+}
+table tr td div{
+	padding:5px;
+}
+</style>
 <meta charset="UTF-8">
 
 <title>stravel</title>
@@ -22,38 +43,34 @@ function writeform(){
 <br>
 
 
-<table id="companion" align="center" cellpadding="4px" style="width: 900px; border-collapse:collapse;">
-<tr>
-	<th>번호</th>
-	<td>아이디</td>
-	<th style="width:500px;">제목</th>
-	<th>진행상태</th>
+<table id="companion" align="center" cellpadding="4px;" style="width: 900px; border-collapse:collapse;">
+<tr style="padding:10px;">
+	<td style="width:50px;"><div>번호</div></td>
+	<td style="width:200px;"><div>아이디</div></td>
+	<td style="width:500px;"><div>제목</div></td>
+	<td><div>진행상태</div></td>
 </tr>
 <c:forEach items="${compList }" var="c">
 <tr>
-	<th>${c.companion_no }</th>
-	<td>${c.user_email }</td>
-	<th>
+	<td><div>${c.companion_no }</div></td>
+	<td><div>${c.user_email }</div></td>
+	<td><div>
 	<%-- 로그인 상태일 때만 상세보기 링크 설정함 --%>
 	
 		<a href="compdetail.do?companion_no=${c.companion_no }">${c.companion_title }</a>
 
-	</th>
+	</div></td>
 	<c:if test="${c.companion_progress eq '1'}">
-	<th><button style="background-color:#bcbcbc; color:blue; border:0; width:80px; height:25px; border-radius:5px;">진행중</button></th>
+	<td><div align="center"><button style="background-color:#bcbcbc; color:blue; border:0; width:80px; height:25px; border-radius:5px;">진행중</button></div></td>
 	</c:if>
 	<c:if test="${c.companion_progress eq '2'}">
-	<th><button style="background-color:#bcbcbc; color:red; border:0; width:80px; height:25px; border-radius:5px;">진행완료</button></th>
+	<td><div align="center"><button style="background-color:#bcbcbc; color:red; border:0; width:80px; height:25px; border-radius:5px;">진행완료</button></div></td>
 	</c:if>
 </tr>
 </c:forEach>
-<tr>
-	<th>
-		<button style="background-color:#bcbcbc; color:blue; border:0; width:140px; height:30px; border-radius:5px;" onclick="writeform()">글쓰기</button>
-	</th>
-</tr>
 </table>
-
+<br>
+<div align="center"><button style="background-color:#bcbcbc; color:blue; border:0; width:140px; height:30px; border-radius:5px;" onclick="writeform()">글쓰기</button></div>
 <br><br><br>
 <%-- 페이징 처리 --%>
 <div style="text-align:center;">

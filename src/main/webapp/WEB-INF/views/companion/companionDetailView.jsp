@@ -37,6 +37,8 @@
 
 		</div><!-- 바디 -->
 		<div style="width:100%; "><!-- 풋터-->
+		<div style="padding:10px; display:table-cell;"><a href="compupview.do?companion_no=${companion.companion_no }">수정</a></div>
+		<div style="padding:10px; display:table-cell;"><a href="compdelete.do?companion_no=${companion.companion_no }">삭제</a></div>
 			<div class="container">
 				<form action="compreplyinsert.do?companion_no=${companion.companion_no }" name="companionReply" method="post">
 				<br><br>

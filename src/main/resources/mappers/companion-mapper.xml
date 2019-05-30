@@ -38,7 +38,7 @@
 		order by companion_reply_no asc, companion_reply_ref asc, companion_reply_lev asc, companion_reply_seq asc
 	</select>
 	
-	<select id="selectCompanionList" parameterType="Companion"
+	<select id="selectCompanionList" parameterType="CompanionPage"
 	resultMap="resultCompanion">
 	<![CDATA[
 		select * from (select rownum rnum, companion_no,
@@ -65,7 +65,7 @@
 	
 	<update id="updateCompanion" parameterType="CompanionReply">
 		update companion
-		set companion_title = #{companion_title}
+		set companion_title = #{companion_title},
 			companion_content = #{companion_content}
 		where companion_no = #{companion_no}
 	</update>

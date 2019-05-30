@@ -32,6 +32,7 @@
 		<!-- 김인규 -->
 		<typeAlias type="com.travelmaker.stravel.companion.model.vo.Companion" alias="Companion"/>
 		<typeAlias type="com.travelmaker.stravel.companion.model.vo.CompanionReply" alias="CompanionReply"/>
+		<typeAlias type="com.travelmaker.stravel.companion.model.vo.CompanionPage" alias="CompanionPage"/>
 		<!-- 하종은 -->
 		<typeAlias type="com.travelmaker.stravel.calendar.model.vo.MyCalendar" alias="MyCalendar"/>
 		<!-- 오청 -->
