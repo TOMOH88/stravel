@@ -39,5 +39,9 @@ public class OwnerDao {
 	public int insertOwner(SqlSessionTemplate Session, Owner ow) {
 		return Session.insert("ownerMapper.businessinsert", ow);
 	}
+	public int updateAddress(SqlSessionTemplate Session, Owner owner) {
+		// TODO Auto-generated method stub
+		return Session.update("ownerMapper.updateAddress",owner);
+	}
 
 }

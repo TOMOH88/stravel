@@ -391,19 +391,7 @@
 		<div style="height:300px;">
 		  <!-- Swiper -->
  			 <div class="swiper-container travel">
- 			    <div class="swiper-wrapper">
-  			  	  <div class="swiper-slide travelslide">
-  			   			<div>
-  			   				<img src="${pageContext.request.contextPath }/resources/files/ompimg/사용자이미지.png">
-   			   				<div class="swiper-slide-text" style="text-align:left;">
-   			   					<div style="font-size:x-small;">카테고리</div>
-   		    					<div style="font-size:small; font-weight:bold;">관광지명</div>
-   		    					<div style="font-size:x-small;">가격</div>
-   		    					<div style="font-size:x-small;">평점</div>
- 			   				</div>
-   		    			</div>
-   		   		 	</div>
-  			   </div>
+ 			   
    			  <!-- Add Pagination -->
    			  <div class="swiper-pagination"></div>
    			  <!-- Add Arrows -->
@@ -770,9 +758,34 @@ $(".selectCount").change(function(){
 })
  
 	
-	
+	$(function(){
+		var address = ${owner.owner_address};
+		
+		$.ajax({
+			url:"selectTravels.do",
+			data: {touristspot_address : address},
+			type:"post",
+			dataType:"json",
+			cache:false,
+			success: function(data){
+				var option = "<div class='swiper-wrapper'>";
+				var jsonStr = JSON.stringify(data);
+				var json = JSON.parse(jsonStr);
+				
+				for(var i = 0 ; json.length; i++){
+					option += "<div class='swiper-slide travelslide'>" +
+								"<div><img src='${pageContext.request.contextPath}/resources/files/touristspotImages/$'"+{json.touristSpot_ImageName} +"'" +
+								"<div class='swiper-slide-text'><div style='font-size:x-small;'>"+${json.touristSpotCategoryName}+"</div>" +
+								"<div style='font-size:x-small;'>"+${json.touristSpot_name}+"</div>" +
+								"<div style='font-size:x-small;'>"+${json.touristSpot_open}+"~"+${json.touristSpot_closed}+"</div>" +
+								"</div></div></div>";
+				}
+				$(".swiper-container travel").html($(".swiper-container travel").text() + option + "</div>");
+			}
+		})
+	})
 
-  
+
 </script>
 </html>
 

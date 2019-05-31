@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
@@ -38,12 +38,28 @@
 <link href="${pageContext.request.contextPath }/resources/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
 <style type="text/css">
-@media ( max-width :1405px) {
+/* @media ( max-width :1405px) {
 	.ownerside {
 		display: none;
 	}
+} */
+ul li a{
+ width:120px;
+}
+ul{
+padding:20px;
+}
+ul li {
+width:131px;
+margin:0px auto;
 }
 
+.salesDiv{
+	padding:10px;
+}
+.selesDiv >div{
+	padding-top:10px;
+}
 .rsvck {
 	-moz-box-shadow: inset 0px 39px 0px -24px #99b4ff;
 	-webkit-box-shadow: inset 0px 39px 0px -24px #99b4ff;
@@ -90,16 +106,6 @@ table tr:nth-child(1) {
 	background-color: rgba(67, 67, 67);
 }
 
-ul li a{
- width:120px;
-}
-ul{
-padding:20px;
-}
-ul li {
-width:131px;
-margin:0px auto;
-}
 
 #titlediv {
 	font-size: 1.5em;
@@ -110,8 +116,8 @@ margin:0px auto;
 	border-left: 1px dashed #cfcfcf;
 }
 .ownerbody div img {
-	width:148px;
-	height:148px;
+	width:200px;
+	height:200px;
 
 	
 }
@@ -132,28 +138,10 @@ margin:0px auto;
 	height:100px;
 	padding:20px 50px 20px 50px;
 }
-.swiper-container {
-      width: 100%;
-      height: 100%;
-    }
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-    }
+.titleDiv{
+	padiing:5px;
+	margin:10px 5px 0 0;
+}
 </style>
 </head>
 <body>
@@ -161,7 +149,7 @@ margin:0px auto;
 	<c:import url="../common/header.jsp" />
     </section> --%>
 <div style="width:100%; display:inline-block;">
-			<div class="ownerside" style=" width:240px; height:700px; float:left;" ><!-- ownerside -->
+		<div class="ownerside" style=" width:240px; height:700px; float:left;" ><!-- ownerside -->
 		<div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath }/resources/assets/img/sidebar-5.jpg">
 
     <!--
@@ -197,7 +185,7 @@ margin:0px auto;
                         <p>마이페이지</p>
                         <ul>
                         <li><a href="#">개인정보수정</a></li>
-                        <li><a href="sampStar.do">매출관리</a></li>
+                        <li><a href="roomSales.do">매출관리</a></li>
                     	<li><a href="#">후기관리</a></li>
                         </ul>
                     </a>
@@ -207,7 +195,7 @@ margin:0px auto;
                         <i class="pe-7s-graph"></i>
                         <p>객실관리</p>
                         <ul>
-                        <li><a href="adminfaq.do">객실리스트</a></li>
+                        <li><a href="updateRoomList.do?">객실리스트</a></li>
                         <li><a href="insertRoom.do">객실등록</a></li>
                     	<li><a href="updateRoomList.do?owner_no=${loginMember.owner_no }">객실수정</a></li>
                         </ul>
@@ -218,36 +206,45 @@ margin:0px auto;
     </div>
 	</div><!-- ownerside  -->
 		
-	<div class="ownerbody"  style="width:69%; height:700px; display:table-cell;"><!-- ownerbody -->
+	<div class="ownerbody"  style="width:1300px;margin:auto; height:700px; display:table-cell;"><!-- ownerbody -->
 		<bR><BR><BR>
-		<c:forEach items="${roomList }" var="roomList">
-				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
-					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
-							<div class="swiper-container">
-								<div class="swiper-wrapper">
-								<c:forEach items="${roomImgList }" var="roomImgList">
-									<c:if test="${roomList.room_no eq roomImgList.room_no }"> 
-									<div class="swiper-slide"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/roomImg/${roomImgList.room_img}"></div>
-									</c:if>
-								</c:forEach> 
-									
-								</div>
-								<!-- Add Pagination -->
-								<div class="swiper-pagination"></div>
-								<!-- Add Arrows -->
-								<div class="swiper-button-next roomnext"></div>
-								<div class="swiper-button-prev roomprev"></div>
-							</div>
-						</div>
-					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">${roomList.room_content }<br>최소인원 : ${roomList.min_no }<br>최대인원 : ${roomList.max_no }
-					<div><a class="rsvck" href="updateRoomDetail.do?room_no=${roomList.room_no }">수정하기</a></div>	
-					</div><!-- 각객실당정보 -->
-					
+		
+		<div style="width:900px;  margin:0 auto">
+		<div id="titlediv">MY STRAVEL</div>
+		<hr>
+			<div>
+				<div style="display:table-cell; width:450px;height:450px;">
+				
+				<div>
+					<form action="roomSales.do">
+						<label for="check_in">검색날</label>
+						<input type="date" class="date" name="check_in" placeholder="check_in">
+						<label for="check_out">검색날</label>
+						<input type="date" class="date" name='check_out'>
+					</form>
+				</div>
 				</div>
 				
-			</c:forEach> 
+				<div class="salesDiv" style="display:table-cell; width:450px;height:450px;">
+				<div style="margin:0px auto;">
+					<div class="titleDiv">전달 매출</div>
+					<div class="elDiv">
+						<c:set var="total" value ="0"/>
+						<c:forEach items="${salesList }" var="sl">
+							<c:set var="total" value="${total + sl.total_price }"/>
+						</c:forEach>
+						${total } 
+						
+					</div>
+					
+					<div class="titleDiv">예약건수</div>
+					<div class="elDiv">${fn:length(salesList) }</div>
+				</div>
+			</div>
+		</div>
 	</div><!-- ownerbody -->
 </div>
+ 
 
 <div>
 	<c:import url="../common/footer.jsp" />
@@ -280,12 +277,7 @@ margin:0px auto;
 		
 		
 	<script type="text/javascript">
-	var swiper = new Swiper('.swiper-container', {
-	      navigation: {
-	        nextEl: '.swiper-button-next',
-	        prevEl: '.swiper-button-prev',
-	      },
-	    });
+	
 	</script>
 
 </body>

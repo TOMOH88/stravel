@@ -43,6 +43,10 @@ public class OwnerController {
         System.out.println(paging.getTotal());
         return mv;
 	}
-
+	@RequestMapping("updateAddress")
+	public String updateAddress(Owner owner) {
+		int result =os.updateAddress(owner);
+		return "redirect:ownerMain.do?owner_no="+owner.getOwner_no();
+	}
 
 }

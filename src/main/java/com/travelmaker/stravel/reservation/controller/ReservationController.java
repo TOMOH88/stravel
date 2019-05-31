@@ -60,4 +60,14 @@ public class ReservationController {
 		}
 		return move;
 	}
+	
+	@RequestMapping("roomSales.do")
+	public ModelAndView selectRoomSales(ModelAndView mv, @RequestParam(name="owner_no")int owner_no) {
+		ArrayList<Reservation> list = rsvservice.selectRoomSales(owner_no);
+
+		mv.addObject("salesList",list);
+
+		mv.setViewName("room/ownerRoomSales");
+		return mv;
+	}
 }

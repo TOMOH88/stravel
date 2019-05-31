@@ -24,6 +24,7 @@ public class Owner implements Serializable {
 	private String owner_longitude;//경도
 	private int off_season_price;//최저가
 	private int property_review_like;//별점
+
 	
 	public Owner() {}
 

@@ -12,6 +12,10 @@ public interface ReservationService {
 	int insertRsv(Reservation rs);
 
 	int updateStatus(int rsv_no);
+
+	ArrayList<Reservation> selectRoomSales(int owner_no);
+
+
 	
 	
 

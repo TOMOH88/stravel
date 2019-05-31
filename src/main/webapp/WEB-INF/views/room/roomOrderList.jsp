@@ -144,35 +144,63 @@ ul li a:hover {
 	<c:import url="../common/header.jsp" />
     </section> --%>
 <div style="width:100%; display:inline-block;">
-	<div class="ownerbody"  style="width:69%; height:700px; display:table-cell;"><!-- ownerbody -->
-		<bR><BR><BR>
-		<c:forEach items="${roomList }" var="roomList">
-				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
-					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
-							<div class="swiper-container">
-								<div class="swiper-wrapper">
-								<c:forEach items="${roomImgList }" var="roomImgList">
-									<c:if test="${roomList.room_no eq roomImgList.room_no }"> 
-									<div class="swiper-slide"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/roomImg/${roomImgList.room_img}"></div>
-									</c:if>
-								</c:forEach> 
-									
-								</div>
-								<!-- Add Pagination -->
-								<div class="swiper-pagination"></div>
-								<!-- Add Arrows -->
-								<div class="swiper-button-next roomnext"></div>
-								<div class="swiper-button-prev roomprev"></div>
-							</div>
-						</div>
-					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">${roomList.room_content }<br>최소인원 : ${roomList.min_no }<br>최대인원 : ${roomList.max_no }
-					<div><a class="rsvck" href="updateRoomDetail.do?room_no=${roomList.room_no }">수정하기</a></div>	
-					</div><!-- 각객실당정보 -->
-					
-				</div>
-				
-			</c:forEach> 
-	</div><!-- ownerbody -->
+			<div class="ownerside" style=" width:240px; height:700px; float:left;" ><!-- ownerside -->
+		<div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath }/resources/assets/img/sidebar-5.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="main.do" class="simple-text">
+                    STRAVEL
+                </a>
+            </div>
+            <ul class="nav">
+            	<li class="active">
+            		<a href="ownerLogout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	</li>
+				<li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>예약관리</p>
+                        <ul>
+                        <li><a href="orderList.do?owner_no=${loginMember.owner_no }">오늘 예약건</a></li>
+                    	<li><a href="passOrderList.do?owner_no=${loginMember.owner_no }">지난 예약건</a></li>
+                    	</ul>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>마이페이지</p>
+                        <ul>
+                        <li><a href="#">개인정보수정</a></li>
+                        <li><a href="sampStar.do">매출관리</a></li>
+                    	<li><a href="#">후기관리</a></li>
+                        </ul>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>객실관리</p>
+                        <ul>
+                        <li><a href="adminfaq.do">객실리스트</a></li>
+                        <li><a href="insertRoom.do">객실등록</a></li>
+                    	<li><a href="updateRoomList.do?owner_no=${loginMember.owner_no }">객실수정</a></li>
+                        </ul>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+	</div><!-- ownerside  -->
+
 	
     
 		
@@ -210,6 +238,9 @@ ul li a:hover {
 								<c:if test="${orderList.rsv_status eq '결제완료' && orderList.enter_room eq '입실대기' }">
 								<a href="updateStatus.do?rsv_no=${orderList.rsv_no }&owner_no=${orderList.owner_no}" class="rsvck">입실확인</a>
 								</c:if>
+								<c:if test="${orderList.rsv_status eq '결제완료' && orderList.enter_room eq '입실완료' }">
+								입실완료
+								</c:if>
 								</td>
 							</tr>
 							</c:forEach>
@@ -236,8 +267,8 @@ ul li a:hover {
 			</div>
 	</div><!-- ownerbody -->
 </div>
-<div class="footer" style="border:1px solid black; width: 100%; height:200px; position:absolute; bottom:0;">
-	
+<div>
+	<c:import url="../common/footer.jsp" />
 </div>
 
 	<script

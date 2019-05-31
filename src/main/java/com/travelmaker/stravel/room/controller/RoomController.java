@@ -20,6 +20,7 @@ import com.travelmaker.stravel.common.UUIDUtil;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
 import com.travelmaker.stravel.owner.model.vo.OwnerReview;
+import com.travelmaker.stravel.owner.model.vo.TouristVo;
 import com.travelmaker.stravel.reservation.model.vo.Reservation;
 import com.travelmaker.stravel.room.model.service.RoomService;
 import com.travelmaker.stravel.room.model.vo.Room;
@@ -75,6 +76,7 @@ public class RoomController {
 	@RequestMapping("ownerMain.do")
 	public ModelAndView ownerMain(ModelAndView mv, @RequestParam(name="owner_no") int owner_no) {
 		ArrayList<Reservation> list = rs.selectOrderList(owner_no);
+		System.out.println(list);
 		mv.addObject("orderList",list);
 		mv.setViewName("room/ownerMain");
 		return mv;
@@ -83,6 +85,7 @@ public class RoomController {
 	@RequestMapping("orderList.do")
 	public ModelAndView orderList(ModelAndView mv, @RequestParam(name="owner_no") int owner_no) {
 		ArrayList<Reservation> list = rs.selectOrderList(owner_no);
+		System.out.println(list);
 		mv.addObject("orderList",list);
 		mv.setViewName("room/roomOrderList");
 		return mv;
@@ -151,5 +154,16 @@ public class RoomController {
 		return "room/updateOwner";
 	}
 	
+	@RequestMapping("selectTravels.do")
+	public @ResponseBody ArrayList<TouristVo> selectTourList(@RequestParam (name="touristspot_address")String str){
+		String address = str.substring(0,7);
+		TouristVo tv = new TouristVo();
+		tv.setTouristSpot_address(address);
+		ArrayList<TouristVo> list = rs.selectTourList(tv);
+		ArrayList<TouristVo> result = new ArrayList<>();
+		result.add(new TouristVo("투어","관악산","www.naver.com","4시","12시","메이즈 랜드-1jetsrfmqftk6.jpg","서울시 관악구 봉천동"));
+		return result;
+	}
+
 
 }

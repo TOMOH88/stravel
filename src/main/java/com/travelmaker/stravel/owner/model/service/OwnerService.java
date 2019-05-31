@@ -21,5 +21,6 @@ public interface OwnerService {
 
 	int insertOwner(Owner ow);
 
+	int updateAddress(Owner owner);
 
 }

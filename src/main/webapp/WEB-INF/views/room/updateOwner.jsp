@@ -29,6 +29,13 @@
 	href="${pageContext.request.contextPath }/resources/css/jquery-ui.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/swiper.min.css">
+	<!-- Animation library for notifications   -->
+<link href="${pageContext.request.contextPath }/resources/assets/css/animate.min.css" rel="stylesheet"/>
+<!--  Light Bootstrap Table core CSS    -->
+<link href="${pageContext.request.contextPath }/resources/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+<!--     Fonts and icons     -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+<link href="${pageContext.request.contextPath }/resources/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
 <style type="text/css">
 @media ( max-width :1405px) {
@@ -82,19 +89,15 @@ table tr:nth-child(2n+1) {
 table tr:nth-child(1) {
 	background-color: rgba(67, 67, 67);
 }
-
+ul li a{
+ width:120px;
+}
+ul{
+padding:20px;
+}
 ul li {
-	font-size: 1.5em;
-	font-weight: bold;
-	margin-bottom: 5px;
-}
-
-ul li a:link, ul li a:visited {
-	color: #888888;
-}
-
-ul li a:hover {
-	font-size: 1.1em;
+width:131px;
+margin:0px auto;
 }
 
 #titlediv {
@@ -131,39 +134,67 @@ ul li a:hover {
 </style>
 </head>
 <body>
-<section class="section-margin">
+<%-- <section class="section-margin">
 	<c:import url="../common/header.jsp" />
-    </section>
+    </section> --%>
 <div style="width:100%; display:inline-block;">
-<div class="ownerbody"  style="width:69%; height:700px; display:table-cell;"><!-- ownerbody -->
-		<bR><BR><BR>
-		<c:forEach items="${roomList }" var="roomList">
-				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
-					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
-							<div class="swiper-container">
-								<div class="swiper-wrapper">
-								<c:forEach items="${roomImgList }" var="roomImgList">
-									<c:if test="${roomList.room_no eq roomImgList.room_no }"> 
-									<div class="swiper-slide"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/roomImg/${roomImgList.room_img}"></div>
-									</c:if>
-								</c:forEach> 
-									
-								</div>
-								<!-- Add Pagination -->
-								<div class="swiper-pagination"></div>
-								<!-- Add Arrows -->
-								<div class="swiper-button-next roomnext"></div>
-								<div class="swiper-button-prev roomprev"></div>
-							</div>
-						</div>
-					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">${roomList.room_content }<br>최소인원 : ${roomList.min_no }<br>최대인원 : ${roomList.max_no }
-					<div><a class="rsvck" href="updateRoomDetail.do?room_no=${roomList.room_no }">수정하기</a></div>	
-					</div><!-- 각객실당정보 -->
-					
-				</div>
-				
-			</c:forEach> 
-	</div><!-- ownerbody -->
+		<div class="ownerside" style=" width:240px; height:700px; float:left;" ><!-- ownerside -->
+		<div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath }/resources/assets/img/sidebar-5.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="main.do" class="simple-text">
+                    STRAVEL
+                </a>
+            </div>
+            <ul class="nav">
+            	<li class="active">
+            		<a href="ownerLogout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	</li>
+				<li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>예약관리</p>
+                        <ul>
+                        <li><a href="orderList.do?owner_no=${loginMember.owner_no }">오늘 예약건</a></li>
+                    	<li><a href="passOrderList.do?owner_no=${loginMember.owner_no }">지난 예약건</a></li>
+                    	</ul>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>마이페이지</p>
+                        <ul>
+                        <li><a href="#">개인정보수정</a></li>
+                        <li><a href="sampStar.do">매출관리</a></li>
+                    	<li><a href="#">후기관리</a></li>
+                        </ul>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>객실관리</p>
+                        <ul>
+                        <li><a href="adminfaq.do">객실리스트</a></li>
+                        <li><a href="insertRoom.do">객실등록</a></li>
+                    	<li><a href="updateRoomList.do?owner_no=${loginMember.owner_no }">객실수정</a></li>
+                        </ul>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+	</div><!-- ownerside  -->
+
 		
 	<div class="ownerbody"  style="width:69%; height:700px; display:table-cell;"><!-- ownerbody -->
 		<bR><BR><BR>
@@ -173,8 +204,8 @@ ul li a:hover {
 
 <div  class="bottombar" style="position:fixed; bottom:0px; width:100%; height:71px; border-top:1px solid black; z-index:10;background:white; opacity:0.8; ">
 </div>
-<div class="footer" style="border:1px solid black; width: 100%; height:200px; position:absolute;">
-	
+<div>
+	<c:import url="../common/footer.jsp" />
 </div>
 
 	<script

@@ -42,6 +42,16 @@
 	<result property = "owner_no" column="owner_no"/> 
 </resultMap>
 
+<resultMap id="resultTourist" type="touristVo">
+	<result property = "touristSpotCategortName;"  column = "touristspotcategoryname" />
+	<result property = "touristSpot_name"  column = "touristspot_name" />
+	<result property = "touristSpot_homepage"  column = "touristspot_homepage" />
+	<result property = "touristSpot_open"  column = "touristspot_open" />
+	<result property = "touristSpot_closed"  column = "touristspot_closed" />
+	<result property = "touristSpot_imageName"  column = "touristspot_imagename" />
+	<result property = "touristSpot_address" column ="touristspot_address"/>
+</resultMap>
+
 
 
 <!-- 객실등록 쿼리문 나중에 owner_no 수정해야됨 -->
@@ -128,7 +138,27 @@ where room_no in (
 	select * from room_img where room_no = #{room_no}
 </select>
 
+<select id="selectRoomSales" resultMap="resultReservation">
+select *
+from reservation
+where to_char(check_in,'yy/mm') = to_char(add_months(sysdate,-1),'yy/mm')
+and room_no in (select room_no
+                from room
+                where owner_no = #{owner_no})
+order by check_in
+</select>
+
+<select id="selectTourList" resultMap="resultTourist" parameterType="String">
+	select touristspotcategoryname, touristspot_name, touristspot_open, touristspot_closed, touristspot_imagename, touristspot_homepage, touristspot_adderss
+from tb_touristspot
+join tb_touristspotimages using (touristspot_no)
+join tb_touristspotcategory using (touristspotcategorycode)
+where touristspot_address like '%'||#{touristspot_address}
+</select>
+
 <update id="updateStatus" parameterType="rsvVo">
 	update reservation set enter_room = '입실완료' where rsv_no = #{rsv_no} 
 </update>
+
+
 </mapper>
