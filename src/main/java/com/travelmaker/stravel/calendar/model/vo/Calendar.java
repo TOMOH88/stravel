@@ -6,18 +6,28 @@ public class Calendar implements Serializable{
 	private static final long serialVersionUID = 13323245L;
 	
 	private int calendar_no;
+	private String calendar_title;
 	private int touristopt_no;
 	//private int restaurant_no;
 	private int mycalendar_no;
 	
 	public Calendar() {}
 
-	public Calendar(int calendar_no, int touristopt_no, /*int restaurant_no,*/ int mycalendar_no) {
+	public Calendar(int calendar_no, String calendar_title, int touristopt_no, /*int restaurant_no,*/ int mycalendar_no) {
 		super();
 		this.calendar_no = calendar_no;
+		this.calendar_title = calendar_title;
 		this.touristopt_no = touristopt_no;
 		//this.restaurant_no = restaurant_no;
 		this.mycalendar_no = mycalendar_no;
+	}
+	
+	public String getCalendar_title() {
+		return calendar_title;
+	}
+
+	public void setCalendar_title(String calendar_title) {
+		this.calendar_title = calendar_title;
 	}
 
 	public int getCalendar_no() {
@@ -58,7 +68,8 @@ public class Calendar implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Calendar [calendar_no=" + calendar_no + ", touristopt_no=" + touristopt_no /*", restaurant_no="*/
-				/*+ restaurant_no*/ + ", mycalendar_no=" + mycalendar_no + "]";
+		return "Calendar [calendar_no=" + calendar_no + ", calendar_title=" + calendar_title + ", touristopt_no="
+				+ touristopt_no + ", mycalendar_no=" + mycalendar_no + "]";
 	}
+
 }

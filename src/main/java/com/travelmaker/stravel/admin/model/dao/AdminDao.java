@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.admin.model.dao;
+﻿package com.travelmaker.stravel.admin.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;

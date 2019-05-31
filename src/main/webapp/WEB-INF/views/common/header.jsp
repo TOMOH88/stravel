@@ -63,7 +63,7 @@ var marker;
 	  		return;
 	  	});
 			
-	  }  */
+	  } */
 	$(document).on('ready',function() {
 		//암호와 암호확인의 기록값이 일치하는지 확인
 		$("input#userpwd2").blur(function() {
@@ -155,7 +155,7 @@ var marker;
 		if (!re.test(useremail)) {
 			alert("아이디는 영어소문자와 영어대문자, " + "숫자, 기호문자(#,_,!,*)만 사용할 수 있습니다.");
 			$("#useremail").select();
-			return false;
+			return false;empty
 		}
 		if (!re.test(userpwd)) {
 			alert("암호는 영어소문자와 영어대문자, " + "숫자, 기호문자(#,_,!,*)만 사용할 수 있습니다.");
@@ -201,6 +201,11 @@ var marker;
 		});
 		return false; //submit 못하게 함
 	}
+	
+	function moveLogin(){
+		alert("로그인을 해주세요");
+	}
+	
 </script>
     
 <title>header</title>
@@ -242,7 +247,6 @@ var marker;
                   aria-expanded="false">커뮤니티</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="comp.do">동행찾기</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tripboard.do">일정자랑</a></li>
                   <li class="nav-item"><a class="nav-link" href="pay1.do">결제뷰</a></li>
                 </ul>
 							</li>			
@@ -259,9 +263,12 @@ var marker;
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">마이페이지</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="mycalendar.do">나의일정</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">예약내역</a></li>
-                  <li class="nav-item"><a class="nav-link" href="myinfo.do?uno=${loginMember.user_no }">개인정보수정</a></li>
+                <c:if test="${!empty loginMember }">
+                  <li class="nav-item"><a class="nav-link" href="myinfo.do">개인정보수정</a></li>
+                  </c:if>
+                  <c:if test="${empty loginMember }">
+                  <li class="nav-item"><a class="nav-link" onclick="moveLogin();">개인정보수정</a></li>
+                  </c:if>
                 </ul>
 				</li>
 				</c:if>
@@ -300,7 +307,7 @@ var marker;
 	<br>
 	
 <!--  회원가입 시작 -->
-<div class="modal fade" id="modal" role="dialog">
+<div class="modal fade" id="modal" role="dialog" style="display:none;">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -397,7 +404,7 @@ var marker;
 						</form>
 						</article>
 					</div>
-					<div id="business" class="tab-pane fade">
+					<div id="business" class="tab-pane fade" style="display:none;">
 					<article class="card-body">
 							<!-- Login Form Code Here -->
 							<form action="binsert.do" method="post">
@@ -465,7 +472,7 @@ var marker;
 			<div class="modal-content">
 				<div class="modal-header">
 					<h3 class="text-primary">S.Travel 로그인</h3>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>					
+					<button type="button" class="close" data-dismiss="login">&times;</button>					
 				</div>
 				<div class="modal-body">
 					<ul class="nav nav-tabs">
@@ -501,7 +508,7 @@ var marker;
 								</form>
 							</article>
 						</div>
-						<div id="login1" class="tab-pane fade">
+						<div id="login1" class="tab-pane fade" style="display:none;">
 							 <form action="ologin.do" method="post">
 							<!-- Login Form Code Here -->
 						  <div class="form-group">
@@ -520,7 +527,7 @@ var marker;
 		</div>
 	</div>
 
-						<div id="login1" class="tab-pane fade">
+						<div id="login1" class="tab-pane fade" style="display:none;">
 							<!-- Login Form Code Here -->
 						  <form action="ologin.do" method="post">
 									<div class="form-group">

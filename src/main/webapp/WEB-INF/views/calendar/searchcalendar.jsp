@@ -7,9 +7,6 @@
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-function movecView(){
-	location.href="cview.do";
-}
 
 var markerArray = [];
 var iConArray = [];
@@ -159,9 +156,34 @@ $(function(){
 <div></div>
 <div class="row" style="background:gray;">
 <div class="col-md-2" style="margin:auto; text-align:center;">
-<button type="button" class="btn btn-info btn-sm" onclick="movecView();">
- 상세일정만들기
-</button>
+<button class="btn btn-info btn-sm" onclick="location.href='cview.do'">상세일정만들기</button>
+<!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal1">
+상세일정 만들기
+</button> -->
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">일정 만들기</h5>
+        <button type="button" class="닫기" data-dismiss="modal" aria-label="닫기">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="cinsert.do" method="post">
+      <div class="modal-body">
+      <label>제목
+		<input type="text" name="mycalendar_title" placeholder="제목을 입력하세요" class="form-control">
+		</label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">닫기</button>
+        <input type="submit" value="저장" class="btn btn-secondary btn-sm">
+      </div>
+      </form>
+    </div>
+  </div>
+</div> -->
 </div>
 <div class="col-md-10" id="map" style="height:530px; position:static"></div>
 </div>

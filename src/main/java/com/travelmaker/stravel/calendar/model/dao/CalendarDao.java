@@ -6,12 +6,11 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.travelmaker.stravel.calendar.model.vo.Calendar;
 import com.travelmaker.stravel.calendar.model.vo.MyCalendar;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
-import com.travelmaker.stravel.reservation.model.vo.Reservation;
-import com.travelmaker.stravel.room.model.vo.Room;
-import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.restaurant.model.vo.Restaurant;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Repository("CalendarDao")
@@ -57,4 +56,37 @@ public class CalendarDao {
 		return (ArrayList<Owner>)list;
 	}
 
+	public int insertClaendar(SqlSessionTemplate sqlSession, Calendar ca) {
+		return sqlSession.insert("mycalendarMapper.insertCalendar", ca);
+	}
+
+	public ArrayList<Calendar> selectCalendarList(SqlSessionTemplate sqlSession) {
+		List<Calendar> list = sqlSession.selectList("mycalendarMapper.selectCalendarList");
+		return (ArrayList<Calendar>)list;
+	}
+
+	public int deleteDay(SqlSessionTemplate sqlSession, int calendar_no) {
+		return sqlSession.delete("mycalendarMapper.deleteDay", calendar_no);
+	}
+
+	public Calendar selectOneCalendar(SqlSessionTemplate sqlSession, int calendar_no) {
+		return sqlSession.selectOne("mycalendarMapper.selectOneDay", calendar_no);
+	}
+
+	public int insertMyCalendarTitle(SqlSessionTemplate sqlSession, MyCalendar mc) {
+		return sqlSession.insert("mycalendarMapper.insertTitlecalendar", mc);
+	}
+
+	public int updateMyCalendarTitle(SqlSessionTemplate sqlSession, MyCalendar mc) {
+		return sqlSession.update("mycalendarMapper.updateTitlecalendar", mc);
+	}
+
+	public MyCalendar selectoneMyCalendar(SqlSessionTemplate sqlSession, String mycalendar_title) {
+		return sqlSession.selectOne("mycalendarMapper.selectOneTitle", mycalendar_title);
+	}
+
+	public ArrayList<Restaurant> selectRestList(SqlSessionTemplate sqlSession) {
+		List<Restaurant> list = sqlSession.selectList("mycalendarMapper.selectrestList");
+		return (ArrayList<Restaurant>)list;
+	}
 }

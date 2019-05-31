@@ -35,6 +35,7 @@
 		<typeAlias type="com.travelmaker.stravel.companion.model.vo.CompanionPage" alias="CompanionPage"/>
 		<!-- 하종은 -->
 		<typeAlias type="com.travelmaker.stravel.calendar.model.vo.MyCalendar" alias="MyCalendar"/>
+		<typeAlias type="com.travelmaker.stravel.calendar.model.vo.Calendar" alias="Calendar"/>
 		<!-- 오청 -->
 		<typeAlias type="com.travelmaker.stravel.room.model.vo.Room" alias="roomVo"/>
 		<typeAlias type="com.travelmaker.stravel.room.model.vo.RoomImg" alias="roomImgVo"/>
