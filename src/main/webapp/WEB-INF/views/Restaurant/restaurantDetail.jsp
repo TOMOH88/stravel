@@ -259,7 +259,7 @@ ${list.restaurant_content }
 			<th width = "10%">${review.restaurant_review_date }</th>
 			<th>
 				<c:if test="${loginMember.user_name eq review.restaurant_review_writer }">
-					&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" onclick="location.href='reviewdelete.do?review_no=${review.restaurant_review_no}&restaurant_no=${restaurant.restaurant_no }'">리뷰 삭제</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" onclick="location.href='reviewdelete.do?review_no=${review.restaurant_review_no}&restaurant_no=${list.restaurant_no }'">리뷰 삭제</button>
 				</c:if>
 			</th>
 		</tr>
