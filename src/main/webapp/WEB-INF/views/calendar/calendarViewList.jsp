@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -186,6 +186,111 @@ $(function(){
 		}
 	});
 }); */
+				contentArray[i] = [data.tour[i].touristspot_content];
+				
+				
+				addMarker(no, data, contentArray, location, nameArray)
+				
+				}
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert(jqXHR.responseText.errorThrown)
+		}
+	});
+});
+
+/*     function initMap(no, data , name, latitude, longitude) {
+    	var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도
+        mapOptions = { 
+         zoom:11, 
+         center:mapLocation 
+        } 
+    	
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions); 
+        var infowindow = new google.maps.InfoWindow(); 
+        var marker = [];
+        
+        for (i = 0; i < no.length; i++) { 
+        	var icon = '';
+           marker[i] = new google.maps.Marker({ 
+           position: new google.maps.LatLng(latitude[i], longitude[i]), 
+           map:   map, 
+           title: '제주도' , 
+          }); 
+          var contentString = 'Title on Load'; 
+          var infowindow = [];
+          infowindow = new google.maps.InfoWindow({ 
+           content: contentString, 
+           maxWidth: 160 
+          }); 
+          
+          infowindow.open(map, marker[i]); 
+     
+          // Event that closes the Info Window with a click on the map 
+          google.maps.event.addListener(map, 'click', function() { 
+           infowindow.close(); 
+          }); 
+          
+          google.maps.event.addListener(marker, 'click', (function(marker, i) { 
+           return function() { 
+            var contentString = 'Title on Click'; 
+            infowindow.setContent(contentString); 
+            infowindow.open(map, marker); 
+           } 
+          })(marker, i)); 
+         } 
+        } 
+    google.maps.event.addDomListener(window, 'load', initMap); */
+    var markers = [];
+    var iterator = 0;
+    var map;
+     
+  
+    function initialize() {
+        var mapOptions = {
+            zoom: 11,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            center: new google.maps.LatLng('33.321349', '126.684723')
+        };
+     
+        map = new google.maps.Map(document.getElementById('map'),mapOptions);
+     
+        for (var i = 0; i < markerArray.length; i++) {
+            addMarker();
+        }
+    }
+     
+     
+    // 마커 추가
+    function addMarker(no, data, contentArray, location, nameArray) {
+    	
+    	var title = nameArray[iterator];
+        var marker = new google.maps.Marker({
+            position: markerArray[iterator],
+            map: map,
+            draggable: false,
+            icon: iConArray[iterator],
+            title : "'" + nameArray[iterator] + "'"
+        });
+        markers.push(marker);
+     
+        var infowindow = new google.maps.InfoWindow({
+          content: "'" + contentArray[iterator] + "'"
+        });
+     
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+        iterator++;
+        
+        google.maps.event.addListener(map, 'click', function() { 
+            infowindow.close(); 
+           }); 
+    }
+     
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+
 </script>
 <title>stravel</title>
 <style type="text/css">
@@ -230,7 +335,6 @@ ${status.count} ${c.calendar_title }
 </div>
 <div class="col-md-2" style="overflow:scroll; height:530px;">
 <c:forEach var="tl" items="${tour}">
-<div class="row">
 <img src="${pageContext.request.contextPath }/resources/files/touristspotImages/${tl.rename_thumnail }" style="width:100%; height:100px;">
 <div class="col-xl-12">
 <div class="row">
@@ -255,6 +359,37 @@ ${status.count} ${c.calendar_title }
 </c:forEach>
 </div>
 <div class="col-md-8" id="map" style="height:530px; position:static;">
+</div>
+<div class="col-md-2" style="overflow:scroll; height:530px;">
+<c:forEach var="tl" items="${tour}">
+<div class="row">
+<img src="${pageContext.request.contextPath }/resources/files/touristspotImages/${tl.rename_thumnail }" style="width:100%; height:100px;">
+<div class="col-xl-12">
+<div class="row">
+<a href="touristspotDetail.do?tno=${tl.touristspot_no }">${tl.touristspot_name }</a>
+</div>
+</div>
+<div class="col-xl-12">
+<div class="row">
+<font style="font-size:8pt;">${tl.touristspot_content }</font>
+</div>
+<div class="row">
+<div class="col-xl-6">
+<div class="row">
+<font style="font-size:8pt;">${tl.touristspot_tel }</font>
+</div>
+<div class="row">
+<a href="${tl.touristspot_homepage }"><font style="font-size:8pt;">사이트 이동</font></a>
+</div>
+</div>
+<div class="col-xl-6" align="center" style="margin:auto;">
+<button>추가</button>
+</div>
+</div>
+</div>
+</div>
+</c:forEach>
+</div>
 </div>
 </div>
 </div>

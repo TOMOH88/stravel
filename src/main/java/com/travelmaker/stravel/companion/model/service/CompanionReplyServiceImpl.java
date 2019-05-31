@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.companion.model.service;
+﻿package com.travelmaker.stravel.companion.model.service;
 
 import java.util.ArrayList;
 

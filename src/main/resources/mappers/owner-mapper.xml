@@ -103,6 +103,8 @@ where owner_no = #{owner_no}
 	<select id="selectOLogin" parameterType="ownerVo" resultType="ownerVo">
 		select * from owner where OWNER_LICENSE_NO = #{owner_license_no}
 	</select>
+		select * from owner where OWNER_LICENSE_NO = #{owner_license_no}
+	</select>
 </mapper>
 
 

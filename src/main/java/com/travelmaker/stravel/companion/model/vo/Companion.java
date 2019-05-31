@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.companion.model.vo;
+﻿package com.travelmaker.stravel.companion.model.vo;
 
 import java.sql.Date;
 

@@ -97,4 +97,34 @@ public class RestaurantServiceImpl implements RestaurantService{
 		return restDao.insertRestaurantReview(mybatisSession, review);
 	}
 
+	@Override
+	public int updateReviewBlindStatus(int review_no) {
+		// TODO Auto-generated method stub
+		return restDao.updateReviewBlindStatus(mybatisSession, review_no);
+	}
+
+	@Override
+	public int updateReviewDeleteStatus(int review_no) {
+		// TODO Auto-generated method stub
+		return restDao.updateReviewDeleteStatus(mybatisSession, review_no);
+	}
+
+	@Override
+	public int updateRestaurantStatus(int restaurant_no) {
+		// TODO Auto-generated method stub
+		return restDao.updateRestaurantStatus(mybatisSession, restaurant_no);
+	}
+
+	@Override
+	public int reviewDelete(int review_no) {
+		// TODO Auto-generated method stub
+		return restDao.updateReviewDelete(mybatisSession, review_no);
+	}
+
+	@Override
+	public ArrayList<Restaurant> selectRestaurantCategoryList(String category) {
+		// TODO Auto-generated method stub
+		return restDao.selectRestaurantCategoryList(mybatisSession,category);
+	}
+
 }

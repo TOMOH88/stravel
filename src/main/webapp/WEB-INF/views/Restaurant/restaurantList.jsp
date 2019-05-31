@@ -41,27 +41,26 @@
     <div class="row d-flex justify-content-center">
     <div class="col-md-2">
    <div class="blog_right_sidebar">
-   <center><button onclick="moveWritePage(); return false;">글쓰기</button></center>
    <aside class="single_sidebar_widget post_category_widget">
                         <h4 class="widget_title"><a href="restaurantlist.do" class="d-flex">식당</a></h4>
                         <ul class="list cat-list">
                             <li>
-                                <a href="seafoodall.do" class="d-flex">
+                                <a href="restaurantcategory.do?category=B003" class="d-flex">
                                     <p>Seafood</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="koreanfoodall.do" class="d-flex">
+                                <a href="restaurantcategory.do?category=B001" class="d-flex">
                                     <p>Koreanfood</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="barbecuefoodall.do" class="d-flex">
+                                <a href="restaurantcategory.do?category=B002" class="d-flex">
                                     <p>Barbecue</p>
                                 </a>
                             </li>
                               <li>
-                                <a href="caferestaurantall.do" class="d-flex">
+                                <a href="restaurantcategory.do?category=B004" class="d-flex">
                                     <p>Cafe/Dessert</p>
                                 </a>
                             </li>

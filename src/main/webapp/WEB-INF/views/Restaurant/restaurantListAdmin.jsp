@@ -43,25 +43,25 @@
    <div class="blog_right_sidebar">
    
    <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title"><a href="restaurantlist.do" class="d-flex">식당</a></h4>
+                        <h4 class="widget_title"><a href="restaurantlistadmin.do" class="d-flex">식당</a></h4>
                         <ul class="list cat-list">
                             <li>
-                                <a href="seafoodalladmin.do" class="d-flex">
+                                <a href="restaurantcategoryadmin.do?category=B003" class="d-flex">
                                     <p>Seafood</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="koreanfoodalladmin.do" class="d-flex">
+                               <a href="restaurantcategoryadmin.do?category=B001" class="d-flex">
                                     <p>Koreanfood</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="barbecuefoodalladmin.do" class="d-flex">
+                               <a href="restaurantcategoryadmin.do?category=B002" class="d-flex">
                                     <p>Barbecue</p>
                                 </a>
                             </li>
                               <li>
-                                <a href="caferestaurantalladmin.do" class="d-flex">
+                                <a href="restaurantcategoryadmin.do?category=B004" class="d-flex">
                                     <p>Cafe/Dessert</p>
                                 </a>
                             </li>
@@ -135,7 +135,7 @@
       </div>
       </div>
 </section>
-<c:import url="../common/afooter.jsp"/>
+<c:import url="../common/afooter.jsp"/>|
 </body>
 </head>
 <!-- <style type="text/css">

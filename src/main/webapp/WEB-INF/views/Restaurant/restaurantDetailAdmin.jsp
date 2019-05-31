@@ -162,10 +162,12 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 				<c:import url="../common/adminHeader.jsp" />
 				<h1 id="f1">${list.restaurant_name }</h1>	
 					<div class="landmarkcategory" style="width: 100%;">
-			    		<c:forEach items="${imageList }" var="image">
-			    			<div class = "landmarklist">
-			    				<img alt="${image.restaurant_sq }" src = "${pageContext.request.contextPath }/resources/img/restaurant/${image.restaurant_imagename}" width = "200" height = "200">
-			    			</div>
+			    		<c:forEach items="${image }" var="imagelist">
+							<div class="landmarklist">
+								<img alt="${imagelist.restaurant_sq }"
+									src="${ pageContext.request.contextPath }/resources/img/restaurant/${imagelist.restaurant_imagename }"
+									width="200" height="200">
+							</div>
 			   			</c:forEach>
 					</div>
 					<hr>
@@ -226,17 +228,21 @@ ${list.restaurant_content }
 </div>
 </div>
 </div>
+<div align = "center">
+	<button onclick="location.href='updaterestaurant.do?restaurant_no=${list.restaurant_no}'">수정하기</button>
+	<button onclick = "location.href='deleterestaurant.do?restaurant_no=${list.restaurant_no}'">삭제하기</button>
+</div>
 <br>
 <div class="container" id="c2">
 댓글 : ${fn:length(review)}
 <table>
 	<c:forEach items="${review }" var="review">
 		<tr>
-			<th>${review.restaurant_review_writer }</th>
+			<th width = "10%">${review.restaurant_review_writer }</th>
 				<td width="80%">${review.restaurant_review_content }</td>
-			<th>${review.restaurant_review_date }</th>
-			<th><input type = "button" value = "블라인드"></th>
-			<th><input type = "button" value= "삭제"></th>
+			<th width="10%">${review.restaurant_review_date }</th>
+			<th><button onclick = "location.href='restaurantreviewBlind.do?review_no=${review.restaurant_review_no}&restaurant_no=${list.restaurant_no }'">블라인드</button></th>
+			<th><button onclick = "location.href='restaurantreviewDelete.do?review_no=${review.restaurant_review_no}&restaurant_no=${list.restaurant_no }'">삭제하기</button></th>
 		</tr>
 	</c:forEach>
 </table>

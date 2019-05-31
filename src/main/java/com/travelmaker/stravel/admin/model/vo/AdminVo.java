@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.admin.model.vo;
+﻿package com.travelmaker.stravel.admin.model.vo;
 
 import java.io.Serializable;
 import java.sql.Date;

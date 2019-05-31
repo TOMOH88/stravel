@@ -77,4 +77,28 @@ public class RestaurantDao {
 		return session.insert("restaurantMapper.insertRestaurantReview", review);
 	}
 
+	public int updateReviewBlindStatus(SqlSessionTemplate session, int review_no) {
+		// TODO Auto-generated method stub
+		return session.update("restaurantMapper.updateReviewBlindStatus", review_no);
+	}
+
+	public int updateReviewDeleteStatus(SqlSessionTemplate session, int review_no) {
+		// TODO Auto-generated method stub
+		return session.update("restaurantMapper.updateReviewDeleteStatus", review_no);
+	}
+
+	public int updateRestaurantStatus(SqlSessionTemplate session, int restaurant_no) {
+		// TODO Auto-generated method stub
+		return session.update("restaurantMapper.updateRestaurantStatus", restaurant_no);
+	}
+
+	public int updateReviewDelete(SqlSessionTemplate session, int review_no) {
+		// TODO Auto-generated method stub
+		return session.update("restaurantMapper.updateReviewDeleteStatus", review_no);
+	}
+
+	public ArrayList<Restaurant> selectRestaurantCategoryList(SqlSessionTemplate session, String category) {
+		List<Restaurant> list = session.selectList("restaurantMapper.selectRestaurantCategoryList", category);
+		return (ArrayList<Restaurant>) list;	
+	}
 }

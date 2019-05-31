@@ -62,6 +62,8 @@ var marker;
 	  		
 	  		return;
 	  	});
+
+	  	});
 			
 	  } */
 	$(document).on('ready',function() {
@@ -247,6 +249,7 @@ var marker;
                   aria-expanded="false">커뮤니티</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="comp.do">동행찾기</a></li>
+                  <li class="nav-item"><a class="nav-link" href="pay1.do">결제뷰</a></li>
                   <li class="nav-item"><a class="nav-link" href="pay1.do">결제뷰</a></li>
                 </ul>
 							</li>			
@@ -445,6 +448,11 @@ var marker;
 								<span class="input-group-text"> 
 									<i class="fa fa-phone"></i>
 								</span>
+						  <div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> 
+							 <i class="fa fa-envelope"></i>
+							</span>
 							</div>
 								<input name="owner_phone" class="form-control"	placeholder="대표휴대전화를 입력하세요" type="text">
 						</div>
@@ -455,6 +463,88 @@ var marker;
 						    </form>
 						  </article>
 						 </div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<i class="fa fa-lock"></i>
+								</span>
+							</div>
+							<input class="form-control" id="owner_password" placeholder="비밀번호를 다시입력하세요" type="password" required>
+						</div>
+						<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-user"></i>
+									</span>
+								</div>
+								<input name="owner_name" class="form-control" placeholder="대표자명을 입력하세요" type="text" required>
+							</div>
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i class="fa fa-user"></i>
+									</span>
+								</div>
+								<input name="owner_companyName" class="form-control" placeholder="업체명을 입력하세요" type="text" required>
+							</div>
+<!-- 							<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-phone"></i>
+								</span>
+							</div>
+								<input name="owner_telephone" class="form-control"	placeholder="대표전화번호를 입력하세요" type="number">
+						</div> -->
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-phone"></i>
+								</span>
+							</div>
+								<input name="owner_phone" class="form-control"	placeholder="대표휴대전화를 입력하세요" type="number">
+						</div>
+		<!-- 				<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> 
+							 <i class="fa fa-envelope"></i>
+							</span>
+						</div>
+						<input name="owner_account" class="form-control"	placeholder="계좌번호를 입력하세요" type="text" required>
+					</div> -->
+					<!-- <div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> 
+							 <i class="fa fa-envelope"></i>
+							</span>
+						</div>
+						<input name="owner_address" id="owner_address" class="form-control"	placeholder="주소를 입력하세요" type="text" required>
+						<input type="button" onclick="geoCode();" value="검색" class="btn btn-info btn-sm">
+						<div id="map" style="height:200px; widht:200px;"></div>
+					</div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
+    async defer></script> -->
+    					<!--  <input type="hidden" name="owner_latitude" id="owner_latitude">
+						  <input type="hidden" name="owner_longitude" id="owner_longitude"> -->
+						  <div class="row">
+						  <div class="col-xl-3">
+						  <input type="radio" name="owner_category" value="호텔">호텔
+						  </div>
+						  <div class="col-xl-3">
+						  <input type="radio" name="owner_category" value="펜션">펜션 
+						  </div>
+						  <div class="col-xl-3">
+						  <input type="radio" name="owner_category" value="풀빌라">풀빌라 
+						  </div>
+						  <div class="col-xl-3">
+						  <input type="radio" name="owner_category" value="리조트">리조트
+						  </div>
+						  </div>
+						  <div style="text-align:center;">
+						  <br>
+						    <input type="submit" value="사업자 회원가입" class="btn btn-info btn-sm">
+						    </div>
+						  </div>
+						  </form>
+						  </article>
 					</div>
 				</div>
 				<div class="modal-footer">

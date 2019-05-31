@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.restaurant.controller;
+﻿package com.travelmaker.stravel.restaurant.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,6 +36,63 @@ public class RestaurantController {
 	private RestaurantService resService;
 	@Autowired
 	private RestaurantCategoryService rescateService;
+	@RequestMapping("restaurantcategory.do")
+	public ModelAndView restaurantCategory(ModelAndView mv,@RequestParam(name = "category") String category) {
+		if(category.equals("B001")) {
+			ArrayList<Restaurant> koreanfood = resService.selectRestaurantCategoryList(category);
+			mv.addObject("restaurant", koreanfood);
+			mv.addObject("category", "한식");
+		}
+		if(category.equals("B002")) {
+			ArrayList<Restaurant> barbecue = resService.selectRestaurantCategoryList(category);
+			mv.addObject("restaurant", barbecue);
+			mv.addObject("category", "바베큐");
+		}
+		if(category.equals("B003")) {
+			ArrayList<Restaurant> seafood = resService.selectRestaurantCategoryList(category);
+			mv.addObject("restaurant", seafood);
+			mv.addObject("category", "시푸드");
+		}
+		if(category.equals("B004")) {
+			ArrayList<Restaurant> cafe = resService.selectRestaurantCategoryList(category);
+			mv.addObject("restaurant", cafe);
+			mv.addObject("category", "카페/디저트");
+		}
+		mv.setViewName("Restaurant/restaurantCategory");
+		return mv;
+	}
+	@RequestMapping("restaurantcategoryadmin.do")
+	public ModelAndView restaurantCategoryAdmin(ModelAndView mv,@RequestParam(name = "category") String category) {
+		if(category.equals("B001")) {
+			ArrayList<Restaurant> koreanfood = resService.selectRestaurantCategoryList(category);
+			mv.addObject("restaurant", koreanfood);
+			mv.addObject("category", "한식");
+		}
+		if(category.equals("B002")) {
+			ArrayList<Restaurant> barbecue = resService.selectRestaurantCategoryList(category);
+			mv.addObject("restaurant", barbecue);
+			mv.addObject("category", "바베큐");
+		}
+		if(category.equals("B003")) {
+			ArrayList<Restaurant> seafood = resService.selectRestaurantCategoryList(category);
+			mv.addObject("restaurant", seafood);
+			mv.addObject("category", "시푸드");
+		}
+		if(category.equals("B004")) {
+			ArrayList<Restaurant> cafe = resService.selectRestaurantCategoryList(category);
+			mv.addObject("restaurant", cafe);
+			mv.addObject("category", "카페/디저트");
+		}
+		mv.setViewName("Restaurant/restaurantCategoryAdmin");
+		return mv;
+	}
+	@RequestMapping("reviewdelete.do")
+	public ModelAndView reviewDelete(ModelAndView mv,@RequestParam(name = "review_no") int review_no, @RequestParam(name = "restaurant_no") int restaurant_no) {
+		System.out.println(review_no);
+		int result = resService.reviewDelete(review_no);
+		mv.setViewName("redirect:restaurantdetail.do?restaurant_no=" + restaurant_no);
+		return mv;
+	}
 	
 	@RequestMapping("seafoodall.do")
 	public ModelAndView seafoodAllList(ModelAndView mv) {
@@ -44,6 +101,7 @@ public class RestaurantController {
 		mv.setViewName("Restaurant/seafoodRestaurantAll");
 		return mv;
 	}
+	
 	@RequestMapping("seafoodalladmin.do")
 	public ModelAndView seafoodAllListAdmin(ModelAndView mv) {
 		ArrayList<Restaurant> SeafoodList = resService.SeafoodList();
@@ -163,7 +221,7 @@ public class RestaurantController {
 	}
 	@RequestMapping(value = "insertrestaurant.do", method = RequestMethod.POST)
 	public String insertRestaurant(Restaurant rest, MultipartHttpServletRequest resimRequest, HttpServletRequest request) {
-		String path = "Restaurant/insertRestaurant";
+		String path = "redirect:restaurantlistadmin.do";
 		String savePath = request.getSession().getServletContext().getRealPath("resources/img/restaurant");
 		ArrayList<RestaurantImage> imageList = new ArrayList<RestaurantImage>();
 		rest.setRestaurant_no(resService.selectRestaurantNo());
@@ -224,6 +282,40 @@ public class RestaurantController {
 		int result = resService.insertRestaurantReview(review);
 		System.out.println("result" + result);
 		return "redirect:restaurantdetail.do?restaurant_no=" + review.getRestaurant_no();
+	}
+	@RequestMapping("restaurantreviewBlind.do")
+	public ModelAndView reviewBlindAdmin(ModelAndView mv,@RequestParam(name = "review_no") int review_no,@RequestParam(name="restaurant_no") int restaurant_no) {
+		System.out.println(review_no);
+		int result = resService.updateReviewBlindStatus(review_no);
+		mv.setViewName("redirect:restaurantdetailadmin.do?restaurant_no="+restaurant_no);
+		return mv;
+	}
+	@RequestMapping("restaurantreviewDelete.do")
+	public ModelAndView reviewDeleteAdmin(ModelAndView mv, @RequestParam(name = "review_no") int review_no, @RequestParam(name = "restaurant_no") int restaurant_no) {
+		System.out.println(review_no);
+		int result = resService.updateReviewDeleteStatus(review_no);
+		mv.setViewName("redirect:restaurantdetailadmin.do?restaurant_no="+restaurant_no);
+		return mv;
+	}
+	@RequestMapping("updaterestaurant.do")
+	public ModelAndView restaurantUpdateAdmin(ModelAndView mv, @RequestParam(name = "restaurant_no") int restaurant_no) {
+		Restaurant restaurant = resService.restaurantDetail(restaurant_no);
+		ArrayList<RestaurantImage> imageList = resService.selectRestaurantImage(restaurant_no);
+		ArrayList<RestaurantReview> reviewList = resService.selectRestaurantReview(restaurant_no);
+		ArrayList<RestaurantCategory> categoryList = rescateService.categoryList();
+		mv.addObject("imagelist", imageList);
+		mv.addObject("reviewlist", reviewList);
+		mv.addObject("categorylist", categoryList);
+		mv.addObject("restaurant", restaurant);
+		mv.setViewName("Restaurant/restaurantUpdateAdmin");
+		return mv;
+	}
+	@RequestMapping("deleterestaurant.do")
+	public ModelAndView restaurantDeleteAdmin(ModelAndView mv, @RequestParam(name = "restaurant_no") int restaurant_no) {
+		System.out.println(restaurant_no);
+		int result = resService.updateRestaurantStatus(restaurant_no);
+		mv.setViewName("redirect:restaurantlistadmin.do");
+		return mv;
 	}
 	
 }

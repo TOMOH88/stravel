@@ -74,7 +74,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="#">
+                    <a href="restaurantlistadmin.do">
                         <i class="pe-7s-graph"></i>
                         <p>식당관리</p>
                     </a>

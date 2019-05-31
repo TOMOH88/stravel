@@ -84,6 +84,7 @@ public class CalendarController {
 		}else {
 			return "home";
 		}
+		}
 	}
 	
 	@RequestMapping(value="mycalendar.do", method=RequestMethod.GET)
@@ -179,6 +180,31 @@ public class CalendarController {
 	public String cinupPage(MyCalendar mc, @RequestParam("mycalendar_title") String mycalendar_title) {
 		calendarService.calendarcinUpdate(mc);
 		return "redirect:mycalendar.do";
+	}
+	
+	@RequestMapping(value="cview.do", method= RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public @ResponseBody ModelAndView atourPage(ModelAndView mv) {
+		ArrayList<TouristspotVo> tour = calendarService.selectTour();
+			mv.addObject("tour", tour);
+			mv.addObject("code", "ok");
+			mv.setViewName("jsonView");
+		return mv;
+	}
+	
+	@RequestMapping(value="aview.do", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public @ResponseBody ModelAndView alodgmentPage(ModelAndView mv) {
+		ArrayList<Owner> owner = calendarService.selectOwner();
+		mv.addObject("owner", owner);
+		mv.addObject("code", "ok");
+		mv.setViewName("jsonView");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="acalendar.do")
+	public String acalendarMove(Calendar ca) {
+		
+		return "calendar/calendarViewList";
 	}
 }
 	

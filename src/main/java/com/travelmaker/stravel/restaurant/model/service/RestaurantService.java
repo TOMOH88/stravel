@@ -35,5 +35,17 @@ public interface RestaurantService {
 	int selectRestaurantReviewNO();
 
 	int insertRestaurantReview(RestaurantReview review);
+
+	int updateReviewBlindStatus(int review_no);
+
+	int updateReviewDeleteStatus(int review_no);
+
+	int updateRestaurantStatus(int restaurant_no);
+
+	int reviewDelete(int review_no);
+
+	ArrayList<Restaurant> selectRestaurantCategoryList(String category);
+
+	
 	
 }

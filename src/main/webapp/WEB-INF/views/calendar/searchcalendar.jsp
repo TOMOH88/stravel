@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -59,6 +59,82 @@ $(function(){
         for (i = 0; i < no.length; i++) { 
         	var icon = '';
            marker[i] = new google.maps.Marker({ 
+           position: new google.maps.LatLng(latitude[i], longitude[i]), 
+           map:   map, 
+           title: '제주도' , 
+          }); 
+          var contentString = 'Title on Load'; 
+          var infowindow = [];
+          infowindow = new google.maps.InfoWindow({ 
+           content: contentString, 
+           maxWidth: 160 
+          }); 
+          
+          infowindow.open(map, marker[i]); 
+     
+          // Event that closes the Info Window with a click on the map 
+          google.maps.event.addListener(map, 'click', function() { 
+           infowindow.close(); 
+          }); 
+          
+          google.maps.event.addListener(marker, 'click', (function(marker, i) { 
+           return function() { 
+            var contentString = 'Title on Click'; 
+            infowindow.setContent(contentString); 
+            infowindow.open(map, marker); 
+           } 
+          })(marker, i)); 
+         } 
+        } 
+    google.maps.event.addDomListener(window, 'load', initMap); */
+    var markers = [];
+    var iterator = 0;
+    var map;
+     
+  
+    function initialize() {
+        var mapOptions = {
+            zoom: 11,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            center: new google.maps.LatLng('33.321349', '126.684723')
+        };
+     
+        map = new google.maps.Map(document.getElementById('map'),mapOptions);
+     
+        for (var i = 0; i < markerArray.length; i++) {
+            addMarker();
+        }
+    }
+     
+     
+    // 마커 추가
+    function addMarker(no, data, contentArray, location, nameArray) {
+    	
+    	var title = nameArray[iterator];
+        var marker = new google.maps.Marker({
+            position: markerArray[iterator],
+            map: map,
+            draggable: false,
+            icon: iConArray[iterator],
+            title : "'" + nameArray[iterator] + "'"
+        });
+        markers.push(marker);
+     
+        var infowindow = new google.maps.InfoWindow({
+          content: "'" + contentArray[iterator] + "'"
+        });
+     
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+        iterator++;
+        
+        google.maps.event.addListener(map, 'click', function() { 
+            infowindow.close(); 
+           }); 
+    }
+     
+    google.maps.event.addDomListener(window, 'load', initialize);
            position: new google.maps.LatLng(latitude[i], longitude[i]), 
            map:   map, 
            title: '제주도' , 
