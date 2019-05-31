@@ -58,10 +58,10 @@ var marker;
 </script>
 </head>
 <body>
-<c:import url="../common/header.jsp" />
+<c:import url="../common/adminHeader.jsp" />
 <section class = "section-margin">
 	<div class = "container">
-		<h1 align="center">관광지 글쓰기 페이지</h1>
+		<h1 align="center">식당 글쓰기 페이지</h1>
 		<form action="insertrestaurant.do" method = "post" enctype = "multipart/form-data">
 		<input type = "hidden" name = "restaurant_writer" value = "고상훈">
 		<table class = "table">
@@ -99,11 +99,11 @@ var marker;
 			</tr>
 			<tr>
 				<th>식당 영업시작 시간</th>
-				<td><input type = "text" name = "restaurant_openinghours" class = "form-control" required></td>
+				<td><input type = "time" name = "restaurant_openinghours" class = "form-control" required></td>
 			</tr>
 			<tr>
 				<th>식당 영업마감 시간</th>
-				<td><input type = "text" name = "restaurant_closehours" class = "form-control" required></td>
+				<td><input type = "time" name = "restaurant_closehours" class = "form-control" required></td>
 			</tr>
 			<tr>
 				<th>식당 전화번호</th>
@@ -125,5 +125,6 @@ var marker;
 			</form>			
 	</div>
 </section>
+<c:import url="../common/afooter.jsp" />
 </body>
 </html>

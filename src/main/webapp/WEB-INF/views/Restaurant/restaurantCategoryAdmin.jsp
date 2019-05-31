@@ -58,7 +58,7 @@
 	<div class="landmarkcategory">
 		<c:forEach items = "${restaurant }" var = "restaurant">
 			<div class="landmarklist">
-				<a href = "restaurantdetail.do?restaurant_no=${restaurant.restaurant_no }">
+				<a href = "restaurantdetailadmin.do?restaurant_no=${restaurant.restaurant_no }">
 				<img src="${pageContext.request.contextPath }/resources/img/restaurant/${restaurant.rename_thumnail}" alt = "${restaurant.rename_thumnail}" width = "150" height = "150"></a>
 					<div>
 						<span>${restaurant.restaurant_name }</span>
