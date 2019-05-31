@@ -1,4 +1,4 @@
-﻿package com.travelmaker.stravel.calendar.model.dao;
+package com.travelmaker.stravel.calendar.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,6 @@ import com.travelmaker.stravel.calendar.model.vo.MyCalendar;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
 import com.travelmaker.stravel.restaurant.model.vo.Restaurant;
-import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
-import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Repository("CalendarDao")
