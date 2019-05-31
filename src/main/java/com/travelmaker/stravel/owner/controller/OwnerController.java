@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -79,6 +80,7 @@ public class OwnerController {
 	@RequestMapping("moveExtraUpdate.do")
 	public String moveExtraUpdate() {
 		return "room/extraUpdate";
+	}
 	@RequestMapping(value="binsert.do", method=RequestMethod.POST)
 	public String binsertPage(Owner ow) {
 		System.out.println("ow : " + ow);
