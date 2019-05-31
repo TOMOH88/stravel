@@ -266,7 +266,7 @@ var marker;
 				</li>
 				</c:if>
               <li class="nav-item">
-								<c:if test="${empty loginMember }">
+								<c:if test="${empty loginMember and empty loginOwner}">
 									<button type="button" class="btn btn-info" data-toggle="modal"
 										data-target="#modal">
 										<b>회원가입</b>
@@ -423,7 +423,7 @@ var marker;
 									<i class="fa fa-lock"></i>
 								</span>
 							</div>
-							<input class="form-control" id="owner_password" placeholder="비밀번호를 다시입력하세요" type="password" required>
+							<input class="form-control" id="owner_password1" placeholder="비밀번호를 다시입력하세요" type="password" required>
 						</div>
 						<div class="form-group input-group">
 								<div class="input-group-prepend">
@@ -432,72 +432,22 @@ var marker;
 								</div>
 								<input name="owner_name" class="form-control" placeholder="대표자명을 입력하세요" type="text" required>
 							</div>
-							<div class="form-group input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-user"></i>
-									</span>
-								</div>
-								<input name="owner_companyName" class="form-control" placeholder="업체명을 입력하세요" type="text" required>
-							</div>
-<!-- 							<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> 
-									<i class="fa fa-phone"></i>
-								</span>
-							</div>
-								<input name="owner_telephone" class="form-control"	placeholder="대표전화번호를 입력하세요" type="number">
-						</div> -->
+							
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> 
 									<i class="fa fa-phone"></i>
 								</span>
 							</div>
-								<input name="owner_phone" class="form-control"	placeholder="대표휴대전화를 입력하세요" type="number">
+								<input name="owner_phone" class="form-control"	placeholder="대표휴대전화를 입력하세요" type="text">
 						</div>
-		<!-- 				<div class="form-group input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"> 
-							 <i class="fa fa-envelope"></i>
-							</span>
-						</div>
-						<input name="owner_account" class="form-control"	placeholder="계좌번호를 입력하세요" type="text" required>
-					</div> -->
-					<!-- <div class="form-group input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"> 
-							 <i class="fa fa-envelope"></i>
-							</span>
-						</div>
-						<input name="owner_address" id="owner_address" class="form-control"	placeholder="주소를 입력하세요" type="text" required>
-						<input type="button" onclick="geoCode();" value="검색" class="btn btn-info btn-sm">
-						<div id="map" style="height:200px; widht:200px;"></div>
-					</div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
-    async defer></script> -->
-    					<!--  <input type="hidden" name="owner_latitude" id="owner_latitude">
-						  <input type="hidden" name="owner_longitude" id="owner_longitude"> -->
-						  <div class="row">
-						  <div class="col-xl-3">
-						  <input type="radio" name="owner_category" value="호텔">호텔
-						  </div>
-						  <div class="col-xl-3">
-						  <input type="radio" name="owner_category" value="펜션">펜션 
-						  </div>
-						  <div class="col-xl-3">
-						  <input type="radio" name="owner_category" value="풀빌라">풀빌라 
-						  </div>
-						  <div class="col-xl-3">
-						  <input type="radio" name="owner_category" value="리조트">리조트
-						  </div>
-						  </div>
 						  <div style="text-align:center;">
 						  <br>
 						    <input type="submit" value="사업자 회원가입" class="btn btn-info btn-sm">
 						    </div>
-						  </div>
-						  </form>
+						    </form>
 						  </article>
+						 </div>
 					</div>
 				</div>
 				<div class="modal-footer">

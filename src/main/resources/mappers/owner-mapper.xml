@@ -97,10 +97,8 @@ where owner_no = #{owner_no}
 	</select>
 	
 	<insert id="businessinsert" parameterType="ownerVo">
-		insert into owner(owner_no, owner_license_no, owner_password, owner_name, owner_companyName, owner_telephone,
-		owner_phone, owner_account, owner_address, owner_category, owner_approve, owner_latitude, owner_longitude) 
-		values(seq_owner_no.nextval, #{owner_license_no}, #{owner_password}, #{owner_name}, #{owner_companyName}, 
-		#{owner_telephone}, #{owner_phone}, #{owner_account}, #{owner_address}, #{owner_category}, '승인', #{owner_latitude}, #{owner_longitude})
+		insert into owner(OWNER_NO,OWNER_LICENSE_NO,OWNER_PASSWORD,OWNER_NAME,OWNER_TELEPHONE,OWNER_APPROVE)
+		values(seq_owner_no.nextval, #{owner_license_no}, #{owner_password}, #{owner_name}, #{owner_telephone},'비승인')
 	</insert>
 	<select id="selectOLogin" parameterType="ownerVo" resultType="ownerVo">
 		select * from owner where OWNER_LICENSE_NO = #{owner_license_no}
