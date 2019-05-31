@@ -182,13 +182,15 @@ margin:0px auto;
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="main.do" class="simple-text">
+                <a href="ownerMain.do?owner_no=${loginOwner.owner_no }" class="simple-text">
                     STRAVEL
                 </a>
             </div>
             <ul class="nav">
             	<li class="active">
-            		<a href="ownerLogout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	<c:if test="${!empty loginOwner }">
+            		<a href="logout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	</c:if>
             	</li>
 				<li class="active">
                     <a href="#">
@@ -200,28 +202,39 @@ margin:0px auto;
                     	</ul>
                     </a>
                 </li>
-                <li class="active">
+                <%-- <li class="active">
                     <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>마이페이지</p>
                         <ul>
-                        <li><a href="#">개인정보수정</a></li>
-                        <li><a href="sampStar.do">매출관리</a></li>
+                        <li><a href="roomSales.do?owner_no=${loginOwner.owner_no }">매출관리</a></li>
                     	<li><a href="#">후기관리</a></li>
                         </ul>
                     </a>
-                </li>
+                </li> --%>
                 <li class="active">
                     <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>객실관리</p>
                         <ul>
-                        <li><a href="adminfaq.do">객실리스트</a></li>
                         <li><a href="insertRoom.do">객실등록</a></li>
-                    	<li><a href="updateRoomList.do?owner_no=${loginMember.owner_no }">객실수정</a></li>
+                    	<li><a href="updateRoomList.do?owner_no=${loginOwner.owner_no }">객실수정</a></li>
                         </ul>
                     </a>
                 </li>
+                <%-- <li class="active">
+                <a href ="moveExtraUpdate.do"style="cursor:pointer" >
+                	<c:if test="${ loginOwner.owner_approve eq '승인' }">
+                	<i class="pe-7s-graph"></i>
+                	<a><p>사업자<br>주소등록하기</p></a>
+                	</c:if>
+                	<c:if test="${loginOwner.owner_approve eq '미승인' }">
+                	<i class="pe-7s-graph"></i>
+                	<p>가입승인 대기중</p>
+                	</c:if>
+                	<i class="pe-7s-graph"></i>
+                	</a>
+                </li> --%>
             </ul>
     	</div>
     </div>
@@ -233,8 +246,8 @@ margin:0px auto;
 		<div style="width:900px;border:1px solid black; margin:0 auto; background:#edf7f8; padding:50px;">
 			<div style="text-align:center; font-size:2em; margin-bottom:20px; color:black; font-weight:bold; ">객실등록</div>
 			<div id="isroom" style="margin:20px; border:1px solid #cfcfcf; background:white;padding:30px;">
-			<form action="insertRoomSub.do" method="post" enctype="multipart/form-data" >
-				
+			<form action="updateRoomSub.do" method="post" enctype="multipart/form-data" >
+				<input type="hidden" name="room_no" value="${room.room_no }">
 				<div>객실정보</div>
 				<hr>
 				<div>객실명 : <input type="text" name="room_name"  value="${room.room_name }"></div>
@@ -252,7 +265,7 @@ margin:0px auto;
 				<div>성수기 :<input type="text" name="on_season_price" value="${room.on_season_price }"></div>
 				<div>주말추가 :<input type="text" name="week_extra_price" value="${room.week_extra_price }"></div>
 				<div>인원추가 :<input type="text" name="add_person_price" value="${room.add_person_price }"></div>
-				<div>할인율 : <input type="number" min="10" max="100" step="5" name="discountrate" value="${room.discountrate }">%</div>
+				<div>할인율 : <input type="number" min="0" max="100" step="5" name="discountrate" value="${room.discountrate }">%</div>
 				<br>
 				<div>편의시설</div>
 				<hr>
@@ -318,7 +331,7 @@ margin:0px auto;
 				</div><br><Br>
 				<div>사진 </div>
 				<div>
-				<input multiple="multiple" type="file" name="roomImg" class="multi with-preview"/>
+				
 					
 				</div>
 				<hr>

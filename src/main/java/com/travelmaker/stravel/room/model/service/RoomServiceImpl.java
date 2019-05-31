@@ -108,6 +108,12 @@ public  class RoomServiceImpl implements RoomService {
 		return rd.selectTourList(mybatisSession, address);
 	}
 
+	@Override
+	public int updateRoomSub(Room room) {
+		// TODO Auto-generated method stub
+		return rd.updateRoomSub(mybatisSession,room);
+	}
+
 
 
 

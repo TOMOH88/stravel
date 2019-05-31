@@ -161,13 +161,15 @@ table tr:nth-child(1) {
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="main.do" class="simple-text">
+                <a href="ownerMain.do?owner_no=${loginOwner.owner_no }" class="simple-text">
                     STRAVEL
                 </a>
             </div>
             <ul class="nav">
             	<li class="active">
-            		<a href="ownerLogout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	<c:if test="${!empty loginOwner }">
+            		<a href="logout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	</c:if>
             	</li>
 				<li class="active">
                     <a href="#">
@@ -179,28 +181,39 @@ table tr:nth-child(1) {
                     	</ul>
                     </a>
                 </li>
-                <li class="active">
+                <%-- <li class="active">
                     <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>마이페이지</p>
                         <ul>
-                        <li><a href="#">개인정보수정</a></li>
-                        <li><a href="roomSales.do">매출관리</a></li>
+                        <li><a href="roomSales.do?owner_no=${loginOwner.owner_no }">매출관리</a></li>
                     	<li><a href="#">후기관리</a></li>
                         </ul>
                     </a>
-                </li>
+                </li> --%>
                 <li class="active">
                     <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>객실관리</p>
                         <ul>
-                        <li><a href="updateRoomList.do?">객실리스트</a></li>
                         <li><a href="insertRoom.do">객실등록</a></li>
-                    	<li><a href="updateRoomList.do?owner_no=${loginMember.owner_no }">객실수정</a></li>
+                    	<li><a href="updateRoomList.do?owner_no=${loginOwner.owner_no }">객실수정</a></li>
                         </ul>
                     </a>
                 </li>
+                <%-- <li class="active">
+                <a href ="moveExtraUpdate.do"style="cursor:pointer" >
+                	<c:if test="${ loginOwner.owner_approve eq '승인' }">
+                	<i class="pe-7s-graph"></i>
+                	<a><p>사업자<br>주소등록하기</p></a>
+                	</c:if>
+                	<c:if test="${loginOwner.owner_approve eq '미승인' }">
+                	<i class="pe-7s-graph"></i>
+                	<p>가입승인 대기중</p>
+                	</c:if>
+                	<i class="pe-7s-graph"></i>
+                	</a>
+                </li> --%>
             </ul>
     	</div>
     </div>

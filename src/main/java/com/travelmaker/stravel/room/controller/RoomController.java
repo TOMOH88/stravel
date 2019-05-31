@@ -155,6 +155,11 @@ public class RoomController {
 	public String updateOwner() {
 		return "room/updateOwner";
 	}
+/*	@RequestMapping("updateRoomSub.do")
+	public String updateRoomSub(Room room) {
+		int result = rs.updateRoomSub(room);
+		return "redirect:updateRoomList.do?owner_no=" + room.getOwner_no();
+	}*/
 	
 	/*@RequestMapping("selectTravels.do")
 	public @ResponseBody ArrayList<TouristVo> selectTourList(@RequestParam (name="touristspot_address")String str){

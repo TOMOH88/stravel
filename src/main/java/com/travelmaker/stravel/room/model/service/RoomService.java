@@ -64,6 +64,10 @@ public interface RoomService {
 
 
 
+	int updateRoomSub(Room room);
+
+
+
 
 	
 }

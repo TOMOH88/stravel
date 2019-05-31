@@ -85,6 +85,11 @@ public class RoomDao {
 		return (ArrayList<TouristVo>)list;
 	}
 
+	public int updateRoomSub(SqlSessionTemplate Session, Room room) {
+		// TODO Auto-generated method stub
+		return Session.update("roomMapper.updateRoomSub",room);
+	}
+
 	
 
 	
