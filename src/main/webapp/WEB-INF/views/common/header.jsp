@@ -32,8 +32,6 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-uni.css" media="all" type="text/css"/>
 <!-- <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script> -->
 <script type="text/javascript">
-
-	  } */
 	$(document).on('ready',function() {
 		//암호와 암호확인의 기록값이 일치하는지 확인
 		$("input#userpwd2").blur(function() {
