@@ -9,6 +9,15 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/paging.js"></script>
 <title>stravel</title>
 </head>
+<script type="text/javascript">
+$(function() {
+	'<c:if test="${!empty p.searchCategory}">'
+	var category = '${p.searchCategory}';
+	$("#searchCategory").val(category).prop("selected", true);
+	'</c:if>'
+});
+
+</script>
 <body>
 <c:import url="../common/adminHeader.jsp" />
 <div class="content">

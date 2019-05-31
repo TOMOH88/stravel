@@ -61,7 +61,7 @@ $(function(){
                                     <th class="success">TITLE</th>
                                      <td>
                                     <input type="text" name="notice_title" class="form-control" required="required">
-                                    <input type="hidden" name="notice_writer" value="amdin01"/> 
+                                    <input type="hidden" name="notice_writer" value="${loginAdmin.admin_name }"/> 
                                     </td>
                                     </tr>
                                     <tr>

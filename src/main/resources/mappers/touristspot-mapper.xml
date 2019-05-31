@@ -81,7 +81,7 @@
 	<select id="selectTotalPaging" resultType="_int" parameterType="pagingVo">
 		SELECT COUNT(1) FROM TB_TOURISTSPOT WHERE TOURISTSPOT_DELETESTATUS = 'N' 
 		<if test="searchCategory != null and searchCategory !=''">
-		${searchCategory} like '%'||#{items}||'%'
+		AND ${searchCategory} like '%'||#{items}||'%'
 		</if> 
 	</select>
 	<select id="selectTouristspotDetail" parameterType="_int" resultType="TouristspotVo">
