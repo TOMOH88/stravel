@@ -80,8 +80,8 @@ public class RoomDao {
 		return (ArrayList<Reservation>)list;
 	}
 
-	public ArrayList<TouristVo> selectTourList(SqlSessionTemplate Session, TouristVo tv) {
-		List<TouristVo> list = Session.selectList("roomMapper.selectTourList",tv);
+	public ArrayList<TouristVo> selectTourList(SqlSessionTemplate Session, String address) {
+		List<TouristVo> list = Session.selectList("roomMapper.selectTourList",address);
 		return (ArrayList<TouristVo>)list;
 	}
 

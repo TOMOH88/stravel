@@ -158,7 +158,9 @@ table tr:nth-child(1) {
             </div>
             <ul class="nav">
             	<li class="active">
-            		<a href="ownerLogout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	<c:if test="${!empty loginOwner }">
+            		<a href="logout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	</c:if>
             	</li>
 				<li class="active">
                     <a href="#">
@@ -175,7 +177,7 @@ table tr:nth-child(1) {
                         <i class="pe-7s-graph"></i>
                         <p>마이페이지</p>
                         <ul>
-                        <li><a href="#">개인정보수정</a></li>
+                        <li><a href="update">개인정보수정</a></li>
                         <li><a href="roomSales.do?owner_no=${loginOwner.owner_no }">매출관리</a></li>
                     	<li><a href="#">후기관리</a></li>
                         </ul>
@@ -193,12 +195,12 @@ table tr:nth-child(1) {
                     </a>
                 </li>
                 <li class="active">
-                <a style="cursor:pointer" >
-                	<c:if test="${loginOwner eq '승인' }">
+                <a href ="moveExtraUpdate.do"style="cursor:pointer" >
+                	<c:if test="${ loginOwner.owner_approve eq '승인' }">
                 	<i class="pe-7s-graph"></i>
                 	<a><p>사업자<br>주소등록하기</p></a>
                 	</c:if>
-                	<c:if test="${loginOwner eq '미승인' }">
+                	<c:if test="${loginOwner.owner_approve eq '미승인' }">
                 	<i class="pe-7s-graph"></i>
                 	<p>가입승인 대기중</p>
                 	</c:if>
@@ -254,18 +256,6 @@ table tr:nth-child(1) {
 	</div><!-- ownerbody -->
 </div>
 
-<div style="width:100%; height:100%; background:rgba(67,67,67,0.5); display:none; "class="updateModal">
-	<div style="width:500px; height:700px; background:white; margin:auto; position:fixed;">
-	<form action="updateAddress.do?owner_no=${loginOwner.owner_no }">
-		<label>주소
-		<input type="text" name="owner_address" id="owner_address">
-		<input type="button" onclick="geoCode();" value="검색">
-		</label><div id="map" style="height:200px; widht:200px;"></div>
-		<input type="hidden" name="owner_latitude" id="owner_latitude">
-		<input type="hidden" name="owner_longitude" id="owner_longitude">
-	</form>
-	</div>
-</div>
 
 
 
@@ -273,7 +263,8 @@ table tr:nth-child(1) {
 <div>
 	<c:import url="../common/footer.jsp" />
 </div>
-
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJoPfOWTR_yPSub9u9VPKGGVauCN0RoAg&callback=initMap"
+    async defer></script>
 	<script
 		src="${pageContext.request.contextPath }/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
 	<script
@@ -303,44 +294,7 @@ table tr:nth-child(1) {
 		function check(){
 			location.href="orderList.do?owner_no=6";
 		};
-		$(".updateAddress").click(function(){
-			var updateModal = document.getElementByClass("updateModal");
-			updateModal.style.display = 'block';
-		})
-		$(".closeModal").click(function(){
-			var updateModal = document.getElementByClass("updateModal");
-			updateModal.style.display = 'none';
-		})
-		  function geoCode() {
-	  	var faddr_lat = 37.5007939;
-		var faddr_lng = 127.03696560000003;
-	  	var faddr = document.getElementById('owner_address').value;
-	  	var geocoder;
-	  	geocoder = new google.maps.Geocoder();
-	  	geocoder.geocode( { 'address': faddr}, function(results, status) {
-	  		if (status == google.maps.GeocoderStatus.OK) {
-	  			var faddr_lat = results[0].geometry.location.lat();	//위도
-	  			var faddr_lng = results[0].geometry.location.lng();	//경도
-	  		} else {
-	  			var faddr_lat = 37.5007939;
-	  			var faddr_lng = 127.03696560000003;
-	  		}
-	  		map = new google.maps.Map(document.getElementById('map'), {
-    	        center: {lat: faddr_lat, lng: faddr_lng},
-    	        zoom: 15});
-	  		
-	  		marker = new google.maps.Marker({
-	                position: {lat: faddr_lat, lng: faddr_lng},
-	                map: map/* ,
-	                title: 'Hello World!' */
-	            });
-	  		$("#owner_latitude").val(faddr_lat);
-	  		$("#owner_longitude").val(faddr_lng);
-	  		
-	  		return;
-	  	});
-			
-	  }
+	
 	</script>
 
 </body>

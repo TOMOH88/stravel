@@ -108,6 +108,13 @@ where owner_no = #{owner_no}
 	<update id="updateAddress" parameterType="ownerVo">
 	update owner set owner_approve = '승인' , owner_latitude = #{owner_latitude} , owner_longitude = #{owner_longitude} where owner_no =#{owner_no};
 </update>
+<insert id="insertOwnerImg" parameterType = "ownerImgVo">
+<selectKey keyProperty="onwer_no" resultType="int" order="BEFORE">
+		select count(OWNER_NO)+1 from STRAVEL.OWNER
+	</selectKey>
+	insert into room_img (OWNER_IMG_NO,OWNER_IMG,OWNER_NO)
+	values(SEQ_OWNER_IMG_NO.NEXTVAL,#{owner_img},#{owner_no})
+</insert>
 </mapper>
 
 

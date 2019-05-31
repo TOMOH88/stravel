@@ -221,9 +221,9 @@
 </style>
 </head>
 <body class="roomBody">
-<%-- <section class="section-margin">
+ <section class="section-margin">
 	<c:import url="../common/header.jsp" />
-    </section> --%>
+    </section>  
 
 <div onclick="mainmodal()" style="width:100%;height:592px;" class="timgdiv" ><!-- 나중에 클릭시 모달창 함수 실행시킬 div 영역 -->
 	<div class="timgdiv1" style="height:592px; float:left; ">
@@ -345,12 +345,13 @@
 			</div>
 			<div style="margin-left:10px;margin-right:10px;"><hr></div>
 				<div ><!-- 사이드바 바디 -->
-					<form action="moveReservation.do" method="post">
+					<form action="moveReservation.do" method="post" class="rsvSubmit">
 					<div class="hiddenPrice"></div>
-					<input type="hidden" value="1" name="user_no">
+					<input type="hidden" value="${loginMember.user_no }" name="user_no">
 						<div><!-- 객실선택드롭다운 -->
 						<div style="font-size:xx-small;color:black;font-weight:bold;">옵션</div>
 							<div style="height:60px;">
+							<input type="hidden" name="owner_no" value="${owner.owner_no }">
 								<select class="selectroom" name="room_no" required>
 									<option>필수선택</option>
 									<c:forEach items="${roomList}" var="roomList">
@@ -391,7 +392,21 @@
 		<div style="height:300px;">
 		  <!-- Swiper -->
  			 <div class="swiper-container travel">
- 			   
+ 			  	<div class="swiper-wrapper">
+ 			  	<c:forEach items="${tourList }" var="tourList">
+  			  	  <div class="swiper-slide travelslide">
+  			   			<div>
+  			   				<img src="${pageContext.request.contextPath }/resources/touristspotImages/${tourList.rename_thumnail }">
+   			   				<div class="swiper-slide-text" style="text-align:left;">
+   			   					<div style="font-size:x-small;">${tourList.touristSpotCategoryName }</div>
+   		    					<div style="font-size:x-small;">${tourList.touristSpot_name}</div>
+   		    					<div style="font-size:xs-small:">이용시간</div>
+   		    					<div style="font-size:x-small;">${tourList.touristSpot_open }~${tourList.touristSpot_closed}</div>
+ 			   				</div>
+   		    			</div>
+   		   		 	</div>
+   		   		 	</c:forEach>
+  			   </div>
    			  <!-- Add Pagination -->
    			  <div class="swiper-pagination"></div>
    			  <!-- Add Arrows -->
@@ -430,14 +445,22 @@
 			</div>
 			<div style="margin-left:10px;margin-right:10px;"><hr></div>
 				<div ><!-- 사이드바 바디 -->
-					<form action="moveReservation.do?user_no=1" method="post">
+					<form action="moveReservation.do" method="post" class="rsvSubmit">
+					<div class="hiddenPrice"></div>
+					<input type="hidden" value="1" name="user_no">
+						<div><!-- 객실선택드롭다운 -->
+						<div style="font-size:xx-small;color:black;font-weight:bold;">옵션</div>
+						<form action="moveReservation.do" method="post">
+					<div class="hiddenPrice"></div>
+					<input type="hidden" value="${loginMember.user_no }" name="user_no">
 						<div><!-- 객실선택드롭다운 -->
 						<div style="font-size:xx-small;color:black;font-weight:bold;">옵션</div>
 							<div style="height:60px;">
+							<input type="hidden" name="owner_no" value="${owner.owner_no }">
 								<select class="selectroom" name="room_no" required>
-									<option selected disabled hidden>필수선택</option>
+									<option>필수선택</option>
 									<c:forEach items="${roomList}" var="roomList">
-									<option value="${r.room_no }">${roomList.room_name }</option>
+									<option value="${roomList.room_no }">${roomList.room_name }</option>
 									</c:forEach>
 								</select>
 							</div>
@@ -445,25 +468,56 @@
 						<div style="font-size:xx-small;color:black;font-weight:bold;">날짜</div>
 						<div>
 							<div>
-								<input type="text" name="check_in"id="start" placeholder="CHECK IN" autocomplete="off">
+								<input type="text" name="check_in"id="start" class="datepicker" placeholder="CHECK IN" autocomplete="off">
 								<span>&nbsp;→&nbsp;</span>
-								<input type="text"name="check_out" id="end"  placeholder="CHECK OUT" autocomplete="off">
+								<input type="text"name="check_out" id="end" class="datepicker"  placeholder="CHECK OUT" autocomplete="off">
 							</div>
 						</div>
 						<div><!-- 인원선택 ajax -->		
-						<div style="font-size:xx-small;color:black; font-weight:bold;">옵션</div>
+						<div style="font-size:xx-small;color:black; font-weight:bold;">인원</div>
 							<div style="height:60px;">
-								<select class="selectCount" name="member" onchange="javascript:viewPrice(this);">
+								<select class="selectCount" name="member" required >
 									
-								</select> 
+								</select>
 							</div>
 						</div>
 						
 						<Br>
 						<hr>
 						<div style="padding:8px;"><!-- 예약하기 버튼 -->
-							
-							<input type="submit" value="예약하기" name="reservation" class="rsvbt">
+							<input type="submit" value="예약하기" class="rsvbt">
+						</div>
+					</form>
+							<div style="height:60px;">
+								<select class="selectroom" name="room_no" required>
+									<option>필수선택</option>
+									<c:forEach items="${roomList}" var="roomList">
+									<option value="${roomList.room_no }">${roomList.room_name }</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						<div style="font-size:xx-small;color:black;font-weight:bold;">날짜</div>
+						<div>
+							<div>
+								<input type="text" name="check_in"id="start" class="datepicker" placeholder="CHECK IN" autocomplete="off">
+								<span>&nbsp;→&nbsp;</span>
+								<input type="text"name="check_out" id="end" class="datepicker"  placeholder="CHECK OUT" autocomplete="off">
+							</div>
+						</div>
+						<div><!-- 인원선택 ajax -->		
+						<div style="font-size:xx-small;color:black; font-weight:bold;">인원</div>
+							<div style="height:60px;">
+								<select class="selectCount" name="member" required >
+									
+								</select>
+							</div>
+						</div>
+						
+						<Br>
+						<hr>
+						<div style="padding:8px;"><!-- 예약하기 버튼 -->
+							<input type="button" value="예약하기" class="rsvbt" >
 						</div>
 					</form>
 				</div>
@@ -534,8 +588,15 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJoPfOWTR_yPSub9u9VPKGGVauCN0RoAg&callback=initMap"
     async defer></script>
 <script type="text/javascript">
-
-
+	var loginMember = 1;
+	$("rsvbt").click(function(){
+		if(loginMember != null){
+			$(".rsvSubmit").submit();
+		}else{
+			alert("로그인 해야합니다");
+			
+		}
+	})
 
 
 	/* 메인이미지 클릭시 사업자대표이미지 슬라이더 실행할 모달창 만들함수*/
@@ -561,7 +622,7 @@
 	};
 	
 	
-	/* var placeSearch, autocomplete, lat, lng;
+	 var placeSearch, autocomplete, lat, lng;
 	function initAutocomplete() {
 	  // Create the autocomplete object, restricting the search to geographical
 	  // location types.
@@ -578,12 +639,13 @@
 	   lng =place.geometry.location.lng();
 	   console.log(lat);
 	   console.log(lng);
-	} */
-
+	} 
+ 	var latitude = ${owner.owner_latitude};
+ 	var longitude = ${owner.owner_longitude}; 
 	var map;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
+        center: {lat: latitude, lng: longitude	},
         zoom: 8
       });
     } 
@@ -619,27 +681,7 @@
  
 
     
-/*    
-	$(function(){
-		
-		$(".datepicker").datepicker({
-			 dateFormat: 'yy-mm-dd' //Input Display Format 변경
-	                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-	                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
-	                ,buttonImage: "/application/db/jquery/images/calendar.gif"
-	                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
-	                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
-	                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
-	                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
-	                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
-	                ,minDate: "+0D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-					,beforeShowDay:disableDays
-	                  
 
-		});
-	
-		 
-	});  */
 	var roomno ;
 	var price ;
 	var addPrice;
@@ -758,7 +800,7 @@ $(".selectCount").change(function(){
 })
  
 	
-	$(function(){
+	/* $(function(){
 		var address = ${owner.owner_address};
 		
 		$.ajax({
@@ -783,7 +825,7 @@ $(".selectCount").change(function(){
 				$(".swiper-container travel").html($(".swiper-container travel").text() + option + "</div>");
 			}
 		})
-	})
+	}) */
 
 
 </script>

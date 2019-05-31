@@ -23,4 +23,6 @@ public interface OwnerService {
 
 	int updateAddress(Owner owner);
 
+	int insertOwnerImg(OwnerImg ownerImg);
+
 }

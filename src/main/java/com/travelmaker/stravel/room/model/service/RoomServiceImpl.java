@@ -103,16 +103,13 @@ public  class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public ArrayList<TouristVo> selectTourList(TouristVo tv) {
+	public ArrayList<TouristVo> selectTourList(String address) {
 		// TODO Auto-generated method stub
-		return rd.selectTourList(mybatisSession, tv);
+		return rd.selectTourList(mybatisSession, address);
 	}
 
-	@Override
-	public int updateAddress(Owner owner) {
-		// TODO Auto-generated method stub
-		return rd.updateAddress(mybatisSession,owner);
-	}
+
+
 
 
 }

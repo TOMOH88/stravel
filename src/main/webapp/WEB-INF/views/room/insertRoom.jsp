@@ -218,7 +218,7 @@ margin:0px auto;
 			<div style="text-align:center; font-size:2em; margin-bottom:20px; color:black; font-weight:bold; ">객실등록</div>
 			<div id="isroom" style="margin:20px; border:1px solid #cfcfcf; background:white;padding:30px;">
 			<form action="insertRoomSub.do" method="post" enctype="multipart/form-data" >
-				<input type="hidden" value="${loginMember.owner_no }" name="owner_no">
+				<input type="hidden" value="6" name="owner_no">
 				<div>객실정보</div>
 				<hr>
 				<div>객실명 : <input type="text" name="room_name" required></div>
@@ -236,7 +236,7 @@ margin:0px auto;
 				<div>성수기 :<input type="text" name="on_season_price" required></div>
 				<div>주말추가 :<input type="text" name="week_extra_price" required></div>
 				<div>인원추가 :<input type="text" name="add_person_price" required></div>
-				<div>할인율 : <input type="number" min="10" max="100" step="5" name="discountrate">%</div>
+				<div>할인율 : <input type="number" min="0" max="100" step="5" name="discountrate">%</div>
 				<br>
 				<div>편의시설</div>
 				<hr>

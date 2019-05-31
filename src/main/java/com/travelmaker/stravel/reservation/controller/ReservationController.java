@@ -40,7 +40,7 @@ public class ReservationController {
 		mv.addObject("rsvInfo",rs);
 		if(result > 0) {
 		/*mv.setViewName("payment/paymentView1");*/
-		mv.setViewName("pay1.do");
+		mv.setViewName("redirect:pay1.do");
 		}else {
 		mv.setViewName("room/roomDetail?owner_no="+owner_no);	
 		}

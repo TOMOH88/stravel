@@ -68,7 +68,7 @@
 <!-- 객실이미지 -->
 <insert id="insertRoomImg" parameterType = "roomImgVo">
 	insert into room_img (ROOM_IMG_NO,ROOM_IMG,ROOM_NO)
-	values(#{room_img_no},#{room_img},#{room_no})
+	values(SEQ_ROOM_IMG_NO.NEXTVAL,#{room_img},#{room_no})
 </insert>
 
 <insert id="insertRsv" parameterType ="rsvVo">
@@ -149,11 +149,11 @@ order by check_in
 </select>
 
 <select id="selectTourList" resultMap="resultTourist" parameterType="String">
-	select touristspotcategoryname, touristspot_name, touristspot_open, touristspot_closed, touristspot_imagename, touristspot_homepage, touristspot_adderss
+select touristspotcategoryname, touristspot_name, touristspot_open, touristspot_closed, touristspot_imagename, touristspot_homepage, touristspot_address, rename_thumnail
 from tb_touristspot
 join tb_touristspotimages using (touristspot_no)
 join tb_touristspotcategory using (touristspotcategorycode)
-where touristspot_address like '%'||#{touristspot_address}
+where touristspot_address like '%'||#{touristspot_address}||'%'
 </select>
 
 <update id="updateStatus" parameterType="rsvVo">

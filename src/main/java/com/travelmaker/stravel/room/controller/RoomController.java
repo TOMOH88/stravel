@@ -56,7 +56,9 @@ public class RoomController {
 		mv.addObject("roomList",roomList);
 		ArrayList<RoomImg> roomImgList = rs.selectRoomImg(owner_no);
 		mv.addObject("roomImgList",roomImgList);
-		
+		String address = ow.getOwner_address().substring(0,7);
+		ArrayList<TouristVo> tourList = rs.selectTourList(address);
+		mv.addObject("tourList",tourList);
 		//후기정보
 		ArrayList<OwnerReview> reviewList = rs.selectOwnerReview(owner_no);
 		mv.addObject("reviewList",reviewList);
@@ -154,7 +156,7 @@ public class RoomController {
 		return "room/updateOwner";
 	}
 	
-	@RequestMapping("selectTravels.do")
+	/*@RequestMapping("selectTravels.do")
 	public @ResponseBody ArrayList<TouristVo> selectTourList(@RequestParam (name="touristspot_address")String str){
 		String address = str.substring(0,7);
 		TouristVo tv = new TouristVo();
@@ -164,6 +166,7 @@ public class RoomController {
 		result.add(new TouristVo("투어","관악산","www.naver.com","4시","12시","메이즈 랜드-1jetsrfmqftk6.jpg","서울시 관악구 봉천동"));
 		return result;
 	}
-
+	*/
+	
 
 }

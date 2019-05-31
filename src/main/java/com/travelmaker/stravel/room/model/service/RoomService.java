@@ -60,11 +60,7 @@ public interface RoomService {
 
 
 
-	ArrayList<TouristVo> selectTourList(TouristVo tv);
-
-
-
-	int updateAddress(Owner owner);
+	ArrayList<TouristVo> selectTourList(String address);
 
 
 

@@ -58,4 +58,11 @@ public class OwnerServiceImpl implements OwnerService{
 		// TODO Auto-generated method stub
 		return od.updateAddress(mybatisSession,owner);
 	}
+
+	@Override
+	public int insertOwnerImg(OwnerImg ownerImg) {
+		// TODO Auto-generated method stub
+		return od.insertOwnerImg(mybatisSession,ownerImg);
+	}
+
 }

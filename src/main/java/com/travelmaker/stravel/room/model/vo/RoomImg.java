@@ -11,6 +11,7 @@ public class RoomImg implements Serializable {
 	private String room_img;
 	private int room_no;
 	private int owner_no;
+	
 	public RoomImg() {}
 	public RoomImg(int room_img_no, String room_img, int room_no, int owner_no) {
 		super();
