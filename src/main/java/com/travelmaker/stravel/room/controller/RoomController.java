@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.room.controller;
+﻿package com.travelmaker.stravel.room.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +36,12 @@ public class RoomController {
 		return "room/ohWorkList";
 	}
 	@RequestMapping(value="selectRsvInfo.do",method=RequestMethod.POST)
-	public @ResponseBody Room selectRsvInfo(Room room) {
-		Room result = rs.selectRsvInfo(room);
+	public @ResponseBody Room selectRsvInfo(@RequestParam(name="room_no") int room_no) {
+		Room result = rs.selectRsvInfo(room_no);
 		System.out.println("result" + result);
 	return	 result;
 	}
+
 	@RequestMapping("roomDetail.do")
 	public ModelAndView roomDetailView(ModelAndView mv , @RequestParam(name = "owner_no" ) int owner_no) {
 		//사업자정보
@@ -66,14 +67,17 @@ public class RoomController {
 		return mv;
 	}
 	
-	@RequestMapping("test.do")
+/*	@RequestMapping("test.do")
 	public String test() {
 		return "room/test";
-	}
+	}*/
 	
 	@RequestMapping("ownerMain.do")
-	public String ownerMain() {
-		return "room/ownerMain";
+	public ModelAndView ownerMain(ModelAndView mv, @RequestParam(name="owner_no") int owner_no) {
+		ArrayList<Reservation> list = rs.selectOrderList(owner_no);
+		mv.addObject("orderList",list);
+		mv.setViewName("room/ownerMain");
+		return mv;
 	}
 	
 	@RequestMapping("orderList.do")

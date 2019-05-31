@@ -206,7 +206,7 @@ ${list.restaurant_content }
 오픈시간 : ${list.restaurant_openinghours }<br>
 닫는시간 : ${list.restaurant_closehours }<br>
 </c:if>
-<br>
+<c:if test="${!empty point2 }">평점 : ${point2 }<br>
 <form class="rating">
   <label>
     <input type="radio" id="stars2" name="stars2" value="1" />
@@ -239,6 +239,7 @@ ${list.restaurant_content }
     <span class="icon">★</span>
   </label>
 </form>
+</c:if>
 </div>
 </div>
 </div>
@@ -246,18 +247,27 @@ ${list.restaurant_content }
 </div>
 <br>
 <div class="container" id="c2">
-댓글 : ${fn:length(review)}
+리뷰 : ${fn:length(review)}
 <table>
 	<c:forEach items="${review }" var="review">
 		<tr>
-			<th>${review.restaurant_review_writer }</th>
-				<td width="80%">${review.restaurant_review_content }</td>
-			<th>${review.restaurant_review_date }</th>
+			<th width="10%">${review.restaurant_review_writer }</th>
+				<td width="70%">
+					<c:if test="${review.restaurant_review_blind eq 'Y' }">블라인드 된 글입니다</c:if>
+					<c:if test="${review.restaurant_review_blind eq 'N' }">${review.restaurant_review_content }</c:if>
+				</td>
+			<th width = "10%">${review.restaurant_review_date }</th>
+			<th>
+				<c:if test="${loginMember.user_name eq review.restaurant_review_writer }">
+					&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" onclick="location.href='reviewdelete.do?review_no=${review.restaurant_review_no}&restaurant_no=${restaurant.restaurant_no }'">리뷰 삭제</button>
+				</c:if>
+			</th>
 		</tr>
 	</c:forEach>
 </table>
 </div>
 <br>
+<c:if test="${!empty loginMember }">
 <div class="container" id="c2">
 <font>리뷰 작성</font>
 <br>
@@ -301,7 +311,7 @@ ${list.restaurant_content }
 <tr>
 	<td>
 		방문일 : <input type="date" name="restaurant_review_tourdate"/>
-		<input type="text" id="restaurant_review_point" name="restaurant_review_point" value="0"/>
+		<input type="text" id="restaurant_review_point" name="restaurant_review_point" value="1"/>
 		<input type="text" name="restaurant_no" value="${list.restaurant_no }"> 
 		<input type="text" name="restaurant_review_writer" value="고상훈"/>
 	</td>
@@ -310,6 +320,7 @@ ${list.restaurant_content }
 </table>
 </form>
 </div>
+</c:if>
 </section>
 <c:import url="../common/footer.jsp" />
 </body>

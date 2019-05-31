@@ -17,6 +17,8 @@
 		<result property="owner_address" column="owner_address"/>
 		<result property="owner_category" column="owner_category"/>
 		<result property="owner_approve" column="owner_approve"/>
+		<result property="owner_latitude" column="owner_latitude"/>
+		<result property="owner_longitude" column="owner_longitude"/>
 		<result property="off_season_price" column="off_season_price"/>
 		<result property="property_review_like" column="property_review_like"/>
 	</resultMap>
@@ -44,13 +46,29 @@
 		<result property="owner_no" column="owner_no"/>
 	</resultMap>
 
-	<select id="selectRoomList" resultMap="resultOwnerList">
-    select owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
+	<select id="selectRoomList" resultMap="resultOwnerList" >
+    SELECT *
+        FROM (    SELECT ROWNUM RNUM, P.*
+                FROM (   select  owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
     from owner
     join room using (owner_no)
-    group by owner_no,owner_companyname, owner_address, owner_category
+    group by owner_no,owner_companyname, owner_address, owner_category  
+    <if test="items != null and items != '' ">
+    	 having  OWNER_COMPANYNAME like '%' || #{items} || '%' or OWNER_ADDRESS like '%' || #{items} || '%'
+    </if>
+     ) P )
+        WHERE RNUM BETWEEN #{start} AND #{last}
     
 
+	</select>
+	<select id="selectOwnerTotal1" resultType="int" parameterType="ownerPagingVo">
+	  SELECT  count(1)
+        FROM (    SELECT ROWNUM RNUM, P.*
+                FROM (   select  owner_no, owner_companyname, min(off_season_price) off_season_price, owner_address, owner_category
+    from owner
+    join room using (owner_no)
+    group by owner_no,owner_companyname, owner_address, owner_category 
+    having  OWNER_COMPANYNAME like '%' || #{items} || '%' or OWNER_ADDRESS like '%' || #{items} || '%'  ) P )
 	</select>
 	<select id="selectOwnerImgList" resultMap="resultOwnerImg" >
 	    select * from owner_img
@@ -72,4 +90,24 @@ JOIN RESERVATION USING(RSV_NO)
 JOIN ROOM USING (ROOM_NO)
 where owner_no = #{owner_no}
 	</select>
+	
+	<select id="selectOwnerTotal" resultType="int" >
+		select count(1)
+		from owner
+	</select>
+	
+	<insert id="businessinsert" parameterType="ownerVo">
+		insert into owner(owner_no, owner_license_no, owner_password, owner_name, owner_companyName, owner_telephone,
+		owner_phone, owner_account, owner_address, owner_category, owner_approve, owner_latitude, owner_longitude) 
+		values(seq_owner_no.nextval, #{owner_license_no}, #{owner_password}, #{owner_name}, #{owner_companyName}, 
+		#{owner_telephone}, #{owner_phone}, #{owner_account}, #{owner_address}, #{owner_category}, '승인', #{owner_latitude}, #{owner_longitude})
+	</insert>
+	<select id="selectOLogin" parameterType="ownerVo" resultType="ownerVo">
+		select * from owner where OWNER_LICENSE_NO = #{owner_license_no}
+	</select>
 </mapper>
+
+
+
+
+

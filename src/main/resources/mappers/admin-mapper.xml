@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adminMapper">
+	<resultMap id="resultAdminVo" type="AdminVo">
+		<id property="admin_id" column="ADMIN_ID" />
+		<id property="admin_password" column="ADMIN_PASSWORD" />
+		<id property="admin_name" column="ADMIN_NAME" />
+		<id property="regist_date" column="REGIST_DATE" />
+	</resultMap>
+	
+	<insert id="insertAdmin">
+	insert into tb_admin(ADMIN_ID,ADMIN_PASSWORD,ADMIN_NAME,REGIST_DATE)
+	values(#{admin_id},#{admin_password},#{admin_name},DEFAULT)
+	</insert>
+	<select id="selectLoginAdmin" parameterType="AdminVo" resultType="AdminVo">
+	select * from tb_admin where admin_id = #{admin_id}
+	</select>
+	<select id="selectMemberList" parameterType="pagingVo" resultType="Member">
+	 	SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM 
+		 (SELECT * FROM STRAVEL_USER 
+		 <if test="searchCategory != null and searchCategory !=''">
+		 WHERE ${searchCategory} like '%'||#{items}||'%'
+		 </if>
+		 ORDER BY USER_NO DESC ) P ) WHERE RNUM BETWEEN ${start} AND ${last}
+	</select>
+	<select id="selectTotalPaging" parameterType="pagingVo" resultType="_int">
+		SELECT COUNT(1) FROM STRAVEL_USER
+		<if test="searchCategory != null and searchCategory !=''">
+		WHERE ${searchCategory} like '%'||#{items}||'%'
+		</if> 
+	</select>
+	<select id="selectOwnerList" parameterType="pagingVo" resultType="ownerVo">
+		SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM 
+		 (SELECT * FROM OWNER
+		 <if test="searchCategory != null and searchCategory !=''">
+		 WHERE ${searchCategory} like '%'||#{items}||'%'
+		 </if>
+		 ORDER BY OWNER_NO DESC ) P ) WHERE RNUM BETWEEN ${start} AND ${last}
+	</select>
+	<select id="selectTotalOwnerPaging" parameterType="pagingVo" resultType="_int">
+		SELECT COUNT(1) FROM OWNER
+		<if test="searchCategory != null and searchCategory !=''">
+		WHERE ${searchCategory} like '%'||#{items}||'%'
+		</if> 
+	</select>
+	<select id="selectUserDetail" parameterType="_int" resultType="Member">
+		select * from STRAVEL_USER where user_no = #{user_no}
+	</select>
+	<select id="selectOwnerDetail" parameterType="_int" resultType="ownerVo">
+		select * from owner where owner_no = #{owner_no}
+	</select>
+	<update id="updateOwnerApprove" parameterType="ownerVo">
+	 	update owner set owner_approve = #{owner_approve} where owner_no = #{owner_no}
+	</update>
+</mapper>

@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.tripBoard.model.sevice;
+﻿package com.travelmaker.stravel.tripBoard.model.sevice;
 
 import java.util.ArrayList;
 

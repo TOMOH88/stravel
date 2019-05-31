@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.travelmaker.stravel.common.PagingVo;
 import com.travelmaker.stravel.touristspot.model.dao.TouristspotDao;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotCategoryVo;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
@@ -42,8 +43,8 @@ public class TouristspotServiceImpl implements TouristspotService{
 	}
 
 	@Override
-	public ArrayList<TouristspotVo> selectTouristspotList() {
-		return touristspotDao.selectTouristspotList(mybatisSession);
+	public ArrayList<TouristspotVo> selectTouristspotList(PagingVo paging) {
+		return touristspotDao.selectTouristspotList(mybatisSession,paging);
 	}
 
 	@Override
@@ -62,8 +63,8 @@ public class TouristspotServiceImpl implements TouristspotService{
 	}
 
 	@Override
-	public int selectTourReviewNo() {
-		return touristspotDao.selectTourReviewNo(mybatisSession);
+	public int selectTourReviewNo(int tno) {
+		return touristspotDao.selectTourReviewNo(mybatisSession,tno);
 	}
 
 	@Override
@@ -95,6 +96,41 @@ public class TouristspotServiceImpl implements TouristspotService{
 	@Override
 	public ArrayList<TouristspotVo> selectTouristspotCategoryList(String cate) {
 		return touristspotDao.selectTouristspotCategoryList(mybatisSession,cate);
+	}
+
+	@Override
+	public int updateTouristspot(TouristspotVo ts) {
+		return touristspotDao.updateTouristspot(mybatisSession,ts);
+	}
+
+	@Override
+	public int selectImagesNumber(TouristspotVo ts) {
+		return touristspotDao.selectImagesNumber(mybatisSession,ts);
+	}
+
+	@Override
+	public int updateTouristspotStatus(int tno) {
+		return touristspotDao.updateTouristspotStatus(mybatisSession,tno);
+	}
+
+	@Override
+	public int updateReviewBlindStatus(int rno) {
+		return touristspotDao.updateReviewBlindStatus(mybatisSession,rno);
+	}
+
+	@Override
+	public int updateReviewDeleteStatus(int rno) {
+		return touristspotDao.updateReviewDeleteStatus(mybatisSession,rno);
+	}
+
+	@Override
+	public Double selectReviewPoint(int tno) {
+		return touristspotDao.selectReviewPoint(mybatisSession,tno);
+	}
+
+	@Override
+	public int selectTotalPaging() {
+		return touristspotDao.selectTotalPaging(mybatisSession);
 	}
 
 }

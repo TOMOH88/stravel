@@ -15,31 +15,26 @@
 <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">몇번글</h4>
+                                <h4 class="title">${qna.qna_no }번글</h4>
                                 <p class="category">상세보기</p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-bordered">
                                     <tr>
-                                    <th style="background:pink;">제목</th><td>1:1문의</td>
-                                    <th style="background:pink;">작성자</th><td>하종은</td>
-                                    <th style="background:pink;">작성날짜</th><td>2019-05-09</td>
+                                    <th style="background:pink;">제목</th><td>${qna.qna_title }</td>
+                                    <th style="background:pink;">작성자</th><td>${qna.qna_writer }</td>
+                                    <th style="background:pink;">작성날짜</th><td>${qna.qna_date }</td>
                                     </tr>
                                     <tr>
-                                    <th style="background:pink;">내용</th><td colspan="5">문의 테스트</td>
+                                    <th style="background:pink;">내용</th><td colspan="5">${qna.qna_content }</td>
                                     </tr>
+                                    <c:if test="${ qna.qna_status eq 'Y' }">
                                     <tr>
                                     <th style="background:pink;">답변</th>
-                                    <td colspan="5">
-                                    <textarea class="form-control col-sm-12" rows="5" readonly></textarea>
-                                    <form>
-                                    <div style="text-align:center;">
-                                    <input type="submit" value="수정하기" class="btn btn-default">
-                                    <input type="submit" value="삭제" class="btn btn-default">
-                                    </div>
-                                    </form>
+                                    <td colspan="5">${qna.qna_answer }
                                     </td>
                                     </tr>
+                                    </c:if>
                                 </table>
                                 <div style="text-align:center;">
                                 <button class="btn btn-default" onclick="location.href='qnalist.do'">목록</button>

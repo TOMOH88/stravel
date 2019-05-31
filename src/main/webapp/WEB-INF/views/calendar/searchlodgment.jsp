@@ -8,12 +8,134 @@
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
+var markerArray = [];
+var iConArray = [];
+var nameArray = [];
+var contentArray = [];
+
+$(function(){
+	$.ajax({
+		type: "POST",
+		url : "aview.do",
+		dataType: "json",
+		contentType:"application/json; charset=UTF-8",
+		success : function(data){
+			if(data.code == "ok")
+			for(i in data.owner){
+				var no = [];
+				no[i] = data.owner[i].owner_no;
+				nameArray[i] = [data.owner[i].owner_companyName];
+				var latitude = [];
+				latitude[i] = [data.owner[i].owner_latitude];
+				var longitude = [];
+				longitude[i] = [data.owner[i].owner_longitude];
+				markerArray[i] = new google.maps.LatLng(latitude[i],longitude[i]);
+				iConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+				contentArray[i] = [data.owner[i].owner_address];
+				
+				addMarker(no, data, contentArray, location, nameArray)
+				
+				}
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert(jqXHR.responseText.errorThrown)
+		}
+	});
+});
+
+/*     function initMap(no, data , name, latitude, longitude) {
+    	var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도
+        mapOptions = { 
+         zoom:11, 
+         center:mapLocation 
+        } 
+    	
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions); 
+        var infowindow = new google.maps.InfoWindow(); 
+        var marker = [];
+        
+        for (i = 0; i < no.length; i++) { 
+        	var icon = '';
+           marker[i] = new google.maps.Marker({ 
+           position: new google.maps.LatLng(latitude[i], longitude[i]), 
+           map:   map, 
+           title: '제주도' , 
+          }); 
+          var contentString = 'Title on Load'; 
+          var infowindow = [];
+          infowindow = new google.maps.InfoWindow({ 
+           content: contentString, 
+           maxWidth: 160 
+          }); 
+          
+          infowindow.open(map, marker[i]); 
+     
+          // Event that closes the Info Window with a click on the map 
+          google.maps.event.addListener(map, 'click', function() { 
+           infowindow.close(); 
+          }); 
+          
+          google.maps.event.addListener(marker, 'click', (function(marker, i) { 
+           return function() { 
+            var contentString = 'Title on Click'; 
+            infowindow.setContent(contentString); 
+            infowindow.open(map, marker); 
+           } 
+          })(marker, i)); 
+         } 
+        } 
+    google.maps.event.addDomListener(window, 'load', initMap); */
+    var markers = [];
+    var iterator = 0;
+    var map;
+     
+  
+    function initialize() {
+        var mapOptions = {
+            zoom: 11,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            center: new google.maps.LatLng('33.321349', '126.684723')
+        };
+     
+        map = new google.maps.Map(document.getElementById('map'),mapOptions);
+     
+        for (var i = 0; i < markerArray.length; i++) {
+            addMarker();
+        }
+    }
+     
+     
+    // 마커 추가
+    function addMarker(no, data, contentArray, location, nameArray) {
+    	
+    	var title = nameArray[iterator];
+        var marker = new google.maps.Marker({
+            position: markerArray[iterator],
+            map: map,
+            draggable: false,
+            icon: iConArray[iterator],
+            title : "'" + nameArray[iterator] + "'"
+        });
+        markers.push(marker);
+     
+        var infowindow = new google.maps.InfoWindow({
+          content: "'" + contentArray[iterator] + "'"
+        });
+     
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+        iterator++;
+        
+        google.maps.event.addListener(map, 'click', function() { 
+            infowindow.close(); 
+           }); 
+    }
+     
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <title>stravel</title>
 <style type="text/css">
-div{
-	border:1px solid black;
-}
 
 .map{
 	position:fixed;
@@ -161,118 +283,50 @@ div{
 <!-- 필터끝-->
 </div>
 <br>
-<div class="row">
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height:100%; width:200px;">
+<!-- 리스트 영역 시작 -->
+<c:forEach var="list" items="${ow}" varStatus="status">
+<div class="row" style="border:1px solid Wheat; background:LightGoldenrodYellow">
+<div class="col-xl-5">
+<div id="carouselExampleIndicators${status }" class="carousel slide" data-ride="carousel" style="height:100%; widht:100%;">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators${status }" data-slide-to="${status }" class="active"></li>
+    <li data-target="#carouselExampleIndicators${status }" data-slide-to="${status }"></li>
+    <li data-target="#carouselExampleIndicators${status }" data-slide-to="${status }"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg" alt="첫번째 슬라이드"></a>
+      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/maldives-1993704_1920.jpg" alt="${status }"></a>
     </div>
     <div class="carousel-item">
-      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg" alt="두번째 슬라이드"></a>
+      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/maldives-1993704_1920.jpg"></a>
     </div>
     <div class="carousel-item">
-      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg" alt="세번째 슬라이드"></a>
+      <a href="#"><img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/maldives-1993704_1920.jpg"></a>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">이전</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">다음</span>
-  </a>
+  <div style="background:Burlywood;" align="center"><font style="color:LightSlateGray;">TravelMaker.stravel</font></div>
+</div>
 </div>
 <div class="col-xl-7">
-<a href="#">호텔1</a> <br>
-<font style="font-size:8pt;">주택의 개인실
-인원 1명
-침실 1개
-침대 1개
-공동 사용 욕실 1개</font>
+<a href="roomDetail.do?owner_no=${list.owner_no }">${list.owner_companyName }</a> <br>
+<font style="font-size:8pt;">
+${list.owner_category }<br>
+TEL : ${list.owner_phone } &nbsp; 가격 : ${list.off_season_price }<br>
+주소 : ${list.owner_address }
+</font>
 <br>
-<br>
-★★★★★
+별점 : ${list.property_review_like }
 </div>
 </div>
+<br>
+<!-- 리스트 영역 끝 -->
+</c:forEach>
 </div>
 </div>
 <!-- map 시작 -->
-<div class="col-md-7" id="map-canvas" style="height:530px;"></div>
+<div class="col-md-7" id="map" style="height:530px;"></div>
 <!-- map 끝 -->
 </div>
 </div>
-<script type="text/javascript">
-function initialize() {
-    var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도
-    var markLocation = new google.maps.LatLng('33.321349', '126.684723'); // 마커가 위치할 위도와 경도
-
-
-    var mapOptions = {
-      center: mapLocation, // 지도에서 가운데로 위치할 위도와 경도(변수)
-      zoom: 10.7, // 지도 zoom단계
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map-canvas"), // id: map-canvas, body에 있는 div태그의 id와 같아야 함
-        mapOptions);
-    
-    var size_x = 30; // 마커로 사용할 이미지의 가로 크기
-    var size_y = 30; // 마커로 사용할 이미지의 세로 크기
-     
-    // 마커로 사용할 이미지 주소
-     
-    var marker;
-    marker = new google.maps.Marker({
-           position: markLocation, // 마커가 위치할 위도와 경도(변수)
-           map: map,
-//         info: '말풍선 안에 들어갈 내용',
-           title: '제주펜션~' // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
-    });
-     
-    var content = "<div style='width: 100%; height: 100%;'><div id='carouselExampleIndicators1' class='carousel slide' data-ride='carousel'style='height:100%; width:200px;''>"
-    	 + "<ol class='carousel-indicators'>"
-    	 + "<li data-target='#carouselExampleIndicators1' data-slide-to='4' class='active'></li>"
-    	 + "<li data-target='#carouselExampleIndicators1' data-slide-to='5'></li>"
-    	 + "<li data-target='#carouselExampleIndicators1' data-slide-to='6'></li>"
-    	 + "</ol>"
-    	 + "<div class='carousel-inner'>"
-    	 + "<div class='carousel-item active'>"
-    	 + "<a href='main.do'><img class='d-block w-100' src='${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg' alt='네번째 슬라이드'></a>"
-    	 + "</div>"
-    	 + "<div class='carousel-item'>"
-    	 + "<a href='main.do'><img class='d-block w-100' src='${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg' alt='다섯째 슬라이드'></a>"
-    	 + "</div>"
-    	 + "<div class='carousel-item'>"
-    	 + "<a href='main.do'><img class='d-block w-100' src='${pageContext.request.contextPath}/resources/img/polynesia-3021072_1920.jpg' alt='여섯째 슬라이드'></a>"
-    	 + "</div>"
-    	 + "</div>"
-    	 + "<a class='carousel-control-prev' href='#carouselExampleIndicators1' role='button' data-slide='prev'>"
-    	 + "<span class='carousel-control-prev-icon' aria-hidden='true'></span>"
-    	 + "<span class='sr-only'>이전</span>"
-    	 + "</a>"
-    	 + "<a class='carousel-control-next' href='#carouselExampleIndicators1' role='button' data-slide='next'>"
-    	 + "<span class='carousel-control-next-icon' aria-hidden='true'></span>"
-    	 + "<span class='sr-only'>다음</span>"
-    	 + "</a>"
-    	 + "</div>"
-    	+ "<hr><div style='width: 200px; height: 70px;'><font>침대1개</font><br>올레펜션<br>₩28,500 x 1박 &nbsp;&nbsp; ★★★★★</div>"; // 말풍선 안에 들어갈 내용
-     
-    // 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
-    var infowindow = new google.maps.InfoWindow({ content: content});
-
-    google.maps.event.addListener(marker, "click", function() {
-        infowindow.open(map,marker);
-    });
-     
-
-     
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);
-</script>
 </body>
 </html>

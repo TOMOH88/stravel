@@ -189,50 +189,89 @@ ul li a:hover {
 				
 				<div>객실정보</div>
 				<hr>
-				<div>객실명 : <input type="text" name="room_name" required></div>
-				<div>최소인원 : <input type="number" min="2" max="10" name="min_no" required></div>
-				<div>최대인원 : <input type="number" min="2" max="10" name="max_no" required></div>
+				<div>객실명 : <input type="text" name="room_name"  value="${room.room_name }"></div>
+				<div>최소인원 : <input type="number" min="2" max="10" name="min_no" value="${room.min_no }"></div>
+				<div>최대인원 : <input type="number" min="2" max="10" name="max_no" value="${room.max_no }"></div>
 				<div>객실정보 :</div>
-				<textarea rows="7" cols="50" name="room_content" required></textarea>
+				<textarea rows="7" cols="50" name="room_content" value="${room.room_content }"></textarea>
 				<br>
 				<br>
 				<br>
 				<br>
 				<div>가격정보</div>
 				<hr>
-				<div>비수기 :<input type="text" name="off_season_price" required></div>
-				<div>성수기 :<input type="text" name="on_season_price" required></div>
-				<div>주말추가 :<input type="text" name="week_extra_price" required></div>
-				<div>인원추가 :<input type="text" name="add_person_price" required></div>
-				<div>할인율 : <input type="number" min="10" max="100" step="5" name="discountrate">%</div>
+				<div>비수기 :<input type="text" name="off_season_price" value="${room.off_season_price }"></div>
+				<div>성수기 :<input type="text" name="on_season_price" value="${room.on_season_price }"></div>
+				<div>주말추가 :<input type="text" name="week_extra_price" value="${room.week_extra_price }"></div>
+				<div>인원추가 :<input type="text" name="add_person_price" value="${room.add_person_price }"></div>
+				<div>할인율 : <input type="number" min="10" max="100" step="5" name="discountrate" value="${room.discountrate }">%</div>
 				<br>
 				<div>편의시설</div>
 				<hr>
 				<div>
 					<table>
+								<c:forTokens items="${room.room_option }" delims="," var="hb">
+									<c:if test="${hb eq 'wifi' }">
+										<c:set var="checked0" value="checked" />
+									</c:if>
+									<c:if test="${hb eq 'parking' }">
+										<c:set var="checked1" value="checked" />
+									</c:if>
+									<c:if test="${hb eq 'tv' }">
+										<c:set var="checked2" value="checked" />
+									</c:if>
+									<c:if test="${hb eq 'fire' }">
+										<c:set var="checked3" value="checked" />
+									</c:if>
+									<c:if test="${hb eq 'bed' }">
+										<c:set var="checked4" value="checked" />
+									</c:if>
+									<c:if test="${hb  eq 'cook' }">
+										<c:set var="checked5" value="checked" />
+									</c:if>
+									<c:if test="${hb eq 'aircon' }">
+										<c:set var="checked6" value="checked" />
+									</c:if>
+									<c:if test="${hb eq 'heater' }">
+										<c:set var="checked7" value="checked" />
+									</c:if>
+									<c:if test="${hb eq 'gril' }">
+										<c:set var="checked8" value="checked" />
+									</c:if>
+									<c:if test="${hb eq 'spa' }">
+										<c:set var="checked9" value="checked" />
+									</c:if>
+									<c:if test="${hb eq 'breakfast' }">
+										<c:set var="checked10" value="checked" />
+									</c:if>
+									<c:if test="${hb eq 'roomservice' }">
+										<c:set var="checked11" value="checked" />
+									</c:if>
+								</c:forTokens>
 					<tr>
-					<td><label for="wifi"><input type="checkbox" name="room_option" value="wifi" id="wifi">WI-FI</label></td>
-					<td><label for="parking"><input type="checkbox" name="room_option" value="parking" id="parking">주차장</label></td>
-					<td><label for="tv"><input type="checkbox" name="room_option" value="tv" id="tv">TV</label></td>
-					<td><label for="fire"><input type="checkbox" name="room_option" value="fire"  id="fire">소화기</label></td>
+						<td><label for="wifi"><input type="checkbox" name="room_option" value="wifi" id="wifi" ${checked0 }>WI-FI</label></td>
+						<td><label for="parking"><input type="checkbox"name="room_option" value="parking" id="parking" ${checked1 }>주차장</label></td>
+						<td><label for="tv"><input type="checkbox" name="room_option" value="tv" id="tv" ${checked2 }>TV</label></td>
+						<td><label for="fire"><input type="checkbox" name="room_option" value="fire" id="fire" ${checked3 }>소화기</label></td>
 					</tr>
 					<tr>
-					<td><label for="bed"><input type="checkbox" name="room_option" value="bed"   id="bed">침구/세면도구</label></td>
-					<td><label for="cook"><input type="checkbox" name="room_option" value="cook"  id="cook">취사도구(식기구/접시/가스레인지or인덕션)</label></td>
-					<td><label for="aircon"><input type="checkbox" name="room_option" value="aircon" id="aircon" >에어컨</label></td>
-					<td><label for="heater"><input type="checkbox" name="room_option" value="heater" id="heater" >난방</label></td>
+						<td><label for="bed"><input type="checkbox" name="room_option" value="bed"   id="bed" ${checked4 }>침구/세면도구</label></td>
+						<td><label for="cook"><input type="checkbox" name="room_option" value="cook"  id="cook" ${checked5 }>취사도구(식기구/접시/가스레인지or인덕션)</label></td>
+						<td><label for="aircon"><input type="checkbox" name="room_option" value="aircon" id="aircon" ${checked6 }>에어컨</label></td>
+						<td><label for="heater"><input type="checkbox" name="room_option" value="heater" id="heater" ${checked7 }>난방</label></td>
 					</tr>
 					<tr>
-					<td><label for="gril"><input type="checkbox" name="room_option" value="gril" id="gril">그릴서비스</label></td>
-					<td><label for="spa"><input type="checkbox" name="room_option" value="spa" id="spa">스파</label></td>
-					<td><label for="breakfast"><input type="checkbox" name="room_option" value="breakfast" id="breakfast">조식</label></td>
-					<td><label for="roomservice"><input type="checkbox" name="room_option" value="roomservice"  id="roomservice">룸서비스</label></td>
+						<td><label for="gril"><input type="checkbox" name="room_option" value="gril" id="gril" ${checked8 }>그릴서비스</label></td>
+						<td><label for="spa"><input type="checkbox" name="room_option" value="spa" id="spa" ${checked9 }>스파</label></td>
+						<td><label for="breakfast"><input type="checkbox" name="room_option" value="breakfast" id="breakfast" ${checked10 }>조식</label></td>
+						<td><label for="roomservice"><input type="checkbox" name="room_option" value="roomservice"  id="roomservice" ${checked11 }>룸서비스</label></td>
 					</tr>
 					</table>
 				</div><br><Br>
 				<div>사진 </div>
 				<div>
 				<input multiple="multiple" type="file" name="roomImg" class="multi with-preview"/>
+					
 				</div>
 				<hr>
 				<br>

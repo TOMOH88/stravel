@@ -156,7 +156,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="container" id="c1">
-				<c:import url="../common/adminHeader.jsp" />
+				<%-- <c:import url="../common/adminHeader.jsp" /> --%>
 					<h1 id="f1">${touristspot.touristspot_name }</h1>
 					<div class="landmarkcategory" style="width: 100%;">
 						<c:forEach items="${touristspotImages }" var="tsi">
@@ -186,7 +186,8 @@
 							닫는시간 : ${touristspot.touristspot_closed }<br>
 							</c:if>
 							<br>
-							<form class="rating">
+							<c:if test="${!empty point2 }">평점 : ${point2 }<br></c:if>
+							<!-- <form class="rating">
 								<label> 
 									<input type="radio" name="stars2" value="1" /> 
 									<span class="icon">★</span>
@@ -217,24 +218,29 @@
 										<span class="icon">★</span> 
 										<span class="icon">★</span>
 									</label>
-							</form>
+							</form> -->
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div align="center">
+	 <button onclick="location.href='updatetouristspot.do?tno=${touristspot.touristspot_no}'">수정하기</button>
+	 <button onclick="location.href='deletetouristspot.do?tno=${touristspot.touristspot_no}'">삭제하기</button>
+	</div>
 	<br>
+
 	<div class="container" id="c2">
 		댓글 : ${fn:length(touristspotReviews)}
 		<table>
 			<c:forEach items="${touristspotReviews }" var="tsr">
 				<tr>
 					<th width="10%">${tsr.review_writer }</th>
-					<td width="75%">${tsr.review_content }</td>
+					<td width="65%">${tsr.review_content }</td>
 					<th width="10%">${tsr.review_date }</th>
-					<th><input type="button" value="블라인드" /></th>
-					<th><input type="button" value="삭제" /></th>
+					<th><button onclick="location.href='reviewBlind.do?rno=${tsr.review_no}&tno=${touristspot.touristspot_no }'">블라인드</button></th>
+					<th><button onclick="location.href='reviewDelete.do?rno=${tsr.review_no}&tno=${touristspot.touristspot_no }'">삭제하기</button></th>
 				</tr>
 			</c:forEach>
 		</table>

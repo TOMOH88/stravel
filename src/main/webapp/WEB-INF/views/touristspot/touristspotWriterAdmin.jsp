@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
        * element that contains the map. */
       #map {
         height: 300px;
-        width: 100%;
+        width: 600px;
       }
       /* Optional: Makes the sample page fill the window. */
 /*       html, body {
@@ -69,7 +69,7 @@
 <div class="container">
 <h1 align="center">관광지 글쓰기 페이지</h1>
 <form action="TSWriterUpload.do" method="post" enctype="multipart/form-data">
-<input type="hidden" name="touristspot_writer" value="김지훈">
+<input type="hidden" name="touristspot_writer" value="${loginAdmin.admin_name }">
 <table class="table">
 <tr>
 	<th>관광지 명</th><td><input type="text" name="touristspot_name" required="required" class="form-control"/></td>

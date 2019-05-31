@@ -22,5 +22,9 @@ public class HomeController {
 		logger.info("Welcome home!");	
 		return "home";
 	}
-	
+	@RequestMapping(value = "admin", method = RequestMethod.GET)
+	public String admin() {
+		logger.info("Welcome home!");	
+		return "admin";
+	}
 }

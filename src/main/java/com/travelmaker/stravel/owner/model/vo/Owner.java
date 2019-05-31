@@ -20,6 +20,8 @@ public class Owner implements Serializable {
 	private String owner_address;//주소
 	private String owner_category;//숙박종류
 	private String owner_approve;//가입승인여부
+	private String owner_latitude;//위도
+	private String owner_longitude;//경도
 	private int off_season_price;//최저가
 	private int property_review_like;//별점
 	
@@ -28,7 +30,7 @@ public class Owner implements Serializable {
 	
 	public Owner(int owner_no, int owner_license_no, String owner_password, String owner_name, String owner_companyName,
 			int owner_telephone, int owner_phone, String owner_account, String owner_address, String owner_category,
-			String owner_approve, int off_season_price, int property_review_like) {
+			String owner_approve, String owner_latitude, String owner_longitude, int off_season_price, int property_review_like) {
 		super();
 		this.owner_no = owner_no;
 		this.owner_license_no = owner_license_no;
@@ -41,8 +43,30 @@ public class Owner implements Serializable {
 		this.owner_address = owner_address;
 		this.owner_category = owner_category;
 		this.owner_approve = owner_approve;
+		this.owner_latitude = owner_latitude;
+		this.owner_longitude = owner_longitude;
 		this.off_season_price = off_season_price;
 		this.property_review_like = property_review_like;
+	}
+	
+
+	public String getOwner_latitude() {
+		return owner_latitude;
+	}
+
+
+	public void setOwner_latitude(String owner_latitude) {
+		this.owner_latitude = owner_latitude;
+	}
+
+
+	public String getOwner_longitude() {
+		return owner_longitude;
+	}
+
+
+	public void setOwner_longitude(String owner_longitude) {
+		this.owner_longitude = owner_longitude;
 	}
 
 

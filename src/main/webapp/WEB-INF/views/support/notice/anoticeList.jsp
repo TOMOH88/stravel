@@ -53,7 +53,7 @@ $(function() {
                                     <tbody>	
                                     	<tr>
                                         	<td>${notice.notice_no }</td>
-                                        	<td><a href="">${notice.notice_title }</a></td>
+                                        	<td><a href="anoticeDetail.do?notice_no=${notice.notice_no }">${notice.notice_title }</a></td>
                                         	<td>${notice.notice_writer }</td>
                                         	<td>${notice.notice_date }</td>
                                         </tr>                                   

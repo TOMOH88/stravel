@@ -1,4 +1,4 @@
-package com.travelmaker.stravel.tripBoard.controller;
+﻿package com.travelmaker.stravel.tripBoard.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -60,7 +60,6 @@ public class MyTripBoardController {
 			ArrayList<MyTripBoard> boardList = myService.selectList(board_title);
 			mv.addObject("list", boardList);
 			 
-			
 			System.out.println(boardList);
 			mv.setViewName("MyTripBoard/tripBoardList");
 			
@@ -168,6 +167,7 @@ public class MyTripBoardController {
 			
 			myService.addReadCount(board_no);
 			
+			mv.addObject("myboard", myboard);
 			ArrayList<MyTripBoardReview> reviewList = myService.reviewListAll(board_no);
 			mv.addObject("review", reviewList);
 			ArrayList<MyTripBoardImage> imageList = myService.imageListAll(board_no);

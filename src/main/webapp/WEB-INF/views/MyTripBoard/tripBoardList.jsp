@@ -138,6 +138,8 @@ $(function() {
 	</div>
 </form>
 <caption>게시판 리스트</caption>
+
+	
 	<colgroup>
 		<col>
 		<col width = "110">

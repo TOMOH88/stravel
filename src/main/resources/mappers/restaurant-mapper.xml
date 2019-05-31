@@ -46,6 +46,9 @@
 		<result property = "restaurant_review_tourdate" column = "restaurant_review_tourdate"/>
 	</resultMap>
 	
+	<select id="selectRestaurantCategoryList" parameterType = "String" resultMap = "resultRestaurant">
+		select * from restaurant where restaurant_category_code = #{category} and restaurant_deletestatus = 'N' order by restaurant_date desc
+	</select>
 	
 	<select id="restaurantCategoryList" resultMap = "resultRestaurantCategory">
 		select * from restaurant_category
@@ -75,16 +78,16 @@
 	</update>
 	
 	<select id = "seafoodList" resultMap = "resultRestaurant">
-		select * from restaurant where restaurant_category_code like 'B003'
+		select * from restaurant where restaurant_category_code like 'B003'  and 6 > rownum and restaurant_deletestatus = 'N' order by restaurant_date desc
 	</select>
 	<select id = "barbecueList" resultMap = "resultRestaurant">
-		select * from restaurant where restaurant_category_code like 'B002'
+		select * from restaurant where restaurant_category_code like 'B002'  and 6 > rownum and restaurant_deletestatus = 'N' order by restaurant_date desc
 	</select>
 	<select id = "koreanfoodList" resultMap = "resultRestaurant">
-		select * from restaurant where restaurant_category_code like 'B001'
+		select * from restaurant where restaurant_category_code like 'B001' and 6 > rownum and restaurant_deletestatus = 'N' order by restaurant_date desc
 	</select>
 	<select id = "cafeList" resultMap = "resultRestaurant">
-		select * from restaurant where restaurant_category_code like 'B004'
+		select * from restaurant where restaurant_category_code like 'B004'  and 6 > rownum and restaurant_deletestatus = 'N' order by restaurant_date desc
 	</select>
 	
 	<select id = "restaurantDetail" parameterType = "_int" resultMap = "resultRestaurant">
@@ -94,7 +97,7 @@
 		select * from restaurant_images where restaurant_no = #{restaurant_no}
 	</select>
 	<select id="selectRestaurantReview" parameterType = "_int" resultMap = "resultRestaurantReview">
-		select * from restaurant_review where restaurant_no = #{restaurant_no}
+		select * from restaurant_review where restaurant_no = #{restaurant_no} and restaurant_review_deletestatus = 'N'
 	</select>
 	<select id="selectRestaurantNO" resultType = "_int">
 		select count(1)+1 from restaurant_review
@@ -109,5 +112,16 @@
 		default, #{restaurant_review_point}, 
 		default, default, #{restaurant_review_tourdate} )
 	</insert>
-
+	<update id="updateReviewBlindStatus" parameterType = "_int">
+		update restaurant_review set restaurant_review_blind = 'Y' where restaurant_review_no=#{restaurant_review_no}
+	</update>
+	<update id="updateReviewDeleteStatus" parameterType="_int">
+		update restaurant_review set restaurant_review_deletestatus = 'Y' where restaurant_review_no = #{restaurant_review_no}
+	</update>
+	<select id="selectReviewPoint" resultType="_double" parameterType = "_int">
+		select avg(restaurant_review_point) from restaurant_review where restaurant_no = #{restaurant_no} and restaurant_review_deletestatus = 'N'
+	</select>
+	<update id="updateRestaurantStatus" parameterType = "_int">
+		update restaurant set restaurant_deletestatus = 'Y' where restaurant_no = #{restaurant_no}
+	</update>
 </mapper>

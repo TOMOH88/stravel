@@ -54,11 +54,11 @@
 </div>
       <div class="col-md-10">
       <!-- 작업 작성시작 -->
-      <h3>랜드마크</h3>
+      <h3>${cate }</h3>
 	<div class="landmarkcategory">
 		<c:forEach items = "${touristspot }" var = "ts">
 			<div class="landmarklist">
-				<a href = "touristspotDetail.do?tno=${ts.touristspot_no }">
+				<a href = "touristspotDetail.do?tno=${ts.touristspqot_no }">
 				<img src="${ pageContext.request.contextPath }/resources/files/touristspotImages/${ts.rename_thumnail}" alt = "${ts.rename_thumnail}" width = "150" height = "150"></a>
 					<div>
 						<span>${ts.touristspot_name }</span>

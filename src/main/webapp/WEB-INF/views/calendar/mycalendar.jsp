@@ -158,7 +158,7 @@ div{
         <h3>${m.mycalendar_title }</h3>
         <p>클릭시 ${m.mycalendar_no}번 일정상세보기</p>
         <p>2019-04-03 (화)</p>
-        <a href="updatecalendar.do">수정</a>
+        <a href="upview.do?mycalendar_no=${m.mycalendar_no }">수정</a>
         <a href="delmycalendar.do?mycalendar_no=${m.mycalendar_no }">삭제</a>
       </div>
     </a>

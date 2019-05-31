@@ -9,9 +9,12 @@
     </settings>
 
 	<typeAliases>
-		<!-- 김지훈 -->
+		<!-- 김지훈 -->		
+		<typeAlias type="com.travelmaker.stravel.admin.model.vo.AdminVo" alias="AdminVo" />
 		<typeAlias type="com.travelmaker.stravel.support.model.vo.QnaVo" alias="QnaVo" />
 		<typeAlias type="com.travelmaker.stravel.support.model.vo.NoticeVo" alias="NoticeVo" />
+		<typeAlias type="com.travelmaker.stravel.support.model.vo.FaqCategoryVo" alias="FaqCategoryVo" />
+		<typeAlias type="com.travelmaker.stravel.support.model.vo.FaqVo" alias="FaqVo" />
 		<typeAlias type="com.travelmaker.stravel.common.PagingVo" alias="PagingVo"/>
 		<typeAlias type="com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo" alias="TouristspotImagesVo" />
 		<typeAlias type="com.travelmaker.stravel.touristspot.model.vo.TouristspotVo" alias="TouristspotVo" />
@@ -26,6 +29,10 @@
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardImage" alias = "MyTripBoardImage"/>
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardReview" alias = "MyTripBoardReview"/>
 		<typeAlias type="com.travelmaker.stravel.tripBoard.model.vo.MyTripBoardLike" alias = "MyTripBoardLike"/>
+		<!-- 김인규 -->
+		<typeAlias type="com.travelmaker.stravel.companion.model.vo.Companion" alias="Companion"/>
+		<typeAlias type="com.travelmaker.stravel.companion.model.vo.CompanionReply" alias="CompanionReply"/>
+		<typeAlias type="com.travelmaker.stravel.companion.model.vo.CompanionPage" alias="CompanionPage"/>
 		<!-- 하종은 -->
 		<typeAlias type="com.travelmaker.stravel.calendar.model.vo.MyCalendar" alias="MyCalendar"/>
 		<!-- 오청 -->
@@ -36,7 +43,7 @@
 		<typeAlias type="com.travelmaker.stravel.owner.model.vo.OwnerImg" alias="ownerImgVo"/>
 		<typeAlias type="com.travelmaker.stravel.owner.model.vo.OwnerList" alias="ownerListVo"/>
 		<typeAlias type="com.travelmaker.stravel.owner.model.vo.OwnerReview" alias="ownerReviewVo"/>
-		<!-- 하종은 -->
+		<typeAlias type="com.travelmaker.stravel.owner.model.vo.OwnerPaging" alias="ownerPagingVo"/>
 		<!-- 김인규 -->
 		<!-- 구한모 -->
 		<typeAlias type="com.travelmaker.stravel.member.model.vo.Member" alias="Member"/>
@@ -46,12 +53,14 @@
 	<!-- 주의 : 등록된 매퍼 파일 안의 쿼리문 오류가 있으면 톰캣 실행 안됨. config 파일도 오류로 처리됨. -->
 		<mapper resource="mappers/support-mapper.xml" />
 		<mapper resource="mappers/touristspot-mapper.xml" />
+		<mapper resource="mappers/admin-mapper.xml" />
 		<mapper resource="mappers/myTripBoard-mapper.xml"/>
 		<mapper resource="mappers/restaurant-mapper.xml"/>
 		<mapper resource="mappers/calendar-mapper.xml"/>
 		<mapper resource="mappers/room-mapper.xml"/>
 		<mapper resource="mappers/owner-mapper.xml"/>
 		<mapper resource="mappers/member-mapper.xml" />
+		<mapper resource="mappers/companion-mapper.xml" />
 		<!-- <mapper resource="mappers/faq-mapper.xml"/> -->
 	</mappers>
 </configuration>

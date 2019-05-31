@@ -72,9 +72,9 @@ public  class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public Room selectRsvInfo(Room room) {
+	public Room selectRsvInfo(int room_no) {
 		// TODO Auto-generated method stub
-		return rd.selectRsvInfo(mybatisSession,room);
+		return rd.selectRsvInfo(mybatisSession,room_no);
 	}
 
 	@Override
@@ -94,4 +94,6 @@ public  class RoomServiceImpl implements RoomService {
 		// TODO Auto-generated method stub
 		return rd.selectUpRoomImg(mybatisSession,room_no);
 	}
+
+
 }

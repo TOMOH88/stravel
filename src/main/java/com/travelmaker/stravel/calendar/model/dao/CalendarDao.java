@@ -1,11 +1,18 @@
 package com.travelmaker.stravel.calendar.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.travelmaker.stravel.calendar.model.vo.MyCalendar;
+import com.travelmaker.stravel.owner.model.vo.Owner;
+import com.travelmaker.stravel.owner.model.vo.OwnerImg;
+import com.travelmaker.stravel.reservation.model.vo.Reservation;
+import com.travelmaker.stravel.room.model.vo.Room;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Repository("CalendarDao")
 public class CalendarDao {
@@ -29,4 +36,25 @@ public class CalendarDao {
 	public int deleteMyCalendar(SqlSessionTemplate sqlSession, int mcnum) {
 		return sqlSession.delete("mycalendarMapper.deleteMyCalendar", mcnum);
 	}
+
+	public ArrayList<TouristspotVo> selectTouristspotList(SqlSessionTemplate sqlSession) {
+		List<TouristspotVo> list = sqlSession.selectList("mycalendarMapper.selectTouristspotList");
+		return (ArrayList<TouristspotVo>)list;
+	}
+
+	public ArrayList<Owner> selectSearchlodgment(SqlSessionTemplate sqlSession, String owner_address) {
+		List<Owner> list = sqlSession.selectList("mycalendarMapper.selectSearchlodgment", owner_address);
+		return (ArrayList<Owner>)list;
+	}
+
+	public ArrayList<OwnerImg> selectOwnerImg(SqlSessionTemplate sqlSession) {
+		List<OwnerImg> list = sqlSession.selectList("mycalendarMapper.selectOwnerImg");
+		return (ArrayList<OwnerImg>)list;
+	}
+
+	public ArrayList<Owner> selectOwner(SqlSessionTemplate sqlSession) {
+		List<Owner> list = sqlSession.selectList("mycalendarMapper.selectOwner");
+		return (ArrayList<Owner>)list;
+	}
+
 }

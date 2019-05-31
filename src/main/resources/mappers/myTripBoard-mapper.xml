@@ -43,7 +43,7 @@
 		select * from show_schedule where board_deletestatus = 'N'
 	</select>
 	
-	<select id = "selectBoard" parameterType = "_int" resultMap = "resultTripBoard">
+	<select id = "selectBoard" parameterType = "_int" resultType = "MyTripBoard" resultMap = "resultTripBoard">
 		select * from show_schedule where board_no = #{board_no}
 	</select>
 	<insert id="insertBoardImage" parameterType = "MyTripBoardImage">

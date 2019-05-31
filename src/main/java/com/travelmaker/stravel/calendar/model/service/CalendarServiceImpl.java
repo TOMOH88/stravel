@@ -1,5 +1,6 @@
 package com.travelmaker.stravel.calendar.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.travelmaker.stravel.calendar.model.dao.CalendarDao;
 import com.travelmaker.stravel.calendar.model.vo.MyCalendar;
+import com.travelmaker.stravel.owner.model.vo.Owner;
+import com.travelmaker.stravel.owner.model.vo.OwnerImg;
+import com.travelmaker.stravel.reservation.model.vo.Reservation;
+import com.travelmaker.stravel.room.model.vo.Room;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Service("CalendarService")
 public class CalendarServiceImpl implements CalendarService{
@@ -41,6 +48,28 @@ public class CalendarServiceImpl implements CalendarService{
 	public int deleteMyCalendar(int mcnum) {
 		return calendarDao.deleteMyCalendar(mybatisSession, mcnum);
 	}
+
+	@Override
+	public ArrayList<TouristspotVo> selectTour() {
+		return calendarDao.selectTouristspotList(mybatisSession);
+	}
+
+	@Override
+	public ArrayList<Owner> searchForm(String owner_address) {
+		return calendarDao.selectSearchlodgment(mybatisSession, owner_address);
+	}
+
+	@Override
+	public ArrayList<OwnerImg> selectOwnerImg() {
+		return calendarDao.selectOwnerImg(mybatisSession);
+	}
+
+	@Override
+	public ArrayList<Owner> selectOwner() {
+		return calendarDao.selectOwner(mybatisSession);
+	}
+
+
 }
 
 

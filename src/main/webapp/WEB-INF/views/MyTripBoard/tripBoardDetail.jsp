@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -196,16 +196,16 @@ ${myboard.board_content }<br>
 			<li>
 			 	<label for = "title">제목</label>
 			 	${myboard.board_title }
-			</li>
-			<li>
-				<label for = "date">날짜</label>
+			 </li>
+			 <li>
+			 	<label for = "date">날짜</label>
 			 	
-			</li>
-			<li>
-				<label for = "date">일정</label>
+			 </li>
+			 <li>
+			 	<label for = "date">일정</label>
 			 	박 일
-			</li>
-			<div class = "myinfo">
+			 </li>
+			 <div class = "myinfo">
 				<a href = "#">나의 정보 불러오기</a>
 			</div>
 			<li>

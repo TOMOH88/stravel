@@ -8,6 +8,10 @@ import com.travelmaker.stravel.room.model.vo.Room;
 public interface ReservationService {
 
 	ArrayList<Reservation> selectRsvDate(Reservation reservation);
+
+	int insertRsv(Reservation rs);
+
+	int updateStatus(int rsv_no);
 	
 	
 

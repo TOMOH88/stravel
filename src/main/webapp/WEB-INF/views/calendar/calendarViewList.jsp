@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg"></script>
 <script type="text/javascript">
 function add_div(){
     var div = document.createElement('div');
@@ -18,6 +18,151 @@ function remove_item(obj){
     // obj.parentNode 를 이용하여 삭제
     document.getElementById('field').removeChild(obj.parentNode);
 }
+
+/* $(function(){
+	$.ajax({
+		type: "POST",
+		url : "acalendar.do",
+		dataType: "json",
+		contentType:"application/json; charset=UTF-8",
+		success : function(data){
+			
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert(jqXHR.responseText.errorThrown)
+		}
+	});
+}); */
+
+var markerArray = [];
+var iConArray = [];
+var nameArray = [];
+var contentArray = [];
+
+$(function(){
+	$.ajax({
+		type: "POST",
+		url : "cview.do",
+		dataType: "json",
+		contentType:"application/json; charset=UTF-8",
+		success : function(data){
+			if(data.code == "ok")
+			for(i in data.tour){
+				var no = [];
+				no[i] = data.tour[i].touristspot_no;
+				nameArray[i] = [data.tour[i].touristspot_name];
+				var touristspot = [];
+				touristspot[i] = [data.tour[i].touristspot];
+				var latitude = [];
+				latitude[i] = [data.tour[i].touristspot_latitude];
+				var longitude = [];
+				longitude[i] = [data.tour[i].touristspot_longitude];
+				markerArray[i] = new google.maps.LatLng(latitude[i],longitude[i]);
+				iConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+				contentArray[i] = [data.tour[i].touristspot_content];
+				
+				
+				addMarker(no, data, contentArray, location, nameArray)
+				
+				}
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert(jqXHR.responseText.errorThrown)
+		}
+	});
+});
+
+/*     function initMap(no, data , name, latitude, longitude) {
+    	var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도
+        mapOptions = { 
+         zoom:11, 
+         center:mapLocation 
+        } 
+    	
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions); 
+        var infowindow = new google.maps.InfoWindow(); 
+        var marker = [];
+        
+        for (i = 0; i < no.length; i++) { 
+        	var icon = '';
+           marker[i] = new google.maps.Marker({ 
+           position: new google.maps.LatLng(latitude[i], longitude[i]), 
+           map:   map, 
+           title: '제주도' , 
+          }); 
+          var contentString = 'Title on Load'; 
+          var infowindow = [];
+          infowindow = new google.maps.InfoWindow({ 
+           content: contentString, 
+           maxWidth: 160 
+          }); 
+          
+          infowindow.open(map, marker[i]); 
+     
+          // Event that closes the Info Window with a click on the map 
+          google.maps.event.addListener(map, 'click', function() { 
+           infowindow.close(); 
+          }); 
+          
+          google.maps.event.addListener(marker, 'click', (function(marker, i) { 
+           return function() { 
+            var contentString = 'Title on Click'; 
+            infowindow.setContent(contentString); 
+            infowindow.open(map, marker); 
+           } 
+          })(marker, i)); 
+         } 
+        } 
+    google.maps.event.addDomListener(window, 'load', initMap); */
+    var markers = [];
+    var iterator = 0;
+    var map;
+     
+  
+    function initialize() {
+        var mapOptions = {
+            zoom: 11,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            center: new google.maps.LatLng('33.321349', '126.684723')
+        };
+     
+        map = new google.maps.Map(document.getElementById('map'),mapOptions);
+     
+        for (var i = 0; i < markerArray.length; i++) {
+            addMarker();
+        }
+    }
+     
+     
+    // 마커 추가
+    function addMarker(no, data, contentArray, location, nameArray) {
+    	
+    	var title = nameArray[iterator];
+        var marker = new google.maps.Marker({
+            position: markerArray[iterator],
+            map: map,
+            draggable: false,
+            icon: iConArray[iterator],
+            title : "'" + nameArray[iterator] + "'"
+        });
+        markers.push(marker);
+     
+        var infowindow = new google.maps.InfoWindow({
+          content: "'" + contentArray[iterator] + "'"
+        });
+     
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+        iterator++;
+        
+        google.maps.event.addListener(map, 'click', function() { 
+            infowindow.close(); 
+           }); 
+    }
+     
+    google.maps.event.addDomListener(window, 'load', initialize);
+
 
 </script>
 <title>stravel</title>
@@ -36,8 +181,8 @@ div{
 <c:import url="../common/sheader.jsp" />
 <div style="height:90px;"></div>
 <div class="container-fluid">
-<div class="row">
-<div class="col-md-1" style="background:#203341;">
+<div class="row" style="height:530px;">
+<div class="col-md-1" style="background:#203341; height:530px;">
 <button class="btn btn-info btn-sm" onclick="add_div();">일정추가</button>
 <c:forEach var="i" begin="1" end="100">
 <div id="pre_set" style="display:none;">
@@ -46,14 +191,45 @@ div{
 </c:forEach>
 <div class="row" id="field"></div>
 </div>
-<div class="col-md-2">dd</div>
-<div class="col-md-2">asd</div>
+<div class="col-md-2" style="overflow:scroll; height:530px;">
+<div class="row" id="result">asd</div>
+</div>
+<div class="col-md-2" style="overflow:scroll; height:530px;">
+<c:forEach var="tl" items="${tour}">
+<div class="row">
+<img src="${pageContext.request.contextPath }/resources/files/touristspotImages/${tl.rename_thumnail }" style="width:100%; height:100px;">
+<div class="col-xl-12">
+<div class="row">
+<a href="touristspotDetail.do?tno=${tl.touristspot_no }">${tl.touristspot_name }</a>
+</div>
+</div>
+<div class="col-xl-12">
+<div class="row">
+<font style="font-size:8pt;">${tl.touristspot_content }</font>
+</div>
+<div class="row">
+<div class="col-xl-6">
+<div class="row">
+<font style="font-size:8pt;">${tl.touristspot_tel }</font>
+</div>
+<div class="row">
+<a href="${tl.touristspot_homepage }"><font style="font-size:8pt;">사이트 이동</font></a>
+</div>
+</div>
+<div class="col-xl-6" align="center" style="margin:auto;">
+<button>추가</button>
+</div>
+</div>
+</div>
+</div>
+</c:forEach>
+</div>
 <div class="col-md-7" id="map" style="height:530px; position:static;">
 </div>
 </div>
 </div>
-<div style="position:absolute; left: 1190px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div>
-<div style="position:absolute; left: 1240px; top: 110px; width:100%; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='mycalendar.do'">닫기</button></div>
+<div style="position:absolute; left: 1190px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div>
+<div style="position:absolute; left: 1240px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='mycalendar.do'">닫기</button></div>
 <form action="vcalendar.do" method="post">
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -109,49 +285,5 @@ div{
   </div>
 </div>
 </form>
-<script>
-function initialize() {
-    var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도
-    var markLocation = new google.maps.LatLng('33.321349', '126.684723'); // 마커가 위치할 위도와 경도
-
-
-    var mapOptions = {
-      center: mapLocation, // 지도에서 가운데로 위치할 위도와 경도(변수)
-      zoom: 18, // 지도 zoom단계
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map"), // id: map-canvas, body에 있는 div태그의 id와 같아야 함
-        mapOptions);
-    
-    var size_x = 30; // 마커로 사용할 이미지의 가로 크기
-    var size_y = 30; // 마커로 사용할 이미지의 세로 크기
-     
-    // 마커로 사용할 이미지 주소
-     
-    var marker;
-    marker = new google.maps.Marker({
-           position: markLocation, // 마커가 위치할 위도와 경도(변수)
-           map: map,
-//         info: '말풍선 안에 들어갈 내용',
-           title: '제주펜션~' // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
-    });
-     
-    var content = 
-    	"<a href='main.do'>"
-    	 + "<div style='width: 200px; height: 150px;'>"
-    	+ "<img src='${pageContext.request.contextPath}/resources/img/maldives-1993704_1920.jpg' style='width:100%; height:100%;'></div></a>"
-    	+ "<hr><div style='width: 200px; height: 70px;'><font>침대1개</font><br>올레펜션<br>₩28,500 x 1박 &nbsp;&nbsp; ★★★★★</div>"; // 말풍선 안에 들어갈 내용
-     
-    // 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
-    var infowindow = new google.maps.InfoWindow({ content: content});
-
-    google.maps.event.addListener(marker, "click", function() {
-        infowindow.open(map,marker);
-    });
-
-     
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);
-			</script> 
 </body>
 </html>

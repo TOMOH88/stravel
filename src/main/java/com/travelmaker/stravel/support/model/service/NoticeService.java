@@ -17,4 +17,10 @@ public interface NoticeService {
 
 	int selectTotalPagingSearch(PagingVo paging);
 
+	NoticeVo selectNoticeOne(int notice_no);
+
+	int deleteNoticeOne(int notice_no);
+
+	int updateNotice(NoticeVo notice);
+
 }
