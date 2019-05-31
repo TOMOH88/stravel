@@ -30,7 +30,7 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-fa.css" media="all" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-svg.css" media="all" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-uni.css" media="all" type="text/css"/>
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<!-- <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script> -->
 <script type="text/javascript">
 /* var map;
 var marker;
@@ -63,8 +63,7 @@ var marker;
 	  		return;
 	  	});
 
-	  	});
-			
+	  }  */
 	  } */
 	$(document).on('ready',function() {
 		//암호와 암호확인의 기록값이 일치하는지 확인
@@ -203,11 +202,6 @@ var marker;
 		});
 		return false; //submit 못하게 함
 	}
-	
-	function moveLogin(){
-		alert("로그인을 해주세요");
-	}
-	
 </script>
     
 <title>header</title>
@@ -235,6 +229,8 @@ var marker;
           </button>
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-end">
+           <!--  <li class="nav-item"><a class="nav-link" href="test1.do">테스트용</a></li>
+            <li class="nav-item"><a class="nav-link" href="test3.do">테스트용2</a></li> -->
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">고객센터</a>
@@ -249,6 +245,7 @@ var marker;
                   aria-expanded="false">커뮤니티</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="comp.do">동행찾기</a></li>
+                  <!-- <li class="nav-item"><a class="nav-link" href="tripboard.do">일정자랑</a></li> -->
                   <li class="nav-item"><a class="nav-link" href="pay1.do">결제뷰</a></li>
                   <li class="nav-item"><a class="nav-link" href="pay1.do">결제뷰</a></li>
                 </ul>
@@ -266,12 +263,9 @@ var marker;
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">마이페이지</a>
                 <ul class="dropdown-menu">
-                <c:if test="${!empty loginMember }">
+                  <!-- <li class="nav-item"><a class="nav-link" href="mycalendar.do">나의일정</a></li>
+                  <li class="nav-item"><a class="nav-link" href="adminMain.do">예약내역</a></li> -->
                   <li class="nav-item"><a class="nav-link" href="myinfo.do?uno=${loginMember.user_no }">개인정보수정</a></li>
-                  </c:if>
-                  <c:if test="${empty loginMember }">
-                  <li class="nav-item"><a class="nav-link" onclick="moveLogin();">개인정보수정</a></li>
-                  </c:if>
                 </ul>
 				</li>
 				</c:if>
@@ -407,32 +401,28 @@ var marker;
 						</form>
 						</article>
 					</div>
-					<div id="business" class="tab-pane fade" style="display:none;">
-					<article class="card-body">
+					<div id="business" class="tab-pane fade">
 							<!-- Login Form Code Here -->
 							<form action="binsert.do" method="post">
-						  <div class="form-group input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"> 
-							 <i class="fa fa-envelope"></i>
-							</span>
-						</div>
-						<input type="number" name="owner_license_no" class="form-control"	placeholder="아이디(사업자번호) 입력하세요" required>
-					</div>
-					<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> 
-									<i class="fa fa-lock"></i>
-								</span>
-							</div>
-							<input class="form-control" name="owner_password" id="owner_password"	placeholder="비밀번호를 입력하세요" type="password" required>
-						</div>
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> 
-									<i class="fa fa-lock"></i>
-								</span>
-							</div>
+						  <div class="form-group">
+						  <label>아이디
+						  <input type="number" name="owner_license_no"></label><br>
+						  <label>비밀번호
+						  <input type="text" name="owner_password"></label>
+						  <label>대표자명
+						  <input type="text" name="owner_name"></label>
+						  <label>업체명
+						  <input type="text" name="owner_companyName"></label>
+						  <label>전화번호
+						  <input type="number" name="owner_telephone"></label>
+						  <label>휴대폰번호
+						  <input type="number" name="owner_phone"></label>
+						  <label>계좌번호
+						  <input type="text" name="owner_account"></label>
+						  <!-- <label>주소
+						  <input type="text" name="owner_address" id="owner_address"><input type="button" onclick="geoCode();" value="검색">
+						  </label><div id="map" style="height:200px; widht:200px;"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
 							<input class="form-control" id="owner_password1" placeholder="비밀번호를 다시입력하세요" type="password" required>
 						</div>
 						<div class="form-group input-group">
@@ -470,57 +460,6 @@ var marker;
 									<i class="fa fa-lock"></i>
 								</span>
 							</div>
-							<input class="form-control" id="owner_password" placeholder="비밀번호를 다시입력하세요" type="password" required>
-						</div>
-						<div class="form-group input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-user"></i>
-									</span>
-								</div>
-								<input name="owner_name" class="form-control" placeholder="대표자명을 입력하세요" type="text" required>
-							</div>
-							<div class="form-group input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"> <i class="fa fa-user"></i>
-									</span>
-								</div>
-								<input name="owner_companyName" class="form-control" placeholder="업체명을 입력하세요" type="text" required>
-							</div>
-<!-- 							<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> 
-									<i class="fa fa-phone"></i>
-								</span>
-							</div>
-								<input name="owner_telephone" class="form-control"	placeholder="대표전화번호를 입력하세요" type="number">
-						</div> -->
-						<div class="form-group input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> 
-									<i class="fa fa-phone"></i>
-								</span>
-							</div>
-								<input name="owner_phone" class="form-control"	placeholder="대표휴대전화를 입력하세요" type="number">
-						</div>
-		<!-- 				<div class="form-group input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"> 
-							 <i class="fa fa-envelope"></i>
-							</span>
-						</div>
-						<input name="owner_account" class="form-control"	placeholder="계좌번호를 입력하세요" type="text" required>
-					</div> -->
-					<!-- <div class="form-group input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"> 
-							 <i class="fa fa-envelope"></i>
-							</span>
-						</div>
-						<input name="owner_address" id="owner_address" class="form-control"	placeholder="주소를 입력하세요" type="text" required>
-						<input type="button" onclick="geoCode();" value="검색" class="btn btn-info btn-sm">
-						<div id="map" style="height:200px; widht:200px;"></div>
-					</div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
     async defer></script> -->
     					<!--  <input type="hidden" name="owner_latitude" id="owner_latitude">
 						  <input type="hidden" name="owner_longitude" id="owner_longitude"> -->
@@ -538,13 +477,10 @@ var marker;
 						  <input type="radio" name="owner_category" value="리조트">리조트
 						  </div>
 						  </div>
-						  <div style="text-align:center;">
-						  <br>
-						    <input type="submit" value="사업자 회원가입" class="btn btn-info btn-sm">
-						    </div>
+						    <input type="submit" value="사업자 회원가입">
 						  </div>
 						  </form>
-						  </article>
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -562,11 +498,11 @@ var marker;
 			<div class="modal-content">
 				<div class="modal-header">
 					<h3 class="text-primary">S.Travel 로그인</h3>
-					<button type="button" class="close" data-dismiss="login">&times;</button>					
+					<button type="button" class="close" data-dismiss="modal">&times;</button>					
 				</div>
 				<div class="modal-body">
 					<ul class="nav nav-tabs">
-						<li class="active"><a data-toggle="tab" href="#home">사용자 로그인</a></li>
+						<li><a data-toggle="tab" href="#home">사용자 로그인</a></li>
 						<li><a data-toggle="tab" href="#login1">사업자 로그인</a></li>
 					</ul>
 					<div class="tab-content">
@@ -587,26 +523,32 @@ var marker;
 										<input type="password" name="user_password" placeholder="비밀번호를 입력하세요"
 											class="form-control">
 									</div>
-									<div class="row">
-										<div>
 											<div class="form-group"><br>
 												<button type="submit" value="로그인" class="btn btn-primary btn-block">로그인</button>
 											</div>
-										</div>
-
-									</div>
 								</form>
 							</article>
 						</div>
 						<div id="login1" class="tab-pane fade" style="display:none;">
 							 <form action="ologin.do" method="post">
 							<!-- Login Form Code Here -->
+							<article class="card-body">
 						  <div class="form-group">
-						    <input type="text" placeholder="사업자 등록번호를 입력하십시요" name="owner_license_no" />
-						    <input type="password" placeholder="비밀번호를 입력하십시요" name="owner_password" />
-						    <button type="submit" class="btn btn-primary btn-block"> 사업자 로그인</button>
-						  </div>
-						  </form>
+										<!-- <input name="useremail" class="form-control"
+											placeholder="이메일을 입력하세요" type="email"> -->
+										<input type="number" name="owner_no" placeholder="이메일을 입력하세요"
+											class="form-control">
+									</div>
+									<div class="form-group">
+										<!-- <input name="userpwd" class="form-control"
+											placeholder="비밀번호를 입력하세요" type="password"> -->
+										<input type="password" name="owner_password" placeholder="비밀번호를 입력하세요"
+											class="form-control">
+									</div>
+											<div class="form-group"><br>
+												<button type="submit" value="로그인" class="btn btn-primary btn-block">로그인</button>
+											</div>
+											</article>
 						</div>
 					</div>
 				</div>

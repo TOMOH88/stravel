@@ -31,4 +31,5 @@ public interface CalendarService {
 	int calendarcinUpdate(MyCalendar mc);
 	MyCalendar selectOneMyCalendar(String mycalendar_title);
 	ArrayList<Restaurant> selectRest();
+	ArrayList<Owner> searchlodgment();
 }

@@ -111,7 +111,10 @@ public class CalendarServiceImpl implements CalendarService{
 		return calendarDao.selectRestList(mybatisSession);
 	}
 
-
+	@Override
+	public ArrayList<Owner> searchlodgment() {
+		return calendarDao.selectlodgment(mybatisSession);
+	}
 }
 
 

@@ -51,6 +51,14 @@ public class CalendarController {
 		return "calendar/searchlodgment";
 	}
 	
+	@RequestMapping(value="searchlodgment2.do", method=RequestMethod.GET)
+	public String moveSearchLodgmentPage(Model mo) {
+		ArrayList<Owner> ow = calendarService.searchlodgment();
+		ArrayList<OwnerImg> ow1 = calendarService.selectOwnerImg();
+		mo.addAttribute("ow", ow);
+		return "calendar/searchlodgment";
+	}
+	
 	@RequestMapping(value="cview.do", method=RequestMethod.GET)
 	public ModelAndView moveCalendarViewPage(ModelAndView mv) {
 		ArrayList<Calendar> ca = calendarService.selectCalendarList();
@@ -114,13 +122,13 @@ public class CalendarController {
 		return mv;
 	}
 	
-/*	@RequestMapping(value="rview.do", method=RequestMethod.GET)
+	@RequestMapping(value="rview.do", method=RequestMethod.GET)
 	public ModelAndView movedCalendarViewPage(ModelAndView mv) {
 		ArrayList<Restaurant> rest = calendarService.selectRest();
-		mv.addObject("rest", rest);
+		mv.addObject("restt", rest);
 		mv.setViewName("calendar/calendarViewList");
 		return mv;
-	}*/
+	}
 	
 	@RequestMapping(value="rview.do", method= RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	@ResponseBody

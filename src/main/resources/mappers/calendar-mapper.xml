@@ -182,6 +182,10 @@
 		<result property = "restaurant_review_lastmodified" column = "restaurant_review_lastmodified"/>
 		<result property = "restaurant_review_tourdate" column = "restaurant_review_tourdate"/>
 	</resultMap>
+	
+	<select id="selectLodgMent" resultMap="resultOwner">
+		select * from owner
+	</select>
 
 	<select id="selectrestList" resultMap="resultRestaurant">
 		select * from restaurant
