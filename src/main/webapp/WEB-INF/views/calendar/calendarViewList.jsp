@@ -27,7 +27,7 @@ var contentArray = [];
 $(function(){
 	$.ajax({
 		type: "POST",
-		url : "cview.do",
+		url : "tview.do",
 		dataType: "json",
 		contentType:"application/json; charset=UTF-8",
 		success : function(data){
@@ -46,16 +46,16 @@ $(function(){
 				iConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
 				contentArray[i] = [data.tour[i].touristspot_content];
 				
-				
 				addMarker(no, data, contentArray, location, nameArray)
-				
 				}
+			
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 			alert(jqXHR.responseText.errorThrown)
 		}
 	});
 });
+
 
 /*     function initMap(no, data , name, latitude, longitude) {
     	var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도
@@ -150,6 +150,43 @@ $(function(){
 
     
 </script>
+<script type="text/javascript">
+/* var rmarkerArray = [];
+var riConArray = [];
+var rnameArray = [];
+var rcontentArray = [];
+
+$(function(){
+	$.ajax({
+		type: "POST",
+		url : "rview.do",
+		dataType: "json",
+		contentType:"application/json; charset=UTF-8",
+		success : function(rdata){
+			if(rdata.code == "ook")
+			for(i in rdata.rest){
+				var rno = [];
+				rno[i] = data.rest[i].restaurant_no;
+				rnameArray[i] = [data.rest[i].restaurant_name];
+				/* var rlatitude = [];
+				rlatitude[i] = [data.rest[i].restaurant_gridx];
+				var rlongitude = [];
+				rlongitude[i] = [data.rest[i].restaurant_gridy];
+				rmarkerArray[i] = new google.maps.LatLng(latitude[i],longitude[i]); */
+				riConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+				/* rcontentArray[i] = [data.rest[i].restaurant_content]; */
+				
+				alert("ddd");
+				/* raddMarker(rno, rdata, rcontentArray, rlocation, rnameArray) */
+				}
+			
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert(jqXHR.responseText.errorThrown)
+		}
+	});
+}); */
+</script>
 <title>stravel</title>
 <style type="text/css">
 div{
@@ -167,7 +204,7 @@ div{
 <div style="height:90px;"></div>
 <div class="container-fluid">
 <div class="row" style="height:530px;">
-<div class="col-md-1" style="background:#203341; height:530px; overflow:scroll;">
+<%-- <div class="col-md-1" style="background:#203341; height:530px; overflow:scroll;">
 <form action="acalendar.do" method="post">
 <input type="submit" value="일정추가">
 <div id="pre_set" class="row">
@@ -184,10 +221,11 @@ ${status.count} ${c.calendar_title }
 <a href="delDay.do?calendar_no=${c.calendar_no }">삭제</a>
 </div>
 </c:forEach>
-</div>
+</div> --%>
 <div class="col-md-2" style="overflow:scroll; height:530px;">
 <div class="row" id="result">
-${oca.calendar_no }${oca.calendar_title }
+<%-- ${oca.calendar_no }${oca.calendar_title } --%>
+ㅁㄴㅇ
 </div>
 </div>
 <div class="col-md-2" style="overflow:scroll; height:530px;">
@@ -196,37 +234,33 @@ ${oca.calendar_no }${oca.calendar_title }
 <img src="${pageContext.request.contextPath }/resources/files/touristspotImages/${tl.rename_thumnail }" style="width:100%; height:100px;">
 <div class="col-xl-12">
 <div class="row">
-<a href="delDay.do?tno=${tl.touristspot_no }">${tl.touristspot_name }</a>
+<a href="touristspotDetail.do?tno=${tl.touristspot_no }">${tl.touristspot_name }</a>
+&nbsp;&nbsp;&nbsp;<font style="font-size:7pt;">TEL : ${tl.touristspot_tel }</font>
 </div>
 </div>
+</div>
+<div class="row">
 <div class="col-xl-12">
 <div class="row">
 <font style="font-size:8pt;">${tl.touristspot_content }</font>
 </div>
 <div class="row">
-<div class="col-xl-6">
-<div class="row">
-<font style="font-size:8pt;">${tl.touristspot_tel }</font>
-</div>
-<div class="row">
 <a href="${tl.touristspot_homepage }"><font style="font-size:8pt;">사이트 이동</font></a>
 </div>
-</div>
-<div class="col-xl-6" align="center" style="margin:auto;">
+<!-- <div class="col-xl-12" align="center" style="margin:auto;">
 <button>추가</button>
-</div>
-</div>
+</div> -->
 </div>
 </div>
 </c:forEach>
 </div>
-<div class="col-md-7" id="map" style="height:530px; position:static;">
+<div class="col-md-8" id="map" style="height:530px; position:static;">
 </div>
 </div>
 </div>
-<div style="position:absolute; left: 1190px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div>
+<!-- <div style="position:absolute; left: 1190px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div> -->
 <div style="position:absolute; left: 1240px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='mycalendar.do'">닫기</button></div>
-<form action="vcalendar.do" method="post">
+<form action="cinupdate.do" method="post">
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -238,13 +272,16 @@ ${oca.calendar_no }${oca.calendar_title }
       </div>
       <div class="modal-body">
       <div>
-      <font>제목</font><input type="text" name="mycalendar_title" class="form-control" required></div>
+      <font>제목</font><input type="text" name="mycalendar_title" class="form-control" required
+      value="${mct.mycalendar_title }"></div>
       <div class="row">
        <div class="col-xl-6">
-       <font>출발일</font><input type="date" name="mycalendar_start_date" class="form-control" required>
+       <font>출발일</font><input type="date" name="mycalendar_start_date" class="form-control" required
+       value="${mct.mycalendar_start_date }">
       </div>
       <div class="col-xl-6">
-       <font>종료일</font><input type="date" name="mycalendar_end_date" class="form-control" required>
+       <font>종료일</font><input type="date" name="mycalendar_end_date" class="form-control" required
+       value="${mct.mycalendar_end_date }">
       </div>
       </div>
       <div>

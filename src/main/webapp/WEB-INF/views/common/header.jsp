@@ -32,7 +32,7 @@ maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/theme-krajee-uni.css" media="all" type="text/css"/>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
-var map;
+/* var map;
 var marker;
   function geoCode() {
 	  	var faddr_lat = 37.5007939;
@@ -63,7 +63,7 @@ var marker;
 	  		return;
 	  	});
 			
-	  }
+	  } */
 
 	$(document).on('ready',function() {
 		//암호와 암호확인의 기록값이 일치하는지 확인
@@ -228,11 +228,11 @@ var marker;
     
 <title>header</title>
 <style>
-
+/* 
 #map {
         height: 100%;
         width: 100%;
-      }
+      } */
 </style>
 </head>
 <body>
@@ -490,10 +490,10 @@ var marker;
 						</div>
 						<input name="owner_address" id="owner_address" class="form-control"	placeholder="주소를 입력하세요" type="text" required>
 						<input type="button" onclick="geoCode();" value="검색" class="btn btn-info btn-sm">
-						<div id="map" style="height:200px; widht:200px;"></div>
+						<!-- <div id="map" style="height:200px; widht:200px;"></div> -->
 					</div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
-    async defer></script>
+   <!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
+    async defer></script> -->
     					  <input type="hidden" name="owner_latitude" id="owner_latitude">
 						  <input type="hidden" name="owner_longitude" id="owner_longitude">
 						  <div class="row">

@@ -10,9 +10,7 @@ import com.travelmaker.stravel.calendar.model.vo.Calendar;
 import com.travelmaker.stravel.calendar.model.vo.MyCalendar;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
-import com.travelmaker.stravel.reservation.model.vo.Reservation;
-import com.travelmaker.stravel.room.model.vo.Room;
-import com.travelmaker.stravel.touristspot.model.vo.TouristspotImagesVo;
+import com.travelmaker.stravel.restaurant.model.vo.Restaurant;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 @Repository("CalendarDao")
@@ -79,4 +77,16 @@ public class CalendarDao {
 		return sqlSession.insert("mycalendarMapper.insertTitlecalendar", mc);
 	}
 
+	public int updateMyCalendarTitle(SqlSessionTemplate sqlSession, MyCalendar mc) {
+		return sqlSession.update("mycalendarMapper.updateTitlecalendar", mc);
+	}
+
+	public MyCalendar selectoneMyCalendar(SqlSessionTemplate sqlSession, String mycalendar_title) {
+		return sqlSession.selectOne("mycalendarMapper.selectOneTitle", mycalendar_title);
+	}
+
+	public ArrayList<Restaurant> selectRestList(SqlSessionTemplate sqlSession) {
+		List<Restaurant> list = sqlSession.selectList("mycalendarMapper.selectRestList");
+		return (ArrayList<Restaurant>)list;
+	}
 }

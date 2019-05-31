@@ -99,11 +99,11 @@ var marker;
 			</tr>
 			<tr>
 				<th>식당 영업시작 시간</th>
-				<td><input type = "time" name = "restaurant_openinghours" class = "form-control" required></td>
+				<td><input type = "text" name = "restaurant_openinghours" class = "form-control" required></td>
 			</tr>
 			<tr>
 				<th>식당 영업마감 시간</th>
-				<td><input type = "time" name = "restaurant_closehours" class = "form-control" required></td>
+				<td><input type = "text" name = "restaurant_closehours" class = "form-control" required></td>
 			</tr>
 			<tr>
 				<th>식당 전화번호</th>

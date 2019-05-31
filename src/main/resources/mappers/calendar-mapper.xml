@@ -140,6 +140,57 @@
 	<result property = "member" column="member" />
 	<result property = "total_price" column="total_price" />
 </resultMap>
+
+<resultMap id="resultRestaurant" type ="Restaurant">
+	<id property ="restaurant_no" column ="RESTAURANT_NO"/>
+	<result property ="restaurant_category_code" column ="RESTAURANT_CATEGORY_CODE"/>
+	<result property ="restaurant_name" column ="RESTAURANT_NAME"/>
+	<result property ="restaurant_content" column ="RESTAURANT_CONTENT"/>
+	<result property ="restaurant_writer" column ="RESTAURANT_WRITER"/>
+	<result property ="restaurant_date" column ="RESTAURANT_DATE"/>
+	<result property ="rename_thumnail" column ="RENAME_THUMNAIL"/>
+	<result property ="restaurant_openinghours" column ="RESTAURANT_OPENINGHOURS"/>
+	<result property ="restaurant_closehours" column ="RESTAURANT_CLOSEHOURS"/>
+	<result property ="restaurant_homepage" column ="RESTAURANT_HOMEPAGE"/>
+	<result property ="restaurant_address" column ="RESTAURANT_ADDRESS"/>
+	<result property ="restaurant_tel" column ="RESTAURANT_TEL"/>
+	<result property ="restaurant_lastmodified" column ="RESTAURANT_LASTMODIFIED"/>
+	<result property ="restaurant_gridx" column ="RESTAURANT_GRIDX"/>
+	<result property ="restaurant_gridy" column ="RESTAURANT_GRIDY"/>
+	<result property ="restaurant_deletestatus" column ="RESTAURANT_DELETESTATUS"/>
+</resultMap>
+
+	<resultMap id = "resultRestaurantCategory" type = "RestaurantCategory">
+		<result property = "restaurant_category_code" column = "restaurant_category_code"/>
+		<result property = "restaurant_category_name" column = "restaurant_category_name"/>
+	</resultMap>
+	
+	<resultMap id = "resultRestaurantImage" type = "RestaurantImage">
+		<result property = "restaurant_no" column = "restaurant_no"/>
+		<result property = "restaurant_sq" column = "restaurant_sq"/>
+		<result property = "restaurant_imagename" column = "restaurant_imagename"/>
+	</resultMap>
+	
+	<resultMap type="RestaurantReview" id="resultRestaurantReview">
+		<result property = "restaurant_no" column = "restaurant_no"/>
+		<result property = "restaurant_review_no" column = "restaurant_review_no"/>
+		<result property = "restaurant_review_content" column = "restaurant_review_content"/>
+		<result property = "restaurant_review_writer" column = "restaurant_review_writer"/>
+		<result property = "restaurant_review_date" column = "restaurant_review_date"/>
+		<result property = "restaurant_review_point" column = "restaurant_review_point"/>
+		<result property = "restaurant_review_blind" column = "restaurant_review_blind"/>
+		<result property = "restaurant_review_lastmodified" column = "restaurant_review_lastmodified"/>
+		<result property = "restaurant_review_tourdate" column = "restaurant_review_tourdate"/>
+	</resultMap>
+
+	<select id="selectrestList" resultMap="resultRestaurant">
+		select * from restaurant
+	</select>
+
+	<select id="selectOneTitle" resultType="MyCalendar" resultMap="resultMyCalendar">
+		select * from tb_mycalendar where mycalendar_title = #{mycalendar_title}
+	</select>
+
 	<insert id="insertTitlecalendar" parameterType="Calendar">
 		insert into tb_mycalendar (mycalendar_no, mycalendar_title) values (sq_mycalendar_no.nextval, #{mycalendar_title})
 	</insert>

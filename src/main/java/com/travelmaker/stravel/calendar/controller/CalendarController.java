@@ -18,6 +18,7 @@ import com.travelmaker.stravel.calendar.model.vo.Calendar;
 import com.travelmaker.stravel.calendar.model.vo.MyCalendar;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
+import com.travelmaker.stravel.restaurant.model.vo.Restaurant;
 import com.travelmaker.stravel.touristspot.model.vo.TouristspotVo;
 
 
@@ -51,12 +52,13 @@ public class CalendarController {
 	}
 	
 	@RequestMapping(value="cview.do", method=RequestMethod.GET)
-	public String moveCalendarViewPage(Model mo) {
+	public ModelAndView moveCalendarViewPage(ModelAndView mv) {
 		ArrayList<Calendar> ca = calendarService.selectCalendarList();
-		mo.addAttribute("ca", ca);
+		mv.addObject("ca", ca);
 		ArrayList<TouristspotVo> tour = calendarService.selectTour();
-		mo.addAttribute("tour", tour);
-		return "calendar/calendarViewList";
+		mv.addObject("tour", tour);
+		mv.setViewName("calendar/calendarViewList");
+		return mv;
 	}
 	
 	@RequestMapping(value="upview.do", method=RequestMethod.GET)
@@ -77,7 +79,6 @@ public class CalendarController {
 	
 	@RequestMapping(value="updatecalendar.do", method={RequestMethod.POST, RequestMethod.GET})
 	public String updateCaledar(MyCalendar mc, @RequestParam(name= "mycalendar_no", required=false) int mycalendar_no) {
-		System.out.println(mc);
 		if(calendarService.updateMyCalendar(mc) > 0) {
 			return "redirect:mycalendar.do";
 		}else {
@@ -102,8 +103,9 @@ public class CalendarController {
 		return "redirect:mycalendar.do";
 	}
 	
-	@RequestMapping(value="cview.do", method= RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	public @ResponseBody ModelAndView atourPage(ModelAndView mv) {
+	@RequestMapping(value="tview.do", method= RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public ModelAndView atourPage(ModelAndView mv) {
 		ArrayList<TouristspotVo> tour = calendarService.selectTour();
 			mv.addObject("tour", tour);
 			mv.addObject("code", "ok");
@@ -111,8 +113,27 @@ public class CalendarController {
 		return mv;
 	}
 	
+/*	@RequestMapping(value="rview.do", method=RequestMethod.GET)
+	public ModelAndView movedCalendarViewPage(ModelAndView mv) {
+		ArrayList<Restaurant> rest = calendarService.selectRest();
+		mv.addObject("rest", rest);
+		mv.setViewName("calendar/calendarViewList");
+		return mv;
+	}*/
+	
+	@RequestMapping(value="rview.do", method= RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public ModelAndView arestPage(ModelAndView mv) {
+		ArrayList<Restaurant> rest = calendarService.selectRest();
+			mv.addObject("rest", rest);
+			mv.addObject("code", "ook");
+			mv.setViewName("jsonView");
+		return mv;
+	}
+	
 	@RequestMapping(value="aview.do", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	public @ResponseBody ModelAndView alodgmentPage(ModelAndView mv) {
+	@ResponseBody
+	public ModelAndView alodgmentPage(ModelAndView mv) {
 		ArrayList<Owner> owner = calendarService.selectOwner();
 		mv.addObject("owner", owner);
 		mv.addObject("code", "ok");
@@ -143,12 +164,21 @@ public class CalendarController {
 	}
 	
 	@RequestMapping(value="cinsert.do", method=RequestMethod.POST)
-	public String cinsertPage(MyCalendar mc) {
+	public String cinsertPage(Model mo, MyCalendar mc, @RequestParam(name="mycalendar_title", required=false) String mycalendar_title) {
+		System.out.println(mycalendar_title);
 		if(calendarService.calendarinsert(mc) > 0) {
-		return "calendar/mycalendar";
+			mc = calendarService.selectOneMyCalendar(mycalendar_title);
+			mo.addAttribute("mct", mc);
+		return "redirect:cview.do";
 		}else {
 			return "common/error";
 		}
+	}
+	
+	@RequestMapping(value="cinupdate.do", method=RequestMethod.POST)
+	public String cinupPage(MyCalendar mc, @RequestParam("mycalendar_title") String mycalendar_title) {
+		calendarService.calendarcinUpdate(mc);
+		return "redirect:mycalendar.do";
 	}
 }
 	
