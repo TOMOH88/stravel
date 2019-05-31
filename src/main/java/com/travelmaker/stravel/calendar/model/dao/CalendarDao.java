@@ -86,7 +86,7 @@ public class CalendarDao {
 	}
 
 	public ArrayList<Restaurant> selectRestList(SqlSessionTemplate sqlSession) {
-		List<Restaurant> list = sqlSession.selectList("mycalendarMapper.selectRestList");
+		List<Restaurant> list = sqlSession.selectList("mycalendarMapper.selectrestList");
 		return (ArrayList<Restaurant>)list;
 	}
 }

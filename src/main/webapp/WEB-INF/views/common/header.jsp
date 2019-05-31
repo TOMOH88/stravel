@@ -263,7 +263,6 @@ var marker;
                   aria-expanded="false">커뮤니티</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="comp.do">동행찾기</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tripboard.do">일정자랑</a></li>
                   <li class="nav-item"><a class="nav-link" href="pay1.do">결제뷰</a></li>
                 </ul>
 							</li>			
@@ -280,13 +279,9 @@ var marker;
                   aria-expanded="false">마이페이지</a>
                 <ul class="dropdown-menu">
                 <c:if test="${!empty loginMember }">
-                  <li class="nav-item"><a class="nav-link" href="mycalendar.do">나의일정</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">예약내역</a></li>
-                  <li class="nav-item"><a class="nav-link" href="admin.do">개인정보수정</a></li>
+                  <li class="nav-item"><a class="nav-link" href="myinfo.do">개인정보수정</a></li>
                   </c:if>
                   <c:if test="${empty loginMember }">
-                  	<li class="nav-item"><a class="nav-link" onclick="moveLogin();">나의일정</a></li>
-                  <li class="nav-item"><a class="nav-link" onclick="moveLogin();">예약내역</a></li>
                   <li class="nav-item"><a class="nav-link" onclick="moveLogin();">개인정보수정</a></li>
                   </c:if>
                 </ul>

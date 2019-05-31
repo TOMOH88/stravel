@@ -21,4 +21,10 @@ public interface AdminService{
 
 	int selectTotalOwnerPaging(PagingVo paging);
 
+	Member selectUserDetail(int uno);
+
+	Owner selectOwnerDetail(int ono);
+
+	int updateOwnerApprove(Owner owner);
+
 }

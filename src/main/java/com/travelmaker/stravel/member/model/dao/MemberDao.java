@@ -19,7 +19,7 @@ public class MemberDao {
 		if(!bcryptpasswordEncoder.matches(member.getUser_password(), loginMember.getUser_password())) {
 			loginMember = null;
 		}
-		
+		System.out.println(loginMember);
 		return loginMember;
 	}
 
@@ -27,8 +27,8 @@ public class MemberDao {
 		return mybatisSession.insert("memberMapper.insertMember", member);		
 	}
 
-	public Member selectMember(SqlSessionTemplate session, String useremail) {
-		return session.selectOne("memberMapper.selectMember", useremail);
+	public Member selectMember(SqlSessionTemplate session, int uno) {
+		return session.selectOne("memberMapper.selectMember", uno);
 	}
 
 	public int deleteMember(SqlSessionTemplate session, String useremail) {

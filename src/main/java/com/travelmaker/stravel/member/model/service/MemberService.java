@@ -12,5 +12,5 @@ public interface MemberService {
 	int updateMember(Member member);
 	int deleteMember(String useremail);
 	ArrayList<Member> selectList();
-	Member selectMember(String useremail);
+	Member selectMember(int uno);
 }

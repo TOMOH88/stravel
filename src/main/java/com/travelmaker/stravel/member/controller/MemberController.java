@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 /*import org.springframework.web.multipart.MultipartFile;*/
 import org.springframework.web.servlet.ModelAndView;
 
+import com.travelmaker.stravel.common.FileUtil;
+import com.travelmaker.stravel.common.UUIDUtil;
 import com.travelmaker.stravel.member.model.service.MemberService;
 import com.travelmaker.stravel.member.model.vo.Member;
 
@@ -33,28 +36,10 @@ public class MemberController {
 	@Autowired
 	BCryptPasswordEncoder bcryptpasswordEncoder;
 	
-/*	@RequestMapping(value="login.do", method=RequestMethod.POST)
-	public String loginMethod(Member member, 
-			HttpSession session, SessionStatus status, Model model) {
-		logger.info("login.do run.");
-		Member loginMember = memberService.selectLogin(member);	
-		if(loginMember != null) {
-		//HttpSession session = request.getSession();
-		//메소드 매개변수로 선언하면 자동 생성됨.
-		session.setAttribute("loginMember", loginMember);
-		status.setComplete();
-		
-		return "home";
-	}else {
-		model.addAttribute("message", "로그인실패!");
-		return "common/error";
-		}
-	}*/
 	@RequestMapping(value="login.do", method=RequestMethod.POST)
 	public String loginMethod(Member member, 
 			HttpSession session, SessionStatus status) {
 		logger.info("login.do run.");
-		System.out.println(member);
 		Member loginMember = memberService.selectLogin(member);	
 		session.setAttribute("loginMember", loginMember);
 		status.setComplete();
@@ -71,67 +56,20 @@ public class MemberController {
 		
 		return "home";
 	}
-	
-	@RequestMapping("enroll.do")
-	public String moveEnrollpage() {
-		return "member/enrollPage";
-	}
-	
-	/*@RequestMapping(value="minsert.do", method=RequestMethod.POST)
-	public String insertMember(Member member, 
-			@RequestParam(name="photo", required=false) MultipartFile mphoto, HttpServletRequest request,
-			Model model) {
-		logger.info("member : " + member);
-		logger.info("프로필사진 : " + mphoto);
-				
-		//폴더에 전송온 파일 저장 처리
-		String savePath = request.getSession().getServletContext()
-				.getRealPath("resources/files/photo");
-		
-		try {
-			if(mphoto != null) {
-			mphoto.transferTo(new File(savePath + "\\" + mphoto.getOriginalFilename()));
-			}
-		} catch (Exception e) {			
-			e.printStackTrace();
-		}
-		
-		
-		member.setUserpwd(
-				bcryptpasswordEncoder.encode(member.getUserpwd()));		
-		
-		if(memberService.insertMember(member) > 0)		
-		return "home";
-		
-		else {
-			model.addAttribute("message", "회원 가입 실패!");
-			return "common/error";
-		}
-	}*/
+
 	@RequestMapping(value="minsert.do", method=RequestMethod.POST)
 	public String insertMember(Member mb) {
-		System.out.println(mb);
 		mb.setUser_password(
 				bcryptpasswordEncoder.encode(mb.getUser_password()));
-		System.out.println(mb);
 		int result = memberService.insertMember(mb);
-		
-		
 		return "home";
 		
 	}
 	@RequestMapping("myinfo.do")
-	public ModelAndView selectMember(ModelAndView mv, /*HttpServletRequest request*/
-			@RequestParam(name="useremail") String useremail) {
-		//ModelAndView mv = new ModelAndView();
-		//String useremail = request.getParameter("useremail");
-		logger.info("myinfo.do run.");
-		Member member = memberService.selectMember(useremail);
-		
+	public ModelAndView selectMember(ModelAndView mv,@RequestParam(name="uno", required=false) int uno) {
+		Member member = memberService.selectMember(uno);
 		mv.addObject("member", member);
-		//request.setAttribute("member", member);
 		mv.setViewName("member/memberDetailView");
-		
 		return mv;
 	}
 	
@@ -149,7 +87,7 @@ public class MemberController {
 		
 	}
 		
-	@RequestMapping("mupview.do")
+/*	@RequestMapping("mupview.do")
 	public ModelAndView updateMember(ModelAndView mv,
 			@RequestParam(name="useremail") String useremail) {
 		
@@ -164,20 +102,28 @@ public class MemberController {
 		}
 		
 		return mv;
-	}
+	}*/
 	
 	@RequestMapping(value="mupdate.do", method=RequestMethod.POST)
-	public String updateMember(Member member,
-				Model model) {		
-		
-		int result = memberService.updateMember(member);		
-		if(result > 0) {
-			return "redirect:myinfo.do?useremail=" + member.getUser_email();			
-		}else {
-			model.addAttribute("message", "회원정보 수정 실패!");
-		return "common/error";
-		}		
-		
+	public ModelAndView updateMember(ModelAndView mv,Member member,@RequestParam(name="upfile", required=false) MultipartFile upfile,HttpServletRequest request) {				
+		System.out.println(member);
+		if(!upfile.isEmpty()) {
+			
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/files/memberProfile");
+			System.out.println(savePath);
+			String originalFileName = upfile.getOriginalFilename();
+			String renameFileName = member.getUser_name()+"-" + UUIDUtil.GetUUID()+ "." + FileUtil.getExtension(originalFileName);
+			//파일업로드용
+			FileUtil.upLoadFile(upfile,originalFileName,savePath,renameFileName );
+			member.setUser_picture(renameFileName);
+			}
+		if(member.getUser_password() != null && member.getUser_password() != "") {
+		member.setUser_password(
+				bcryptpasswordEncoder.encode(member.getUser_password()));
+		}
+		int result = memberService.updateMember(member);
+		mv.setViewName("redirect:myinfo.do?uno="+member.getUser_no());
+		return mv;
 	}
 		
 }
