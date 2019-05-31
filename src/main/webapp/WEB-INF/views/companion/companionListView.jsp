@@ -46,14 +46,14 @@ table tr td div{
 <table id="companion" align="center" cellpadding="4px;" style="width: 900px; border-collapse:collapse;">
 <tr style="padding:10px;">
 	<td style="width:50px;"><div>번호</div></td>
-	<td style="width:200px;"><div>아이디</div></td>
+	<td style="width:200px;"><div>작성자</div></td>
 	<td style="width:500px;"><div>제목</div></td>
 	<td><div>진행상태</div></td>
 </tr>
 <c:forEach items="${compList }" var="c">
 <tr>
 	<td><div>${c.companion_no }</div></td>
-	<td><div>${c.user_email }</div></td>
+	<td><div>${c.companion_writer }</div></td>
 	<td>
 	<%-- 로그인 상태일 때만 상세보기 링크 설정함 --%>
 	<c:if test="${!empty loginMember }">

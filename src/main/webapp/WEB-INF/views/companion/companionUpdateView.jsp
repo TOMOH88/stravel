@@ -23,7 +23,7 @@
 				<div style="padding:10px; display:table-cell; width:200px;">${companion.companion_date }</div>
 			</div>
 			<div style="padding:10px; display:table-cell; width:100px;">작성자</div>
-			<div style="padding:10px; display:table-cell; width:200px;">${companion.user_email }</div>
+			<div style="padding:10px; display:table-cell; width:200px;">${companion.companion_writer }</div>
 		</div><!-- 헤더 -->
 		<div style="width:100%; height:400px; background:green;"><!-- 바디 -->
 			<div><!-- 내용만 -->

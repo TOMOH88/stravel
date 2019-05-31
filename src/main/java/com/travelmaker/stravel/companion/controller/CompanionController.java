@@ -139,9 +139,9 @@ public class CompanionController {
 	}
 	
 	@RequestMapping(value="compreplyupdate.do", method=RequestMethod.POST)
-	public String updateCompanionReply(CompanionReply companionreply) {
+	public String updateCompanionReply(CompanionReply companionreply,@RequestParam(name="companion_no") int companion_no) {
 		companionReplyService.updateCompanionReply(companionreply);
-		return "redirect:compdetail.do?companion_no="+ companionreply.getCompanion_no();
+		return "redirect:compdetail.do?companion_no="+ companion_no;
 	}
 	
 	@RequestMapping(value="compreplydelete.do", method=RequestMethod.GET)
@@ -151,8 +151,8 @@ public class CompanionController {
 	}
 	
 	@RequestMapping(value="compreplyinsert.do", method=RequestMethod.POST)
-	public String insertCompanionReply(CompanionReply companionreply) {
+	public String insertCompanionReply(CompanionReply companionreply,@RequestParam(name="companion_no") int companion_no) {
 		companionReplyService.insertCompanionReply(companionreply);
-		return "redirect:compdetail.do?companion_no=" + companionreply.getCompanion_no();
+		return "redirect:compdetail.do?companion_no=" + (Integer)companion_no;
 	}
 }

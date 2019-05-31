@@ -43,13 +43,5 @@ public class CompanionReplyServiceImpl implements CompanionReplyService{
 		return compreplyDao.deleteCompanionReply(mybatisSession, companion_reply_no);
 	}
 	
-	@Override
-	public int insertCompanionRereply(CompanionReply companionreply) {
-		return compreplyDao.insertCompanionReply(mybatisSession, companionreply);
-	}
-	
-	
-	
 
-	
 }

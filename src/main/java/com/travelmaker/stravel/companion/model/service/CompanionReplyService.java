@@ -12,6 +12,6 @@ public interface CompanionReplyService {
 	int updateCompanionReply(CompanionReply companionreply);
 	int deleteCompanionReply(int companion_reply_no);
 	CompanionReply selectCompanionReply(int companion_reply_no);
-	int insertCompanionRereply(CompanionReply companionreply);
+	
 	
 }
