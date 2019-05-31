@@ -8,20 +8,20 @@
 <meta charset="UTF-8">
 <title>stravel</title>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
+   src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <script
-	src="${pageContext.request.contextPath }/resources/js/star-rating.js"
-	type="text/javascript"></script>
+   src="${pageContext.request.contextPath }/resources/js/star-rating.js"
+   type="text/javascript"></script>
 <!-- 구글폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans"
-	rel="stylesheet">
+   rel="stylesheet">
 <script type="text/javascript">
 
 $(document).ready(function(){
 $(':radio[name="stars"]').change(function() {
-	  console.log('New star rating: ' + this.value);
-	  $('#review_point').val(this.value);
-	});
+     console.log('New star rating: ' + this.value);
+     $('#review_point').val(this.value);
+   });
 });
 
 $(document).ready(function(){
@@ -31,10 +31,10 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
 </script>
 </head>
 <style>
-	#c1, #c2{
-		border:1px dotted black;
-	}
-	#f1{
+   #c1, #c2{
+      border:1px dotted black;
+   }
+   #f1{
     font-family: 'Black Han Sans', sans-serif;
     }
     
@@ -104,40 +104,40 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
   text-shadow: 0 0 5px #09f;
 }
 
-  	#map {
-	    height: 400px;
-	    width: 100%;
+     #map {
+       height: 400px;
+       width: 100%;
     }   
 </style>
     <script type="text/javascript">    
-	var map;
-	var marker;
+   var map;
+   var marker;
       function geoCode() {
-    	  	var faddr_lat = ${list.restaurant_gridx};
-    		var faddr_lng = ${list.restaurant_gridy};
-    	  var faddr = document.getElementById('address').value;
-    	  	var geocoder;
-    	  	geocoder = new google.maps.Geocoder();
-    	  	geocoder.geocode( { 'address': faddr}, function(results, status) {
-    	  		if (status == google.maps.GeocoderStatus.OK) {
-    	  			var faddr_lat = results[0].geometry.location.lat();	//위도
-    	  			var faddr_lng = results[0].geometry.location.lng();	//경도
-    	  		} else {
-    	  			var faddr_lat = ${list.restaurant_gridx };
-    	  			var faddr_lng =  ${list.restaurant_gridy };
-    	  		}
-    	  		map = new google.maps.Map(document.getElementById('map'), {
-        	        center: {lat: faddr_lat, lng: faddr_lng},
-        	        zoom: 15});
-    	  		
-    	  		marker = new google.maps.Marker({
-    	                position: {lat: faddr_lat, lng: faddr_lng},
-    	                map: map/* ,
-    	                title: 'Hello World!' */
-    	            });
-    	  		return;
-    	  	});	
-    	  }
+            var faddr_lat = ${list.restaurant_gridx};
+          var faddr_lng = ${list.restaurant_gridy};
+         var faddr = document.getElementById('address').value;
+            var geocoder;
+            geocoder = new google.maps.Geocoder();
+            geocoder.geocode( { 'address': faddr}, function(results, status) {
+               if (status == google.maps.GeocoderStatus.OK) {
+                  var faddr_lat = results[0].geometry.location.lat();   //위도
+                  var faddr_lng = results[0].geometry.location.lng();   //경도
+               } else {
+                  var faddr_lat = ${list.restaurant_gridx };
+                  var faddr_lng =  ${list.restaurant_gridy };
+               }
+               map = new google.maps.Map(document.getElementById('map'), {
+                   center: {lat: faddr_lat, lng: faddr_lng},
+                   zoom: 15});
+               
+               marker = new google.maps.Marker({
+                       position: {lat: faddr_lat, lng: faddr_lng},
+                       map: map/* ,
+                       title: 'Hello World!' */
+                   });
+               return;
+            });   
+         }
       
     </script>    
 </head>
@@ -155,35 +155,35 @@ $("input:radio[name='stars2']:radio[value='3']").prop('checked', true);
     <li data-target="#carouselExampleIndicators" data-slide-to="${image.restaurant_sq }" <c:if test="${image.restaurant_sq eq 1 }"> class="active" </c:if>></li>
     </c:forEach>
   </ol>
-				<div class="carousel-inner" style="height:100%;">
-				<c:forEach items="${image }" var="image">
-					<c:if test="${image.restaurant_sq eq 1 }">
-				
-							<div class="carousel-item active" style="height:100%;">
-								<img class="d-block w-100"
-									src="${ pageContext.request.contextPath }/resources/img/restaurant/${image.restaurant_imagename}"
-									alt="${image.restaurant_imagename}" style="height: 100%;">
-							</div>
-					
-					</c:if>
-					<c:if test="${image.restaurant_sq > 1 }">
-						<div class="carousel-item" style="height:100%;">
-							<img class="d-block w-100"
-								src="${ pageContext.request.contextPath }/resources/img/restaurant/${image.restaurant_imagename}"
-								alt="${image.restaurant_imagename}" style="height: 100%;">
-						</div>
-						
-					</c:if>
-				</c:forEach>
-			</div>
-				  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				  </a>
-				  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </a>
+            <div class="carousel-inner" style="height:100%;">
+            <c:forEach items="${image }" var="image">
+               <c:if test="${image.restaurant_sq eq 1 }">
+            
+                     <div class="carousel-item active" style="height:100%;">
+                        <img class="d-block w-100"
+                           src="${ pageContext.request.contextPath }/resources/img/restaurant/${image.restaurant_imagename}"
+                           alt="${image.restaurant_imagename}" style="height: 100%;">
+                     </div>
+               
+               </c:if>
+               <c:if test="${image.restaurant_sq > 1 }">
+                  <div class="carousel-item" style="height:100%;">
+                     <img class="d-block w-100"
+                        src="${ pageContext.request.contextPath }/resources/img/restaurant/${image.restaurant_imagename}"
+                        alt="${image.restaurant_imagename}" style="height: 100%;">
+                  </div>
+                  
+               </c:if>
+            </c:forEach>
+         </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
 </div>
 </div>
 <hr>
@@ -194,7 +194,7 @@ ${list.restaurant_content }
 <div class="row">
 <div class="col-md-6">
     <div id="map"></div><input type="hidden" id="address"/>
- 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode" async defer></script>
 </div>
 <div class="col-md-6">
 주소 :${list.restaurant_address }<br>
@@ -212,7 +212,7 @@ ${list.restaurant_content }
     <input type="radio" id="stars2" name="stars2" value="1" />
     <span class="icon">★</span>
   </label>
-  <label>	
+  <label>   
     <input type="radio" id="stars2" name="stars2" value="2" />
     <span class="icon">★</span>
     <span class="icon">★</span>
@@ -249,21 +249,21 @@ ${list.restaurant_content }
 <div class="container" id="c2">
 리뷰 : ${fn:length(review)}
 <table>
-	<c:forEach items="${review }" var="review">
-		<tr>
-			<th width="10%">${review.restaurant_review_writer }</th>
-				<td width="70%">
-					<c:if test="${review.restaurant_review_blind eq 'Y' }">블라인드 된 글입니다</c:if>
-					<c:if test="${review.restaurant_review_blind eq 'N' }">${review.restaurant_review_content }</c:if>
-				</td>
-			<th width = "10%">${review.restaurant_review_date }</th>
-			<th>
-				<c:if test="${loginMember.user_name eq review.restaurant_review_writer }">
-					&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" onclick="location.href='reviewdelete.do?review_no=${review.restaurant_review_no}&restaurant_no=${list.restaurant_no }'">리뷰 삭제</button>
-				</c:if>
-			</th>
-		</tr>
-	</c:forEach>
+   <c:forEach items="${review }" var="review">
+      <tr>
+         <th width="10%">${review.restaurant_review_writer }</th>
+            <td width="70%">
+               <c:if test="${review.restaurant_review_blind eq 'Y' }">블라인드 된 글입니다</c:if>
+               <c:if test="${review.restaurant_review_blind eq 'N' }">${review.restaurant_review_content }</c:if>
+            </td>
+         <th width = "10%">${review.restaurant_review_date }</th>
+         <th>
+            <c:if test="${loginMember.user_name eq review.restaurant_review_writer }">
+               &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" onclick="location.href='reviewdelete.do?review_no=${review.restaurant_review_no}&restaurant_no=${list.restaurant_no }'">리뷰 삭제</button>
+            </c:if>
+         </th>
+      </tr>
+   </c:forEach>
 </table>
 </div>
 <br>
@@ -309,12 +309,12 @@ ${list.restaurant_content }
 <form action="insertRestaurantReview.do" method="post">
 <table>
 <tr>
-	<td>
-		방문일 : <input type="date" name="restaurant_review_tourdate"/>
-		<input type="text" id="restaurant_review_point" name="restaurant_review_point" value="1"/>
-		<input type="text" name="restaurant_no" value="${list.restaurant_no }"> 
-		<input type="text" name="restaurant_review_writer" value="고상훈"/>
-	</td>
+   <td>
+      방문일 : <input type="date" name="restaurant_review_tourdate" required/>
+      <input type="text" id="restaurant_review_point" name="restaurant_review_point" value="1"/>
+      <input type="text" name="restaurant_no" value="${list.restaurant_no }"> 
+      <input type="text" name="restaurant_review_writer" value="${loginMember.user_name }"/>
+   </td>
 </tr>
 <tr><td><textarea rows="4" cols="100%" name="restaurant_review_content"></textarea></td><td><input type="submit" value="작성" /></td></tr>
 </table>
