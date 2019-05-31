@@ -32,9 +32,8 @@ $(function(){
 				markerArray[i] = new google.maps.LatLng(latitude[i],longitude[i]);
 				iConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
 				contentArray[i] = [data.owner[i].owner_address];
-				
 				addMarker(no, data, contentArray, location, nameArray)
-				
+				 
 				}
 		},
 		error: function(jqXHR, textStatus, errorThrown){

@@ -16,7 +16,7 @@ var contentArray = [];
 $(function(){
 	$.ajax({
 		type: "POST",
-		url : "cview.do",
+		url : "tview.do",
 		dataType: "json",
 		contentType:"application/json; charset=UTF-8",
 		success : function(data){

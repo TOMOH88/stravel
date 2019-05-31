@@ -89,4 +89,9 @@ public class CalendarDao {
 		List<Restaurant> list = sqlSession.selectList("mycalendarMapper.selectrestList");
 		return (ArrayList<Restaurant>)list;
 	}
+
+	public ArrayList<Owner> selectlodgment(SqlSessionTemplate sqlSession) {
+		List<Owner> list = sqlSession.selectList("mycalendarMapper.selectLodgMent");
+		return (ArrayList<Owner>)list;
+	}
 }

@@ -19,20 +19,6 @@
 		select * from STRAVEL_USER
 		where user_email = #{user_email}
 	</select>
-	<!-- 
-	<select id="selectCheckId" parameterType="string" resultType="_int" useCache="true">
-		select count(useremail) from member 
-		where useremail = #{useremail}
-	</select>
-	
-	<select id="selectMember" parameterType="string" resultType="Member" useCache="true">
-		select * from member 
-		where useremail = #{useremail}
-	</select>
-	
-	<select id="selectList" resultMap="resultMember" useCache="true">
-		select * from member
-	</select> -->
 	
 	<insert id="insertMember" parameterType="Member" useGeneratedKeys="true">
 		<selectKey keyProperty="user_no" resultType="int" order="BEFORE">
@@ -41,13 +27,17 @@
 		insert into STRAVEL_USER(USER_NO,USER_EMAIL,USER_PASSWORD,USER_NAME,USER_PHONE,USER_PICTURE,GENDER)
 		values (#{user_no},#{user_email}, #{user_password}, #{user_name}, #{user_phone}, #{user_picture}, #{gender})
 	</insert>
-<!-- 	
-	<delete id="deleteMember" parameterType="string">
-		delete from member where useremail = #{useremail}
-	</delete>
-	
+	<select id="selectMember" parameterType="_int" resultType="Member">
+		select * from STRAVEL_USER where user_no = #{user_no}
+	</select>
 	<update id="updateMember" parameterType="Member">
-		update member 
-		set userpwd = #{userpwd}, age = #{age}, phone = #{phone} where useremail = #{useremail}
-	</update> -->
-</mapper>
+		update STRAVEL_USER set USER_PHONE = #{user_phone} 
+		<if test="user_password != null and user_password != ''">
+		, USER_PASSWORD = #{user_password}
+		</if>
+		<if test="user_picture != null">
+		, USER_PICTURE = #{user_picture}
+		</if>
+		where USER_NO = #{user_no}
+	</update>
+	</mapper>

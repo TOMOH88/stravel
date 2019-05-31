@@ -151,33 +151,37 @@ $(function(){
     
 </script>
 <script type="text/javascript">
-/* var rmarkerArray = [];
-var riConArray = [];
-var rnameArray = [];
-var rcontentArray = [];
+/* var markerArray = [];
+var iConArray = [];
+var nameArray = [];
+var contentArray = [];
 
 $(function(){
 	$.ajax({
 		type: "POST",
 		url : "rview.do",
 		dataType: "json",
+		async:false,
 		contentType:"application/json; charset=UTF-8",
-		success : function(rdata){
-			if(rdata.code == "ook")
-			for(i in rdata.rest){
+		success : function(data){
+			if(data.code == "ook")
+			for(i in data.rest){
 				var rno = [];
 				rno[i] = data.rest[i].restaurant_no;
-				rnameArray[i] = [data.rest[i].restaurant_name];
-				/* var rlatitude = [];
-				rlatitude[i] = [data.rest[i].restaurant_gridx];
-				var rlongitude = [];
-				rlongitude[i] = [data.rest[i].restaurant_gridy];
-				rmarkerArray[i] = new google.maps.LatLng(latitude[i],longitude[i]); */
-				riConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
-				/* rcontentArray[i] = [data.rest[i].restaurant_content]; */
+				/* nameArray[i] = [data.rest[i].touristspot_name];
+				var touristspot = [];
+				touristspot[i] = [data.rest[i].touristspot];
+				var latitude = [];
+				latitude[i] = [data.rest[i].touristspot_latitude];
+				var longitude = [];
+				longitude[i] = [data.rest[i].touristspot_longitude];
+				markerArray[i] = new google.maps.LatLng(latitude[i],longitude[i]);
+				iConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+				contentArray[i] = [data.rest[i].touristspot_content]; */
 				
-				alert("ddd");
-				/* raddMarker(rno, rdata, rcontentArray, rlocation, rnameArray) */
+				/* addMarker(no, data, contentArray, location, nameArray) */
+				
+					alert("asd");
 				}
 			
 		},
@@ -189,9 +193,9 @@ $(function(){
 </script>
 <title>stravel</title>
 <style type="text/css">
-div{
+/* div{
 	border:1px solid black;
-}
+} */
 
 .map{
 	position:fixed;
@@ -222,12 +226,11 @@ ${status.count} ${c.calendar_title }
 </div>
 </c:forEach>
 </div> --%>
-<div class="col-md-2" style="overflow:scroll; height:530px;">
+<%-- <div class="col-md-2" style="overflow:scroll; height:530px;">
 <div class="row" id="result">
-<%-- ${oca.calendar_no }${oca.calendar_title } --%>
+${oca.calendar_no }${oca.calendar_title }
 ㅁㄴㅇ
-</div>
-</div>
+</div> --%>
 <div class="col-md-2" style="overflow:scroll; height:530px;">
 <c:forEach var="tl" items="${tour}">
 <div class="row">
@@ -254,12 +257,12 @@ ${status.count} ${c.calendar_title }
 </div>
 </c:forEach>
 </div>
-<div class="col-md-8" id="map" style="height:530px; position:static;">
+<div class="col-md-10" id="map" style="height:530px; position:static;">
 </div>
 </div>
 </div>
 <!-- <div style="position:absolute; left: 1190px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div> -->
-<div style="position:absolute; left: 1240px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='mycalendar.do'">닫기</button></div>
+<div style="position:absolute; left: 1240px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='main.do'">닫기</button></div>
 <form action="cinupdate.do" method="post">
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
