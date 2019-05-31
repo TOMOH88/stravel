@@ -264,7 +264,7 @@ var marker;
                   aria-expanded="false">마이페이지</a>
                 <ul class="dropdown-menu">
                 <c:if test="${!empty loginMember }">
-                  <li class="nav-item"><a class="nav-link" href="myinfo.do">개인정보수정</a></li>
+                  <li class="nav-item"><a class="nav-link" href="myinfo.do?uno=${loginMember.user_no }">개인정보수정</a></li>
                   </c:if>
                   <c:if test="${empty loginMember }">
                   <li class="nav-item"><a class="nav-link" onclick="moveLogin();">개인정보수정</a></li>

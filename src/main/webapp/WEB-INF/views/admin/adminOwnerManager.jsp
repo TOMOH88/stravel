@@ -51,7 +51,7 @@ $(function() {
                                     <tbody>	
                                     	<tr>
                                         	<td>${Owner.owner_no }</td>
-                                        	<td><a href="aownerDetail.do?ono=${Owner.owner_no }">${Owner.owner_companyName }</a></td>
+                                        	<td><a href="aownerDetail.do?ono=${Owner.owner_no }">${Owner.owner_name }</a></td>
                                         	<td>${Owner.owner_category }</td>
                                         	<td>${Owner.owner_approve }</td>
                                         </tr>                                   
