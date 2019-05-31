@@ -52,5 +52,13 @@ public class OwnerDao {
 		
 		return loginOwner;
 	}
+	public int updateAddress(SqlSessionTemplate Session, Owner owner) {
+		// TODO Auto-generated method stub
+		return Session.update("ownerMapper.updateAddress",owner);
+	}
+	public int insertOwnerImg(SqlSessionTemplate Session, OwnerImg ownerImg) {
+		// TODO Auto-generated method stub
+		return Session.insert("ownerMapper.insertOwnerImg",ownerImg);
+	}
 
 }

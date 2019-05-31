@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
 import com.travelmaker.stravel.owner.model.vo.OwnerReview;
+import com.travelmaker.stravel.owner.model.vo.TouristVo;
 import com.travelmaker.stravel.reservation.model.vo.Reservation;
 import com.travelmaker.stravel.room.model.dao.RoomDao;
 import com.travelmaker.stravel.room.model.vo.Room;
@@ -94,6 +95,21 @@ public  class RoomServiceImpl implements RoomService {
 		// TODO Auto-generated method stub
 		return rd.selectUpRoomImg(mybatisSession,room_no);
 	}
+
+	@Override
+	public ArrayList<Reservation> selectPassOrderList(int owner_no) {
+		// TODO Auto-generated method stub
+		return rd.selectPassOrderList(mybatisSession,owner_no);
+	}
+
+	@Override
+	public ArrayList<TouristVo> selectTourList(String address) {
+		// TODO Auto-generated method stub
+		return rd.selectTourList(mybatisSession, address);
+	}
+
+
+
 
 
 }

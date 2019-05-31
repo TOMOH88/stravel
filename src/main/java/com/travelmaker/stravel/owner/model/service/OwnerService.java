@@ -22,6 +22,8 @@ public interface OwnerService {
 	int insertOwner(Owner ow);
 
 	Owner selectOLogin(Owner ow);
+	int updateAddress(Owner owner);
 
+	int insertOwnerImg(OwnerImg ownerImg);
 
 }

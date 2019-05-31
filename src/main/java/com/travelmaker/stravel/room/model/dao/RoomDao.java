@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.travelmaker.stravel.owner.model.vo.Owner;
 import com.travelmaker.stravel.owner.model.vo.OwnerImg;
 import com.travelmaker.stravel.owner.model.vo.OwnerReview;
+import com.travelmaker.stravel.owner.model.vo.TouristVo;
 import com.travelmaker.stravel.reservation.model.vo.Reservation;
 import com.travelmaker.stravel.room.model.vo.Room;
 import com.travelmaker.stravel.room.model.vo.RoomImg;
@@ -73,6 +74,18 @@ public class RoomDao {
 		List<RoomImg> list = Session.selectList("roomMapper.selectUpRoomImg",room_no);
 		return (ArrayList<RoomImg>)list;
 	}
+
+	public ArrayList<Reservation> selectPassOrderList(SqlSessionTemplate Session, int owner_no) {
+		List<Reservation> list = Session.selectList("roomMapper.selectPassOrderList",owner_no);
+		return (ArrayList<Reservation>)list;
+	}
+
+	public ArrayList<TouristVo> selectTourList(SqlSessionTemplate Session, String address) {
+		List<TouristVo> list = Session.selectList("roomMapper.selectTourList",address);
+		return (ArrayList<TouristVo>)list;
+	}
+
+	
 
 	
 

@@ -34,4 +34,14 @@ public class ReservationDao {
 		return Session.update("roomMapper.updateStatus",rsv_no);
 	}
 
+	public ArrayList<Reservation> selectRoomSales(SqlSessionTemplate Session, int owner_no) {
+		List<Reservation> list = Session.selectList("roomMapper.selectRoomSales",owner_no);
+		return (ArrayList<Reservation>)list;
+	}
+
+	public ArrayList<Reservation> selectMonthSales(SqlSessionTemplate Session, int owner_no) {
+		List<Reservation> list = Session.selectList("roomMapper.selectMonthSales",owner_no);
+		return (ArrayList<Reservation>)list;
+	}
+
 }

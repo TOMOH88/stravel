@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,7 @@
 	}
 }
 
-.rsvck {
+.irbt {
 	-moz-box-shadow: inset 0px 39px 0px -24px #99b4ff;
 	-webkit-box-shadow: inset 0px 39px 0px -24px #99b4ff;
 	box-shadow: inset 0px 39px 0px -24px #99b4ff;
@@ -64,32 +64,18 @@
 	text-shadow: 0px 1px 0px #99b4ff;
 }
 
-.rsvck:hover {
+.irbt:hover {
 	background-color: #99b4ff;
 }
 
-.rsvck:active {
+.irbt:active {
 	position: relative;
 	top: 1px;
 }
-
-table tr td {
-	border-bottom: 1px solid rgba(67, 67, 67, 0.8);
-	"
-}
-
-table tr:nth-child(2n) {
-	background-color: white;
-}
-
-table tr:nth-child(2n+1) {
-	background-color: #edf7f8;
-}
-
-table tr:nth-child(1) {
-	background-color: rgba(67, 67, 67);
-}
-
+ input[type=text],
+ input[type=number]{
+  width:100px;
+ }
 ul li a{
  width:120px;
 }
@@ -101,6 +87,7 @@ width:131px;
 margin:0px auto;
 }
 
+
 #titlediv {
 	font-size: 1.5em;
 	font-weight: bold;
@@ -110,8 +97,8 @@ margin:0px auto;
 	border-left: 1px dashed #cfcfcf;
 }
 .ownerbody div img {
-	width:148px;
-	height:148px;
+	width:200px;
+	height:200px;
 
 	
 }
@@ -132,36 +119,45 @@ margin:0px auto;
 	height:100px;
 	padding:20px 50px 20px 50px;
 }
-.swiper-container {
-      width: 100%;
-      height: 100%;
-    }
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-    }
+#isroom div{ 
+	margin:2px;
+}
+#isroom div input{
+	border:0px;
+	border-bottom:1px solid #cfcfcf;
+}
+#insertroombt{
+	-moz-box-shadow: inset 0px 39px 0px -24px #99b4ff;
+	-webkit-box-shadow: inset 0px 39px 0px -24px #99b4ff;
+	box-shadow: inset 0px 39px 0px -24px #99b4ff;
+	background-color: #99b4ff;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid #99b4ff;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 2px 5px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #99b4ff;
+}
+ #map{
+ 	width:200px;
+ 	height:200px;
+ }
 </style>
 </head>
 <body>
 <%-- <section class="section-margin">
 	<c:import url="../common/header.jsp" />
     </section> --%>
+    
 <div style="width:100%; display:inline-block;">
-			<div class="ownerside" style=" width:240px; height:700px; float:left;" ><!-- ownerside -->
+		<div class="ownerside" style=" width:240px; height:700px; float:left;" ><!-- ownerside -->
 		<div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath }/resources/assets/img/sidebar-5.jpg">
 
     <!--
@@ -217,38 +213,34 @@ margin:0px auto;
     	</div>
     </div>
 	</div><!-- ownerside  -->
+
 		
-	<div class="ownerbody"  style="width:69%; height:700px; display:table-cell;"><!-- ownerbody -->
+		<div class="ownerbody"  style="width:69%; display:table-cell;"><!-- ownerbody -->
 		<bR><BR><BR>
-		<c:forEach items="${roomList }" var="roomList">
-				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
-					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
-							<div class="swiper-container">
-								<div class="swiper-wrapper">
-								<c:forEach items="${roomImgList }" var="roomImgList">
-									<c:if test="${roomList.room_no eq roomImgList.room_no }"> 
-									<div class="swiper-slide"><img id="mainimg" src="${pageContext.request.contextPath }/resources/files/roomImg/${roomImgList.room_img}"></div>
-									</c:if>
-								</c:forEach> 
-									
-								</div>
-								<!-- Add Pagination -->
-								<div class="swiper-pagination"></div>
-								<!-- Add Arrows -->
-								<div class="swiper-button-next roomnext"></div>
-								<div class="swiper-button-prev roomprev"></div>
-							</div>
-						</div>
-					<div style="border:1px solid #e4e4e4; padding:10px; float:left; height:130px; width:480px; border-radius:10px">${roomList.room_content }<br>최소인원 : ${roomList.min_no }<br>최대인원 : ${roomList.max_no }
-					<div><a class="rsvck" href="updateRoomDetail.do?room_no=${roomList.room_no }">수정하기</a></div>	
-					</div><!-- 각객실당정보 -->
-					
-				</div>
-				
-			</c:forEach> 
+		<div style="width:900px;border:1px solid black; margin:0 auto; background:#edf7f8; padding:50px;">
+			<div style="text-align:center; font-size:2em; margin-bottom:20px; color:black; font-weight:bold; ">객실등록</div>
+			<div id="isroom" style="margin:20px; border:1px solid #cfcfcf; background:white;padding:30px;">
+			<form action="updateAddress.do?owner_no=${loginOwner.owner_no }" method="post">
+		<label>주소
+		<input type="text" name="owner_address" id="owner_address">
+		<input type="button" onclick="geoCode();" value="검색">
+		<div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
+    async defer></script> 
+
+		<input type="hidden" name="owner_latitude" id="owner_latitude">
+		<input type="hidden" name="owner_longitude" id="owner_longitude">
+		<input multiple="multiple" type="file" name="owner_img" class="multi with-preview"/>
+		<input type="submit" >
+	</form>
+			</div>
+		</div>
 	</div><!-- ownerbody -->
 </div>
 
+
+<!-- <div  class="bottombar" style="position:fixed; bottom:0px; width:100%; height:71px; border-top:1px solid black; z-index:10;background:white; opacity:0.8; ">
+</div> -->
 <div>
 	<c:import url="../common/footer.jsp" />
 </div>
@@ -272,21 +264,52 @@ margin:0px auto;
 		src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
 	<!-- 달력 -->
 	<script
-		src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.js"></script>
-	<script
 		src="${pageContext.request.contextPath }/resources/js/jquery-ui.js"></script>
 	<script
 		src="${pageContext.request.contextPath }/resources/js/jquery-ui.min.js"></script>
 		
-		
-	<script type="text/javascript">
-	var swiper = new Swiper('.swiper-container', {
-	      navigation: {
-	        nextEl: '.swiper-button-next',
-	        prevEl: '.swiper-button-prev',
-	      },
-	    });
-	</script>
+	<script src="${pageContext.request.contextPath }/resources/js/jquery.MultiFile.js" type="text/javascript" ></script>
+	
+
+
 
 </body>
+	<script type="text/javascript">
+		function check(){
+			location.href="orderList.do";
+		};
+		var map;
+		   var marker;
+		      function geoCode() {
+		            var faddr_lat = ${touristspot.touristspot_latitude };
+		          var faddr_lng = ${touristspot.touristspot_longitude };
+		         var faddr = document.getElementById('address').value;
+		            var geocoder;
+		            geocoder = new google.maps.Geocoder();
+		            geocoder.geocode( { 'address': faddr}, function(results, status) {
+		               if (status == google.maps.GeocoderStatus.OK) {
+		                  var faddr_lat = results[0].geometry.location.lat();   //위도
+		                  var faddr_lng = results[0].geometry.location.lng();   //경도
+		               } else {
+		                  var faddr_lat = ${touristspot.touristspot_latitude };
+		                  var faddr_lng =  ${touristspot.touristspot_longitude };
+		               }
+		               map = new google.maps.Map(document.getElementById('map'), {
+		                   center: {lat: faddr_lat, lng: faddr_lng},
+		                   zoom: 15});
+		               
+		               marker = new google.maps.Marker({
+		                       position: {lat: faddr_lat, lng: faddr_lng},
+		                       map: map/* ,
+		                       title: 'Hello World!' */
+		                   });
+		               return;
+		            });   
+		         }
+		/*   var input = document.getElementById('owner_address');
+		  var autocomplete = new google.maps.places.Autocomplete(input,{
+			  type:['(cities)']
+		  }); */
+		});
+	</script>
 </html>

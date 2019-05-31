@@ -21,6 +21,8 @@
 		<result property="owner_longitude" column="owner_longitude"/>
 		<result property="off_season_price" column="off_season_price"/>
 		<result property="property_review_like" column="property_review_like"/>
+		<result property="owner_latitude" column="owner_latitude"/>
+		<result property="owner_longitude" column="owner_longitude"/>
 	</resultMap>
 	
 	<resultMap id="resultOwnerList" type="ownerListVo" >
@@ -103,6 +105,17 @@ where owner_no = #{owner_no}
 	<select id="selectOLogin" parameterType="ownerVo" resultType="ownerVo">
 		select * from owner where OWNER_LICENSE_NO = #{owner_license_no}
 	</select>
+	
+	<update id="updateAddress" parameterType="ownerVo">
+	update owner set owner_approve = '승인' , owner_latitude = #{owner_latitude} , owner_longitude = #{owner_longitude} where owner_no =#{owner_no};
+</update>
+<insert id="insertOwnerImg" parameterType = "ownerImgVo">
+<selectKey keyProperty="onwer_no" resultType="int" order="BEFORE">
+		select count(OWNER_NO)+1 from STRAVEL.OWNER
+	</selectKey>
+	insert into room_img (OWNER_IMG_NO,OWNER_IMG,OWNER_NO)
+	values(SEQ_OWNER_IMG_NO.NEXTVAL,#{owner_img},#{owner_no})
+</insert>
 </mapper>
 
 

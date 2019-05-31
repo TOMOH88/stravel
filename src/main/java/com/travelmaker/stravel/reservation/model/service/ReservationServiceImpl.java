@@ -36,6 +36,14 @@ public class ReservationServiceImpl implements ReservationService{
 		// TODO Auto-generated method stub
 		return rsvdao.updateStatus(mybatisSession,rsv_no);
 	}
+
+	@Override
+	public ArrayList<Reservation> selectRoomSales(int owner_no) {
+		// TODO Auto-generated method stub
+		return rsvdao.selectRoomSales(mybatisSession,owner_no);
+	}
+
+
 	
 	
 }

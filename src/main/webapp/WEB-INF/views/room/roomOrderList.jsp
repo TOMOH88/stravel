@@ -29,6 +29,14 @@
 	href="${pageContext.request.contextPath }/resources/css/jquery-ui.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/swiper.min.css">
+<link href="${pageContext.request.contextPath }/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Animation library for notifications   -->
+<link href="${pageContext.request.contextPath }/resources/assets/css/animate.min.css" rel="stylesheet"/>
+<!--  Light Bootstrap Table core CSS    -->
+<link href="${pageContext.request.contextPath }/resources/assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+<!--     Fonts and icons     -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+<link href="${pageContext.request.contextPath }/resources/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
 <style type="text/css">
 @media ( max-width :1405px) {
@@ -68,7 +76,8 @@
 
 table tr td {
 	border-bottom: 1px solid rgba(67, 67, 67, 0.8);
-	"
+	padding:auto;
+	height:33px;
 }
 
 table tr:nth-child(2n) {
@@ -83,7 +92,7 @@ table tr:nth-child(1) {
 	background-color: rgba(67, 67, 67);
 }
 
-ul li {
+/* ul li {
 	font-size: 1.5em;
 	font-weight: bold;
 	margin-bottom: 5px;
@@ -95,7 +104,7 @@ ul li a:link, ul li a:visited {
 
 ul li a:hover {
 	font-size: 1.1em;
-}
+} */
 
 #titlediv {
 	font-size: 1.5em;
@@ -135,21 +144,67 @@ ul li a:hover {
 	<c:import url="../common/header.jsp" />
     </section> --%>
 <div style="width:100%; display:inline-block;">
-	<div class="ownerside" style=" width:20%; height:100%;  position: sticky; top: 150px;"><!-- ownerside -->
-		<div style="float: left; border: 1px solid #cfcfcf; width: 260px; bottom: 150; margin: 20px;">
-			<div style="margin: 30px;">
-				<ul>
-					<li><a href="ownerMain.do">마이페이지</a></li>
-					<li><a href="orderList.do">예약현황</a></li>
-					<li><a href="insertRoom.do">상품등록</a></li>
-					<li><a href="updateRoom.do">상품수정</a></li>
-					<li><a href="updateOwner.do">정보수정</a></li>
-				</ul>
-			</div>
-		</div>
-	</div><!-- ownerside -->
+			<div class="ownerside" style=" width:240px; height:700px; float:left;" ><!-- ownerside -->
+		<div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath }/resources/assets/img/sidebar-5.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="main.do" class="simple-text">
+                    STRAVEL
+                </a>
+            </div>
+            <ul class="nav">
+            	<li class="active">
+            		<a href="ownerLogout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	</li>
+				<li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>예약관리</p>
+                        <ul>
+                        <li><a href="orderList.do?owner_no=${loginMember.owner_no }">오늘 예약건</a></li>
+                    	<li><a href="passOrderList.do?owner_no=${loginMember.owner_no }">지난 예약건</a></li>
+                    	</ul>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>마이페이지</p>
+                        <ul>
+                        <li><a href="#">개인정보수정</a></li>
+                        <li><a href="sampStar.do">매출관리</a></li>
+                    	<li><a href="#">후기관리</a></li>
+                        </ul>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>객실관리</p>
+                        <ul>
+                        <li><a href="adminfaq.do">객실리스트</a></li>
+                        <li><a href="insertRoom.do">객실등록</a></li>
+                    	<li><a href="updateRoomList.do?owner_no=${loginMember.owner_no }">객실수정</a></li>
+                        </ul>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+	</div><!-- ownerside  -->
+
+	
+    
 		
-	<div class="ownerbody"  style="width:69%; display:table-cell;"><!-- ownerbody -->
+	<div class="ownerbody"  style="width:1100px; margin:0px auto"><!-- ownerbody -->
 	<br><br><br>
 		<div style="margin: 0 auto; width:900px;">
 				<div id="titlediv">예약 현황</div>
@@ -169,6 +224,7 @@ ul li a:hover {
 								<td style="width: 110px;">예약현황</td>
 								<td style="width: 100px;">입실여부</td>
 							</tr>
+						<c:if test="${!empty orderList && empty passOrderList}">
 						<c:forEach items="${orderList }" var="orderList">
 							<tr>
 								<td>${orderList.room_name }</td>
@@ -180,19 +236,39 @@ ul li a:hover {
 								<td>${orderList.rsv_status }</td>
 								<td>
 								<c:if test="${orderList.rsv_status eq '결제완료' && orderList.enter_room eq '입실대기' }">
-								<a class="rsvck" onclick="updateStatus.do?rsv_no=${orderList.rsv_no }, owner_no=${orderList.owner_no}">입실확인</a>
+								<a href="updateStatus.do?rsv_no=${orderList.rsv_no }&owner_no=${orderList.owner_no}" class="rsvck">입실확인</a>
+								</c:if>
+								<c:if test="${orderList.rsv_status eq '결제완료' && orderList.enter_room eq '입실완료' }">
+								입실완료
 								</c:if>
 								</td>
 							</tr>
 							</c:forEach>
+							</c:if>
+							<c:if test="${empty orderList && !empty passOrderList}">
+						<c:forEach items="${passOrderList }" var="orderList">
+							<tr>
+								<td>${orderList.room_name }</td>
+								<td>${orderList.user_name }</td>
+								<td>${orderList.member }</td>
+								<td>${orderList.rsv_date }</td>
+								<td>${orderList.check_in }</td>
+								<td>${orderList.check_out }</td>
+								<td>${orderList.rsv_status }</td>
+								<td>
+								입실완료
+								</td>
+							</tr>
+							</c:forEach>
+							</c:if>
 						</table>
 					</div>
 				</div>
 			</div>
 	</div><!-- ownerbody -->
 </div>
-<div class="footer" style="border:1px solid black; width: 100%; height:200px; position:absolute; bottom:0;">
-	
+<div>
+	<c:import url="../common/footer.jsp" />
 </div>
 
 	<script
@@ -213,8 +289,8 @@ ul li a:hover {
 	<script
 		src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
 	<!-- 달력 -->
-	<script
-		src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.js"></script>
+	<%-- <script
+		src="${pageContext.request.contextPath }/resources/js/jquery-1.12.4.js"></script> --%>
 	<script
 		src="${pageContext.request.contextPath }/resources/js/jquery-ui.js"></script>
 	<script
@@ -222,7 +298,16 @@ ul li a:hover {
 		
 		
 	<script type="text/javascript">
-	
+	 	/* $(".rsvck").click(function(){
+			var el = $(".rsvck").val();
+			 /* location.href="updateStatus.do?rsv_no=" + el;  
+			 alert($(".rsvck").val());
+		
+		})  */
+		
+		/* function moveUpdate(el){
+	 		location.href = "updateStatus.do?rsv_no=" + el;
+	 	} */
 	</script>
 
 </body>
