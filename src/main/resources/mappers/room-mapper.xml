@@ -159,6 +159,10 @@ where touristspot_address like '%'||#{touristspot_address}||'%'
 <update id="updateStatus" parameterType="rsvVo">
 	update reservation set enter_room = '입실완료' where rsv_no = #{rsv_no} 
 </update>
-
+<!-- <update id="updateRoomSub.do" parameterType="roomVo">
+	update room set room_name = "#{room_name}", room_option = #{room_option}, room_content = #{room_content}, min_no =#{min_no},
+	max_no = #{max_no}, off_season_price = #{off_season_price}, on_season_price = #{on_season_price}, week_extra_price = #{week_extra_price}, add_person_price = #{add_person_price}, discountrate = #{discountrate}
+	where room_no = #{room_no}
+</update> -->
 
 </mapper>

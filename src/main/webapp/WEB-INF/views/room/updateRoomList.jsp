@@ -161,7 +161,7 @@ margin:0px auto;
 	<c:import url="../common/header.jsp" />
     </section> --%>
 <div style="width:100%; display:inline-block;">
-			<div class="ownerside" style=" width:240px; height:700px; float:left;" ><!-- ownerside -->
+<div class="ownerside" style=" width:240px; height:700px; float:left;" ><!-- ownerside -->
 		<div class="sidebar" data-color="purple" data-image="${pageContext.request.contextPath }/resources/assets/img/sidebar-5.jpg">
 
     <!--
@@ -173,13 +173,15 @@ margin:0px auto;
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="main.do" class="simple-text">
+                <a href="ownerMain.do?owner_no=${loginOwner.owner_no }" class="simple-text">
                     STRAVEL
                 </a>
             </div>
             <ul class="nav">
             	<li class="active">
-            		<a href="ownerLogout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	<c:if test="${!empty loginOwner }">
+            		<a href="logout.do"><i class="pe-7s-graph"></i><p>로그아웃</p></a>
+            	</c:if>
             	</li>
 				<li class="active">
                     <a href="#">
@@ -191,27 +193,38 @@ margin:0px auto;
                     	</ul>
                     </a>
                 </li>
-                <li class="active">
+                <%-- <li class="active">
                     <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>마이페이지</p>
                         <ul>
-                        <li><a href="#">개인정보수정</a></li>
-                        <li><a href="sampStar.do">매출관리</a></li>
+                        <li><a href="roomSales.do?owner_no=${loginOwner.owner_no }">매출관리</a></li>
                     	<li><a href="#">후기관리</a></li>
                         </ul>
                     </a>
-                </li>
+                </li> --%>
                 <li class="active">
                     <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>객실관리</p>
                         <ul>
-                        <li><a href="adminfaq.do">객실리스트</a></li>
                         <li><a href="insertRoom.do">객실등록</a></li>
-                    	<li><a href="updateRoomList.do?owner_no=${loginMember.owner_no }">객실수정</a></li>
+                    	<li><a href="updateRoomList.do?owner_no=${loginOwner.owner_no }">객실수정</a></li>
                         </ul>
                     </a>
+                </li>
+                <li class="active">
+                <a href ="moveExtraUpdate.do"style="cursor:pointer" >
+                	<c:if test="${ loginOwner.owner_approve eq '승인' }">
+                	<i class="pe-7s-graph"></i>
+                	<a><p>사업자<br>주소등록하기</p></a>
+                	</c:if>
+                	<c:if test="${loginOwner.owner_approve eq '미승인' }">
+                	<i class="pe-7s-graph"></i>
+                	<p>가입승인 대기중</p>
+                	</c:if>
+                	<i class="pe-7s-graph"></i>
+                	</a>
                 </li>
             </ul>
     	</div>
@@ -220,6 +233,7 @@ margin:0px auto;
 		
 	<div class="ownerbody"  style="width:69%; height:700px; display:table-cell;"><!-- ownerbody -->
 		<bR><BR><BR>
+		<div style="margin-left:120px;">
 		<c:forEach items="${roomList }" var="roomList">
 				<div style="width:1032px;height:150px;margin:5px;"><!-- 객실하나 -->
 					<div style="border:1px solid #e4e4e4; width:150px; height:150px; float:left; margin-right:20px;">
@@ -246,6 +260,7 @@ margin:0px auto;
 				</div>
 				
 			</c:forEach> 
+			</div>
 	</div><!-- ownerbody -->
 </div>
 

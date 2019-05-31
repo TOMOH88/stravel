@@ -172,29 +172,27 @@ table tr:nth-child(1) {
                     	</ul>
                     </a>
                 </li>
-                <li class="active">
+                <%-- <li class="active">
                     <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>마이페이지</p>
                         <ul>
-                        <li><a href="update">개인정보수정</a></li>
                         <li><a href="roomSales.do?owner_no=${loginOwner.owner_no }">매출관리</a></li>
                     	<li><a href="#">후기관리</a></li>
                         </ul>
                     </a>
-                </li>
+                </li> --%>
                 <li class="active">
                     <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>객실관리</p>
                         <ul>
-                        <li><a href="updateRoomList.do?">객실리스트</a></li>
                         <li><a href="insertRoom.do">객실등록</a></li>
-                    	<li><a href="updateRoomList.do?owner_no=${loginMember.owner_no }">객실수정</a></li>
+                    	<li><a href="updateRoomList.do?owner_no=${loginOwner.owner_no }">객실수정</a></li>
                         </ul>
                     </a>
                 </li>
-                <li class="active">
+                <%-- <li class="active">
                 <a href ="moveExtraUpdate.do"style="cursor:pointer" >
                 	<c:if test="${ loginOwner.owner_approve eq '승인' }">
                 	<i class="pe-7s-graph"></i>
@@ -205,8 +203,8 @@ table tr:nth-child(1) {
                 	<p>가입승인 대기중</p>
                 	</c:if>
                 	<i class="pe-7s-graph"></i>
-                		<p class="updateAddress">승인 대기중</p></a>
-                </li>
+                	</a>
+                </li> --%>
             </ul>
     	</div>
     </div>

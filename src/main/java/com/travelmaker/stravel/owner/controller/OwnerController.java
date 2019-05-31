@@ -62,6 +62,9 @@ public class OwnerController {
 		System.out.println(owner);
 		ArrayList<OwnerImg> ownerImgList = new ArrayList<>();
 		int result = os.updateAddress(owner);
+		if(result <= 0) {
+			return "redirect:ownerMain.do?owner_no="+owner.getOwner_no();
+		}
 		List<MultipartFile> fileList = mtfRequest.getFiles("owner_img");
 		for(int i=0;i<fileList.size();i++) {
 			String originalFileName = fileList.get(i).getOriginalFilename();
@@ -70,7 +73,7 @@ public class OwnerController {
 			
 			FileUtil.upLoadFile(fileList.get(i), originalFileName, savePath, renameFileName);
 	
-			ownerImgList.add(new OwnerImg(i+1,renameFileName,owner.getOwner_no()));
+			ownerImgList.add(new OwnerImg(i,renameFileName,owner.getOwner_no()));
 			int result2 = os.insertOwnerImg(ownerImgList.get(i));
 		}
 		int result11 =os.updateAddress(owner);
