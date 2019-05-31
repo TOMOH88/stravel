@@ -56,9 +56,10 @@ public class RoomController {
 		mv.addObject("roomList",roomList);
 		ArrayList<RoomImg> roomImgList = rs.selectRoomImg(owner_no);
 		mv.addObject("roomImgList",roomImgList);
-		String address = ow.getOwner_address().substring(0,7);
+		/*String address = ow.getOwner_address().substring(0,2);
 		ArrayList<TouristVo> tourList = rs.selectTourList(address);
-		mv.addObject("tourList",tourList);
+		System.out.println(tourList.size());
+		mv.addObject("tourList",tourList);*/
 		//후기정보
 		ArrayList<OwnerReview> reviewList = rs.selectOwnerReview(owner_no);
 		mv.addObject("reviewList",reviewList);
@@ -107,7 +108,7 @@ public class RoomController {
 	}
 	@RequestMapping(value="insertRoomSub.do",method=RequestMethod.POST)
 	public String inserRoomSub(Room room,MultipartHttpServletRequest mtfRequest,HttpServletRequest request) {
-		
+		System.out.println(room);
 		int result = rs.insertRoomSub(room);
 		if(result <=0) {
 			return "room/ownerMain";

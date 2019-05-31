@@ -338,33 +338,6 @@ ${oca.calendar_no }${oca.calendar_title }
 </div> --%>
 <div class="col-md-2" style="overflow:scroll; height:530px;">
 <c:forEach var="tl" items="${tour}">
-<img src="${pageContext.request.contextPath }/resources/files/touristspotImages/${tl.rename_thumnail }" style="width:100%; height:100px;">
-<div class="col-xl-12">
-<div class="row">
-<a href="touristspotDetail.do?tno=${tl.touristspot_no }">${tl.touristspot_name }</a>
-&nbsp;&nbsp;&nbsp;<font style="font-size:7pt;">TEL : ${tl.touristspot_tel }</font>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-xl-12">
-<div class="row">
-<font style="font-size:8pt;">${tl.touristspot_content }</font>
-</div>
-<div class="row">
-<a href="${tl.touristspot_homepage }"><font style="font-size:8pt;">사이트 이동</font></a>
-</div>
-<!-- <div class="col-xl-12" align="center" style="margin:auto;">
-<button>추가</button>
-</div> -->
-</div>
-</div>
-</c:forEach>
-</div>
-<div class="col-md-10" id="map" style="height:530px; position:static;">
-</div>
-<div class="col-md-2" style="overflow:scroll; height:530px;">
-<c:forEach var="tl" items="${tour}">
 <div class="row">
 <img src="${pageContext.request.contextPath }/resources/files/touristspotImages/${tl.rename_thumnail }" style="width:100%; height:100px;">
 <div class="col-xl-12">
@@ -386,18 +359,21 @@ ${oca.calendar_no }${oca.calendar_title }
 </div>
 </div>
 <div class="col-xl-6" align="center" style="margin:auto;">
-<button>추가</button>
 </div>
 </div>
 </div>
 </div>
 </c:forEach>
 </div>
+<!-- <div class="col-xl-12" align="center" style="margin:auto;">
+<button>추가</button>
+</div> -->
+<div class="col-md-10" id="map" style="height:530px; position:static;">
 </div>
 </div>
 </div>
 <!-- <div style="position:absolute; left: 1190px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div> -->
-<div style="position:absolute; left: 1240px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='main.do'">닫기</button></div>
+<div style="position:absolute; left: 1300px; top: 30px; width:10px; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='main.do'">닫기</button></div>
 <form action="cinupdate.do" method="post">
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

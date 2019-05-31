@@ -62,7 +62,7 @@
 	INSERT INTO STRAVEl.ROOM
  (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE,
   ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
- VALUES (#{room_no}, #{room_name}, #{room_option}, #{room_content}, #{min_no}, #{max_no}, #{off_season_price}, #{on_season_price}, #{week_extra_price}, #{add_person_price}, #{discountrate}, #{owner_no})
+ VALUES (SEQ_ROOM_NO.NEXTVAL, #{room_name}, #{room_option}, #{room_content}, #{min_no}, #{max_no}, #{off_season_price}, #{on_season_price}, #{week_extra_price}, #{add_person_price}, #{discountrate}, #{owner_no})
 </insert>  
 
 <!-- 객실이미지 -->

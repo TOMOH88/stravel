@@ -328,5 +328,6 @@ TEL : ${list.owner_phone } &nbsp; 가격 : ${list.off_season_price }<br>
 <!-- map 끝 -->
 </div>
 </div>
+<div style="position:absolute; left: 1300px; top: 30px; width:10px; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='main.do'">닫기</button></div>
 </body>
 </html>

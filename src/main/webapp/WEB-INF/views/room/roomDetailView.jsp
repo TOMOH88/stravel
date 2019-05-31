@@ -39,7 +39,9 @@
 	width:701px;
 	margin:0 50px;
 	}
-	
+	.headerdiv{
+	display:none;
+	}
 }
 @media (min-width:1405px){
 	.timgdiv1{
@@ -53,6 +55,9 @@
 	}
 	.maindiv{
 	width:1032px;}
+	.headerdiv{
+	display:block;
+	}
 }
 
 .maindiv {
@@ -216,14 +221,17 @@
 	border-radius:0px;
 }
 #headerdiv{
-	height:100px;
+	height:200px;
 }
 </style>
 </head>
 <body class="roomBody">
- <section class="section-margin">
+<div class="headerdiv">
 	<c:import url="../common/header.jsp" />
-    </section>  
+</div>
+<br>
+<Br>
+<br>
 
 <div onclick="mainmodal()" style="width:100%;height:592px;" class="timgdiv" ><!-- 나중에 클릭시 모달창 함수 실행시킬 div 영역 -->
 	<div class="timgdiv1" style="height:592px; float:left; ">
@@ -317,7 +325,7 @@
 			</div><!-- 리뷰 -->
 			<BR>
 			<HR>
-			<div><!-- 지역정보 -->
+			<!-- <div>지역정보
 				<div id="titlediv">지역 정보</div>
 				<div>주소</div>
 				<br>
@@ -325,13 +333,13 @@
 					{plain.style.display='';place_plain.innerText = '접기'
 					}else {plain.style.display='none'; place_plain.innerText= '지역정보 더보기'}">지역정보 더보기
 				</div>
-				<div id="plain" style="display : none;padding:10px;"><!-- 펼쳐질공간 -->
+				<div id="plain" style="display : none;padding:10px;">펼쳐질공간
 				교통편
 				</div> 
-				<div style="width:682px; height:350px; margin:20px;"><!-- 구글맵영역 -->
+				<div style="width:682px; height:350px; margin:20px;">구글맵영역
 					<div id="map"></div>
 				</div> 
-			</div><!-- 지역정보 -->
+			</div>지역정보 -->
 			<br>
 		</div><!-- 메인정보 -->
 		<div id="roomsidebar" style=" width:260px; border:1px solid #e4e4e4; float:right; position:sticky; top:100px; margin:10px; padding:10px; "><!-- 오른쪽 사이드바 -->
@@ -388,7 +396,7 @@
 			<hr style="margin-top:30px;">
 		</div>
 		<div>	
-		<div id="titlediv">주변 즐길거리</div>
+<%-- 		<div id="titlediv">주변 즐길거리</div>
 		<div style="height:300px;">
 		  <!-- Swiper -->
  			 <div class="swiper-container travel">
@@ -413,7 +421,7 @@
    			  <div class="swiper-button-next"></div>
    			  <div class="swiper-button-prev"></div>
   			 </div>
-		</div>
+		</div> --%>
 	</div>
 </div>
 <div>
@@ -580,7 +588,7 @@
 <script src="${pageContext.request.contextPath }/resources/js/main.js"></script> 
 <script src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
 <!-- 달력 -->
-<%-- <script src="${pageContext.request.contextPath }/resources/js/jquery-1.11.0.min.js"></script> --%>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-1.11.0.min.js"></script> 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-ui.min.js"></script>
 
@@ -640,15 +648,14 @@
 	   console.log(lat);
 	   console.log(lng);
 	} 
- 	var latitude = ${owner.owner_latitude};
- 	var longitude = ${owner.owner_longitude}; 
-	var map;
+ 
+	/* var map;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: latitude, lng: longitude	},
         zoom: 8
       });
-    } 
+    }  */
     
     var swiper = new Swiper('.travel', {
         slidesPerView: 3,
@@ -679,7 +686,7 @@
         },
       });
  
-
+ 
     
 
 	var roomno ;

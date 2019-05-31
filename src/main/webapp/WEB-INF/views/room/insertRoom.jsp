@@ -181,8 +181,8 @@ margin:0px auto;
                         <i class="pe-7s-graph"></i>
                         <p>예약관리</p>
                         <ul>
-                        <li><a href="orderList.do?owner_no=${loginMember.owner_no }">오늘 예약건</a></li>
-                    	<li><a href="passOrderList.do?owner_no=${loginMember.owner_no }">지난 예약건</a></li>
+                        <li><a href="orderList.do?owner_no=${loginOwner.owner_no }">오늘 예약건</a></li>
+                    	<li><a href="passOrderList.do?owner_no=${loginOwner.owner_no }">지난 예약건</a></li>
                     	</ul>
                     </a>
                 </li>
@@ -230,7 +230,7 @@ margin:0px auto;
 			<div style="text-align:center; font-size:2em; margin-bottom:20px; color:black; font-weight:bold; ">객실등록</div>
 			<div id="isroom" style="margin:20px; border:1px solid #cfcfcf; background:white;padding:30px;">
 			<form action="insertRoomSub.do" method="post" enctype="multipart/form-data" >
-				<input type="hidden" value="6" name="owner_no">
+				<input type="hidden" value="${loginOwner.owner_no }" name="owner_no">
 				<div>객실정보</div>
 				<hr>
 				<div>객실명 : <input type="text" name="room_name" required></div>

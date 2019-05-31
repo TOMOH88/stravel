@@ -165,8 +165,8 @@ margin:0px auto;
                         <i class="pe-7s-graph"></i>
                         <p>예약관리</p>
                         <ul>
-                        <li><a href="orderList.do?owner_no=${loginMember.owner_no }">오늘 예약건</a></li>
-                    	<li><a href="passOrderList.do?owner_no=${loginMember.owner_no }">지난 예약건</a></li>
+                        <li><a href="orderList.do?owner_no=${loginOwner.owner_no }">오늘 예약건</a></li>
+                    	<li><a href="passOrderList.do?owner_no=${loginOwner.owner_no }">지난 예약건</a></li>
                     	</ul>
                     </a>
                 </li>

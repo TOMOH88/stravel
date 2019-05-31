@@ -104,7 +104,7 @@ public class OwnerController {
 		if(owner != null) {
 			session.setAttribute("loginOwner", owner);
 			status.setComplete();
-			path= "home";
+			path= "redirect:ownerMain.do?owner_no="+owner.getOwner_no();
 			}
 		return path;
 		

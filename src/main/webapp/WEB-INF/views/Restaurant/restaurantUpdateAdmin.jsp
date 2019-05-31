@@ -81,7 +81,7 @@ var marker;
 <div class="container">
 <h1 align="center">식당 수정 페이지</h1>
 <form action="restaurantUpdateadmin.do" method="post" enctype="multipart/form-data">
-<input type="hidden" name="restaurant_writer" value="고상훈">
+<input type="hidden" name="restaurant_writer" value="${loginMember.user_name }">
 <table class="table">
 <tr>
 	<th>식당 명</th><td><input type="text" name="restaurant_name" required="required" value="${restaurant.restaurant_name }" class="form-control"/><input type="hidden" name="restaurant_no" value="${restaurant.restaurant_no }"></td>

@@ -63,7 +63,7 @@ var marker;
 	<div class = "container">
 		<h1 align="center">식당 글쓰기 페이지</h1>
 		<form action="insertrestaurant.do" method = "post" enctype = "multipart/form-data">
-		<input type = "hidden" name = "restaurant_writer" value = "고상훈">
+		<input type = "hidden" name = "restaurant_writer" value = "${loginMember.user_name }">
 		<table class = "table">
 			<tr>
 				<th>식당 명</th>
