@@ -121,11 +121,11 @@ public class CalendarController {
 		return mv;
 	}
 	
-	@RequestMapping(value="rview.do", method=RequestMethod.GET)
+	@RequestMapping(value="zview.do", method=RequestMethod.GET)
 	public ModelAndView movedCalendarViewPage(ModelAndView mv) {
 		ArrayList<Restaurant> rest = calendarService.selectRest();
-		mv.addObject("restt", rest);
-		mv.setViewName("calendar/calendarViewList");
+		mv.addObject("rest", rest);
+		mv.setViewName("calendar/searchcalendar");
 		return mv;
 	}
 	

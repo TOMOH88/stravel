@@ -16,15 +16,16 @@ var contentArray = [];
 $(function(){
 	$.ajax({
 		type: "POST",
-		url : "tview.do",
-		dataType: "json",
+		url : "rview.do",
+		dataType: "text",
 		contentType:"application/json; charset=UTF-8",
 		success : function(data){
-			if(data.code == "ok")
-			for(i in data.tour){
-				var no = [];
-				no[i] = data.tour[i].touristspot_no;
-				nameArray[i] = [data.tour[i].touristspot_name];
+			if(data.code == "ook")
+				alert(data.rest);
+			for(i in data.rest){
+				var rno = [];
+				rno[i] = data.rest[i].restaurant_no;
+				/* nameArray[i] = [data.tour[i].touristspot_name];
 				var touristspot = [];
 				touristspot[i] = [data.tour[i].touristspot];
 				var latitude = [];
@@ -35,7 +36,8 @@ $(function(){
 				iConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
 				contentArray[i] = [data.tour[i].touristspot_content];
 				
-				addMarker(no, data, contentArray, location, nameArray)
+				addMarker(no, data, contentArray, location, nameArray) */
+
 				
 				}
 		},

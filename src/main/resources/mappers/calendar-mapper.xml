@@ -142,22 +142,22 @@
 </resultMap>
 
 <resultMap id="resultRestaurant" type ="Restaurant">
-	<id property ="restaurant_no" column ="RESTAURANT_NO"/>
-	<result property ="restaurant_category_code" column ="RESTAURANT_CATEGORY_CODE"/>
-	<result property ="restaurant_name" column ="RESTAURANT_NAME"/>
-	<result property ="restaurant_content" column ="RESTAURANT_CONTENT"/>
-	<result property ="restaurant_writer" column ="RESTAURANT_WRITER"/>
-	<result property ="restaurant_date" column ="RESTAURANT_DATE"/>
-	<result property ="rename_thumnail" column ="RENAME_THUMNAIL"/>
-	<result property ="restaurant_openinghours" column ="RESTAURANT_OPENINGHOURS"/>
-	<result property ="restaurant_closehours" column ="RESTAURANT_CLOSEHOURS"/>
-	<result property ="restaurant_homepage" column ="RESTAURANT_HOMEPAGE"/>
-	<result property ="restaurant_address" column ="RESTAURANT_ADDRESS"/>
-	<result property ="restaurant_tel" column ="RESTAURANT_TEL"/>
-	<result property ="restaurant_lastmodified" column ="RESTAURANT_LASTMODIFIED"/>
-	<result property ="restaurant_gridx" column ="RESTAURANT_GRIDX"/>
-	<result property ="restaurant_gridy" column ="RESTAURANT_GRIDY"/>
-	<result property ="restaurant_deletestatus" column ="RESTAURANT_DELETESTATUS"/>
+	<id property ="restaurant_no" column ="restaurant_no"/>
+	<result property ="restaurant_category_code" column ="restaurant_category_code"/>
+	<result property ="restaurant_name" column ="restaurant_name"/>
+	<result property ="restaurant_content" column ="restaurant_content"/>
+	<result property ="restaurant_writer" column ="restaurant_writer"/>
+	<result property ="restaurant_date" column ="restaurant_date"/>
+	<result property ="rename_thumnail" column ="rename_thumnail"/>
+	<result property ="restaurant_openinghours" column ="restaurant_openinghours"/>
+	<result property ="restaurant_closehours" column ="restaurant_closehours"/>
+	<result property ="restaurant_homepage" column ="restaurant_homepage"/>
+	<result property ="restaurant_address" column ="restaurant_address"/>
+	<result property ="restaurant_tel" column ="restaurant_tel"/>
+	<result property ="restaurant_lastmodified" column ="restaurant_lastmodified"/>
+	<result property ="restaurant_gridx" column ="restaurant_gridx"/>
+	<result property ="restaurant_gridy" column ="restaurant_gridy"/>
+	<result property ="restaurant_deletestatus" column ="restaurant_deletestatus"/>
 </resultMap>
 
 	<resultMap id = "resultRestaurantCategory" type = "RestaurantCategory">
