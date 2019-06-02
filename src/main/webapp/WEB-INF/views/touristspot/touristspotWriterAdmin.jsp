@@ -77,9 +77,9 @@
 <tr>
 	<th>관광지 카테고리</th>
 	<td>
-		<select name="touristspotcategorycode">
+		<select name="touristspotcategorycode" class="form-control">
 			<c:forEach items="${ TSCategory}" var="TSC">
-			<option value="${TSC.touristspotCategoryCode }">${TSC.touristspotCategoryName }</option>
+			<option value="${TSC.touristspotCategoryCode }" >${TSC.touristspotCategoryName }</option>
 			</c:forEach>
 		</select>
 	</td>
@@ -118,7 +118,7 @@
 	<th>사진 업로드</th><td><input multiple="multiple" type="file" name="tsimages" class="multi with-preview"/></td>
 </tr>
 <tr>
-	<td><input type="submit"/></td><td><input type="reset"></td>
+	<td colspan="2" align="center"><input type="submit" class="btn btn-default btn-xl"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset"class="btn btn-default btn-xl"/></td>
 </tr>
 </table>
 </form>

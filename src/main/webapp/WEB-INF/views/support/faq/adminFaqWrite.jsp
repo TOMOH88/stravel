@@ -52,7 +52,7 @@ $(function(){
 <form name="faqForm" action="faqinsert.do" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 <div class="card">
 <div class="header">
-<h4 class="title">공지사항 작성</h4>
+<h4 class="title">FAQ 작성</h4>
 <p class="category"></p>
 </div>
 <div class="content table-responsive">
@@ -76,7 +76,7 @@ $(function(){
 </tr>
 <tr>
 <th>내용</th>
-<td><textarea id="con1" name="faq_content" rows="20" cols="50" class="form-control"></textarea></td>
+<td><textarea id="con1" name="faq_content" rows="20" cols="35" class="form-control"></textarea></td>
 </tr>
 <tr>
 <th>파일첨부</th>
