@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0">
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/vendors/bootstrap/bootstrap.min.css">
@@ -229,24 +230,24 @@ margin:0px auto;
 		
 		<div class="ownerbody"  style="width:69%; display:table-cell;"><!-- ownerbody -->
 		<bR><BR><BR>
-		<div style="width:900px;border:1px solid black; margin:0 auto; background:#edf7f8; padding:50px;">
+	<div style="width:900px;border:1px solid black; margin:0 auto; background:#edf7f8; padding:50px;">
 			<div style="text-align:center; font-size:2em; margin-bottom:20px; color:black; font-weight:bold; ">객실등록</div>
 			<div id="isroom" style="margin:20px; border:1px solid #cfcfcf; background:white;padding:30px;">
 			<form action="updateAddress.do?owner_no=${loginOwner.owner_no }" method="post">
-		<label>주소
-		<input type="text" name="owner_address" id="owner_address">
-		<input type="button" onclick="geoCode();" value="검색">
-		<div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThTAj0AKRlW45lmKFY65_OkQylWQBmeg&callback=geoCode"
-    async defer></script> 
-
-		<input type="hidden" name="owner_latitude" id="owner_latitude">
-		<input type="hidden" name="owner_longitude" id="owner_longitude">
+		<label>주소</label>
+		<input id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on"  /> 
+		
+	 <div id="map"></div>
+   
+		<input type="hidden" name="owner_address" id="owner_address">
+		<input type="hidden" name="owner_lat" id="owner_latitude">
+		<input type="hidden" name="owner_lng" id="owner_longitude">
 		<input multiple="multiple" type="file" name="owner_img" class="multi with-preview"/>
 		<input type="submit" >
 	</form>
 			</div>
-		</div>
+		</div> 
+
 	</div><!-- ownerbody -->
 </div>
 
@@ -287,41 +288,18 @@ margin:0px auto;
 
 </body>
 	<script type="text/javascript">
-		function check(){
-			location.href="orderList.do";
-		};
+	
 		var map;
-		   var marker;
-		      function geoCode() {
-		            var faddr_lat = ${touristspot.touristspot_latitude };
-		          var faddr_lng = ${touristspot.touristspot_longitude };
-		         var faddr = document.getElementById('address').value;
-		            var geocoder;
-		            geocoder = new google.maps.Geocoder();
-		            geocoder.geocode( { 'address': faddr}, function(results, status) {
-		               if (status == google.maps.GeocoderStatus.OK) {
-		                  var faddr_lat = results[0].geometry.location.lat();   //위도
-		                  var faddr_lng = results[0].geometry.location.lng();   //경도
-		               } else {
-		                  var faddr_lat = ${touristspot.touristspot_latitude };
-		                  var faddr_lng =  ${touristspot.touristspot_longitude };
-		               }
-		               map = new google.maps.Map(document.getElementById('map'), {
-		                   center: {lat: faddr_lat, lng: faddr_lng},
-		                   zoom: 15});
-		               
-		               marker = new google.maps.Marker({
-		                       position: {lat: faddr_lat, lng: faddr_lng},
-		                       map: map/* ,
-		                       title: 'Hello World!' */
-		                   });
-		               return;
-		            });   
-		         }
-		/*   var input = document.getElementById('owner_address');
-		  var autocomplete = new google.maps.places.Autocomplete(input,{
-			  type:['(cities)']
-		  }); */
-		});
+	        function init(){
+	         map = new google.maps.Map(document.getElementById('map'),{
+	        		center : {lat : 37.498095, lng : 127.07610},
+	        		zoom : 8
+	        	})
+	        };
+			
+		
+	    
 	</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJoPfOWTR_yPSub9u9VPKGGVauCN0RoAg&callback=geoCode"
+    async defer></script> 
 </html>

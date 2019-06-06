@@ -1,0 +1,1272 @@
+일정 스크립트------------------------------------------------------------------------------
+
+DROP TABLE TB_MYCALENDAR CASCADE CONSTRAINTS;
+DROP TABLE TB_CALENDAR CASCADE CONSTRAINTS;
+
+DROP SEQUENCE SQ_MYCALENDAR_NO;
+DROP SEQUENCE SQ_CALENDAR_NO;
+
+CREATE SEQUENCE SQ_MYCALENDAR_NO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE NOCACHE;
+
+CREATE SEQUENCE SQ_CALENDAR_NO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE NOCACHE;
+
+CREATE TABLE TB_MYCALENDAR(
+    MYCALENDAR_NO NUMBER NULL,
+    MYCALENDAR_TITLE VARCHAR2(50) NULL,
+    MYCALENDAR_CONTENT VARCHAR2(500) NULL,
+    MYCALENDAR_WRITER VARCHAR2(20) NULL,
+    MYCALENDAR_START_DATE DATE DEFAULT SYSDATE NULL,
+    MYCALENDAR_END_DATE DATE DEFAULT SYSDATE NULL,
+    CATEGORY VARCHAR2(30) NULL,
+    NOTEPAD VARCHAR2(200) NULL,
+    BUDGET NUMBER NULL,
+    CONSTRAINT PK_MYCALENDAR_NO PRIMARY KEY (MYCALENDAR_NO)
+);
+
+CREATE TABLE TB_CALENDAR(
+    CALENDAR_NO NUMBER NULL,
+    TOURISTSPOT_NO NUMBER NULL,
+    MYCALENDAR_NO number NULL, 
+    CONSTRAINT PK_CALENDAR_NO PRIMARY KEY (CALENDAR_NO),
+    CONSTRAINT FK_MYCALENDAR_NO FOREIGN KEY (MYCALENDAR_NO) REFERENCES TB_MYCALENDAR (MYCALENDAR_NO) ON DELETE CASCADE,
+    CONSTRAINT FK_TOURISTSPOT_NO FOREIGN KEY (TOURISTSPOT_NO) REFERENCES TB_TOURISTSPOT(TOURISTSPOT_NO) ON DELETE CASCADE
+);
+
+COMMENT ON COLUMN TB_MYCALENDAR.MYCALENDAR_NO IS '나의일정번호';
+COMMENT ON COLUMN TB_MYCALENDAR.MYCALENDAR_TITLE IS '제목';
+COMMENT ON COLUMN TB_MYCALENDAR.MYCALENDAR_CONTENT IS '내용';
+COMMENT ON COLUMN TB_MYCALENDAR.MYCALENDAR_WRITER IS '작성자';
+COMMENT ON COLUMN TB_MYCALENDAR.MYCALENDAR_START_DATE IS '일정시작날짜';
+COMMENT ON COLUMN TB_MYCALENDAR.MYCALENDAR_END_DATE IS '일정종료날짜';
+COMMENT ON COLUMN TB_MYCALENDAR.CATEGORY IS '여행테마';
+COMMENT ON COLUMN TB_MYCALENDAR.NOTEPAD IS '메모';
+COMMENT ON COLUMN TB_MYCALENDAR.BUDGET IS '예산';
+
+COMMENT ON COLUMN TB_CALENDAR.CALENDAR_NO IS '일정번호';
+COMMENT ON COLUMN TB_CALENDAR.TOURISTSPOT_NO IS '관광지번호';
+COMMENT ON COLUMN TB_CALENDAR.MYCALENDAR_NO IS '나의일정번호';
+
+COMMIT;
+--
+--RESTAURANT_NO NUMBER,
+--COMMENT ON COLUMN CALENDAR.CALENDAR_NO IS '식당번호';
+--USER_EMAIL VARCHAR2(50) NOT NULL,
+--COMMENT ON COLUMN CALENDAR.CALENDAR_NO IS '유저아이디';
+--CONSTRAINT FK_RESTAURANT_NO FOREIGN KEY (RESTAURANT_NO) REFERENCES RESTAURANT(RESTAURANT_NO) ON DELETE CASCADE
+
+동행찾기 스크립트--------------------------------------
+
+drop table owner cascade constraints;
+drop table room cascade constraints;
+drop table room_review cascade constraints;
+drop table reservation cascade constraints;
+drop table room_img cascade constraints;
+drop table owner_img cascade constraints;
+drop table stravel_user cascade constraints;
+
+drop sequence seq_owner_no;
+drop sequence seq_owner_img_no;
+drop sequence seq_rsv_no;
+drop sequence seq_room_no;
+drop sequence seq_room_img_no;
+drop sequence seq_property_review_no;
+drop sequence seq_user_no;
+
+
+create table stravel_user(
+user_no number not null,
+user_email varchar2(100) not null,
+user_password varchar2(100) not null,
+user_name varchar2(50) not null,
+user_phone varchar2(50) not null,
+user_picture varchar2(100),
+gender varchar2(50) not null,
+constraint pk_un primary key(user_no)
+);
+comment on column stravel_user.user_no is '사용자번호';
+comment on column stravel_user.user_email is '사용자이메일';
+comment on column stravel_user.user_password is '비밀번호';
+comment on column stravel_user.user_name is '이름';
+comment on column stravel_user.user_phone is '휴대전화';
+comment on column stravel_user.user_picture is '사용자이미지';
+comment on column stravel_user.gender is '성별';
+
+
+create table owner (
+owner_no number not null,
+owner_license_no number not null,
+owner_password varchar2(50) not null,
+owner_name varchar2(50) not null,
+owner_companyname varchar2(50) not null,
+owner_telephone number not null,
+owner_phone number not null,
+owner_account varchar2(50) not null,
+owner_address varchar2(100) not null,
+owner_category varchar2(50) not null,
+owner_approve varchar2(50) not null,
+constraint pk_ono primary key(owner_no)
+);
+
+comment on column owner.owner_no is '사업자번호';
+comment on column owner.owner_license_no is '사업자등록번호';
+comment on column owner.owner_password is '비밀번호';
+comment on column owner.owner_name is '이름';
+comment on column owner.owner_companyname is '사업체명';
+comment on column owner.owner_telephone is '휴대전화';
+comment on column owner.owner_phone is '전화번호';
+comment on column owner.owner_account is '계좌번호';
+comment on column owner.owner_address is '주소';
+comment on column owner.owner_category is '업체구분';
+comment on column owner.owner_approve is '승인/미승인';
+
+create table room(
+room_no number not null,
+room_name varchar2(50) not null,
+room_option varchar2(1000) not null,
+room_content varchar2(1000) not null,
+min_no number not null,
+max_no number not null,
+off_season_price number not null,
+on_season_price number not null,
+week_extra_price number not null,
+add_person_price number not null,
+discountrate number,
+owner_no number not null,
+constraint pk_rno primary key (room_no),
+constraint fk_ono foreign key (owner_no) references owner
+);
+
+comment on column room.room_no is '객실번호';
+comment on column room.room_name is '객실명';
+comment on column room.room_option is '편의시설';
+comment on column room.room_content is '객실정보';
+comment on column room.min_no is '최소인원';
+comment on column room.max_no is '최대인원';
+comment on column room.off_season_price is '비수기가격';
+comment on column room.on_season_price is '성수기가격';
+comment on column room.week_extra_price is '주말추가가격';
+comment on column room.add_person_price is '인원추가가격';
+comment on column room.discountrate is '할인율';
+comment on column room.owner_no is '사업자번호';
+
+create table reservation (
+rsv_no number,
+user_no number not null,
+room_no number not null,
+check_in date not null,
+check_out date not null,
+rsv_status varchar2(50) not null,
+enter_room varchar2(50) not null,
+rsv_date date not null,
+member number not null,
+total_price number not null,
+constraint pk_rn primary key(rsv_no),
+constraint fk_un foreign key(user_no) references stravel_user,
+constraint fk_rn foreign key(room_no) references room
+);
+comment on column reservation.rsv_no is '예약번호';
+comment on column reservation.user_no is '사용자번호';
+comment on column reservation.room_no is '객실번호';
+comment on column reservation.check_in is '입실날짜';
+comment on column reservation.check_out is '퇴실날짜';
+comment on column reservation.rsv_status is '예약현황';
+comment on column reservation.enter_room is '입실여부';
+comment on column reservation.rsv_date is '신청날짜';
+comment on column reservation.member is '입실인원';
+comment on column reservation.total_price is '총가격';
+
+create table room_review (
+property_review_no number,
+property_review_content varchar2(1000) not null,
+property_review_like number not null,
+user_no number not null,
+rsv_no number not null,
+constraint pk_prn primary key(property_review_no),
+constraint fk_un1 foreign key(user_no) references stravel_user,
+constraint fk_rn1 foreign key(rsv_no) references reservation
+);
+
+comment on column room_review.property_review_no is '후기번호';
+comment on column room_review.property_review_content is '후기내용';
+comment on column room_review.property_review_like is '별점';
+comment on column room_review.user_no is '사용자번호';
+comment on column room_review.rsv_no is '예약번호';
+
+
+
+create table room_img(
+room_img_no number,
+room_img varchar2(100) not null,
+room_no number not null,
+constraint pk_rin1 primary key(room_img_no),
+constraint fk_rn2 foreign key(room_no) references room
+);
+
+comment on column room_img.room_img_no is '이미지번호';
+comment on column room_img.room_img is '이미지';
+comment on column room_img.room_no is '객실번호';
+
+create table owner_img(
+owner_img_no number,
+owner_img varchar2(100) not null,
+owner_no number not null,
+constraint pk_oin primary key(owner_img_no),
+constraint fk_on1 foreign key(owner_no) references owner
+);
+
+comment on column owner_img.owner_img_no is '이미지번호';
+comment on column owner_img.owner_img is '이미지';
+comment on column owner_img.owner_no is '사업자번호';
+
+
+create sequence seq_owner_no nocycle nocache;
+create sequence seq_owner_img_no nocycle nocache;
+create sequence seq_rsv_no nocycle nocache;
+create sequence seq_room_no nocycle nocache;
+create sequence seq_room_img_no nocycle nocache;
+create sequence seq_property_review_no nocycle nocache;
+create sequence seq_user_no nocycle nocache;
+
+
+DROP TABLE COMPANION CASCADE CONSTRAINTS;
+
+CREATE TABLE COMPANION(
+	COMPANION_NO NUMBER NOT NULL,
+	COMPANION_TITLE VARCHAR2(50) NOT NULL,
+	companion_writer varchar2(100) not null,
+	COMPANION_CONTENT VARCHAR2(50) NOT NULL,
+	COMPANION_DATE DATE DEFAULT SYSDATE NOT NULL,
+	COMPANION_SCHEDULE VARCHAR2(50),
+	COMPANION_PROGRESS NUMBER NOT NULL,
+
+	CONSTRAINT PK_COMPANIONNO PRIMARY KEY(COMPANION_NO) -- 기본키
+	
+
+);
+
+COMMENT ON COLUMN COMPANION.COMPANION_NO IS '게시판번호';
+COMMENT ON COLUMN COMPANION.COMPANION_TITLE IS '제목';
+comment on column companion.companion_writer is '작성자';
+COMMENT ON COLUMN COMPANION.COMPANION_CONTENT IS '내용';
+COMMENT ON COLUMN COMPANION.COMPANION_DATE IS '작성일';
+COMMENT ON COLUMN COMPANION.COMPANION_SCHEDULE IS '일정공유';
+COMMENT ON COLUMN COMPANION.COMPANION_PROGRESS IS '진행현황';
+
+--동행찾기게시판번호 시퀀스
+DROP SEQUENCE SEQ_CP_NO;
+
+CREATE SEQUENCE SEQ_CP_NO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+--동행 찾기 샘플 INSERT
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', '2019-05-08', NULL, 1); 
+
+
+
+--동행찾기게시판댓글
+DROP TABLE COMPANION_REPLY CASCADE CONSTRAINTS;
+
+CREATE TABLE COMPANION_REPLY(
+COMPANION_REPLY_NO NUMBER NOT NULL,
+COMPANION_NO NUMBER NOT NULL,
+companion_reply_writer varchar2(100) NOT NULL,
+COMPANION_REPLY_CONTENT VARCHAR2(100) NOT NULL,
+companion_reply_date date default sysdate not null,
+
+CONSTRAINT PK_COMPREPLYNO PRIMARY KEY(COMPANION_REPLY_NO), -- 기본키
+CONSTRAINT FK_CPRCOMPNO FOREIGN KEY (COMPANION_NO) REFERENCES COMPANION(COMPANION_NO)
+);
+
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_REPLY_NO IS '댓글번호';
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_NO IS '게시판번호';
+COMMENT ON COLUMN COMPANION_REPLY.companion_reply_writer IS '작성자';
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_REPLY_CONTENT IS '댓글내용';
+comment on column companion_reply.companion_reply_date is '작성일';
+
+DROP SEQUENCE SEQ_CPREPLY_NO;
+-- 동행찾기댓글번호 시퀀스
+CREATE SEQUENCE SEQ_CPREPLY_NO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+-- 동행찾기 댓글 샘플 INSERT
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 1, 'kyu3135@naver.com', '즐거운여행해요', sysdate);
+
+commit;
+
+관광지 고객게시판,QnA,FAQ -------------------------------------------------------
+
+  	DROP TABLE TB_QNA CASCADE CONSTRAINTS;
+	DROP TABLE TB_FAQCATEGORY CASCADE CONSTRAINTS;
+	DROP TABLE TB_NOTICE CASCADE CONSTRAINTS;
+	DROP TABLE TB_FAQ CASCADE CONSTRAINTS;
+	DROP TABLE TB_TOURISTSPOTCATEGORY CASCADE CONSTRAINTS;
+	DROP TABLE TB_TOURISTSPOT CASCADE CONSTRAINTS;
+	DROP TABLE TB_TOURISTSPOTIMAGES CASCADE CONSTRAINTS;
+	DROP TABLE TB_TOURISTSPOTREVIEWS CASCADE CONSTRAINTS;
+	DROP TABLE tb_admin CASCADE CONSTRAINTS;
+
+	DROP SEQUENCE SQ_QNANO;
+	DROP SEQUENCE SQ_NOTICENO;
+	DROP SEQUENCE SQ_FAQNO;
+	DROP SEQUENCE SQ_TOURISTSPOTNO;
+
+
+	create table tb_admin(
+	admin_id VARCHAR2(50),
+	admin_password VARCHAR2(500),
+	admin_name varchar2(20),
+	regist_date date DEFAULT SYSDATE CONSTRAINT NN_ARDATE NOT NULL
+	);
+	ALTER TABLE tb_admin
+	ADD CONSTRAINT PK_ADMINID PRIMARY KEY (admin_id);
+
+	COMMENT ON COLUMN tb_admin.admin_id IS '관리자 아이디';
+	COMMENT ON COLUMN tb_admin.admin_password IS '관리자 비밀번호';
+	COMMENT ON COLUMN tb_admin.admin_name IS '관리자 이름';
+	COMMENT ON COLUMN tb_admin.regist_date IS '관리자 가입일';
+
+	CREATE TABLE TB_QNA(
+	    QNA_NO NUMBER,
+	    QNA_TITLE VARCHAR2(200) CONSTRAINT NN_QTITLE NOT NULL,
+	    QNA_CONTENT CLOB,
+	    QNA_WRITER VARCHAR2(100) CONSTRAINT NN_QWRTIER NOT NULL,
+	    RENAME_QFILENAME VARCHAR2(100),
+	    QNA_DATE DATE DEFAULT SYSDATE CONSTRAINT NN_QDATE NOT NULL,
+	    QNA_STATUS CHAR(1) DEFAULT 'N' CONSTRAINT NN_QST NOT NULL,
+	    QNA_ANSWER CLOB,
+	    QNA_ANSWERDATE DATE DEFAULT SYSDATE CONSTRAINT NN_QADATE NOT NULL,
+	    RENAME_AFILENAME VARCHAR2(100),
+	    QNA_ANSWERWRITER VARCHAR2(100),
+	    QNA_DELETESTATUS  CHAR(1) DEFAULT 'N' CONSTRAINT NN_QDELETE NOT NULL
+	);  
+	ALTER TABLE TB_QNA
+	ADD CONSTRAINT PK_QNO PRIMARY KEY (QNA_NO);
+	ALTER TABLE TB_QNA
+	ADD CONSTRAINT CK_QSTATUS CHECK (QNA_STATUS IN ('N','Y'));
+	ALTER TABLE TB_QNA
+	ADD CONSTRAINT CK_QDSTATUS CHECK (QNA_DELETESTATUS IN ('N','Y'));
+
+	CREATE SEQUENCE SQ_QNANO
+	START WITH 1
+	INCREMENT BY 1
+	NOCYCLE NOCACHE;
+
+	COMMENT ON COLUMN TB_QNA.QNA_NO IS 'QNA번호';
+	COMMENT ON COLUMN TB_QNA.QNA_TITLE IS 'QNA제목';
+	COMMENT ON COLUMN TB_QNA.QNA_CONTENT IS 'QNA내용';
+	COMMENT ON COLUMN TB_QNA.QNA_WRITER IS 'QNA작성자';
+	COMMENT ON COLUMN TB_QNA.RENAME_QFILENAME IS 'QNA작성자업로드파일';
+	COMMENT ON COLUMN TB_QNA.QNA_DATE IS 'QNA작성일';
+	COMMENT ON COLUMN TB_QNA.QNA_STATUS IS 'QNA답변상태';
+	COMMENT ON COLUMN TB_QNA.QNA_ANSWER IS 'QNA답변내용';
+	COMMENT ON COLUMN TB_QNA.QNA_ANSWERDATE IS 'QNA답변일';
+	COMMENT ON COLUMN TB_QNA.RENAME_AFILENAME IS 'QNA답변업로드파일';
+	COMMENT ON COLUMN TB_QNA.QNA_ANSWERWRITER IS 'QNA답변작성자';
+	COMMENT ON COLUMN TB_QNA.QNA_DELETESTATUS IS 'QNA삭제상태';
+
+	CREATE TABLE TB_FAQCATEGORY(
+	FAQ_CATEGORYCODE CHAR(4),
+	FAQ_CATEGORYNAME VARCHAR(30) CONSTRAINT NN_CATEGORYNEME NOT NULL
+	);
+
+	COMMENT ON COLUMN TB_FAQCATEGORY.FAQ_CATEGORYCODE IS 'FAQ카테고리코드';
+	COMMENT ON COLUMN TB_FAQCATEGORY.FAQ_CATEGORYNAME IS 'FAQ카테고리이름';
+
+	ALTER TABLE TB_FAQCATEGORY
+	ADD CONSTRAINT PK_FAQCCODE PRIMARY KEY (FAQ_CATEGORYCODE);
+	
+	insert into tb_faqcategory values('C001','결제');
+	insert into tb_faqcategory values('C002','상품');
+	insert into tb_faqcategory values('C003','회원계정');
+	
+	CREATE TABLE TB_FAQ(
+	    FAQ_NO NUMBER,
+	    FAQ_CATEGORYCODE CHAR(4) REFERENCES TB_FAQCATEGORY(FAQ_CATEGORYCODE) ,
+	    FAQ_TITLE VARCHAR2(200) CONSTRAINT NN_FTITLE NOT NULL,
+	    FAQ_CONTENT CLOB,
+	    FAQ_WRITER VARCHAR2(100) CONSTRAINT NN_FWRTIER NOT NULL,
+	    RENAME_FFILENAME VARCHAR2(100),
+	    FAQ_DATE DATE DEFAULT SYSDATE CONSTRAINT NN_FDATE NOT NULL,
+	    FAQ_DELETESTATUS  CHAR(1) DEFAULT 'N' CONSTRAINT NN_FDELETE NOT NULL
+	);  
+
+	ALTER TABLE TB_FAQ
+	ADD CONSTRAINT PK_TBFAQ PRIMARY KEY (FAQ_NO);
+	ALTER TABLE TB_FAQ
+	ADD CONSTRAINT CK_FDSTATUS CHECK (FAQ_DELETESTATUS IN ('N','Y'));
+
+	CREATE SEQUENCE SQ_FAQNO
+	START WITH 1
+	INCREMENT BY 1
+	NOCYCLE NOCACHE;
+
+	COMMENT ON COLUMN TB_FAQ.FAQ_NO IS 'FAQ번호';
+	COMMENT ON COLUMN TB_FAQ.FAQ_CATEGORYCODE IS 'FAQ카테고리코드';
+	COMMENT ON COLUMN TB_FAQ.FAQ_TITLE IS 'FAQ제목';
+	COMMENT ON COLUMN TB_FAQ.FAQ_CONTENT IS 'FAQ내용';
+	COMMENT ON COLUMN TB_FAQ.FAQ_WRITER IS 'FAQ작성자';
+	COMMENT ON COLUMN TB_FAQ.RENAME_FFILENAME IS 'FAQ파일';
+	COMMENT ON COLUMN TB_FAQ.FAQ_DATE IS 'FAQ작성일';
+	COMMENT ON COLUMN TB_FAQ.FAQ_DELETESTATUS IS 'FAQ삭제상태';
+
+	CREATE TABLE TB_NOTICE(
+	    NOTICE_NO NUMBER,
+	    NOTICE_TITLE VARCHAR2(200) CONSTRAINT NN_NTITLE NOT NULL,
+	    NOTICE_CONTENT CLOB,
+	    NOTICE_WRITER VARCHAR2(100) CONSTRAINT NN_NWRTIER NOT NULL,
+	    ORIGINALNAME_NFILENAME VARCHAR2(100),
+	    RENAME_NFILENAME VARCHAR2(100),
+	    NOTICE_DATE DATE DEFAULT SYSDATE CONSTRAINT NN_NDATE NOT NULL,
+	    NOTICE_DELETESTATUS  CHAR(1) DEFAULT 'N' CONSTRAINT NN_NDELETE NOT NULL
+	);  
+
+	ALTER TABLE TB_NOTICE
+	ADD CONSTRAINT PK_NOTICE PRIMARY KEY (NOTICE_NO);
+	ALTER TABLE TB_NOTICE
+	ADD CONSTRAINT CK_NDSTATUS CHECK (NOTICE_DELETESTATUS IN ('N','Y'));
+
+	CREATE SEQUENCE SQ_NOTICENO
+	START WITH 1
+	INCREMENT BY 1
+	NOCYCLE NOCACHE;
+
+	COMMENT ON COLUMN TB_NOTICE.NOTICE_NO IS 'NOTICE번호';
+	COMMENT ON COLUMN TB_NOTICE.NOTICE_TITLE IS 'NOTICE제목';
+	COMMENT ON COLUMN TB_NOTICE.NOTICE_CONTENT IS 'NOTICE내용';
+	COMMENT ON COLUMN TB_NOTICE.NOTICE_WRITER IS 'NOTICE작성자';
+	COMMENT ON COLUMN TB_NOTICE.ORIGINALNAME_NFILENAME IS 'NOTICE오리지날파일명';
+	COMMENT ON COLUMN TB_NOTICE.RENAME_NFILENAME IS 'NOTICE리네임파일명';
+	COMMENT ON COLUMN TB_NOTICE.NOTICE_DATE IS 'NOTICE작성일';
+	COMMENT ON COLUMN TB_NOTICE.NOTICE_DELETESTATUS IS 'NOTICE삭제상태';
+
+	CREATE TABLE TB_TOURISTSPOTCATEGORY(
+	    TOURISTSPOTCATEGORYCODE CHAR(4),
+	    TOURISTSPOTCATEGORYNAME VARCHAR2(30)
+	);
+
+	ALTER TABLE TB_TOURISTSPOTCATEGORY
+	ADD CONSTRAINT PK_TSCATEGORYCODE PRIMARY KEY (TOURISTSPOTCATEGORYCODE);
+
+	COMMENT ON COLUMN TB_TOURISTSPOTCATEGORY.TOURISTSPOTCATEGORYCODE IS '여행지분류코드';
+	COMMENT ON COLUMN TB_TOURISTSPOTCATEGORY.TOURISTSPOTCATEGORYNAME IS '여행지분류이름';
+
+	INSERT INTO TB_TOURISTSPOTCATEGORY VALUES('A001','랜드마크');
+	INSERT INTO TB_TOURISTSPOTCATEGORY VALUES('A002','유적지');
+	INSERT INTO TB_TOURISTSPOTCATEGORY VALUES('A003','박물관');
+	INSERT INTO TB_TOURISTSPOTCATEGORY VALUES('A004','쇼핑');
+
+
+	CREATE TABLE TB_TOURISTSPOT(
+	    TOURISTSPOT_NO NUMBER,
+	    TOURISTSPOTCATEGORYCODE CHAR(4) REFERENCES TB_TOURISTSPOTCATEGORY(TOURISTSPOTCATEGORYCODE) ,
+	    TOURISTSPOT_NAME VARCHAR2(200) CONSTRAINT NN_TTITLE NOT NULL,
+	    TOURISTSPOT_CONTENT CLOB,
+	    TOURISTSPOT_WRITER VARCHAR2(100) CONSTRAINT NN_TWRTIER NOT NULL,
+	    RENAME_THUMNAIL VARCHAR2(100),
+	    TOURISTSPOT_OPEN VARCHAR2(50),
+	    TOURISTSPOT_CLOSED VARCHAR2(50),
+	    TOURISTSPOT_HOMEPAGE VARCHAR2(200),
+	    TOURISTSPOT_ADDRESS VARCHAR2(200),
+	    TOURISTSPOT_TEL VARCHAR2(20),
+	    TOURISTSPOT_LATITUDE VARCHAR2(50),
+	    TOURISTSPOT_LONGITUDE VARCHAR2(50),
+	    TOURISTSPOT_DATE DATE DEFAULT SYSDATE CONSTRAINT NN_TDATE NOT NULL,
+	    TOURISTSPOT_LASTMODIFIED DATE DEFAULT SYSDATE CONSTRAINT NN_TLDATE NOT NULL,
+	    TOURISTSPOT_DELETESTATUS  CHAR(1) DEFAULT 'N' CONSTRAINT NN_TDELETE NOT NULL
+	); 
+
+	ALTER TABLE TB_TOURISTSPOT
+	ADD CONSTRAINT PK_TB_TOURISTSPOTNO PRIMARY KEY (TOURISTSPOT_NO);
+	ALTER TABLE TB_TOURISTSPOT
+	ADD CONSTRAINT CK_TDSTATUS CHECK (TOURISTSPOT_DELETESTATUS IN ('N','Y'));
+
+
+	CREATE SEQUENCE SQ_TOURISTSPOTNO
+	START WITH 1
+	INCREMENT BY 1
+	NOCYCLE NOCACHE;
+
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_NO IS '여행지게시글번호';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOTCATEGORYCODE IS '여행지분류코드';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_NAME IS '여행지이름';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_CONTENT IS '여행지내용';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_WRITER IS '여행지작성자';
+	COMMENT ON COLUMN TB_TOURISTSPOT.RENAME_THUMNAIL IS '여행지썸네일';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_OPEN IS '여행지영업시작시간';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_CLOSED IS '여행지영업마감시간';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_HOMEPAGE IS '여행지홈페이지';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_ADDRESS IS '여행지주소';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_TEL IS '여행지전화번호';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_LATITUDE IS '여행지위도';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_LONGITUDE IS '여행지경도';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_DATE IS '여행지작성날짜';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_LASTMODIFIED IS '여행지마지막수정일';
+	COMMENT ON COLUMN TB_TOURISTSPOT.TOURISTSPOT_DELETESTATUS IS '여행지삭제상태';
+
+	CREATE TABLE TB_TOURISTSPOTIMAGES(
+	TOURISTSPOT_NO NUMBER REFERENCES TB_TOURISTSPOT(TOURISTSPOT_NO),
+	TOURISTSPOT_SQ NUMBER,
+	TOURISTSPOT_IMAGENAME VARCHAR2(100)
+	);
+
+	COMMENT ON COLUMN TB_TOURISTSPOTIMAGES.TOURISTSPOT_NO IS '여행지게시글번호';
+	COMMENT ON COLUMN TB_TOURISTSPOTIMAGES.TOURISTSPOT_SQ IS '여행지이미지번호';
+	COMMENT ON COLUMN TB_TOURISTSPOTIMAGES.TOURISTSPOT_IMAGENAME IS '여행지이미지명';
+
+	CREATE TABLE TB_TOURISTSPOTREVIEWS(
+	TOURISTSPOT_NO NUMBER REFERENCES TB_TOURISTSPOT(TOURISTSPOT_NO),
+	REVIEW_NO NUMBER  DEFAULT 0 CONSTRAINT NN_RNUMBER NOT NULL,
+	REVIEW_WRITER VARCHAR(100),
+	REVIEW_CONTENT CLOB,
+	REVIEW_POINT NUMBER,
+	REVIEW_BLIND CHAR(1) DEFAULT 'N' CONSTRAINT NN_RBLIND NOT NULL,
+	REVIEW_DELETESTATUS  CHAR(1) DEFAULT 'N' CONSTRAINT NN_RDELETE NOT NULL,
+	REVIEW_DATE DATE DEFAULT SYSDATE CONSTRAINT NN_RDATE NOT NULL,
+	REVIEW_LASTMODIFIED DATE DEFAULT SYSDATE CONSTRAINT NN_RLDATE NOT NULL,
+	REVIEW_TOURDATE DATE
+	);
+	ALTER TABLE TB_TOURISTSPOTREVIEWS
+	ADD CONSTRAINT CK_RBSTATUS CHECK (REVIEW_BLIND IN ('N','Y'));
+	ALTER TABLE TB_TOURISTSPOTREVIEWS
+	ADD CONSTRAINT CK_RDSTATUS CHECK (REVIEW_DELETESTATUS IN ('N','Y'));
+
+	COMMENT ON COLUMN TB_TOURISTSPOTREVIEWS.TOURISTSPOT_NO IS '여행지게시글번호';
+	COMMENT ON COLUMN TB_TOURISTSPOTREVIEWS.REVIEW_NO IS '여행지리뷰번호';
+	COMMENT ON COLUMN TB_TOURISTSPOTREVIEWS.REVIEW_WRITER IS '여행지리뷰작성자';
+	COMMENT ON COLUMN TB_TOURISTSPOTREVIEWS.REVIEW_CONTENT IS '여행지리뷰내용';
+	COMMENT ON COLUMN TB_TOURISTSPOTREVIEWS.REVIEW_POINT IS '여행지리뷰점수';
+	COMMENT ON COLUMN TB_TOURISTSPOTREVIEWS.REVIEW_BLIND IS '여행지리뷰블라인드';
+	COMMENT ON COLUMN TB_TOURISTSPOTREVIEWS.REVIEW_DELETESTATUS IS '여행지리뷰삭제상태';
+	COMMENT ON COLUMN TB_TOURISTSPOTREVIEWS.REVIEW_DATE IS '여행지리뷰작성일';
+	COMMENT ON COLUMN TB_TOURISTSPOTREVIEWS.REVIEW_LASTMODIFIED IS '여행지리뷰마지막수정일';
+	COMMENT ON COLUMN TB_TOURISTSPOTREVIEWS.REVIEW_TOURDATE IS '여행지방문일';
+
+사업자 유저 객실 예약현황 이미지 스크립트----------------------------------------------------
+
+drop table owner cascade constraints;
+drop table room cascade constraints;
+drop table room_review cascade constraints;
+drop table reservation cascade constraints;
+drop table room_img cascade constraints;
+drop table owner_img cascade constraints;
+drop table stravel_user cascade constraints;
+
+drop sequence seq_owner_no;
+drop sequence seq_owner_img_no;
+drop sequence seq_rsv_no;
+drop sequence seq_room_no;
+drop sequence seq_room_img_no;
+drop sequence seq_property_review_no;
+drop sequence seq_user_no;
+
+
+create table stravel_user(
+user_no number not null,
+user_email varchar2(100) not null,
+user_password varchar2(100) not null,
+user_name varchar2(50) not null,
+user_phone varchar2(50) not null,
+user_picture varchar2(100),
+gender varchar2(50) not null,
+constraint pk_un primary key(user_no)
+);
+comment on column stravel_user.user_no is '사용자번호';
+comment on column stravel_user.user_email is '사용자이메일';
+comment on column stravel_user.user_password is '비밀번호';
+comment on column stravel_user.user_name is '이름';
+comment on column stravel_user.user_phone is '휴대전화';
+comment on column stravel_user.user_picture is '사용자이미지';
+comment on column stravel_user.gender is '성별';
+
+
+create table owner (
+owner_no number not null,
+owner_license_no number not null,
+owner_password varchar2(500) not null,
+owner_name varchar2(100) not null,
+owner_companyname varchar2(50),
+owner_telephone varchar2(50),
+owner_phone varchar2(50),
+owner_account varchar2(50),
+owner_address varchar2(100) ,
+owner_category varchar2(50),
+owner_approve varchar2(50),
+constraint pk_ono primary key(owner_no)
+);
+
+comment on column owner.owner_no is '사업자번호';
+comment on column owner.owner_license_no is '사업자등록번호';
+comment on column owner.owner_password is '비밀번호';
+comment on column owner.owner_name is '이름';
+comment on column owner.owner_companyname is '사업체명';
+comment on column owner.owner_telephone is '휴대전화';
+comment on column owner.owner_phone is '전화번호';
+comment on column owner.owner_account is '계좌번호';
+comment on column owner.owner_address is '주소';
+comment on column owner.owner_category is '업체구분';
+comment on column owner.owner_approve is '승인/미승인';
+
+create table room(
+room_no number not null,
+room_name varchar2(50) not null,
+room_option varchar2(1000) not null,
+room_content varchar2(1000) not null,
+min_no number not null,
+max_no number not null,
+off_season_price number not null,
+on_season_price number not null,
+week_extra_price number not null,
+add_person_price number not null,
+discountrate number,
+owner_no number not null,
+constraint pk_rno primary key (room_no),
+constraint fk_ono foreign key (owner_no) references owner
+);
+
+comment on column room.room_no is '객실번호';
+comment on column room.room_name is '객실명';
+comment on column room.room_option is '편의시설';
+comment on column room.room_content is '객실정보';
+comment on column room.min_no is '최소인원';
+comment on column room.max_no is '최대인원';
+comment on column room.off_season_price is '비수기가격';
+comment on column room.on_season_price is '성수기가격';
+comment on column room.week_extra_price is '주말추가가격';
+comment on column room.add_person_price is '인원추가가격';
+comment on column room.discountrate is '할인율';
+comment on column room.owner_no is '사업자번호';
+
+create table reservation (
+rsv_no number,
+user_no number not null,
+room_no number not null,
+check_in date not null,
+check_out date not null,
+rsv_status varchar2(50) not null,
+enter_room varchar2(50) not null,
+rsv_date date not null,
+member number not null,
+total_price number not null,
+constraint pk_rn primary key(rsv_no),
+constraint fk_un foreign key(user_no) references stravel_user,
+constraint fk_rn foreign key(room_no) references room
+);
+comment on column reservation.rsv_no is '예약번호';
+comment on column reservation.user_no is '사용자번호';
+comment on column reservation.room_no is '객실번호';
+comment on column reservation.check_in is '입실날짜';
+comment on column reservation.check_out is '퇴실날짜';
+comment on column reservation.rsv_status is '예약현황';
+comment on column reservation.enter_room is '입실여부';
+comment on column reservation.rsv_date is '신청날짜';
+comment on column reservation.member is '입실인원';
+comment on column reservation.total_price is '총가격';
+
+create table room_review (
+property_review_no number,
+property_review_content varchar2(1000) not null,
+property_review_like number not null,
+user_no number not null,
+rsv_no number not null,
+constraint pk_prn primary key(property_review_no),
+constraint fk_un1 foreign key(user_no) references stravel_user,
+constraint fk_rn1 foreign key(rsv_no) references reservation
+);
+
+comment on column room_review.property_review_no is '후기번호';
+comment on column room_review.property_review_content is '후기내용';
+comment on column room_review.property_review_like is '별점';
+comment on column room_review.user_no is '사용자번호';
+comment on column room_review.rsv_no is '예약번호';
+
+
+
+create table room_img(
+room_img_no number,
+room_img varchar2(100) not null,
+room_no number not null,
+constraint pk_rin1 primary key(room_img_no),
+constraint fk_rn2 foreign key(room_no) references room
+);
+
+comment on column room_img.room_img_no is '이미지번호';
+comment on column room_img.room_img is '이미지';
+comment on column room_img.room_no is '객실번호';
+
+create table owner_img(
+owner_img_no number,
+owner_img varchar2(100) not null,
+owner_no number not null,
+constraint pk_oin primary key(owner_img_no),
+constraint fk_on1 foreign key(owner_no) references owner
+);
+
+comment on column owner_img.owner_img_no is '이미지번호';
+comment on column owner_img.owner_img is '이미지';
+comment on column owner_img.owner_no is '사업자번호';
+
+
+create sequence seq_owner_no nocycle nocache;
+create sequence seq_owner_img_no nocycle nocache;
+create sequence seq_rsv_no nocycle nocache;
+create sequence seq_room_no nocycle nocache;
+create sequence seq_room_img_no nocycle nocache;
+create sequence seq_property_review_no nocycle nocache;
+create sequence seq_user_no nocycle nocache;
+
+객실 등록 스크립트-----------------------------------------------------
+
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '스탠다드 트윈룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 40000, 50000, 20000, 10000, 10, 1);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '패밀리 트윈룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 1);
+
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '산들 애플 하우스', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 2);
+
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, 'Deluxe Double Village', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 3);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, 'Deluxe Plus Douvle Village', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 3);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, 'Studio Twin Ocean', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 3);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, 'Studio Twin Village', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 3);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, 
+DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '스탠다드룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 4);
+
+
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '빌라', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 5);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '스위트', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 5);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '패밀리스위트', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 5);
+
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '베이스위트', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 6);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '퍼시픽 빌라', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 6);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '힐스위트', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 6);
+
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '디럭스 패밀리룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 7);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '디럭스 트리플룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 7);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '디럭스 투윈룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 7);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '스탠다드 더블룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 7);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '스탠다드 트윈룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 7);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '커넥팅룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 7);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '한실 더블룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 7);
+
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '디럭스 트윈룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 8);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '스탠다드 트윈룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 8);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '이그제큐티브 스위트룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 8);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '주니어 스위트룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 8);
+
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '디럭스 트윈룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 9);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '스위트룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 9);
+
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '디럭스 트윈룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 10);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '발코니 트리플룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 10);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '비지니스 트윈룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 10);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '스탠다드 트윈룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 10);
+INSERT INTO ROOM (ROOM_NO, ROOM_NAME, ROOM_OPTION, ROOM_CONTENT, MIN_NO, MAX_NO, OFF_SEASON_PRICE, ON_SEASON_PRICE, WEEK_EXTRA_PRICE, ADD_PERSON_PRICE, DISCOUNTRATE, OWNER_NO)
+VALUES (seq_room_no.nextval, '테라스 패밀리룸', 'wifi,parking,tv,fire,bed,breakfast,room,service', '1', 2, 4, 50000, 60000, 20000, 10000, 10, 10);
+
+select * 
+from room 
+order by owner_no;
+
+사업자대표 이미지 등록 스크립트---------------------------------------------------------------
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-1.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-2.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-3.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-4.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-5.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-6.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-7.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-8.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-9.PNG',1);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'1-10.PNG',1);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-1.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-2.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-3.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-4.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-5.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-6.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-7.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-8.PNG',2);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'2-9.PNG',2);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-1.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-2.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-3.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-4.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-5.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-6.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-7.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-8.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-9.PNG',3);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'3-10.PNG',3);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-1.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-2.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-3.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-4.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-5.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-6.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-7.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-8.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-9.PNG',4);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'4-10.PNG',4);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-1.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-2.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-3.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-4.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-5.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-6.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-7.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-8.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-9.PNG',5);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'5-10.PNG',5);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-1.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-2.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-3.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-4.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-5.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-6.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-7.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-8.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-9.PNG',6);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'6-10.PNG',6);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-1.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-2.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-3.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-4.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-5.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-6.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-7.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-8.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-9.PNG',7);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'7-10.PNG',7);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-1.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-2.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-3.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-4.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-5.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-6.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-7.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-8.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-9.PNG',8);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'8-10.PNG',8);
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'9-1.PNG',9);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'9-2.PNG',9);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'9-3.PNG',9);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'9-4.PNG',9);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'9-5.PNG',9);
+
+
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-1.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-2.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-3.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-4.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-5.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-6.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-7.PNG',10);
+insert into owner_img (owner_img_no,owner_img,owner_no)
+values (seq_owner_img_no.nextval,'10-8.PNG',10);
+
+사업자등록 스크립트---------------------------------------------------------
+
+INSERT INTO owner
+(OWNER_NO, OWNER_LICENSE_NO, OWNER_PASSWORD, OWNER_NAME, OWNER_COMPANYNAME, OWNER_TELEPHONE, OWNER_PHONE, OWNER_ACCOUNT, OWNER_ADDRESS, OWNER_CATEGORY, OWNER_APPROVE)
+VALUES (seq_owner_no.nextval, 111111, 'admin1', '사업자1', '호텔리젠트마린더블루', 01011111111, 01011111111, 01030863045107, '제주도서부두2길20', '호텔','승인' );
+INSERT INTO stravel.owner
+(OWNER_NO, OWNER_LICENSE_NO, OWNER_PASSWORD, OWNER_NAME, OWNER_COMPANYNAME, OWNER_TELEPHONE, OWNER_PHONE, OWNER_ACCOUNT, OWNER_ADDRESS, OWNER_CATEGORY, OWNER_APPROVE)
+VALUES (seq_owner_no.nextval, 2222222, 'admin2', '사업자2', '산들애플하우스', 01022222222, 01022222222, 01030863045107, '제주도서귀포시성산읍', '펜션','승인' );
+INSERT INTO stravel.owner
+(OWNER_NO, OWNER_LICENSE_NO, OWNER_PASSWORD, OWNER_NAME, OWNER_COMPANYNAME, OWNER_TELEPHONE, OWNER_PHONE, OWNER_ACCOUNT, OWNER_ADDRESS, OWNER_CATEGORY, OWNER_APPROVE)
+VALUES (seq_owner_no.nextval, 333333, 'admin3', '사업자3', '해비치리조트제주', 01033333333, 01033333333, 01030863045107, '제주도서귀포시표선면민속해안로537', '리조트','승인' );
+INSERT INTO stravel.owner
+(OWNER_NO, OWNER_LICENSE_NO, OWNER_PASSWORD, OWNER_NAME, OWNER_COMPANYNAME, OWNER_TELEPHONE, OWNER_PHONE, OWNER_ACCOUNT, OWNER_ADDRESS, OWNER_CATEGORY, OWNER_APPROVE)
+VALUES (seq_owner_no.nextval, 4444444, 'admin4', '사업자4', '켄싱턴리조트제주', 01044444444, 01044444444, 01030863045107, '제주도서귀포시이어도로684', '리조트','승인' );
+INSERT INTO stravel.owner
+(OWNER_NO, OWNER_LICENSE_NO, OWNER_PASSWORD, OWNER_NAME, OWNER_COMPANYNAME, OWNER_TELEPHONE, OWNER_PHONE, OWNER_ACCOUNT, OWNER_ADDRESS, OWNER_CATEGORY, OWNER_APPROVE)
+VALUES (seq_owner_no.nextval, 5555555, 'admin5', '사업자5', '라벤더스', 01055555555, 01055555555, 01030863045107, '제주도서귀포시색달중앙로252번길50', '호텔','승인' );
+INSERT INTO stravel.owner
+(OWNER_NO, OWNER_LICENSE_NO, OWNER_PASSWORD, OWNER_NAME, OWNER_COMPANYNAME, OWNER_TELEPHONE, OWNER_PHONE, OWNER_ACCOUNT, OWNER_ADDRESS, OWNER_CATEGORY, OWNER_APPROVE)
+VALUES (seq_owner_no.nextval, 666666, 'admin6', '사업자6', '베이힐풀빌라', 01066666666, 01066666666, 01030863045107, '제주도서귀포시예래로424', '풀빌라','승인' );
+INSERT INTO stravel.owner
+(OWNER_NO, OWNER_LICENSE_NO, OWNER_PASSWORD, OWNER_NAME, OWNER_COMPANYNAME, OWNER_TELEPHONE, OWNER_PHONE, OWNER_ACCOUNT, OWNER_ADDRESS, OWNER_CATEGORY, OWNER_APPROVE)
+VALUES (seq_owner_no.nextval, 777777, 'admin7', '사업자7', '베스트웨스턴제주호텔', 01077777777, 01077777777, 01030863045107, '제주도서귀포시성산읍', '호텔','승인' );
+INSERT INTO stravel.owner
+(OWNER_NO, OWNER_LICENSE_NO, OWNER_PASSWORD, OWNER_NAME, OWNER_COMPANYNAME, OWNER_TELEPHONE, OWNER_PHONE, OWNER_ACCOUNT, OWNER_ADDRESS, OWNER_CATEGORY, OWNER_APPROVE)
+VALUES (seq_owner_no.nextval, 8888888, 'admin8', '사업자8', '호텔난타', 01088888888, 01088888888, 01030863045107, '제주도제주시선돌목동길56-26', '호텔','승인' );
+INSERT INTO stravel.owner
+(OWNER_NO, OWNER_LICENSE_NO, OWNER_PASSWORD, OWNER_NAME, OWNER_COMPANYNAME, OWNER_TELEPHONE, OWNER_PHONE, OWNER_ACCOUNT, OWNER_ADDRESS, OWNER_CATEGORY, OWNER_APPROVE)
+VALUES (seq_owner_no.nextval, 9999999, 'admin9', '사업자9', '호텔휘슬락', 01099999999, 01099999999, 01030863045107, '제주도제주시서부두2길26', '호텔','승인' );
+INSERT INTO stravel.owner
+(OWNER_NO, OWNER_LICENSE_NO, OWNER_PASSWORD, OWNER_NAME, OWNER_COMPANYNAME, OWNER_TELEPHONE, OWNER_PHONE, OWNER_ACCOUNT, OWNER_ADDRESS, OWNER_CATEGORY, OWNER_APPROVE)
+VALUES (seq_owner_no.nextval, 1000000, 'admin10', '사업자10', '아이진호텔', 01010101010, 01010101010, 01030863045107, '제주도제주시신대로22길4', '호텔','승인' );
+
+식당 동행찾기 스크립트----------------------------------------------------------
+
+--임시사용자
+DROP TABLE AC CASCADE CONSTRAINTS;
+
+CREATE TABLE AC(
+    USER_EMAIL VARCHAR2(50) NOT NULL,
+    USER_ID VARCHAR2(15) NOT NULL,
+    BIRTH DATE NOT NULL,
+    USER_PWD VARCHAR2(50) NOT NULL,
+    GENDER VARCHAR2(2) NOT NULL,
+    USER_NAME VARCHAR2(20) NOT NULL,
+    EMAIL VARCHAR2(100)  NOT NULL,
+    PHONE VARCHAR2(12)  NOT NULL,
+    CODE_POSTAL VARCHAR2(20)  NOT NULL,
+    ADDRESS VARCHAR2(160)  NOT NULL,
+    ADDRESS2 VARCHAR2(160)  NOT NULL,
+    JOIN_DATE DATE DEFAULT SYSDATE NOT NULL,
+    SMS_YN VARCHAR2(2),
+    EMAIL_YN VARCHAR2(2),
+    POINT NUMBER NOT NULL,
+    
+    CONSTRAINT PK_USEREMAIL PRIMARY KEY(USER_EMAIL)--기본키
+);
+
+DROP SEQUENCE SEQ_USER_NO;
+
+CREATE SEQUENCE SEQ_USER_NO 
+START WITH 1
+INCREMENT BY 1
+NOCYCLE     
+NOCACHE;   
+
+-- 사용자 SAMPLE INSERT
+INSERT INTO AC VALUES('angelstarq@naver.com','user01','1990-01-01','pass01','F','홍길동','hogildong@naver.com','01099996777','475-765','강남구','kh정보교육원',DEFAULT,'N','N',0);
+
+DROP TABLE COMPANION CASCADE CONSTRAINTS;
+
+CREATE TABLE COMPANION(
+   COMPANION_NO NUMBER NOT NULL,
+   COMPANION_TITLE VARCHAR2(50) NOT NULL,
+   USER_EMAIL VARCHAR2(50) NOT NULL,
+   COMPANION_CONTENT VARCHAR2(50) NOT NULL,
+   COMPANION_DATE DATE DEFAULT SYSDATE NOT NULL,
+   COMPANION_SCHEDULE VARCHAR2(50),
+   COMPANION_PROGRESS NUMBER NOT NULL,
+
+   CONSTRAINT PK_COMPANIONNO PRIMARY KEY(COMPANION_NO), -- 기본키
+   CONSTRAINT FK_CUSEREMAIL FOREIGN KEY (USER_EMAIL) REFERENCES AC(USER_EMAIL) --외래키
+
+);
+
+COMMENT ON COLUMN COMPANION.COMPANION_NO IS '게시판번호';
+COMMENT ON COLUMN COMPANION.COMPANION_TITLE IS '제목';
+COMMENT ON COLUMN COMPANION.USER_EMAIL IS '작성자';
+COMMENT ON COLUMN COMPANION.COMPANION_CONTENT IS '내용';
+COMMENT ON COLUMN COMPANION.COMPANION_DATE IS '작성일';
+COMMENT ON COLUMN COMPANION.COMPANION_SCHEDULE IS '일정공유';
+COMMENT ON COLUMN COMPANION.COMPANION_PROGRESS IS '진행현황';
+
+--동행찾기게시판번호 시퀀스
+DROP SEQUENCE SEQ_CP_NO;
+
+CREATE SEQUENCE SEQ_CP_NO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+--동행 찾기 샘플 INSERT
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'angelstarq@naver.com', '즐거운여행해요', SYSDATE, NULL, 1); 
+
+
+
+--동행찾기게시판댓글
+DROP TABLE COMPANION_REPLY CASCADE CONSTRAINTS;
+
+CREATE TABLE COMPANION_REPLY(
+COMPANION_REPLY_NO NUMBER NOT NULL,
+COMPANION_NO NUMBER NOT NULL,
+COMPANION_REPLY_REF NUMBER,
+COMPANION_REPLY_LEV NUMBER,
+COMPANION_REPLY_SEQ NUMBER,
+USER_EMAIL VARCHAR2(50) NOT NULL,
+COMPANION_REPLY_CONTENT VARCHAR2(100) NOT NULL,
+COMPANION_REPLY_DATE DATE DEFAULT SYSDATE NOT NULL,
+
+CONSTRAINT PK_COMPREPLYNO PRIMARY KEY(COMPANION_REPLY_NO), -- 기본키
+CONSTRAINT FK_CPRCOMPNO FOREIGN KEY (COMPANION_NO) REFERENCES COMPANION(COMPANION_NO),
+CONSTRAINT FK_CPRACUSEREMAIL FOREIGN KEY (USER_EMAIL) REFERENCES AC(USER_EMAIL) --외래키
+);
+
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_REPLY_NO IS '댓글번호';
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_NO IS '게시판번호';
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_REPLY_REF IS '댓글참조번호';
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_REPLY_LEV IS '댓글레벨';
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_REPLY_SEQ IS '댓글순서';
+COMMENT ON COLUMN COMPANION_REPLY.USER_EMAIL IS '작성자';
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_REPLY_CONTENT IS '댓글내용';
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_REPLY_DATE IS '댓글작성일';
+
+DROP SEQUENCE SEQ_CPREPLY_NO;
+-- 동행찾기댓글번호 시퀀스
+CREATE SEQUENCE SEQ_CPREPLY_NO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+
+
+-- 동행찾기 댓글 샘플 INSERT
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 28, 0, 0, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 28, 0, 0, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 28, 1, 0, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 28, 1, 1, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 28, 1, 2, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 28, 2, 3, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 28, 0, 0, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 28, 0, 0, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 28, 0, 0, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 28, 0, 0, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 28, 0, 0, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 27, 0, 0, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 27, 1, 0, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 27, 1, 1, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 27, 1, 2, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 27, 2, 0, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 27, 2, 1, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 27, 2, 2, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 27, 2, 3, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 27, 3, 0, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 27, 3, 1, 0, 'angelstarq@naver.com', '즐거운여행해요', SYSDATE);
+
+COMMIT;
+
+결제 동행찾기 스크립트--------------------------------------------------------------
+
+DROP TABLE COMPANION CASCADE CONSTRAINTS;
+
+CREATE TABLE COMPANION(
+   COMPANION_NO NUMBER NOT NULL,
+   COMPANION_TITLE VARCHAR2(100) NOT NULL,
+   companion_writer varchar2(100) not null,
+   COMPANION_CONTENT VARCHAR2(50) NOT NULL,
+   COMPANION_DATE DATE DEFAULT SYSDATE NOT NULL,
+   COMPANION_SCHEDULE VARCHAR2(50),
+   COMPANION_PROGRESS NUMBER NOT NULL,
+
+   CONSTRAINT PK_COMPANIONNO PRIMARY KEY(COMPANION_NO) -- 기본키
+   
+
+);
+
+COMMENT ON COLUMN COMPANION.COMPANION_NO IS '게시판번호';
+COMMENT ON COLUMN COMPANION.COMPANION_TITLE IS '제목';
+comment on column companion.companion_writer is '작성자';
+COMMENT ON COLUMN COMPANION.COMPANION_CONTENT IS '내용';
+COMMENT ON COLUMN COMPANION.COMPANION_DATE IS '작성일';
+COMMENT ON COLUMN COMPANION.COMPANION_SCHEDULE IS '일정공유';
+COMMENT ON COLUMN COMPANION.COMPANION_PROGRESS IS '진행현황';
+
+--동행찾기게시판번호 시퀀스
+DROP SEQUENCE SEQ_CP_NO;
+
+CREATE SEQUENCE SEQ_CP_NO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+--동행 찾기 샘플 INSERT
+INSERT INTO COMPANION VALUES(SEQ_CP_NO.NEXTVAL, '제주도 가자', 'df@naver.com', '즐거운여행해요', '2019-05-08', NULL, 1); 
+
+
+
+--동행찾기게시판댓글
+DROP TABLE COMPANION_REPLY CASCADE CONSTRAINTS;
+
+CREATE TABLE COMPANION_REPLY(
+COMPANION_REPLY_NO NUMBER NOT NULL,
+COMPANION_NO NUMBER NOT NULL,
+companion_reply_writer varchar2(100) NOT NULL,
+COMPANION_REPLY_CONTENT VARCHAR2(100) NOT NULL,
+companion_reply_date date default sysdate not null,
+
+CONSTRAINT PK_COMPREPLYNO PRIMARY KEY(COMPANION_REPLY_NO), -- 기본키
+CONSTRAINT FK_CPRCOMPNO FOREIGN KEY (COMPANION_NO) REFERENCES COMPANION(COMPANION_NO)
+);
+
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_REPLY_NO IS '댓글번호';
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_NO IS '게시판번호';
+COMMENT ON COLUMN COMPANION_REPLY.companion_reply_writer IS '작성자';
+COMMENT ON COLUMN COMPANION_REPLY.COMPANION_REPLY_CONTENT IS '댓글내용';
+comment on column companion_reply.companion_reply_date is '작성일';
+
+DROP SEQUENCE SEQ_CPREPLY_NO;
+-- 동행찾기댓글번호 시퀀스
+CREATE SEQUENCE SEQ_CPREPLY_NO
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+-- 동행찾기 댓글 샘플 INSERT
+INSERT INTO COMPANION_REPLY VALUES(SEQ_CPREPLY_NO.NEXTVAL, 1, 'kyu3135@naver.com', '즐거운여행해요', sysdate);

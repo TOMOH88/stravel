@@ -24,14 +24,13 @@ public class Owner implements Serializable {
 	private String owner_longitude;//경도
 	private int off_season_price;//최저가
 	private int property_review_like;//별점
-
-	
+	private String owner_lat;//위도
+	private String owner_lng;//경도
 	public Owner() {}
-
-	
 	public Owner(int owner_no, int owner_license_no, String owner_password, String owner_name, String owner_companyName,
 			int owner_telephone, int owner_phone, String owner_account, String owner_address, String owner_category,
-			String owner_approve, String owner_latitude, String owner_longitude, int off_season_price, int property_review_like) {
+			String owner_approve, String owner_latitude, String owner_longitude, int off_season_price,
+			int property_review_like, String owner_lat, String owner_lng) {
 		super();
 		this.owner_no = owner_no;
 		this.owner_license_no = owner_license_no;
@@ -48,137 +47,116 @@ public class Owner implements Serializable {
 		this.owner_longitude = owner_longitude;
 		this.off_season_price = off_season_price;
 		this.property_review_like = property_review_like;
+		this.owner_lat = owner_lat;
+		this.owner_lng = owner_lng;
 	}
-	
-
-	public String getOwner_latitude() {
-		return owner_latitude;
-	}
-
-
-	public void setOwner_latitude(String owner_latitude) {
-		this.owner_latitude = owner_latitude;
-	}
-
-
-	public String getOwner_longitude() {
-		return owner_longitude;
-	}
-
-
-	public void setOwner_longitude(String owner_longitude) {
-		this.owner_longitude = owner_longitude;
-	}
-
-
 	public int getOwner_no() {
 		return owner_no;
 	}
-
 	public void setOwner_no(int owner_no) {
 		this.owner_no = owner_no;
 	}
-
 	public int getOwner_license_no() {
 		return owner_license_no;
 	}
-
 	public void setOwner_license_no(int owner_license_no) {
 		this.owner_license_no = owner_license_no;
 	}
-
 	public String getOwner_password() {
 		return owner_password;
 	}
-
 	public void setOwner_password(String owner_password) {
 		this.owner_password = owner_password;
 	}
-
 	public String getOwner_name() {
 		return owner_name;
 	}
-
 	public void setOwner_name(String owner_name) {
 		this.owner_name = owner_name;
 	}
-
 	public String getOwner_companyName() {
 		return owner_companyName;
 	}
-
 	public void setOwner_companyName(String owner_companyName) {
 		this.owner_companyName = owner_companyName;
 	}
-
 	public int getOwner_telephone() {
 		return owner_telephone;
 	}
-
 	public void setOwner_telephone(int owner_telephone) {
 		this.owner_telephone = owner_telephone;
 	}
-
 	public int getOwner_phone() {
 		return owner_phone;
 	}
-
 	public void setOwner_phone(int owner_phone) {
 		this.owner_phone = owner_phone;
 	}
-
 	public String getOwner_account() {
 		return owner_account;
 	}
-
 	public void setOwner_account(String owner_account) {
 		this.owner_account = owner_account;
 	}
-
 	public String getOwner_address() {
 		return owner_address;
 	}
-
 	public void setOwner_address(String owner_address) {
 		this.owner_address = owner_address;
 	}
-
 	public String getOwner_category() {
 		return owner_category;
 	}
-
 	public void setOwner_category(String owner_category) {
 		this.owner_category = owner_category;
 	}
-
 	public String getOwner_approve() {
 		return owner_approve;
 	}
-
 	public void setOwner_approve(String owner_approve) {
 		this.owner_approve = owner_approve;
 	}
-
+	public String getOwner_latitude() {
+		return owner_latitude;
+	}
+	public void setOwner_latitude(String owner_latitude) {
+		this.owner_latitude = owner_latitude;
+	}
+	public String getOwner_longitude() {
+		return owner_longitude;
+	}
+	public void setOwner_longitude(String owner_longitude) {
+		this.owner_longitude = owner_longitude;
+	}
 	public int getOff_season_price() {
 		return off_season_price;
 	}
-
 	public void setOff_season_price(int off_season_price) {
 		this.off_season_price = off_season_price;
 	}
-
 	public int getProperty_review_like() {
 		return property_review_like;
 	}
-
 	public void setProperty_review_like(int property_review_like) {
 		this.property_review_like = property_review_like;
 	}
-
+	public String getOwner_lat() {
+		return owner_lat;
+	}
+	public void setOwner_lat(String owner_lat) {
+		this.owner_lat = owner_lat;
+	}
+	public String getOwner_lng() {
+		return owner_lng;
+	}
+	public void setOwner_lng(String owner_lng) {
+		this.owner_lng = owner_lng;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
+	
 	
 	
 }

@@ -439,14 +439,29 @@ var marker;
 								</div>
 								<input name="owner_name" class="form-control" placeholder="대표자명을 입력하세요" type="text" required>
 							</div>
-							
+							<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-phone"></i>
+								</span>
+							</div>
+								<input name="owner_companyName" class="form-control"	placeholder="호텔(숙박) 명을 입력하세요" type="text">
+						</div>
 						<div class="form-group input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> 
 									<i class="fa fa-phone"></i>
 								</span>
 							</div>
-								<input name="owner_phone" class="form-control"	placeholder="대표휴대전화를 입력하세요" type="text">
+								<input name="owner_telephone" class="form-control"	placeholder="휴대전화를 입력하세요" type="text">
+						</div>
+						<div class="form-group input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> 
+									<i class="fa fa-phone"></i>
+								</span>
+							</div>
+								<input name="owner_phone" class="form-control"	placeholder="대표번호를 입력하세요" type="text">
 						</div>
 						  <div style="text-align:center;">
 						  <br>

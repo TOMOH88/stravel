@@ -192,19 +192,21 @@ table tr:nth-child(1) {
                         </ul>
                     </a>
                 </li>
-                <%-- <li class="active">
+               <li class="active">
                 <a href ="moveExtraUpdate.do"style="cursor:pointer" >
                 	<c:if test="${ loginOwner.owner_approve eq '승인' }">
-                	<i class="pe-7s-graph"></i>
-                	<a><p>사업자<br>주소등록하기</p></a>
+                		<c:if test="${empty loginOwner.owner_address }">
+                		<i class="pe-7s-graph"></i>
+                		<a href="moveExtraUpdate.do"><p>사업자<br>주소등록하기</p></a>
+                		</c:if>
                 	</c:if>
-                	<c:if test="${loginOwner.owner_approve eq '미승인' }">
+                	<c:if test="${loginOwner.owner_approve eq '비승인' }">
                 	<i class="pe-7s-graph"></i>
-                	<p>가입승인 대기중</p>
+                	<p>가입승인<br> 대기중</p>
                 	</c:if>
-                	<i class="pe-7s-graph"></i>
+                		 
                 	</a>
-                </li> --%>
+                </li>
             </ul>
     	</div>
     </div>
