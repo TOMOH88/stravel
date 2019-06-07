@@ -13,13 +13,13 @@ public class Restaurant implements java.io.Serializable{
 	private String restaurant_content;
 	private String restaurant_writer;
 	private Date restaurant_date;
-	private String rename_thumnail;
+	private String r_rename_thumnail;
 	private String restaurant_openinghours;
 	private String restaurant_closehours;
 	private String restaurant_homepage;
 	private String restaurant_address;
 	private String restaurant_tel;
-	private String restaurant_lastmodified;
+	private Date restaurant_lastmodified;
 	private String restaurant_gridx;
 	private String restaurant_gridy;
 	private String restaurant_deletestatus;
@@ -27,9 +27,9 @@ public class Restaurant implements java.io.Serializable{
 	public Restaurant() {}
 
 	public Restaurant(int restaurant_no, String restaurant_category_code, String restaurant_name,
-			String restaurant_content, String restaurant_writer, Date restaurant_date, String rename_thumnail,
+			String restaurant_content, String restaurant_writer, Date restaurant_date, String r_rename_thumnail,
 			String restaurant_openinghours, String restaurant_closehours, String restaurant_homepage,
-			String restaurant_address, String restaurant_tel, String restaurant_lastmodified, String restaurant_gridx,
+			String restaurant_address, String restaurant_tel, Date restaurant_lastmodified, String restaurant_gridx,
 			String restaurant_gridy, String restaurant_deletestatus) {
 		super();
 		this.restaurant_no = restaurant_no;
@@ -38,7 +38,7 @@ public class Restaurant implements java.io.Serializable{
 		this.restaurant_content = restaurant_content;
 		this.restaurant_writer = restaurant_writer;
 		this.restaurant_date = restaurant_date;
-		this.rename_thumnail = rename_thumnail;
+		this.r_rename_thumnail = r_rename_thumnail;
 		this.restaurant_openinghours = restaurant_openinghours;
 		this.restaurant_closehours = restaurant_closehours;
 		this.restaurant_homepage = restaurant_homepage;
@@ -98,12 +98,12 @@ public class Restaurant implements java.io.Serializable{
 		this.restaurant_date = restaurant_date;
 	}
 
-	public String getRename_thumnail() {
-		return rename_thumnail;
+	public String getr_rename_thumnail() {
+		return r_rename_thumnail;
 	}
 
-	public void setRename_thumnail(String rename_thumnail) {
-		this.rename_thumnail = rename_thumnail;
+	public void setr_rename_thumnail(String r_rename_thumnail) {
+		this.r_rename_thumnail = r_rename_thumnail;
 	}
 
 	public String getRestaurant_openinghours() {
@@ -146,11 +146,11 @@ public class Restaurant implements java.io.Serializable{
 		this.restaurant_tel = restaurant_tel;
 	}
 
-	public String getRestaurant_lastmodified() {
+	public Date getRestaurant_lastmodified() {
 		return restaurant_lastmodified;
 	}
 
-	public void setRestaurant_lastmodified(String restaurant_lastmodified) {
+	public void setRestaurant_lastmodified(Date restaurant_lastmodified) {
 		this.restaurant_lastmodified = restaurant_lastmodified;
 	}
 
@@ -187,7 +187,7 @@ public class Restaurant implements java.io.Serializable{
 		return "Restaurant [restaurant_no=" + restaurant_no + ", restaurant_category_code=" + restaurant_category_code
 				+ ", restaurant_name=" + restaurant_name + ", restaurant_content=" + restaurant_content
 				+ ", restaurant_writer=" + restaurant_writer + ", restaurant_date=" + restaurant_date
-				+ ", rename_thumnail=" + rename_thumnail + ", restaurant_openinghours=" + restaurant_openinghours
+				+ ", r_rename_thumnail=" + r_rename_thumnail + ", restaurant_openinghours=" + restaurant_openinghours
 				+ ", restaurant_closehours=" + restaurant_closehours + ", restaurant_homepage=" + restaurant_homepage
 				+ ", restaurant_address=" + restaurant_address + ", restaurant_tel=" + restaurant_tel
 				+ ", restaurant_lastmodified=" + restaurant_lastmodified + ", restaurant_gridx=" + restaurant_gridx

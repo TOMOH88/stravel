@@ -19,25 +19,27 @@ function remove_item(obj){
     document.getElementById('field').removeChild(obj.parentNode);
 } */
 
+//관광지
 var markerArray = [];
 var iConArray = [];
 var nameArray = [];
 var contentArray = [];
 
+
 $(function(){
+	$("#tbtn").click(function(){
 	$.ajax({
 		type: "POST",
 		url : "tview.do",
 		dataType: "json",
 		contentType:"application/json; charset=UTF-8",
 		success : function(data){
+			alert("ok");
 			if(data.code == "ok")
 			for(i in data.tour){
 				var no = [];
 				no[i] = data.tour[i].touristspot_no;
 				nameArray[i] = [data.tour[i].touristspot_name];
-				var touristspot = [];
-				touristspot[i] = [data.tour[i].touristspot];
 				var latitude = [];
 				latitude[i] = [data.tour[i].touristspot_latitude];
 				var longitude = [];
@@ -45,60 +47,73 @@ $(function(){
 				markerArray[i] = new google.maps.LatLng(latitude[i],longitude[i]);
 				iConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
 				contentArray[i] = [data.tour[i].touristspot_content];
+				var img = [];
+				img[i] = [data.tour[i].rename_thumnail]
 				
+				$("timg").html("<img src='${pageContext.request.contextPath }/resources/files/touristspotImages/${data.tour[i].rename_thumnail }' style='width:100%; height:100px;'>");
 				addMarker(no, data, contentArray, location, nameArray)
-				}
-			
+
+			}
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 			alert(jqXHR.responseText.errorThrown)
-		}
-	});
+			}
+		});
+	})
 });
 
+$(function(){
+	$("#rbtn").click(function(){
+		$.ajax({
+			type: "POST",
+			url : "rview.do",
+			dataType: "json",
+			contentType:"application/json; charset=UTF-8",
+			success : function(data){
+				if(data.code == "ook")
+				for(i in data.rest){
+					var no = [];
+					no[i] = data.rest[i].restaurant_no;
+					nameArray[i] = [data.rest[i].restaurant_name];
+					var latitude = [];
+					latitude[i] = [data.rest[i].restaurant_gridx];
+					var longitude = [];
+					longitude[i] = [data.rest[i].restaurant_gridy];
+					markerArray[i] = new google.maps.LatLng(latitude[i],longitude[i]);
+					iConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+					contentArray[i] = [data.rest[i].restaurant_content];
+					var img = [];
+					img[i] = [data.rest[i].r_rename_thumnail]
+					
+					$("timg").html("<img src='${pageContext.request.contextPath }/resources/files/touristspotImages/${data.rest[i].r_rename_thumnail }' style='width:100%; height:100px;'>");
+					addMarker(no, data, contentArray, location, nameArray)
+					
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				alert(jqXHR.responseText.errorThrown)
+				}
+		});
+	})
+});
 
-/*     function initMap(no, data , name, latitude, longitude) {
-    	var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도
-        mapOptions = { 
-         zoom:11, 
-         center:mapLocation 
-        } 
-    	
-        var map = new google.maps.Map(document.getElementById('map'), mapOptions); 
-        var infowindow = new google.maps.InfoWindow(); 
-        var marker = [];
-        
-        for (i = 0; i < no.length; i++) { 
-        	var icon = '';
-           marker[i] = new google.maps.Marker({ 
-           position: new google.maps.LatLng(latitude[i], longitude[i]), 
-           map:   map, 
-           title: '제주도' , 
-          }); 
-          var contentString = 'Title on Load'; 
-          var infowindow = [];
-          infowindow = new google.maps.InfoWindow({ 
-           content: contentString, 
-           maxWidth: 160 
-          }); 
-          
-          infowindow.open(map, marker[i]); 
-     
-          // Event that closes the Info Window with a click on the map 
-          google.maps.event.addListener(map, 'click', function() { 
-           infowindow.close(); 
-          }); 
-          
-          google.maps.event.addListener(marker, 'click', (function(marker, i) { 
-           return function() { 
-            var contentString = 'Title on Click'; 
-            infowindow.setContent(contentString); 
-            infowindow.open(map, marker); 
-           } 
-          })(marker, i)); 
-         } 
-        } 
-    google.maps.event.addDomListener(window, 'load', initMap); */
+$(function(){
+	$("#inbtn").click(function(){
+		$.ajax({
+			type: "POST",
+			url : "acalendar.do",
+			data: $("#frm").serialize(),
+			contentType:"application/json; charset=UTF-8",
+			success : function(data){
+				alert(data);
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				alert(jqXHR.responseText.errorThrown)
+				}
+		});
+	})
+});
+
     var markers = [];
     var iterator = 0;
     var map;
@@ -150,47 +165,6 @@ $(function(){
 
     
 </script>
-<script type="text/javascript">
-/* var markerArray = [];
-var iConArray = [];
-var nameArray = [];
-var contentArray = [];
-
-$(function(){
-	$.ajax({
-		type: "POST",
-		url : "rview.do",
-		dataType: "json",
-		async:false,
-		contentType:"application/json; charset=UTF-8",
-		success : function(data){
-			if(data.code == "ook")
-			for(i in data.rest){
-				var rno = [];
-				rno[i] = data.rest[i].restaurant_no;
-				/* nameArray[i] = [data.rest[i].touristspot_name];
-				var touristspot = [];
-				touristspot[i] = [data.rest[i].touristspot];
-				var latitude = [];
-				latitude[i] = [data.rest[i].touristspot_latitude];
-				var longitude = [];
-				longitude[i] = [data.rest[i].touristspot_longitude];
-				markerArray[i] = new google.maps.LatLng(latitude[i],longitude[i]);
-				iConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
-				contentArray[i] = [data.rest[i].touristspot_content]; */
-				
-				/* addMarker(no, data, contentArray, location, nameArray) */
-				
-					alert("asd");
-				}
-			
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert(jqXHR.responseText.errorThrown)
-		}
-	});
-}); */
-</script>
 <title>stravel</title>
 <style type="text/css">
 /* div{
@@ -208,9 +182,9 @@ $(function(){
 <div style="height:90px;"></div>
 <div class="container-fluid">
 <div class="row" style="height:530px;">
-<%-- <div class="col-md-1" style="background:#203341; height:530px; overflow:scroll;">
-<form action="acalendar.do" method="post">
-<input type="submit" value="일정추가">
+<div class="col-md-1" style="background:#203341; height:530px; overflow:scroll;">
+<button id="inbtn">일정추가</button>
+<form id="frm" method="post">
 <div id="pre_set" class="row">
     <font style="color:white;">Day</font>
 <input type="hidden" name="calendar_title" id="calendar_title" value="day">
@@ -225,18 +199,19 @@ ${status.count} ${c.calendar_title }
 <a href="delDay.do?calendar_no=${c.calendar_no }">삭제</a>
 </div>
 </c:forEach>
-</div> --%>
-<%-- <div class="col-md-2" style="overflow:scroll; height:530px;">
+</div>
+<div class="col-md-2" style="overflow:scroll; height:530px;">
 <div class="row" id="result">
 ${oca.calendar_no }${oca.calendar_title }
-ㅁㄴㅇ
-</div> --%>
+<span>asdasd</span>
+</div>
+</div>
 <div class="col-md-2" style="overflow:scroll; height:530px;">
-<c:forEach var="tl" items="${tour}">
-<div class="row">
-<img src="${pageContext.request.contextPath }/resources/files/touristspotImages/${tl.rename_thumnail }" style="width:100%; height:100px;">
+<div><button id="tbtn">관광지</button>&nbsp;<button id="rbtn">식당</button></div>
+<%-- <c:forEach var="tl" items="${tour}">
+<div class="row" id="timg">
 <div class="col-xl-12">
-<div class="row">
+<div class="row" id="tdetail">
 <a href="touristspotDetail.do?tno=${tl.touristspot_no }">${tl.touristspot_name }</a>
 &nbsp;&nbsp;&nbsp;<font style="font-size:7pt;">TEL : ${tl.touristspot_tel }</font>
 </div>
@@ -250,18 +225,17 @@ ${oca.calendar_no }${oca.calendar_title }
 <div class="row">
 <a href="${tl.touristspot_homepage }"><font style="font-size:8pt;">사이트 이동</font></a>
 </div>
-<!-- <div class="col-xl-12" align="center" style="margin:auto;">
-<button>추가</button>
-</div> -->
-</div>
-</div>
-</c:forEach>
-</div>
-<div class="col-md-10" id="map" style="height:530px; position:static;">
+<div class="col-xl-12" align="center" style="margin:auto;">
+<button id="ap1">추가</button>
 </div>
 </div>
 </div>
-<!-- <div style="position:absolute; left: 1190px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div> -->
+</c:forEach> --%>
+</div>
+<div class="col-md-7" id="map" style="height:530px; position:static;">
+</div>
+</div>
+<div style="position:absolute; left: 1190px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal3">저장</button></div>
 <div style="position:absolute; left: 1240px; top: 110px; width:10px; height:30px;"><button class="btn btn-success btn-sm" onclick="location.href='main.do'">닫기</button></div>
 <form action="cinupdate.do" method="post">
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -321,5 +295,6 @@ ${oca.calendar_no }${oca.calendar_title }
   </div>
 </div>
 </form>
+</div>
 </body>
 </html>

@@ -11,7 +11,7 @@
 	<result property = "restaurant_content" column = "restaurant_content"/>
 	<result property = "restaurant_writer" column = "restaurant_writer"/>
 	<result property = "restaurant_date" column = "restaurant_date"/>
-	<result property = "rename_thumnail" column = "rename_thumnail"/>
+	<result property = "r_r_rename_thumnail" column = "r_r_rename_thumnail"/>
 	<result property = "restaurant_openinghours" column = "restaurant_openinghours"/>
 	<result property = "restaurant_closehours" column = "restaurant_closehours"/>
 	<result property = "restaurant_homepage" column = "restaurant_homepage"/>
@@ -71,7 +71,7 @@
 	</insert>
 	
 	<update id="updateRestaurantThumnail" parameterType = "restaurant">
-		update restaurant set rename_thumnail = #{rename_thumnail} where restaurant_no = #{restaurant_no}
+		update restaurant set r_rename_thumnail = #{r_rename_thumnail} where restaurant_no = #{restaurant_no}
 	</update>
 	
 	<select id = "seafoodList" resultMap = "resultRestaurant">

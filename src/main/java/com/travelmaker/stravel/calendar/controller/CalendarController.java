@@ -133,6 +133,7 @@ public class CalendarController {
 	@ResponseBody
 	public ModelAndView arestPage(ModelAndView mv) {
 		ArrayList<Restaurant> rest = calendarService.selectRest();
+		System.out.println("rest" + rest);
 			mv.addObject("rest", rest);
 			mv.addObject("code", "ook");
 			mv.setViewName("jsonView");
@@ -150,9 +151,10 @@ public class CalendarController {
 	}
 	
 	@RequestMapping(value="acalendar.do", method=RequestMethod.POST)
+	@ResponseBody
 	public String acalendarMove(Calendar ca) {
 		if(calendarService.insertCalendar(ca) > 0) {
-		return "redirect:cview.do";
+		return "calendar/calendarViewList";
 		}else {
 		return "common/error";
 		}
@@ -161,14 +163,14 @@ public class CalendarController {
 	@RequestMapping(value="delDay.do", method=RequestMethod.GET)
 	public String delDayPage(@RequestParam(name="calendar_no", required=false) int calendar_no) {
 		calendarService.deleteDay(calendar_no);
-		return "redirect:cview.do";
+		return "calendar/calendarViewList";
 	}
 	
 	@RequestMapping(value="dayOne.do", method=RequestMethod.GET)
 	public String dayOnePage(Model mo, @RequestParam(name="calendar_no", required=false) int calendar_no) {
 		Calendar oca = calendarService.selectOneCalendar(calendar_no);
 		mo.addAttribute("oca", oca);
-		return "redirect:cview.do";
+		return "calendar/calendarViewList";
 	}
 	
 	@RequestMapping(value="cinsert.do", method=RequestMethod.POST)
@@ -177,7 +179,7 @@ public class CalendarController {
 		if(calendarService.calendarinsert(mc) > 0) {
 			mc = calendarService.selectOneMyCalendar(mycalendar_title);
 			mo.addAttribute("mct", mc);
-		return "redirect:cview.do";
+		return "calendar/calendarViewList";
 		}else {
 			return "common/error";
 		}

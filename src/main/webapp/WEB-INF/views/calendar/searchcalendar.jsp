@@ -8,92 +8,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
-var markerArray = [];
-var iConArray = [];
-var nameArray = [];
-var contentArray = [];
-
-$(function(){
-	$.ajax({
-		type: "POST",
-		url : "rview.do",
-		dataType: "text",
-		contentType:"application/json; charset=UTF-8",
-		success : function(data){
-			if(data.code == "ook")
-				alert(data.rest);
-			for(i in data.rest){
-				var rno = [];
-				rno[i] = data.rest[i].restaurant_no;
-				/* nameArray[i] = [data.tour[i].touristspot_name];
-				var touristspot = [];
-				touristspot[i] = [data.tour[i].touristspot];
-				var latitude = [];
-				latitude[i] = [data.tour[i].touristspot_latitude];
-				var longitude = [];
-				longitude[i] = [data.tour[i].touristspot_longitude];
-				markerArray[i] = new google.maps.LatLng(latitude[i],longitude[i]);
-				iConArray[i] = "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
-				contentArray[i] = [data.tour[i].touristspot_content];
-				
-				addMarker(no, data, contentArray, location, nameArray) */
-
-				
-				}
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert(jqXHR.responseText.errorThrown)
-		}
-	});
-});
-
-/*     function initMap(no, data , name, latitude, longitude) {
-    	var mapLocation = new google.maps.LatLng('33.321349', '126.684723'); // 지도에서 가운데로 위치할 위도와 경도
-        mapOptions = { 
-         zoom:11, 
-         center:mapLocation 
-        } 
-    	
-        var map = new google.maps.Map(document.getElementById('map'), mapOptions); 
-        var infowindow = new google.maps.InfoWindow(); 
-        var marker = [];
-        
-        for (i = 0; i < no.length; i++) { 
-        	var icon = '';
-           marker[i] = new google.maps.Marker({ 
-           position: new google.maps.LatLng(latitude[i], longitude[i]), 
-           map:   map, 
-           title: '제주도' , 
-          }); 
-          var contentString = 'Title on Load'; 
-          var infowindow = [];
-          infowindow = new google.maps.InfoWindow({ 
-           content: contentString, 
-           maxWidth: 160 
-          }); 
-          
-          infowindow.open(map, marker[i]); 
-     
-          // Event that closes the Info Window with a click on the map 
-          google.maps.event.addListener(map, 'click', function() { 
-           infowindow.close(); 
-          }); 
-          
-          google.maps.event.addListener(marker, 'click', (function(marker, i) { 
-           return function() { 
-            var contentString = 'Title on Click'; 
-            infowindow.setContent(contentString); 
-            infowindow.open(map, marker); 
-           } 
-          })(marker, i)); 
-         } 
-        } 
-    google.maps.event.addDomListener(window, 'load', initMap); */
-    var markers = [];
-    var iterator = 0;
-    var map;
-     
-  
     function initialize() {
         var mapOptions = {
             zoom: 11,
@@ -158,12 +72,11 @@ $(function(){
 <div></div>
 <div class="row" style="background:gray;">
 <div class="col-md-2" style="margin:auto; text-align:center;">
-<button class="btn btn-info btn-sm" onclick="location.href='cview.do'">상세일정만들기</button>
-<!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal1">
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal1">
 상세일정 만들기
-</button> -->
+</button>
 <!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -177,6 +90,9 @@ $(function(){
       <label>제목
 		<input type="text" name="mycalendar_title" placeholder="제목을 입력하세요" class="form-control">
 		</label>
+		<label>여행시작
+			<input type="date" name="mycalendar_start_date" class="form-control">
+		</label>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">닫기</button>
@@ -185,7 +101,7 @@ $(function(){
       </form>
     </div>
   </div>
-</div> -->
+</div>
 </div>
 <div class="col-md-10" id="map" style="height:530px; position:static"></div>
 </div>

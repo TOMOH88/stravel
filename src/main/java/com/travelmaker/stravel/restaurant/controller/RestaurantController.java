@@ -203,7 +203,7 @@ public class RestaurantController {
 				e.printStackTrace();
 			}
 		}
-		rest.setRename_thumnail(imageList.get(0).getRestaurant_imagename());
+		rest.setr_rename_thumnail(imageList.get(0).getRestaurant_imagename());
 		resService.updateRestaurantThumnail(rest);
 		return path;
 	
