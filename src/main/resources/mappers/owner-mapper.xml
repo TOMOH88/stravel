@@ -107,7 +107,7 @@ where owner_no = #{owner_no}
 	</select>
 	
 	<update id="updateAddress" parameterType="ownerVo">
-	update owner set owner_approve = '승인' , owner_address = #{owner_address}, owner_latitude = #{owner_latitude} , owner_longitude = #{owner_longitude} where owner_no =#{owner_no};
+	update owner set owner_address = #{owner_address}, owner_lat = #{owner_lat} , owner_lng = #{owner_lng} where owner_no =#{owner_no};
 </update>
 <insert id="insertOwnerImg" parameterType = "ownerImgVo">
 <selectKey keyProperty="onwer_no" resultType="int" order="BEFORE">

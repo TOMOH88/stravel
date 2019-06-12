@@ -236,9 +236,10 @@ margin:0px auto;
 	<div style="width:900px;border:1px solid black; margin:0 auto; background:#edf7f8; padding:50px;">
 			<div style="text-align:center; font-size:2em; margin-bottom:20px; color:black; font-weight:bold; ">객실등록</div>
 			<div id="isroom" style="margin:20px; border:1px solid #cfcfcf; background:white;padding:30px;">
-			<form action="updateAddress.do?owner_no=${loginOwner.owner_no }" method="post">
+		<form action="updateAddress.do" method="post" onsubmit="return false">
+		<input type="hidden" value="${loginOwner.owner_no }" name="owner_no">
 		<label>주소</label>
-		<input id="search" type="text" name="owner_address" placeholder="Enter a location" /> 
+		<input id="search" type="text" name="owner_address" placeholder="Enter a location"  autocomplete="false"/> 
 		<input type="button" onclick="geoCode();" value="검색">
 	 <div id="map"></div>
    
@@ -270,7 +271,7 @@ margin:0px auto;
 <script src="${pageContext.request.contextPath }/resources/js/skrollr.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/main.js"></script> 
 <script src="${pageContext.request.contextPath }/resources/js/swiper.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/jquery.MultiFile.js" ></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery.MultiFile.js" type="text/javascript" ></script>
 
    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJoPfOWTR_yPSub9u9VPKGGVauCN0RoAg&libraries=places"></script>
 	
@@ -279,11 +280,12 @@ margin:0px auto;
 	<script type="text/javascript">
 	var defaultBounds = new google.maps.LatLngBounds(
 			  new google.maps.LatLng(-33.8902, 151.1759),
-			  new google.maps.LatLng(-33.8474, 151.2631)); 
+			  new google.maps.LatLng(-33.8474, 151.2631)
+			  ); 
 
 			var input = document.getElementById('search');
 			var options = {
-					  types: ['(cities)'],
+					
 					  componentRestrictions: {country: 'kr'}
 					};
 			var searchBox = new google.maps.places.SearchBox(input, {
@@ -295,42 +297,39 @@ margin:0px auto;
 			var map;
 			var marker;
 		
-/* 			  function geoCode() {
-				  	var faddr_lat = 37.5007939;
-					var faddr_lng = 127.03696560000003;
-				  	var faddr = document.getElementById('owner_address').val();
-				  	var geocoder;
-				  	alert(faddr);
-				  	geocoder = new google.maps.Geocoder();
-				  	geocoder.geocode( { 'address': faddr}, function(results, status) {
-				  		if (status == google.maps.GeocoderStatus.OK) {
-				  			var faddr_lat = faddr.geometry.location.lat();	//위도
-				  			var faddr_lng = faddr.geometry.location.lng();	//경도
-				  		} else {
-				  			var faddr_lat = 37.5007939;
-				  			var faddr_lng = 127.03696560000003;
-				  		}
-				  		map = new google.maps.Map(document.getElementById('map'), {
-			    	        center: {lat: faddr_lat, lng: faddr_lng},
-			    	        zoom: 15});
-				  		
-				  		marker = new google.maps.Marker({
-				                position: {lat: faddr_lat, lng: faddr_lng},
-				                map: map ,
-				                title: 'Hello World!' 
-				            });
-				  		$("#owner_latitude").val(faddr_lat);
-				  		$("#owner_longitude").val(faddr_lng);
-				  		
-				  		return;
-				  	});
-						
-				  }  */
+			function geoCode() {
+			 	var faddr_lat = 37.5007939;
+				var faddr_lng = 127.03696560000003;
+			  	var faddr = document.getElementById('search').value;
+			  	
+			  	var geocoder;
+			  	geocoder = new google.maps.Geocoder();
+			  	geocoder.geocode( { 'address': faddr}, function(results, status) {
+			  		if (status == google.maps.GeocoderStatus.OK) {
+			  			var faddr_lat = results[0].geometry.location.lat();	//위도
+			  			var faddr_lng = results[0].geometry.location.lng();	//경도
+			  		} else {
+			  			var faddr_lat = 37.5007939;
+			  			var faddr_lng = 127.03696560000003;
+			  		}
+			  		map = new google.maps.Map(document.getElementById('map'), {
+		    	        center: {lat: faddr_lat, lng: faddr_lng},
+		    	        zoom: 15});
+			  		
+			  		marker = new google.maps.Marker({
+			                position: {lat: faddr_lat, lng: faddr_lng},
+			                map: map ,
+			                title: 'Hello World!' 
+			            });
+			  		$("#owner_latitude").val(faddr_lat);
+			  		$("#owner_longitude").val(faddr_lng);
+			  		
+			  		return;
+			  	});
+			
+			  } 
 				  
-				  function geoCode(){
-					var lat = document.getElementById('search').value.geometry.location.lat();
-					alert(lat);
-				  }
+				  
 	</script>
 
 </html>

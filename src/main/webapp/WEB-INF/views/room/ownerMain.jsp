@@ -193,7 +193,7 @@ table tr:nth-child(1) {
                     </a>
                 </li>
                <li class="active">
-                <a href ="moveExtraUpdate.do"style="cursor:pointer" >
+            	<a>
                 	<c:if test="${ loginOwner.owner_approve eq '승인' }">
                 		<c:if test="${empty loginOwner.owner_address }">
                 		<i class="pe-7s-graph"></i>
@@ -204,8 +204,8 @@ table tr:nth-child(1) {
                 	<i class="pe-7s-graph"></i>
                 	<p>가입승인<br> 대기중</p>
                 	</c:if>
-                		 
-                	</a>
+                </a>	 
+                
                 </li>
             </ul>
     	</div>

@@ -57,27 +57,32 @@ public class OwnerController {
         System.out.println(paging.getTotal());
         return mv;
 	}
-	@RequestMapping("updateAddress.do")
+	@RequestMapping(value = "updateAddress.do" , method=RequestMethod.POST)
 	public String updateAddress(Owner owner,MultipartHttpServletRequest mtfRequest,HttpServletRequest request) {
-		System.out.println(owner);
-		ArrayList<OwnerImg> ownerImgList = new ArrayList<>();
+		
+		
 		int result = os.updateAddress(owner);
 		if(result <= 0) {
 			return "redirect:ownerMain.do?owner_no="+owner.getOwner_no();
 		}
+		//사진연속업로드
+		ArrayList<OwnerImg> ownerImgList = new ArrayList<>();
 		List<MultipartFile> fileList = mtfRequest.getFiles("owner_img");
+	
 		for(int i=0;i<fileList.size();i++) {
 			String originalFileName = fileList.get(i).getOriginalFilename();
 			String renameFileName = owner.getOwner_name() + "-" +UUIDUtil.GetUUID() +"." + FileUtil.getExtension(originalFileName);
-			String savePath = request.getSession().getServletContext().getRealPath("/resources/files/roomImg");
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/files/ownerImg");
 			
 			FileUtil.upLoadFile(fileList.get(i), originalFileName, savePath, renameFileName);
 	
 			ownerImgList.add(new OwnerImg(i,renameFileName,owner.getOwner_no()));
 			int result2 = os.insertOwnerImg(ownerImgList.get(i));
 		}
-		int result11 =os.updateAddress(owner);
+		
+		
 		return "redirect:ownerMain.do?owner_no="+owner.getOwner_no();
+		
 	}
 	
 	@RequestMapping("moveExtraUpdate.do")

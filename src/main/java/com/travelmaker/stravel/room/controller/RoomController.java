@@ -108,7 +108,7 @@ public class RoomController {
 	}
 	@RequestMapping(value="insertRoomSub.do",method=RequestMethod.POST)
 	public String inserRoomSub(Room room,MultipartHttpServletRequest mtfRequest,HttpServletRequest request) {
-		System.out.println(room);
+	
 		int result = rs.insertRoomSub(room);
 		if(result <=0) {
 			return "room/ownerMain";
@@ -116,6 +116,7 @@ public class RoomController {
 		//사진연속업로드
 		ArrayList<RoomImg> roomImgList = new ArrayList<>();
 		List<MultipartFile> fileList = mtfRequest.getFiles("roomImg");
+		if(fileList.size() > 0) {
 		for(int i=0;i<fileList.size();i++) {
 			String originalFileName = fileList.get(i).getOriginalFilename();
 			String renameFileName = room.getRoom_name() + "-" +UUIDUtil.GetUUID() +"." + FileUtil.getExtension(originalFileName);
@@ -126,7 +127,7 @@ public class RoomController {
 			roomImgList.add(new RoomImg(i+1,renameFileName,room.getRoom_no(),1));
 			int result2 = rs.insertRoomImg(roomImgList.get(i));
 		}
-
+		}
 		 
 		return "redirect:insertRoom.do";
 	}
