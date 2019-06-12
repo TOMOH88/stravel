@@ -20,8 +20,6 @@ public class Owner implements Serializable {
 	private String owner_address;//주소
 	private String owner_category;//숙박종류
 	private String owner_approve;//가입승인여부
-	private String owner_latitude;//위도
-	private String owner_longitude;//경도
 	private int off_season_price;//최저가
 	private int property_review_like;//별점
 	private String owner_lat;//위도
@@ -43,8 +41,6 @@ public class Owner implements Serializable {
 		this.owner_address = owner_address;
 		this.owner_category = owner_category;
 		this.owner_approve = owner_approve;
-		this.owner_latitude = owner_latitude;
-		this.owner_longitude = owner_longitude;
 		this.off_season_price = off_season_price;
 		this.property_review_like = property_review_like;
 		this.owner_lat = owner_lat;
@@ -116,18 +112,6 @@ public class Owner implements Serializable {
 	public void setOwner_approve(String owner_approve) {
 		this.owner_approve = owner_approve;
 	}
-	public String getOwner_latitude() {
-		return owner_latitude;
-	}
-	public void setOwner_latitude(String owner_latitude) {
-		this.owner_latitude = owner_latitude;
-	}
-	public String getOwner_longitude() {
-		return owner_longitude;
-	}
-	public void setOwner_longitude(String owner_longitude) {
-		this.owner_longitude = owner_longitude;
-	}
 	public int getOff_season_price() {
 		return off_season_price;
 	}
@@ -157,6 +141,8 @@ public class Owner implements Serializable {
 	}
 
 	
-	
-	
+	@Override
+	public String toString() {
+		return "위도 경도 " + owner_lat + " , " + owner_lng + "owner_no : " + owner_no + "주소 : " +owner_address ;
+	}
 }

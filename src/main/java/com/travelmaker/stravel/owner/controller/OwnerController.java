@@ -59,7 +59,7 @@ public class OwnerController {
 	}
 	@RequestMapping(value = "updateAddress.do" , method=RequestMethod.POST)
 	public String updateAddress(Owner owner,MultipartHttpServletRequest mtfRequest,HttpServletRequest request) {
-		
+		System.out.println(owner);
 		
 		int result = os.updateAddress(owner);
 		if(result <= 0) {
@@ -68,7 +68,7 @@ public class OwnerController {
 		//사진연속업로드
 		ArrayList<OwnerImg> ownerImgList = new ArrayList<>();
 		List<MultipartFile> fileList = mtfRequest.getFiles("owner_img");
-	
+		if(fileList.size() > 0) {
 		for(int i=0;i<fileList.size();i++) {
 			String originalFileName = fileList.get(i).getOriginalFilename();
 			String renameFileName = owner.getOwner_name() + "-" +UUIDUtil.GetUUID() +"." + FileUtil.getExtension(originalFileName);
@@ -79,7 +79,7 @@ public class OwnerController {
 			ownerImgList.add(new OwnerImg(i,renameFileName,owner.getOwner_no()));
 			int result2 = os.insertOwnerImg(ownerImgList.get(i));
 		}
-		
+		}
 		
 		return "redirect:ownerMain.do?owner_no="+owner.getOwner_no();
 		

@@ -236,14 +236,15 @@ margin:0px auto;
 	<div style="width:900px;border:1px solid black; margin:0 auto; background:#edf7f8; padding:50px;">
 			<div style="text-align:center; font-size:2em; margin-bottom:20px; color:black; font-weight:bold; ">객실등록</div>
 			<div id="isroom" style="margin:20px; border:1px solid #cfcfcf; background:white;padding:30px;">
-		<form action="updateAddress.do" method="post" onsubmit="return false">
+		<form action="updateAddress.do" method="post" onkeydown="if(event.keyCode==13) return false;" enctype="multipart/form-data">
 		<input type="hidden" value="${loginOwner.owner_no }" name="owner_no">
 		<label>주소</label>
 		<input id="search" type="text" name="owner_address" placeholder="Enter a location"  autocomplete="false"/> 
-		<input type="button" onclick="geoCode();" value="검색">
+		<input type="button" onclick="geoCode();" value="검색"
+		onkeypress="if(event.keyCode==13){geoCode(); return false;}">
 	 <div id="map"></div>
    
-		<input type="hidden" name="owner_address" id="owner_address">
+		
 		<input type="hidden" name="owner_lat" id="owner_latitude">
 		<input type="hidden" name="owner_lng" id="owner_longitude">
 		<input multiple="multiple" type="file" name="owner_img" class="multi with-preview"/>

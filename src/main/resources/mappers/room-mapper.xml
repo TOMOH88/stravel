@@ -67,6 +67,9 @@
 
 <!-- 객실이미지 -->
 <insert id="insertRoomImg" parameterType = "roomImgVo">
+	<selectKey keyProperty="room_no" resultType="int" order="BEFORE">
+		select max(room_no) from room  
+	</selectKey>
 	insert into room_img (ROOM_IMG_NO,ROOM_IMG,ROOM_NO)
 	values(SEQ_ROOM_IMG_NO.NEXTVAL,#{room_img},#{room_no})
 </insert>
